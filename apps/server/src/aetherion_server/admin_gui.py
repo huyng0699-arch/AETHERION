@@ -400,10 +400,12 @@ class AdminWindow(QMainWindow):
         except ValueError as exc:
             self._status(str(exc))
             return
-        port = str(urlsplit(base).port)
+        parsed = urlsplit(base)
+        port = str(parsed.port)
+        host = str(parsed.hostname)
         self.owned_server.start(sys.executable, [
             "-m", "uvicorn", "aetherion_server.main:app",
-            "--host", "127.0.0.1", "--port", port,
+            "--host", host, "--port", port,
         ])
         self.stop_button.setEnabled(True)
         QTimer.singleShot(1100, self.check_service)
