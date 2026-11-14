@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "models": [],
+  "required_fields": [
+    "anatomical_id", "filename", "sha256", "source_url",
+    "author", "license", "rights_status", "derivative_license"
+  ],
+  "notice": "No non-commercial, unlicensed or synthetic human anatomy is bundled."
+}
