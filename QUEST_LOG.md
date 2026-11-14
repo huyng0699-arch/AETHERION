@@ -2,6 +2,14 @@
 
 **Scope:** 435 distinct, executable Quest specifications on `main`, numbered **Q-0001 through Q-0435**. Each task's live metadata is stored **only in its own `quests/v1/Q-XXXX.md`**. This root file is navigational and does not claim task completion.
 
+## Current working contract — concurrent build, independent acceptance
+
+**Owner directive (14 Nov 2026):** `QUEUED` Quest may start **before its dependencies PASS**. Keep original `depends_on` and claim via exact file SHA with `execution_mode: PREPARE`. Implement direct code first, then focused evidence. A different agent reviews acceptance; missing dependencies prevent only **integration / final PASS**, not independent work. Do not weaken the concrete acceptance criteria in any of the 435 Quest records.
+
+**Standing review Quest:** [REVIEW-0001](quests/review/REVIEW-0001.md) is separate from the 435 numbered implementation tasks. [GitHub Actions](.github/workflows/quest-review-15m.yml) is configured to refresh its pending-review audit **on a 15-minute cron** (GitHub scheduling is best-effort, not guaranteed exactly at the minute). The workflow checks structured evidence and publishes a report; it does not automatically perform a different AI agent's semantic code review. An independently invoked reviewer follows the standing Quest to verify changed code/deliverables and resolve PASS/REWORK. No automatic acceptance without evidence.
+
+**Useful distinction:** `status: RUNNING, execution_mode: PREPARE` allows coding; `implementation_state: COMPONENT_READY, review: PENDING` records code awaiting independent evaluation; `review: COMPONENT_APPROVED` is not final PASS; `status: DONE, review: APPROVED` is final after integration requirements are satisfied.
+
 ## Current canonical product
 - AETHERION is a **new product and name**, not ASTRA. Legacy material dated November 14, 2026 is reference-only.
 - The native Windows app has its **top menu above the application content**, opens straight to Mission Control, and talks to a separate local-first HTTP server. Mobile and Wearable are independent planned clients.
