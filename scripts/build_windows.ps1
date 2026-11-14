@@ -22,8 +22,14 @@ if ($LASTEXITCODE -ne 0) {
 }
 # Only the desktop client is packaged. Never embed the HTTP server, SQLite
 # user records, credentials, downloaded model weights, or external medical assets.
-$entry = Join-Path $root "apps\desktop\src\aetherion_desktop\main.py"
-if (-not (Test-Path $entry)) { throw "Desktop entrypoint missing: $entry" }
+$moduleEntry = Join-Path $root "apps\desktop\src\aetherion_desktop\main.py"
+if (-not (Test-Path $moduleEntry)) { throw "Desktop entrypoint missing: $moduleEntry" }
+# Package a module-importing launcher: main.py uses package-relative imports and
+# cannot safely be executed as a bare script.
+$launcher = Join-Path $root "build\aetherion_desktop_launcher.py"
+New-Item -ItemType Directory -Force -Path (Split-Path $launcher) | Out-Null
+Set-Content -Path $launcher -Encoding UTF8 -Value "from aetherion_desktop.main import main\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+$entry = $launcher
 $out = [IO.Path]::GetFullPath((Join-Path $root $OutputDirectory))
 $work = Join-Path $root "build\pyinstaller-work"
 $spec = Join-Path $root "build\pyinstaller-spec"
