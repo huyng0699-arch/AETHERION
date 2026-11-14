@@ -16,7 +16,7 @@ from urllib.parse import urlsplit
 from urllib.request import Request, build_opener, HTTPRedirectHandler
 
 ROOT = Path(__file__).resolve().parents[1]
-LINK = re.compile(r"(?<!!)\\[[^\\]]+\\]\\((https?://[^\\s)]+)\\)|(?<![\\w/])(https?://[^\\s<>\\)\\]]+)")
+LINK = re.compile(r"(?<!!)\[[^\]]+\]\((https?://[^\s)]+)\)|(?<![\w/])(https?://[^\s<>\)\]]+)")
 ALLOWED_HOSTS = {"github.com", "www.github.com", "spaceappschallenge.org", "www.spaceappschallenge.org"}
 
 
@@ -85,7 +85,7 @@ def main() -> int:
     report = {"checked_without_credentials": not args.offline, "scanned_files": len(files), "unique_urls": len(rows), "summary": summary, "links": rows}
     output = json.dumps(report, indent=2, ensure_ascii=False)
     if args.output:
-        args.output.write_text(output + "\\n", encoding="utf-8")
+        args.output.write_text(output + "\n", encoding="utf-8")
     else:
         print(output)
     # Offline is explicitly not a passing audit; manual review always remains required.
