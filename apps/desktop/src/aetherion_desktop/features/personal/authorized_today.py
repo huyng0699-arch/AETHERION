@@ -11,12 +11,13 @@ import json
 from PySide6.QtCore import QUrl
 from PySide6.QtNetwork import QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import (
-    QHBoxLayout, QLabel, QPushButton, QTableWidget,
+    QComboBox, QHBoxLayout, QLabel, QPushButton, QTableWidget,
     QTableWidgetItem, QVBoxLayout, QWidget,
 )
 
 from .identity import checked_personal_handoff
 from .latest_metrics import latest_metric_cards
+from .source_classification import record_origin
 from .today_dashboard import (
     build_personal_today_snapshot,
     personal_observations_url,
@@ -33,6 +34,7 @@ class AuthorizedPersonalTodayPage(QWidget):
         self._subject_id = ""
         self._token = ""
         self._request_seq = 0
+        self._displayed_cards = ()
 
         layout = QVBoxLayout(self)
         heading = QLabel("Personal Health / Today")
@@ -49,12 +51,20 @@ class AuthorizedPersonalTodayPage(QWidget):
         self.refresh_button = QPushButton("Refresh selected subject")
         self.refresh_button.clicked.connect(self.refresh)
         controls.addWidget(self.refresh_button)
+        self.origin_filter = QComboBox()
+        self.origin_filter.setAccessibleName("Filter records by documented origin")
+        self.origin_filter.addItem("All record origins", "all")
+        self.origin_filter.addItem("Self-reported", "self")
+        self.origin_filter.addItem("Source verified", "verified")
+        self.origin_filter.addItem("Origin unverified", "unverified")
+        self.origin_filter.currentIndexChanged.connect(self._render_rows)
+        controls.addWidget(self.origin_filter)
         controls.addStretch()
         layout.addLayout(controls)
 
-        self.table = QTableWidget(0, 6)
+        self.table = QTableWidget(0, 7)
         self.table.setHorizontalHeaderLabels(
-            ["Metric", "Recorded value", "Observed at", "Source", "Quality", "Verification"]
+            ["Metric", "Recorded value", "Observed at", "Source", "Quality", "Verification", "Record origin"]
         )
         self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         self.table.setAccessibleName("Selected person's authenticated observations")
@@ -73,6 +83,7 @@ class AuthorizedPersonalTodayPage(QWidget):
     def select_subject(self, subject_id: str, access_token: str) -> None:
         """Change subject atomically; never display the previous subject's records."""
         self._request_seq += 1  # invalidate any in-flight reply from prior subject
+        self._displayed_cards = ()
         self.table.setRowCount(0)
         self._subject_id = ""
         self._token = ""
@@ -95,6 +106,7 @@ class AuthorizedPersonalTodayPage(QWidget):
             return
         self._request_seq += 1
         seq, subject = self._request_seq, self._subject_id
+        self._displayed_cards = ()
         self.table.setRowCount(0)
         request = QNetworkRequest(QUrl(personal_observations_url(self._api_url, subject)))
         request.setRawHeader(b"Authorization", ("Bearer " + self._token).encode("utf-8"))
@@ -136,14 +148,8 @@ class AuthorizedPersonalTodayPage(QWidget):
             self.status_label.setText("ERROR — latest metric provenance is invalid")
             return
         self.status_label.setText(f"{snapshot.state} — {snapshot.status_note}")
-        self.table.setRowCount(len(displayed))
-        for row, card in enumerate(displayed):
-            values = (
-                card.metric, card.reading, card.observed_at,
-                card.source_id, card.quality, card.verification_state
-            )
-            for column, value in enumerate(values):
-                self.table.setItem(row, column, QTableWidgetItem(value))
+        self._displayed_cards = displayed
+        self._render_rows()
         if snapshot.has_more:
             self.note.setText(
                 "Showing the newest record per metric, scope and unit from the "
@@ -154,3 +160,20 @@ class AuthorizedPersonalTodayPage(QWidget):
                 "Newest recorded value per metric, scope and unit. Older records "
                 "remain on the server; missing readings are not normal readings."
             )
+
+    def _render_rows(self, *_):
+        """Filter by explicit provenance, never infer device origin from metric."""
+        mode = self.origin_filter.currentData()
+        visible = [
+            card for card in self._displayed_cards
+            if mode == "all" or record_origin(card)[0] == mode
+        ]
+        self.table.setRowCount(len(visible))
+        for row, card in enumerate(visible):
+            label = record_origin(card)[1]
+            values = (
+                card.metric, card.reading, card.observed_at,
+                card.source_id, card.quality, card.verification_state, label
+            )
+            for column, value in enumerate(values):
+                self.table.setItem(row, column, QTableWidgetItem(value))
