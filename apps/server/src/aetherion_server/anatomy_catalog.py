@@ -91,7 +91,7 @@ def list_approved_models(
         content_type = ALLOWED_MESH_CONTENT_TYPES[mesh_path.suffix.lower()]
         item: dict[str, Any] = {
             "anatomical_id": ident,
-            "filename": mesh_path.name,
+            "filename": mesh_path.relative_to(Path(base_dir).resolve()).as_posix(),
             "size_bytes": mesh_path.stat().st_size,
             "sha256": actual_sha,
             "content_type": content_type,
