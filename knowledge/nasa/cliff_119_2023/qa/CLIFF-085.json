@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-085",
+  "slot": 85,
+  "quest_id": "Q-0385",
+  "checked_at_utc": "2026-11-14T06:32:17.472311+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/skin-abrasion-cliff-2023.pdf?emrc=edf854",
+  "http_status": 200,
+  "pdf_sha256": "41e90789732b0a6aac8e245ed5f786b2903c286014d4b824784fa38fdecaa241",
+  "pdf_bytes": 330410,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-085-IMG-01": "9857280031a998a5645482eeaa5a6fd060812b6ab87ceebb5a8783045c966a09",
+    "CLIFF-085-IMG-02": "b4e6e7a62ba07eb996464fca80a0603562cb0a146a03d8bf00861d7cd12e548a",
+    "CLIFF-085-IMG-03": "7dc9c9b740695d0603c463356b5bf951c913a77f0e6e068e7194ff470bd41706"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
