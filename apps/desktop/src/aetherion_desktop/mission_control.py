@@ -12,6 +12,7 @@ import math
 from urllib.parse import urlencode
 
 from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
+from .features.mission.crew_data_state import state_from_server_response
 
 
 VALID_QUALITY = frozenset({"READY", "NO_DATA", "STALE", "OFFLINE", "DENIED", "ERROR", "UNVERIFIED"})
@@ -112,6 +113,8 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._token = ""  # ephemeral; never logged or saved to disk
             self._subjects: list[str] = []
             self._request_seq = 0
+            self._login_seq = 0
+            self._authorized_subject: str | None = None  # only after successful GET for that exact subject
             # A single native responsive layout, not a second server or webview.
             from .features.mission.mission_layout import install_mission_layout
             install_mission_layout(self, api_url)
@@ -132,6 +135,15 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self.status.setText(tr(self.ui_language, key, **values))
 
         def sign_in(self):
+            # A new attempt invalidates earlier data and outstanding GET/login
+            # callbacks. A failed login may never leave a prior session active.
+            self._login_seq += 1
+            seq = self._login_seq
+            self._request_seq += 1
+            self._token = ""
+            self._authorized_subject = None
+            self.table.setRowCount(0)
+            self._update_summary()
             if not self.username.text().strip() or not self.password.text():
                 self._say("mission.deniedCredentials")
                 return
@@ -140,18 +152,22 @@ def build_mission_control_page(api_url: str, network, parent=None):
             body = json.dumps({"username": self.username.text().strip(), "password": self.password.text()}).encode()
             self.password.clear()
             reply = network.post(request, body)
-            reply.finished.connect(lambda: self._signed_in(reply))
+            reply.finished.connect(lambda: self._signed_in(reply, seq))
 
-        def _signed_in(self, reply):
+        def _signed_in(self, reply, seq):
             code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
+            raw = bytes(reply.readAll())
+            reply.deleteLater()
+            if seq != self._login_seq:
+                return  # a superseded login cannot revive an older session
             try:
-                response = json.loads(bytes(reply.readAll()).decode("utf-8"))
+                response = json.loads(raw.decode("utf-8"))
                 token = response.get("access_token") if isinstance(response, dict) else None
             except (ValueError, UnicodeDecodeError):
                 token = None
-            reply.deleteLater()
             if code != 200 or not isinstance(token, str) or not token:
                 self._token = ""
+                self._authorized_subject = None
                 self._say("mission.loginFailed")
                 self.table.setRowCount(0)
                 self._update_summary()
@@ -181,14 +197,20 @@ def build_mission_control_page(api_url: str, network, parent=None):
             if not self._token:
                 self._say("mission.deniedOpen")
                 return
-            # Subject authorization remains enforced by the server on every request.
+            # A manually entered subject is not authorized merely because login
+            # worked. Require a successful authenticated GET for the same ID.
+            if self._authorized_subject != selected.text():
+                self._say("mission.expired")
+                return
             self.subject_activated.emit(selected.text(), self._token)
 
         def refresh_subject(self, *_):
             subject_id = self.subjects.currentItem().text() if self.subjects.currentItem() else ""
             self._request_seq += 1
             seq = self._request_seq
+            self._authorized_subject = None  # handoff disabled until this exact GET is accepted
             self.table.setRowCount(0)
+            self.technical.setText(tr(self.ui_language, "mission.technicalDisclaimer"))
             self._update_summary(subject=subject_id)
             if not subject_id:
                 self._say("mission.noSubject")
@@ -208,31 +230,58 @@ def build_mission_control_page(api_url: str, network, parent=None):
             raw = bytes(reply.readAll())
             reply.deleteLater()
             if seq != self._request_seq:
-                return  # never show a superseded subject's response
+                return  # switching subjects must discard old server responses
+            self._authorized_subject = None
             if code in (401, 403):
-                self._token = "" if code == 401 else self._token
+                if code == 401:
+                    self._token = ""
                 self._say("mission.expired")
+                self.table.setRowCount(0)
                 self._update_summary(subject=subject_id)
                 return
             if code != 200:
                 self._say("mission.offline")
+                self.table.setRowCount(0)
                 self._update_summary(subject=subject_id)
                 return
             try:
-                snapshot = parse_observations(json.loads(raw.decode("utf-8")), subject_id)
-            except (ValueError, UnicodeDecodeError):
-                snapshot = MissionSnapshot("ERROR", subject_id, (), "", "Malformed JSON response")
-            self._say("mission.snapshot", state=snapshot.state,
-                      note=translate_existing(snapshot.note, self.ui_language))
-            self._update_summary(subject=subject_id, count=len(snapshot.rows),
-                                 latest=snapshot.latest_at,
-                                 sources=len({row.source_id for row in snapshot.rows}))
-            self.table.setRowCount(len(snapshot.rows))
-            for row_i, obs in enumerate(snapshot.rows):
-                for col_i, value in enumerate((obs.metric, obs.reading, obs.observed_at, obs.source_id,
-                                                obs.scope, obs.quality, obs.verification_state)):
+                data = state_from_server_response(
+                    subject_id, 200, json.loads(raw.decode("utf-8"))
+                )
+            except (ValueError, UnicodeDecodeError, TypeError):
+                self._say("mission.snapshot", state="ERROR",
+                          note=tr(self.ui_language, "mission.note.malformed"))
+                self.table.setRowCount(0)
+                self._update_summary(subject=subject_id)
+                return
+
+            # The strict adapter refuses mixed identities, missing receipt times,
+            # non-finite numbers, and research/engineering fixtures as telemetry.
+            if data.status in {"ERROR", "DENIED", "OFFLINE"}:
+                self._say("mission.snapshot", state=data.status,
+                          note=tr(self.ui_language, "mission.note.badValue"))
+                self.table.setRowCount(0)
+                self._update_summary(subject=subject_id)
+                return
+
+            # NO_DATA is a successful authorized read, not proof of health.
+            self._authorized_subject = subject_id
+            note_key = ("mission.note.noObservations" if data.status == "NO_DATA"
+                        else "mission.note.recorded")
+            self._say("mission.snapshot", state=data.status,
+                      note=tr(self.ui_language, note_key))
+            self._update_summary(
+                subject=subject_id, count=len(data.measurements),
+                latest=data.last_observed_at or "",
+                sources=len({row.source_id for row in data.measurements}),
+            )
+            self.table.setRowCount(len(data.measurements))
+            for row_i, obs in enumerate(data.measurements):
+                values = (obs.metric, f"{obs.value:g} {obs.unit}", obs.observed_at,
+                          obs.source_id, obs.scope, obs.quality, obs.verification_state)
+                for col_i, value in enumerate(values):
                     self.table.setItem(row_i, col_i, QTableWidgetItem(value))
-            if snapshot.has_more:
+            if data.has_more:
                 self.technical.setText(tr(self.ui_language, "mission.more"))
 
     return MissionControlPage()
