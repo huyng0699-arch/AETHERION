@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+from contextlib import closing
 import sqlite3
 
 
@@ -33,7 +34,7 @@ def _connect(db_path: str | Path) -> sqlite3.Connection:
 
 def categories(db_path: str | Path) -> list[str]:
     """Return available categories, never fabricated from the 119-slot index."""
-    with _connect(db_path) as db:
+    with closing(_connect(db_path)) as db:
         return [r[0] for r in db.execute(
             "SELECT DISTINCT category FROM articles "
             "WHERE trim(category) <> '' ORDER BY category COLLATE NOCASE"
@@ -89,7 +90,7 @@ def search(
         LIMIT ? OFFSET ?
     """
     params.extend((limit, offset))
-    with _connect(db_path) as db:
+    with closing(_connect(db_path)) as db:
         rows = db.execute(sql, params).fetchall()
     return [SearchHit(r["article_id"], r["slot"], r["display_title"],
                       r["category"], r["section_count"], r["image_count"])
@@ -98,7 +99,7 @@ def search(
 
 def search_status(db_path: str | Path) -> dict[str, object]:
     """Report actual coverage without treating empty/partial databases as complete."""
-    with _connect(db_path) as db:
+    with closing(_connect(db_path)) as db:
         n = db.execute("SELECT COUNT(*) FROM articles").fetchone()[0]
         complete = db.execute(
             "SELECT COUNT(*) FROM articles WHERE completeness_state='COMPLETE'"
