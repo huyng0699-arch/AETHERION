@@ -35,12 +35,17 @@ def _signature(config: CloudConfiguration) -> tuple[str, str, str]:
             hashlib.sha256(config.api_key.encode("utf-8")).hexdigest())
 
 
-def mark_cloud_tested() -> None:
-    """Only call after a provider actually returned nonempty model output."""
+def mark_cloud_tested(test_configuration: CloudConfiguration) -> None:
+    """Mark only the exact key/model/provider whose real request just passed.
+
+    A concurrent admin model/key switch must never certify the new provider
+    based on an old request that completed a few seconds later.
+    """
     global _TESTED_SIGNATURE
-    config = resolve_cloud_configuration()
+    current = resolve_cloud_configuration()
     with _LOCK:
-        _TESTED_SIGNATURE = _signature(config) if config is not None else None
+        if current is not None and _signature(current) == _signature(test_configuration):
+            _TESTED_SIGNATURE = _signature(current)
 
 
 def _model_name(value: str) -> str:
