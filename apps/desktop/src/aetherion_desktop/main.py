@@ -21,6 +21,7 @@ from .portal import PORTAL_ROUTES, build_portal_page
 from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
 from .visual_theme import THEMES, VisualPreferences, AmbientBackdrop
 from .settings_page import SettingsPage
+from .native_workspaces import MonitoringWorkspace, InterviewWorkspace, CareWorkspace
 from .localize import tr as settings_tr
 from .medical_library import build_medical_library_page
 from .mission_control import build_mission_control_page
@@ -160,19 +161,12 @@ class AetherionWindow(QMainWindow):
         self.pages.addWidget(self.knowledge_browser_page)
         self.mission_control_page.subject_activated.connect(self.open_personal_subject)
 
-        self.monitor_page = FeatureLanding(
-            "02 / MEASUREMENTS", "Theo dõi & ECG",
-            "Hồ sơ đo lường cần một nguồn thật đã được ghép và cấp quyền. "
-            "ECG không có dạng sóng trước khi nhập bản ghi hợp lệ.",
-            (("Xem dữ liệu đang lưu", self.show_mission), ("Thư viện y khoa", self.show_medical_library)),
-        )
+        # Native, bilingual workspaces; only Server-backed records and questions.
+        self.monitor_page = MonitoringWorkspace(self.api_url, self.network, self.ui_language)
+        self.monitor_page.open_mission.connect(self.show_mission)
         self.pages.addWidget(self.monitor_page)
-        self.assistant_page = FeatureLanding(
-            "03 / INTELLIGENCE", "Hỏi AI về sức khỏe",
-            "Trợ lý AI Local/Cloud chưa được xác nhận hoạt động trên Server. "
-            "Trong lúc này, bạn có thể đọc thư viện đã nhập và kiểm chứng nguồn.",
-            (("Mở thư viện khoa học", self.show_medical_library),),
-        )
+        self.assistant_page = InterviewWorkspace(self.api_url, self.network, self.ui_language)
+        self.assistant_page.open_library.connect(self.show_medical_library)
         self.pages.addWidget(self.assistant_page)
         self.atlas_page = FeatureLanding(
             "04 / DISCOVERY", "Khám phá cơ thể",
@@ -181,12 +175,10 @@ class AetherionWindow(QMainWindow):
             (("Tìm hiểu tài liệu", self.show_medical_library),),
         )
         self.pages.addWidget(self.atlas_page)
-        self.care_page = FeatureLanding(
-            "05 / CONTINUITY", "Hành trình chăm sóc",
-            "Quy trình Thu thập → Đánh giá → Hành động → Kiểm tra lại cần "
-            "lưu trên Server và tuân theo quy tắc chuyên môn được kiểm chứng.",
-            (("Mở Sức khỏe của tôi", self.show_personal),),
-        )
+        self.care_page = CareWorkspace(self.ui_language)
+        self.care_page.open_personal.connect(self.show_personal)
+        self.care_page.open_monitor.connect(self.show_monitor)
+        self.care_page.open_interview.connect(self.show_assistant)
         self.pages.addWidget(self.care_page)
         self.settings_page = SettingsPage(self.preferences, self.api_url)
         self.settings_page.preferences_changed.connect(self._apply_preferences)
@@ -357,10 +349,12 @@ class AetherionWindow(QMainWindow):
         for action in self.observatory_menu_actions:
             action.setText(tr(self.ui_language, "observatory.hero"))
         for section in (
-            self.top_bar, self.monitor_page, self.assistant_page,
-            self.atlas_page, self.care_page, self.footer_bar,
+            self.top_bar, self.atlas_page, self.footer_bar,
         ):
             translate_shell_widgets(section, self.ui_language)
+        self.monitor_page.set_locale(self.ui_language)
+        self.assistant_page.set_locale(self.ui_language)
+        self.care_page.set_locale(self.ui_language)
         self.language_button.setText(f"VI / EN · {self.ui_language.upper()}")
         self.language_button.setToolTip(tr(self.ui_language, "main.locale.tooltip"))
         self.language_button.setAccessibleName(tr(self.ui_language, "main.locale.tooltip"))
@@ -472,6 +466,7 @@ class AetherionWindow(QMainWindow):
     def open_personal_subject(self, subject_id: str, access_token: str):
         """Preserve the existing authorized Mission → Personal handoff."""
         self.personal_today_page.select_subject(subject_id, access_token)
+        self.monitor_page.select_subject(subject_id, access_token)
         self.show_personal()
 
     def show_help(self):
