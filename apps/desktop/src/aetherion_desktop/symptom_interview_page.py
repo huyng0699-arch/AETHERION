@@ -181,6 +181,10 @@ class SymptomInterviewPage(QWidget):
                 except KeyError:
                     # Never invent an answer label for an unknown backend code.
                     pass
+        elif self.last_state:
+            state_key = ("intake.finished" if self.last_state == "INTAKE_COMPLETED_UNVALIDATED"
+                         else "intake.unvalidated")
+            self.question.setText(self._s(state_key))
         if self.last_state:
             self._render_state(self._last_question_response)
 
@@ -403,7 +407,9 @@ class SymptomInterviewPage(QWidget):
             for label, code in translated_options:
                 self.answers_box.addItem(label, code)
         else:
-            self.question.setText(self._s("intake.finished"))
+            state_key = ("intake.finished" if self.last_state == "INTAKE_COMPLETED_UNVALIDATED"
+                         else "intake.unvalidated")
+            self.question.setText(self._s(state_key))
         self._render_state(data)
         self._update_buttons()
         if self.last_state == "WITNESSED_RED_FLAG_REPORTED":
