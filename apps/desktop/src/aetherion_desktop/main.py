@@ -22,6 +22,8 @@ from .localization import normalize_locale, tr, translate_existing, translate_sh
 from .visual_theme import THEMES, VisualPreferences, AmbientBackdrop
 from .settings_page import SettingsPage
 from .atlas3d import BodyAtlas3D
+from .ecg_page import ECGPage
+from .assistant_chat_page import ChatPage
 from .native_workspaces import MonitoringWorkspace, InterviewWorkspace, CareWorkspace
 from .localize import tr as settings_tr
 from .medical_library import build_medical_library_page
@@ -179,17 +181,18 @@ class AetherionWindow(QMainWindow):
         self.monitor_page.apply_theme(self.preferences)
         self.monitor_page.open_mission.connect(self.show_mission)
         self.pages.addWidget(self.monitor_page)
-        self.assistant_page = InterviewWorkspace(self.api_url, self.network, self.ui_language)
+        self.ecg_page = ECGPage(self.api_url, self.network, self.ui_language)
+        self.ecg_page.open_mission.connect(self.show_mission)
+        self.pages.addWidget(self.ecg_page)
+        self.assistant_page = ChatPage(self.api_url, self.network, self.ui_language)
+        self.assistant_page.authorization_requested.connect(self.show_mission)
+        self.assistant_page.open_symptom.connect(self.show_symptom_interview)
         self.assistant_page.open_library.connect(self.show_medical_library)
         self.pages.addWidget(self.assistant_page)
         self.symptom_page = SymptomInterviewPage(self, api_url=self.api_url, locale=self.ui_language)
         self.symptom_page.authorization_requested.connect(self.show_mission)
         self.symptom_page.care_created.connect(self._open_care_from_interview)
         self.pages.addWidget(self.symptom_page)
-        self._open_intake_button = QPushButton(tr(self.ui_language, "care.intake.title"))
-        self._open_intake_button.setObjectName("primaryAction")
-        self._open_intake_button.clicked.connect(self.show_symptom_interview)
-        self.assistant_page.body.insertWidget(3, self._open_intake_button)
         self.atlas_page = BodyAtlas3D(api_url=self.api_url, network=self.network, locale=self.ui_language)
         self.pages.addWidget(self.atlas_page)
         self.care_page = CareWorkspace(self.ui_language)
@@ -208,7 +211,7 @@ class AetherionWindow(QMainWindow):
         for page in (self.mission_control_page,self.personal_today_page,
                      self.medical_library_page,self.nasa_explore_page,
                      self.knowledge_browser_page,self.hackathon_demo_page,
-                     self.monitor_page,self.assistant_page,self.symptom_page,
+                     self.monitor_page,self.ecg_page,self.assistant_page,self.symptom_page,
                      self.atlas_page,self.care_page,self.care_journal_page):
             self.ambient_controller.add_page(page,self.preferences)
 
@@ -220,7 +223,7 @@ class AetherionWindow(QMainWindow):
         ))
         self.nav_monitor = self._nav_menu(bar, "Theo dõi ▾", (
             ("Tổng quan đo lường", self.show_monitor),
-            ("Điện tim (ECG)", self.show_monitor),
+            ("Điện tim (ECG)", self.show_ecg),
             ("Bản ghi được cấp quyền", self.show_mission),
         ))
         self.nav_ai = self._nav_button(bar, "Hỏi AI", self.show_assistant)
@@ -378,11 +381,11 @@ class AetherionWindow(QMainWindow):
             translate_shell_widgets(section, self.ui_language)
         self.atlas_page.set_locale(self.ui_language)
         self.monitor_page.set_locale(self.ui_language)
+        self.ecg_page.set_locale(self.ui_language)
         self.assistant_page.set_locale(self.ui_language)
         self.care_page.set_locale(self.ui_language)
         self.symptom_page.set_locale(self.ui_language)
         self.care_journal_page.set_locale(self.ui_language)
-        self._open_intake_button.setText(tr(self.ui_language, "care.intake.title"))
         # Resolve every main navigation item by its semantic route key:
         # shared strings like "Hành trình chăm sóc" have distinct contexts.
         for widget, key in (
@@ -509,7 +512,12 @@ class AetherionWindow(QMainWindow):
         self.monitor_page.refresh()
         self.pages.setCurrentWidget(self.monitor_page)
 
+    def show_ecg(self):
+        self.ecg_page.refresh()
+        self.pages.setCurrentWidget(self.ecg_page)
+
     def show_assistant(self):
+        self.assistant_page.refresh_status()
         self.pages.setCurrentWidget(self.assistant_page)
 
     def show_atlas(self):
@@ -552,6 +560,8 @@ class AetherionWindow(QMainWindow):
         """Preserve the existing authorized Mission → Personal handoff."""
         self.personal_today_page.select_subject(subject_id, access_token)
         self.monitor_page.select_subject(subject_id, access_token)
+        self.ecg_page.select_subject(subject_id, access_token)
+        self.assistant_page.set_identity(subject_id, access_token)
         self.symptom_page.set_identity(subject_id, access_token)
         self.care_journal_page.set_identity(subject_id, access_token)
         self.show_personal()
