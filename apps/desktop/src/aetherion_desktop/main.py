@@ -175,14 +175,17 @@ class AetherionWindow(QMainWindow):
         bar.addWidget(self.status)
         self.theme_button = QToolButton()
         self.theme_button.setText("◐  Giao diện")
+        self.theme_button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextOnly)
         self.theme_button.setAccessibleName("Thay đổi chủ đề, cỡ chữ và giảm chuyển động")
         self.theme_button.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
         self.theme_menu = QMenu(self.theme_button)
         self.theme_button.setMenu(self.theme_menu)
         self._build_theme_menu()
+        self.theme_menu.aboutToShow.connect(self._build_theme_menu)
         bar.addWidget(self.theme_button)
         help_button = QToolButton()
         help_button.setText("?  Trợ giúp")
+        help_button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextOnly)
         help_button.clicked.connect(self.show_help)
         bar.addWidget(help_button)
         outer.addWidget(top)
@@ -222,6 +225,7 @@ class AetherionWindow(QMainWindow):
     def _nav_menu(layout, text, actions):
         button = QToolButton()
         button.setText(text)
+        button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextOnly)
         button.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
         menu = QMenu(button)
         for label, handler in actions:
@@ -271,7 +275,6 @@ class AetherionWindow(QMainWindow):
         if app is not None:
             self.preferences.apply(app)
         self.portal_page.set_visuals(self.preferences.theme_name, self.preferences.reduce_motion)
-        self._build_theme_menu()
 
     def open_theme_menu(self):
         self.theme_button.showMenu()
