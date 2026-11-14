@@ -1,4 +1,4 @@
-"""Authenticated Safety Incidents, Device Heartbeat, and Cross-Client Sync API (Q-0055, Q-0056, Q-0057, Q-0059)."""
+"""Authenticated Safety Incidents, Device Heartbeat, and Cross-Client Sync API (Q-0055..Q-0059, Q-0173, Q-0175, Q-0176)."""
 
 from __future__ import annotations
 
@@ -14,6 +14,9 @@ from pydantic import BaseModel, Field
 from .security import is_subject_authorized
 from .signal_state import classify_technical_source_state
 
+SENSITIVE_DETAIL_ROLES = frozenset({"crew", "flight_surgeon", "admin"})
+AUDIT_VIEW_ROLES = frozenset({"flight_surgeon", "admin"})
+
 
 class IncidentReportIn(BaseModel):
     subject_id: str = Field(min_length=1, max_length=80)
@@ -25,6 +28,16 @@ class IncidentReportIn(BaseModel):
 
 class IncidentAckIn(BaseModel):
     note: str = Field(default="", max_length=500)
+
+
+class NotificationDeliveryIn(BaseModel):
+    channel: str = Field(min_length=1, max_length=64)
+    transport_evidence_id: str = Field(min_length=1, max_length=128)
+
+
+class TimeoutEvalIn(BaseModel):
+    timeout_seconds: float = Field(default=300.0, ge=1.0, le=86400.0)
+    now_utc: datetime | None = None
 
 
 class DeviceHeartbeatIn(BaseModel):
@@ -49,6 +62,27 @@ def _ensure_tables(conn: sqlite3.Connection) -> None:
             unconsciousness_assumed INTEGER NOT NULL DEFAULT 0,
             acknowledged_by TEXT,
             acknowledged_at_utc TEXT,
+            escalation_state TEXT NOT NULL DEFAULT 'NONE',
+            escalated_at_utc TEXT,
+            created_at_utc TEXT NOT NULL
+        );
+        CREATE TABLE IF NOT EXISTS safety_incident_audit (
+            audit_id TEXT PRIMARY KEY,
+            incident_id TEXT NOT NULL,
+            actor_username TEXT NOT NULL,
+            actor_role TEXT NOT NULL,
+            access_granted INTEGER NOT NULL,
+            redacted INTEGER NOT NULL,
+            accessed_at_utc TEXT NOT NULL
+        );
+        CREATE TABLE IF NOT EXISTS safety_notification_receipts (
+            receipt_id TEXT PRIMARY KEY,
+            incident_id TEXT NOT NULL,
+            channel TEXT NOT NULL,
+            state TEXT NOT NULL CHECK(state IN ('PENDING', 'DELIVERED', 'ACKNOWLEDGED')),
+            transport_evidence_id TEXT,
+            delivered_at_utc TEXT,
+            acknowledged_at_utc TEXT,
             created_at_utc TEXT NOT NULL
         );
         CREATE TABLE IF NOT EXISTS device_heartbeats (
@@ -61,6 +95,11 @@ def _ensure_tables(conn: sqlite3.Connection) -> None:
         );
         """
     )
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(safety_incidents)").fetchall()}
+    if "escalation_state" not in cols:
+        conn.execute("ALTER TABLE safety_incidents ADD COLUMN escalation_state TEXT NOT NULL DEFAULT 'NONE'")
+    if "escalated_at_utc" not in cols:
+        conn.execute("ALTER TABLE safety_incidents ADD COLUMN escalated_at_utc TEXT")
 
 
 def build_safety_router(
@@ -90,16 +129,26 @@ def build_safety_router(
 
         now_utc = datetime.now(timezone.utc).isoformat()
         incident_id = f"inc-{uuid.uuid4().hex[:12]}"
+        receipt_id = f"rcpt-{uuid.uuid4().hex[:12]}"
         with sqlite3.connect(db_path()) as conn:
             _ensure_tables(conn)
             conn.execute(
                 """
                 INSERT INTO safety_incidents (
                     incident_id, subject_id, incident_type, witness_id, source, note,
-                    status, unconsciousness_assumed, created_at_utc
-                ) VALUES (?, ?, ?, ?, ?, ?, 'OPEN', 0, ?)
+                    status, unconsciousness_assumed, escalation_state, created_at_utc
+                ) VALUES (?, ?, ?, ?, ?, ?, 'OPEN', 0, 'NONE', ?)
                 """,
                 (incident_id, sid, item.incident_type, witness, item.source.strip(), item.note.strip(), now_utc),
+            )
+            conn.execute(
+                """
+                INSERT INTO safety_notification_receipts (
+                    receipt_id, incident_id, channel, state, transport_evidence_id,
+                    delivered_at_utc, acknowledged_at_utc, created_at_utc
+                ) VALUES (?, ?, 'onboard_bus', 'PENDING', NULL, NULL, NULL, ?)
+                """,
+                (receipt_id, incident_id, now_utc),
             )
             conn.commit()
 
@@ -109,6 +158,8 @@ def build_safety_router(
             "incident_type": item.incident_type,
             "witness_id": witness,
             "status": "OPEN",
+            "escalation_state": "NONE",
+            "receipt_state": "PENDING",
             "unconsciousness_assumed": False,
             "requires_human_or_witness_verification": item.incident_type == "UNANSWERED_CHECKIN",
             "created_at_utc": now_utc,
@@ -143,6 +194,14 @@ def build_safety_router(
                     """,
                     (ack_by, ack_at, incident_id),
                 )
+                conn.execute(
+                    """
+                    UPDATE safety_notification_receipts
+                    SET state = 'ACKNOWLEDGED', acknowledged_at_utc = ?
+                    WHERE incident_id = ?
+                    """,
+                    (ack_at, incident_id),
+                )
                 conn.commit()
 
         return {
@@ -152,6 +211,233 @@ def build_safety_router(
             "acknowledged_by": ack_by,
             "acknowledged_at_utc": ack_at,
             "idempotent_replay": already_acked,
+        }
+
+    @router.get("/api/v1/safety/incidents/{incident_id}")
+    def get_incident_details(
+        incident_id: str,
+        identity: tuple[dict, str] = Depends(require_session),
+    ):
+        session, _ = identity
+        now_utc = datetime.now(timezone.utc).isoformat()
+        with sqlite3.connect(db_path()) as conn:
+            conn.row_factory = sqlite3.Row
+            _ensure_tables(conn)
+            row = conn.execute(
+                "SELECT * FROM safety_incidents WHERE incident_id = ?",
+                (incident_id,),
+            ).fetchone()
+            if row is None:
+                raise HTTPException(status_code=404, detail="Incident unavailable")
+
+            authorized = is_subject_authorized(session["role"], session["allowed_subjects"], row["subject_id"])
+            redacted = session["role"] not in SENSITIVE_DETAIL_ROLES
+            conn.execute(
+                """
+                INSERT INTO safety_incident_audit (
+                    audit_id, incident_id, actor_username, actor_role, access_granted, redacted, accessed_at_utc
+                ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    f"aud-{uuid.uuid4().hex[:12]}",
+                    incident_id,
+                    session["username"],
+                    session["role"],
+                    int(authorized),
+                    int(redacted),
+                    now_utc,
+                ),
+            )
+            conn.commit()
+            if not authorized:
+                raise HTTPException(status_code=403, detail=f"Not authorized for subject '{row['subject_id']}'")
+
+        return {
+            "incident_id": row["incident_id"],
+            "subject_id": row["subject_id"],
+            "incident_type": row["incident_type"],
+            "source": row["source"],
+            "status": row["status"],
+            "escalation_state": row["escalation_state"],
+            "escalated_at_utc": row["escalated_at_utc"],
+            "unconsciousness_assumed": bool(row["unconsciousness_assumed"]),
+            "witness_id": None if redacted else row["witness_id"],
+            "note": "[REDACTED_FOR_ROLE]" if redacted else row["note"],
+            "redacted": redacted,
+            "acknowledged_by": row["acknowledged_by"],
+            "acknowledged_at_utc": row["acknowledged_at_utc"],
+            "created_at_utc": row["created_at_utc"],
+        }
+
+    @router.get("/api/v1/safety/incidents/{incident_id}/audit")
+    def get_incident_audit(
+        incident_id: str,
+        identity: tuple[dict, str] = Depends(require_session),
+    ):
+        session, _ = identity
+        if session["role"] not in AUDIT_VIEW_ROLES:
+            raise HTTPException(status_code=403, detail="Audit log requires flight_surgeon or admin role")
+        with sqlite3.connect(db_path()) as conn:
+            conn.row_factory = sqlite3.Row
+            _ensure_tables(conn)
+            rows = conn.execute(
+                "SELECT * FROM safety_incident_audit WHERE incident_id = ? ORDER BY accessed_at_utc ASC",
+                (incident_id,),
+            ).fetchall()
+        return {
+            "incident_id": incident_id,
+            "items": [
+                {
+                    "audit_id": r["audit_id"],
+                    "actor_username": r["actor_username"],
+                    "actor_role": r["actor_role"],
+                    "access_granted": bool(r["access_granted"]),
+                    "redacted": bool(r["redacted"]),
+                    "accessed_at_utc": r["accessed_at_utc"],
+                }
+                for r in rows
+            ],
+        }
+
+    @router.post("/api/v1/safety/incidents/{incident_id}/receipts")
+    def record_delivery_receipt(
+        incident_id: str,
+        item: NotificationDeliveryIn,
+        identity: tuple[dict, str] = Depends(require_session),
+    ):
+        session, _ = identity
+        evidence = item.transport_evidence_id.strip()
+        channel = item.channel.strip()
+        if not evidence or not channel:
+            raise HTTPException(status_code=422, detail="channel and transport_evidence_id are required")
+
+        now_utc = datetime.now(timezone.utc).isoformat()
+        with sqlite3.connect(db_path()) as conn:
+            conn.row_factory = sqlite3.Row
+            _ensure_tables(conn)
+            inc = conn.execute("SELECT * FROM safety_incidents WHERE incident_id = ?", (incident_id,)).fetchone()
+            if inc is None or not is_subject_authorized(session["role"], session["allowed_subjects"], inc["subject_id"]):
+                raise HTTPException(status_code=404, detail="Incident unavailable")
+
+            rcpt = conn.execute(
+                "SELECT * FROM safety_notification_receipts WHERE incident_id = ? AND channel = ?",
+                (incident_id, channel),
+            ).fetchone()
+            if rcpt is None:
+                receipt_id = f"rcpt-{uuid.uuid4().hex[:12]}"
+                new_state = "ACKNOWLEDGED" if inc["status"] == "ACKNOWLEDGED" else "DELIVERED"
+                conn.execute(
+                    """
+                    INSERT INTO safety_notification_receipts (
+                        receipt_id, incident_id, channel, state, transport_evidence_id,
+                        delivered_at_utc, acknowledged_at_utc, created_at_utc
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        receipt_id,
+                        incident_id,
+                        channel,
+                        new_state,
+                        evidence,
+                        now_utc,
+                        inc["acknowledged_at_utc"],
+                        now_utc,
+                    ),
+                )
+            else:
+                receipt_id = rcpt["receipt_id"]
+                new_state = "ACKNOWLEDGED" if rcpt["state"] == "ACKNOWLEDGED" else "DELIVERED"
+                conn.execute(
+                    """
+                    UPDATE safety_notification_receipts
+                    SET state = ?, transport_evidence_id = ?, delivered_at_utc = COALESCE(delivered_at_utc, ?)
+                    WHERE receipt_id = ?
+                    """,
+                    (new_state, evidence, now_utc, receipt_id),
+                )
+            conn.commit()
+        return {
+            "receipt_id": receipt_id,
+            "incident_id": incident_id,
+            "channel": channel,
+            "state": new_state,
+            "transport_evidence_id": evidence,
+            "delivered_at_utc": now_utc,
+        }
+
+    @router.get("/api/v1/safety/incidents/{incident_id}/receipts")
+    def list_receipts(
+        incident_id: str,
+        identity: tuple[dict, str] = Depends(require_session),
+    ):
+        session, _ = identity
+        with sqlite3.connect(db_path()) as conn:
+            conn.row_factory = sqlite3.Row
+            _ensure_tables(conn)
+            inc = conn.execute("SELECT * FROM safety_incidents WHERE incident_id = ?", (incident_id,)).fetchone()
+            if inc is None or not is_subject_authorized(session["role"], session["allowed_subjects"], inc["subject_id"]):
+                raise HTTPException(status_code=404, detail="Incident unavailable")
+            rows = conn.execute(
+                "SELECT * FROM safety_notification_receipts WHERE incident_id = ? ORDER BY created_at_utc ASC",
+                (incident_id,),
+            ).fetchall()
+        return {
+            "incident_id": incident_id,
+            "items": [
+                {
+                    "receipt_id": r["receipt_id"],
+                    "channel": r["channel"],
+                    "state": r["state"],
+                    "transport_evidence_id": r["transport_evidence_id"],
+                    "delivered_at_utc": r["delivered_at_utc"],
+                    "acknowledged_at_utc": r["acknowledged_at_utc"],
+                    "created_at_utc": r["created_at_utc"],
+                }
+                for r in rows
+            ],
+        }
+
+    @router.post("/api/v1/safety/incidents/{incident_id}/evaluate-timeout")
+    def evaluate_incident_timeout(
+        incident_id: str,
+        item: TimeoutEvalIn,
+        identity: tuple[dict, str] = Depends(require_session),
+    ):
+        session, _ = identity
+        ref_now = (item.now_utc or datetime.now(timezone.utc)).astimezone(timezone.utc)
+        with sqlite3.connect(db_path()) as conn:
+            conn.row_factory = sqlite3.Row
+            _ensure_tables(conn)
+            inc = conn.execute("SELECT * FROM safety_incidents WHERE incident_id = ?", (incident_id,)).fetchone()
+            if inc is None or not is_subject_authorized(session["role"], session["allowed_subjects"], inc["subject_id"]):
+                raise HTTPException(status_code=404, detail="Incident unavailable")
+
+            created_dt = datetime.fromisoformat(inc["created_at_utc"]).astimezone(timezone.utc)
+            elapsed = (ref_now - created_dt).total_seconds()
+            timed_out = inc["status"] == "OPEN" and elapsed >= item.timeout_seconds
+            esc_state = inc["escalation_state"]
+            esc_at = inc["escalated_at_utc"]
+            if timed_out:
+                esc_state = "ESCALATED_PENDING_RESPONDER"
+                esc_at = esc_at or ref_now.isoformat()
+                conn.execute(
+                    """
+                    UPDATE safety_incidents
+                    SET escalation_state = ?, escalated_at_utc = ?
+                    WHERE incident_id = ?
+                    """,
+                    (esc_state, esc_at, incident_id),
+                )
+                conn.commit()
+        return {
+            "incident_id": incident_id,
+            "status": inc["status"],
+            "elapsed_seconds": round(elapsed, 3),
+            "timeout_seconds": item.timeout_seconds,
+            "timed_out": timed_out,
+            "escalation_state": esc_state,
+            "escalated_at_utc": esc_at,
+            "responder_confirmed": False,
         }
 
     @router.post("/api/v1/devices/heartbeat")
