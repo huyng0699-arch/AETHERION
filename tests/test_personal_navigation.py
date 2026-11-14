@@ -1,7 +1,17 @@
 """Focused validation of explicit Mission-to-Personal identity transfer."""
+import importlib.util
+from pathlib import Path
 import unittest
 
-from aetherion_desktop.features.personal.authorized_today import checked_personal_handoff
+MODULE_PATH = (
+    Path(__file__).resolve().parents[1]
+    / "apps/desktop/src/aetherion_desktop/features/personal/identity.py"
+)
+spec = importlib.util.spec_from_file_location("aetherion_personal_identity", MODULE_PATH)
+module = importlib.util.module_from_spec(spec)
+assert spec.loader is not None
+spec.loader.exec_module(module)
+checked_personal_handoff = module.checked_personal_handoff
 
 
 class PersonalHandoffTests(unittest.TestCase):
