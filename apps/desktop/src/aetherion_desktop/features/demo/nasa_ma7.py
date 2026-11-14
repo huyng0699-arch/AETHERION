@@ -203,6 +203,14 @@ def build_hackathon_demo(parent=None, **kwargs):
             self._build_replay()
             self._build_loading()
             self._build_catalog_pages()
+            # Patient usability fixtures live in their own SQLite DB; the NASA
+            # scientific replay and authenticated health store remain untouched.
+            from .synthetic_patient_ui import build_synthetic_patient_demo
+            self.synthetic_patient_demo = build_synthetic_patient_demo(
+                self, locale=self.language, theme=self.theme, mode=self.mode
+            )
+            self.synthetic_patient_demo.back_requested.connect(self.show_briefing)
+            self.pages.addWidget(self.synthetic_patient_demo)
             self.timer = QTimer(self)
             self.timer.setInterval(2400)
             self.timer.timeout.connect(self.next_stage)
@@ -264,6 +272,41 @@ def build_hackathon_demo(parent=None, **kwargs):
                 tag.setWordWrap(True)
                 badges.addWidget(tag)
             body.addLayout(badges)
+
+            # Complete patient-data walkthrough first; one click starts the
+            # locally generated 540-day journey, without login or a fake NASA feed.
+            fixture_guide = QFrame()
+            fixture_guide.setObjectName("contentPanel")
+            guide_layout = QVBoxLayout(fixture_guide)
+            guide_layout.setContentsMargins(22, 18, 22, 20)
+            guide_layout.setSpacing(9)
+            self.synthetic_guide_title = QLabel()
+            self.synthetic_guide_title.setObjectName("heading")
+            self.synthetic_guide_title.setWordWrap(True)
+            guide_layout.addWidget(self.synthetic_guide_title)
+            self.synthetic_guide_body = QLabel()
+            self.synthetic_guide_body.setObjectName("pageHint")
+            self.synthetic_guide_body.setWordWrap(True)
+            guide_layout.addWidget(self.synthetic_guide_body)
+            self.synthetic_guide_steps = []
+            for _ in range(3):
+                label = QLabel()
+                label.setObjectName("pageHint")
+                label.setWordWrap(True)
+                guide_layout.addWidget(label)
+                self.synthetic_guide_steps.append(label)
+            self.synthetic_guide_notice = QLabel()
+            self.synthetic_guide_notice.setObjectName("eyebrow")
+            self.synthetic_guide_notice.setWordWrap(True)
+            guide_layout.addWidget(self.synthetic_guide_notice)
+            launch_row = QHBoxLayout()
+            self.synthetic_open = QPushButton()
+            self.synthetic_open.setObjectName("primaryAction")
+            self.synthetic_open.clicked.connect(self.open_patient_demo)
+            launch_row.addWidget(self.synthetic_open)
+            launch_row.addStretch()
+            guide_layout.addLayout(launch_row)
+            body.addWidget(fixture_guide)
 
             official = QFrame()
             official.setObjectName("contentPanel")
@@ -697,6 +740,11 @@ def build_hackathon_demo(parent=None, **kwargs):
             self.autoplay.blockSignals(False)
             self.autoplay.setText(self.t("replay.play"))
 
+        def open_patient_demo(self):
+            self._stop_autoplay()
+            self.pages.setCurrentWidget(self.synthetic_patient_demo)
+            self.synthetic_patient_demo.start()
+
         def show_briefing(self):
             self._stop_autoplay()
             self.pages.setCurrentWidget(self.briefing)
@@ -713,6 +761,15 @@ def build_hackathon_demo(parent=None, **kwargs):
 
         def set_locale(self, locale):
             self.language = normalize_locale(locale)
+            self.synthetic_patient_demo.set_locale(self.language)
+            self.synthetic_guide_title.setText(self.t("synthetic.intro.title"))
+            self.synthetic_guide_body.setText(self.t("synthetic.intro.body"))
+            for label, key in zip(self.synthetic_guide_steps,
+                                  ("synthetic.intro.step1", "synthetic.intro.step2",
+                                   "synthetic.intro.step3")):
+                label.setText(self.t(key))
+            self.synthetic_guide_notice.setText(self.t("synthetic.intro.disclaimer"))
+            self.synthetic_open.setText(self.t("synthetic.intro.start"))
             self.load_title.setText(self.t("load.title"))
             self.load_description.setText(self.t("load.description"))
             self.retry_button.setText(self.t("load.retry"))
@@ -783,6 +840,7 @@ def build_hackathon_demo(parent=None, **kwargs):
             self.reduce_motion=bool(reduce_motion)
             self.intensity=max(0,min(100,int(intensity)))
             self.orb.set_visuals(theme,mode,self.reduce_motion,self.intensity)
+            self.synthetic_patient_demo.set_visuals(theme, mode)
             if self.reduce_motion:
                 self._stop_autoplay()
             if self.group:
