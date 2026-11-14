@@ -53,6 +53,7 @@ def build_portal_page(parent=None, *, theme_name: str = "daybreak", reduce_motio
     class PortalPage(QWidget):
         route_requested = Signal(str)
         theme_requested = Signal()
+        demo_requested = Signal()
 
         def __init__(self):
             super().__init__(parent)
@@ -143,6 +144,24 @@ def build_portal_page(parent=None, *, theme_name: str = "daybreak", reduce_motio
                     grid.addWidget(panel, row, column)
             root.addLayout(grid, 8)
 
+            # The owner's hackathon entry is an extra banner, NOT a sixth
+            # medical card: preserve the designed five destination Portal.
+            demo_strip = QFrame()
+            demo_strip.setObjectName("contentPanel")
+            strip = QHBoxLayout(demo_strip)
+            strip.setContentsMargins(17, 9, 17, 9)
+            strip.setSpacing(13)
+            self.demo_caption = QLabel(tr(self.language, "demo.portal.summary"))
+            self.demo_caption.setObjectName("pageHint")
+            self.demo_caption.setWordWrap(True)
+            strip.addWidget(self.demo_caption, 1)
+            self.demo_button = QPushButton(tr(self.language, "demo.portal.title"))
+            self.demo_button.setObjectName("primaryAction")
+            self.demo_button.setAccessibleName(tr(self.language, "demo.portal.open"))
+            self.demo_button.clicked.connect(self.demo_requested.emit)
+            strip.addWidget(self.demo_button)
+            root.addWidget(demo_strip)
+
             footer = QHBoxLayout()
             footer.setSpacing(12)
             trust = QLabel(tr(self.language, "portal.footer.trust"))
@@ -164,6 +183,9 @@ def build_portal_page(parent=None, *, theme_name: str = "daybreak", reduce_motio
             self.hero_title.setText(tr(self.language, "portal.hero.title"))
             self.hero_subtitle.setText(tr(self.language, "portal.hero.subtitle"))
             self.trust_label.setText(tr(self.language, "portal.footer.trust"))
+            self.demo_caption.setText(tr(self.language, "demo.portal.summary"))
+            self.demo_button.setText(tr(self.language, "demo.portal.title"))
+            self.demo_button.setAccessibleName(tr(self.language, "demo.portal.open"))
             self.theme_button.setText(tr(self.language, "portal.theme"))
             self.theme_button.setAccessibleName(tr(self.language, "portal.theme.accessible"))
             for route, button in self.card_buttons.items():
