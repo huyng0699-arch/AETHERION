@@ -15,7 +15,7 @@ from urllib.parse import urlsplit
 from PySide6.QtCore import QProcess, QSettings, QTimer, QUrl
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import (
-    QApplication, QComboBox, QFormLayout, QFrame, QHBoxLayout, QLabel,
+    QApplication, QComboBox, QDialog, QDialogButtonBox, QFormLayout, QFrame, QHBoxLayout, QLabel,
     QLineEdit, QMainWindow, QMessageBox, QPushButton, QSpinBox,
     QTabWidget, QTextEdit, QVBoxLayout, QWidget,
 )
@@ -26,6 +26,11 @@ STRINGS = {
         "endpoint": "Máy chủ HTTP", "start": "Khởi động máy chủ", "stop": "Dừng tiến trình đã mở",
         "check": "Kiểm tra dịch vụ", "username": "Tài khoản", "password": "Mật khẩu",
         "login": "Đăng nhập quản trị", "logout": "Khóa quản trị",
+        "setup": "Tạo quản trị viên đầu tiên", "setup_title": "Thiết lập cục bộ lần đầu",
+        "confirm_password": "Nhập lại mật khẩu", "password_too_short": "Mật khẩu tối thiểu 12 ký tự.",
+        "password_mismatch": "Hai mật khẩu không trùng nhau.",
+        "already_setup": "Máy chủ đã có tài khoản; không thể tạo tài khoản đầu tiên lần nữa.",
+        "setup_done": "Đã tạo tài khoản admin trong SQLite. Hãy đăng nhập để quản trị.",
         "overview": "Tổng quan", "ai": "AI cục bộ", "sources": "Thành phần",
         "storage": "Dữ liệu", "events": "Nhật ký",
         "refresh": "Làm mới dữ liệu thật", "load_models": "Lấy danh sách mô hình", "test_model": "Kiểm tra AI thực tế",
@@ -52,6 +57,11 @@ STRINGS = {
         "endpoint": "HTTP server", "start": "Start server", "stop": "Stop owned process",
         "check": "Check service", "username": "Username", "password": "Password",
         "login": "Administrator sign in", "logout": "Lock administration",
+        "setup": "Create first administrator", "setup_title": "First-time local setup",
+        "confirm_password": "Confirm password", "password_too_short": "Password must contain at least 12 characters.",
+        "password_mismatch": "Passwords do not match.",
+        "already_setup": "This server already has accounts; first-admin setup is locked.",
+        "setup_done": "Created admin in canonical SQLite. Sign in to manage this server.",
         "overview": "Overview", "ai": "Local AI", "sources": "Subsystems",
         "storage": "Data", "events": "Audit events",
         "refresh": "Refresh live records", "load_models": "Discover installed models", "test_model": "Test actual AI inference",
@@ -154,6 +164,8 @@ class AdminWindow(QMainWindow):
         credentials.addWidget(self.login_button)
         self.logout_button = self._button(self.logout)
         credentials.addWidget(self.logout_button)
+        self.setup_button = self._button(self.setup_admin)
+        credentials.addWidget(self.setup_button)
         credentials.addStretch()
         main.addLayout(credentials)
 
@@ -269,7 +281,8 @@ class AdminWindow(QMainWindow):
             (self.start_button, "start"), (self.stop_button, "stop"),
             (self.check_button, "check"), (self.username_label, "username"),
             (self.password_label, "password"), (self.login_button, "login"),
-            (self.logout_button, "logout"), (self.overview_refresh, "refresh"),
+            (self.logout_button, "logout"), (self.setup_button, "setup"),
+            (self.overview_refresh, "refresh"),
             (self.mode_label, "mode"), (self.local_label, "local_url"),
             (self.model_label, "model"), (self.timeout_label, "timeout"),
             (self.models_button, "load_models"), (self.save_button, "save"),
@@ -379,6 +392,60 @@ class AdminWindow(QMainWindow):
                 self.owned_server.kill()
             self._clear_token()
         self.stop_button.setEnabled(False)
+
+    def setup_admin(self):
+        """Create first admin on this machine only, never via unauthenticated HTTP."""
+        from .bootstrap import default_database_path, ensure_bootstrap_user
+        from .store import count_users, initialize
+        database = default_database_path()
+        try:
+            initialize(database)
+            if count_users(database) != 0:
+                self._status(self.t("already_setup"))
+                return
+        except OSError as exc:
+            self._status(self.t("failed") + ": " + str(exc))
+            return
+        dialog = QDialog(self)
+        dialog.setWindowTitle(self.t("setup_title"))
+        form = QFormLayout(dialog)
+        user = QLineEdit()
+        user.setText("admin")
+        first = QLineEdit()
+        again = QLineEdit()
+        first.setEchoMode(QLineEdit.EchoMode.Password)
+        again.setEchoMode(QLineEdit.EchoMode.Password)
+        form.addRow(self.t("username"), user)
+        form.addRow(self.t("password"), first)
+        form.addRow(self.t("confirm_password"), again)
+        actions = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok |
+                                   QDialogButtonBox.StandardButton.Cancel)
+        actions.accepted.connect(dialog.accept)
+        actions.rejected.connect(dialog.reject)
+        form.addRow(actions)
+        if dialog.exec() != QDialog.DialogCode.Accepted:
+            return
+        chosen_user, chosen_password = user.text().strip(), first.text()
+        if len(chosen_password) < 12:
+            self._status(self.t("password_too_short"))
+            return
+        if chosen_password != again.text():
+            self._status(self.t("password_mismatch"))
+            return
+        if not chosen_user or len(chosen_user) > 80:
+            self._status(self.t("failed"))
+            return
+        try:
+            if count_users(database) != 0:
+                self._status(self.t("already_setup"))
+                return
+            ensure_bootstrap_user(database, username=chosen_user, password=chosen_password,
+                                  role="admin", allowed_subjects=["*"])
+        except (OSError, ValueError) as exc:
+            self._status(self.t("failed") + ": " + str(exc))
+            return
+        self.username.setText(chosen_user)
+        self._status(self.t("setup_done"))
 
     def login(self):
         username, password = self.username.text().strip(), self.password.text()
