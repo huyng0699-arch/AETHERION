@@ -20,7 +20,7 @@ export function PortalScreen({
   serverStatus: 'online' | 'offline' | 'unknown';
   onOpen: (screen: MobileScreen) => void;
 }) {
-  const statusLabel = serverStatus === 'online' ? t(locale, 'serverOnline') : t(locale, 'serverOffline');
+  const statusLabel = serverStatus === 'online' ? t(locale, 'serverOnline') : serverStatus === 'offline' ? t(locale, 'serverOffline') : t(locale, 'serverUnknown');
   const statusTone = serverStatus === 'online' ? 'good' : serverStatus === 'offline' ? 'warn' : 'neutral';
   const cards: { id: PortalDestination; title: MessageKey; route: MobileScreen }[] = [
     { id: 'health', title: 'personal', route: 'health' },
