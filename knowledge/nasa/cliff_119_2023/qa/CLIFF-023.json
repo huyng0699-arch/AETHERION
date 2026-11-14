@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-023",
+  "slot": 23,
+  "quest_id": "Q-0323",
+  "checked_at_utc": "2026-11-14T05:59:13.307725+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/dental-luxation-avulsion-tooth-loss-cliff-2023.pdf?emrc=6928c3",
+  "http_status": 200,
+  "pdf_sha256": "e8083d03f19d4acc8dfc04c2eca689ee6334ce94f3c5d45d00d7d47ca4c641fd",
+  "pdf_bytes": 334707,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 2,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-023-IMG-01": "af772b550e48bcc846167ed55bfda0459fd8d3324a576b3003fdc186eec638e4",
+    "CLIFF-023-IMG-02": "fe0bc8c1086eabaddc7eea361c14eb8ce8566f11c2cb7a1273b9cbaa2983fb60",
+    "CLIFF-023-IMG-03": "5bc1ab869ebfb57da2a9875d5dbba53cfb0edf8ebf61ed1a0498157e358a86a4"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
