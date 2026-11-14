@@ -1,0 +1,24 @@
+{
+  "article_id": "CLIFF-029",
+  "slot": 29,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/cholelithiasis-biliary-colic-acute-cliff-2023.pdf?emrc=e784fc",
+  "http_status": 200,
+  "pdf_bytes": 378388,
+  "pdf_sha256": "e47ae420397045031fcf1bcb95092af62289a3fb35dd10ea47c421950e7fad09",
+  "pdf_pages": 15,
+  "sections_count": 15,
+  "tables_count": 8,
+  "references_count": 27,
+  "media_count": 4,
+  "media_sha256s": [
+    "8ba6e3a4b3e770f823f06888f0c18cb97f9b72777ec55fbeac394692a23bcd95",
+    "839b512256052f382b3ffbe8d6a7646592ac0ee0657034ab054d3c6b9f066f05",
+    "b64da5d301753ca1a7e885751a8253b2a96cb8a3e38b80c6ada0797cc716c203",
+    "c2fbf45e73ed70d2d515cdeb993889e4f97e482e7261901cec78ca3f2351ef61"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC0 / Public Domain / CC-BY-SA-4.0 / CC-BY-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "offline_render_note": "SQLite ingestion and offline BLOB/section/table/citation verification passed on Linux; native Windows Qt GUI rendering deferred to Windows desktop gate.",
+  "missing_items": []
+}
