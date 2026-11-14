@@ -33,7 +33,8 @@
     "Inflight BP instrument/calibration issues explicitly discussed in original NASA report.",
     "No original ECG waveform or waveform samples are available in this bundle.",
     "SpO2, sleep, mood, serum glucose and individual radiation dose have NO_SOURCE_DATA in this bundle.",
-    "Original source PDF file hash and full archive download not stored; direct public NASA link supplied."
+    "Original source PDF file hash and full archive download not stored; direct public NASA link supplied.",
+    "The original 1962 hemoglobin column says 'Hemoglobin, g' without an explicit volume denominator; the replay retains that source notation and does not silently convert it into g/dL."
   ],
   "unavailable_metrics": [
     "ecg_waveform",
@@ -530,7 +531,7 @@
           "measures": {
             "hemoglobin": {
               "value": 15,
-              "unit": "g/dL",
+              "unit": "g (original NASA table)",
               "range": null,
               "sample_count": null,
               "qualifier": "reported",
@@ -611,7 +612,7 @@
           "measures": {
             "hemoglobin": {
               "value": 13.8,
-              "unit": "g/dL",
+              "unit": "g (original NASA table)",
               "range": null,
               "sample_count": null,
               "qualifier": "reported",
@@ -692,7 +693,7 @@
           "measures": {
             "hemoglobin": {
               "value": 16,
-              "unit": "g/dL",
+              "unit": "g (original NASA table)",
               "range": null,
               "sample_count": null,
               "qualifier": "reported",
@@ -773,7 +774,7 @@
           "measures": {
             "hemoglobin": {
               "value": 14.8,
-              "unit": "g/dL",
+              "unit": "g (original NASA table)",
               "range": null,
               "sample_count": null,
               "qualifier": "reported",
