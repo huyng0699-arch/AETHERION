@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-083",
+  "slot": 83,
+  "quest_id": "Q-0383",
+  "checked_at_utc": "2026-11-14T06:31:31.307788+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/burn-mild-thermal-cliff-2023.pdf?emrc=887d45",
+  "http_status": 200,
+  "pdf_sha256": "bd34c48696b11c2d07fa5daee3c2129c40e5c51a27ca7ea072849510db7952c6",
+  "pdf_bytes": 312881,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-083-IMG-01": "9857280031a998a5645482eeaa5a6fd060812b6ab87ceebb5a8783045c966a09",
+    "CLIFF-083-IMG-02": "ffd579623e4c4851e337ad9654c40cf8813adb0fb96a57a9bf503ab76fdf1146",
+    "CLIFF-083-IMG-03": "0800864769ce457b15295d1f1d5778bf54e59270e44a4f4c7478ae290ffdcbe5"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
