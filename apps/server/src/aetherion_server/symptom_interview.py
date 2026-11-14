@@ -209,6 +209,10 @@ def next_question(symptom_ids: list[str], answers: dict[str, str], *,
         "recognized": names,
         "clinical_validation": False,
         "stored_by_server": False,
+        "persistence_requires_consent": True,
+        "cloud_used": False,
+        "session_history": [],
+        "unknown_answers_count": 0,
         "triage_decision": "NOT_CLINICALLY_VALIDATED",
         "model_provider": "disabled",
     }
@@ -234,12 +238,16 @@ def next_question(symptom_ids: list[str], answers: dict[str, str], *,
                 "recommendation": "Correct or remove unsupported answers before continuing."}
 
     accepted = {key: val.upper() for key, val in answers.items()}
+    session_history = build_session_history_summary(accepted)
+    unknown_count = sum(1 for item in session_history if item["is_unknown"])
     urgent_answers = sorted(key for key in CRITICAL if accepted.get(key) == "YES")
     if urgent_answers:
         # Independent of AI availability, and never continue routine prompts
         # after an explicit directly reported red-flag answer.
         return {**base, "state": "WITNESSED_RED_FLAG_REPORTED",
                 "answered": len(accepted), "remaining": 0,
+                "session_history": session_history,
+                "unknown_answers_count": unknown_count,
                 "next_question": None, "model_status": "SAFETY_STOP",
                 "red_flags_reported": urgent_answers,
                 "needs_human_help": True,
@@ -254,6 +262,7 @@ def next_question(symptom_ids: list[str], answers: dict[str, str], *,
     allowed = critical_questions if critical_questions else candidates
     chosen = allowed[0] if allowed else None
     model_state = "NOT_REQUESTED"
+    provider = ai_status()["provider"] if use_ai else "disabled"
     if use_ai and allowed:
         selected, model_state = _pick_with_ai(names, accepted, allowed, allow_cloud)
         if selected is not None:
@@ -262,12 +271,15 @@ def next_question(symptom_ids: list[str], answers: dict[str, str], *,
         **base,
         "state": "MORE_INFORMATION_REQUIRED" if chosen else "INTAKE_COMPLETED_UNVALIDATED",
         "answered": len(accepted), "remaining": len(candidates),
+        "session_history": session_history,
+        "unknown_answers_count": unknown_count,
         "next_question": (
             {key: chosen[key] for key in ("id", "text", "answers")}
             if chosen else None
         ),
         "model_status": model_state,
-        "model_provider": ai_status()["provider"] if use_ai else "disabled",
+        "model_provider": provider,
+        "cloud_used": bool(use_ai and allow_cloud and provider == "openai" and model_state == "MODEL_SELECTED"),
         "red_flags_reported": [],
         "needs_human_help": False,
         "recommendation": (

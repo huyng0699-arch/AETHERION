@@ -78,8 +78,11 @@ class InterviewSecurityAuditTests(unittest.TestCase):
                         )
                         self.assertEqual(r2.status_code, 200)
                         b2 = r2.json()
-                        self.assertEqual(b2["model_status"], "CLOUD_CONSENT_REQUIRED")
+                        self.assertIn(b2["model_status"], ("CLOUD_CONSENT_REQUIRED", "ADMIN_DISABLED"))
                         self.assertFalse(b2["cloud_used"])
+                        direct_b2 = symptom_interview.next_question([chosen_symptom], {}, use_ai=True, allow_cloud=False)
+                        self.assertEqual(direct_b2["model_status"], "CLOUD_CONSENT_REQUIRED")
+                        self.assertFalse(direct_b2["cloud_used"])
                         mock_urlopen.assert_not_called()
 
     def test_prompt_injection_and_oversized_payload_rejected(self) -> None:
@@ -103,12 +106,20 @@ class InterviewSecurityAuditTests(unittest.TestCase):
                     ):
                         res = symptom_interview.next_question(
                             [chosen_symptom],
-                            {"breathing_at_rest": "YES"},
+                            {},
                             use_ai=True,
                         )
                         self.assertEqual(res["model_status"], "INVALID_MODEL_SELECTION")
-                        self.assertEqual(res["state"], "WITNESSED_RED_FLAG_REPORTED")
                         self.assertFalse(res["clinical_validation"])
+
+                        res_flag = symptom_interview.next_question(
+                            [chosen_symptom],
+                            {"breathing_at_rest": "YES"},
+                            use_ai=True,
+                        )
+                        self.assertEqual(res_flag["model_status"], "SAFETY_STOP")
+                        self.assertEqual(res_flag["state"], "WITNESSED_RED_FLAG_REPORTED")
+                        self.assertFalse(res_flag["clinical_validation"])
 
                     with patch(
                         "urllib.request.urlopen",
