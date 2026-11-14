@@ -1,0 +1,20 @@
+name: pyvistaqt-env
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - ipython
+  - mypy
+  - numpy
+  - pytest
+  - pytest-cov
+  - pytest-qt
+  - qtpy>=1.9.0
+  - refleak>=0.2.1
+  - scooby>=0.5.1
+  - pip
+  - pip:
+      - vtk
+      - pyvista[jupyter]>=0.39.0
+      - pytest-memprof
+      - sphinx-gallery
