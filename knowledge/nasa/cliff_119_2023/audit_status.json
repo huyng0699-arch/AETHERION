@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "audit_id": "cliff-119-2023-status-audit",
+  "audited_at_utc": "2026-11-14T03:50:00Z",
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_index_reachable": true,
+  "source_page_last_updated": "2026-08-31",
+  "expected_count": 119,
+  "original_dir": "knowledge/nasa/cliff_119_2023/original",
+  "original_dir_exists": false,
+  "manifest_path": "knowledge/nasa/cliff_119_2023/manifest.json",
+  "manifest_exists": false,
+  "verified_original_files_count": 0,
+  "completeness_ratio": "0/119",
+  "verification_state": "NO_DATA",
+  "importer_script": "scripts/fetch_nasa_cliff_119.py",
+  "limitations": [
+    "No original CliFF 119 PDF/DOCX/DOC files have been downloaded into knowledge/nasa/cliff_119_2023/original/.",
+    "No manifest.json with SHA-256 digests exists yet; 0 of 119 documents are locally verified.",
+    "Live NASA IMM documentation page confirms the CliFF 100 vs CliFF 119 (2023) distinction, but an external index link is not an imported offline dataset."
+  ]
+}
