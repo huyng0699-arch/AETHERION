@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-043",
+  "slot": 43,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/herpes-zoster-reactivation-shingles-cliff-2023.pdf?emrc=100fd9",
+  "http_status": 200,
+  "pdf_bytes": 333673,
+  "pdf_sha256": "a62f60d0910dbb520401e86da33601dda3de589f163e17d69bfd2cdd91a51fdd",
+  "pdf_pages": 13,
+  "sections_count": 13,
+  "tables_count": 3,
+  "references_count": 40,
+  "media_count": 3,
+  "media_sha256s": [
+    "3400478ed2526602f155b7dadd6d8966958384ce04f2c27666dc11f36fa145a0",
+    "52e67cf9009963893013284caad60498c3c6af98a555f6b8b3b8055e41464df5",
+    "c711f77ad2bc9c5b6a7f50a3e9b0554da8fc72b60377a4e1047ebd00e350c1f6"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons Public Domain / CC-BY-4.0 / CC-BY-SA-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}
