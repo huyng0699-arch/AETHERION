@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/contracts/v1/idempotency.schema.json",
+  "title": "AETHERION Idempotent Command Key Contract (Q-0023)",
+  "description": "Retried POST with the same (subject_id, idempotency_key) returns the original observation without creating duplicates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "status", "idempotent_replay", "observation"],
+  "properties": {
+    "id": { "type": "integer", "minimum": 1 },
+    "status": { "type": "string", "enum": ["stored", "idempotent_replay"] },
+    "idempotent_replay": { "type": "boolean" },
+    "observation": { "type": "object" }
+  },
+  "x-idempotency-semantics": {
+    "header": "Idempotency-Key",
+    "body_field": "idempotency_key",
+    "scope_key": ["subject_id", "idempotency_key"],
+    "initial_http_status": 201,
+    "replay_http_status": 200
+  }
+}
