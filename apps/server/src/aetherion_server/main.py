@@ -154,6 +154,9 @@ def create_app(
         lifespan=lifespan,
     )
 
+    # One database factory for auth, observations, admin and interview AI routing.
+    application.state.admin_database_path = get_db_path
+
     _status_codes = {
         401: ("UNAUTHORIZED", "Authenticate via POST /api/v1/auth/login and provide a valid Bearer token."),
         403: ("FORBIDDEN", "Use an account authorized for the requested subject_id."),
