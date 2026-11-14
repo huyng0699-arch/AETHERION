@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-005",
+  "slot": 5,
+  "quest_id": "Q-0305",
+  "checked_at_utc": "2026-11-14T05:40:02.204779+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/bhp-adjustment-disorder-cliff-2023.pdf?emrc=dc6c2f",
+  "http_status": 200,
+  "pdf_sha256": "58ed10e47f1af19ffe1a48996984d863860a27aa481409f52bb75e0043ff2e36",
+  "pdf_bytes": 333168,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 2,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-005-IMG-01": "93aa8531a1d5a6c408dc8bdcc353ed587f404b20d4adfe4b3ef0a6c123d9a1a5",
+    "CLIFF-005-IMG-02": "db1b6d980e8fd4982eb9b422428a2c8d12b59e0745e0ae64a102e1986f2b2eb5",
+    "CLIFF-005-IMG-03": "d6b24e6bf4f0befae0c07677f4be6fdef04d00e537f49d869bc3e3a96df79b8b"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
