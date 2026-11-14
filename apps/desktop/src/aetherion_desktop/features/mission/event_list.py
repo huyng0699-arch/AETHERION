@@ -9,6 +9,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Iterable, Mapping, Any
 
+from ...localization import normalize_locale, tr, translate_shell_widgets
+
 
 TECHNICAL = "TECHNICAL"
 SELF_REPORTED = "SELF_REPORTED"
@@ -106,6 +108,7 @@ def build_mission_events_widget(parent=None):
     class MissionEventList(QWidget):
         def __init__(self):
             super().__init__(parent)
+            self.ui_language = "vi"
             layout = QVBoxLayout(self)
             self.note = QLabel("NO_DATA — no event service connected; no health incident inferred")
             self.note.setWordWrap(True)
@@ -123,6 +126,10 @@ def build_mission_events_widget(parent=None):
             for table in (self.technical, self.health):
                 table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
 
+        def set_locale(self, locale: str):
+            self.ui_language = normalize_locale(locale)
+            translate_shell_widgets(self, self.ui_language)
+
         def set_events(self, records, allowed_subject_ids):
             result = split_events(records, allowed_subject_ids)
             self.technical.setRowCount(len(result.technical))
@@ -133,9 +140,9 @@ def build_mission_events_widget(parent=None):
             for i, event in enumerate(result.health):
                 for j, field in enumerate((event.title, event.kind, event.observed_at, event.source_id)):
                     self.health.setItem(i, j, QTableWidgetItem(field))
-            self.note.setText(
-                f"Loaded: {len(result.technical)} technical / {len(result.health)} authorized health events; "
-                "Restricted subjects are never displayed. No automatic diagnoses."
-            )
+            self.note.setText(tr(
+                self.ui_language, "events.loaded",
+                technical=len(result.technical), health=len(result.health),
+            ))
 
     return MissionEventList()
