@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from ...runtime_paths import nasa_hazards_path
+
 from ...localization import normalize_locale, tr, translate_existing, translate_shell_widgets
 
 TOPICS: tuple[tuple[str, str, str], ...] = (
@@ -61,18 +63,8 @@ def trusted_source_url(url: str) -> bool:
 
 
 def default_hazards_directory() -> Path:
-    override = os.environ.get("AETHERION_NASA_HAZARDS_DIR")
-    if override:
-        return Path(override).expanduser()
-    # During development this is under repository/knowledge. A packaged build
-    # must explicitly bundle the JSON or set AETHERION_NASA_HAZARDS_DIR.
-    source = Path(__file__).resolve()
-    for ancestor in source.parents:
-        candidate = ancestor / "knowledge" / "nasa" / "hazards"
-        if candidate.is_dir():
-            return candidate
-    return source.parent / "not_installed"
-
+    """Resolve bundled NASA hazard JSON, including an actual frozen Windows app."""
+    return nasa_hazards_path()
 
 def _read_reference(directory: Path, hazard_id: str, title: str, filename: str) -> HazardReference:
     target = directory / filename
