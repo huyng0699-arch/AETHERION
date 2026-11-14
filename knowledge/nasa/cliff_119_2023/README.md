@@ -19,3 +19,13 @@ The importer only accepts documents linked from the **CliFF 119** column of the 
 The NASA source page distinguishes the 100-condition baseline from the expanded 119-condition collection for exploration missions. These CliFF documents are evidence and risk-planning resources, **not clinically validated treatment protocols** for AETHERION.
 
 Original NASA documents and other third-party materials are not automatically relicensed under AETHERION's Apache-2.0 software license.
+
+## Import through a Windows machine with NASA access
+
+The GitHub-hosted workflow currently fails before any step is executed. A one-command local fallback is included for an authenticated Git checkout of AETHERION:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\import_nasa_cliff_119_windows.ps1
+```
+
+This script retrieves the original documents **directly from the NASA CliFF 119 column**, independently checks all 119 files and SHA-256 digests, and pushes the verified originals and manifest to the existing `main` branch. It does not access or copy any other repository. If any source download or verification fails, upload is refused. Existing local data and unrelated staged files are not rewritten.
