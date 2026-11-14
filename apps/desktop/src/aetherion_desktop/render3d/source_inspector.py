@@ -54,8 +54,39 @@ class SourceEvidence:
     local_hash_verified: bool
 
 
-def source_evidence(model: Mapping) -> SourceEvidence:
-    """Read the selected approved model; reject a forged/unsafe source URL."""
+def verified_local_model_file(model: Mapping, approved_root: Path) -> Path | None:
+    """Only the trusted local manifest may authorize direct read of a mesh.
+
+    Resolve symlinks before checking root confinement, expected SHA and
+    size. Server catalog data must never dictate an arbitrary file to render.
+    """
+    if not isinstance(model, Mapping):
+        return None
+    path = model.get("resolved_path")
+    digest = model.get("sha256")
+    if not isinstance(path, str) or not path:
+        return None
+    if not isinstance(digest, str) or not _HEX64.fullmatch(digest):
+        return None
+    try:
+        root = Path(approved_root).resolve(strict=True)
+        file = Path(path).resolve(strict=True)
+        if not file.is_relative_to(root) or file.suffix.lower() not in {
+            ".stl", ".obj", ".ply", ".vtk", ".vtp", ".vtu"
+        }:
+            return None
+        size = file.stat().st_size
+        if not file.is_file() or size <= 0 or size > MAX_INSPECT_FILE_BYTES:
+            return None
+        if hashlib.sha256(file.read_bytes()).hexdigest() != digest.lower():
+            return None
+        return file
+    except (OSError, ValueError):
+        return None
+
+
+def source_evidence(model: Mapping, *, approved_root: Path | None = None) -> SourceEvidence:
+    """Read an approved model and distinguish trusted local from network metadata."""
     if not isinstance(model, Mapping) or model.get("rights_status") != "APPROVED":
         raise ValueError("No rights-approved anatomy registry entry selected")
     keys = ("anatomical_id", "author", "license", "citation", "source_url", "sha256")
@@ -73,15 +104,10 @@ def source_evidence(model: Mapping) -> SourceEvidence:
     version = version.strip() if isinstance(version, str) and version.strip() else None
     original = model.get("original_git_blob")
     original = original.strip() if isinstance(original, str) and original.strip() else None
-    verified = False
-    local = model.get("resolved_path")
-    if isinstance(local, str) and local:
-        file = Path(local)
-        try:
-            if file.is_file() and 0 < file.stat().st_size <= MAX_INSPECT_FILE_BYTES:
-                verified = hashlib.sha256(file.read_bytes()).hexdigest() == digest.lower()
-        except OSError:
-            verified = False
+    # A caller-supplied resolved_path is NOT authority to open a disk file.
+    # The genuine manifest's controlled asset root is required.
+    verified = bool(approved_root is not None and
+                    verified_local_model_file(model, approved_root) is not None)
     return SourceEvidence(
         anatomical_id=model["anatomical_id"], author=model["author"],
         license=model["license"], version=version,
