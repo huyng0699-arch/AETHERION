@@ -23,18 +23,20 @@ def filter_approved_educational_actions(
     """Allow only approved, non-diagnostic educational actions backed by verified CliFF citations."""
     db_path = sqlite_path or DEFAULT_CLIFF_SQLITE_PATH
     verified_articles: dict[str, dict[str, str]] = {}
-    if db_path.exists():
-        conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
+    if db_path.is_file():
         try:
-            for art_id, title, source_id in conn.execute(
-                "SELECT article_id, display_title, source_id FROM articles"
-            ).fetchall():
-                verified_articles[str(art_id)] = {
-                    "display_title": str(title),
-                    "source_id": str(source_id),
-                }
-        finally:
-            conn.close()
+            with sqlite3.connect(f"file:{db_path}?mode=ro", uri=True) as conn:
+                for art_id, title, source_id in conn.execute(
+                    "SELECT article_id, display_title, source_id FROM articles"
+                ):
+                    if art_id and title and source_id:
+                        verified_articles[str(art_id)] = {
+                            "display_title": str(title),
+                            "source_id": str(source_id),
+                        }
+        except sqlite3.Error:
+            # A missing, corrupt, or incompatible catalog must never authorize guidance.
+            verified_articles.clear()
 
     approved_actions: list[dict[str, Any]] = []
     rejected: list[dict[str, str]] = []
@@ -49,19 +51,19 @@ def filter_approved_educational_actions(
             continue
 
         article_id = str(action.get("article_id") or "").strip()
-        if not article_id or (verified_articles and article_id not in verified_articles):
+        if not article_id or article_id not in verified_articles:
             rejected.append({"action_id": action_id, "reason": "missing_or_unverified_citation"})
             continue
 
-        meta = verified_articles.get(article_id, {})
+        meta = verified_articles[article_id]
         approved_actions.append(
             {
                 "action_id": action_id,
                 "label_en": str(action.get("label_en") or ""),
                 "label_vi": str(action.get("label_vi") or ""),
                 "article_id": article_id,
-                "citation_title": meta.get("display_title", str(action.get("citation_title") or "")),
-                "source_id": meta.get("source_id", str(action.get("source_id") or "")),
+                "citation_title": meta["display_title"],
+                "source_id": meta["source_id"],
                 "educational_only": True,
                 "diagnostic_claim": False,
                 "notice": dict(NON_DIAGNOSTIC_NOTICE),
