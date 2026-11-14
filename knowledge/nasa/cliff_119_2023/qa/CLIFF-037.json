@@ -1,0 +1,24 @@
+{
+  "article_id": "CLIFF-037",
+  "slot": 37,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/small-bowel-obstruction-cliff-2023.pdf?emrc=da0c90",
+  "http_status": 200,
+  "pdf_bytes": 314527,
+  "pdf_sha256": "b52b164df5c86c496081808e7430d4c5ac88553c9f16b155e4011eb1cdfbcb0d",
+  "pdf_pages": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "references_count": 11,
+  "media_count": 4,
+  "media_sha256s": [
+    "78f2da45cafc2ba2d038f8b2f39b9c3e1a964c34ff3eb1331ec3514edd303aa2",
+    "3ca32774782fec475335482d7284932b0c0a412d19f0d7070dc1dfaad1339e42",
+    "511f6ecadef2a0b56a89a12754a21f876483b560d220ab7b10dc323d570c1470",
+    "cfabb984a6fa0d06715412b12bb55d765c822b4ee37209eabb6da325cded230d"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; OpenStax CC-BY-3.0 & Wikimedia Commons CC-BY-SA-3.0 / CC-BY-SA-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "offline_render_note": "SQLite ingestion and offline BLOB/section/table/citation verification passed on Linux; native Windows Qt GUI rendering deferred to Windows desktop gate.",
+  "missing_items": []
+}
