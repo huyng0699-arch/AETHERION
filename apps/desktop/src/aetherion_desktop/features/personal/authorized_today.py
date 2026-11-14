@@ -12,6 +12,7 @@ from PySide6.QtCore import QUrl
 from PySide6.QtNetwork import QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import QTableWidgetItem, QWidget
 
+from ...localization import normalize_locale, tr, translate_existing, translate_shell_widgets
 from .identity import checked_personal_handoff
 from .latest_metrics import latest_metric_cards
 from .personal_visual import build_personal_visual, update_personal_tiles, latest_tiles
@@ -27,6 +28,10 @@ class AuthorizedPersonalTodayPage(QWidget):
 
     def __init__(self, api_url: str, network, parent=None):
         super().__init__(parent)
+        self.ui_language = "vi"
+        self._status_key = ""
+        self._status_values: dict = {}
+        self._last_note = ""
         self._api_url = api_url.rstrip("/")
         self._network = network
         self._subject_id = ""
@@ -36,6 +41,23 @@ class AuthorizedPersonalTodayPage(QWidget):
 
         self._visible_cards = ()
         build_personal_visual(self)
+
+    def _say(self, key: str, **values) -> None:
+        self._status_key, self._status_values = key, values
+        if key == "personal.snapshot":
+            values = dict(values)
+            values["note"] = translate_existing(str(values["note"]), self.ui_language)
+        self.status_label.setText(tr(self.ui_language, key, **values))
+
+    def set_locale(self, locale: str) -> None:
+        """Translate the existing health view without fetching or modifying data."""
+        self.ui_language = normalize_locale(locale)
+        translate_shell_widgets(self, self.ui_language)
+        if self._subject_id:
+            self.subject_label.setText(tr(self.ui_language, "personal.subject", subject=self._subject_id))
+        if self._status_key:
+            self._say(self._status_key, **self._status_values)
+        update_personal_tiles(self, self._visible_cards)
 
     @property
     def selected_subject_id(self) -> str:
@@ -53,13 +75,13 @@ class AuthorizedPersonalTodayPage(QWidget):
         try:
             subject, token = checked_personal_handoff(subject_id, access_token)
         except ValueError:
-            self.subject_label.setText("No authorized subject selected")
-            self.status_label.setText("DENIED — invalid subject or missing session")
+            self.subject_label.setText(tr(self.ui_language, "personal.noAuthorized"))
+            self._say("personal.deniedInvalid")
             return
         self._subject_id = subject
         self._token = token
-        self.subject_label.setText(f"Subject: {subject}")
-        self.status_label.setText("Loading authenticated observations…")
+        self.subject_label.setText(tr(self.ui_language, "personal.subject", subject=subject))
+        self._say("personal.loading")
         self.refresh()
 
     def refresh(self) -> None:
@@ -68,7 +90,7 @@ class AuthorizedPersonalTodayPage(QWidget):
             self._visible_cards = ()
             self.table.setRowCount(0)
             update_personal_tiles(self, ())
-            self.status_label.setText("DENIED — select a subject from Mission Control and sign in")
+            self._say("personal.deniedChoose")
             return
         self._request_seq += 1
         seq, subject = self._request_seq, self._subject_id
@@ -78,7 +100,7 @@ class AuthorizedPersonalTodayPage(QWidget):
         update_personal_tiles(self, ())
         request = QNetworkRequest(QUrl(personal_observations_url(self._api_url, subject)))
         request.setRawHeader(b"Authorization", ("Bearer " + self._token).encode("utf-8"))
-        self.status_label.setText(f"Loading subject {subject} from local API…")
+        self._say("personal.loadingSubject", subject=subject)
         reply = self._network.get(request)
         reply.finished.connect(lambda: self._on_reply(reply, subject, seq))
 
@@ -100,7 +122,7 @@ class AuthorizedPersonalTodayPage(QWidget):
             snapshot = build_personal_today_snapshot({}, subject_id, offline=True)
         elif status_code != 200:
             self.table.setRowCount(0)
-            self.status_label.setText("ERROR — server refused observations request")
+            self._say("personal.serverReject")
             return
         else:
             try:
@@ -113,21 +135,15 @@ class AuthorizedPersonalTodayPage(QWidget):
             displayed = latest_metric_cards(snapshot.cards)
         except ValueError:
             self.table.setRowCount(0)
-            self.status_label.setText("ERROR — latest metric provenance is invalid")
+            self._say("personal.invalidProvenance")
             return
-        self.status_label.setText(f"{snapshot.state} — {snapshot.status_note}")
+        self._say("personal.snapshot", state=snapshot.state, note=snapshot.status_note)
         self._displayed_cards = displayed
         self._render_rows()
         if snapshot.has_more:
-            self.note.setText(
-                "Showing the newest record per metric, scope and unit from the "
-                "latest 50 server observations. More history is available."
-            )
+            self.note.setText(tr(self.ui_language, "personal.noteMore"))
         else:
-            self.note.setText(
-                "Newest recorded value per metric, scope and unit. Older records "
-                "remain on the server; missing readings are not normal readings."
-            )
+            self.note.setText(tr(self.ui_language, "personal.noteLatest"))
 
     def _render_rows(self, *_):
         """Filter by explicit provenance, never infer device origin from metric."""
