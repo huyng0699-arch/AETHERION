@@ -77,6 +77,10 @@ export async function request<T>(
   }
 }
 
-export async function checkServer(): Promise<{ service: string; status: string }> {
-  return request<{ service: string; status: string }>('/health', { timeoutMs: 5000 });
+export type ServerReadiness = { service: string; status: string; database?: string };
+
+export async function checkServer(): Promise<ServerReadiness> {
+  const readiness = await request<ServerReadiness>('/ready', { timeoutMs: 5000 });
+  if (readiness.status !== 'ready' || readiness.database !== 'ok') throw new ApiError(503, 'SERVER_NOT_READY');
+  return readiness;
 }
