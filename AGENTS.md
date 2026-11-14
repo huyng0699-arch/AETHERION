@@ -2,6 +2,17 @@
 
 **Product:** AETHERION, Team TRUY TINH, NASA Space Apps 2026. **Canonical new design:** [docs/DESIGN_2026_11_14.md](docs/DESIGN_2026_11_14.md). **Source of truth for live Quest status:** each `quests/v1/Q-XXXX.md` file. **`QUEST_LOG.md` is only the navigation/coordination guide**, not a competing mutable task ledger.
 
+## Chỉ thị mới nhất của chủ dự án — lập trình trực tiếp, hạn chế test (14/11/2026)
+
+**Ưu tiên tuyệt đối: làm Quest trực tiếp trong AETHERION, không sa đà vào tạo test.** Đây là chính sách nghiệm thu mặc định **thay thế yêu cầu chạy test hàng loạt/viết test cho từng Quest** trong các mẫu Quest cũ. Tiêu chí tính năng gốc không bị xóa; quy tắc một người ghi mỗi tệp, giữ phụ thuộc để nghiệm thu và agent khác đánh giá vẫn được giữ.
+
+- **Phần lớn Quest (giao diện, bố cục, điều hướng thông thường, tài liệu, tổ chức file, nội dung tham khảo, chỉnh sửa độc lập):** lập trình/thực hiện ngay → xem diff hoặc kiểm tra kết quả thực tế một lần → commit → chuyển Quest kế tiếp. **Không bắt buộc viết file test, không bắt buộc unittest/pytest/CI/E2E, không cần screenshot/video cho mọi Quest.** Đối với chức năng tương tác, kiểm tra bằng thao tác thật nếu thực hiện được; không đánh dấu nút giả là chạy được.
+- **Tích hợp có dữ liệu (HTTP API, SQLite, đồng bộ giữa màn hình, parser, cài đặt):** chỉ chạy **một kiểm tra chức năng nhỏ nhất có ích** như gửi yêu cầu API và đọc lại, xem bản ghi đã lưu, mở app, đọc đầu ra importer. Nếu hỏng, sửa trực tiếp. Không tạo test suite riêng chỉ để hợp thức hóa Quest.
+- **Rủi ro cao:** vẫn kiểm chứng trọng điểm với tình huống lỗi liên quan: an toàn y khoa/cấp cứu, quyền riêng tư và phân quyền, nguồn NASA/hình ảnh và giấy phép, tính toàn vẹn dữ liệu, 3D thật, thiết bị thật, phát hành EXE Windows. Không khẳng định y khoa, nguồn dữ liệu hoặc phần cứng đã chạy khi chưa có bằng chứng.
+- **119 bài CliFF:** kiểm tra tài liệu NASA gốc, toàn văn/bảng/hình, giấy phép, SHA, ảnh thực và đọc offline; **không phải tạo 119 bộ unit test riêng**. Kiểm thử giao diện thư viện và gói Windows tập trung ở Quest tích hợp.
+- **Agent nghiệm thu độc lập vẫn hoạt động:** reviewer kiểm tra diff, kết quả thật và tiêu chí gốc; với Quest thường, **review nội dung/sản phẩm là đủ, không đòi log test tự động**. Các Quest QA/release chuyên trách giữ kiểm thử tích hợp thiết yếu.
+- Không chạy toàn bộ test suite cho mọi commit. Không tạo test tượng trưng, không đánh dấu PASS sai và không sửa 435 Quest chỉ để thay câu chữ “test”: **chính sách này có hiệu lực với tất cả Quest hiện có**.
+
 ## Owner override — parallel implementation with independent acceptance (14 November 2026)
 
 **Latest user instruction:** A Quest does **not** have to wait for its predecessor's PASS to **start coding**. Every Quest still needs explicit acceptance criteria, genuine evidence, and a review by **an agent other than its implementer** before the final PASS. This section supersedes older "all dependencies DONE before work can start" language and acceptance shortcuts below and in older task templates; it does not cancel clinical safety checks.
