@@ -10,6 +10,8 @@ from PySide6.QtWidgets import (
     QPushButton, QStackedWidget, QVBoxLayout, QWidget,
 )
 
+from .medical_library import build_medical_library_page
+
 SECTIONS = [
     ("Mission Control", "Mission Control", "Crew overview and health monitoring will appear here once trustworthy observations are available."),
     ("Personal Health", "Personal Health", "No measurements are loaded. A healthy user does not have to enter symptoms to open the application."),
@@ -70,6 +72,12 @@ class AetherionWindow(QMainWindow):
             layout.addWidget(card)
             layout.addStretch()
             self.pages.addWidget(page)
+        # Native QWidget, not a browser or replacement landing page.
+        self.medical_library_page = build_medical_library_page()
+        self.pages.addWidget(self.medical_library_page)
+        library_button = QPushButton("Medical Library")
+        library_button.clicked.connect(self.show_medical_library)
+        nav.addWidget(library_button)
         outer.addLayout(nav)
         outer.addWidget(self.pages, 1)
 
@@ -86,6 +94,10 @@ class AetherionWindow(QMainWindow):
         outer.addWidget(foot)
         self.setCentralWidget(central)
         self.check_server()
+
+    def show_medical_library(self) -> None:
+        self.medical_library_page.reload()
+        self.pages.setCurrentWidget(self.medical_library_page)
 
     def check_server(self) -> None:
         self.status.setText("Local API: checking…")
