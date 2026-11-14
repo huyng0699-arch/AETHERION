@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-112",
+  "slot": 112,
+  "quest_id": "Q-0412",
+  "checked_at_utc": "2026-11-14T06:38:58.784837+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/pregnancy-risk-cliff-2023.pdf?emrc=847e3f",
+  "http_status": 200,
+  "pdf_sha256": "801e23b3e0a71100dcbd4dda962496f2f8352d167894ccb89b1e8b9bcf3b570b",
+  "pdf_bytes": 325330,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-112-IMG-01": "a1fe0d8fd63f85dcd038296470a7df5e575ce37f5c54677190c7d53bc6c6f18e",
+    "CLIFF-112-IMG-02": "ceb2238d9c6a49fa6dd71a2f1ae32860ce78a646cd3b0cd53f1fe7d0b9452043",
+    "CLIFF-112-IMG-03": "69ce71caddf31c9b6bc7ac718d64748a2dc2c19285b463740fc1488a2ff6728f"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
