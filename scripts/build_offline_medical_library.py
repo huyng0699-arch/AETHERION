@@ -59,8 +59,13 @@ def build(db_path: Path, manifest_path: Path) -> dict:
                 # hashes, citations or rights to satisfy the package count.
                 rejected[key] = f"{type(exc).__name__}: {str(exc)[:220]}"
 
-        with library_schema.connect(tmp, read_only=True) as connection:
+        connection = library_schema.connect(tmp, read_only=True)
+        try:
             audit = library_schema.audit(connection, verify_media=True)
+        finally:
+            # sqlite3 connection context managers do NOT close the handle.
+            # Windows refuses an atomic rename while the DB is open.
+            connection.close()
         if (audit["integrity"] != "ok" or audit["foreign_key_errors"] != 0
                 or audit["media_hash_mismatches"]
                 or audit["articles"] != len(succeeded)):
