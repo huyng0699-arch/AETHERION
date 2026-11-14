@@ -7,6 +7,7 @@ Environment credentials remain usable only with explicit cloud opt-in flags.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
 import os
 import re
 from threading import RLock
@@ -26,6 +27,20 @@ class CloudConfiguration:
 
 
 _SESSION: CloudConfiguration | None = None
+_TESTED_SIGNATURE: tuple[str, str, str] | None = None
+
+
+def _signature(config: CloudConfiguration) -> tuple[str, str, str]:
+    return (config.provider, config.model,
+            hashlib.sha256(config.api_key.encode("utf-8")).hexdigest())
+
+
+def mark_cloud_tested() -> None:
+    """Only call after a provider actually returned nonempty model output."""
+    global _TESTED_SIGNATURE
+    config = resolve_cloud_configuration()
+    with _LOCK:
+        _TESTED_SIGNATURE = _signature(config) if config is not None else None
 
 
 def _model_name(value: str) -> str:
@@ -39,11 +54,12 @@ def set_cloud_configuration(
     *, provider: Provider, model: str, api_key: str | None, enabled: bool = True,
 ) -> dict:
     """Set a secret for this one Server process, not SQLite or QSettings."""
-    global _SESSION
+    global _SESSION, _TESTED_SIGNATURE
     if provider not in ("gemini", "openai"):
         raise ValueError("Cloud provider must be gemini or openai")
     selected_model = _model_name(model)
     with _LOCK:
+        _TESTED_SIGNATURE = None
         if not enabled:
             _SESSION = None
         else:
@@ -57,9 +73,10 @@ def set_cloud_configuration(
 
 
 def clear_cloud_configuration() -> dict:
-    global _SESSION
+    global _SESSION, _TESTED_SIGNATURE
     with _LOCK:
         _SESSION = None
+        _TESTED_SIGNATURE = None
     return cloud_public_status()
 
 
@@ -87,14 +104,17 @@ def resolve_cloud_configuration() -> CloudConfiguration | None:
 
 def cloud_public_status() -> dict:
     config = resolve_cloud_configuration()
+    with _LOCK:
+        tested = config is not None and _TESTED_SIGNATURE == _signature(config)
     return {
         "enabled": config is not None,
         "provider": config.provider if config is not None else None,
         "model": config.model if config is not None else None,
         "key_configured": config is not None,
-        "secret_storage": "memory_only" if config is not None and
-                          config.source == "admin_memory" else "environment",
+        "secret_storage": ("none" if config is None else
+                           "memory_only" if config.source == "admin_memory" else
+                           "environment"),
         "source": config.source if config is not None else "none",
         "requires_user_consent": True,
-        "tested": False,  # configuration is not proof of real inference
+        "tested": bool(tested),  # only after real provider inference
     }
