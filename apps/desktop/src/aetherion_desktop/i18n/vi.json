@@ -499,5 +499,10 @@
   "portal.brandLine": "TRUY TINH  /  TRÍ TUỆ SỨC KHỎE NHIỆM VỤ",
   "portal.vision": "AETHERION  •  TRÁI ĐẤT → VƯƠN XA",
   "portal.side": "01 / TRANG ĐẦU\n\nMỘT SỨC KHỎE\nVƯƠN XA TRÁI ĐẤT",
-  "main.footer.brand": "TRUY TINH  /  TRÍ TUỆ SỨC KHỎE ĐỘC LẬP"
+  "main.footer.brand": "TRUY TINH  /  TRÍ TUỆ SỨC KHỎE ĐỘC LẬP",
+  "explore.value.omitted": "Đã lược bớt chi tiết lồng nhau; xem tệp nguồn gốc.",
+  "explore.value.unspecified": "Không ghi rõ",
+  "explore.value.notDocumented": "Nguồn này không ghi nhận.",
+  "explore.value.linked": "ID nguồn liên kết",
+  "explore.value.unsupported": "Trường tài liệu chưa được hỗ trợ."
 }
