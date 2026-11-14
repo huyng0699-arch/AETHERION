@@ -29,7 +29,7 @@ def install_mission_layout(page, api_url: str) -> None:
     scroller.setObjectName("missionScroll")
     scroller.setFrameShape(QFrame.Shape.NoFrame)
     scroller.setWidgetResizable(True)
-    scroller.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+    scroller.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
     scroller.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
     outer.addWidget(scroller)
 
