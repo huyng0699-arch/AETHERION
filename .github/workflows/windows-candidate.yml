@@ -1,0 +1,47 @@
+name: Windows desktop candidate EXE
+
+# Manually requested only. A successful package job does NOT constitute
+# independent Windows GUI, medical-content, or release acceptance.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-native:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout canonical AETHERION main
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          architecture: x64
+
+      - name: Install native Desktop dependencies
+        shell: pwsh
+        run: |
+          ./scripts/setup_windows.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./.venv/Scripts/python.exe -m pip install "pyinstaller>=6,<7"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Build source-backed offline Windows candidate
+        shell: pwsh
+        run: |
+          ./scripts/build_windows.ps1 -SkipSmoke
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Upload EXE and provenance, no medical or account secrets
+        uses: actions/upload-artifact@v4
+        with:
+          name: AETHERION-Windows-native-CANDIDATE
+          path: dist/AETHERION-Desktop/
+          if-no-files-found: error
+          retention-days: 7
