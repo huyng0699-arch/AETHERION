@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-038",
+  "slot": 38,
+  "quest_id": "Q-0338",
+  "checked_at_utc": "2026-11-14T06:13:01.456282+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/trauma-minor-head.pdf?emrc=c4c760",
+  "http_status": 200,
+  "pdf_sha256": "9c87dc9d921bca282f78c0c02b9d428268df587d348d510f1467f6d22de60e25",
+  "pdf_bytes": 354444,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-038-IMG-01": "297e90f2d26d5ca3c9ffb7f68b511f1e04ca0692ee6428a12b40c588c5120894",
+    "CLIFF-038-IMG-02": "3af2c58a00cf40c7b31850829c16d2c481edfd38dc19cb04863930f5762589b5",
+    "CLIFF-038-IMG-03": "c521d4665ca6c8c1326925c73d1628d9a008a81ea03e6c2a50fc773a1dca0e50"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
