@@ -293,5 +293,18 @@
   "personal.status.sourceDenied": "Access to some data is denied; no unavailable values are inferred.",
   "personal.status.sourceError": "The source contains invalid data; do not interpret these readings.",
   "personal.status.none": "No usable recorded measurements; unknown does not mean normal.",
-  "personal.metricSource": "Nguồn: {source}  ·  {observed}"
+  "personal.metricSource": "Nguồn: {source}  ·  {observed}",
+  "explore.field.systems": "Systems discussed in the research",
+  "explore.field.consequences": "Physiological research context",
+  "explore.field.indicators": "Candidate indicators — not live sensor readings",
+  "explore.field.wellbeing": "Wellbeing indicators and limits",
+  "explore.field.communication": "Communication and autonomy",
+  "explore.field.scope": "Cabin measurements versus personal health",
+  "explore.html.warning": "This is an offline source-linked education view, NOT live crew telemetry, dosimetry, diagnosis or medical guidance.",
+  "explore.html.observations": "Observation status:",
+  "explore.html.noData": "NO_DATA — this reference view has no authorized sensor or subject observations to display.",
+  "explore.html.links": "Scientific source links (internet needed when opening)",
+  "explore.html.limits": "Evidence limitations",
+  "explore.html.notLive": "NASA research material is separate from AETHERION's person-specific, authenticated observation store.",
+  "explore.html.missing": "No data is interpreted as normal health; no measurements were inferred."
 }
