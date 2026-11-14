@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-082",
+  "slot": 82,
+  "quest_id": "Q-0382",
+  "checked_at_utc": "2026-11-14T06:31:18.954444+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/burn-chemical-skin-cliff-2023.pdf?emrc=f2770c",
+  "http_status": 200,
+  "pdf_sha256": "ef604f6053310fba3c3fe44430d3ced4f8b2d7674b013909254ede86990b24e8",
+  "pdf_bytes": 342289,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-082-IMG-01": "9857280031a998a5645482eeaa5a6fd060812b6ab87ceebb5a8783045c966a09",
+    "CLIFF-082-IMG-02": "63637717b197b13f58c6f3987ea7dd593d19fd5ac954ef2f7f07860748b2ef2e",
+    "CLIFF-082-IMG-03": "840ce7f5b23b05813b6a84ea8de0b24ee32f3ce5ff94bcbd98c347cbca9649d7"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
