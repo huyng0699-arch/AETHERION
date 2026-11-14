@@ -28,7 +28,7 @@ STRINGS = {
         "login": "Đăng nhập quản trị", "logout": "Khóa quản trị",
         "overview": "Tổng quan", "ai": "AI cục bộ", "sources": "Thành phần",
         "storage": "Dữ liệu", "events": "Nhật ký",
-        "refresh": "Làm mới dữ liệu thật", "load_models": "Lấy danh sách mô hình",
+        "refresh": "Làm mới dữ liệu thật", "load_models": "Lấy danh sách mô hình", "test_model": "Kiểm tra AI thực tế",
         "save": "Lưu cấu hình AI", "backup": "Sao lưu SQLite ngay",
         "mode": "Chế độ AI", "local_url": "API Ollama cục bộ",
         "model": "Mô hình", "timeout": "Giới hạn chờ (giây)",
@@ -54,7 +54,7 @@ STRINGS = {
         "login": "Administrator sign in", "logout": "Lock administration",
         "overview": "Overview", "ai": "Local AI", "sources": "Subsystems",
         "storage": "Data", "events": "Audit events",
-        "refresh": "Refresh live records", "load_models": "Discover installed models",
+        "refresh": "Refresh live records", "load_models": "Discover installed models", "test_model": "Test actual AI inference",
         "save": "Save AI settings", "backup": "Back up SQLite now",
         "mode": "AI mode", "local_url": "Local Ollama API",
         "model": "Model", "timeout": "Timeout (seconds)",
@@ -201,6 +201,8 @@ class AdminWindow(QMainWindow):
         ai_actions.addWidget(self.models_button)
         self.save_button = self._button(self.save_ai)
         ai_actions.addWidget(self.save_button)
+        self.test_button = self._button(self.test_ai)
+        ai_actions.addWidget(self.test_button)
         ai_actions.addStretch()
         ai_layout.addLayout(ai_actions)
         self.ai_result = QTextEdit()
@@ -271,6 +273,7 @@ class AdminWindow(QMainWindow):
             (self.mode_label, "mode"), (self.local_label, "local_url"),
             (self.model_label, "model"), (self.timeout_label, "timeout"),
             (self.models_button, "load_models"), (self.save_button, "save"),
+            (self.test_button, "test_model"),
             (self.backup_button, "backup"), (self.events_button, "refresh"),
             (self.cloud_notice, "ai_cloud"),
         ):
@@ -471,6 +474,14 @@ class AdminWindow(QMainWindow):
         self._status(self.t("saved"))
         self.request("GET", "/api/v1/admin/ai/settings", callback=self._ai_settings)
 
+    def test_ai(self):
+        self.request("POST", "/api/v1/admin/ai/local/test", payload={},
+                     callback=lambda result: self._ai_test_finished(result))
+
+    def _ai_test_finished(self, result):
+        self.ai_result.setPlainText(json.dumps(result, ensure_ascii=False, indent=2))
+        self._status(str(result.get("status", "UNKNOWN")))
+
     def backup(self):
         self.request("POST", "/api/v1/admin/storage/backup", payload={},
                      callback=lambda result: self._backup_finished(result))
@@ -486,7 +497,9 @@ class AdminWindow(QMainWindow):
 
     def closeEvent(self, event):
         self.access_token = ""
-        # Existing service is deliberately not killed when the control UI closes.
+        # QProcess owns only this window-spawned server; avoid an orphan/Qt crash.
+        if self.owned_server.state() != QProcess.ProcessState.NotRunning:
+            self.stop_server()
         super().closeEvent(event)
 
 
