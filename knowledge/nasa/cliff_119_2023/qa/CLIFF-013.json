@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-013",
+  "slot": 13,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-dehydration-cliff-2023.pdf?emrc=c5a442",
+  "http_status": 200,
+  "pdf_bytes": 471638,
+  "pdf_sha256": "603b891260fa71ff174bbd2b6eb5e8e1a559c912730694f734ec695550273621",
+  "pdf_pages": 13,
+  "sections_count": 13,
+  "tables_count": 3,
+  "references_count": 39,
+  "media_count": 3,
+  "media_sha256s": [
+    "188732375a876e3cbe4cf6141dd7e3012e6c51a3a09666814976018b5cb409d7",
+    "3d4bdb93dd8859201395fc4aea2e1d1bf007fabecd4d120d6a46a28a5d96f8a6",
+    "8fa44784c04fcd7077531f42b77b16971f0994ac86e63c012681f85533249005"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; NASA Public Domain & Wikimedia Commons CC-BY-3.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}
