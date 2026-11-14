@@ -475,7 +475,8 @@ class AetherionWindow(QMainWindow):
         self.pages.setCurrentWidget(self.knowledge_browser_page)
 
     def show_hackathon_demo(self):
-        """Read-only local NASA archive; never routes into personal health data."""
+        """Always show NASA provenance first, even on repeated Portal visits."""
+        self.hackathon_demo_page.show_briefing()
         self.pages.setCurrentWidget(self.hackathon_demo_page)
 
     def show_monitor(self):
