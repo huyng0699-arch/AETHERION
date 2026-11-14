@@ -7,7 +7,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from .localization import normalize_locale, tr
 
 
 @dataclass(frozen=True)
@@ -36,6 +35,7 @@ def build_portal_page(parent=None, *, theme_name: str = "daybreak", reduce_motio
         QVBoxLayout, QWidget,
     )
     from .visual_theme import AmbientBackdrop
+    from .localization import normalize_locale, tr
 
     class PortalCardPanel(QFrame):
         clicked = Signal(str)
