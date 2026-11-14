@@ -142,7 +142,13 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._request_seq += 1
             self._token = ""
             self._authorized_subject = None
+            # Do not leak prior account's selected subject IDs into the next
+            # session, even when the new login fails or the server is offline.
+            self._subjects.clear()
+            self.subjects.clear()
+            self.subject_input.clear()
             self.table.setRowCount(0)
+            self.technical.setText(tr(self.ui_language, "mission.technicalDisclaimer"))
             self._update_summary()
             if not self.username.text().strip() or not self.password.text():
                 self._say("mission.deniedCredentials")
