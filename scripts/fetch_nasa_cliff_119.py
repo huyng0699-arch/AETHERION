@@ -88,6 +88,11 @@ def read_index(s: requests.Session):
                 entries.append({"category": section, "title": title, "source_url": url})
         else:
             entries.append({"category": section, "title": name, "source_url": None})
+    urls = [item["source_url"] for item in entries]
+    if len(entries) != EXPECTED or any(not url for url in urls):
+        raise RuntimeError(f"NASA CliFF 119 table is not exactly {EXPECTED} linked originals: {len(entries)} rows; {sum(bool(u) for u in urls)} links. Refusing incomplete or inferred data.")
+    if len(set(urls)) != EXPECTED:
+        raise RuntimeError("NASA CliFF 119 source links are not unique; refusing to claim 119 distinct originals.")
     return entries
 
 
@@ -108,6 +113,8 @@ def download(s: requests.Session, entry: dict, index: int):
             suffix = ".pdf"
         elif content.startswith(b"PK\x03\x04") and ".docx" in urlparse(final_url).path.lower():
             suffix = ".docx"
+        elif content.startswith(b"\xd0\xcf\x11\xe0"):
+            suffix = ".doc"
         else:
             return {"status": "not_downloadable_document", "final_url": final_url,
                     "http_content_type": response.headers.get("Content-Type", ""), **entry}
@@ -151,6 +158,7 @@ def main():
     print(f"Downloaded {good}/{EXPECTED}; COMPLETE={complete}", flush=True)
     if not complete:
         print("INCOMPLETE: check manifest.json. Do not represent this archive as 119/119 verified.", flush=True)
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":
