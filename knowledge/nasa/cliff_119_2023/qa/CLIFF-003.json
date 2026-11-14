@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-003",
+  "slot": 3,
+  "quest_id": "Q-0303",
+  "checked_at_utc": "2026-11-14T05:37:51.500097+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/allergic-reaction-mild-to-moderate-cliff-2023.pdf?emrc=eb8309",
+  "http_status": 200,
+  "pdf_sha256": "84a1dc77e077d05802f52cf97e0d091b26ba50b586cf71d7efdc0606e1343129",
+  "pdf_bytes": 311937,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 2,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-003-IMG-01": "52f59ef1ecf8b5d83d42ef5307bf6196c1d53716690180234324a3468c3df44c",
+    "CLIFF-003-IMG-02": "f985c9b725a62ed847cc99069f9df8027f4c5c7de80dcfde28cb19c4899c6590",
+    "CLIFF-003-IMG-03": "14637d064949f3848aea479dfec2e371fec7422d4105c63ff4733b856670d343"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
