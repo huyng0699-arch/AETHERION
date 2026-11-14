@@ -243,6 +243,42 @@ def build_hackathon_demo(parent=None, **kwargs):
                 badges.addWidget(tag)
             body.addLayout(badges)
 
+            official = QFrame()
+            official.setObjectName("contentPanel")
+            official_layout = QVBoxLayout(official)
+            official_layout.setContentsMargins(20, 15, 20, 16)
+            official_layout.setSpacing(8)
+            self.official_title = QLabel()
+            self.official_title.setObjectName("eyebrow")
+            official_layout.addWidget(self.official_title)
+            self.official_desc = QLabel()
+            self.official_desc.setObjectName("pageHint")
+            self.official_desc.setWordWrap(True)
+            official_layout.addWidget(self.official_desc)
+            self.official_five = QLabel()
+            self.official_five.setObjectName("pageHint")
+            self.official_five.setWordWrap(True)
+            official_layout.addWidget(self.official_five)
+            official_buttons = QHBoxLayout()
+            self.official_buttons = {}
+            for name, url in (
+                ("hazards", "https://www.nasa.gov/hrp/hazards/"),
+                ("risks", "https://www.nasa.gov/hrp/risks/"),
+                ("research", "https://www.nasa.gov/hrp/ongoing-hrp-research/"),
+            ):
+                button = QPushButton()
+                button.setObjectName("navButton")
+                button.clicked.connect(lambda checked=False, link=url:
+                                       QDesktopServices.openUrl(QUrl(link)))
+                self.official_buttons[name] = button
+                official_buttons.addWidget(button)
+            official_layout.addLayout(official_buttons)
+            self.official_explain = QLabel()
+            self.official_explain.setObjectName("pageHint")
+            self.official_explain.setWordWrap(True)
+            official_layout.addWidget(self.official_explain)
+            body.addWidget(official)
+
             section = QFrame()
             section.setObjectName("surface")
             group_layout = QVBoxLayout(section)
@@ -579,6 +615,12 @@ def build_hackathon_demo(parent=None, **kwargs):
             self.count_label.setText(self.t("intro.count"))
             self.warning.setText(self.t("intro.warning"))
             self.challenge_note.setText(self.t("intro.notchallenge"))
+            self.official_title.setText(self.t("official.title"))
+            self.official_desc.setText(self.t("official.description"))
+            self.official_five.setText(self.t("official.five"))
+            self.official_explain.setText(self.t("official.explain"))
+            for name, button in self.official_buttons.items():
+                button.setText(self.t("official." + name))
             self.start.setText(self.t("intro.start"))
             self.source_button.setText(self.t("intro.visit"))
             self.osdr569.setText(self.t("intro.osdr569"))
