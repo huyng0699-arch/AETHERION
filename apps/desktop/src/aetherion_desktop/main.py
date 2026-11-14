@@ -7,9 +7,10 @@ from PySide6.QtCore import QUrl
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkRequest
 from PySide6.QtWidgets import (
     QApplication, QFrame, QHBoxLayout, QLabel, QMainWindow,
-    QPushButton, QStackedWidget, QVBoxLayout, QWidget,
+    QPushButton, QStackedWidget, QVBoxLayout, QWidget, QMessageBox,
 )
 
+from .portal import PORTAL_ROUTES, build_portal_page
 from .medical_library import build_medical_library_page
 from .mission_control import build_mission_control_page
 from .features.personal.authorized_today import AuthorizedPersonalTodayPage
@@ -46,16 +47,23 @@ class AetherionWindow(QMainWindow):
         outer.setContentsMargins(28, 22, 28, 22)
         outer.setSpacing(20)
 
-        brand = QLabel("AETHERION  /  MISSION HEALTH")
+        brand = QPushButton("AETHERION  /  TRUY TINH")
+        brand.clicked.connect(self.show_portal)
         brand.setStyleSheet("font-size:14px; font-weight:700; color:#74dce4; letter-spacing:2px;")
         outer.addWidget(brand)
 
         nav = QHBoxLayout()
         nav.setSpacing(7)
         self.pages = QStackedWidget()
+        self.portal_page = build_portal_page()
+        self.portal_page.route_requested.connect(self.open_portal_route)
+        self.pages.addWidget(self.portal_page)
+        home_button = QPushButton("Trang đầu")
+        home_button.clicked.connect(self.show_portal)
+        nav.addWidget(home_button)
         for index, (button_name, heading, message) in enumerate(SECTIONS):
             button = QPushButton(button_name)
-            button.clicked.connect(lambda checked=False, i=index: self.pages.setCurrentIndex(i))
+            button.clicked.connect(lambda checked=False, i=index: self.pages.setCurrentIndex(i + 1))
             nav.addWidget(button)
             if index == 0:
                 # Mission Control loads live data only after explicit local authentication.
@@ -107,7 +115,30 @@ class AetherionWindow(QMainWindow):
         foot.setStyleSheet("font-size:12px;color:#7892af;")
         outer.addWidget(foot)
         self.setCentralWidget(central)
+        self.pages.setCurrentWidget(self.portal_page)
         self.check_server()
+
+    def show_portal(self) -> None:
+        """Portal is always reachable, including while the server is offline."""
+        self.pages.setCurrentWidget(self.portal_page)
+
+    def open_portal_route(self, route: str) -> None:
+        """Route only to implemented native views; do not fake unavailable AI/ECG."""
+        if route not in PORTAL_ROUTES:
+            return
+        if route == "health":
+            self.pages.setCurrentWidget(self.personal_today_page)
+        elif route in ("monitor", "crew"):
+            self.pages.setCurrentWidget(self.mission_control_page)
+            if route == "monitor":
+                self.mission_control_page.status.setText(
+                    "Recorded observations require authorization; ECG is not yet connected."
+                )
+        elif route == "science":
+            self.show_medical_library()
+        elif route == "assistant":
+            QMessageBox.information(self, "AI chưa khả dụng",
+                "Chưa có AI đã xác thực trong ứng dụng này. Không đưa ra chẩn đoán hoặc kết quả giả.")
 
     def open_personal_subject(self, subject_id: str, access_token: str) -> None:
         """Open the precise subject selected in Mission using the same session."""
