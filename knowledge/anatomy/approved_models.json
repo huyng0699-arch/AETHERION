@@ -1,9 +1,34 @@
 {
   "schema_version": "1.0",
-  "models": [],
-  "required_fields": [
-    "anatomical_id", "filename", "sha256", "source_url",
-    "author", "license", "rights_status", "derivative_license"
+  "models": [
+    {
+      "anatomical_id": "mandible_visible_human_male",
+      "filename": "mandible_visible_male.stl",
+      "sha256": "d7aef8cc1a38e09285ba99fdd116d01a951123ebe6823d22dc21d7c3acb0473f",
+      "source_url": "https://github.com/BoneHub/Educational-Atlas/blob/main/webpage/Mesh/01_Male/SKULL/SKULL_MANDIBLE.stl",
+      "author": "BoneHub / H. Alavi and M. Asseln; Visible Human 3D bones derived from CT",
+      "license": "CC BY 4.0",
+      "rights_status": "APPROVED",
+      "derivative_license": "CC BY 4.0",
+      "original_git_blob": "cf21b6167d83447bd452444d4cb56a6ae166cd02",
+      "citation": "Alavi SH, Asseln M. visible-human-3d-models [Dataset]. Hugging Face (2026). DOI:10.57967/hf/10464; Andreassen TE et al. Scientific Data 2023;10:34. DOI:10.1038/s41597-022-01905-2",
+      "purpose": "EDUCATIONAL_VISUALIZATION_ONLY_NOT_FOR_DIAGNOSIS",
+      "lod": "web-simplified 6000 triangle STL",
+      "size_bytes": 300084,
+      "title_vi": "Xương hàm dưới – Visible Human nam",
+      "title_en": "Mandible – Visible Human Male",
+      "color": "#E7CDAF"
+    }
   ],
-  "notice": "No non-commercial, unlicensed or synthetic human anatomy is bundled."
+  "required_fields": [
+    "anatomical_id",
+    "filename",
+    "sha256",
+    "source_url",
+    "author",
+    "license",
+    "rights_status",
+    "derivative_license"
+  ],
+  "notice": "One verified source-preserved educational CT-derived mandible STL is included under CC BY 4.0; source attribution and SHA-256 must remain visible. Not a clinical/diagnostic anatomy model. Other models require independent rights and hash checks before display."
 }
