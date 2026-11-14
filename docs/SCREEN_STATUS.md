@@ -5,7 +5,7 @@
 
 ## Current Open MCT visual checkpoint — branch source only (2026-11-14T17:46:01Z)
 
-**Branch:** `agent/q0485-openmct-visual-20261115` · **source commit:** `b43ba6ebae51a811a1f4246bcf4930d531383605`  
+**Branch:** `agent/q0485-openmct-visual-20261115` · **source commit:** `880072f98205c0a1dbf26c8b7c4a5ce7bd7bfdaa`  
 **Changed screen:** Mission Operations Home, UTC observations, Browse Demo/NASA selection, hosted Monitoring shell.  
 **Changed file:** `apps/desktop/src/aetherion_desktop/mission_ops_home.py`
 
@@ -13,8 +13,8 @@
 - Replaced index-based UTC bars with an interactive true-time scatter view: actual UTC timestamps set horizontal positions, no connecting/interpolated line, and point selection selects its source row for Inspect.
 - Browse now exposes Demo and keeps Demo/NASA objects selected while their hosted pages are open.
 - The outer conductor hides only while Q-0477 Monitoring is displayed, avoiding two independent visible time controls. No shared-time API or synchronization is claimed.
-- Independent source review then found and the follow-up commit fixed three issues: sample selection after the 32-point display window used a wrong row offset, right-edge tick labels could clip, and the plot heading was not visible/accessible. A second source review is in progress.
-- Source change status: **CHANGED ON BRANCH**. Native visual status: **RENDER PENDING**. This is not a screenshot or GUI PASS. No Windows desktop launch was performed; a Qt process could not be launched from the current restricted tool runtime. Independent source review is in progress.
+- Independent source review found and the follow-up commits fixed three issues: sample selection after the 32-point display window used a wrong row offset, right-edge tick labels could clip, and the plot heading was not visible/accessible. Final source-only review found no blocker.
+- Source change status: **CHANGED ON BRANCH**. GitHub Actions renderer added; artifact **PENDING**. Native visual status: **RENDER PENDING**. No screenshot or GUI PASS yet. No Windows desktop launch was performed; a Qt process could not be launched from the current restricted tool runtime. Independent source review is in progress.
 
 ---
 
