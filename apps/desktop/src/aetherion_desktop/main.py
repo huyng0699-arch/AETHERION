@@ -8,7 +8,7 @@ from __future__ import annotations
 import os
 import sys
 
-from PySide6.QtCore import Qt, QUrl, QTimer
+from PySide6.QtCore import Qt, QUrl, QTimer, QObject, QEvent
 from PySide6.QtGui import QAction, QShortcut, QKeySequence
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import (
@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (
 
 from .portal import PORTAL_ROUTES, build_portal_page
 from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
-from .visual_theme import THEMES, VisualPreferences
+from .visual_theme import THEMES, VisualPreferences, AmbientBackdrop
 from .settings_page import SettingsPage
 from .localize import tr as settings_tr
 from .medical_library import build_medical_library_page
@@ -69,6 +69,30 @@ class FeatureLanding(QWidget):
         block.addLayout(buttons)
         root.addWidget(panel)
         root.addStretch()
+
+
+class PageAmbientController(QObject):
+    """Subtle theme artwork beneath existing content; never alters measurements."""
+    def __init__(self,parent=None):
+        super().__init__(parent)
+        self.layers={}
+    def add_page(self,page,prefs):
+        layer=AmbientBackdrop(page,prefs.theme_name,prefs.reduce_motion,
+                              prefs.mode,min(24,prefs.animation_intensity))
+        layer.setGeometry(page.rect())
+        layer.lower()
+        page.installEventFilter(self)
+        self.layers[page]=layer
+    def update_preferences(self,prefs):
+        for layer in self.layers.values():
+            layer.set_visuals(prefs.theme_name,prefs.reduce_motion,
+                              prefs.mode,min(24,prefs.animation_intensity))
+    def eventFilter(self,watched,event):
+        if watched in self.layers and event.type()==QEvent.Type.Resize:
+            layer=self.layers[watched]
+            layer.setGeometry(watched.rect())
+            layer.lower()
+        return super().eventFilter(watched,event)
 
 
 class AetherionWindow(QMainWindow):
@@ -161,6 +185,12 @@ class AetherionWindow(QMainWindow):
         self.settings_page.connection_test_requested.connect(self.check_server)
         self.settings_page.go_home.connect(self.show_portal)
         self.pages.addWidget(self.settings_page)
+        self.ambient_controller=PageAmbientController(self)
+        for page in (self.mission_control_page,self.personal_today_page,
+                     self.medical_library_page,self.nasa_explore_page,
+                     self.monitor_page,self.assistant_page,
+                     self.atlas_page,self.care_page):
+            self.ambient_controller.add_page(page,self.preferences)
 
         # Main horizontal navigation; nested items use dropdown menus, never sidebars.
         self._nav_button(bar, "Trang đầu", self.show_portal)
@@ -329,6 +359,7 @@ class AetherionWindow(QMainWindow):
             self.preferences.mode, self.preferences.animation_intensity,
         )
         self.settings_page.retranslate()
+        self.ambient_controller.update_preferences(self.preferences)
         if self.ui_language != self.preferences.language:
             self.ui_language = self.preferences.language
             self._retranslate_shell()
