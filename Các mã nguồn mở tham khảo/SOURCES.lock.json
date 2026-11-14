@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "created_utc": "2026-11-14",
+  "purpose": "Complete tracked source snapshots originally assessed by ASTRA's 14 Nov 2026 UX/reuse guidance; not activated in AETHERION runtime.",
+  "sources": [
+    {
+      "name": "pyvistaqt",
+      "repo": "pyvista/pyvistaqt",
+      "branch": "main",
+      "commit": "ad706903962a533032218e92f39e1a315eaf949f",
+      "expected_files": 51,
+      "license": "MIT",
+      "license_file": "LICENSE",
+      "area": "Native Qt VTK 3D; full source already imported and hash-verified"
+    },
+    {
+      "name": "vispy",
+      "repo": "vispy/vispy",
+      "branch": "main",
+      "commit": "bacc5e5c8a339e226d2b3ff3c4cf77928178674e",
+      "expected_files": 841,
+      "license": "BSD-3-Clause",
+      "license_file": "LICENSE.txt",
+      "area": "Native GPU 3D renderer comparison"
+    },
+    {
+      "name": "pyqtgraph",
+      "repo": "pyqtgraph/pyqtgraph",
+      "branch": "master",
+      "commit": "3fbfd734ce866b1084b472ed14989929ff8a96a6",
+      "expected_files": 804,
+      "license": "MIT",
+      "license_file": "LICENSE.txt",
+      "area": "Scientific live charts and source-aware points"
+    },
+    {
+      "name": "openmct",
+      "repo": "nasa/openmct",
+      "branch": "master",
+      "commit": "e09bfaf47856b2b7ae2ea74334800b26fd27a41e",
+      "expected_files": 1279,
+      "license": "Apache-2.0",
+      "license_file": "LICENSE.md",
+      "area": "Reference for NASA telemetry UX; web source is NOT the Windows app"
+    },
+    {
+      "name": "napari",
+      "repo": "napari/napari",
+      "branch": "main",
+      "commit": "3f4f5a91a6836647085ad3433f11c14e44ab2fc7",
+      "expected_files": 1237,
+      "license": "BSD-3-Clause",
+      "license_file": "LICENSE",
+      "area": "Scientific layers and 3D navigation pattern"
+    },
+    {
+      "name": "slicer",
+      "repo": "Slicer/Slicer",
+      "branch": "main",
+      "commit": "b5d5d9e8350102329e87914bc68db9aee1d24ab8",
+      "expected_files": 5014,
+      "license": "3D Slicer BSD-style with additional clauses",
+      "license_file": "License.txt",
+      "area": "Anatomy selection and medical scene architecture; no blind whole-app integration"
+    }
+  ]
+}

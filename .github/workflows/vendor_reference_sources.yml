@@ -1,0 +1,55 @@
+name: Import full upstream open-source references
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/vendor_reference_sources.yml"
+      - "scripts/vendor_reference_sources.py"
+      - "Các mã nguồn mở tham khảo/SOURCES.lock.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aetherion-upstream-reference-import
+  cancel-in-progress: false
+
+jobs:
+  import-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout AETHERION
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Import all Git-tracked upstream files, including binaries
+        run: python scripts/vendor_reference_sources.py import
+      - name: Verify all original content hashes and file counts
+        run: python scripts/vendor_reference_sources.py verify
+      - name: Publish source trees as real files (not submodules)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # Upstream nested .gitignore files must not hide the original tracked files.
+          git add -f -- 'Các mã nguồn mở tham khảo/'
+          if git diff --cached --quiet; then
+            echo "Exact source trees already present."
+            exit 0
+          fi
+          git commit -m 'Vendor complete ASTRA-referenced upstream source snapshots'
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then exit 0; fi
+            git fetch origin main
+            git rebase origin/main
+          done
+          echo "Push rejected; retained local result but did not overwrite the branch." >&2
+          exit 1
