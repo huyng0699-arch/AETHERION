@@ -11,7 +11,7 @@ import random
 from dataclasses import dataclass
 
 from PySide6.QtCore import Qt, QSettings, QTimer
-from PySide6.QtGui import QColor, QFont, QLinearGradient, QPainter, QPen, QRadialGradient
+from PySide6.QtGui import QBrush, QColor, QFont, QLinearGradient, QPainter, QPen, QRadialGradient
 from PySide6.QtWidgets import QWidget
 
 
@@ -174,7 +174,7 @@ class AmbientBackdrop(QWidget):
             bg.setColorAt(0, QColor(colors.base))
             bg.setColorAt(.63, QColor(colors.top))
             bg.setColorAt(1, QColor(colors.base))
-        painter.fillRect(self.rect(), bg)
+        painter.fillRect(self.rect(), QBrush(bg))
         if theme.scene == "minimal":
             painter.end()
             return
@@ -218,7 +218,7 @@ class AmbientBackdrop(QWidget):
             cx,cy,r = w*.83,h*.52,min(w,h)*.22
             g=QRadialGradient(cx-r*.26,cy-r*.24,r*1.6)
             g.setColorAt(0,QColor("#A9EDFC"));g.setColorAt(.35,QColor("#4EA9D8"));g.setColorAt(1,QColor("#35518C"))
-            painter.setBrush(g)
+            painter.setBrush(QBrush(g))
             painter.setPen(QPen(QColor(theme.second), 2))
             painter.drawEllipse(int(cx-r),int(cy-r),int(2*r),int(2*r))
             painter.setBrush(Qt.BrushStyle.NoBrush)
