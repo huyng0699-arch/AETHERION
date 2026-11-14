@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/contracts/v1/alert_lifecycle.schema.json",
+  "title": "AETHERION Alert Lifecycle Event Contract (Q-0024)",
+  "description": "Differentiates incident created, acknowledged, escalated, and resolved lifecycle events with subject/scope identity, human actor attribution, and source observation provenance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "incident_id",
+    "subject_id",
+    "scope",
+    "event_type",
+    "previous_state",
+    "next_state",
+    "severity",
+    "actor_id",
+    "occurred_at",
+    "reason",
+    "source_observation_ids"
+  ],
+  "properties": {
+    "event_id": { "type": "string", "minLength": 1 },
+    "incident_id": { "type": "string", "minLength": 1 },
+    "subject_id": { "type": "string", "minLength": 1 },
+    "scope": { "type": "string", "enum": ["CREW", "CABIN", "VEHICLE"] },
+    "event_type": {
+      "type": "string",
+      "enum": ["incident_created", "incident_acknowledged", "incident_escalated", "incident_resolved"]
+    },
+    "previous_state": {
+      "type": ["string", "null"],
+      "enum": [null, "created", "acknowledged", "escalated", "resolved"]
+    },
+    "next_state": {
+      "type": "string",
+      "enum": ["created", "acknowledged", "escalated", "resolved"]
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["INFO", "WARNING", "CRITICAL"]
+    },
+    "actor_id": { "type": "string", "minLength": 1 },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "reason": { "type": "string", "minLength": 1 },
+    "source_observation_ids": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1 },
+      "minItems": 1
+    }
+  },
+  "x-lifecycle-transitions": {
+    "incident_created": { "from": [null], "to": "created" },
+    "incident_acknowledged": { "from": ["created", "escalated"], "to": "acknowledged" },
+    "incident_escalated": { "from": ["created", "acknowledged"], "to": "escalated" },
+    "incident_resolved": { "from": ["created", "acknowledged", "escalated"], "to": "resolved" }
+  }
+}
