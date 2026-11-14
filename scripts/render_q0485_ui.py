@@ -9,12 +9,21 @@ from __future__ import annotations
 import os
 from pathlib import Path
 import sys
+import time
 
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 # Keep the expected offline server state explicit in this isolated preview.
 os.environ.setdefault("AETHERION_API_URL", "http://127.0.0.1:1")
 
 ROOT = Path(__file__).resolve().parents[1]
+PREVIEW_HOME = ROOT / "artifacts" / "q0485-ui-preview" / "ephemeral-home"
+PREVIEW_HOME.mkdir(parents=True, exist_ok=True)
+os.environ["HOME"] = str(PREVIEW_HOME)
+os.environ["XDG_CONFIG_HOME"] = str(PREVIEW_HOME / "config")
+if os.name == "nt":
+    os.environ["USERPROFILE"] = str(PREVIEW_HOME)
+    os.environ["APPDATA"] = str(PREVIEW_HOME / "AppData" / "Roaming")
+    os.environ["LOCALAPPDATA"] = str(PREVIEW_HOME / "AppData" / "Local")
 sys.path.insert(0, str(ROOT / "apps" / "desktop" / "src"))
 
 from PySide6.QtCore import QSettings, Qt
@@ -37,19 +46,36 @@ def capture(window: AetherionWindow, folder: Path, name: str,
     print(f"RENDERED {path.relative_to(ROOT)}")
 
 
+def wait_until(predicate, description: str, timeout_seconds: float = 30.0) -> None:
+    deadline = time.monotonic() + timeout_seconds
+    while time.monotonic() < deadline:
+        QApplication.processEvents()
+        if predicate():
+            return
+        QTest.qWait(50)
+    raise RuntimeError(f"Timed out waiting for {description}")
+
+
 def main() -> int:
     output = ROOT / "artifacts" / "q0485-ui-preview"
     output.mkdir(parents=True, exist_ok=True)
 
+    QSettings.setDefaultFormat(QSettings.Format.IniFormat)
+    QSettings.setPath(
+        QSettings.Format.IniFormat, QSettings.Scope.UserScope,
+        str(PREVIEW_HOME / "qt-settings"),
+    )
     settings = QSettings("TRUY TINH", "AETHERION")
     settings.setValue("ui/language", "vi")
     settings.setValue("visual/theme", "daybreak")
     settings.setValue("visual/mode", "light")
+    settings.setValue("visual/font_family", "Arial")
+    settings.setValue("visual/font_size", 10)
     settings.setValue("visual/reduce_motion", True)
 
     app = QApplication.instance() or QApplication([])
     app.setApplicationName("AETHERION Q-0485 offscreen UI preview")
-    app.setFont(QFont("Sans Serif", 9))
+    app.setFont(QFont("Arial", 10))
     window = AetherionWindow()
 
     # Cold-start Mission Operations at the design reference and minimum sizes.
@@ -75,19 +101,26 @@ def main() -> int:
     capture(window, output, "simulated-briefing-vi", 1360, 850)
 
     QTest.mouseClick(window.simulated_briefing_page.start, Qt.MouseButton.LeftButton)
-    QTest.qWait(500)
-    if (window.operations_home_page.workspace_stack.currentWidget()
-            is not window.synthetic_patient_page):
-        raise RuntimeError("SIMULATED Start did not open the synthetic experience")
+    wait_until(
+        lambda: window.synthetic_patient_page.ready
+        or "error" in window.synthetic_patient_page.state.text().lower(),
+        "the isolated SIMULATED database to load",
+    )
+    if not window.synthetic_patient_page.ready:
+        raise RuntimeError(
+            "SIMULATED experience did not load: "
+            + window.synthetic_patient_page.state.text()
+        )
     capture(window, output, "simulated-patient-experience-vi", 1360, 850)
 
-    # This is the real local MA-7 archive path, separate from demo SQLite.
+    # Keep this screenshot honest: the NASA route is its source briefing entry.
+    # A separate catalog-load action is not presented as completed data here.
     window.show_hackathon_demo()
     QTest.qWait(150)
     if window.operations_home_page.navigator.currentItem().data(
             0, Qt.ItemDataRole.UserRole) != "archive":
         raise RuntimeError("Browse selection did not follow NASA MA-7")
-    capture(window, output, "nasa-ma7-archive-vi", 1360, 850)
+    capture(window, output, "nasa-ma7-source-briefing-vi", 1360, 850)
 
     # Capture the same first screen in English to inspect localization geometry.
     window.preferences.set_language("en")
