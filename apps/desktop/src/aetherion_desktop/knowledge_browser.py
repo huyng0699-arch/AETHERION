@@ -399,8 +399,15 @@ class KnowledgeBrowser(QWidget):
 
     def _document_header(self, title: str) -> list[str]:
         p = palette_for(self.theme_name, self.mode_name)
+        font_family = html.escape(self.font().family() or "Segoe UI", quote=True)
         return [
-            '<html><body style="font-family: Segoe UI; color:' + p.text + ';">',
+            f'<html><head><style>'
+            f'body{{font-family:"{font_family}",sans-serif;color:{p.text};background:{p.surface};line-height:1.5;}}'
+            f'table{{border-collapse:collapse;width:100%;margin:8px 0;border:1px solid {p.border};}}'
+            f'th,td{{border:1px solid {p.border};padding:6px 10px;text-align:left;color:{p.text};}}'
+            f'tr:nth-child(even){{background:{p.surface_alt};}}'
+            f'a{{color:{p.accent};}}'
+            f'</style></head><body>',
             '<div style="padding:10px 4px;">',
             '<p style="color:' + p.accent + ';font-weight:700;font-size:12px;">' +
             html.escape(self.t("eyebrow")) + '</p>',

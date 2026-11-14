@@ -336,60 +336,82 @@ class VisualPreferences:
 
     def apply(self,app):
         app.setFont(QFont(self.font_family,self.font_size))
-        app.setStyleSheet(make_stylesheet(palette_for(self.theme_name,self.mode,self.high_contrast,self.accent_override),self.font_family,self.high_contrast))
+        app.setStyleSheet(make_stylesheet(
+            palette_for(self.theme_name,self.mode,self.high_contrast,self.accent_override),
+            self.font_family,
+            self.high_contrast,
+            self.font_size,
+        ))
 
 
-def make_stylesheet(p: Palette, family="Segoe UI", high_contrast=False) -> str:
+def make_stylesheet(p: Palette, family="Segoe UI", high_contrast=False, font_size: int = 10) -> str:
     """One consistent source for Portal, Mission, personal health and Library."""
+    base_pt = max(9, min(15, int(font_size)))
+    border_w = "2px" if high_contrast else "1px"
     style=r'''
-    QMainWindow, QWidget { color:%(text)s; font-family:"%(font)s"; }
+    QMainWindow, QWidget { color:%(text)s; font-family:"%(font)s"; font-size:%(base_pt)dpt; }
     QMainWindow, QWidget#appRoot, QStackedWidget#pageStack {background:%(base)s;}
-    QFrame#topBar {background:%(header)s; border-bottom:1px solid %(border)s;}
-    QFrame#footerBar {background:%(header)s; border-top:1px solid %(border)s;}
+    QFrame#topBar {background:%(header)s; border-bottom:%(border_w)s solid %(border)s;}
+    QFrame#footerBar {background:%(header)s; border-top:%(border_w)s solid %(border)s;}
     QLabel {background:transparent; color:%(text)s;}
-    QLabel#eyebrow, QLabel#cardNumber {color:%(accent)s; font-size:11px; font-weight:700; letter-spacing:1px;}
-    QLabel#heroTitle {font-size:37px; font-weight:800; color:%(text)s;}
-    QLabel#heroCopy {color:%(muted)s; font-size:15px;}
-    QLabel#pageHint, QLabel#cardDescription, QLabel#detail {color:%(muted)s; font-size:13px;}
-    QLabel#heading {font-size:27px; font-weight:750; color:%(text)s;}
-    QLabel#connectionPill {background:%(surface)s; color:%(muted)s; border:1px solid %(border)s; border-radius:14px; padding:7px 12px;}
-    QFrame#portalCard {background:%(card)s; border:1px solid %(border)s; border-radius:21px;}
+    QLabel#eyebrow, QLabel#cardNumber {color:%(accent)s; font-size:%(eyebrow_px)dpx; font-weight:700; letter-spacing:1px;}
+    QLabel#heroTitle {font-size:%(hero_px)dpx; font-weight:800; color:%(text)s;}
+    QLabel#heroCopy {color:%(muted)s; font-size:%(lead_px)dpx;}
+    QLabel#pageHint, QLabel#cardDescription, QLabel#detail {color:%(muted)s; font-size:%(hint_px)dpx;}
+    QLabel#heading {font-size:%(heading_px)dpx; font-weight:750; color:%(text)s;}
+    QLabel#connectionPill {background:%(surface)s; color:%(muted)s; border:%(border_w)s solid %(border)s; border-radius:14px; padding:7px 14px;}
+    QFrame#portalCard {background:%(card)s; border:%(border_w)s solid %(border)s; border-radius:21px;}
     QFrame#portalCard:hover {background:%(card_hover)s; border:2px solid %(accent)s;}
-    QFrame#surface, QFrame#contentPanel, QFrame#settingsCard {background:%(surface)s; border:1px solid %(border)s; border-radius:18px;}
-    QPushButton, QToolButton {background:%(surface)s; color:%(text)s; border:1px solid %(border)s; border-radius:11px; padding:9px 13px; min-height:26px;}
+    QFrame#surface, QFrame#contentPanel, QFrame#settingsCard {background:%(surface)s; border:%(border_w)s solid %(border)s; border-radius:18px;}
+    QPushButton, QToolButton {background:%(surface)s; color:%(text)s; border:%(border_w)s solid %(border)s; border-radius:11px; padding:9px 14px; min-height:30px;}
     QPushButton:hover, QToolButton:hover {border-color:%(accent)s; background:%(surface_alt)s;}
-    QPushButton:focus, QToolButton:focus {border:2px solid %(accent)s;}
+    QPushButton:focus, QToolButton:focus {border:2px solid %(accent)s; outline:none;}
     QPushButton:checked, QToolButton:checked {background:%(accent)s; color:%(on_accent)s; border:1px solid %(accent)s;}
     QPushButton#brandButton {background:transparent; border:0; font-size:18px; font-weight:800; letter-spacing:2px; color:%(header_text)s; padding:6px 0;}
-    QPushButton#navButton {background:transparent; border:0; font-size:12px; font-weight:600; padding:8px 9px; color:%(header_text)s;}
+    QPushButton#navButton {background:transparent; border:0; font-size:12px; font-weight:600; padding:8px 10px; color:%(header_text)s;}
     QPushButton#navButton:hover {background:%(surface_alt)s; color:%(text)s; border-radius:9px;}
+    QPushButton#navButton:focus {border:2px solid %(accent)s; border-radius:9px;}
     QPushButton#portalCardButton {background:transparent; border:0; padding:0; text-align:left; font-weight:750; font-size:20px; min-height:36px;}
     QPushButton#portalCardButton:hover {color:%(accent)s;}
-    QPushButton#primaryAction {background:%(accent)s; color:%(on_accent)s; border:0; font-weight:750;}
+    QPushButton#primaryAction {background:%(accent)s; color:%(on_accent)s; border:0; font-weight:750; min-height:32px;}
     QPushButton#primaryAction:hover {background:%(second)s;}
-    QToolButton#headerAction {background:transparent; border:1px solid %(border)s; color:%(header_text)s; padding:9px 10px;}
+    QPushButton#primaryAction:focus {border:2px solid %(text)s;}
+    QToolButton#headerAction {background:transparent; border:%(border_w)s solid %(border)s; color:%(header_text)s; padding:9px 12px;}
     QToolButton#headerAction:hover {background:%(surface_alt)s; color:%(text)s;}
-    QTableWidget, QTableView, QListView, QTreeView {background:%(surface)s; alternate-background-color:%(surface_alt)s; color:%(text)s; border:1px solid %(border)s; gridline-color:%(border)s; selection-background-color:%(top)s;}
+    QTableWidget, QTableView, QListView, QListWidget, QTreeView {background:%(surface)s; alternate-background-color:%(surface_alt)s; color:%(text)s; border:%(border_w)s solid %(border)s; border-radius:12px; gridline-color:%(border)s; selection-background-color:%(card_hover)s; selection-color:%(text)s;}
+    QListWidget::item {padding:10px 12px; border-radius:10px; border:1px solid transparent; margin:2px 4px;}
+    QListWidget::item:hover {background:%(surface_alt)s; border-color:%(border)s;}
+    QListWidget::item:selected {background:%(card_hover)s; color:%(text)s; border:1px solid %(accent)s;}
+    QTextBrowser {background:%(surface)s; color:%(text)s; border:%(border_w)s solid %(border)s; border-radius:12px; padding:10px;}
     QHeaderView::section {background:%(surface_alt)s; color:%(text)s; border:0; border-bottom:1px solid %(border)s; padding:9px;}
-    QLineEdit, QComboBox, QTextEdit, QPlainTextEdit, QSpinBox {background:%(surface)s; border:1px solid %(border)s; border-radius:9px; padding:8px; color:%(text)s;}
-    QMenu {background:%(surface)s; border:1px solid %(border)s; padding:7px; color:%(text)s;}
+    QLineEdit, QComboBox, QTextEdit, QPlainTextEdit, QSpinBox {background:%(surface)s; border:%(border_w)s solid %(border)s; border-radius:9px; padding:8px 10px; min-height:24px; color:%(text)s;}
+    QLineEdit:focus, QComboBox:focus, QTextEdit:focus, QPlainTextEdit:focus, QSpinBox:focus, QListWidget:focus, QTableView:focus, QTextBrowser:focus {border:2px solid %(accent)s;}
+    QMenu {background:%(surface)s; border:%(border_w)s solid %(border)s; padding:7px; color:%(text)s;}
     QMenu::item {padding:10px 25px; border-radius:7px;}
     QMenu::item:selected {background:%(surface_alt)s;}
     QTabWidget::pane {border:0; background:transparent;}
-    QTabBar::tab {background:%(surface_alt)s; border:1px solid %(border)s; border-radius:11px; padding:11px 17px; margin:0 3px 0 0; color:%(muted)s;}
+    QTabBar::tab {background:%(surface_alt)s; border:%(border_w)s solid %(border)s; border-radius:11px; padding:11px 17px; margin:0 3px 0 0; color:%(muted)s;}
     QTabBar::tab:selected {background:%(surface)s; color:%(accent)s; border-bottom:2px solid %(accent)s;}
+    QTabBar::tab:focus {border:2px solid %(accent)s;}
     QScrollArea, QScrollArea QWidget#qt_scrollarea_viewport {background:transparent; border:0;}
     QScrollBar:vertical {background:transparent; width:10px;}
     QScrollBar::handle:vertical {background:%(border)s; border-radius:5px; min-height:25px;}
     QSlider::groove:horizontal {height:7px; background:%(border)s; border-radius:3px;}
     QSlider::handle:horizontal {background:%(accent)s; width:17px; margin:-5px 0; border-radius:8px;}
     QCheckBox {spacing:9px; padding:5px;}
+    QCheckBox:focus {color:%(accent)s;}
     QCheckBox::indicator {width:18px; height:18px;}
     '''
     return style % {
         "base":p.base,"top":p.top,"surface":p.surface,"surface_alt":p.surface_alt,
-        "border":p.border,"accent":p.accent,"second":p.second,"text":p.text,
+        "border":p.border,"border_w":border_w,"accent":p.accent,"second":p.second,"text":p.text,
         "muted":p.muted,"header":p.header,"header_text":p.header_text,
         "card":p.card,"card_hover":p.card_hover,"on_accent":p.on_accent,
-        "font":family.replace('"','')
+        "font":family.replace('"',''),
+        "base_pt":base_pt,
+        "eyebrow_px":max(11, base_pt + 1),
+        "hint_px":max(12, base_pt + 3),
+        "lead_px":max(14, base_pt + 5),
+        "heading_px":max(24, base_pt + 17),
+        "hero_px":max(32, base_pt + 27),
     }
