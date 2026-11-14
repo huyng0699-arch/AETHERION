@@ -23,7 +23,7 @@ def parse_quest(file: Path) -> dict[str, object]:
     frontmatter key. Never execute arbitrary YAML tags or import PyYAML.
     """
     data = file.read_text(encoding="utf-8-sig")
-    match = re.match(r"\\A---[ \\t]*\\r?\\n(.*?)\\r?\\n---[ \\t]*\\r?\\n", data, flags=re.DOTALL)
+    match = re.match(r"\A---[ \t]*\r?\n(.*?)\r?\n---[ \t]*\r?\n", data, flags=re.DOTALL)
     if not match:
         raise ValueError(f"{file}: missing or malformed YAML frontmatter")
 
@@ -34,17 +34,17 @@ def parse_quest(file: Path) -> dict[str, object]:
         if not stripped or stripped.startswith("#"):
             continue
         if raw[0].isspace():
-            if active_list and re.match(r"^\\s*-\\s+", raw):
+            if active_list and re.match(r"^\s*-\s+", raw):
                 existing = meta.get(active_list)
                 if isinstance(existing, list):
-                    item = re.sub(r"^\\s*-\\s+", "", raw).strip().strip("'\\\"")
+                    item = re.sub(r"^\s*-\s+", "", raw).strip().strip("'\\\"")
                     if item:
                         existing.append(item)
             # Continuation text, YAML literal block or nested object; not a
             # new top-level attribute and never a silent status override.
             continue
         active_list = None
-        found = re.fullmatch(r"([A-Za-z_][A-Za-z_0-9-]*):[ \\t]*(.*)", raw)
+        found = re.fullmatch(r"([A-Za-z_][A-Za-z_0-9-]*):[ \t]*(.*)", raw)
         if not found:
             raise ValueError(f"{file}: malformed top-level metadata: {raw!r}")
         key, value = found.groups()
