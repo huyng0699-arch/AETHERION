@@ -251,6 +251,7 @@ class AetherionWindow(QMainWindow):
         self.nav_more.hide()
         bar.addStretch(1)
 
+        self._server_state = "checking"
         self.status = QLabel("○  Đang kiểm tra")
         self.status.setObjectName("connectionPill")
         self.status.setToolTip("Trạng thái HTTP Server tại địa chỉ cấu hình")
@@ -305,6 +306,7 @@ class AetherionWindow(QMainWindow):
         self.shortcut_home.activated.connect(self.show_portal)
         self._retranslate_shell()
         self.pages.setCurrentWidget(self.portal_page)
+        self.check_server()
         self.heartbeat = QTimer(self)
         self.heartbeat.setInterval(30000)
         self.heartbeat.timeout.connect(self.check_server)
@@ -384,13 +386,38 @@ class AetherionWindow(QMainWindow):
         self.symptom_page.set_locale(self.ui_language)
         self.care_journal_page.set_locale(self.ui_language)
         self._open_intake_button.setText(tr(self.ui_language, "care.intake.title"))
+        # Resolve every main navigation item by its semantic route key:
+        # shared strings like "Hành trình chăm sóc" have distinct contexts.
+        for widget, key in (
+            (self.nav_home, "main.nav.home"),
+            (self.nav_health, "main.nav.health"),
+            (self.nav_monitor, "main.nav.monitor"),
+            (self.nav_ai, "main.nav.assistant"),
+            (self.nav_science, "main.nav.explore"),
+            (self.nav_crew, "main.nav.crew"),
+        ):
+            widget.setText(tr(self.ui_language, key))
+        for menu_button, keys in (
+            (self.nav_health, ("main.nav.health.today", "main.nav.care")),
+            (self.nav_monitor, ("main.nav.monitor.overview", "main.nav.ecg", "main.nav.authorized")),
+            (self.nav_science, ("observatory.hero", "main.nav.nasa",
+                                "main.nav.library", "main.nav.atlas")),
+            (self.nav_more, ("main.nav.assistant", "main.nav.nasa", "observatory.hero",
+                             "main.nav.library", "main.nav.crew", "main.nav.care",
+                             "demo.portal.title")),
+        ):
+            actions = menu_button.menu().actions()
+            if len(actions) == len(keys):
+                for action, key in zip(actions, keys):
+                    action.setText(tr(self.ui_language, key))
+        self.theme_button.setText(tr(self.ui_language, "main.theme.button"))
+        self._render_server_status()
         self.language_button.setText(f"VI / EN · {self.ui_language.upper()}")
         self.language_button.setToolTip(tr(self.ui_language, "main.locale.tooltip"))
         self.language_button.setAccessibleName(tr(self.ui_language, "main.locale.tooltip"))
         self._build_theme_menu()
         self.settings_button.setText("⚙  "+settings_tr("settings",self.ui_language))
         self.nav_more.setText(settings_tr("more",self.ui_language)+" ▾")
-        self.check_server()
 
     def _change_language(self):
         self.ui_language = "en" if self.ui_language == "vi" else "vi"
@@ -538,8 +565,26 @@ class AetherionWindow(QMainWindow):
             tr(self.ui_language, "main.help.body"),
         )
 
+    def _render_server_status(self):
+        """Language switching never starts a redundant network request."""
+        state = self._server_state
+        if state == "online":
+            self.status.setText(tr(self.ui_language, "main.status.online"))
+            self.status.setToolTip(tr(
+                self.ui_language, "main.status.online.tooltip", url=self.api_url
+            ))
+        elif state == "offline":
+            self.status.setText(tr(self.ui_language, "main.status.offline"))
+            self.status.setToolTip(tr(
+                self.ui_language, "main.status.offline.tooltip", url=self.api_url
+            ))
+        else:
+            self.status.setText(tr(self.ui_language, "main.status.checking"))
+            self.status.setToolTip(tr(self.ui_language, "main.status.tooltip"))
+
     def check_server(self):
-        self.status.setText(tr(self.ui_language, "main.status.checking"))
+        self._server_state = "checking"
+        self._render_server_status()
         request = QNetworkRequest(QUrl(self.api_url + "/health"))
         reply = self.network.get(request)
         reply.finished.connect(lambda: self.finish_check(reply))
@@ -549,11 +594,10 @@ class AetherionWindow(QMainWindow):
         error = reply.error()
         body = bytes(reply.readAll()).decode("utf-8", errors="replace")
         if error != QNetworkReply.NetworkError.NoError or code != 200 or '"status":"ok"' not in body.replace(" ", ""):
-            self.status.setText(tr(self.ui_language, "main.status.offline"))
-            self.status.setToolTip(tr(self.ui_language, "main.status.offline.tooltip", url=self.api_url))
+            self._server_state = "offline"
         else:
-            self.status.setText(tr(self.ui_language, "main.status.online"))
-            self.status.setToolTip(tr(self.ui_language, "main.status.online.tooltip", url=self.api_url))
+            self._server_state = "online"
+        self._render_server_status()
         reply.deleteLater()
 
 
