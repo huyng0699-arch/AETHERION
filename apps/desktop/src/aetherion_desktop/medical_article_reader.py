@@ -276,6 +276,8 @@ def build_medical_article_reader(db_path: str | Path = DEFAULT_LIBRARY, parent=N
                 child = self.content.takeAt(0)
                 widget = child.widget()
                 if widget is not None:
+                    widget.hide()
+                    widget.setParent(None)
                     widget.deleteLater()
 
         def _navigate(self, direction: int) -> None:
