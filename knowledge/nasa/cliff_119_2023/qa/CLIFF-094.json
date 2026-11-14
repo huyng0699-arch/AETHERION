@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-094",
+  "slot": 94,
+  "quest_id": "Q-0394",
+  "checked_at_utc": "2026-11-14T06:34:30.241544+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-decompression-sickness-cliff-2023.pdf?emrc=4857e6",
+  "http_status": 200,
+  "pdf_sha256": "8a2be38cdb6c7b69603954fe85231a62cf0286b21c549a675054aa7a1c69ede2",
+  "pdf_bytes": 346034,
+  "pages_extracted": 15,
+  "sections_count": 15,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-094-IMG-01": "72d55756c50f48ff9ea965806994151621dd6bc5e2036687e7122147eef8db8a",
+    "CLIFF-094-IMG-02": "99bfcd5fb96e2a671537212ec7b9838bbcd923b9502a01b038ccb73099a2cf12",
+    "CLIFF-094-IMG-03": "41a22e2a4d4a1beae75a31c9d7d45ad386c5bfb993983adf5c6bbbd1dfbd81a7"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
