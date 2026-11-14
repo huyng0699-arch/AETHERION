@@ -19,7 +19,7 @@ from PySide6.QtNetwork import QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import (
     QAbstractItemView, QComboBox, QFrame, QGridLayout, QHBoxLayout, QHeaderView,
     QLabel, QLineEdit, QListWidget, QListWidgetItem, QPushButton, QScrollArea, QToolTip,
-    QStackedWidget, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget,
+    QStackedWidget, QSizePolicy, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget,
 )
 
 from .localization import normalize_locale, tr
@@ -99,14 +99,17 @@ class Workspace(QWidget):
         outer = QVBoxLayout(self)
         outer.setContentsMargins(0, 0, 0, 0)
         scroll = QScrollArea()
+        self.scroll = scroll
         scroll.setFrameShape(QFrame.Shape.NoFrame)
+        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         scroll.setWidgetResizable(True)
         outer.addWidget(scroll)
         self.content = QWidget()
         scroll.setWidget(self.content)
         self.body = QVBoxLayout(self.content)
-        self.body.setContentsMargins(32, 24, 32, 34)
-        self.body.setSpacing(18)
+        self.content.setMinimumWidth(0)
+        self.body.setContentsMargins(14, 14, 14, 18)
+        self.body.setSpacing(12)
         self.eyebrow = QLabel()
         self.eyebrow.setObjectName("eyebrow")
         self.body.addWidget(self.eyebrow)
@@ -117,6 +120,13 @@ class Workspace(QWidget):
         self.intro = _caption()
         self.intro.setObjectName("heroCopy")
         self.body.addWidget(self.intro)
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        if hasattr(self, "scroll"):
+            width = self.scroll.viewport().width()
+            if width > 0 and self.content.width() != width:
+                self.content.setFixedWidth(width)
 
     def t(self, name: str, **fmt) -> str:
         return tr(self.locale, f"{self.namespace}.{name}", **fmt)
@@ -397,10 +407,12 @@ class MonitoringWorkspace(Workspace):
         self.body.addWidget(top)
 
         conductor_panel, conductor_layout = _panel()
+        self.conductor_panel = conductor_panel
+        self._conductor_detached = False
         self.time_title = QLabel()
-        self.time_title.setObjectName("heading")
-        conductor_layout.addWidget(self.time_title)
+        self.time_title.setObjectName("eyebrow")
         self.mode_row = QHBoxLayout()
+        self.mode_row.addWidget(self.time_title)
         self.mode = QComboBox()
         self.mode.addItem("Latest", "latest")
         self.mode.addItem("Fixed", "fixed")
@@ -414,6 +426,18 @@ class MonitoringWorkspace(Workspace):
             self.mode_row.addWidget(button)
             self.preset.append(button)
         self.mode_row.addStretch()
+        self.zoom_in = QPushButton()
+        self.zoom_in.clicked.connect(lambda: self._zoom(.6, .5))
+        self.mode_row.addWidget(self.zoom_in)
+        self.zoom_out = QPushButton()
+        self.zoom_out.clicked.connect(lambda: self._zoom(1.667, .5))
+        self.mode_row.addWidget(self.zoom_out)
+        self.pan_left = QPushButton()
+        self.pan_left.clicked.connect(lambda: self._pan(-.5))
+        self.mode_row.addWidget(self.pan_left)
+        self.pan_right = QPushButton()
+        self.pan_right.clicked.connect(lambda: self._pan(.5))
+        self.mode_row.addWidget(self.pan_right)
         conductor_layout.addLayout(self.mode_row)
         interval = QHBoxLayout()
         self.start_label = QLabel()
@@ -434,21 +458,6 @@ class MonitoringWorkspace(Workspace):
         self.apply_btn.clicked.connect(self._apply_bounds)
         interval.addWidget(self.apply_btn)
         conductor_layout.addLayout(interval)
-        toolbar = QHBoxLayout()
-        self.zoom_in = QPushButton()
-        self.zoom_in.clicked.connect(lambda: self._zoom(.6, .5))
-        toolbar.addWidget(self.zoom_in)
-        self.zoom_out = QPushButton()
-        self.zoom_out.clicked.connect(lambda: self._zoom(1.667, .5))
-        toolbar.addWidget(self.zoom_out)
-        self.pan_left = QPushButton()
-        self.pan_left.clicked.connect(lambda: self._pan(-.5))
-        toolbar.addWidget(self.pan_left)
-        self.pan_right = QPushButton()
-        self.pan_right.clicked.connect(lambda: self._pan(.5))
-        toolbar.addWidget(self.pan_right)
-        toolbar.addStretch()
-        conductor_layout.addLayout(toolbar)
         self.body.addWidget(conductor_panel)
 
         panel, content = _panel()
@@ -456,14 +465,14 @@ class MonitoringWorkspace(Workspace):
         self.metric_label = QLabel()
         selectors.addWidget(self.metric_label)
         self.metric_box = QComboBox()  # never shadow QWidget.metric()
-        self.metric_box.setMinimumWidth(170)
+        self.metric_box.setMinimumWidth(130)
         self.metric_box.setAccessibleName("Telemetry channel")
         self.metric_box.currentIndexChanged.connect(self._channel_changed)
         selectors.addWidget(self.metric_box, 3)
         self.source_label = QLabel()
         selectors.addWidget(self.source_label)
         self.source = QComboBox()
-        self.source.setMinimumWidth(110)
+        self.source.setMinimumWidth(85)
         self.source.currentIndexChanged.connect(self._source_changed)
         selectors.addWidget(self.source, 2)
         content.addLayout(selectors)
@@ -496,6 +505,8 @@ class MonitoringWorkspace(Workspace):
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
         self.table.setSortingEnabled(True)
         self.table.setMinimumHeight(300)
+        self.table.setMinimumWidth(0)
+        self.table.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Expanding)
         for i, w in enumerate((145, 105, 80, 200, 165, 90, 110, 115)):
             self.table.setColumnWidth(i, w)
         table_layout.addWidget(self.table)
@@ -514,6 +525,21 @@ class MonitoringWorkspace(Workspace):
         self.poll_timer.start()
         self.set_locale(locale)
         self._empty(clear_channels=True)
+
+    def detach_time_conductor(self):
+        """Return the independent Q-0477 controls for the Open MCT bottom slot."""
+        if not self._conductor_detached:
+            self.body.removeWidget(self.conductor_panel)
+            self.conductor_panel.setParent(None)
+            self._conductor_detached = True
+        return self.conductor_panel
+
+    def restore_time_conductor(self):
+        """Put Q-0477's own UTC controls back when another route is active."""
+        if self._conductor_detached:
+            self.conductor_panel.setParent(self)
+            self.body.insertWidget(1, self.conductor_panel)
+            self._conductor_detached = False
 
     def tx(self, key, **params):
         text = _MONITOR_TEXT[self.locale].get(key, key)
