@@ -464,6 +464,8 @@ def create_app(
     application.include_router(knowledge_router)
     from .care.http_api import build_care_router
     application.include_router(build_care_router(get_db_path, require_session))
+    from .admin_api import build_admin_router
+    application.include_router(build_admin_router(get_db_path, require_session))
     return application
 
 
