@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-022",
+  "slot": 22,
+  "quest_id": "Q-0322",
+  "checked_at_utc": "2026-11-14T05:58:19.711386+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/dental-filling-loss-cliff-2023.pdf?emrc=6bcf4a",
+  "http_status": 200,
+  "pdf_sha256": "8a6872ca902794828982fda8b02a9606ee9076cb7fdb2ca71ee2aebaffcf576b",
+  "pdf_bytes": 350176,
+  "pages_extracted": 15,
+  "sections_count": 15,
+  "tables_count": 2,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-022-IMG-01": "c0b38be005c9ae24951c6b28f22e8acc43152d4fe51574588a5026bb28907809",
+    "CLIFF-022-IMG-02": "d38c443f0780b937d680428a6ef90d47007a1afd5f40d2ef09ae17479eae378b",
+    "CLIFF-022-IMG-03": "24037d402b59ca7375c1a2215d9b8530d7a8ab3cbcbc6d842b9422557304ed46"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
