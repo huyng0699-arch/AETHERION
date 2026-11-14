@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "aetherion-nasa-osdr-selection-2026",
+  "retrieved_at_utc": "2026-11-14T03:48:00Z",
+  "source_repository": {
+    "name": "NASA Open Science Data Repository (OSDR)",
+    "url": "https://osdr.nasa.gov/",
+    "is_live_telemetry": false,
+    "usage_note": "Historical and spaceflight research datasets only. Never present OSDR records as live astronaut vital signs."
+  },
+  "datasets": [
+    {
+      "osd_id": "OSD-575",
+      "version": "3",
+      "secondary_ids": ["LSDS-8"],
+      "doi": "10.26030/mc5d-p710",
+      "title": "SpaceX Inspiration4 Blood Serum Metabolic Panel and Immune/Cardiac Cytokine Arrays (Comprehensive Metabolic Panel and Multiplex)",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-575",
+      "publisher": "NASA Open Science Data Repository (OSDR)",
+      "license_or_terms": "CC0-1.0 (open metadata/transformed tables); controlled raw human files subject to OSDR Data Access Request (DAR) / IRB Protocol 21-05023569",
+      "species": [
+        {
+          "scientific_name": "Homo sapiens",
+          "taxon_uri": "http://purl.bioontology.org/ontology/NCBITAXON/9606"
+        }
+      ],
+      "mission_or_platform": "SpaceX Inspiration4 (3-day LEO mission, 2021-09-16 to 2021-09-18, 4 civilian astronauts)",
+      "sample_count": 28,
+      "hazard_domains": ["altered_gravity", "radiation", "closed_hostile_habitat"],
+      "assay_types": [
+        "Analytical Chemistry - Comprehensive Metabolic Panel (Quest Diagnostics, Beckman Coulter AU5800)",
+        "Immunoassay Multiplex - Eve Technologies Human Cytokine/Chemokine 71-Plex (HD71)",
+        "Immunoassay Multiplex - Eve Technologies Human Cardiovascular Disease Panel 3 9-Plex (HDCVD9)",
+        "Immunoassay Multiplex - Alamar Biosciences NULISAseq Inflammation Panel"
+      ],
+      "measurement_units": [
+        "NPQ (NULISA Protein Quantification, log2 IPC-normalized counts)",
+        "pg/mL (extrapolated cytokine concentration, normalized to pre-flight mean)",
+        "Standard clinical chemistry CMP units (Quest Diagnostics test code 10231)",
+        "day (mission-relative timepoints L-92, L-44, L-3, R+1, R+45, R+82, R+194)",
+        "degree Celsius (sample storage temperature -80 C)"
+      ],
+      "is_live_telemetry": false,
+      "verification_status": "VERIFIED_METADATA_FROM_OSDR",
+      "limitations": "Short-duration (3-day) LEO mission with n=4 subjects; pre-flight and post-flight ground draws only (no in-flight serum draws); not live telemetry or diagnostic thresholds."
+    },
+    {
+      "osd_id": "OSD-569",
+      "version": "4",
+      "secondary_ids": ["GLDS-561", "LSDS-7"],
+      "doi": "10.26030/e0rx-sh52",
+      "title": "Whole Blood Measurements from the SpaceX Inspiration4 Mission (RNA-seq, epitranscriptome, WGS, clonal hematopoiesis, CBC)",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-569",
+      "publisher": "NASA Open Science Data Repository (OSDR)",
+      "license_or_terms": "CC0-1.0 (open metadata/processed summaries); controlled human genomic files subject to OSDR DAR / IRB",
+      "species": [
+        {
+          "scientific_name": "Homo sapiens",
+          "taxon_uri": "http://purl.bioontology.org/ontology/NCBITAXON/9606"
+        }
+      ],
+      "mission_or_platform": "SpaceX Inspiration4 (3-day LEO mission, 2021-09, 4 civilian astronauts)",
+      "sample_count": 81,
+      "hazard_domains": ["radiation", "altered_gravity", "closed_hostile_habitat"],
+      "assay_types": [
+        "Complete Blood Count (Quest Diagnostics Hematology Analyzer)",
+        "Whole Genome Sequencing & Clonal Hematopoiesis 9-gene panel (Element Biosciences / Illumina)",
+        "Long-read Direct RNA Sequencing (Oxford Nanopore Technologies PromethION)",
+        "Bulk RNA Sequencing (Ultima Genomics UG100)"
+      ],
+      "measurement_units": [
+        "Standard CBC hematology counts and concentrations",
+        "Sequencing read counts / flow-cycles (464 flow-cycles)",
+        "day (mission-relative timepoints L-92 to R+194)"
+      ],
+      "is_live_telemetry": false,
+      "verification_status": "VERIFIED_METADATA_FROM_OSDR",
+      "limitations": "n=4 crew members; ground timepoints only; raw genomic sequencing files are controlled access."
+    },
+    {
+      "osd_id": "OSD-530",
+      "version": "3",
+      "secondary_ids": ["GLDS-530"],
+      "doi": "10.26030/r2xr-h714",
+      "title": "Cell-free RNA analysis of plasma samples collected from six astronauts in JAXA Cell-Free Epigenome (CFE) Study",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-530",
+      "publisher": "NASA Open Science Data Repository (OSDR) / JAXA",
+      "license_or_terms": "NASA OSDR open science terms (de-identified processed RNA-seq tables; ethics approvals Tsukuba No. 251, JAXA JX-IRBA-20-071, NASA Pro1995, ESA 2017_04_09)",
+      "species": [
+        {
+          "scientific_name": "Homo sapiens",
+          "taxon_uri": "http://purl.bioontology.org/ontology/NCBITAXON/9606"
+        }
+      ],
+      "mission_or_platform": "International Space Station (ISS) long-duration >120 days (6 astronauts)",
+      "sample_count": 64,
+      "hazard_domains": ["altered_gravity", "radiation", "isolation_and_confinement", "closed_hostile_habitat"],
+      "assay_types": [
+        "Transcription Profiling - Plasma Cell-Free RNA Sequencing (Illumina NextSeq 500, 2x36 bp paired-end)",
+        "Transcription Profiling - CD36-enriched Extracellular Mitochondria (exMT) RNA-Seq (Illumina NextSeq 500)"
+      ],
+      "measurement_units": [
+        "base pair (UO:0000244, 36 bp read length)",
+        "day (UO:0000033, L-168 to R+120)",
+        "degree Celsius (UO:0000027, -95 C ISS / -80 C ground)",
+        "log2 normalized gene expression counts and fold-change / SEM"
+      ],
+      "is_live_telemetry": false,
+      "verification_status": "VERIFIED_METADATA_FROM_OSDR",
+      "limitations": "Small cohort (n=6 astronauts); group-level mean/SEM summaries in public .xlsx tables; longitudinal research archive, not real-time vital signs."
+    },
+    {
+      "osd_id": "OSD-258",
+      "version": "2",
+      "secondary_ids": ["GLDS-258", "GSE137081"],
+      "doi": "10.26030/gfew-5417",
+      "title": "Effects of Spaceflight on Human Induced Pluripotent Stem Cell-Derived Cardiomyocyte Structure and Function",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-258",
+      "publisher": "NASA Open Science Data Repository (OSDR)",
+      "license_or_terms": "NASA OSDR open science data",
+      "species": [
+        {
+          "scientific_name": "Homo sapiens",
+          "taxon_uri": "http://purl.bioontology.org/ontology/NCBITAXON/9606"
+        }
+      ],
+      "mission_or_platform": "ISS SpaceX CRS-9, Space Automated Bioproduct Laboratory (SABL), 5.5 weeks microgravity",
+      "sample_count": 18,
+      "hazard_domains": ["altered_gravity"],
+      "assay_types": [
+        "Transcription Profiling - RNA Sequencing (Illumina HiSeq 2000, 100 bp paired-end)",
+        "Cellular calcium-handling and cardiomyocyte structure/function comparison"
+      ],
+      "measurement_units": [
+        "read (sequencing read depth ~31M-47M reads)",
+        "percent (rRNA contamination; 5% CO2 culture)",
+        "base pair (100 bp read length)",
+        "degree Celsius (37 C culture; 4 C RNALater storage)",
+        "Normalized DESeq2 / log2 expression counts"
+      ],
+      "is_live_telemetry": false,
+      "verification_status": "VERIFIED_METADATA_FROM_OSDR",
+      "limitations": "In vitro hiPSC-derived cardiomyocyte model (3 donor lines, 18 samples), not whole-organ human clinical telemetry."
+    },
+    {
+      "osd_id": "OSD-374",
+      "version": "1",
+      "secondary_ids": [],
+      "doi": "available-on-study-page",
+      "title": "Hippocampal DNA Methylation (5mC/5hmC) and Transcriptomic Response Following Whole-Body Proton Irradiation",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-374",
+      "publisher": "NASA Open Science Data Repository (OSDR)",
+      "license_or_terms": "NASA OSDR open science data",
+      "species": [
+        {
+          "scientific_name": "Mus musculus",
+          "taxon_uri": "http://purl.bioontology.org/ontology/NCBITAXON/10090"
+        }
+      ],
+      "mission_or_platform": "Ground-based space radiation analog (whole-body proton irradiation, 2-week and 20-week timepoints)",
+      "sample_count": null,
+      "hazard_domains": ["radiation", "distance_from_earth"],
+      "assay_types": [
+        "Epigenetic Profiling - DIP-Seq (5mC and 5hmC DNA methylation, Illumina HiSeq 2000, 75 bp single-end)",
+        "Transcription Profiling - RNA Sequencing (Illumina HiSeq, processed with GeneLab GL-DPPD-7101-G / DESeq2)"
+      ],
+      "measurement_units": [
+        "base pair (75 bp single-end)",
+        "week (2-week and 20-week post-irradiation timepoints)",
+        "DESeq2 median-of-ratios normalized gene counts"
+      ],
+      "is_live_telemetry": false,
+      "verification_status": "VERIFIED_METADATA_FROM_OSDR",
+      "limitations": "Animal (Mus musculus) ground-based proton analog; informs radiation neurobiology mechanisms rather than direct human clinical thresholds."
+    }
+  ]
+}
