@@ -236,9 +236,9 @@ class MonitoringWorkspace(Workspace):
         filters = QHBoxLayout()
         self.metric_label = QLabel()
         filters.addWidget(self.metric_label)
-        self.metric = QComboBox()
-        self.metric.currentIndexChanged.connect(self._render)
-        filters.addWidget(self.metric, 2)
+        self.metric_box = QComboBox()
+        self.metric_box.currentIndexChanged.connect(self._render)
+        filters.addWidget(self.metric_box, 2)
         self.source_label = QLabel()
         filters.addWidget(self.source_label)
         self.source = QComboBox()
@@ -312,13 +312,13 @@ class MonitoringWorkspace(Workspace):
     def _empty(self):
         self.records = []
         self.has_more = False
-        self.metric.blockSignals(True)
+        self.metric_box.blockSignals(True)
         self.source.blockSignals(True)
-        self.metric.clear()
+        self.metric_box.clear()
         self.source.clear()
-        self.metric.addItem(self.t("all_metrics"), None)
+        self.metric_box.addItem(self.t("all_metrics"), None)
         self.source.addItem(self.t("all_sources"), None)
-        self.metric.blockSignals(False)
+        self.metric_box.blockSignals(False)
         self.source.blockSignals(False)
         self.plot.set_records([])
         self.table.setRowCount(0)
@@ -375,17 +375,17 @@ class MonitoringWorkspace(Workspace):
             self.status.setText(self.t("invalid"))
             return
         self.records, self.has_more = rows, more
-        self.metric.blockSignals(True)
+        self.metric_box.blockSignals(True)
         self.source.blockSignals(True)
-        self.metric.clear()
-        self.metric.addItem(self.t("all_metrics"), None)
+        self.metric_box.clear()
+        self.metric_box.addItem(self.t("all_metrics"), None)
         for metric, unit in sorted({(p.metric, p.unit) for p in rows}):
-            self.metric.addItem(f"{metric} · {unit}", (metric, unit))
+            self.metric_box.addItem(f"{metric} · {unit}", (metric, unit))
         self.source.clear()
         self.source.addItem(self.t("all_sources"), None)
         for name in sorted({p.source_id for p in rows}):
             self.source.addItem(name, name)
-        self.metric.blockSignals(False)
+        self.metric_box.blockSignals(False)
         self.source.blockSignals(False)
         self.status.setText(self.t("loaded", count=len(rows)) + (" · "+self.t("more") if more else ""))
         self._render()
@@ -393,7 +393,7 @@ class MonitoringWorkspace(Workspace):
     def _render(self, *_):
         if not hasattr(self, "table"):
             return
-        metric = self.metric.currentData()
+        metric = self.metric_box.currentData()
         source = self.source.currentData()
         days = self.period.currentData()
         since = datetime.now(timezone.utc) - timedelta(days=days) if days else None
