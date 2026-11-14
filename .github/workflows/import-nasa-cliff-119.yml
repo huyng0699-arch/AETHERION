@@ -1,0 +1,49 @@
+name: Import original NASA CliFF 119 (2023)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/fetch_nasa_cliff_119.py"
+      - ".github/workflows/import-nasa-cliff-119.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  import-nasa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out AETHERION main
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install fetching dependencies
+        run: python -m pip install --disable-pip-version-check "requests>=2.32,<3" "beautifulsoup4>=4.12,<5"
+      - name: Download original documents directly from NASA
+        run: python scripts/fetch_nasa_cliff_119.py
+      - name: Commit only NASA originals and provenance manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/nasa/cliff_119_2023/
+          if ! git diff --cached --quiet; then
+            git commit -m "Import original NASA CliFF 119 documents and source manifest"
+            git push origin HEAD:main
+          fi
+      - name: Confirm all 119 original records
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("data/nasa/cliff_119_2023/manifest.json")
+          d = json.loads(p.read_text(encoding="utf-8"))
+          print(f"NASA CliFF originals: {d['downloaded_documents']}/{d['expected_documents']}")
+          if not d["complete"]:
+              raise SystemExit("Not all 119 originals could be verified and downloaded. See manifest.")
+          PY
