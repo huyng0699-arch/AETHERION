@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-033",
+  "slot": 33,
+  "quest_id": "Q-0333",
+  "checked_at_utc": "2026-11-14T06:08:53.087735+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-constipation-cliff-2023.pdf?emrc=503504",
+  "http_status": 200,
+  "pdf_sha256": "60472f1d4e3bf6e8a658347c2a563a6cfe68d06fa62fdfea0a6f559a12db0c0c",
+  "pdf_bytes": 297645,
+  "pages_extracted": 12,
+  "sections_count": 12,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-033-IMG-01": "aa2f616335f48ce23033a207df7160af065cf6350139c5b8fc6bc9d8e22b6097",
+    "CLIFF-033-IMG-02": "d6f632e1083b5b69ac12ad72b67cbce0b19fea241225a326ff9f795cab500da9",
+    "CLIFF-033-IMG-03": "568175fb03695fb5a8670fd2764714bd3b13f947c0ffe30fde75ed460b2b794d"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
