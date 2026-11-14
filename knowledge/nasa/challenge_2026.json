@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0.0",
+  "provenance": {
+    "source_url": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/",
+    "publisher": "NASA Space Apps Challenge (funded by NASA Science Mission Directorate through Booz Allen Hamilton, Mindgrub, and SecondMuse)",
+    "retrieved_at_utc": "2026-11-14T03:46:00Z",
+    "verification_status": "VERIFIED_OFFICIAL_SOURCE",
+    "license_or_terms": "NASA Space Apps Challenge Participant Terms (https://www.spaceappschallenge.org/legal/); reference text attributed to NASA Space Apps Challenge 2026",
+    "limitations": [
+      "Challenge prompt and judging criteria are static hackathon specifications, not live astronaut telemetry or clinical medical protocols.",
+      "The challenge Resources tab (?tab=resources) requires separate inspection in Q-0107."
+    ]
+  },
+  "event": {
+    "name": "2026 NASA Space Apps Challenge",
+    "dates_local": "2026-11-14 to 2026-11-15",
+    "submission_deadline_local": "2026-11-15T23:59:00"
+  },
+  "challenge": {
+    "slug": "health-monitoring-software",
+    "title": "Create Health Monitoring Software for Astronauts on Space Missions",
+    "difficulty": "Intermediate",
+    "subjects": [
+      "Human Exploration",
+      "Software",
+      "Space Exploration"
+    ],
+    "summary_prompt": "Long-duration missions expose astronauts to space radiation, isolation and confinement, altered gravity, and a hostile closed environment, which can bring immune changes, bone loss, cardiovascular events, and behavioral health problems. On long missions, astronauts carry much of the responsibility for spotting these changes in themselves. Your challenge is to build a health monitoring software that gathers health indicators and enables astronauts to evaluate and act on the status of their health.",
+    "five_hazards": [
+      {
+        "id": "space_radiation",
+        "label": "Space radiation"
+      },
+      {
+        "id": "isolation_and_confinement",
+        "label": "Isolation and confinement"
+      },
+      {
+        "id": "distance_from_earth",
+        "label": "Distance from Earth"
+      },
+      {
+        "id": "gravity_fields",
+        "label": "Gravity fields"
+      },
+      {
+        "id": "hostile_closed_environments",
+        "label": "Hostile closed environments"
+      }
+    ],
+    "health_risks_mentioned": [
+      "immune system changes",
+      "bone density loss",
+      "cardiovascular events",
+      "inadequate nutrition",
+      "behavioral health conditions"
+    ],
+    "example_health_indicators": [
+      {
+        "name": "blood_pressure",
+        "label": "Blood pressure",
+        "unit_or_format": "mmHg (not specified on challenge page)"
+      },
+      {
+        "name": "heart_rate",
+        "label": "Heart rate",
+        "unit_or_format": "bpm (not specified on challenge page)"
+      },
+      {
+        "name": "blood_sugar",
+        "label": "Blood sugar",
+        "unit_or_format": "mg/dL"
+      },
+      {
+        "name": "body_temperature",
+        "label": "Body temperature",
+        "unit_or_format": "degC/degF (not specified on challenge page)"
+      },
+      {
+        "name": "daily_sleep_hours",
+        "label": "Daily sleep hours",
+        "unit_or_format": "hours"
+      },
+      {
+        "name": "mood",
+        "label": "Mood",
+        "unit_or_format": "self-report"
+      },
+      {
+        "name": "ultrasound_images",
+        "label": "Ultrasound images",
+        "unit_or_format": "image"
+      }
+    ],
+    "core_questions": [
+      "Which measurements can be performed in space?",
+      "Why is an exam needed?",
+      "How do spaceflight hazards affect these health indicators?",
+      "When might a result warrant attention from the crew or from flight surgeons on the ground?",
+      "What actions can be taken to prevent a critical health condition?"
+    ],
+    "ui_and_potential_considerations": [
+      "Gather data from the user via keyboard text, mouse clicks, or camera images.",
+      "Present metrics and diagnosis clearly; consider animations and interactivity (e.g., clickable human figure showing organ/body part function and health status).",
+      "Support different mission environments: spacecraft, space station, rover, or planetary/lunar base.",
+      "Prompt astronauts to take measurements or complete specific actions as part of mission routine.",
+      "Optional features: gamification system, dynamic time-series charts, color coding for at-a-glance status interpretation, and simple instructions/explanations."
+    ]
+  },
+  "evaluation_emphasis": {
+    "judging_criteria_equal_weight": [
+      "Impact",
+      "Creativity",
+      "Validity",
+      "Relevance",
+      "Presentation"
+    ],
+    "criteria_source_urls": [
+      "https://www.spaceappschallenge.org/2026/local-events/purwokerto/",
+      "https://www.spaceappschallenge.org/2026/local-events/guelph/"
+    ],
+    "global_eligibility_requirements": [
+      "Answer one published 2026 NASA Space Apps challenge.",
+      "Use at least one NASA or Space Agency Partner data source or resource.",
+      "Submit project in English before 2026-11-15T23:59 local time.",
+      "Keep code open source and link a public repository on the official Project tab."
+    ]
+  }
+}
