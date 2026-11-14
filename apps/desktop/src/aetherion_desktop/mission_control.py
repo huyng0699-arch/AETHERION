@@ -149,6 +149,8 @@ def build_mission_control_page(api_url: str, network, parent=None):
             from .features.mission.mission_layout import install_mission_layout
             install_mission_layout(self, api_url)
             self.open_personal_button.setEnabled(False)
+            self.set_locale(self.ui_language)
+            self._sync_capture("")
 
         def _update_summary(self, *, subject: str = "", count: int | None = None,
                             latest: str = "", sources: int | None = None):
@@ -212,7 +214,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self.ui_language = normalize_locale(locale)
             translate_shell_widgets(self, self.ui_language)
             self.events_widget.set_locale(self.ui_language)
-            self.capture_heading.setText(tr(self.ui_language, "mission.dataTitle"))
+            self.capture_heading.setText(tr(self.ui_language, "mission.sourceOnly"))
             self.capture_help.setText(
                 tr(self.ui_language, "personal.originSelf") + " · " +
                 tr(self.ui_language, "mission.note.recorded")
@@ -227,6 +229,8 @@ def build_mission_control_page(api_url: str, network, parent=None):
                 self.ui_language, "care.journey.advance",
                 phase=tr(self.ui_language, "mission.observationsTab")
             ))
+            if not self._capture_pending:
+                self.capture_feedback.setText(tr(self.ui_language, "personal.originSelf"))
             # The observation header "Observed at" is context-dependent.
             # Semantic keys avoid an ambiguous English -> Vietnamese guess.
             self.table.setHorizontalHeaderLabels([

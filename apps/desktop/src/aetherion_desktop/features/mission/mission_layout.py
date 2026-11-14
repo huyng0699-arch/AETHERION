@@ -5,6 +5,8 @@ writes. No patient, clinical finding, live device reading or trend is fabricated
 """
 from __future__ import annotations
 
+from datetime import datetime, timezone
+
 
 def install_mission_layout(page, api_url: str) -> None:
     """Build a scrollable Qt Mission view, with horizontal scrolling for wide data.
@@ -207,9 +209,7 @@ def install_mission_layout(page, api_url: str) -> None:
     page.capture_value.setPlaceholderText("0.0")
     page.capture_source = QLineEdit()
     page.capture_at = QLineEdit()
-    page.capture_at.setText(__import__("datetime").datetime.now(
-        __import__("datetime").timezone.utc
-    ).isoformat(timespec="seconds"))
+    page.capture_at.setText(datetime.now(timezone.utc).isoformat(timespec="seconds"))
     entry.addWidget(page.capture_metric, 3, 0)
     entry.addWidget(page.capture_value, 3, 1)
     entry.addWidget(page.capture_source, 3, 2)
