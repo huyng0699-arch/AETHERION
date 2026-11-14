@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from ...localization import normalize_locale, tr, translate_existing, translate_shell_widgets
+
 TOPICS: tuple[tuple[str, str, str], ...] = (
     ("space_radiation", "Space radiation", "space_radiation.json"),
     ("isolation_and_confinement", "Isolation and confinement", "isolation_confinement.json"),
@@ -144,31 +146,50 @@ def _render_value(value: object, depth: int = 0) -> str:
     return "<em>Unsupported reference field.</em>"
 
 
-def render_hazard_html(item: HazardReference) -> str:
-    """Build one safe, static Qt-rich-text document with source drilldowns."""
-    title = escape(item.title)
+def hazard_display_title(hazard_id: str, title: str, locale: str) -> str:
+    """Translate only the UI topic heading, never the underlying source title."""
+    keys = {
+        "space_radiation": "explore.topic.radiation",
+        "isolation_and_confinement": "explore.topic.isolation",
+        "distance_from_earth": "explore.topic.distance",
+        "gravity_fields": "explore.topic.gravity",
+        "hostile_closed_environments": "explore.topic.habitat",
+    }
+    key = keys.get(hazard_id)
+    return tr(locale, key) if key else title
+
+
+def render_hazard_html(item: HazardReference, locale: str = "en") -> str:
+    """Render translated UI chrome around UNMODIFIED, escaped scientific evidence.
+
+    The source sections, citations and limitations remain verbatim in their
+    source language, with stable hazard/source identifiers.
+    """
+    locale = normalize_locale(locale)
+    title = escape(hazard_display_title(item.hazard_id, item.title, locale))
     if item.state != "REFERENCE_ONLY":
-        return (f"<h2>{title}</h2><p><strong>{escape(item.state)}</strong></p>"
-                f"<p>{escape(item.error)}</p>"
-                "<p>No data is interpreted as normal health; no measurements were inferred.</p>")
+        return (
+            f"<h2>{title}</h2><p><strong>{escape(item.state)}</strong></p>"
+            f"<p>{escape(item.error)}</p>"
+            f"<p>{escape(tr(locale, 'explore.html.missing'))}</p>"
+        )
     parts = [
         f"<h2>{title}</h2>",
-        "<p><strong>Research reference only.</strong> This is an offline source-linked "
-        "education view, NOT live crew telemetry, dosimetry, diagnosis or medical guidance.</p>",
-        "<p><strong>Observation status:</strong> NO_DATA — this reference view has no "
-        "authorized sensor or subject observations to display.</p>",
+        f"<p><strong>{escape(tr(locale, 'explore.sourceNotice'))}</strong> "
+        f"{escape(tr(locale, 'explore.html.warning'))}</p>",
+        f"<p><strong>{escape(tr(locale, 'explore.html.observations'))}</strong> "
+        f"{escape(tr(locale, 'explore.html.noData'))}</p>",
     ]
     for label, value in item.sections:
-        parts.append("<h3>" + escape(label) + "</h3>" + _render_value(value))
-    parts.append("<h3>Scientific source links (internet needed when opening)</h3><ul>")
+        parts.append("<h3>" + escape(translate_existing(label, locale)) + "</h3>" + _render_value(value))
+    parts.append(f"<h3>{escape(tr(locale, 'explore.html.links'))}</h3><ul>")
     for publisher, url in item.sources:
         safe = escape(url, quote=True)
         parts.append('<li><a href="' + safe + '">' + escape(publisher) + "</a> — "
                      + escape(url) + "</li>")
-    parts.append("</ul><h3>Evidence limitations</h3>")
+    parts.append(f"</ul><h3>{escape(tr(locale, 'explore.html.limits'))}</h3>")
     parts.append(_render_value(list(item.limitations)))
-    parts.append("<p><em>NASA research material is separate from AETHERION's "
-                 "person-specific, authenticated observation store.</em></p>")
+    parts.append(f"<p><em>{escape(tr(locale, 'explore.html.notLive'))}</em></p>")
     return "".join(parts)
 
 
@@ -184,6 +205,7 @@ def build_nasa_explore_page(parent=None):
     class NASAExplorePage(QWidget):
         def __init__(self):
             super().__init__(parent)
+            self.ui_language = "vi"
             layout = QVBoxLayout(self)
             layout.setContentsMargins(18, 20, 18, 16)
             heading = QLabel("NASA Explore · Five spaceflight hazards")
@@ -222,33 +244,40 @@ def build_nasa_explore_page(parent=None):
             self.topics.currentRowChanged.connect(self.show_hazard)
             self.reload()
 
+        def set_locale(self, locale: str):
+            self.ui_language = normalize_locale(locale)
+            translate_shell_widgets(self, self.ui_language)
+            # Five local JSON files only; preserve list selection and never
+            # modify the NASA data or issue a network request.
+            self.reload()
+
         def reload(self):
             selected = self.topics.currentRow()
             self.references = load_hazard_references()
             self.topics.clear()
             for reference in self.references:
                 state = "" if reference.state == "REFERENCE_ONLY" else f" [{reference.state}]"
-                self.topics.addItem(reference.title + state)
+                self.topics.addItem(hazard_display_title(
+                    reference.hazard_id, reference.title, self.ui_language
+                ) + state)
             missing = sum(ref.state != "REFERENCE_ONLY" for ref in self.references)
-            self.status.setText(
-                f"{len(self.references) - missing}/5 local NASA hazard reference files loaded. "
-                "Source links require internet; observations are not loaded.")
+            self.status.setText(tr(self.ui_language, "explore.loaded", count=len(self.references) - missing))
             self.topics.setCurrentRow(selected if 0 <= selected < len(self.references) else 0)
 
         def show_hazard(self, index: int):
             if 0 <= index < len(self.references):
-                self.detail.setHtml(render_hazard_html(self.references[index]))
+                self.detail.setHtml(render_hazard_html(self.references[index], self.ui_language))
             else:
-                self.detail.setHtml("<p>No NASA hazard selected.</p>")
+                self.detail.setHtml("<p>" + escape(tr(self.ui_language, "explore.noSelection")) + "</p>")
 
         def open_source(self, url):
             url_text = url.toString()
             if not trusted_source_url(url_text):
-                QMessageBox.warning(self, "Source blocked",
-                                    "Only official NASA and NASA Space Apps HTTPS source links may be opened.")
+                QMessageBox.warning(self, tr(self.ui_language, "explore.blocked"),
+                                    tr(self.ui_language, "explore.blockedText"))
                 return
             if not QDesktopServices.openUrl(url):
-                QMessageBox.information(self, "Source unavailable",
-                    "The source could not be opened. Local reference text remains accessible offline.")
+                QMessageBox.information(self, tr(self.ui_language, "explore.unavailable"),
+                    tr(self.ui_language, "explore.unavailableText"))
 
     return NASAExplorePage()
