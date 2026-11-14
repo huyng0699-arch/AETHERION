@@ -3,6 +3,14 @@
 **Latest authoring audit:** 2026-11-14, P0 persistent hosted Mission Operations and original-phase NASA table; source only, no Qt screenshot.  
 **Evidence class:** GitHub file SHA and source inspection only. PySide6 unavailable in this runtime; **no new Linux offscreen or Windows screenshot and no runtime acceptance**.
 
+## Final source SHA after MA-7 selection consistency patch
+
+- `mission_ops_home.py` latest committed blob: `9e338397d9f61d63ac2ad4b420e31af8a67c80c2` — [`b14978623ee530cc292048a412d4f02a927cff59`](https://github.com/huyng0699-arch/AETHERION/commit/b14978623ee530cc292048a412d4f02a927cff59). The original NASA phase-comparison table now retains the selected metric in the source measurement table and Inspect when switching report phases, and measurement selection drives the same comparison metric. Values and source labels remain read-only.
+- [Q-0486 PR #9](https://github.com/huyng0699-arch/AETHERION/pull/9) was inspected but **not imported or edited**: its telemetry widget has UTC time-axis semantics, unsuitable for MA-7's categorical phase/timepoint records without verified UTC timestamps.
+- `main.py` blob remains `9889e109c52943064bf27dfb8a4f8e2284db18de` for the persistent-shell integration. Existing Q-0477 internal Monitoring controls remain independent. **Offscreen Qt and Windows visual acceptance still PENDING.**
+
+---
+
 ## P0 source checkpoint — persistent Mission Operations (2026-11-14)
 
 **Owner override:** Browse/Workspace/Inspect and bottom UTC conductor must persist throughout normal native routes, not just cold-start Home; the five-card Portal and duplicate horizontal top navigation are explicitly rejected. This is the user's **actual app visual**, not the Server Admin page.
