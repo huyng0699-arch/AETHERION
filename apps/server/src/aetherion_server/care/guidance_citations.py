@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from contextlib import closing
 from pathlib import Path
 import sqlite3
 from typing import Any
@@ -25,7 +26,7 @@ def filter_approved_educational_actions(
     verified_articles: dict[str, dict[str, str]] = {}
     if db_path.is_file():
         try:
-            with sqlite3.connect(f"file:{db_path}?mode=ro", uri=True) as conn:
+            with closing(sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)) as conn:
                 for art_id, title, source_id in conn.execute(
                     "SELECT article_id, display_title, source_id FROM articles"
                 ):
