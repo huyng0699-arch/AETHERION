@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-090",
+  "slot": 90,
+  "quest_id": "Q-0390",
+  "checked_at_utc": "2026-11-14T06:33:47.029592+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-insomnia-cliff-2023.pdf?emrc=07aabf",
+  "http_status": 200,
+  "pdf_sha256": "c5037609f492231f44fe36600afc55997bcd633008139a0649c7a655d7b9d1bd",
+  "pdf_bytes": 324340,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-090-IMG-01": "0c4597e6d27e6059701a87a32d8fc923acec67f3e28fcc3e775bfbfcf3e6df82",
+    "CLIFF-090-IMG-02": "07b11452ce8d18067ace39acafc89e5f1f41f4ddc09ba3d7bbf254df091aaa71",
+    "CLIFF-090-IMG-03": "18d0c50e7356ac2285b8d1e913f35910d91ff970be7c7dfc4492b0d257753a82"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
