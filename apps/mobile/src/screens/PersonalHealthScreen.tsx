@@ -28,8 +28,18 @@ export function PersonalHealthScreen({ locale, token, subjectId, onBack, onUnaut
 
   useEffect(() => { void load(); }, [load]);
   const status = data?.availability_status;
-  const statusLabel = status === 'READY' ? t(locale, 'statusReady') : status === 'STALE' ? t(locale, 'statusStale') : status === 'NO_DATA' ? t(locale, 'statusNoData') : t(locale, 'statusOther');
-  const tone = status === 'READY' ? 'good' : status === 'STALE' ? 'warn' : status === 'NO_DATA' ? 'neutral' : 'bad';
+  const statusLabel = status === 'READY' ? t(locale, 'statusReady')
+    : status === 'STALE' ? t(locale, 'statusStale')
+      : status === 'NO_DATA' ? t(locale, 'statusNoData')
+        : status === 'OFFLINE' ? t(locale, 'statusOffline')
+          : status === 'DENIED' ? t(locale, 'statusDenied')
+            : status === 'ERROR' ? t(locale, 'statusError')
+              : status === 'UNVERIFIED' ? t(locale, 'statusUnverified')
+                : t(locale, 'statusOther');
+  const tone = status === 'READY' ? 'good'
+    : status === 'STALE' || status === 'OFFLINE' ? 'warn'
+      : status === 'NO_DATA' || status === 'UNVERIFIED' ? 'neutral'
+        : 'bad';
 
   return (
     <AppPage>
