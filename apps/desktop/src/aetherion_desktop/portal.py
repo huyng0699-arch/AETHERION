@@ -27,7 +27,8 @@ PORTAL_CARDS: tuple[PortalCard, ...] = (
 PORTAL_ROUTES = frozenset(card.route for card in PORTAL_CARDS)
 
 
-def build_portal_page(parent=None, *, theme_name: str = "orbit", reduce_motion: bool = False, locale: str = "vi"):
+def build_portal_page(parent=None, *, theme_name: str = "daybreak", reduce_motion: bool = False, locale: str = "vi",
+                      mode: str = "light", intensity: int = 48):
     """Create a beautiful *native* Qt Portal. No server call or data fabrication."""
     from PySide6.QtCore import Qt, Signal
     from PySide6.QtWidgets import (
@@ -57,7 +58,7 @@ def build_portal_page(parent=None, *, theme_name: str = "orbit", reduce_motion: 
             super().__init__(parent)
             self.language = normalize_locale(locale)
             self.setObjectName("aetherionPortal")
-            self.ambient = AmbientBackdrop(self, theme_name, reduce_motion)
+            self.ambient = AmbientBackdrop(self, theme_name, reduce_motion, mode, intensity)
             self.ambient.lower()
             root = QVBoxLayout(self)
             root.setContentsMargins(35, 23, 35, 25)
@@ -93,7 +94,7 @@ def build_portal_page(parent=None, *, theme_name: str = "orbit", reduce_motion: 
             hero.addLayout(hero_copy, 1)
             side = QLabel("01 / HOME\n\nONE HEALTH\nBEYOND EARTH")
             side.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
-            side.setStyleSheet("font-size:13px; font-weight:600; color:rgba(186,218,234,170); letter-spacing:2px;")
+            side.setObjectName("pageHint")
             hero.addWidget(side)
             root.addLayout(hero, 2)
 
@@ -177,7 +178,7 @@ def build_portal_page(parent=None, *, theme_name: str = "orbit", reduce_motion: 
             self.ambient.setGeometry(self.rect())
             self.ambient.lower()
 
-        def set_visuals(self, name: str, motion_reduced: bool):
-            self.ambient.set_visuals(name, motion_reduced)
+        def set_visuals(self, name: str, motion_reduced: bool, mode: str = "light", intensity: int = 48):
+            self.ambient.set_visuals(name, motion_reduced, mode, intensity)
 
     return PortalPage()
