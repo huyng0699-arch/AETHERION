@@ -66,15 +66,24 @@ def scan() -> tuple[list[dict[str, str]], collections.Counter]:
         relpath = path.relative_to(ROOT).as_posix()
         reason = ""
         if status == "DONE":
+            reviewer = (m.get("reviewer_id") or m.get("reviewed_by")
+                        or m.get("independent_reviewer") or "")
+            owner = m.get("owner", "")
             if review != "APPROVED":
                 reason = "DONE without review: APPROVED"
+            elif reviewer and reviewer.strip("'\\"") == owner.strip("'\\""):
+                reason = "Self-approved by implementer; independent review required"
+            elif not reviewer:
+                reason = "DONE lacks identifiable independent reviewer"
             elif not (
                 m.get("tested_commit")
                 or m.get("implementation_commit")
                 or m.get("commit_sha")
                 or re.search(r"\b[0-9a-f]{40}\b", content)
             ):
-                reason = "DONE without identifiable commit SHA; independently inspect"
+                reason = "DONE without identifiable commit SHA; inspect claimed evidence"
+            elif relpath in changed:
+                reason = "Recently changed DONE; review evidence at current HEAD"
         elif review in {"PENDING", "COMPONENT_APPROVED", "REWORK_REQUIRED"} and (
             m.get("implementation_state") in {"COMPONENT_READY", "READY_FOR_REVIEW"}
             or review in {"COMPONENT_APPROVED", "REWORK_REQUIRED"}
