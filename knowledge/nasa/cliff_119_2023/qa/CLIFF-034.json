@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-034",
+  "slot": 34,
+  "quest_id": "Q-0334",
+  "checked_at_utc": "2026-11-14T06:09:58.768784+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/gastroenteritis-acute-diarrhea-cliff-2023.pdf?emrc=e771e5",
+  "http_status": 200,
+  "pdf_sha256": "1b9bf1c740243ba18eff5900ac3f6e5bb760fbff842bee501e85fa650e4e3e7a",
+  "pdf_bytes": 325409,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-034-IMG-01": "a0284db63008d620fe7b15d90ea91b90849f2435f5fa69acd8279675ea6f6725",
+    "CLIFF-034-IMG-02": "71e7ea831bc3cadaa8bb680c9a370940a10526f135d1964454229a096627414f",
+    "CLIFF-034-IMG-03": "7717d79da7ed2c25e0b8f820955db51c040541eea3415ac9c7165da37beea78a"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
