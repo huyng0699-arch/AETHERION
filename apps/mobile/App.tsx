@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { useFonts } from 'expo-font';
 import { ActivityIndicator, ImageBackground, KeyboardAvoidingView, Platform, StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -40,6 +42,7 @@ function messageFor(error: unknown, locale: Locale): string {
 }
 
 export default function App() {
+  const [iconFontLoaded] = useFonts(Ionicons.font);
   const [route, setRoute] = useState<Route>('login');
   const [history, setHistory] = useState<Route[]>([]);
   const [pendingRoute, setPendingRoute] = useState<Route>('portal');
@@ -178,7 +181,7 @@ export default function App() {
   const showNav = route !== 'login';
   const activeTab = route === 'health' ? 'health' : route === 'monitor' ? 'monitor' : route === 'ai' ? 'ai' : route === 'portal' || route === 'login' || route === 'demoIntro' || route === 'demoData' ? 'portal' : 'more';
 
-  if (!ready) {
+  if (!ready || !iconFontLoaded) {
     return <SafeAreaProvider><View style={styles.loading}><ActivityIndicator color={colors.cyan} size="large" /></View></SafeAreaProvider>;
   }
 
@@ -187,6 +190,7 @@ export default function App() {
       <StatusBar style="dark" />
       <KeyboardAvoidingView style={styles.fill} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ImageBackground source={require('./assets/aetherion-app-background.png')} resizeMode="cover" style={styles.fill}>
+          <View style={styles.mobileShell}>
           {route === 'portal' && <PortalScreen locale={locale} setLocale={changeLocale} isAuthenticated={!!session} serverStatus={serverStatus} onOpen={openRoute} />}
           {route === 'login' && <LoginScreen locale={locale} serverUrl={serverUrl} setServerUrl={setServerUrl} onConnect={connect} onSignIn={submitLogin} onOpenDemo={() => openRoute('demoIntro')} onBack={history.length ? goBack : undefined} busy={busy} error={loginError} />}
           {route === 'health' && <PersonalHealthScreen locale={locale} token={session?.access_token || ''} subjectId={identity?.allowed_subjects?.[0]} onBack={goBack} onUnauthorized={handleUnauthorized} />}
@@ -215,10 +219,11 @@ export default function App() {
             username={identity?.username || ''} role={identity?.role || ''}
           />}
           {showNav && <BottomNav active={activeTab} onSelect={navSelect} labels={{ portal: t(locale, 'home'), health: t(locale, 'personal'), monitor: t(locale, 'monitor'), ai: 'AI', more: t(locale, 'moreTitle') }} />}
+          </View>
         </ImageBackground>
       </KeyboardAvoidingView>
     </SafeAreaProvider>
   );
 }
 
-const styles = StyleSheet.create({ fill: { flex: 1, backgroundColor: colors.background }, loading: { flex: 1, backgroundColor: colors.background, alignItems: 'center', justifyContent: 'center' } });
+const styles = StyleSheet.create({ fill: { flex: 1, backgroundColor: colors.background }, mobileShell: { flex: 1, width: '100%', maxWidth: 470, alignSelf: 'center' }, loading: { flex: 1, backgroundColor: colors.background, alignItems: 'center', justifyContent: 'center' } });
