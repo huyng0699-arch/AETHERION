@@ -46,7 +46,11 @@ STRINGS = {
         "bad_target": "Chỉ cho phép http://127.0.0.1:PORT hoặc http://[::1]:PORT.",
         "failed": "Yêu cầu thất bại", "saved": "Đã lưu vào cơ sở dữ liệu máy chủ",
         "backup_ok": "Đã tạo bản sao SQLite có kiểm tra toàn vẹn",
-        "ai_cloud": "Cloud AI chưa hỗ trợ: khóa bí mật và sự đồng ý chia sẻ dữ liệu phải có cơ chế an toàn trước khi kích hoạt.",
+        "ai_cloud": "Gemini/OpenAI: khóa API chỉ nằm trong bộ nhớ Server, mất khi khởi động lại. Chỉ gửi chat lên cloud sau khi người dùng đồng ý.",
+        "cloud_provider": "Nhà cung cấp Cloud", "cloud_model": "Mô hình Cloud",
+        "cloud_key": "Khóa API (chỉ bộ nhớ)", "cloud_save": "Thiết lập API",
+        "cloud_clear": "Xóa khóa", "cloud_test": "Gửi yêu cầu AI thật",
+        "cloud_settings": "Nạp cấu hình",
         "model_offline": "Ollama chưa sẵn sàng hoặc mô hình chưa được cài.",
         "missing_model": "Hãy lấy danh sách mô hình thật trước khi bật AI cục bộ.",
         "no_invented_data": "Dữ liệu chưa có nguồn xác thực được hiển thị là chưa kết nối, không phải bằng 0.",
@@ -78,7 +82,11 @@ STRINGS = {
         "bad_target": "Only http://127.0.0.1:PORT or http://[::1]:PORT is allowed.",
         "failed": "Request failed", "saved": "Saved in the server database",
         "backup_ok": "Created integrity-checked SQLite snapshot",
-        "ai_cloud": "Cloud AI unavailable: secure secret storage and consent-aware data policy must be implemented first.",
+        "ai_cloud": "Gemini/OpenAI: API key is kept only in Server process memory; re-enter after restart. Cloud chat additionally requires user consent.",
+        "cloud_provider": "Cloud provider", "cloud_model": "Cloud model",
+        "cloud_key": "API key (memory only)", "cloud_save": "Configure API",
+        "cloud_clear": "Clear key", "cloud_test": "Run real AI request",
+        "cloud_settings": "Load configuration",
         "model_offline": "Ollama is offline or the selected model is not installed.",
         "missing_model": "Discover an installed model before enabling local AI.",
         "no_invented_data": "Missing verified sources remain disconnected, never zero-valued mock readings.",
@@ -226,6 +234,37 @@ class AdminWindow(QMainWindow):
         self.cloud_notice = QLabel()
         self.cloud_notice.setWordWrap(True)
         ai_layout.addWidget(self.cloud_notice)
+        cloud_form = QFormLayout()
+        self.cloud_provider_label = QLabel()
+        self.cloud_provider_combo = QComboBox()
+        self.cloud_provider_combo.addItem("Gemini", "gemini")
+        self.cloud_provider_combo.addItem("OpenAI", "openai")
+        cloud_form.addRow(self.cloud_provider_label, self.cloud_provider_combo)
+        self.cloud_model_label = QLabel()
+        self.cloud_model_input = QLineEdit("gemini-2.5-flash")
+        cloud_form.addRow(self.cloud_model_label, self.cloud_model_input)
+        self.cloud_key_label = QLabel()
+        self.cloud_key_input = QLineEdit()
+        self.cloud_key_input.setEchoMode(QLineEdit.EchoMode.Password)
+        self.cloud_key_input.setPlaceholderText("•••••••• (server memory only)")
+        cloud_form.addRow(self.cloud_key_label, self.cloud_key_input)
+        ai_layout.addLayout(cloud_form)
+        cloud_actions = QHBoxLayout()
+        self.cloud_save_button = self._button(self.save_cloud)
+        self.cloud_clear_button = self._button(self.clear_cloud)
+        self.cloud_test_button = self._button(self.test_cloud)
+        self.cloud_refresh_button = self._button(self.load_cloud_settings)
+        for control in (
+            self.cloud_save_button, self.cloud_test_button,
+            self.cloud_clear_button, self.cloud_refresh_button,
+        ):
+            cloud_actions.addWidget(control)
+        cloud_actions.addStretch()
+        ai_layout.addLayout(cloud_actions)
+        self.cloud_result = QTextEdit()
+        self.cloud_result.setReadOnly(True)
+        self.cloud_result.setMaximumHeight(90)
+        ai_layout.addWidget(self.cloud_result)
         self.tabs.addTab(ai, "")
 
         sources = QWidget()
@@ -304,6 +343,13 @@ class AdminWindow(QMainWindow):
             (self.backup_button, "backup"), (self.events_button, "refresh"),
             (self.source_refresh, "refresh_sources"), (self.users_button, "refresh_users"),
             (self.cloud_notice, "ai_cloud"),
+            (self.cloud_provider_label, "cloud_provider"),
+            (self.cloud_model_label, "cloud_model"),
+            (self.cloud_key_label, "cloud_key"),
+            (self.cloud_save_button, "cloud_save"),
+            (self.cloud_clear_button, "cloud_clear"),
+            (self.cloud_test_button, "cloud_test"),
+            (self.cloud_refresh_button, "cloud_settings"),
         ):
             widget.setText(self.t(key))
         for index, key in enumerate(("overview", "ai", "sources", "storage", "users", "events")):
@@ -358,7 +404,8 @@ class AdminWindow(QMainWindow):
         address = "127.0.0.1" if parsed.hostname == "127.0.0.1" else "[::1]"
         return f"http://{address}:{port}"
 
-    def request(self, method: str, path: str, payload=None, callback=None, authenticated=True):
+    def request(self, method: str, path: str, payload=None, callback=None, authenticated=True,
+                timeout_ms=5000):
         try:
             base = self._base_url()
         except ValueError as exc:
@@ -372,7 +419,7 @@ class AdminWindow(QMainWindow):
         request.setRawHeader(b"Accept", b"application/json")
         if authenticated:
             request.setRawHeader(b"Authorization", ("Bearer " + self.access_token).encode())
-        request.setTransferTimeout(5000)
+        request.setTransferTimeout(timeout_ms)
         if method == "GET":
             reply = self.network.get(request)
         else:
@@ -514,6 +561,7 @@ class AdminWindow(QMainWindow):
 
     def _clear_token(self):
         self.access_token = ""
+        self.cloud_key_input.clear()
         self.tabs.setEnabled(False)
         self.logout_button.setEnabled(False)
 
@@ -526,6 +574,7 @@ class AdminWindow(QMainWindow):
     def refresh(self):
         self.request("GET", "/api/v1/admin/overview", callback=self._overview)
         self.request("GET", "/api/v1/admin/ai/settings", callback=self._ai_settings)
+        self.load_cloud_settings()
         self.load_sources()
         self.load_users()
 
@@ -596,6 +645,55 @@ class AdminWindow(QMainWindow):
     def _ai_test_finished(self, result):
         self.ai_result.setPlainText(json.dumps(result, ensure_ascii=False, indent=2))
         self._status(str(result.get("status", "UNKNOWN")))
+
+    def load_cloud_settings(self):
+        self.request("GET", "/api/v1/admin/ai/cloud/settings",
+                     callback=self._cloud_loaded)
+
+    def _cloud_loaded(self, data):
+        provider = data.get("provider")
+        if provider in ("gemini", "openai"):
+            idx = self.cloud_provider_combo.findData(provider)
+            if idx >= 0:
+                self.cloud_provider_combo.setCurrentIndex(idx)
+        model = data.get("model")
+        if isinstance(model, str) and model:
+            self.cloud_model_input.setText(model)
+        # Secret intentionally never goes into QLabel or settings.
+        self.cloud_result.setPlainText(json.dumps({
+            "enabled": data.get("enabled") is True,
+            "provider": provider,
+            "model": model,
+            "key_configured": data.get("key_configured") is True,
+            "secret_storage": data.get("secret_storage"),
+        }, ensure_ascii=False, indent=2))
+
+    def save_cloud(self):
+        provider = str(self.cloud_provider_combo.currentData())
+        model = self.cloud_model_input.text().strip()
+        key = self.cloud_key_input.text().strip()
+        self.cloud_key_input.clear()
+        self.request("PUT", "/api/v1/admin/ai/cloud/settings", payload={
+            "provider": provider, "model": model, "api_key": key or None,
+            "enabled": True,
+        }, callback=self._cloud_saved)
+
+    def _cloud_saved(self, data):
+        self._cloud_loaded(data)
+        self._status(self.t("saved"))
+
+    def clear_cloud(self):
+        self.cloud_key_input.clear()
+        self.request("DELETE", "/api/v1/admin/ai/cloud/settings",
+                     payload={}, callback=self._cloud_loaded)
+
+    def test_cloud(self):
+        self.request("POST", "/api/v1/admin/ai/cloud/test", payload={},
+                     callback=self._cloud_tested, timeout_ms=30000)
+
+    def _cloud_tested(self, data):
+        self.cloud_result.setPlainText(json.dumps(data, ensure_ascii=False, indent=2))
+        self._status(str(data.get("status", "ERROR")))
 
     def backup(self):
         self.request("POST", "/api/v1/admin/storage/backup", payload={},
