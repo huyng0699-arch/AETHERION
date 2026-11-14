@@ -128,7 +128,7 @@ def render(items: list[dict[str, str]], counts: collections.Counter) -> str:
         "|---|---|---|---|---|",
     ]
     for t in items[:100]:
-        link = f"[{t['id']}](../{t['path']})"
+        link = f"[{t['id']}](https://github.com/huyng0699-arch/AETHERION/blob/main/{t['path']})"
         cells = [link, t["status"], t["review"], t["owner"], t["reason"]]
         out.append("| " + " | ".join(c.replace("|", "\\|").replace("\n", " ")
                                    for c in cells) + " |")
