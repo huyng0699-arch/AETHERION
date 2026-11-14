@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-063",
+  "slot": 63,
+  "quest_id": "Q-0363",
+  "checked_at_utc": "2026-11-14T06:21:55.634656+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/gravity-well-entry-sensorimotor-neurovestibular-disturbance-cliff-2023.pdf?emrc=ef32a8",
+  "http_status": 200,
+  "pdf_sha256": "8a0148acaec16ea6573840922b3c4405d32d6691df13b907f3fd0ac9614fd29b",
+  "pdf_bytes": 295361,
+  "pages_extracted": 12,
+  "sections_count": 12,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-063-IMG-01": "9454f21716e4195fcbf278979f7fa8c1b222c09d4d8371fc0b322690833e7645",
+    "CLIFF-063-IMG-02": "496d961c121e6df3acfc39805388eab04b89bf2370e486f2046ab494be53d73b",
+    "CLIFF-063-IMG-03": "72131c0f8705c4cc2ac3295b04fc3882c525433572b075de40d077ccde40b915"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
