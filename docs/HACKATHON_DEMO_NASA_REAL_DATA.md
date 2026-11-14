@@ -52,3 +52,17 @@ ECG **waveforms**, SpO₂, sleep, mood, glucose in serum, personal radiation dos
 - **Final native acceptance requires** Windows PySide6 launch at target resolutions, open Portal → Demo → briefing → record groups → source link, confirm all 83 real values render, check VI/EN and reduced motion, and an independent reviewer. Static GitHub checks do not certify the interactive Windows result.
 
 **VI:** Bản này trình diễn dữ liệu NASA thật đã được công bố; không phải hồ sơ y tế sống, không phải mô phỏng sinh hiệu và không phải thiết bị y tế.
+
+## 6. Exact NASA resources in the 2026 challenge's Resources tab
+
+The [NASA Space Apps 2026 local-event challenge listing](https://hackathlone.com/challenges/health-monitoring-software) reproduces **exactly five official resources**: three from NASA and two from the Canadian Space Agency (CSA). The three NASA resources are:
+
+1. [NASA HRP — Five Hazards of Human Spaceflight](https://www.nasa.gov/hrp/hazards/).
+2. [NASA HRP — Risks of Human Spaceflight](https://www.nasa.gov/hrp/risks/).
+3. [NASA HRP — Ongoing HRP Research](https://www.nasa.gov/hrp/ongoing-hrp-research/).
+
+All three are **linked directly on the app's pre-demo briefing screen** and the five-hazards concept is described there in both languages. They explain hazard/risk context, not a downloadable continuous astronaut sensor dataset.
+
+**Key distinction for judging:** The numerical NASA MA-7 report in this replay is a **supplemental NASA archival source** and was **NOT among the five links in the challenge-specific Resources tab**. Its historical source and table/page provenance are clearly labelled in the same briefing. NASA HRP challenge-listed resources provide the challenge-context evidence, and the MA-7 report provides actual historical values. Neither proves live sensors, flight certification, or a complete health-monitoring service.
+
+The user's request that every health indicator be measured by a single authentic challenge-provided dataset **cannot be fulfilled from these five resource pages**; ECG waveforms, SpO₂, sleep, mood and blood glucose remain unfilled and must not be mislabelled as observed. We do not claim otherwise.
