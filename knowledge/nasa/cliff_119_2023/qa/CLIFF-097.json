@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-097",
+  "slot": 97,
+  "quest_id": "Q-0397",
+  "checked_at_utc": "2026-11-14T06:35:08.632552+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/dust-exposure-lunar-eva-habitat-cliff-2023.pdf?emrc=dee3db",
+  "http_status": 200,
+  "pdf_sha256": "0a6dbffdde9292484079a72f560c5da1bedae3d2667b2ad936029d6c1a7fad1d",
+  "pdf_bytes": 347511,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-097-IMG-01": "8ba371f22da40019cb852438d48fc77b038eb54a0c69267a20b144b71773a56b",
+    "CLIFF-097-IMG-02": "581f276c6414f1d692ba224a955573530c7cb0b7f617eb2bd27327a1a0e8c756",
+    "CLIFF-097-IMG-03": "41a22e2a4d4a1beae75a31c9d7d45ad386c5bfb993983adf5c6bbbd1dfbd81a7"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
