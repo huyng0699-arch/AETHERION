@@ -24,11 +24,11 @@ import math
 import re
 from urllib.parse import urlsplit
 
-from PySide6.QtCore import Qt, QDateTime, Signal, QUrl
+from PySide6.QtCore import Qt, QDateTime, QRectF, Signal, QUrl
 from PySide6.QtGui import QColor, QDesktopServices, QPainter, QPen
 from PySide6.QtWidgets import (
     QAbstractItemView, QComboBox, QDateTimeEdit, QFrame, QHBoxLayout, QLabel,
-    QListWidget, QPushButton, QSplitter, QStackedWidget, QTableWidget,
+    QLineEdit, QListWidget, QPushButton, QSplitter, QStackedWidget, QTableWidget,
     QTableWidgetItem, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget,
 )
 
@@ -49,6 +49,13 @@ TEXT = {
         "brand": "AETHERION  /  MISSION OPERATIONS",
         "connection": "Unverified connection",
         "browse": "BROWSE",
+        "browseSearch": "Search objects and routes…",
+        "utcMetricFilter": "Filter UTC records by metric and unit",
+        "utcSourceFilter": "Filter UTC records by verified source",
+        "utcAllMetrics": "All metric families",
+        "utcAllSources": "All verified sources",
+        "utcChartSeries": "Chart displays one metric/unit/source family, never mixed units",
+
         "inspect": "INSPECT  /  PROPERTIES",
         "workspace": "WORKSPACE",
         "science": "SCIENCE & SOURCES",
@@ -147,6 +154,13 @@ TEXT = {
         "brand": "AETHERION  /  MISSION OPERATIONS",
         "connection": "Chưa xác minh kết nối",
         "browse": "DUYỆT ĐỐI TƯỢNG",
+        "browseSearch": "Tìm đối tượng và chức năng…",
+        "utcMetricFilter": "Lọc quan sát UTC theo chỉ số và đơn vị",
+        "utcSourceFilter": "Lọc quan sát UTC theo nguồn đã xác minh",
+        "utcAllMetrics": "Tất cả nhóm chỉ số",
+        "utcAllSources": "Tất cả nguồn đã xác minh",
+        "utcChartSeries": "Biểu đồ chỉ vẽ cùng một chỉ số/đơn vị/nguồn, không trộn đơn vị",
+
         "inspect": "THUỘC TÍNH  /  NGUỒN",
         "workspace": "KHÔNG GIAN DỮ LIỆU",
         "science": "KHOA HỌC & NGUỒN",
@@ -375,6 +389,7 @@ class MissionOperationsHome(QWidget):
         self.from_label = QLabel()
         conductor_row.addWidget(self.from_label)
         self.begin_utc = QDateTimeEdit()
+        self.begin_utc.setTimeSpec(Qt.TimeSpec.UTC)
         self.begin_utc.setCalendarPopup(True)
         self.begin_utc.setDisplayFormat("yyyy-MM-dd HH:mm 'UTC'")
         self.begin_utc.setMinimumWidth(161)
@@ -382,6 +397,7 @@ class MissionOperationsHome(QWidget):
         self.to_label = QLabel()
         conductor_row.addWidget(self.to_label)
         self.end_utc = QDateTimeEdit()
+        self.end_utc.setTimeSpec(Qt.TimeSpec.UTC)
         self.end_utc.setCalendarPopup(True)
         self.end_utc.setDisplayFormat("yyyy-MM-dd HH:mm 'UTC'")
         self.end_utc.setMinimumWidth(161)
@@ -423,6 +439,11 @@ class MissionOperationsHome(QWidget):
         self.browse_heading = QLabel()
         self.browse_heading.setObjectName("eyebrow")
         nav_layout.addWidget(self.browse_heading)
+        self.browse_search = QLineEdit()
+        self.browse_search.setClearButtonEnabled(True)
+        self.browse_search.setMaxLength(100)
+        self.browse_search.textChanged.connect(self._filter_browse)
+        nav_layout.addWidget(self.browse_search)
         self.navigator = QTreeWidget()
         self.navigator.setHeaderHidden(True)
         self.navigator.setUniformRowHeights(True)
@@ -542,6 +563,14 @@ class MissionOperationsHome(QWidget):
         self.utc_count = QLabel()
         self.utc_count.setObjectName("eyebrow")
         utc_layout.addWidget(self.utc_count)
+        utc_filters = QHBoxLayout()
+        self.utc_metric_selector = QComboBox()
+        self.utc_metric_selector.currentIndexChanged.connect(self._refresh_utc)
+        utc_filters.addWidget(self.utc_metric_selector, 1)
+        self.utc_source_selector = QComboBox()
+        self.utc_source_selector.currentIndexChanged.connect(self._refresh_utc)
+        utc_filters.addWidget(self.utc_source_selector, 1)
+        utc_layout.addLayout(utc_filters)
         self.utc_table = QTableWidget(0, 4)
         self.utc_table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.utc_table.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
@@ -612,7 +641,8 @@ class MissionOperationsHome(QWidget):
 
         self.set_locale(self.language)
         self.set_visuals()
-        self._choose("home")
+        # The first view now displays genuine report values, not an ornament.
+        self._choose("archive" if self.source_data is not None else "utc")
         self.apply_utc_window()
 
     def _load_historical_source(self):
@@ -661,8 +691,21 @@ class MissionOperationsHome(QWidget):
                 self._objects[route] = item
             parent.setExpanded(True)
         self.navigator.blockSignals(False)
+        self._filter_browse(self.browse_search.text())
         if selected in self._objects:
             self.navigator.setCurrentItem(self._objects[selected])
+
+    def _filter_browse(self, text):
+        query = str(text).strip().casefold()
+        for i in range(self.navigator.topLevelItemCount()):
+            parent = self.navigator.topLevelItem(i)
+            shown = 0
+            for j in range(parent.childCount()):
+                child = parent.child(j)
+                visible = not query or query in child.text(0).casefold()
+                child.setHidden(not visible)
+                shown += int(visible)
+            parent.setHidden(shown == 0)
 
     def _choose(self, route):
         if route not in self._objects:
@@ -1009,6 +1052,10 @@ class MissionOperationsHome(QWidget):
             [t(k) for k in ("metrics", "value", "unit", "qualifier")])
         self.utc_table.setHorizontalHeaderLabels(
             [t(k) for k in ("utcTime", "utcMetric", "utcValue", "utcSource")])
+        self.browse_search.setPlaceholderText(t("browseSearch"))
+        self.utc_metric_selector.setAccessibleName(t("utcMetricFilter"))
+        self.utc_source_selector.setAccessibleName(t("utcSourceFilter"))
+        self._rebuild_utc_filters()
         self._fill_tree()
         self._load_report_group()
         # Maintain selected object while translating chrome.
