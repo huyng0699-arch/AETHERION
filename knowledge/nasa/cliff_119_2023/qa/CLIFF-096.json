@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-096",
+  "slot": 96,
+  "quest_id": "Q-0396",
+  "checked_at_utc": "2026-11-14T06:34:59.859422+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-heat-illness-cliff-2023.pdf?emrc=64fc0a",
+  "http_status": 200,
+  "pdf_sha256": "5b76658444c6c8e1931ca815bccfb1b1084318fc87fc9d291160ea3b73030b26",
+  "pdf_bytes": 342377,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-096-IMG-01": "9857280031a998a5645482eeaa5a6fd060812b6ab87ceebb5a8783045c966a09",
+    "CLIFF-096-IMG-02": "ffd579623e4c4851e337ad9654c40cf8813adb0fb96a57a9bf503ab76fdf1146",
+    "CLIFF-096-IMG-03": "41a22e2a4d4a1beae75a31c9d7d45ad386c5bfb993983adf5c6bbbd1dfbd81a7"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
