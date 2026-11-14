@@ -102,8 +102,7 @@ def main() -> int:
 
     QTest.mouseClick(window.simulated_briefing_page.start, Qt.MouseButton.LeftButton)
     wait_until(
-        lambda: window.synthetic_patient_page.ready
-        or "error" in window.synthetic_patient_page.state.text().lower(),
+        lambda: window.synthetic_patient_page.ready,
         "the isolated SIMULATED database to load",
     )
     if not window.synthetic_patient_page.ready:
@@ -113,14 +112,17 @@ def main() -> int:
         )
     capture(window, output, "simulated-patient-experience-vi", 1360, 850)
 
-    # Keep this screenshot honest: the NASA route is its source briefing entry.
-    # A separate catalog-load action is not presented as completed data here.
+    # The source table uses the authentic repository-bundled NASA observations.
+    window.operations_home_page._choose("archive")
+    capture(window, output, "nasa-ma7-source-table-vi", 1360, 850)
+
+    # Also retain the richer NASA module's source briefing as a separate entry.
     window.show_hackathon_demo()
     QTest.qWait(150)
     if window.operations_home_page.navigator.currentItem().data(
             0, Qt.ItemDataRole.UserRole) != "archive":
         raise RuntimeError("Browse selection did not follow NASA MA-7")
-    capture(window, output, "nasa-ma7-source-briefing-vi", 1360, 850)
+    capture(window, output, "nasa-ma7-archive-entry-vi", 1360, 850)
 
     # Capture the same first screen in English to inspect localization geometry.
     window.preferences.set_language("en")
