@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-007",
+  "slot": 7,
+  "quest_id": "Q-0307",
+  "checked_at_utc": "2026-11-14T05:41:55.389546+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/bhp-depression-cliff-2023.pdf?emrc=9d0acd",
+  "http_status": 200,
+  "pdf_sha256": "aacf7265fca1583f3a3583d259aa073e72977ebd18c55f64dcb6e9fbfd5aa14f",
+  "pdf_bytes": 335026,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 2,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-007-IMG-01": "eaaef44cc9a188d268cf0f925b2c09d4a4fa00c3a429cbeac7a0809a3416cada",
+    "CLIFF-007-IMG-02": "1a34187723df78a80a0a70363e2ce557d859412b0e02d4ef912839bd2e950949",
+    "CLIFF-007-IMG-03": "49675415da7be2b01614032214249356452b8c7dd14f59d55e639c926924019f"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
