@@ -116,6 +116,7 @@ def build_personal_visual(page) -> None:
     left = QVBoxLayout()
     left.setSpacing(7)
     head = QLabel("Sức khỏe của tôi")
+    page.hero_title = head
     head.setObjectName("heroTitle")
     head.setWordWrap(True)
     left.addWidget(head)
