@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-110",
+  "slot": 110,
+  "quest_id": "Q-0410",
+  "checked_at_utc": "2026-11-14T06:38:36.070556+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/nephrolithiasis-cliff-2023.pdf?emrc=586766",
+  "http_status": 200,
+  "pdf_sha256": "6b47948b202ea3e418caae8c0e00711762b29158fe997c7fca5fd516ab95968c",
+  "pdf_bytes": 310226,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-110-IMG-01": "cec93b337d96263d2655eaebf606d1e82053ddfe864fa8f90dd17535e6fe5f09",
+    "CLIFF-110-IMG-02": "ba2f77a850f7d21decf391390ae56a5c4a7667083c7b4f00f4078b6034d580d1",
+    "CLIFF-110-IMG-03": "b5c6461de70b903e68503bdac81daa87db6cc61932236b5c847009ebe999ab50"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
