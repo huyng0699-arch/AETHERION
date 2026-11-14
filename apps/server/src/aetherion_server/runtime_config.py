@@ -22,6 +22,7 @@ class RuntimeConfig:
     profile: str
     host: str
     port: int
+    cloud_ai_opt_in: bool = False
 
 
 def read_runtime_config(environ: Mapping[str, str] | None = None) -> RuntimeConfig:
@@ -60,6 +61,14 @@ def read_runtime_config(environ: Mapping[str, str] | None = None) -> RuntimeConf
         if not 1 <= ttl_seconds <= 86400:
             raise ValueError("AETHERION_SESSION_TTL_SECONDS must be a positive integer no greater than 86400")
 
+    cloud_raw = values.get("AETHERION_ALLOW_CLOUD_AI", "false").strip().lower()
+    if cloud_raw in {"true", "1", "yes"}:
+        cloud_ai_opt_in = True
+    elif cloud_raw in {"false", "0", "no", ""}:
+        cloud_ai_opt_in = False
+    else:
+        raise ValueError("AETHERION_ALLOW_CLOUD_AI must be 'true' or 'false'")
+
     if profile == "release":
         db_path = values.get("AETHERION_DB_PATH", "").strip()
         if not db_path or not (Path(db_path).is_absolute() or PureWindowsPath(db_path).is_absolute()):
@@ -67,7 +76,13 @@ def read_runtime_config(environ: Mapping[str, str] | None = None) -> RuntimeConf
         if values.get("AETHERION_BOOTSTRAP_USER") or values.get("AETHERION_BOOTSTRAP_PASSWORD"):
             raise ValueError("release profile prohibits account bootstrap credentials in environment variables")
 
-    return RuntimeConfig(version=CONFIG_VERSION, profile=profile, host=host, port=port)
+    return RuntimeConfig(
+        version=CONFIG_VERSION,
+        profile=profile,
+        host=host,
+        port=port,
+        cloud_ai_opt_in=cloud_ai_opt_in,
+    )
 
 
 def main() -> int:
@@ -80,7 +95,8 @@ def main() -> int:
         config = read_runtime_config()
     except ValueError as exc:
         parser.exit(status=2, message=f"AETHERION configuration rejected: {exc}\n")
-    print(f"AETHERION configuration v{config.version}: {config.profile}, http://{config.host}:{config.port} (loopback only)")
+    cloud_label = "opt-in" if config.cloud_ai_opt_in else "disabled"
+    print(f"AETHERION configuration v{config.version}: {config.profile}, http://{config.host}:{config.port} (loopback only, cloud_ai={cloud_label})")
     return 0
 
 

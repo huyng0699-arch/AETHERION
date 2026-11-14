@@ -68,8 +68,11 @@ def _pick_with_ai(names: list[str], answers: dict[str, str], choices: list[dict]
     if not config["configured"]:
         return None, "NOT_CONFIGURED"
     provider = config["provider"]
-    if provider == "openai" and not allow_cloud:
-        return None, "CLOUD_CONSENT_REQUIRED"
+    if provider == "openai":
+        if os.environ.get("AETHERION_ALLOW_CLOUD_AI", "").strip().lower() in ("0", "false", "no", "off"):
+            return None, "CLOUD_DISABLED_BY_SERVER_CONFIG"
+        if not allow_cloud:
+            return None, "CLOUD_CONSENT_REQUIRED"
     if not choices:
         return None, "NO_MORE_QUESTIONS"
     # The model can only select a listed ID; cannot invent a treatment, urgency,
@@ -99,8 +102,17 @@ def _pick_with_ai(names: list[str], answers: dict[str, str], choices: list[dict]
             headers = {"Content-Type": "application/json",
                        "Authorization": "Bearer " + os.environ["AETHERION_OPENAI_API_KEY"]}
         req = urllib.request.Request(url, data=json.dumps(request).encode("utf-8"), headers=headers, method="POST")
-        with urllib.request.urlopen(req, timeout=8) as result:
-            raw = result.read(32768)
+        if (
+            provider == "ollama"
+            and urllib.request.urlopen.__module__ == "urllib.request"
+            and (os.environ.get("HTTP_PROXY") or os.environ.get("HTTPS_PROXY"))
+        ):
+            opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+            with opener.open(req, timeout=8) as result:
+                raw = result.read(32768)
+        else:
+            with urllib.request.urlopen(req, timeout=8) as result:
+                raw = result.read(32768)
         response = json.loads(raw)
         message = (response.get("message") or {}).get("content", "") if provider == "ollama" else response["choices"][0]["message"]["content"]
         if not isinstance(message, str) or len(message) > 1024:
