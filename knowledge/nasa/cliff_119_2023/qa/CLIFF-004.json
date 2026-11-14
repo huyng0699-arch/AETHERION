@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-004",
+  "slot": 4,
+  "quest_id": "Q-0304",
+  "checked_at_utc": "2026-11-14T05:38:55.450302+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/anaphylaxis-cliff-2023.pdf?emrc=aec229",
+  "http_status": 200,
+  "pdf_sha256": "2c943f780bc2fd24c92e8bfd09936f3af011adc2d204425e2d70dc0576f495ed",
+  "pdf_bytes": 322339,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 2,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-004-IMG-01": "125a9e42361a6582759e46a8d1946f5f3156d8bf36fc187f91ad77a9e0e8fdb1",
+    "CLIFF-004-IMG-02": "57b7fba26625a29b371a9f5519951e482b8f5b71703294962c732f898c64b25b",
+    "CLIFF-004-IMG-03": "1d73150c70e067c6f25ad33c5779f179178632013a97b5bd759492fe0b3fab2a"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
