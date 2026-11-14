@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-095",
+  "slot": 95,
+  "quest_id": "Q-0395",
+  "checked_at_utc": "2026-11-14T06:34:43.745680+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/ebullism-cliff-2023.pdf?emrc=95c8bc",
+  "http_status": 200,
+  "pdf_sha256": "1d0ef33006b73cdc766918a29c941f3ae643b263529f05ccf8adbb2dceea0c6a",
+  "pdf_bytes": 345335,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-095-IMG-01": "99bfcd5fb96e2a671537212ec7b9838bbcd923b9502a01b038ccb73099a2cf12",
+    "CLIFF-095-IMG-02": "41a22e2a4d4a1beae75a31c9d7d45ad386c5bfb993983adf5c6bbbd1dfbd81a7",
+    "CLIFF-095-IMG-03": "67a7b18d0ec991f5295d1295a40080b2a356989af995fbd43d985137c1023985"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}

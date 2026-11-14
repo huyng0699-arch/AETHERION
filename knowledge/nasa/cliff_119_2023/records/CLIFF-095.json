@@ -1,0 +1,610 @@
+{
+  "article_id": "CLIFF-095",
+  "slot": 95,
+  "display_title": "Ebullism",
+  "category": "Environmental",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-095",
+    "publisher": "NASA",
+    "title": "Ebullism \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/ebullism-cliff-2023.pdf?emrc=95c8bc",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/ebullism-cliff-2023.pdf?emrc=95c8bc",
+    "retrieved_at_utc": "2026-11-14T06:34:43.745680+00:00",
+    "content_sha256": "1d0ef33006b73cdc766918a29c941f3ae643b263529f05ccf8adbb2dceea0c6a",
+    "original_mime": "application/pdf",
+    "original_bytes": 345335,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-095-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch      Baseline\n\n\n\n ICL37_Ebullism\n\n Ebullism occurs when body tissue is exposed to ambient pressure less than the vapor pressure of water at human body temperature (47mmHg). In\n the context of spaceflight, this would occur with a failure of the pressure containment layers of the habitat, spacecraft, or spacesuit. Since a vehicle or\n habitat failure would be catastrophic and not likely survivable, this condition refers only to the chance of Ebullism occurring from suit failures while on\n EVA.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  This condition has never occurred during an EVA (Skowron, 2020). Catastrophic vehicle failures causing cabin depressurization have occurred but\n  these conditions are typically associated with multiple potentially fatal events and have been considered not survivable for the purposes of this\n  model (Packham, 2012). Since this condition is unique to extremely low pressure environments and related only to EVA it is predicated on\n  engineering failures rather than medical events. Prolonged exposure to vacuum is universally fatal (Barratt, 2019) so the presumed scenario is a\n  suit failure while on EVA causing a leak large enough to depressurize the suit and induce ebullism while the affected crew member is only a few\n  minutes away from rescue to a pressurized environment. Since the condition depends on suit failures probabilistic risk assessment (PRA) data for a\n  large suit leak was determined to be the best model for incidence of this condition. Unfortunately PRA data for the new lunar suits was not available\n  at the time of this writing (December, 2021) so PRA data for the existing EMU (the SPLAT model) is used to inform the Evidence Library. The\n  SPLAT model predicts 1.02E-5 probability that there will be a large suit leak over an EVA lasting 6.5 hours. Unfortunately, there are no uncertainty\n  estimates to use to create a distribution. So, we will set this as a Fixed Incidence Proportion of 1.02E-5. This corresponds to a rough chance of 1 in\n  98,000 EVAs. According to the PRA analysis a \"large leak\" is a hole in the suit of 1.1cm which could exceed the EMU secondary oxygen pack flow\n  rate of 7.5lbm/hr and induce a rapid and near complete depressurization of the suit. This would be sufficient to induce ebullism.\n\n  ANALOG LITERATURE\n\n  As above, conditions under which ebullism can occur are rare outside of spaceflight. Data is limited to case reports involving vacuum chamber\n  accidents or high altitude suited operations such as parachute jumps.\n\n  TERRESTRIAL LITERATURE\n\n  Ebullism does not occur under normal terrestrial conditions.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   Fixed Incidence Proportion of 0.00001025\n\n\n  INCIDENCE SUMMARY\n\n  We used the EMU SPLAT Suit Leak Rates reported PRA estimate of the suit leak probability as 1.02E-5 per EVA for large leaks (7.5 Pounds).\n  Since no uncertainty estimates were included, we set the incidence proportion as fixed. This condition is tied to EVAs.\n\n\n\n\n8/22/2023 6:57:09 PM                                                          ICL37_Ebullism Cliff                                                             page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-095-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     EVA\n     Segment\n     EVA All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Binomial\n     Incidence Dist.\n     Fixed\n     Mean\n     1.02E-05\n     SD\n     0\n\n\n     Fixed Incidence\n     (Rate):\n     (Prop.): 1.02E-05\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                  Source                                      LOC Value\n\n   Skowron, 2020                                             Spaceflight                                 2\n\n   Packham, 2012                                             Spaceflight                                 2\n\n   Kolesari, 1982                                            Analogue                                    1\n\n   Barratt, 2019                                             Analogue                                    2\n\n   Duncan, 2017                                              Spaceflight                                 2\n\n\n  With the exception of catastrophic vehicle failures, such as Soyuz-11 and STS-107, there have been no ebullism events reported in spaceflight to\n  date and ebullism only occurs in a near space environment. Thus all attempts to calculate incidence must rely on logical deductions based on\n  models and/or analogues. For the purposes of the Evidence Library we used the EMU SPLAT trade study report (Duncan, 2017). This PRA sets\n  the probability for a large suit leak occurring on a 6.5 hour ISS EVA in the EMU at 0.00001025.\n\n\n\n\n8/22/2023 6:57:09 PM                                                       ICL37_Ebullism Cliff                                                      page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-095-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Suits and seals will be engineered to limit the risk of catastrophic pressure loss.\n\n  BEST CASE SCENARIO DEFINITION\n\n  Ebullism not requiring any respiratory support and not leading to mission impacting long term neurologic deficits.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Ebullism requiring prolonged respiratory support and/or resulting in mission impacting neurologic deficits.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  None\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  Data for the BC/WC probability comes from case studies where exposure to physiological vacuum occurred in a near instantaneous fashion. There\n  are; 1 from Packham, 2012 involving 3 individuals who all died in a 1971 Soyuz capsule depressurization on reentry. Six additional cases are found\n  in Barratt, 2019 and Koesari, 1982. Three met the BC definition, 1 met the WC definition and 2 were fatal. This gives a total of 9 individuals with 3\n  BC, 1 WC, and 5 fatalities. This publication treats fatalities as meeting the WC definition which provides the BC/WC split as 33%/66%.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                      Source                                         LOC Value\n\n   Packham, 2012                                                 Spaceflight                                    1\n\n   Kolesari, 1982                                                Analogue                                       1\n\n   Barratt, 2019                                                 Analogue                                       1\n\n  Given the few known cases of ebullism, estimating BC/WC proportion must again rely on logical deduction. As with the incidence, this should be\n  understood as an estimation with a high degree of uncertainty. The Packham, 2012 report describes 2 cases of vehicle failures while the Barratt,\n  2019 and Kolesari, 1982 cases add a mix of high altitude bailouts, parachute jumps, and altitude chamber accidents. Since the proportion of\n  BC/WC results from a common end point of pressure containment failure the variety of suits, vehicles, and activities is unlikely to matter as much.\n\n\n\n\n8/22/2023 6:57:09 PM                                                           ICL37_Ebullism Cliff                                                       page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-095-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                                 CP1: Diagnosis        CP2: Treatment           CP3: Condition End State\n\n                                                                 TI%       Duration    TI%        Duration      TI%       RTDC             LOCL\n                                                Condition\n   Case Scenario      Composite Incidence       Probability %    Preset    Preset      Preset     Min    Max Preset       Min%    Max%     Min%     Max%\n\n   Treated Best       Fixed Incidence           33 - 33          100       1.75        19.4526    4      24     0         0       0        0        0\n   Case (TBC)         Proportion of\n                      0.00001025\n   Treated Worst                                67 - 67          100       1.75        50         336    672    0         100     100      0        84\n   Case (TWC)\n\n   Untreated Best     N/A                       N/A              N/A       1.75        19.4526    4      24     0         0       0        0        0\n   Case (UTBC)\n\n   Untreated Worst    N/A                       N/A              N/A       1.75        100        336    672    100       100     100      100      100\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n8/22/2023 6:57:09 PM                                                          ICL37_Ebullism Cliff                                                            page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-095-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  Ebullism occurs when an individual is exposed to a physiological vacuum. Since this is not a common experience for humans on Earth and cannot\n  be systematically studied, treatment and outcomes data relies on case reports, animal studies, and knowledge of supportive care in analogue\n  conditions. Severity is likely to depend on the duration of vacuum exposure with the best case definition requiring no respiratory support and\n  causing no long term deficits and the worst case definition involving extensive respiratory support and/or long term deficits. Treatment requires\n  depressurization followed by supportive respiratory care for diffuse lung injury likely similar to ARDS. Ebullism is also likely to be associated with\n  other injuries such as frostbite, subcutaneous emphysema, barotrauma, ocular injuries, and decompression sickness but these are captured in\n  other CLIFFs and not considered intrinsic parts of ICL37 for the purposes of this model.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  According to available data, the BC definition is consistent with about 33% of case reports and requires no significant treatment. Case reports\n  meeting this definition show rapid recovery once the subject is repressurized (Barratt, 2019). The duration of clinical phase 2 is likely to be short\n  and treatment will be minimal. Case reports in humans meeting the best case definition describe minimal treatments and a non specific time of less\n  than one day for recovery (Barratt, 2019). Systematic studies in non human primates have shown a specific recovery time of 4 hours after exposure\n  to vacuum less than 120 seconds. (Koestler, 1965 & Rumbaugh, 1965) for this reason CP2 duration is between 4 and 24 hours. By definition there\n  is no LOCL, need for RTDC, nor CP3 TI.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  The WC definition requires respiratory support and or causes permanent neurological deficits. This occurs in 66% of identified case reports. It\n  carries a high mortality, RTDC, and TI. For the purposes of this model the occurrence of permanent disability was chosen as a surrogate for the\n  need to return to definitive care (RTDC). Since exposure to vacuum interrupts the body's ability to acquire new oxygen to support cellular\n  respiration, only existing physiological reserves are available. Once these supplies are exhausted, cellular respiration will cease. This is a\n  catastrophic insult to human physiology and can induce an irreversible, fatal outcome within minutes. This gives little time for rescue and so the\n  majority of WC cases are rapidly fatal. In the single case that permitted rapid access to emergency medical care (Kolesari, 1982), the patient\n  underwent 5 days of intensive care and made a full recovery by 10 months. Clinical Phase 2 is based on this report. Since the patient had largely\n  recovered by 14 days, this provides the low end for CP2 duration. It is worth noting that at 14 days Kolesari,1982 described the patient scoring 25%\n  lower on psychological tests while at 10 months the patient had recovered fully. Since the task impairment for this is 100% for the duration of CP2\n  and the deficit at 14 days is relatively mild, it is not reasonable to list the upper limit as 10 months so the upper limit for CP2 was chosen as 28 days.\n  For LOCL, 5 of the 6 WC cases, immediate care was not available and the individuals died but in the one case where care was available the patient\n  survived (Kolesari,1982, Barratt, 2019). Based on these data, the low end for the treated worst case LOCL is 0% but the upper end is 84%. For\n  RTDC, using the surrogate of permanent disability, there are no reported cases of individuals who survived ebullism with neurological deficits and\n  the one survivor made a full recovery (Kolesari, 1982). However, the definition and the mechanism make anoxic brain injury possible so RTDC\n  ranges from 0 to 100% in this condition.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  Outcome severity in ebullism is likely a function of exposure duration. In the included case reports all those meeting the BC definition were either\n  focal or of short duration (less than 1 minute). Since the BC definition does not require respiratory support or produce lasting neurologic deficits, no\n  LOCL, RTDC, or CP3 TI is assigned in either the treated or untreated versions. The CP2 impairment is considered the same as in the treated BC\n  since there is effectively no necessary treatment for the BC definition.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  There are no systematic studies of untreated sustained ebullism. However, in all case reports where prolonged vacuum exposure was not followed\n  by immediate emergency medical care the individuals died. This means untreated prolonged exposure carries a 100% LOCL by the best available\n  literature for the WC definition (Barratt, 2019). For the RTDC metric, not treating a profound lung injury, would lead to profound disability. Since the\n  RTDC surrogate for this condition is severe disability this carries a 100% risk of RTDC. CP2 duration for this would be the same as with the treated\n  condition.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n8/22/2023 6:57:09 PM                                                          ICL37_Ebullism Cliff                                                             page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-095-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                      Source                                                LOC Value\n\n   O'Callaghan, 2013                                             Analog\n\n   Kolesari, 1982                                                Analog\n\n   Koestler, 1965                                                Analog (Animal)                                                        1\n\n   Rumbaugh, 1965                                                Analog (Animal)\n\n   Barratt, 2019                                                 Analog\n\n  Estimation of treatment duration is based on isolated case reports of industrial and spaceflight incidents (O'Callaghan, 2013, Barratt, 2019, and\n  Kolesari, 1982) and systematic animal studies in non human primates (Koestler, 1965, Rumbaugh, 1965). Cases meeting the BC definition required\n  little in the way of treatment and seemed to recover in less than 1 day with animal studies supporting that short recovery time. For this reason BC\n  CP2 is listed as 4-24 hours. In the WC definition Clinical Phase 2 is based on the Kolesari, 1982 report of a severe case of ebullism that occurred\n  within range of emergency medical care. This patient had largely recovered by 14 days which is listed as the low end for CP2. It is worth noting that\n  at 14 days Kolesari described the patient scoring 25% lower on psychological tests while at 10 months the patient had recovered fully. Since the\n  task impairment for this is 100% for the duration of CP2, and the deficit at 14 days is relatively mild, it is not reasonable to list the upper limit as 10\n  months so the upper limit for CP2 was chosen as 28 days.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                      Source                                                LOC Value\n\n   O'Callaghan, 2013                                             Analog\n\n   Kolesari, 1982                                                Analog\n\n   Koestler, 1965                                                Analog (Animal)                                                        1\n\n   Rumbaugh, 1965                                                Analog (Animal)\n\n   Barratt, 2019                                                 Analog\n\n\n  The RTDC surrogate for this condition is permanent disability. Since the available case reports have outcomes of either death or full recovery there\n  is little data to work with on this surrogate (O'Callaghan, 2013, Kolesari, 1982, Barratt, 2019). Studies in non human primates also showed no\n  disabilities after short term vacuum exposure (Koestler, 1965 and Rumbaugh, 1965).\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                      Source                                                LOC Value\n\n   O'Callaghan, 2013                                             Analog\n\n   Kolesari, 1982                                                Analog\n\n   Koestler, 1965                                                Analog (Animal)\n                                                                                                                                        1\n   Rumbaugh, 1965                                                Analog (Animal)\n\n   Barratt, 2019                                                 Analog\n\n   Packham, 2012                                                 Spaceflight\n\n  Case reports support the supposition that severity of ebullism is related to duration of exposure to vacuum. In the BC there is no risk of LOCL so\n  the data here relates solely to the WC definition. The case reports imply that severe ebullism has a high mortality rate and that survival requires\n  access to immediate emergency care within a window of only a few minutes. The paucity of data gives this value a high degree of uncertainty but\n  given the severity of the injury and the need for a near immediate response, the authors are confident that mortality for the WC of this condition will\n  be high.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope\n\n  Overview\n\n\n\n\n8/22/2023 6:57:09 PM                                                           ICL37_Ebullism Cliff                                                             page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-095-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  Ebullism is the rapid or sudden decompression of a suit or ship to below the vapor pressure of water at human body temperature (37C). This\n  occurs at 47mmhg or 0.91psia and at 19,200m (63,000ft) of altitude, often referred to as Armstrong's line. Sometimes described as explosive\n  decompression, this rapid vaporization of liquids and expansion of gases results in multiorgan injury and is particularly damaging to gas containing\n  organs. Hypoxia from hypobaric hypoxia occurs and results in loss of consciousness in 9-11 seconds. This disease process can only occur in very\n  specific settings and is in many ways a unique pathology to the aerospace and space environments. We define the best case scenario as ebullism\n  with assumed recompression that does not require respiratory support or have prolonged neurologic deficit. The worst case scenario is defined as\n  ebullism with assumed recompression requiring prolonged respiratory support or prolonged neurologic deficits that result in mission impact. This is\n  a significant and unique concern in Spaceflight and data on ebullism is limited a number of small studies, case reports, and animal studies. DCS\n  was excluded from consideration in this condition despite its clinical overlap with ebullism and decompression events, as it is a separate condition\n  on the condition list.\n\n  CNES: None\n\n  Diagnostic Scope and Resourcing\n\n  The diagnosis of ebullism is primarily a clinical one. While decompression sickness (DCS) may present more subtly with a broad differential\n  diagnosis, ebullism is marked by a sudden, explosive decompression. This is likely to occur either during extra vehicular activity (EVA) or from\n  massive decompression of a module. This rapid gas expansion can result in blunt force and barotrauma with a wide number of possible injuries.\n  While the diagnosis will be clinically obvious, the extent of bodily injury will require substantial evaluation. Physical exam of all organ systems will be\n  necessary as with all blunt force trauma. EKG was included to evaluate for other causes of syncope and to identify arrhythmia, a known\n  complication of ebullism. Ultrasound will help to further delineate cardiopulmonary pathology such as pneumothorax, arterial gas embolism,\n  pulmonary edema and acute respiratory distress syndrome (ARDS), as the lungs are particularly sensitive to barotrauma in this condition.\n  Laboratory evaluation was determined to not make a substantial difference in management.\n\n  In a best case scenario, physical exam and ultrasound will be adequate to determine severity of injury and fitness for duty. The diagnostic phase\n  (CP1) of a worst case scenario will be identical to the best case scenario as the conditions differ by duration of deficits and response to\n  recompression.\n\n  Clinical Phase 1 Duration and Rationale\n  This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\n  consensus duration is as follows:\n\n  CP1 BC (Treated or Untreated): 1.75h\n  CP1 WC (Treated or Untreated):1.75h\n\n  Duration in best case and worst scenario are the same as the definitions differ by response to treatment and not initial presentation\n  The scope of practice for a BC scenario would be 4 (Intern physician) as it would require thorough evaluation but no significant intervention or\n  specialty evaluation\n  The scope of practice for a WC scenario would be 5 (attending physician) as it would require monitoring and management of the critically ill patient\n  including intubation and ventilator management\n\n  Treatment Scope and Resourcing\n\n  In a BC scenario of a patient suffering from ebullism, they would be rapidly recompressed to ship or module pressure and after full evaluation would\n  not require significant intervention. By definition no oxygen support would be required. Possible injuries would include focal tissue swelling and ear\n  irritation that would resolve without treatment within hours.\n\n  In a WC scenario of a patient suffering from ebullism extensive treatment may be required. The vast majority of patients would have significant\n  improvement when recompressed rapidly so this scenario includes an critically ill subset of patients. Standard oxygen therapy is a requirement as\n  injury in ebullism is due to 'anoxic anoxia'. Further ventilatory support may be required particularly in the setting of prolonged neurologic injury and\n  thus RSI and mechanical ventilation were included. In case reports, ventilation was only required for a very short time period, if at all, so 72 hours of\n  support was resourced. Critical care level monitoring is required so that vent management can occur in the absence of blood gasses. Chest tube\n  placement was also considered a necessity due to the high risk of pneumothorax and subsequent LOCL. Other significant sequela such as\n  arrhythmia and seizure were considered separate conditions and treatment was not resourced for this condition.\n\n  Communications and Support Needs\n\n  In the BC scenario, ground communication about the event would be necessary from an engineering and operations perspective but likely not be\n  necessary to immediate management as the severity injury and risk of long term sequela is minute. In the WC scenario however, ground\n  communication would be vital for the management of the critically ill patient. This would be primarily due to likelihood of needing ventilatory or\n  respiratory support.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  There is no corresponding condition in the IMM condition list.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  This is a condition that can only occur in vacuum and is therefore extremely rare. There are no systematic studies on ebullism in humans and few\n  case reports that describe its' occurrence and outcomes. The best available data comes from engineering PRA trade studies on large suit leaks\n  while performing ISS EVAs in the EMU. This suit is not the same as the lunar suit, will have different PLSS pressurization systems, and microgravity\n  EVAs likely carry a different risk of suit breach than planetary EVAs. These are all likely to affect the PRA, however, these data represent the best\n\n\n\n\n8/22/2023 6:57:09 PM                                                           ICL37_Ebullism Cliff                                                             page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-095-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  available evidence as of December, 2021.\n\n\n\n\n8/22/2023 6:57:09 PM                         ICL37_Ebullism Cliff   page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-095-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                              Clinical Phase 2: Treatment\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                    Dentition          GI             GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n           223              664                              89                                           145\n    Case\n    (TBC)\n  Untreated\n    Best\n            223             664                              89                                           145\n    Case\n   (UTBC)\n   Treated\n    Worst\n           223              664            113               89             854            44             145          5               13             6\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223             664            113               89             854            44             145          5               13             6\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                                  TI Calculation                        TI Score\n                                                                                                                                                             Total\n                                                                                                                                                           Human\n                                                                                            Translation &                               Total Tasks\n                Hand                                            Lower         Ambul &                       Don/Doff       Pressure                        System\n                            Hand (Any)     Upper Extremity                                  Stabilization                              Impaired By                         TI Decimal         TI %\n               (Dom)                                          Extremity     Standing (g)                  Equipment         Ops                           Category\n                                                                                           (microgravity)                               Condition\n                                                                                                                                                          Tasks Full\n                                                                                                                                                           Mission\n   Treated\n     Best\n           132                                                                                                         211             1464           3763             0.389051         38.9051\n    Case\n    (TBC)\n  Untreated\n    Best\n            132                                                                                                        211             1464           3763             0.389051         38.9051\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132              564            414               22             196            34             34           211             3763           3763             1                100\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132             564            414               22             196            34             34           211             3763           3763             1                100\n    Case\n   (UTWC)\n\n                                                                          Clinical Phase 3: Condition End State\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                    Dentition          GI             GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n    Case\n   (UTBC)\n   Treated\n    Worst\n                            664                              89\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223             664            113               89             854            44             145          5               13             6\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                                  TI Calculation                        TI Score\n\n\n\n\n8/22/2023 6:57:09 PM                                                           ICL37_Ebullism Cliff                                                                                        page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-095-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                           Total\n                                                                                                                                         Human\n                                                                                 Translation &                           Total Tasks\n               Hand                                      Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                              Stabilization                          Impaired By                      TI Decimal         TI %\n              (Dom)                                    Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                                (microgravity)                           Condition\n                                                                                                                                        Tasks Full\n                                                                                                                                         Mission\n   Treated\n     Best\n                                                                                                                        0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                                                                        0              3763          0                0\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                                                     196                                      211         1292           3763          0.343343         34.3343\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132        564          414               22           196         34             34            211         3763           3763          1                100\n    Case\n   (UTWC)\n\n\n\n\n8/22/2023 6:57:09 PM                                                  ICL37_Ebullism Cliff                                                                                page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-095-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: Persistent neurologic deficits could affect any extremity, in addition to gait and ability to stand. As a middle ground, we\n  have affected only ambulation/standing which is approximately half the TI that the upper extremities carries.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n8/22/2023 6:57:09 PM                                                         ICL37_Ebullism Cliff                                                          page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-095-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1) Alexander, David J. \"Illnesses Seen in Spaceflight 47.\" Handbook of Bioastronautics: 573.\n\n   2) Babich, A. \"Tumor Necrosis by Controlled Ebullism.\" [In eng]. Med Hypotheses 64, no. 2 (2005): 318-9.\n   https://doi.org/10.1016/j.mehy.2004.03.019.\n\n   3) Bacal, Kira, George Beck, and Michael R Barratt. \"Hypoxia, Hypercarbia, and Atmospheric Control.\" Principles of clinical medicine for space\n   flight (2008): 445-73.\n\n   4) Bancroft, R. W., J. P. Cooke, and S. M. Cain. \"Comparison of Anoxia with and without Ebullism. Sam-Tr-68-9.\" [In eng]. Tech Rep SAM-TR (Jul\n   1967): 1-12.\n\n   5) Blatteau, J. E., E. Gempp, C. Balestra, T. Mets, and P. Germonpre. \"Predive Sauna and Venous Gas Bubbles Upon Decompression from 400\n   Kpa.\" [In eng]. Aviat Space Environ Med 79, no. 12 (Dec 2008): 1100-5. https://doi.org/10.3357/asem.2377.2008.\n\n   6) Blue, R. S., S. C. Norton, J. Law, J. M. Pattarini, E. L. Antonsen, A. Garbino, J. B. Clark, and M. W. Turney. \"Emergency Medical Support for a\n   Manned Stratospheric Balloon Test Program.\" [In eng]. Prehosp Disaster Med 29, no. 5 (Oct 2014): 532-7.\n   https://doi.org/10.1017/s1049023x14000958.\n\n   7) Burkard, M. E., and H. D. Van Liew. \"Simulation of Exchanges of Multiple Gases in Bubbles in the Body.\" [In eng]. Respir Physiol 95, no. 2 (Feb\n   1994): 131-45. https://doi.org/10.1016/0034-5687(94)90111-2.\n\n   8) Chappell, Steven P, Jason R Norcross, Andrew FJ Abercromby, Omar S Bekdash, Elizabeth A Benson, Sarah L Jarvis, Johnny Conkin, et al.\n   \"Evidence Report: Risk of Injury and Compromised Performance Due to Eva Operations.\" (2017).\n\n   9) Duncan, Gary. Emu Splat Suit Leak Rates. (09/20/2017 2017).\n\n   10) Germonpr\u00e9, P., and C. Balestra. \"Preconditioning to Reduce Decompression Stress in Scuba Divers.\" [In eng]. Aerosp Med Hum Perform 88,\n   no. 2 (Feb 1 2017): 114-20. https://doi.org/10.3357/amhp.4642.2017.\n\n   11) Johansen, B. D., R. S. Blue, T. L. Castleberry, E. L. Antonsen, and J. M. Vanderploeg. \"Point-of-Care Ultrasound for Pulmonary Concerns in\n   Remote Spaceflight Triage Environments.\" [In eng]. Aerosp Med Hum Perform 89, no. 2 (Feb 1 2018): 122-29.\n   https://doi.org/10.3357/amhp.4808.2018.\n\n   12) Kolesari, G. L., and E. P. Kindwall. \"Survival Following Accidental Decompression to an Altitude Greater Than 74,000 Feet (22,555 M).\" [In\n   eng]. Aviat Space Environ Med 53, no. 12 (Dec 1982): 1211-4.\n\n   13) Kot, J., Z. Sicko, and T. Doboszynski. \"The Extended Oxygen Window Concept for Programming Saturation Decompressions Using Air and\n   Nitrox.\" [In eng]. PLoS One 10, no. 6 (2015): e0130835. https://doi.org/10.1371/journal.pone.0130835.\n\n   14) Murray, D. H., A. A. Pilmanis, R. S. Blue, J. M. Pattarini, J. Law, C. G. Bayne, M. W. Turney, and J. B. Clark. \"Pathophysiology, Prevention,\n   and Treatment of Ebullism.\" [In eng]. Aviat Space Environ Med 84, no. 2 (Feb 2013): 89-96. https://doi.org/10.3357/asem.3468.2013.\n\n   15) Norfleet, William T. \"Options and Plans for Treatment of Decompression Sickness Aboard Space Station Freedom.\" s DTIC (1990): 315.\n\n   16) Parker Jr, James F, and Vita R West. \"Bioastronautics Data Book: Nasa Sp-3006.\" NASA Special Publication 3006 (1973).\n\n   17) Rands\u00f8e, T. \"Effect of Metabolic Gases and Water Vapor, Perfluorocarbon Emulsions, and Nitric Oxide on Tissue Bubbles During\n   Decompression Sickness.\" [In eng]. Dan Med J 63, no. 5 (May 2016).\n\n   18) Rands\u00f8e, T., and O. Hyldegaard. \"Treatment of Micro Air Bubbles in Rat Adipose Tissue at 25 Kpa Altitude Exposures with Perfluorocarbon\n   Emulsions and Nitric Oxide.\" [In eng]. Eur J Appl Physiol 114, no. 1 (Jan 2014): 135-46. https://doi.org/10.1007/s00421-013-2749-x.\n\n   19) Salem, Nagah Atwa. \"Surgical Aspects of Space Medicine.\" International Journal of Medical Arts 1, no. 2 (2019): 119-31.\n\n   20) Skowron, Gail, Fiasal, Ali. \"Significant Incidents & Close Calls in Human Spaceflight: Eva Operations.\" nasa.gov, Updated 1/25/2020, 2020,\n   accessed 9/23/2021, 2021, https://sma.nasa.gov/SignificantIncidentsEVA2018/.\n\n   21) Packham, Nigel, Wood, Bill. \"Significant Incidents & Close Calls in Human Spaceflight.\" nasa.gov, Updated 9/30/2019, accessed 12/14/2021,\n   https://sma.nasa.gov/SignificantIncidents/\n\n   22) Steinberg, Susan. 2014 Decompression Sickness/Extravehicular Activity Risks Standing Review Panel. (2015).\n\n   23) Tarver, W. J., K. Volner, and J. S. Cooper. \"Aerospace Pressure Effects.\" In Statpearls. Treasure Island (FL): StatPearls Publishing\n\n   Copyright \u00a9 2021, StatPearls Publishing LLC., 2021.\n\n   24) Barratt, MR, et al. (2020). Principles of Clinical Medicine for Space Flight, Springer Nature.\n\n   25) Hall, WM and Corey, EL (1949). \"Anoxia in Explosive Decompression Injury.\" Journal of Physiology.\n\n   26) Galvagno, SM Jr., et al. (2019). \"Advanced Trauma Life Support((R)) Update 2019: Management and Applications for Adults and Special\n   Populations.\" Anesthesiol Clin 37(1): 13-32.\n\n   27) Greene, M. R. and S. E. Jacobs (2020). \"Decompression Sickness Treatment Using a Pressure Suit After Loss of Spacecraft Atmosphere.\"\n   Aerosp Med Hum Perform 91(7): 571-577.\n\n\n\n\n8/22/2023 6:57:09 PM                                                          ICL37_Ebullism Cliff                                                      page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-095-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Reference\n\n   28) John-Baptiste, A et al. (2006). \"Decision Analysis in Aerospace Medicine: Costs and Benefits of a Hyperbaric Facility in Space.\" Aviation,\n   Space, and Environmental Medicine.\n\n   29) Murray, DH et al. (2013). \"Pathophysiology, prevention, and treatment of ebullism.\" Aviat Space Environ Med 84(2): 89-96.\n\n   30) Mayglothling, J et al. (2012). \"Emergency tracheal intubation immediately following traumatic injury: An Eastern Association for the Surgery of\n   Trauma practice management guideline.\" Journal of Acute Care Surgery.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                      PHRASE\n\n   AAOMS                        American Association of Oral and Maxillofacial Surgeons\n\n   AMA                          American Medical Association\n\n   ARCL                         All Remaining Conditions List\n\n   ARS                          Acute Radiation Sickness\n\n   BHP                          Behavioral Health and Performance\n\n   CAC                          Coronary Artery Calcium\n\n   CHS                          Crew Health and Safety\n\n   CL                           Condition List\n\n   CliFF                        Clinical Finding Form\n\n   CMO                          Crew Medical Officer\n\n   COMFORT                      Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                          Clinical Phase 1\n\n   CP2                          Clinical Phase 2\n\n   CP3                          Clinical Phase 3\n\n   CRL                          Clinical Resource Level\n\n   CRT                          Capability Resource Table\n\n   CST                          Clinical Science Team\n\n   DCS                          Decompression Syndrome\n\n   DRM                          Design Reference Mission\n\n   ED                           Emergency Medicine Doctor\n\n   EL                           Evidence Library\n\n   EMCL                         Exploration Medical Condition List\n\n   EMT                          Emergency Medical Technician\n\n   EVA                          Extravehicular Activity\n\n   EXMC                         Exploration Medical Capability\n\n   HRP                          Human Research Program\n\n   ICD                          International Classification of Disease\n\n   ICL 1.0                      IMPACT 1.0 Medical Conditions List\n\n   ICU                          Intensive Care Unit\n\n   IMCL                         iMED Condition List\n\n   iMED                         Integrated Medical Evidence Database\n\n   IMM                          Integrated Medical Model\n\n\n\n\n8/22/2023 6:57:09 PM                                                        ICL37_Ebullism Cliff                                                         page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    },
+    {
+      "section_id": "CLIFF-095-P14",
+      "ordinal": 13,
+      "heading": "Page 14 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n8/22/2023 6:57:09 PM                                               ICL37_Ebullism Cliff   page: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "page:14"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-095-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "EVA"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "EVA All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Binomial"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Fixed"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "1.02E-05"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0"
+        ],
+        [
+          "Fixed Incidence"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-095-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                  Source                                      LOC Value"
+        ],
+        [
+          "Skowron, 2020                                             Spaceflight                                 2"
+        ],
+        [
+          "Packham, 2012                                             Spaceflight                                 2"
+        ],
+        [
+          "Kolesari, 1982                                            Analogue                                    1"
+        ],
+        [
+          "Barratt, 2019                                             Analogue                                    2"
+        ],
+        [
+          "Duncan, 2017                                              Spaceflight                                 2"
+        ],
+        [
+          "With the exception of catastrophic vehicle failures, such as Soyuz-11 and STS-107, there have been no ebullism events reported in spaceflight to"
+        ],
+        [
+          "date and ebullism only occurs in a near space environment. Thus all attempts to calculate incidence must rely on logical deductions based on"
+        ],
+        [
+          "models and/or analogues. For the purposes of the Evidence Library we used the EMU SPLAT trade study report (Duncan, 2017). This PRA sets"
+        ],
+        [
+          "the probability for a large suit leak occurring on a 6.5 hour ISS EVA in the EMU at 0.00001025."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-095-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                      Source                                         LOC Value"
+        ],
+        [
+          "Packham, 2012                                                 Spaceflight                                    1"
+        ],
+        [
+          "Kolesari, 1982                                                Analogue                                       1"
+        ],
+        [
+          "Barratt, 2019                                                 Analogue                                       1"
+        ],
+        [
+          "Given the few known cases of ebullism, estimating BC/WC proportion must again rely on logical deduction. As with the incidence, this should be"
+        ],
+        [
+          "understood as an estimation with a high degree of uncertainty. The Packham, 2012 report describes 2 cases of vehicle failures while the Barratt,"
+        ],
+        [
+          "2019 and Kolesari, 1982 cases add a mix of high altitude bailouts, parachute jumps, and altitude chamber accidents. Since the proportion of"
+        ],
+        [
+          "BC/WC results from a common end point of pressure containment failure the variety of suits, vehicles, and activities is unlikely to matter as much."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-095-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis        CP2: Treatment           CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration    TI%        Duration      TI%       RTDC             LOCL"
+        ],
+        [
+          "Condition"
+        ],
+        [
+          "Case Scenario      Composite Incidence       Probability %    Preset    Preset      Preset     Min    Max Preset       Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best       Fixed Incidence           33 - 33          100       1.75        19.4526    4      24     0         0       0        0        0"
+        ],
+        [
+          "Case (TBC)         Proportion of"
+        ],
+        [
+          "0.00001025"
+        ],
+        [
+          "Treated Worst                                67 - 67          100       1.75        50         336    672    0         100     100      0        84"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best     N/A                       N/A              N/A       1.75        19.4526    4      24     0         0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst    N/A                       N/A              N/A       1.75        100        336    672    100       100     100      100      100"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-095-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "8/22/2023 6:57:09 PM                                                          ICL37_Ebullism Cliff                                                             page: 5"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-095-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                      Source                                                LOC Value"
+        ],
+        [
+          "O'Callaghan, 2013                                             Analog"
+        ],
+        [
+          "Kolesari, 1982                                                Analog"
+        ],
+        [
+          "Koestler, 1965                                                Analog (Animal)                                                        1"
+        ],
+        [
+          "Rumbaugh, 1965                                                Analog (Animal)"
+        ],
+        [
+          "Barratt, 2019                                                 Analog"
+        ],
+        [
+          "The RTDC surrogate for this condition is permanent disability. Since the available case reports have outcomes of either death or full recovery there"
+        ],
+        [
+          "is little data to work with on this surrogate (O'Callaghan, 2013, Kolesari, 1982, Barratt, 2019). Studies in non human primates also showed no"
+        ],
+        [
+          "disabilities after short term vacuum exposure (Koestler, 1965 and Rumbaugh, 1965)."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-095-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                      Source                                                LOC Value"
+        ],
+        [
+          "O'Callaghan, 2013                                             Analog"
+        ],
+        [
+          "Kolesari, 1982                                                Analog"
+        ],
+        [
+          "Koestler, 1965                                                Analog (Animal)"
+        ],
+        [
+          "1"
+        ],
+        [
+          "Rumbaugh, 1965                                                Analog (Animal)"
+        ],
+        [
+          "Barratt, 2019                                                 Analog"
+        ],
+        [
+          "Packham, 2012                                                 Spaceflight"
+        ],
+        [
+          "Case reports support the supposition that severity of ebullism is related to duration of exposure to vacuum. In the BC there is no risk of LOCL so"
+        ],
+        [
+          "the data here relates solely to the WC definition. The case reports imply that severe ebullism has a high mortality rate and that survival requires"
+        ],
+        [
+          "access to immediate emergency care within a window of only a few minutes. The paucity of data gives this value a high degree of uncertainty but"
+        ],
+        [
+          "given the severity of the injury and the need for a near immediate response, the authors are confident that mortality for the WC of this condition will"
+        ],
+        [
+          "be high."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-095-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision           Hearing                    Dentition          GI             GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "223              664                              89                                           145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "223             664                              89                                           145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223              664            113               89             854            44             145          5               13             6"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223             664            113               89             854            44             145          5               13             6"
+        ]
+      ],
+      "page_number": 9,
+      "source_anchor": "page:9#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-095-IMG-01",
+      "ordinal": 0,
+      "media_kind": "OTHER",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-095/hyperbaric_recompression_chamber.jpg",
+      "mime_type": "image/jpeg",
+      "width": 3753,
+      "height": 2601,
+      "sha256": "99bfcd5fb96e2a671537212ec7b9838bbcd923b9502a01b038ccb73099a2cf12",
+      "creator": "Jayme Pastoric",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ADecompression_chamber.jpg",
+      "attribution": "Jayme Pastoric, via Wikimedia Commons (Public domain)",
+      "caption": "Hyperbaric recompression chamber used in emergency depressurization and ebullism management.",
+      "alt_text": "Photograph of a hyperbaric chamber.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Decompression chamber.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-095-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-095/pulmonary_alveolus_nih.png",
+      "mime_type": "image/png",
+      "width": 895,
+      "height": 640,
+      "sha256": "41a22e2a4d4a1beae75a31c9d7d45ad386c5bfb993983adf5c6bbbd1dfbd81a7",
+      "creator": "NIH NIAID",
+      "license_identifier": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3APulmonary_Alveolus_%28NIH_BioArt_567%29.png",
+      "attribution": "NIH NIAID, via Wikimedia Commons (CC BY 4.0)",
+      "caption": "NIH BioArt illustration of the pulmonary alveolus vulnerable to Armstrong-limit vapor formation.",
+      "alt_text": "NIH BioArt diagram of a pulmonary alveolus.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Pulmonary Alveolus (NIH BioArt 567).png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-095-IMG-03",
+      "ordinal": 2,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-095/lungs_gross_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1896,
+      "height": 1304,
+      "sha256": "67a7b18d0ec991f5295d1295a40080b2a356989af995fbd43d985137c1023985",
+      "creator": "OpenStax College",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3A2312_Gross_Anatomy_of_the_Lungs.jpg",
+      "attribution": "OpenStax College, via Wikimedia Commons (CC BY 3.0)",
+      "caption": "OpenStax gross anatomy of the lungs and pleura at risk during rapid vacuum exposure.",
+      "alt_text": "Diagram of gross lung anatomy.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:2312 Gross Anatomy of the Lungs.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-095-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Ebullism",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/ebullism-cliff-2023.pdf?emrc=95c8bc",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}
