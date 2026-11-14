@@ -11,3 +11,11 @@ The user explicitly authorized importing this **self-authored legacy symptom voc
 
 **License/credit:** owned content transferred with owner's explicit consent. Do not attribute it to NASA; NASA original CliFF content remains a separate scientific library.
 
+
+## Additive English lookup overlay (2026-11-14)
+
+- `label_aliases_en.json` provides **51 initial English search/display drafts** linked to the exact original Vietnamese labels and stable IDs. These represent **93 distinct English search terms** including synonyms. The original 819-entry `ASTRA_819_REFERENCE.json` was not edited.
+- The translation layer declares `translation_status=UNREVIEWED_TERMINOLOGY`. It is **not** a clinical terminology approval, diagnostic code mapping, or triage escalation rule. The remaining 768 source labels have **no English translations in this overlay**; do not invent missing entries or mark 819/819 bilingual.
+- The server `knowledge_catalog.py` checks the original Git blob SHA and each original ID/name before serving the supplemental labels. Unmatched/outdated translations are ignored; source names remain authoritative.
+- In the native English interview, a translated display label appears **alongside** its original Vietnamese term. The selected clinical vocabulary sent to the API remains the canonical original term and ID association. Optional structured questions are not diagnoses; escalation requires explicitly reported warning signs, never legacy tiers.
+- Run `python scripts/audit_bilingual.py --json` to audit matching IDs, alias collisions, catalog keys and provenance. Real Windows interaction verification and independent clinical terminology review are still required.
