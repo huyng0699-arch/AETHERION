@@ -573,5 +573,6 @@
   "demo.official.research": "NASA · Ongoing HRP research",
   "demo.official.five": "Five hazards: radiation; isolation; distance from Earth; altered gravity; closed environments.",
   "demo.official.explain": "NASA's 1962 MA-7 report supplies real measurements, but it is a supplementary source, not one of the five listed challenge links. This archive is not proof of continuous health monitoring.",
-  "demo.official.mode": "Challenge background ≠ MA-7 data file"
+  "demo.official.mode": "Challenge background ≠ MA-7 data file",
+  "care.intake.translation_note": "Draft English search terminology; not clinically reviewed. The interview uses the original Vietnamese symptom identity."
 }
