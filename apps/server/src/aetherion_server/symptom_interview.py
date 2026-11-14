@@ -12,7 +12,7 @@ import urllib.error
 import urllib.request
 from typing import Any
 
-from .knowledge_catalog import normalized, symptom_source
+from .knowledge_catalog import normalized, symptom_source, symptom_english_aliases
 
 QUESTIONS = (
     {"id": "present_now", "text": "Triệu chứng còn đang xảy ra ngay lúc này?", "answers": ["YES", "NO", "UNKNOWN"], "routes": []},
@@ -54,14 +54,22 @@ def _recognized(symptoms: list[str]) -> tuple[list[str], set[str], list[dict], l
         if entry not in matches:
             matches.append(entry)
 
+    english = symptom_english_aliases()
     for entry in symptom_source()["entries"]:
         for ident in entry.get("ids", []):
             add(by_id, exact(ident), entry)
         add(by_name, exact(entry.get("name", "")), entry)
         for alias in entry.get("aliases", []):
             add(by_alias, exact(alias), entry)
-        for text in [entry.get("name", ""), *entry.get("aliases", [])]:
-            add(by_loose, normalized(text), entry)
+        translated = english.get(entry.get("name", ""), {})
+        # English is an *unreviewed terminology alias* for the exact existing
+        # Vietnamese label/ID, not a new symptom, diagnosis or risk assessment.
+        english_terms = ([translated["label_en"], *translated.get("aliases_en", ())]
+                         if translated else [])
+        for alias in english_terms:
+            add(by_alias, exact(alias), entry)
+        for term in [entry.get("name", ""), *entry.get("aliases", []), *english_terms]:
+            add(by_loose, normalized(term), entry)
 
     names: list[str] = []
     routes: set[str] = set()
