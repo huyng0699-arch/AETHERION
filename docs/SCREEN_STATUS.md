@@ -44,3 +44,7 @@ App launch → Mission Operations (first screen)
 - Q-0485 remains **COMPONENT_READY / review PENDING**, not `DONE`. This document reports code integration, not accepted screen quality.
 - **Windows acceptance outstanding:** start an actual Windows PySide6 build at 1040×650 and 150% DPI; capture the first screen after-fix; click Demo → briefing → Start; confirm 5 tabs, five fictional subjects, 540-day range and seeded SQLite readback; navigate Back and real NASA archive; verify all 13 routes plus VI/EN, visual themes, reduced motion, keyboard access, and no accidental patient-store writes.
 - An independent reviewer must validate the fresh screenshot and interaction evidence before final DONE. No screenshot has been generated or fabricated in this commit.
+
+## Focused NASA source-link defect requiring owning-agent fix
+
+Source readback found `nasa_ma7.py` uses `QDesktopServices.openUrl(QUrl(...))` without an available `QUrl` import in `build_hackathon_demo()` or module globals. **Until the Q-0478/Q-0484 file owner imports `QUrl` with an ACK and SHA/CAS, original PDF/OSDR/official resource link clicks are a suspected `NameError` failure.** This is not proof of a Windows crash; no native click was attempted. See [Issue #8 comment 6876928259](https://github.com/huyng0699-arch/AETHERION/issues/8#issuecomment-6876928259). Q-0485 must not edit this multiply-owned source file without narrow authorization.
