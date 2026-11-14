@@ -244,13 +244,20 @@ class ECGPage(QWidget):
             data=json.loads(raw.decode('utf-8'))
             if not isinstance(data,dict) or data.get('subject_id')!=self.subject_id or not isinstance(data.get('recordings'),list):
                 raise ValueError('Identity mismatch')
-            self._records=data['recordings']
-            for meta in self._records:
-                if meta.get('subject_id')!=self.subject_id:raise ValueError('Cross-identity payload')
+            prepared=[]
+            for meta in data['recordings']:
+                if not isinstance(meta,dict) or meta.get('subject_id')!=self.subject_id:
+                    raise ValueError('Cross-identity payload')
                 rid=meta.get('recording_id','')
-                if not isinstance(rid,str) or not rid.startswith('ecg-'):raise ValueError('Invalid ID')
+                if not isinstance(rid,str) or not rid.startswith('ecg-'):
+                    raise ValueError('Invalid ID')
                 text=f"{str(meta.get('recorded_at',''))[:19]}  ·  {meta.get('lead_name')}  ·  {meta.get('source_id')}"
-                item=QListWidgetItem(text);item.setData(Qt.ItemDataRole.UserRole,rid);self.list_widget.addItem(item)
+                prepared.append((text,rid))
+            self._records=data['recordings']
+            for text,rid in prepared:
+                item=QListWidgetItem(text)
+                item.setData(Qt.ItemDataRole.UserRole,rid)
+                self.list_widget.addItem(item)
             self.status.setText(self.t('count',count=self.list_widget.count()))
         except (ValueError,TypeError,UnicodeError):
             self.status.setText(self.t('offline'))
