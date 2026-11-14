@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-091",
+  "slot": 91,
+  "quest_id": "Q-0391",
+  "checked_at_utc": "2026-11-14T06:33:58.306686+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/bhp-sleep-disturbance-cliff-2023.pdf?emrc=8fb893",
+  "http_status": 200,
+  "pdf_sha256": "81309973609b2de27509e69e5a2ab9e281a9947b6f910d6a7b36f0e4df6e33b4",
+  "pdf_bytes": 329938,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-091-IMG-01": "0c4597e6d27e6059701a87a32d8fc923acec67f3e28fcc3e775bfbfcf3e6df82",
+    "CLIFF-091-IMG-02": "07b11452ce8d18067ace39acafc89e5f1f41f4ddc09ba3d7bbf254df091aaa71",
+    "CLIFF-091-IMG-03": "18d0c50e7356ac2285b8d1e913f35910d91ff970be7c7dfc4492b0d257753a82"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
