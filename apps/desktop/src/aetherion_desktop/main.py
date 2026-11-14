@@ -165,6 +165,7 @@ class AetherionWindow(QMainWindow):
 
         # Native, bilingual workspaces; only Server-backed records and questions.
         self.monitor_page = MonitoringWorkspace(self.api_url, self.network, self.ui_language)
+        self.monitor_page.apply_theme(self.preferences)
         self.monitor_page.open_mission.connect(self.show_mission)
         self.pages.addWidget(self.monitor_page)
         self.assistant_page = InterviewWorkspace(self.api_url, self.network, self.ui_language)
@@ -414,6 +415,7 @@ class AetherionWindow(QMainWindow):
             self.preferences.reduce_motion, self.preferences.animation_intensity,
         )
         self.ambient_controller.update_preferences(self.preferences)
+        self.monitor_page.apply_theme(self.preferences)
         if self.ui_language != self.preferences.language:
             self.ui_language = self.preferences.language
             self._retranslate_shell()
