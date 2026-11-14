@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Linking, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Locale } from '../types';
 import { MessageKey, t } from '../i18n';
 import { colors } from '../theme';
 import { ApiError } from '../api/client';
-import { getKnowledgeStatus, getScienceArticle, getScienceSources, searchScienceArticles, KnowledgeStatus, ScienceArticle, ScienceArticleSummary, ScienceSource } from '../api/science';
+import { getKnowledgeStatus, getScienceArticle, searchScienceArticles, KnowledgeStatus, ScienceArticle, ScienceArticleSummary } from '../api/science';
 import { AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../components/ui';
 
 export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () => void }) {
@@ -13,7 +13,6 @@ export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () =
   const [items, setItems] = useState<ScienceArticleSummary[]>([]);
   const [indexed, setIndexed] = useState(0);
   const [status, setStatus] = useState<KnowledgeStatus | null>(null);
-  const [sources, setSources] = useState<ScienceSource[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [errorKey, setErrorKey] = useState<MessageKey | null>(null);
@@ -34,9 +33,8 @@ export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () =
       setIndexed(0);
       setErrorKey(errorMessageKey(error));
     }
-    const [statusResult, sourcesResult] = await Promise.allSettled([getKnowledgeStatus(), getScienceSources(200)]);
+    const [statusResult] = await Promise.allSettled([getKnowledgeStatus()]);
     setStatus(statusResult.status === 'fulfilled' ? statusResult.value : null);
-    setSources(sourcesResult.status === 'fulfilled' && Array.isArray(sourcesResult.value.items) ? sourcesResult.value.items : []);
     setLoading(false);
   }, []);
 
@@ -56,8 +54,6 @@ export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () =
     }
   };
 
-  const sourceByArticle = useMemo(() => new Map(sources.filter((source) => source.article_id).map((source) => [source.article_id as string, source])), [sources]);
-
   const submitSearch = () => { setSelected(null); setArticle(null); void load(query); };
   const refresh = () => { if (selected) void openArticle(selected); else { setSelected(null); setArticle(null); setRefreshKey((value) => value + 1); } };
 
@@ -75,7 +71,7 @@ export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () =
             <Ionicons name="chevron-back" size={17} color={colors.cyan} /><Text style={styles.backText}>{t(locale, 'scienceBack')}</Text>
           </Pressable>
           {loadingDetail ? <Loading label={t(locale, 'loading')} /> : detailErrorKey ? <Panel><Body>{t(locale, detailErrorKey)}</Body></Panel> : article ? (
-            <ArticleDetail article={article} source={sourceByArticle.get(article.summary.article_id)} status={status} locale={locale} />
+            <ArticleDetail article={article} status={status} locale={locale} />
           ) : null}
         </>
       ) : (
@@ -103,15 +99,15 @@ export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () =
           {status && !status.clinical_rules_validated ? <StatusPill label={t(locale, 'scienceRulesNotValidated')} tone="neutral" /> : null}
           {errorKey ? <Panel><Body>{t(locale, errorKey)}</Body></Panel> : loading ? <Loading label={t(locale, 'loading')} /> : items.length === 0 ? (
             <Panel><Text style={styles.emptyTitle}>{indexed === 0 ? t(locale, 'noData') : t(locale, 'scienceNoResults')}</Text></Panel>
-          ) : <View style={styles.articleList}>{items.map((item) => <ArticleCard key={item.article_id} item={item} source={sourceByArticle.get(item.article_id)} onPress={() => { void openArticle(item); }} locale={locale} />)}</View>}
+          ) : <View style={styles.articleList}>{items.map((item) => <ArticleCard key={item.article_id} item={item} onPress={() => { void openArticle(item); }} locale={locale} />)}</View>}
         </>
       )}
     </AppPage>
   );
 }
 
-function ArticleCard({ item, source, onPress, locale }: { item: ScienceArticleSummary; source?: ScienceSource; onPress: () => void; locale: Locale }) {
-  const verification = source?.verification_status || item.source_claim;
+function ArticleCard({ item, onPress, locale }: { item: ScienceArticleSummary; onPress: () => void; locale: Locale }) {
+  const verification = item.source_claim;
   return <Pressable accessibilityRole="button" onPress={onPress} style={({ pressed }) => [styles.cardPressable, pressed && styles.pressed]}>
     <Panel style={styles.articleCard}>
       <View style={styles.cardTop}><Ionicons name="document-text-outline" size={19} color={colors.cyan} /><Text style={styles.category}>{item.category || '—'}</Text></View>
@@ -122,13 +118,13 @@ function ArticleCard({ item, source, onPress, locale }: { item: ScienceArticleSu
   </Pressable>;
 }
 
-function ArticleDetail({ article, source, status, locale }: { article: ScienceArticle; source?: ScienceSource; status: KnowledgeStatus | null; locale: Locale }) {
+function ArticleDetail({ article, status, locale }: { article: ScienceArticle; status: KnowledgeStatus | null; locale: Locale }) {
   const record = article.source || {};
-  const publisher = source?.publisher || record.publisher;
-  const sourceTitle = source?.title || record.title;
-  const sourceUrl = record.final_url || record.source_url || source?.source_uri || article.summary.original_url || '';
-  const sourceStatus = source?.verification_status || record.verification_state || article.summary.source_claim;
-  const sha = source?.content_sha256 || record.content_sha256 || article.summary.original_sha256_claim;
+  const publisher = record.publisher;
+  const sourceTitle = record.title;
+  const sourceUrl = record.final_url || record.source_url || article.summary.original_url || '';
+  const sourceStatus = record.verification_state || article.summary.source_claim;
+  const sha = record.content_sha256 || article.summary.original_sha256_claim;
   const sourceNote = t(locale, 'scienceSourceNote');
 
   return <View style={styles.detailContent}>
@@ -144,8 +140,8 @@ function ArticleDetail({ article, source, status, locale }: { article: ScienceAr
       {publisher ? <MetaRow label={t(locale, 'sciencePublisher')} value={publisher} /> : null}
       {sourceUrl ? <LinkRow label={t(locale, 'scienceOriginalLink')} url={sourceUrl} /> : null}
       {record.retrieved_at_utc ? <MetaRow label={t(locale, 'scienceRetrievedAt')} value={record.retrieved_at_utc} /> : null}
-      {(source?.license || record.license_identifier) ? <MetaRow label={t(locale, 'scienceLicense')} value={source?.license || record.license_identifier || ''} /> : null}
-      {(source?.attribution || record.attribution) ? <MetaRow label={t(locale, 'scienceAttribution')} value={source?.attribution || record.attribution || ''} /> : null}
+      {record.license_identifier ? <MetaRow label={t(locale, 'scienceLicense')} value={record.license_identifier} /> : null}
+      {record.attribution ? <MetaRow label={t(locale, 'scienceAttribution')} value={record.attribution} /> : null}
       {sha ? <MetaRow label={t(locale, 'scienceSha256')} value={sha} selectable /> : null}
       {status && !status.original_pdf_archive_verified ? <Text style={styles.sourceNote}>{t(locale, 'sciencePdfNotVerified')}</Text> : null}
       {status && !status.clinical_rules_validated ? <Text style={styles.sourceNote}>{t(locale, 'scienceRulesNotValidated')}</Text> : null}
