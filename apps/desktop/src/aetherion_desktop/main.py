@@ -139,7 +139,10 @@ class AetherionWindow(QMainWindow):
         brand.setAccessibleName("AETHERION — về Trang đầu")
         brand.clicked.connect(self.show_portal)
         bar.addWidget(brand)
-        bar.addSpacing(14)
+        # Operations already owns the visible AETHERION identity and navigation.
+        # The global bar contains appearance/language/settings/help only.
+        self.brand_button = brand
+        brand.hide()
 
         self.pages = QStackedWidget()
         self.pages.setObjectName("pageStack")
@@ -233,6 +236,32 @@ class AetherionWindow(QMainWindow):
         self.settings_page.connection_test_requested.connect(self.check_server)
         self.settings_page.go_home.connect(self.show_portal)
         self.pages.addWidget(self.settings_page)
+        # Reparent the EXISTING native QWidget instances into the persistent
+        # central mission-operations workspace. Q-0477/ECG/Chat logic, real API
+        # permissions and signal connections are deliberately untouched.
+        # QStackedWidget.removeWidget does not destroy widgets.
+        for route, widget in (
+            ("mission", self.mission_control_page),
+            ("crew", self.mission_control_page),
+            ("health", self.personal_today_page),
+            ("monitor", self.monitor_page),
+            ("ecg", self.ecg_page),
+            ("assistant", self.assistant_page),
+            ("interview", self.symptom_page),
+            ("care", self.care_journal_page),
+            ("science", self.knowledge_browser_page),
+            ("hazards", self.nasa_explore_page),
+            ("medical_library", self.medical_library_page),
+            ("atlas", self.atlas_page),
+            ("settings", self.settings_page),
+            ("simulated_briefing", self.simulated_briefing_page),
+            ("synthetic_patient", self.synthetic_patient_page),
+            ("nasa_archive", self.hackathon_demo_page),
+        ):
+            if self.pages.indexOf(widget) >= 0:
+                self.pages.removeWidget(widget)
+            self.operations_home_page.attach_feature(route, widget)
+
         self.ambient_controller=PageAmbientController(self)
         for page in (self.mission_control_page,self.personal_today_page,
                      self.medical_library_page,self.nasa_explore_page,
@@ -273,7 +302,11 @@ class AetherionWindow(QMainWindow):
             self.nav_science.menu().actions()[0],
             self.nav_more.menu().actions()[2],
         )
-        self.nav_more.hide()
+        # Browse is the sole route navigator: keep legacy buttons only as
+        # dormant compatibility actions, never as duplicate visible chrome.
+        for nav in (self.nav_home, self.nav_health, self.nav_monitor,
+                    self.nav_ai, self.nav_science, self.nav_crew, self.nav_more):
+            nav.hide()
         bar.addStretch(1)
 
         self._server_state = "checking"
@@ -281,6 +314,9 @@ class AetherionWindow(QMainWindow):
         self.status.setObjectName("connectionPill")
         self.status.setToolTip("Trạng thái HTTP Server tại địa chỉ cấu hình")
         bar.addWidget(self.status)
+        # The sole visible connection indicator is inside Mission Operations.
+        # This hidden label remains the localized source of truth for /health.
+        self.status.hide()
         self.theme_button = QToolButton()
         self.theme_button.setText("◐  Giao diện")
         self.theme_button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextOnly)
@@ -510,22 +546,27 @@ class AetherionWindow(QMainWindow):
     def open_theme_menu(self):
         self.show_settings()
 
+    def _show_workspace_feature(self, route: str):
+        """Keep Browse, Inspect and the bottom UTC conductor visible on routes."""
+        if not self.operations_home_page.show_hosted(route):
+            raise ValueError(f"Unregistered native workspace: {route}")
+        self.pages.setCurrentWidget(self.operations_home_page)
+
     def show_settings(self):
-        self.pages.setCurrentWidget(self.settings_page)
+        self._show_workspace_feature("settings")
 
     def resizeEvent(self,event):
         super().resizeEvent(event)
-        if hasattr(self,"nav_more"):
-            narrow=self.width()<1360
-            compact=self.width()<1200
-            self.nav_more.setVisible(narrow)
-            self.nav_science.setVisible(not narrow)
-            self.nav_crew.setVisible(not narrow)
-            self.nav_ai.setVisible(not compact)
+        if hasattr(self, "nav_more"):
+            # No legacy route button may reappear on resize: Browse is primary.
+            for nav in (self.nav_home, self.nav_health, self.nav_monitor,
+                        self.nav_ai, self.nav_science, self.nav_crew, self.nav_more):
+                nav.hide()
 
     def show_portal(self):
-        """Home always means the mission-operations workspace."""
+        """Home means the persistent native Mission Operations overview."""
         self.pages.setCurrentWidget(self.operations_home_page)
+        self.operations_home_page.show_overview()
 
     def show_legacy_portal(self):
         """Compatibility-only access; never the native app cold-start view."""
@@ -554,56 +595,56 @@ class AetherionWindow(QMainWindow):
             handler()
 
     def show_simulated_briefing(self):
-        """Every Demo entry starts with explicit SIMULATED provenance."""
-        self.pages.setCurrentWidget(self.simulated_briefing_page)
+        """Every Demo entry opens a provenance guide in the persistent shell."""
+        self._show_workspace_feature("simulated_briefing")
 
     def start_simulated_demo(self):
-        """The sole user-initiated entrypoint to the isolated demo SQLite."""
-        self.pages.setCurrentWidget(self.synthetic_patient_page)
+        """Start only on the explicit CTA; isolated SQLite remains Q-0484-owned."""
+        self._show_workspace_feature("synthetic_patient")
         self.synthetic_patient_page.start()
 
     def show_personal(self):
-        self.pages.setCurrentWidget(self.personal_today_page)
+        self._show_workspace_feature("health")
 
     def show_mission(self):
-        self.pages.setCurrentWidget(self.mission_control_page)
+        self._show_workspace_feature("mission")
 
     def show_medical_library(self):
         self.medical_library_page.reload()
-        self.pages.setCurrentWidget(self.medical_library_page)
+        self._show_workspace_feature("medical_library")
 
     def show_nasa_explore(self):
         self.nasa_explore_page.reload()
-        self.pages.setCurrentWidget(self.nasa_explore_page)
+        self._show_workspace_feature("hazards")
 
     def show_observatory(self):
         """Open the real native article search on the canonical AETHERION Server."""
-        self.pages.setCurrentWidget(self.knowledge_browser_page)
+        self._show_workspace_feature("science")
 
     def show_hackathon_demo(self):
-        """NASA MA-7 historical archive: distinct from synthetic Demo SQLite."""
+        """Genuine historical NASA MA-7, never the SIMULATED patient store."""
         self.hackathon_demo_page.show_briefing()
-        self.pages.setCurrentWidget(self.hackathon_demo_page)
+        self._show_workspace_feature("nasa_archive")
 
     def show_monitor(self):
-        # Always recheck access before showing health records; cached data cannot
-        # silently survive a revoked session or a changed account.
+        # Preserve the original Q-0477 authorization recheck and HTTP refresh.
+        # Home's UTC time conductor is NOT bound to Monitoring without ACK.
         self.monitor_page.refresh()
-        self.pages.setCurrentWidget(self.monitor_page)
+        self._show_workspace_feature("monitor")
 
     def show_ecg(self):
         self.ecg_page.refresh()
-        self.pages.setCurrentWidget(self.ecg_page)
+        self._show_workspace_feature("ecg")
 
     def show_assistant(self):
         self.assistant_page.refresh_status()
-        self.pages.setCurrentWidget(self.assistant_page)
+        self._show_workspace_feature("assistant")
 
     def show_atlas(self):
-        self.pages.setCurrentWidget(self.atlas_page)
+        self._show_workspace_feature("atlas")
 
     def show_care(self):
-        self.pages.setCurrentWidget(self.care_journal_page)
+        self._show_workspace_feature("care")
         self.care_journal_page.refresh()
 
     def show_symptom_interview(self):
@@ -618,11 +659,11 @@ class AetherionWindow(QMainWindow):
                 self.symptom_page.answers = answers
                 self.symptom_page._selection_label()
                 self.symptom_page._ask()
-        self.pages.setCurrentWidget(self.symptom_page)
+        self._show_workspace_feature("interview")
 
     def _open_care_from_interview(self, episode_id: str):
         self.care_journal_page.start_from_interview(episode_id)
-        self.pages.setCurrentWidget(self.care_journal_page)
+        self._show_workspace_feature("care")
 
     def open_portal_route(self, route: str):
         if route not in PORTAL_ROUTES:
