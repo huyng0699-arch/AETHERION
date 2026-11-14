@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-026",
+  "slot": 26,
+  "quest_id": "Q-0326",
+  "checked_at_utc": "2026-11-14T06:04:59.991039+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eye-irritation-corneal-abrasion-ulceration-cliff-2023.pdf?emrc=21ed9a",
+  "http_status": 200,
+  "pdf_sha256": "6a7f1717d0a0fcbd483f12fa029e5fe14e281b810a1fdd5e023514a58e0e604a",
+  "pdf_bytes": 380485,
+  "pages_extracted": 15,
+  "sections_count": 15,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-026-IMG-01": "0c0e90ffef93c88e56a5a35cb1c4b9ceb4d424575bcbb60e7be372170eaa7fc2",
+    "CLIFF-026-IMG-02": "f99924e0ca5cad83ca0d990685a508e3da3022776bcaa72555441ea0812ca097",
+    "CLIFF-026-IMG-03": "18d33e7aa87272e9439e3150cc59e2bc29693a0323bcccca8c64d9614c4bcd29"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
