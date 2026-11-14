@@ -75,7 +75,12 @@ class AuthorizedPersonalTodayPage(QWidget):
         self._displayed_cards = ()
         self._visible_cards = ()
         self.table.setRowCount(0)
+        self.table.clearSelection()
         update_personal_tiles(self, ())
+        # Reset previous subject's filters and footer before displaying a new
+        # identity; a denied/invalid handoff must not leave stale provenance.
+        self.origin_filter.setCurrentIndex(0)
+        self.note.setText(tr(self.ui_language, "personal.noteLatest"))
         self._subject_id = ""
         self._token = ""
         try:
@@ -103,7 +108,9 @@ class AuthorizedPersonalTodayPage(QWidget):
         self._displayed_cards = ()
         self._visible_cards = ()
         self.table.setRowCount(0)
+        self.table.clearSelection()
         update_personal_tiles(self, ())
+        self.note.setText(tr(self.ui_language, "personal.noteLatest"))
         request = QNetworkRequest(QUrl(personal_observations_url(self._api_url, subject)))
         request.setRawHeader(b"Authorization", ("Bearer " + self._token).encode("utf-8"))
         self._say("personal.loadingSubject", subject=subject)
