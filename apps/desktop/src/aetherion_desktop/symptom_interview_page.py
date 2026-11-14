@@ -34,6 +34,8 @@ class SymptomInterviewPage(QWidget):
         self.token = ""
         self.answers: dict[str, str] = {}
         self.active_symptoms: list[str] = []
+        self._en_labels: dict[str, str] = {}
+        self._last_question_response: dict = {}
         self.question_id: str | None = None
         self.last_state = ""
         self._saving = False
@@ -69,10 +71,12 @@ class SymptomInterviewPage(QWidget):
         self.hits.itemActivated.connect(self.select_symptom)  # Enter / keyboard activation
         root.addWidget(self.hits)
         self.selection = QLabel()
+        self.selection.setTextFormat(Qt.TextFormat.PlainText)
         self.selection.setWordWrap(True)
         root.addWidget(self.selection)
 
         self.question = QLabel()
+        self.question.setTextFormat(Qt.TextFormat.PlainText)
         self.question.setObjectName("heroCopy")
         self.question.setWordWrap(True)
         root.addWidget(self.question)
@@ -128,6 +132,7 @@ class SymptomInterviewPage(QWidget):
         root.addLayout(footer)
 
         self.state = QLabel()
+        self.state.setTextFormat(Qt.TextFormat.PlainText)
         self.state.setWordWrap(True)
         root.addWidget(self.state)
         root.addStretch(1)
@@ -157,22 +162,45 @@ class SymptomInterviewPage(QWidget):
         self.authorize_button.setText(self._s("intake.authorize"))
         self.help_button.setText(self._s("help.button"))
         self._identity_label()
+        for index in range(self.hits.count()):
+            item = self.hits.item(index)
+            source = str(item.data(Qt.ItemDataRole.UserRole) or "")
+            item.setText(self._display_symptom(source))
+            item.setToolTip(
+                self._s("intake.translation_note")
+                if self.locale == "en" and source in self._en_labels else ""
+            )
         self._selection_label()
         self._update_buttons()
         if self.question_id:
             self.question.setText(self._s("question." + self.question_id))
+            for index in range(self.answers_box.count()):
+                answer_code = str(self.answers_box.itemData(index) or "").lower()
+                try:
+                    self.answers_box.setItemText(index, self._s("answer." + answer_code))
+                except KeyError:
+                    # Never invent an answer label for an unknown backend code.
+                    pass
         if self.last_state:
-            self._render_state()
+            self._render_state(self._last_question_response)
 
     def _identity_label(self):
         self.identity.setText(
             self._s("intake.subject", subject=self.subject_id) if self.subject_id and self.token
             else self._s("intake.no_subject"))
 
+    def _display_symptom(self, source_name: str) -> str:
+        """Show bilingual draft terminology, retain canonical VI identifier."""
+        english = self._en_labels.get(source_name)
+        if self.locale == "en" and english:
+            return f"{english} · {source_name}"
+        return source_name
+
     def _selection_label(self):
+        shown = [self._display_symptom(name) for name in self.active_symptoms]
         self.selection.setText(
-            self._s("intake.selected", symptoms=", ".join(self.active_symptoms))
-            if self.active_symptoms else self._s("intake.choose"))
+            self._s("intake.selected", symptoms=", ".join(shown))
+            if shown else self._s("intake.choose"))
 
     def set_identity(self, subject_id: str, access_token: str):
         # Different subjects must NEVER share draft answers, consent or visible notes.
@@ -206,6 +234,8 @@ class SymptomInterviewPage(QWidget):
         self._question_seq += 1
         self.active_symptoms = []
         self.answers = {}
+        self._en_labels.clear()
+        self._last_question_response = {}
         self.question_id = None
         self.last_state = ""
         self._saving = False
@@ -288,8 +318,15 @@ class SymptomInterviewPage(QWidget):
             # Never turn None, arbitrary objects or empty labels into symptoms.
             if not isinstance(name, str) or not name.strip() or len(name) > 120:
                 continue
-            item = QListWidgetItem(name.strip())
-            item.setData(Qt.ItemDataRole.UserRole, name.strip())
+            canonical = name.strip()
+            candidate = row.get("name_en")
+            if (row.get("translation_review_state") == "UNREVIEWED_TERMINOLOGY"
+                    and isinstance(candidate, str) and 0 < len(candidate) <= 140):
+                self._en_labels[canonical] = candidate.strip()
+            item = QListWidgetItem(self._display_symptom(canonical))
+            item.setData(Qt.ItemDataRole.UserRole, canonical)
+            if self.locale == "en" and canonical in self._en_labels:
+                item.setToolTip(self._s("intake.translation_note"))
             self.hits.addItem(item)
             count += 1
         reported = body.get("matched")
@@ -338,6 +375,7 @@ class SymptomInterviewPage(QWidget):
             self.state.setText(self._s("intake.error") + " " + error)
             return
         self.last_state = str(data.get("state", ""))
+        self._last_question_response = data
         self.answers_box.clear()
         question = data.get("next_question")
         candidate = question.get("id") if isinstance(question, dict) else None
@@ -388,7 +426,7 @@ class SymptomInterviewPage(QWidget):
                 self.state.setText(self._s(message_key) + " " + "; ".join(choices))
 
     def show_summary(self):
-        rows = self.active_symptoms[:]
+        rows = [self._display_symptom(name) for name in self.active_symptoms]
         rows += [key + ": " + value for key, value in self.answers.items()]
         QMessageBox.information(self, self._s("intake.summary"),
                                 "\n".join(rows) or self._s("intake.choose"))
