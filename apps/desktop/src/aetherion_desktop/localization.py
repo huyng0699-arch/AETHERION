@@ -71,5 +71,5 @@ def translate_shell_widgets(root: object, locale: str) -> None:
                 item.setText(translate_existing(item.text(), locale))
             if item.toolTip():
                 item.setToolTip(translate_existing(item.toolTip(), locale))
-            if item.accessibleName():
+            if hasattr(item, "accessibleName") and item.accessibleName():
                 item.setAccessibleName(translate_existing(item.accessibleName(), locale))
