@@ -26,6 +26,9 @@ jobs:
       - name: Install fetching dependencies
         run: python -m pip install --disable-pip-version-check "requests>=2.32,<3" "beautifulsoup4>=4.12,<5"
       - name: Download original documents directly from NASA
+        # Allow the following step to preserve verified originals and failure evidence.
+        # The final verification still fails the job unless all 119 are present.
+        continue-on-error: true
         run: python scripts/fetch_nasa_cliff_119.py
       - name: Commit only NASA originals and provenance manifest
         run: |
