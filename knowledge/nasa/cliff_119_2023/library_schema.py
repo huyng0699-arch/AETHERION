@@ -182,6 +182,10 @@ def audit(connection: sqlite3.Connection, *, verify_media: bool = True) -> dict[
     bad_hash = [row["media_id"] for row in media
                 if verify_media and hashlib.sha256(row["data"]).hexdigest() != row["sha256"]]
     articles = connection.execute("SELECT COUNT(*) FROM articles").fetchone()[0]
+    present_slots = {
+        row[0] for row in connection.execute("SELECT slot FROM articles").fetchall()
+    }
+    missing_slots = [slot for slot in range(1, 120) if slot not in present_slots]
     complete = connection.execute(
         "SELECT COUNT(*) FROM articles WHERE completeness_state='COMPLETE'"
     ).fetchone()[0]
@@ -192,6 +196,8 @@ def audit(connection: sqlite3.Connection, *, verify_media: bool = True) -> dict[
         "foreign_key_errors": len(fk),
         "articles": articles,
         "complete_articles": complete,
+        "missing_slots": missing_slots,
+        "missing_count": len(missing_slots),
         "media_assets": len(media),
         "approved_images": approved_images,
         "media_hash_mismatches": bad_hash,

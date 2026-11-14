@@ -44,6 +44,7 @@ def ingest_article_record(
     record: dict[str, Any],
     *,
     assets_root: str | Path | None = None,
+    verify_audit: bool = True,
 ) -> dict[str, Any]:
     """Validate provenance/MIME/hashes and idempotently ingest one article record into SQLite."""
     article_id = str(record.get("article_id", "")).strip()
@@ -251,6 +252,21 @@ def ingest_article_record(
                 ),
             )
 
+        # Keep FTS5 search index synchronized when available (full text, no shortening)
+        fts_row = conn.execute(
+            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='article_search'"
+        ).fetchone()
+        if fts_row is not None:
+            full_text = "\n\n".join(
+                f"{sec['heading']}\n{sec['text_content']}"
+                for sec in record.get("sections", [])
+            )
+            conn.execute("DELETE FROM article_search WHERE article_id = ?", (article_id,))
+            conn.execute(
+                "INSERT INTO article_search (article_id, display_title, content) VALUES (?, ?, ?)",
+                (article_id, display_title, full_text),
+            )
+
         conn.execute(
             """
             INSERT INTO ingestion_audit (article_id, action, timestamp_utc, source_sha256, message)
@@ -259,7 +275,7 @@ def ingest_article_record(
             (article_id, now_utc, content_sha256, f"Ingested slot {slot} ({len(prepared_media)} media)"),
         )
         conn.commit()
-        audit_summary = library_schema.audit(conn, verify_media=True)
+        audit_summary = library_schema.audit(conn, verify_media=True) if verify_audit else None
     except Exception:
         conn.rollback()
         raise
@@ -288,12 +304,53 @@ def ingest_directory(
     ingested: list[str] = []
     for json_path in sorted(directory.glob("*.json")):
         payload = json.loads(json_path.read_text(encoding="utf-8"))
-        res = ingest_article_record(db_path, payload, assets_root=assets_root)
+        res = ingest_article_record(db_path, payload, assets_root=assets_root, verify_audit=False)
         ingested.append(res["article_id"])
 
     conn = library_schema.connect(db_path)
     try:
         summary = library_schema.audit(conn, verify_media=True)
+        missing_slots = summary.get("missing_slots", [])
+        with conn:
+            conn.execute(
+                "INSERT OR REPLACE INTO library_info(key,value) VALUES ('missing_original_slots',?)",
+                (json.dumps(missing_slots),),
+            )
     finally:
         conn.close()
-    return {"ingested_articles": ingested, "audit": summary}
+    return {
+        "ingested_articles": ingested,
+        "missing_originals": [f"CLIFF-{s:03d}" for s in summary.get("missing_slots", [])],
+        "audit": summary,
+    }
+
+
+def pack_offline_library(
+    db_path: str | Path | None = None,
+    records_dir: str | Path | None = None,
+    assets_root: str | Path | None = None,
+) -> dict[str, Any]:
+    """Pack verified CliFF JSON records and rights-verified media into the single offline SQLite library."""
+    base_dir = Path(__file__).resolve().parent
+    repo_root = base_dir.parents[2]
+    target_db = Path(db_path) if db_path is not None else (base_dir / library_schema.DEFAULT_LIBRARY_NAME)
+    target_records = Path(records_dir) if records_dir is not None else (base_dir / "records")
+    target_assets = Path(assets_root) if assets_root is not None else repo_root
+    target_db.parent.mkdir(parents=True, exist_ok=True)
+    return ingest_directory(target_db, target_records, assets_root=target_assets)
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Pack verified CliFF JSON records into offline SQLite library.")
+    parser.add_argument("--db", type=Path, default=None, help="Output SQLite path")
+    parser.add_argument("--records", type=Path, default=None, help="JSON records directory")
+    parser.add_argument("--assets-root", type=Path, default=None, help="Repo root for relative media paths")
+    args = parser.parse_args()
+    result = pack_offline_library(args.db, args.records, args.assets_root)
+    print(json.dumps({
+        "ingested_count": len(result["ingested_articles"]),
+        "missing_originals": result["missing_originals"],
+        "audit": result["audit"],
+    }, indent=2))
