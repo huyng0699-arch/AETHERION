@@ -47,3 +47,11 @@ This demo tests longitudinal navigation, UI rendering, filtering, state handling
 ## Acceptance status
 
 Source implementation and GitHub readback are not equivalent to an actual Windows/PySide6 clickthrough. A targeted GitHub Actions run `43587292152` reported **FAILURE** but **no runner was assigned and the job steps list is empty**; the log endpoint returned `BlobNotFound`. This does not establish a passing or failing Python testcase. The pending acceptance must still confirm a local native launch, transition from Portal to guide to Demo, the actual SQLite row count, 540-day historical navigation, VI/EN, reset, small-window scrolling, and a separate reviewer.
+
+## Calendar-accurate gap behavior (Q-0484 refinement)
+
+Commit [15892ec](https://github.com/huyng0699-arch/AETHERION/commit/15892ec96377b99d925bb01c43d544c8e35f7692) makes the selected **30 / 90 / 180 / 365 / 540** period a window of actual calendar dates, ending on the user's selected `Personal` date (not an arbitrary count of the most recent observed values).
+
+The SQLite store saves **only observations that exist**. Reader `series(..., limit=30, end_day="YYYY-MM-DD")` materializes one **display-only daily slot** per date in that window; if no measured row exists, the slot is marked `NO_DATA` with `value=None` and `source_id=None`. The trend chart splits at that date and never interpolates across missing data. Historical table renders `NO_DATA`, and the trend summary counts observed values rather than total slots. `NO_DATA` is neither zero nor evidence of normality, and no placeholder is persisted in SQLite.
+
+The revised focused test checks chronological windows, explicit missing states, old-date endpoint, and Windows-safe closed SQLite handles. **The test source exists; it has not been shown passing in a real Windows/CI run in this invocation.** The 31,610 computed value count is only the deterministic seed expectation, still awaiting actual SQLite readback on the target environment. Native Windows Mission Operations Home and the short SIMULATED pre-demo guide have been integrated in source by Q-0485, but no after-fix screenshot or real clickthrough has been verified here. Do not accept a visual pass from source inspection.

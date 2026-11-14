@@ -1,5 +1,9 @@
 """Check that AETHERION's Quest ledger remains structurally valid."""
 import importlib.util
+import contextlib
+import io
+import sys
+from unittest.mock import patch
 from pathlib import Path
 import tempfile
 import unittest
@@ -23,12 +27,9 @@ class QuestBoardTests(unittest.TestCase):
             "Q-0002": {"id": "Q-0002", "status": "READY", "priority": "P1", "stream": "CORE", "depends_on": ["Q-0001"]},
         }
         self.assertEqual(module.verify(sample), [])
-        # On live board, only known upstream self-dependency entries in Q-0426/Q-0427 may appear
-        unexpected = [
-            err for err in module.verify(tasks)
-            if not any(qid in err for qid in ("Q-0426", "Q-0427"))
-        ]
-        self.assertEqual(unexpected, [])
+        # Previous Q-0426/Q-0427 self-links were repaired. Any newly
+        # introduced cycle or invalid approval must fail the strict gate.
+        self.assertEqual(module.verify(tasks), [])
 
     def test_multiline_yaml_list_parsing(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -50,6 +51,91 @@ class QuestBoardTests(unittest.TestCase):
         for ident, meta in tasks.items():
             if meta["status"] == "DONE":
                 self.assertEqual(meta.get("review"), "APPROVED", ident)
+
+
+    def test_indented_colons_are_not_status_overrides(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "Q-0003.md"
+            p.write_text(
+                """---
+id: Q-0003
+status: READY
+priority: P1
+stream: QA
+depends_on:
+  - Q-0001
+notes: |
+  status: DONE
+  owner: someone else
+owned_paths:
+  - scripts/quest_board.py
+---
+# Narrative body
+""",
+                encoding="utf-8",
+            )
+            meta = module.parse_quest(p)
+            self.assertEqual(meta["status"], "READY")
+            self.assertEqual(meta["depends_on"], ["Q-0001"])
+            self.assertEqual(meta["owned_paths"], ["scripts/quest_board.py"])
+
+    def test_corrupt_frontmatter_does_not_hide_work_queue(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            (folder / "Q-0001.md").write_text(
+                """---
+id: Q-0001
+status: QUEUED
+priority: P0
+stream: QA
+depends_on: []
+---
+# Valid
+""",
+                encoding="utf-8",
+            )
+            (folder / "Q-0002.md").write_text(
+                """---
+id: Q-0002
+status: DONE
+status: READY
+priority: P0
+stream: QA
+depends_on: []
+---
+# Invalid duplicate key
+""",
+                encoding="utf-8",
+            )
+            with patch.object(module, "QUESTS", folder):
+                with patch.object(sys, "argv", ["quest_board.py", "stats"]):
+                    out, err = io.StringIO(), io.StringIO()
+                    with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+                        status = module.main()
+                    self.assertEqual(status, 0)
+                    self.assertIn("TOTAL 1", out.getvalue())
+                    self.assertIn("WARNING:", err.getvalue())
+                with patch.object(sys, "argv", ["quest_board.py", "check"]):
+                    with contextlib.redirect_stdout(io.StringIO()):
+                        self.assertEqual(module.main(), 1)
+
+    def test_invalid_frontmatter_duplicate_key_is_not_accepted(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "Q-0004.md"
+            p.write_text(
+                """---
+id: Q-0004
+status: DONE
+status: READY
+priority: P0
+stream: QA
+depends_on: []
+---
+""",
+                encoding="utf-8",
+            )
+            with self.assertRaises(ValueError):
+                module.parse_quest(p)
 
 
 if __name__ == "__main__":

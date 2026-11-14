@@ -10,18 +10,20 @@ from dataclasses import dataclass
 from datetime import datetime, timezone, timedelta
 import json
 import math
+from html import escape
 from urllib.parse import urlencode
 
-from PySide6.QtCore import Qt, QUrl, Signal
+from PySide6.QtCore import Qt, QUrl, Signal, QTimer, QPointF
 from PySide6.QtGui import QColor, QPainter, QPainterPath, QPen
 from PySide6.QtNetwork import QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import (
     QAbstractItemView, QComboBox, QFrame, QGridLayout, QHBoxLayout, QHeaderView,
-    QLabel, QLineEdit, QListWidget, QListWidgetItem, QPushButton, QScrollArea,
+    QLabel, QLineEdit, QListWidget, QListWidgetItem, QPushButton, QScrollArea, QToolTip,
     QStackedWidget, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget,
 )
 
 from .localization import normalize_locale, tr
+from .monitoring_time import TimeConductor, TimeBounds, visible_points, segment_telemetry, utc_ticks, series_channel, eligible_for_line, utc
 
 
 @dataclass(frozen=True)
@@ -127,15 +129,35 @@ class Workspace(QWidget):
 
 
 class ObservationPlot(QWidget):
-    """Small honest chart: no waveform and no synthetic series."""
+    """Native interactive time-series: UTC x-axis, honest source-separated lines.
+
+    Unlike decorative sparklines, a data point is drawn ONLY from an authorized
+    Server response. Unreviewed samples stay as markers; no hidden interpolation.
+    """
+    zoom_requested = Signal(float, float)   # factor and anchor fraction
+    pan_requested = Signal(float)           # fraction of visible UTC span
+    sample_selected = Signal(object)
 
     def __init__(self):
         super().__init__()
-        self.setMinimumHeight(238)
-        self.points: list[RecordedPoint] = []
-        self.accent = QColor("#48A6C8")
+        self.setMinimumHeight(345)
+        self.setMouseTracking(True)
+        self.setCursor(Qt.CursorShape.CrossCursor)
+        self.setAccessibleName("UTC telemetry plot / time series")
+        self.points = []
+        self.edges = []
+        self.bounds = TimeBounds(datetime.now(timezone.utc) - timedelta(days=7),
+                                 datetime.now(timezone.utc) + timedelta(seconds=1))
+        self.channel = None
+        self.accent = QColor("#2F8BCB")
         self.chart_background = QColor("#FFFFFF")
         self.chart_text = QColor("#536C7D")
+        self._pixel_points = []
+        self._hover_point = None
+        self._mouse_x = None
+        self._drag_x = None
+        self._gaps = 0
+        self.empty_label = "Choose a measurement channel"
 
     def apply_palette(self, prefs):
         from .visual_theme import palette_for
@@ -143,150 +165,359 @@ class ObservationPlot(QWidget):
                              prefs.high_contrast, prefs.accent_override)
         self.accent = QColor(colors.accent)
         self.chart_background = QColor(colors.surface)
-        self.chart_text = QColor(colors.muted)
+        self.chart_text = QColor(colors.text)
         self.update()
 
-    def set_records(self, points: list[RecordedPoint]):
-        self.points = sorted(points, key=lambda p: p.observed_at)
+    def set_series(self, points, bounds: TimeBounds, channel=None, source=None):
+        self.bounds = bounds
+        self.channel = channel
+        self.points = visible_points(points, bounds, channel, source)
+        _, self.edges, self._gaps = segment_telemetry(self.points, bounds, channel, source)
+        self._hover_point = None
+        self._pixel_points = []
         self.update()
+
+    def set_records(self, points):  # compatibility for existing Qt integrations
+        self.set_series(points, self.bounds, self.channel)
+
+    def _chart_rect(self):
+        return self.rect().adjusted(78, 62, -28, -65)
+
+    def _source_color(self, source):
+        hue = sum((i + 17) * ord(ch) for i, ch in enumerate(source)) % 360
+        color = QColor.fromHsv(hue, 180, 208)
+        if not color.isValid():
+            color = QColor(self.accent)
+        return color
+
+    def _xy(self, point, rect, vmin, vmax):
+        frac = (utc(point.observed_at) - self.bounds.start).total_seconds() / self.bounds.span.total_seconds()
+        return (rect.left() + rect.width() * frac,
+                rect.bottom() - rect.height() * (point.value - vmin) / (vmax - vmin))
 
     def paintEvent(self, event):
         painter = QPainter(self)
-        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing, True)
         painter.fillRect(self.rect(), self.chart_background)
-        rect = self.rect().adjusted(46, 22, -21, -34)
-        if rect.width() < 24 or rect.height() < 24:
+        r = self._chart_rect()
+        if r.width() < 70 or r.height() < 70:
+            painter.end()
             return
-        muted = QColor(self.chart_text)
-        muted.setAlpha(75)
-        painter.setPen(QPen(muted, 1))
-        for index in range(5):
-            y = rect.top() + rect.height() * index / 4
-            painter.drawLine(rect.left(), int(y), rect.right(), int(y))
-        if not self.points:
+        text = QColor(self.chart_text)
+        grid = QColor(text)
+        grid.setAlpha(43)
+        sub = QColor(text)
+        sub.setAlpha(190)
+        painter.setPen(QPen(grid, 1))
+        for i in range(5):
+            yy = int(r.top() + r.height() * i / 4)
+            painter.drawLine(r.left(), yy, r.right(), yy)
+        for i, tick in enumerate(utc_ticks(self.bounds, 5)):
+            xx = int(r.left() + r.width() * i / 4)
+            painter.drawLine(xx, r.top(), xx, r.bottom())
+            painter.setPen(QPen(sub, 1))
+            label = tick.strftime("%d %b\n%H:%M")
+            painter.drawText(xx - 37, r.bottom() + 15, 74, 38,
+                             Qt.AlignmentFlag.AlignHCenter, label)
+            painter.setPen(QPen(grid, 1))
+        painter.setPen(QPen(text, 1))
+        painter.drawText(r.left(), 20,
+                         (" · ".join(self.channel) if self.channel else "TELEMETRY / UTC"))
+        painter.drawText(r.left(), self.height() - 10, "UTC  •  observed_at")
+        self._pixel_points = []
+        if not self.points or self.channel is None:
+            painter.setPen(QPen(sub, 1))
+            painter.drawText(r, Qt.AlignmentFlag.AlignCenter, self.empty_label)
+            painter.end()
             return
         values = [p.value for p in self.points]
-        ymin, ymax = min(values), max(values)
-        if ymin == ymax:
-            ymin -= max(1.0, abs(ymin) * .08)
-            ymax += max(1.0, abs(ymax) * .08)
+        vmin, vmax = min(values), max(values)
+        pad = max(0.01, abs(vmin) * .05, abs(vmax - vmin) * .09)
+        vmin -= pad
+        vmax += pad
+        if vmax <= vmin:
+            vmax = vmin + 1
+        painter.setPen(QPen(sub, 1))
+        painter.drawText(8, r.top() + 6, f"{vmax:.4g}")
+        painter.drawText(8, r.bottom(), f"{vmin:.4g}")
+        painter.drawText(8, r.center().y(), self.channel[1])
+        coords = [(p, self._xy(p, r, vmin, vmax)) for p in self.points]
+        mapping = {id(p): xy for p, xy in coords}
+        painter.save()
+        painter.setClipRect(r)
+        for left, right in self.edges:
+            xy1 = mapping.get(id(left))
+            xy2 = mapping.get(id(right))
+            if not xy1 or not xy2:
+                continue
+            painter.setPen(QPen(self._source_color(left.source_id), 2.1))
+            painter.drawLine(QPointF(*xy1), QPointF(*xy2))
+        for p, (x, y) in coords:
+            c = self._source_color(p.source_id)
+            painter.setPen(QPen(c, 1.8))
+            if eligible_for_line(p):
+                painter.setBrush(c)
+            else:
+                painter.setBrush(self.chart_background)  # unverified = outlined sample
+            painter.drawEllipse(QPointF(x, y), 3.8, 3.8)
+            self._pixel_points.append((p, x, y))
+        if self._hover_point is not None:
+            pt = next(((x, y) for p, x, y in self._pixel_points if p is self._hover_point), None)
+            if pt:
+                x, y = pt
+                pen = QPen(sub, 1)
+                pen.setStyle(Qt.PenStyle.DashLine)
+                painter.setPen(pen)
+                painter.drawLine(QPointF(x, r.top()), QPointF(x, r.bottom()))
+                painter.drawLine(QPointF(r.left(), y), QPointF(r.right(), y))
+                painter.setPen(QPen(self.accent, 2))
+                painter.setBrush(Qt.BrushStyle.NoBrush)
+                painter.drawEllipse(QPointF(x, y), 7.5, 7.5)
+        painter.restore()
+        painter.end()
+
+    def _nearest(self, pos):
+        if not self._chart_rect().contains(pos.toPoint()):
+            return None
+        best, score = None, 144.0
+        for p, x, y in self._pixel_points:
+            d = (x - pos.x()) ** 2 + (y - pos.y()) ** 2
+            if d < score:
+                best, score = p, d
+        return best
+
+    def mouseMoveEvent(self, event):
+        if self._drag_x is not None:
+            self._mouse_x = event.position().x()
+            return
+        point = self._nearest(event.position())
+        if point is not self._hover_point:
+            self._hover_point = point
+            if point:
+                stamp = utc(point.observed_at).strftime("%Y-%m-%d %H:%M:%S UTC")
+                QToolTip.showText(event.globalPosition().toPoint(),
+                    f"{stamp}\n{point.metric}: {point.value:g} {point.unit}\n"
+                    f"{point.source_id} / {point.scope}\n"
+                    f"{point.quality} / {point.verification}", self)
+            else:
+                QToolTip.hideText()
+            self.update()
+        super().mouseMoveEvent(event)
+
+    def leaveEvent(self, event):
+        self._hover_point = None
+        self._drag_x = None
+        QToolTip.hideText()
+        self.update()
+        super().leaveEvent(event)
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton and self._chart_rect().contains(event.position().toPoint()):
+            self._drag_x = event.position().x()
+            self._mouse_x = self._drag_x
+            self.setCursor(Qt.CursorShape.ClosedHandCursor)
+        super().mousePressEvent(event)
+
+    def mouseReleaseEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton and self._drag_x is not None:
+            delta = event.position().x() - self._drag_x
+            self._drag_x = None
+            self._mouse_x = None
+            self.setCursor(Qt.CursorShape.CrossCursor)
+            if abs(delta) > 6 and self._chart_rect().width() > 0:
+                self.pan_requested.emit(-delta / self._chart_rect().width())
+            else:
+                p = self._nearest(event.position())
+                if p is not None:
+                    self.sample_selected.emit(p)
+        super().mouseReleaseEvent(event)
+
+    def wheelEvent(self, event):
+        if self._chart_rect().contains(event.position().toPoint()):
+            factor = .75 if event.angleDelta().y() > 0 else 1.333333
+            anchor = (event.position().x() - self._chart_rect().left()) / max(1, self._chart_rect().width())
+            self.zoom_requested.emit(factor, min(1., max(0., anchor)))
+            event.accept()
         else:
-            pad = (ymax-ymin) * .09
-            ymin -= pad
-            ymax += pad
-        times = [p.observed_at.timestamp() for p in self.points]
-        tmin, tmax = min(times), max(times)
-        if tmax <= tmin:
-            tmin -= 60
-            tmax += 60
-        coords = [
-            (rect.left() + rect.width() * (p.observed_at.timestamp()-tmin)/(tmax-tmin),
-             rect.bottom() - rect.height() * (p.value-ymin)/(ymax-ymin))
-            for p in self.points
-        ]
-        painter.setPen(QPen(muted, 1))
-        painter.drawText(2, rect.top()+8, f"{ymax:g}")
-        painter.drawText(2, rect.bottom(), f"{ymin:g}")
-        if len(coords) >= 2 and len({p.source_id for p in self.points}) == 1:
-            path = QPainterPath()
-            path.moveTo(*coords[0])
-            for point in coords[1:]:
-                path.lineTo(*point)
-            painter.setPen(QPen(self.accent, 2.6))
-            painter.drawPath(path)
-        painter.setPen(Qt.PenStyle.NoPen)
-        for x, y in coords:
-            painter.setBrush(self.accent)
-            painter.drawEllipse(int(x)-4, int(y)-4, 8, 8)
-        painter.setPen(QPen(muted, 1))
-        painter.drawText(rect.left(), rect.bottom()+22, self.points[0].observed_at.strftime("%d/%m %H:%M"))
-        painter.drawText(rect.right()-101, rect.bottom()+22, self.points[-1].observed_at.strftime("%d/%m %H:%M"))
+            super().wheelEvent(event)
+
+
+_MONITOR_TEXT = {
+    "vi": {
+        "time_title": "BỘ ĐIỀU KHIỂN THỜI GIAN • UTC", "latest": "Mới nhất · làm mới 60 giây", "fixed": "Khoảng cố định", "utc_since": "Từ UTC", "utc_until": "Đến UTC", "apply": "Áp dụng", "day30": "30 ngày", "zoom_in": "Phóng to +", "zoom_out": "Thu nhỏ −", "pan_left": "← Trước", "pan_right": "Sau →", "all_scope": "Mọi phạm vi", "channel": "Kênh / chỉ số", "legend": "CHÚ GIẢI NGUỒN & CHẤT LƯỢNG", "gap": "khoảng trống", "scatter": "Điểm chưa thẩm định = vòng rỗng; chỉ nối READY + VERIFIED cùng nguồn khi có đủ nhịp lấy mẫu.", "loaded_window": "{count} điểm / {sources} nguồn / {gaps} khoảng trống; cửa sổ UTC {start} → {end}", "partial": "Một phần dữ liệu: đạt giới hạn phân trang {limit} điểm. Hãy chọn kênh hoặc cửa sổ ngắn hơn.", "bad_utc": "Ngày phải nhập dạng YYYY-MM-DD HH:MM:SS UTC; khoảng 1 phút–366 ngày.", "no_rows": "Không có bản ghi trong cửa sổ UTC được chọn.", "available": "Kênh hiện có trên Server", "inspect": "Di chuột qua điểm để xem nguồn • nhấn để chọn bản ghi • kéo ngang để pan • cuộn để zoom", "no_link": "Không nối dữ liệu qua khoảng trống hay giữa nguồn/chất lượng khác nhau.", "unknown_cadence": "Không đủ mẫu để xác định nhịp lấy mẫu; hiển thị điểm riêng lẻ.", "fixed_utc": "UTC cố định", "source_quality": "{source} · {quality} · {count} điểm", "window_busy": "Đang truy xuất dữ liệu theo khoảng UTC, có xác thực…", "verified": "Đã xác minh", "unverified": "Chưa xác minh", "invalid_page": "ERROR · Trang dữ liệu thiếu cursor/metadata hoặc khác chủ thể; đã từ chối toàn bộ.", "page_limit": "Giới hạn tối đa 2.500 điểm mỗi cửa sổ; lọc kênh hoặc rút thời gian.", "points": "điểm", "data_gap": "Khoảng trống và mẫu chưa xác minh không được nội suy.", "no_channel": "Chọn kênh có cùng phạm vi và đơn vị để xem biểu đồ."},
+    "en": {
+        "time_title": "SHARED TIME CONDUCTOR • UTC", "latest": "Latest · 60-second refresh", "fixed": "Fixed time window", "utc_since": "From UTC", "utc_until": "To UTC", "apply": "Apply", "day30": "30 days", "zoom_in": "Zoom in +", "zoom_out": "Zoom out −", "pan_left": "← Earlier", "pan_right": "Later →", "all_scope": "All scopes", "channel": "Channel / metric", "legend": "SOURCE & QUALITY LEGEND", "gap": "gaps", "scatter": "Unreviewed = hollow marker; join only READY + VERIFIED samples from one source with inferable cadence.", "loaded_window": "{count} samples / {sources} sources / {gaps} gaps; UTC window {start} → {end}", "partial": "Partial query: {limit}-point pagination cap reached. Select a channel or shorter UTC window.", "bad_utc": "Enter YYYY-MM-DD HH:MM:SS UTC; bounds must span 1 minute–366 days.", "no_rows": "No observations for this selected UTC window.", "available": "Channels available from Server", "inspect": "Hover for provenance • click a marker for its row • drag horizontally to pan • wheel to zoom", "no_link": "Never join across source/quality changes or missing time spans.", "unknown_cadence": "Sample cadence cannot be inferred; points displayed separately.", "fixed_utc": "Fixed UTC", "source_quality": "{source} · {quality} · {count} points", "window_busy": "Loading authorized UTC-bounded records…", "verified": "Verified", "unverified": "Unverified", "invalid_page": "ERROR · Missing page cursor/metadata or mismatched subject; entire response rejected.", "page_limit": "Maximum 2,500 points/window; filter channel or narrow time.", "points": "samples", "data_gap": "Missing and unreviewed signals are never interpolated.", "no_channel": "Choose one channel with a consistent scope and unit."}
+}
 
 
 class MonitoringWorkspace(Workspace):
-    open_mission = Signal()
+    """UTC-scoped channel explorer backed by the authenticated observation API.
 
-    def __init__(self, api_url: str, network, locale: str = "vi", parent=None):
+    Time conductor is ONE source of truth for plot + table + HTTP queries. The
+    Server's cursor is respected, and partial windows are disclosed, not drawn
+    as complete histories. No changes to shared app or i18n files.
+    """
+    open_mission = Signal()
+    PAGE_LIMIT = 500
+    MAX_PAGES = 5
+
+    def __init__(self, api_url: str, network, locale="vi", parent=None):
         super().__init__("monitor", locale, parent)
         self.api_url = api_url.rstrip("/")
         self.network = network
         self.subject_id = ""
         self._token = ""
         self._request_seq = 0
-        self.records: list[RecordedPoint] = []
+        self.records = []
         self.has_more = False
-        header, controls = _panel()
+        self._cursor_seen = set()
+        self._page_count = 0
+        self._partial = False
+        self._discovered_channels = set()
+        self._desired_source = None
+        self.conductor = TimeConductor(timedelta(days=7))
+        self._active_metric = None
+        self._loaded_rows = []
+
+        top, top_layout = _panel()
         self.identity = _caption()
-        controls.addWidget(self.identity)
-        row = QHBoxLayout()
+        top_layout.addWidget(self.identity)
+        controls = QHBoxLayout()
         self.link_mission = QPushButton()
         self.link_mission.clicked.connect(self.open_mission.emit)
-        row.addWidget(self.link_mission)
+        controls.addWidget(self.link_mission)
         self.refresh_btn = QPushButton()
         self.refresh_btn.setObjectName("primaryAction")
         self.refresh_btn.clicked.connect(self.refresh)
-        row.addWidget(self.refresh_btn)
-        row.addStretch()
-        controls.addLayout(row)
+        controls.addWidget(self.refresh_btn)
+        controls.addStretch()
+        top_layout.addLayout(controls)
         self.status = _caption()
-        controls.addWidget(self.status)
-        self.body.addWidget(header)
+        top_layout.addWidget(self.status)
+        self.body.addWidget(top)
 
-        data, data_layout = _panel()
-        filters = QHBoxLayout()
+        conductor_panel, conductor_layout = _panel()
+        self.time_title = QLabel()
+        self.time_title.setObjectName("heading")
+        conductor_layout.addWidget(self.time_title)
+        self.mode_row = QHBoxLayout()
+        self.mode = QComboBox()
+        self.mode.addItem("Latest", "latest")
+        self.mode.addItem("Fixed", "fixed")
+        self.mode.currentIndexChanged.connect(self._on_mode)
+        self.mode_row.addWidget(self.mode, 1)
+        self.preset = []
+        for days in (1, 7, 30):
+            button = QPushButton()
+            button.setObjectName("navButton")
+            button.clicked.connect(lambda checked=False, d=days: self._preset(d))
+            self.mode_row.addWidget(button)
+            self.preset.append(button)
+        self.mode_row.addStretch()
+        conductor_layout.addLayout(self.mode_row)
+        interval = QHBoxLayout()
+        self.start_label = QLabel()
+        interval.addWidget(self.start_label)
+        self.start_edit = QLineEdit()
+        self.start_edit.setInputMask("0000-00-00 00:00:00;_")
+        self.start_edit.setMaximumWidth(208)
+        self.start_edit.setAccessibleName("UTC start bound")
+        interval.addWidget(self.start_edit)
+        self.end_label = QLabel()
+        interval.addWidget(self.end_label)
+        self.end_edit = QLineEdit()
+        self.end_edit.setInputMask("0000-00-00 00:00:00;_")
+        self.end_edit.setMaximumWidth(208)
+        self.end_edit.setAccessibleName("UTC end bound")
+        interval.addWidget(self.end_edit)
+        self.apply_btn = QPushButton()
+        self.apply_btn.clicked.connect(self._apply_bounds)
+        interval.addWidget(self.apply_btn)
+        conductor_layout.addLayout(interval)
+        toolbar = QHBoxLayout()
+        self.zoom_in = QPushButton()
+        self.zoom_in.clicked.connect(lambda: self._zoom(.6, .5))
+        toolbar.addWidget(self.zoom_in)
+        self.zoom_out = QPushButton()
+        self.zoom_out.clicked.connect(lambda: self._zoom(1.667, .5))
+        toolbar.addWidget(self.zoom_out)
+        self.pan_left = QPushButton()
+        self.pan_left.clicked.connect(lambda: self._pan(-.5))
+        toolbar.addWidget(self.pan_left)
+        self.pan_right = QPushButton()
+        self.pan_right.clicked.connect(lambda: self._pan(.5))
+        toolbar.addWidget(self.pan_right)
+        toolbar.addStretch()
+        conductor_layout.addLayout(toolbar)
+        self.body.addWidget(conductor_panel)
+
+        panel, content = _panel()
+        selectors = QHBoxLayout()
         self.metric_label = QLabel()
-        filters.addWidget(self.metric_label)
-        self.metric_box = QComboBox()
-        self.metric_box.currentIndexChanged.connect(self._render)
-        filters.addWidget(self.metric_box, 2)
+        selectors.addWidget(self.metric_label)
+        self.metric_box = QComboBox()  # never shadow QWidget.metric()
+        self.metric_box.setMinimumWidth(170)
+        self.metric_box.setAccessibleName("Telemetry channel")
+        self.metric_box.currentIndexChanged.connect(self._channel_changed)
+        selectors.addWidget(self.metric_box, 3)
         self.source_label = QLabel()
-        filters.addWidget(self.source_label)
+        selectors.addWidget(self.source_label)
         self.source = QComboBox()
-        self.source.currentIndexChanged.connect(self._render)
-        filters.addWidget(self.source, 2)
-        self.range_label = QLabel()
-        filters.addWidget(self.range_label)
-        self.period = QComboBox()
-        self.period.addItem("24 h", 1)
-        self.period.addItem("7 d", 7)
-        self.period.addItem("All", 0)
-        self.period.setCurrentIndex(2)
-        self.period.currentIndexChanged.connect(self._render)
-        filters.addWidget(self.period, 1)
-        data_layout.addLayout(filters)
+        self.source.setMinimumWidth(110)
+        self.source.currentIndexChanged.connect(self._source_changed)
+        selectors.addWidget(self.source, 2)
+        content.addLayout(selectors)
         self.plot = ObservationPlot()
         self.plot.setObjectName("monitorPlot")
-        data_layout.addWidget(self.plot)
+        self.plot.zoom_requested.connect(self._zoom)
+        self.plot.pan_requested.connect(self._pan)
+        self.plot.sample_selected.connect(self._select_sample)
+        content.addWidget(self.plot, 2)
+        self.legend_title = QLabel()
+        self.legend_title.setObjectName("heading")
+        content.addWidget(self.legend_title)
+        self.legend = _caption()
+        self.legend.setTextFormat(Qt.TextFormat.RichText)
+        content.addWidget(self.legend)
         self.plot_caption = _caption()
-        data_layout.addWidget(self.plot_caption)
-        self.body.addWidget(data)
+        content.addWidget(self.plot_caption)
+        self.body.addWidget(panel)
 
-        records, records_layout = _panel()
+        table_panel, table_layout = _panel()
         self.records_title = QLabel()
         self.records_title.setObjectName("heading")
-        records_layout.addWidget(self.records_title)
+        table_layout.addWidget(self.records_title)
         self.table = QTableWidget(0, 8)
+        self.table.setObjectName("monitorTelemetryTable")
+        self.table.setAlternatingRowColors(True)
         self.table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.table.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
-        self.table.setAlternatingRowColors(True)
         self.table.verticalHeader().hide()
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
-        for c, width in enumerate((145, 95, 85, 200, 185, 90, 120, 130)):
-            self.table.setColumnWidth(c, width)
-        self.table.setMinimumHeight(260)
-        records_layout.addWidget(self.table)
-        self.body.addWidget(records)
+        self.table.setSortingEnabled(True)
+        self.table.setMinimumHeight(300)
+        for i, w in enumerate((145, 105, 80, 200, 165, 90, 110, 115)):
+            self.table.setColumnWidth(i, w)
+        table_layout.addWidget(self.table)
+        self.body.addWidget(table_panel)
 
-        ecg, ecg_layout = _panel()
         self.ecg_title = QLabel()
-        self.ecg_title.setObjectName("heading")
-        ecg_layout.addWidget(self.ecg_title)
         self.ecg_note = _caption()
+        ecg_panel, ecg_layout = _panel()
+        ecg_layout.addWidget(self.ecg_title)
         ecg_layout.addWidget(self.ecg_note)
-        self.body.addWidget(ecg)
+        self.body.addWidget(ecg_panel)
         self.body.addStretch()
+        self.poll_timer = QTimer(self)
+        self.poll_timer.setInterval(60000)  # polling, NOT a subscribed telemetry stream
+        self.poll_timer.timeout.connect(self._poll_latest)
+        self.poll_timer.start()
         self.set_locale(locale)
-        self._empty()
+        self._empty(clear_channels=True)
+
+    def tx(self, key, **params):
+        text = _MONITOR_TEXT[self.locale].get(key, key)
+        return text.format(**params) if params else text
 
     def apply_theme(self, prefs):
         self.plot.apply_palette(prefs)
@@ -295,42 +526,71 @@ class MonitoringWorkspace(Workspace):
         super().set_locale(locale)
         self.link_mission.setText(self.t("choose_subject"))
         self.refresh_btn.setText(self.t("refresh"))
-        self.metric_label.setText(self.t("metric"))
+        self.time_title.setText(self.tx("time_title"))
+        self.mode.setItemText(0, self.tx("latest"))
+        self.mode.setItemText(1, self.tx("fixed"))
+        for button, key in zip(self.preset, ("day", "week", "day30")):
+            button.setText(self.t(key) if key in ("day", "week") else self.tx(key))
+        self.start_label.setText(self.tx("utc_since"))
+        self.end_label.setText(self.tx("utc_until"))
+        self.apply_btn.setText(self.tx("apply"))
+        self.zoom_in.setText(self.tx("zoom_in"))
+        self.zoom_out.setText(self.tx("zoom_out"))
+        self.pan_left.setText(self.tx("pan_left"))
+        self.pan_right.setText(self.tx("pan_right"))
+        self.metric_label.setText(self.tx("channel"))
         self.source_label.setText(self.t("source"))
-        self.range_label.setText(self.t("range"))
-        self.period.setItemText(0, self.t("day"))
-        self.period.setItemText(1, self.t("week"))
-        self.period.setItemText(2, self.t("all"))
+        self.legend_title.setText(self.tx("legend"))
         self.records_title.setText(self.t("records"))
         self.ecg_title.setText(self.t("ecg"))
         self.ecg_note.setText(self.t("no_waveform"))
+        self.plot.empty_label = self.tx("no_channel")
         self.table.setHorizontalHeaderLabels([self.t(k) for k in
             ("col_metric", "col_value", "col_unit", "col_time", "col_source", "col_scope", "col_quality", "col_review")])
         self.identity.setText(self.t("selected", subject=self.subject_id) if self.subject_id else self.t("no_subject"))
+        if self.metric_box.count(): self.metric_box.setItemText(0, self.t("all_metrics"))
+        if self.source.count(): self.source.setItemText(0, self.t("all_sources"))
+        self._update_bounds_edits()
         self._render()
 
-    def _empty(self):
-        self.records = []
+    def _update_bounds_edits(self):
+        for edit, value in ((self.start_edit, self.conductor.bounds.start),
+                            (self.end_edit, self.conductor.bounds.end)):
+            edit.setText(value.strftime("%Y-%m-%d %H:%M:%S"))
+        self.mode.blockSignals(True)
+        self.mode.setCurrentIndex(0 if self.conductor.mode == "latest" else 1)
+        self.mode.blockSignals(False)
+
+    def _empty(self, clear_channels=False):
+        self.records.clear()
         self.has_more = False
-        self.metric_box.blockSignals(True)
+        self._page_count = 0
+        self._cursor_seen = set()
+        self._partial = False
+        self._loaded_rows = []
+        if clear_channels:
+            self._desired_source = None
+            self._discovered_channels = set()
+            self.metric_box.blockSignals(True)
+            self.metric_box.clear()
+            self.metric_box.addItem(self.t("all_metrics"), None)
+            self.metric_box.blockSignals(False)
         self.source.blockSignals(True)
-        self.metric_box.clear()
         self.source.clear()
-        self.metric_box.addItem(self.t("all_metrics"), None)
         self.source.addItem(self.t("all_sources"), None)
-        self.metric_box.blockSignals(False)
         self.source.blockSignals(False)
-        self.plot.set_records([])
         self.table.setRowCount(0)
-        self.plot_caption.setText(self.t("no_data"))
-        self.status.setText(self.t("no_data"))
+        self.plot.set_series([], self.conductor.bounds)
+        self.legend.setText(self.tx("no_rows"))
+        self.plot_caption.setText(self.tx("no_rows"))
 
     def select_subject(self, subject_id: str, access_token: str):
         self._request_seq += 1
-        self._empty()
-        self.subject_id = ""
+        self._empty(clear_channels=True)
         self._token = ""
+        self.subject_id = ""
         if not subject_id or len(subject_id) > 80 or not access_token:
+            self.identity.setText(self.t("no_subject"))
             self.status.setText(self.t("denied"))
             return
         self.subject_id = subject_id
@@ -338,85 +598,209 @@ class MonitoringWorkspace(Workspace):
         self.identity.setText(self.t("selected", subject=subject_id))
         self.refresh()
 
+    def _preset(self, days):
+        self.conductor.latest(timedelta(days=days))
+        self._update_bounds_edits()
+        self.refresh()
+
+    def _on_mode(self, *_):
+        if self.mode.currentData() == "latest":
+            self.conductor.latest()
+        else:
+            self.conductor.fixed(self.conductor.bounds.start, self.conductor.bounds.end)
+        self._update_bounds_edits()
+        self.refresh()
+
+    def _apply_bounds(self):
+        try:
+            start = datetime.strptime(self.start_edit.text(), "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
+            end = datetime.strptime(self.end_edit.text(), "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
+            self.conductor.fixed(start, end)
+        except ValueError:
+            self.status.setText(self.tx("bad_utc"))
+            self._update_bounds_edits()
+            return
+        self._update_bounds_edits()
+        self.refresh()
+
+    def _zoom(self, factor: float, anchor: float):
+        try:
+            self.conductor.zoom(factor, anchor)
+        except ValueError:
+            return
+        self._update_bounds_edits()
+        self.refresh()
+
+    def _pan(self, fraction: float):
+        try:
+            self.conductor.pan(fraction)
+        except ValueError:
+            return
+        self._update_bounds_edits()
+        self.refresh()
+
+    def _poll_latest(self):
+        if self.conductor.mode == "latest" and self.isVisible() and self._token:
+            self.refresh()
+
+    def _channel_changed(self, *_):
+        self._active_metric = self.metric_box.currentData()
+        self.refresh()
+
+    def _source_changed(self, *_):
+        self._desired_source = self.source.currentData()
+        self._render()
+
     def refresh(self):
         if not self.subject_id or not self._token:
-            self._empty()
+            self._request_seq += 1
+            self._empty(clear_channels=True)
             self.status.setText(self.t("denied"))
             return
         self._request_seq += 1
-        reqno = self._request_seq
-        who = self.subject_id
-        self._empty()
-        self.status.setText(self.t("loading"))
-        query = urlencode({"subject_id": who, "limit": 200})
-        request = QNetworkRequest(QUrl(f"{self.api_url}/api/v1/observations?{query}"))
-        request.setRawHeader(b"Authorization", ("Bearer " + self._token).encode("utf-8"))
-        reply = self.network.get(request)
-        reply.finished.connect(lambda: self._finished(reply, reqno, who))
+        self._empty(clear_channels=False)
+        if self.conductor.mode == "latest":
+            self.conductor.latest()
+        self._update_bounds_edits()
+        self.status.setText(self.tx("window_busy"))
+        self._request_page(self._request_seq, cursor=None)
 
-    def _finished(self, reply, reqno: int, who: str):
+    def _request_page(self, reqno, cursor):
+        if reqno != self._request_seq:
+            return
+        args = {"subject_id": self.subject_id, "limit": self.PAGE_LIMIT,
+                "order": "asc", **self.conductor.bounds.as_query()}
+        channel = self.metric_box.currentData()
+        if channel is not None:
+            args["metric"] = channel[0]
+            args["scope"] = channel[2]
+        if cursor:
+            args["cursor"] = cursor
+        url = f"{self.api_url}/api/v1/observations?{urlencode(args)}"
+        req = QNetworkRequest(QUrl(url))
+        req.setRawHeader(b"Authorization", ("Bearer " + self._token).encode("utf-8"))
+        reply = self.network.get(req)
+        reply.finished.connect(lambda: self._finished(reply, reqno))
+
+    def _finished(self, reply, reqno):
         code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
-        error = reply.error() != QNetworkReply.NetworkError.NoError
+        network_error = reply.error() != QNetworkReply.NetworkError.NoError
         raw = bytes(reply.readAll())
         reply.deleteLater()
-        if reqno != self._request_seq or who != self.subject_id:
+        if reqno != self._request_seq:
             return
         if code in (401, 403):
-            if code == 401:
-                self._token = ""
+            self._token = ""
+            self._empty(clear_channels=True)
             self.status.setText(self.t("denied"))
             return
-        if code != 200 or error:
+        if code != 200 or network_error:
+            self._empty(clear_channels=True)
             self.status.setText(self.t("offline"))
             return
         try:
-            rows, more = parse_recorded_observations(json.loads(raw.decode("utf-8")), who)
-        except (ValueError, TypeError, UnicodeError, OverflowError):
-            self.status.setText(self.t("invalid"))
-            return
-        self.records, self.has_more = rows, more
+            payload = json.loads(raw.decode("utf-8"))
+            page, more = parse_recorded_observations(payload, self.subject_id)
+            cursor = payload.get("next_cursor")
+            if payload.get("order") != "asc":
+                raise ValueError("wrong page order")
+            if more and (not isinstance(cursor, str) or len(cursor) > 200 or cursor in self._cursor_seen):
+                raise ValueError("missing / repeating cursor")
+            if any(not self.conductor.bounds.contains(p.observed_at) for p in page):
+                raise ValueError("out-of-window page")
+            self.records.extend(page)
+            self._page_count += 1
+            if more:
+                self._cursor_seen.add(cursor)
+                if self._page_count < self.MAX_PAGES:
+                    self._request_page(reqno, cursor)
+                    return
+                self._partial = True
+            self.has_more = more
+            self._populate_filters()
+            self._render()
+            count = len(self.records)
+            text = self.t("loaded", count=count)
+            if self._partial:
+                text += " · " + self.tx("partial", limit=self.MAX_PAGES * self.PAGE_LIMIT)
+            self.status.setText(text)
+        except (ValueError, TypeError, UnicodeError, OverflowError, AttributeError):
+            self._request_seq += 1
+            self._empty(clear_channels=True)
+            self.status.setText(self.tx("invalid_page"))
+
+    def _populate_filters(self):
+        current = self.metric_box.currentData()
+        self._discovered_channels.update(series_channel(p) for p in self.records)
         self.metric_box.blockSignals(True)
-        self.source.blockSignals(True)
         self.metric_box.clear()
         self.metric_box.addItem(self.t("all_metrics"), None)
-        for metric, unit in sorted({(p.metric, p.unit) for p in rows}):
-            self.metric_box.addItem(f"{metric} · {unit}", (metric, unit))
+        for channel in sorted(self._discovered_channels):
+            self.metric_box.addItem(" / ".join(channel), channel)
+        index = self.metric_box.findData(current)
+        self.metric_box.setCurrentIndex(max(index, 0))
+        self.metric_box.blockSignals(False)
+        chosen_source = self._desired_source
+        self.source.blockSignals(True)
         self.source.clear()
         self.source.addItem(self.t("all_sources"), None)
-        for name in sorted({p.source_id for p in rows}):
+        for name in sorted({p.source_id for p in self.records}):
             self.source.addItem(name, name)
-        self.metric_box.blockSignals(False)
+        index = self.source.findData(chosen_source)
+        self.source.setCurrentIndex(max(index, 0))
         self.source.blockSignals(False)
-        self.status.setText(self.t("loaded", count=len(rows)) + (" · "+self.t("more") if more else ""))
-        self._render()
 
     def _render(self, *_):
-        if not hasattr(self, "table"):
+        if not hasattr(self, "table") or not hasattr(self, "metric_box"):
             return
-        metric = self.metric_box.currentData()
+        channel = self.metric_box.currentData()
         source = self.source.currentData()
-        days = self.period.currentData()
-        since = datetime.now(timezone.utc) - timedelta(days=days) if days else None
-        filtered = [p for p in self.records
-                    if (metric is None or (p.metric, p.unit) == metric)
-                    and (source is None or p.source_id == source)
-                    and (since is None or p.observed_at >= since)]
+        filtered = visible_points(self.records, self.conductor.bounds, channel, source)
+        self.plot.set_series(filtered, self.conductor.bounds, channel, source)
+        self.table.setSortingEnabled(False)
         self.table.setRowCount(len(filtered))
+        self._loaded_rows = list(filtered)
         for i, p in enumerate(filtered):
-            data = (p.metric, f"{p.value:g}", p.unit, p.observed_at.isoformat(),
+            data = (p.metric, f"{p.value:g}", p.unit,
+                    utc(p.observed_at).strftime("%Y-%m-%d %H:%M:%S UTC"),
                     p.source_id, p.scope, p.quality, p.verification)
-            for col, value in enumerate(data):
-                self.table.setItem(i, col, QTableWidgetItem(str(value)))
-        plotted = [p for p in filtered if p.quality in ("READY", "UNVERIFIED", "STALE")] if metric else []
-        self.plot.set_records(plotted)
-        if not filtered:
-            self.plot_caption.setText(self.t("no_data"))
-        elif metric is None:
-            self.plot_caption.setText(self.t("select_metric"))
-        elif len({p.source_id for p in plotted}) > 1:
-            self.plot_caption.setText(self.t("multi_source"))
+            for j, item in enumerate(data):
+                widget = QTableWidgetItem(str(item))
+                if j in (1, 3): widget.setData(Qt.ItemDataRole.UserRole, p)
+                self.table.setItem(i, j, widget)
+        self.table.setSortingEnabled(True)
+        groups, edges, gaps = segment_telemetry(filtered, self.conductor.bounds, channel, source)
+        line = []
+        for (source_id, scope, metric, unit), samples in sorted(groups.items()):
+            quals = sorted(set(p.quality + "/" + p.verification for p in samples))
+            color = self.plot._source_color(source_id).name()
+            legend_label = self.tx("source_quality", source=source_id,
+                                   quality=", ".join(quals), count=len(samples))
+            line.append(f'<span style="color:{color};font-weight:800">◆</span> '
+                        f'{escape(legend_label)}')
+        self.legend.setText(" &nbsp;&nbsp; • &nbsp;&nbsp; ".join(line) if line
+                            else escape(self.tx("no_rows")))
+        count = len(filtered)
+        if not count:
+            self.plot_caption.setText(self.tx("no_rows"))
+        elif channel is None:
+            self.plot_caption.setText(self.tx("no_channel"))
         else:
-            self.plot_caption.setText(self.t("unverified_note"))
+            self.plot_caption.setText(
+                self.tx("loaded_window", count=count, sources=len(groups), gaps=gaps,
+                        start=self.conductor.bounds.start.strftime("%Y-%m-%d %H:%M"),
+                        end=self.conductor.bounds.end.strftime("%Y-%m-%d %H:%M"))
+                + "\n" + self.tx("inspect") + "\n" + self.tx("scatter"))
+
+    def _select_sample(self, p):
+        # After QTableWidget sorting, locate by stored object identity, not row index.
+        for row in range(self.table.rowCount()):
+            item = self.table.item(row, 1)
+            if item and item.data(Qt.ItemDataRole.UserRole) is p:
+                self.table.selectRow(row)
+                self.table.scrollToItem(item)
+                break
+
 
 
 class InterviewWorkspace(Workspace):

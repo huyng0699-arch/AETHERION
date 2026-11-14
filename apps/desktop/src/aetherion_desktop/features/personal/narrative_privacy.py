@@ -9,7 +9,19 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime
+from math import isfinite
 from typing import Mapping, Sequence
+
+# Only explicitly approved non-narrative metric *types* may leave the Personal
+# presentation boundary. This does NOT grant access: the server must first
+# authorize the observing principal and the precise subject and data scope.
+_OVERVIEW_METRICS = frozenset({
+    "heart_rate", "pulse", "pulse_rate",
+    "steps", "step_count", "activity_minutes", "active_minutes",
+    "sleep_hours", "sleep_duration", "sleep_minutes",
+    "body_mass", "body_weight", "weight",
+    "calories", "energy_kcal", "active_energy", "energy_expenditure",
+})
 
 
 @dataclass(frozen=True)
@@ -116,6 +128,30 @@ def strip_private_fields_for_crew_overview(record: Mapping[str, object]) -> dict
     """
     if not isinstance(record, Mapping):
         raise TypeError("crew overview record must be a mapping")
+    metric = record.get("metric")
+    value = record.get("value")
+    if not isinstance(metric, str):
+        return {}
+    normalized = metric.strip().casefold().replace("-", "_").replace(" ", "_")
+    # Mood/diary/text and previously unknown metrics must not escape just
+    # because their readings happen to be numeric or carry a source ID.
+    if normalized not in _OVERVIEW_METRICS:
+        return {}
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not isfinite(value):
+        return {}
+    if record.get("is_private") is True:
+        return {}
+    classification = record.get("privacy") or record.get("visibility")
+    if classification is not None and (
+        not isinstance(classification, str) or
+        classification.strip().casefold() not in {"shared", "overview", "crew_overview"}
+    ):
+        return {}
+    source_id = record.get("source_id")
+    if isinstance(source_id, str) and source_id.strip().casefold().startswith(
+        ("private:", "diary:", "narrative:")
+    ):
+        return {}
     allowed = ("subject_id", "metric", "value", "unit", "observed_at",
                "source_id", "scope", "quality", "verification_state")
     return {key: record[key] for key in allowed if key in record}

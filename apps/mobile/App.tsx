@@ -40,7 +40,7 @@ function messageFor(error: unknown, locale: Locale): string {
 }
 
 export default function App() {
-  const [route, setRoute] = useState<Route>('portal');
+  const [route, setRoute] = useState<Route>('login');
   const [history, setHistory] = useState<Route[]>([]);
   const [pendingRoute, setPendingRoute] = useState<Route>('portal');
   const [locale, setLocale] = useState<Locale>('en');
@@ -67,11 +67,13 @@ export default function App() {
       if (!active) return;
       setLocale(savedLocale);
       setServerUrl(savedUrl);
+      let hasRestoredSession = false;
       if (savedSession) {
         const expires = Date.parse(savedSession.expires_at);
         if (Number.isFinite(expires) && expires <= Date.now()) {
           void deleteSession();
         } else {
+          hasRestoredSession = true;
           setSession(savedSession);
           setIdentity({ ...savedSession.user, expires_at: savedSession.expires_at });
           void validateSession(savedSession.access_token).then((current) => {
@@ -88,7 +90,7 @@ export default function App() {
         void checkServer().then(() => { if (active) setServerStatus('online'); })
           .catch(() => { if (active) setServerStatus('offline'); });
       }
-      if (active) { setRoute('portal'); setReady(true); }
+      if (active) { setRoute(hasRestoredSession ? 'portal' : 'login'); setReady(true); }
     })();
     return () => { active = false; };
   }, []);
@@ -157,7 +159,7 @@ export default function App() {
 
   const handleSignOut = async () => {
     await signOut();
-    setSession(null); setIdentity(null); setHistory([]); setRoute('portal');
+    setSession(null); setIdentity(null); setHistory([]); setPendingRoute('portal'); setRoute('login');
   };
 
   const handleUnauthorized = useCallback(async () => {
@@ -186,7 +188,7 @@ export default function App() {
       <KeyboardAvoidingView style={styles.fill} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ImageBackground source={require('./assets/aetherion-app-background.png')} resizeMode="cover" style={styles.fill}>
           {route === 'portal' && <PortalScreen locale={locale} setLocale={changeLocale} isAuthenticated={!!session} serverStatus={serverStatus} onOpen={openRoute} />}
-          {route === 'login' && <LoginScreen locale={locale} serverUrl={serverUrl} setServerUrl={setServerUrl} onConnect={connect} onSignIn={submitLogin} onBack={goBack} busy={busy} error={loginError} />}
+          {route === 'login' && <LoginScreen locale={locale} serverUrl={serverUrl} setServerUrl={setServerUrl} onConnect={connect} onSignIn={submitLogin} onOpenDemo={() => openRoute('demoIntro')} onBack={history.length ? goBack : undefined} busy={busy} error={loginError} />}
           {route === 'health' && <PersonalHealthScreen locale={locale} token={session?.access_token || ''} subjectId={identity?.allowed_subjects?.[0]} onBack={goBack} onUnauthorized={handleUnauthorized} />}
           {route === 'monitor' && <MonitorScreen locale={locale} token={session?.access_token || ''} subjectId={identity?.allowed_subjects?.[0]} onBack={goBack} onUnauthorized={handleUnauthorized} />}
           {route === 'ai' && <AiScreen locale={locale} token={session?.access_token || ''} onBack={goBack} onUnauthorized={handleUnauthorized} />}

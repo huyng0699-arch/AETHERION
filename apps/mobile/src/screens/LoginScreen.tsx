@@ -9,14 +9,15 @@ import { ActionButton, AppHeader, AppPage, Field, Panel, Title } from '../compon
 const AI_ORB = require('../../assets/aetherion-ai-orb.png');
 
 export function LoginScreen({
-  locale, serverUrl, setServerUrl, onConnect, onSignIn, onBack, busy, error,
+  locale, serverUrl, setServerUrl, onConnect, onSignIn, onOpenDemo, onBack, busy, error,
 }: {
   locale: Locale;
   serverUrl: string;
   setServerUrl: (value: string) => void;
   onConnect: (serverUrl: string) => void | Promise<void>;
   onSignIn: (serverUrl: string, username: string, password: string) => void | Promise<void>;
-  onBack: () => void;
+  onOpenDemo: () => void;
+  onBack?: () => void;
   busy: boolean;
   error?: string | null;
 }) {
@@ -32,6 +33,11 @@ export function LoginScreen({
           <Image source={AI_ORB} resizeMode="contain" style={styles.orb} />
           <Title size={27}>{t(locale, 'signInTitle')}</Title>
         </View>
+        <Pressable accessibilityRole="button" onPress={onOpenDemo} style={({ pressed }) => [styles.demoButton, pressed && styles.dimmed]}>
+          <Image source={AI_ORB} resizeMode="contain" style={styles.demoIcon} />
+          <Text style={styles.demoText}>{t(locale, 'demoForHackathon')}</Text>
+          <Ionicons name="chevron-forward" size={20} color="#FFFFFF" />
+        </Pressable>
         <Panel style={styles.panel}>
           <Field label={t(locale, 'serverUrl')} value={serverUrl} onChangeText={setServerUrl} autoCapitalize="none" autoCorrect={false} keyboardType="url" placeholder="https://" />
           <Pressable accessibilityRole="button" onPress={() => void onConnect(serverUrl)} disabled={!serverUrl.trim() || busy} style={({ pressed }) => [styles.connect, (pressed || busy) && styles.dimmed]}>
@@ -55,6 +61,9 @@ const styles = StyleSheet.create({
   intro: { alignItems: 'center', gap: 7, paddingTop: 25, paddingBottom: 8 },
   orb: { width: 84, height: 84, marginBottom: 5 },
   panel: { gap: 15, padding: 18 },
+  demoButton: { minHeight: 58, borderRadius: 18, backgroundColor: colors.cyan, flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, marginHorizontal: 2, shadowColor: '#5528E9', shadowOpacity: 0.2, shadowRadius: 12, shadowOffset: { width: 0, height: 6 }, elevation: 4 },
+  demoIcon: { width: 34, height: 34 },
+  demoText: { flex: 1, color: '#FFFFFF', fontSize: 15, fontWeight: '900' },
   connect: { minHeight: 42, borderRadius: 13, borderWidth: 1, borderColor: colors.border, backgroundColor: '#F6F3FF', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
   connectText: { color: colors.cyan, fontWeight: '800', fontSize: 13 },
   dimmed: { opacity: 0.7 },
