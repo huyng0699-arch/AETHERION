@@ -1,7 +1,28 @@
 # AETHERION — Native Windows Screen Status / Trạng thái màn hình
 
-**Latest authoring audit:** 2026-11-14, Q-0485 source-level integration.  
-**Evidence class:** GitHub file SHA and route inspection only. **No new Windows screenshot or runtime acceptance** since the owner's rejected five-card baseline.
+**Latest authoring audit:** 2026-11-14, Q-0485 functional Open-MCT-style source workspace; no Qt screenshot.  
+**Evidence class:** GitHub file SHA and source inspection only. PySide6 unavailable in this runtime; **no new Linux offscreen or Windows screenshot and no runtime acceptance**.
+
+## Latest Q-0485 source-only workspace review — 2026-11-14
+
+**Owner visual override:** The old SPEC/AGENTS five-card and horizontal-menu-only design language is superseded **only for the first native app screen**. The target is the actual Browse → Workspace → Inspect layout from the NASA Open MCT user-facing information architecture, with one time conductor. This is an implementation requirement, **not** a claim that AETHERION itself is NASA Open MCT or that its appearance has passed.
+
+**Code on `main` (not Windows visual evidence):**
+- `57a4d17ceab9862a7a7365c5412ff1629c151e0b`: removed the ornamental `OrbitPanel`; added interactive left Browse object tree, center historical NASA MA-7 report tables/source-derived bars and empty authorized UTC panel, right selected-source properties/Inspect, one shared UTC window, and the pinned **DEMO FOR HACKATHON** action.
+- `c66cb536bbd7648eda0e15ab95e675609fe8bd30`: focused source-level fixes for missing Qt `QRectF` import, explicit UTC editor time specification, searchable Browse tree, and metric/source controls. No original NASA values were altered.
+- `9517e5dfabd0fe07e21fc42a9e7d9ee3f6b7e6b3`: UTC chart uses only one metric/unit/source family; table, chart and Inspect share the selected UTC bounds and filters. **This optional host-supplied UTC adapter is not yet bound to authenticated Monitoring**; Q-0477 owns that integration, and no claim of live records is made.
+- **MA-7 source boundaries:** the 19 historical report timepoints and 83 published numeric/non-null observations have no universally verifiable absolute UTC timestamps. Their original stage labels/mean/qualifier/source-page metadata remain visible, and the UTC Time Conductor does **not** assign invented dates to report phases. The authorized UTC panel shows an honest empty state unless a trusted controller provides actual UTC-stamped observations.
+- All 13 existing feature-route keys remain bound through unchanged `main.py` (`dc49fe9` + readiness refinement `83355ec`). The pinned Demo opens SIMULATED briefing → explicit Start → Q-0484 isolated five-patient, 540-day SQLite experience. NASA MA-7 is a separate archival action, never a synthetic stream.
+- **Visual proof: PENDING.** An offscreen Qt render was attempted in this runtime, but PySide6 is absent and installing it into a temporary Python virtual environment failed (`No matching distribution found for PySide6` in this environment); therefore **no valid Linux offscreen screenshot was produced**, and **no Windows desktop was launched**. The owner's previously supplied five-card Windows screenshot remains *before-fix rejected evidence*. A fresh Windows after-fix screenshot and independent clickthrough are still required.
+
+### Workspace-specific QA still open
+
+- Render at 1040×650 and 150% DPI: verify tree, UTC conductor, table and Inspector stay usable without clipping; compare actual native visual to owner's Open MCT requirement.
+- Confirm Browse selection changes center view/Inspect, report-group and metric selection update real source values, UTC search/presets/filter boundaries do not invent samples, and time controls are explicitly UTC.
+- Verify Demo enters briefing before any synthetic SQLite seed; read back seeded patient data from the dedicated database and test all five tabs. Verify the NASA archival path and all 13 existing routes separately, including VI/EN and theme/reduced-motion behavior.
+- Independent reviewer signs off actual native interactions. **Q-0485 remains RUNNING/COMPONENT IN PROGRESS (or COMPONENT_READY once current owner releases), review PENDING; never infer DONE from source inspection.**
+
+---
 
 ## Owner-approved first-view architecture
 
@@ -14,7 +35,7 @@ is **before-fix evidence**. A new actual Windows after-fix screenshot **does not
 | Screen / route | Source implementation | GitHub status | Native Windows render |
 | --- | --- | --- | --- |
 | Cold-start Mission Operations | `mission_ops_home.py`; mounted first in `main.py` | Wired in `dc49fe906a2b1669edd4fcfa038ea8c9c3efa478` | **PENDING** |
-| Prominent DEMO FOR HACKATHON CTA | `MissionOperationsHome.primary_demo` and independent SIMULATED signal | Wired to briefing | **PENDING** |
+| Prominent DEMO FOR HACKATHON CTA | `MissionOperationsHome.demo` and independent SIMULATED signal | Wired to briefing | **PENDING** |
 | SIMULATED source briefing | `features/demo/synthetic_briefing.py` | Dedicated bilingual native page; explicit Start required | **PENDING** |
 | Fully navigable fictional scenario | `synthetic_patient_ui.py` and `synthetic_patients.py`, Q-0484-owned | Q-0485 wires Start to `PatientDemo.start()` / Back to briefing | **PENDING** |
 | Fictional SQLite 540 days × 5 IDs × 12 metric types | `Path.home()/.aetherion/demo/synthetic_patients_v1.sqlite3` | Q-0484 source has deterministic generator; **SQLite readback not performed here** | **PENDING** |
