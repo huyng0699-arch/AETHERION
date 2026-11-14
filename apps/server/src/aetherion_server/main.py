@@ -11,6 +11,7 @@ from typing import Literal
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Response, status
 from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
@@ -153,6 +154,18 @@ def create_app(
         version="0.2.0",
         lifespan=lifespan,
     )
+
+    # Development-only Expo Web origins. Disabled by default and never wildcarded.
+    if os.environ.get("AETHERION_ENABLE_DEV_CORS", "").strip() == "1":
+        application.add_middleware(
+            CORSMiddleware,
+            allow_origins=["http://localhost:8081", "http://127.0.0.1:8081"],
+            allow_credentials=False,
+            allow_methods=["GET", "POST", "OPTIONS"],
+            allow_headers=["Authorization", "Content-Type", "X-Request-Id"],
+            expose_headers=["X-Request-Id"],
+            max_age=600,
+        )
 
     # One database factory for auth, observations, admin and interview AI routing.
     application.state.admin_database_path = get_db_path
