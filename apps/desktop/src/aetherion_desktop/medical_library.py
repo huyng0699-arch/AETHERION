@@ -13,17 +13,15 @@ import sqlite3
 from typing import Iterator
 
 from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
+from .runtime_paths import cliff_library_path
 
 MAX_ARTICLES = 119
 LIBRARY_NAME = "AETHERION_NASA_CLIFF_119.sqlite"
 
 
 def default_library_path() -> Path:
-    override = os.environ.get("AETHERION_CLIFF_LIBRARY_PATH")
-    if override:
-        return Path(override).expanduser()
-    return (Path(__file__).resolve().parents[4] / "knowledge" / "nasa"
-            / "cliff_119_2023" / LIBRARY_NAME)
+    """Resolve the same optional offline SQLite in development and Windows EXE."""
+    return cliff_library_path()
 
 
 @dataclass(frozen=True)
