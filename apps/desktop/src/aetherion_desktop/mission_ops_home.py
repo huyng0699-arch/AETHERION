@@ -1,23 +1,39 @@
-"""Native, Open-MCT-inspired Mission Operations start workspace.
+"""AETHERION native Mission Operations Home (Q-0485).
 
-An independent Q-0485 component. No modifications to current Portal/main.py.
-This UI publishes typed routing signals: the owning integration agent must
-wire them to *existing* real screens after all shared-file owners ACK.
+Functional Browse / Workspace / Inspect / shared UTC Time Conductor, designed
+for the actual native Windows client. No decorative orbit or invented sensors.
 
-No fabricated status, vitals, diagnosis, astronaut identity or live telemetry.
-A SIMULATED scenario route is separate from real NASA MA-7 archival science.
+Historical NASA Mercury-Atlas 7 values are source-backed, not synthetic and
+usually lack a precise absolute UTC observation timestamp. They are shown in
+original report order, *never* silently assigned fabricated UTC instants.
+
+The real-time UTC workspace starts empty: a trusted, authorization-preserving
+host may supply previously validated non-synthetic UTC observations through
+set_verified_observations(). There is no automatic unscoped server query here.
+
+Public integration API kept stable for AetherionWindow:
+ build_mission_ops_home(parent=None, locale=..., reduce_motion=...)
+ route_requested(str), simulated_demo_requested(), nasa_archive_requested()
+ set_locale(locale), set_visuals(theme, reduce_motion, mode, intensity)
+ set_connection_state(string)
 """
 from __future__ import annotations
 
+from datetime import datetime, timezone
 import math
+import re
+from urllib.parse import urlsplit
 
-from PySide6.QtCore import Qt, Signal, QTimer, QRectF
-from PySide6.QtGui import QColor, QPainter, QPen, QRadialGradient
+from PySide6.QtCore import Qt, QDateTime, Signal, QUrl
+from PySide6.QtGui import QColor, QDesktopServices, QPainter, QPen
 from PySide6.QtWidgets import (
-    QFrame, QGridLayout, QHBoxLayout, QLabel, QPushButton,
-    QScrollArea, QSplitter, QTreeWidget, QTreeWidgetItem,
-    QVBoxLayout, QWidget,
+    QAbstractItemView, QComboBox, QDateTimeEdit, QFrame, QHBoxLayout, QLabel,
+    QListWidget, QPushButton, QSplitter, QStackedWidget, QTableWidget,
+    QTableWidgetItem, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget,
 )
+
+from .visual_theme import palette_for
+from .features.demo.nasa_ma7 import load_real_nasa_data
 
 ROUTE_IDS = (
     "mission", "health", "monitor", "ecg", "assistant", "interview",
@@ -25,462 +41,997 @@ ROUTE_IDS = (
     "crew", "settings",
 )
 
-# Semantic local VI/EN catalog. Q-0485 may move this into shared i18n only after
-# the current owners of those files explicitly release their leases.
+# These are the only source groups that can be displayed as original NASA data.
+SOURCE_GROUPS = ("flight", "clinical", "blood", "pressure")
+
 TEXT = {
-    "vi": {
-        "eyebrow": "TRUY TINH  /  MISSION OPERATIONS",
-        "title": "Trung tâm điều hành",
-        "subtitle": "Một không gian truy cập nhanh mọi chức năng của AETHERION.",
-        "overview": "Tổng quan",
-        "workspace": "WORKSPACE  /  OPERATIONS",
-        "navigator": "ĐIỀU HƯỚNG",
-        "sources": "KHOA HỌC & NGUỒN",
-        "clinical": "SỨC KHỎE",
-        "systems": "HỆ THỐNG",
-        "mission": "Điều hành",
-        "health": "Sức khỏe của tôi",
-        "monitor": "Theo dõi",
-        "ecg": "Điện tim (ECG)",
-        "assistant": "Hỏi AI",
-        "interview": "Đánh giá triệu chứng",
-        "care": "Hành trình chăm sóc",
-        "science": "Khám phá khoa học",
-        "hazards": "Nguy cơ bay vũ trụ",
-        "medical_library": "Thư viện y khoa",
-        "atlas": "Cơ thể 3D",
-        "crew": "Phi hành đoàn",
-        "settings": "Cài đặt",
-        "demo.title": "DEMO FOR HACKATHON",
-        "demo.subtitle": "Kịch bản minh họa giả lập · hồ sơ độc lập",
-        "demo.badge": "SIMULATED · DỮ LIỆU GIẢ LẬP",
-        "demo.detail": "Mở phần giới thiệu trước khi đi vào kịch bản giả lập. Không ghi vào bệnh án hoặc dữ liệu phi hành đoàn thật.",
-        "demo.action": "Bắt đầu Demo",
-        "nasa.title": "NASA · MA-7",
-        "nasa.subtitle": "83 giá trị đo NASA công bố năm 1962",
-        "nasa.badge": "HISTORICAL SOURCE · KHÔNG TRỰC TIẾP",
-        "nasa.detail": "Dữ liệu lịch sử thật có nguồn NASA, tách khỏi kịch bản SIMULATED.",
-        "nasa.action": "Khám phá NASA",
-        "overview.title": "Một trung tâm. Mọi chức năng.",
-        "overview.copy": "Chọn một mục từ cây điều hướng hoặc khu thao tác. Những chức năng chưa có dữ liệu sẽ tự báo tình trạng từ màn hình tương ứng.",
-        "data.title": "TÍNH TOÀN VẸN NGUỒN",
-        "data.health": "Dữ liệu sức khỏe",
-        "data.healthState": "Chỉ hiển thị khi được cấp quyền",
-        "data.science": "Nguồn NASA",
-        "data.scienceState": "Tài liệu tham khảo · không phải hồ sơ sống",
-        "data.demo": "Kịch bản Demo",
-        "data.demoState": "Giả lập · không kết nối người bệnh",
-        "quick.title": "MỞ NHANH",
-        "quick.copy": "Toàn bộ mô-đun được truy cập qua một thanh điều hướng. Không cần quay về màn hình năm thẻ.",
-        "status.label": "TRẠNG THÁI",
-        "status.unknown": "Chưa kiểm tra kết nối",
-        "context": "NGUỒN VÀ GIỚI HẠN",
-        "context.title": "Dữ liệu có nguồn.",
-        "context.copy": "Không có chỉ số bệnh nhân hay tín hiệu thời gian thực giả trên màn hình điều hành. Xem từng ứng dụng để kiểm tra dữ liệu đã xác thực.",
-        "context.source": "NASA MA-7: số liệu nghiên cứu lịch sử thật",
-        "context.scenario": "Hackathon Demo: nguồn giả lập được ghi nhãn",
-        "context.privacy": "Hồ sơ sức khỏe: yêu cầu xác thực và phân quyền",
-        "context.link": "Mở kho NASA",
-        "footer": "NATIVE DESKTOP  /  LOCAL-FIRST  /  RESEARCH-AWARE",
-        "open": "Mở {title}",
-    },
     "en": {
-        "eyebrow": "TRUY TINH  /  MISSION OPERATIONS",
-        "title": "Mission Control",
-        "subtitle": "One command workspace for every AETHERION feature.",
-        "overview": "Overview",
-        "workspace": "WORKSPACE  /  OPERATIONS",
-        "navigator": "NAVIGATION",
-        "sources": "SCIENCE & SOURCES",
-        "clinical": "HEALTH",
+        "brand": "AETHERION  /  MISSION OPERATIONS",
+        "connection": "Unverified connection",
+        "browse": "BROWSE",
+        "inspect": "INSPECT  /  PROPERTIES",
+        "workspace": "WORKSPACE",
+        "science": "SCIENCE & SOURCES",
+        "clinical": "HEALTH & CARE",
         "systems": "SYSTEMS",
-        "mission": "Operations",
+        "mission": "Mission",
+        "crew": "Crew",
         "health": "My Health",
         "monitor": "Monitoring",
         "ecg": "ECG",
         "assistant": "Ask AI",
         "interview": "Symptom Interview",
         "care": "Care Journey",
-        "science": "Explore Science",
-        "hazards": "Spaceflight Hazards",
+        "science_route": "Scientific Observatory",
+        "hazards": "NASA Hazards",
         "medical_library": "Medical Library",
         "atlas": "Body Atlas",
-        "crew": "Crew",
         "settings": "Settings",
-        "demo.title": "DEMO FOR HACKATHON",
-        "demo.subtitle": "Clearly simulated scenario · isolated profiles",
-        "demo.badge": "SIMULATED · FICTIONAL DATA",
-        "demo.detail": "Read the scenario explanation before entering the fictional environment. Never writes into real crew or patient records.",
-        "demo.action": "Start Demo",
-        "nasa.title": "NASA · MA-7",
-        "nasa.subtitle": "83 actual published NASA values from 1962",
-        "nasa.badge": "HISTORICAL SOURCE · NOT LIVE",
-        "nasa.detail": "Real, NASA-cited historical research, kept separate from the SIMULATED scenario.",
-        "nasa.action": "Explore NASA",
-        "overview.title": "One command center. Every capability.",
-        "overview.copy": "Select a module in the navigator or a quick action. Unavailable data must be disclosed in the target screen.",
-        "data.title": "SOURCE INTEGRITY",
-        "data.health": "Health records",
-        "data.healthState": "Visible only to authorized users",
-        "data.science": "NASA sources",
-        "data.scienceState": "Research references · not live records",
-        "data.demo": "Demo scenario",
-        "data.demoState": "Fictional · disconnected from patients",
-        "quick.title": "QUICK ACCESS",
-        "quick.copy": "All modules live in one navigator; no oversized five-card landing screen.",
-        "status.label": "STATUS",
-        "status.unknown": "Connection not verified",
-        "context": "SOURCES & LIMITATIONS",
-        "context.title": "Evidence before claims.",
-        "context.copy": "No fabricated patient vitals or live signals are shown in Mission Control. Open a specific screen to inspect authenticated data.",
-        "context.source": "NASA MA-7: real historical research measurements",
-        "context.scenario": "Hackathon Demo: explicitly fictional scenario",
-        "context.privacy": "Health records: authentication and authorization required",
-        "context.link": "Open NASA research",
-        "footer": "NATIVE DESKTOP  /  LOCAL-FIRST  /  RESEARCH-AWARE",
-        "open": "Open {title}",
+        "home": "Mission Workspace",
+        "archive": "NASA MA-7 · source records",
+        "utc": "UTC observations",
+        "demo": "DEMO FOR HACKATHON",
+        "sim": "SIMULATED",
+        "real": "NASA MA-7 · 1962",
+        "realBadge": "HISTORICAL · NASA SOURCE",
+        "simulationHint": "Fictional five-patient scenario, stored separately from actual health records",
+        "archiveHint": "83 published measurements across 19 archived report timepoints",
+        "runDemo": "Explore SIMULATED Demo",
+        "runArchive": "Open NASA archive",
+        "sourceGuide": "Open NASA original report",
+        "launch": "Open feature",
+        "welcome": "Select a source or work area in Browse.",
+        "welcomeLead": "The workspace shows authentic historical NASA measurements and honest empty states for unconnected UTC observations. No fabricated live telemetry.",
+        "welcomeSource": "Source inventory",
+        "welcomeCount": "{records} original MA-7 report timepoints · {values} recorded values",
+        "welcomeNoSource": "The NASA source package is unavailable or invalid. Open the archive for details.",
+        "welcomeReal": "Read the NASA MA-7 records",
+        "welcomeUtc": "Inspect UTC records",
+        "homeNotice": "The mission workspace does not read authenticated patients until a permitted source supplies them.",
+        "time": "TIME CONDUCTOR",
+        "timeHelp": "UTC window shared by UTC plot, table, and Inspect",
+        "from": "From",
+        "to": "To",
+        "recentDay": "24 h",
+        "recentWeek": "7 d",
+        "recentMonth": "30 d",
+        "apply": "Apply UTC range",
+        "timeInvalid": "Invalid UTC interval: Start must be earlier than End.",
+        "timeWindow": "UTC window: {start} — {end}",
+        "timeSource": "NASA MA-7 original timepoints do not have verifiable absolute UTC timestamps. UTC bounds are not applied to this historical archive.",
+        "sourceTitle": "Mercury-Atlas 7 · original recorded values",
+        "sourceNotes": "Reported event/phase order only. Do not interpret report phases as a continuous sensor stream.",
+        "group": "Report section",
+        "record": "Original report timepoint",
+        "metrics": "Measured variable",
+        "value": "Reported value",
+        "unit": "Original unit",
+        "qualifier": "Qualifier / range",
+        "missing": "NOT REPORTED",
+        "chart": "SOURCE-DERIVED VALUES  /  NO INTERPOLATION",
+        "chartEmpty": "No original numeric values for this variable.",
+        "selectMetric": "Bar series",
+        "seriesDesc": "One bar per originally reported timepoint. Aggregated means remain reported means.",
+        "utcTitle": "UTC observations · authorization required",
+        "utcNote": "No UTC records have been supplied by an authorized live-data controller. No artificial sensor output is shown.",
+        "utcCount": "{count} source-checked records in the current UTC window",
+        "utcEmpty": "NO AUTHORIZED UTC DATA IN THIS TIME RANGE",
+        "utcAsk": "Open authenticated Monitoring",
+        "utcMetric": "Metric / source",
+        "utcTime": "Observed UTC",
+        "utcValue": "Value",
+        "utcSource": "Source / quality",
+        "utcPlot": "UTC-SCOPED NUMERIC VALUES  /  DISCRETE SAMPLES",
+        "inspectNone": "Select a report timepoint, variable or UTC observation to inspect its original source and quality.",
+        "inspectArchive": "Original NASA source (historical, non-live)",
+        "inspectUTC": "Authorized timestamped observation (not automatically imported)",
+        "inspectSource": "Source",
+        "inspectTable": "Table / page",
+        "inspectGroup": "Report group",
+        "inspectRecord": "Original timepoint",
+        "inspectMetric": "Variable",
+        "inspectValue": "Value",
+        "inspectUnit": "Unit",
+        "inspectQualifier": "Qualifier",
+        "inspectRange": "Published range",
+        "inspectCount": "Reported sample count",
+        "inspectUTCValue": "UTC timestamp",
+        "inspectVerification": "Verification state",
+        "inspectQuality": "Quality",
+        "inspectNoUTC": "No precise UTC timestamp supplied by source",
+        "footer": "SOURCE FIRST  ·  NO SIMULATED DATA IN THIS HOME WORKSPACE",
+        "openOriginal": "NASA original report",
+        "archiveUnavailable": "Historical source file could not be loaded; no replacement values generated.",
+    },
+    "vi": {
+        "brand": "AETHERION  /  MISSION OPERATIONS",
+        "connection": "Chưa xác minh kết nối",
+        "browse": "DUYỆT ĐỐI TƯỢNG",
+        "inspect": "THUỘC TÍNH  /  NGUỒN",
+        "workspace": "KHÔNG GIAN DỮ LIỆU",
+        "science": "KHOA HỌC & NGUỒN",
+        "clinical": "SỨC KHỎE & CHĂM SÓC",
+        "systems": "HỆ THỐNG",
+        "mission": "Nhiệm vụ",
+        "crew": "Phi hành đoàn",
+        "health": "Sức khỏe của tôi",
+        "monitor": "Theo dõi",
+        "ecg": "Điện tim",
+        "assistant": "Hỏi AI",
+        "interview": "Hỏi triệu chứng",
+        "care": "Hành trình chăm sóc",
+        "science_route": "Đài quan sát khoa học",
+        "hazards": "Nguy cơ NASA",
+        "medical_library": "Thư viện y khoa",
+        "atlas": "Cơ thể 3D",
+        "settings": "Cài đặt",
+        "home": "Không gian điều hành",
+        "archive": "NASA MA-7 · bản ghi gốc",
+        "utc": "Quan sát UTC",
+        "demo": "DEMO FOR HACKATHON",
+        "sim": "SIMULATED",
+        "real": "NASA MA-7 · 1962",
+        "realBadge": "LỊCH SỬ THẬT · NGUỒN NASA",
+        "simulationHint": "Năm hồ sơ giả lập tách khỏi bệnh án thực",
+        "archiveHint": "83 giá trị đã công bố trong 19 mốc báo cáo NASA",
+        "runDemo": "Khám phá Demo giả lập",
+        "runArchive": "Mở kho NASA",
+        "sourceGuide": "Xem báo cáo NASA gốc",
+        "launch": "Mở chức năng",
+        "welcome": "Chọn một nguồn hoặc chức năng từ cây bên trái.",
+        "welcomeLead": "Không gian hiển thị các số đo lịch sử thật từ NASA và trạng thái thiếu dữ liệu UTC trung thực. Không tạo sinh hiệu trực tiếp giả.",
+        "welcomeSource": "Danh mục nguồn",
+        "welcomeCount": "{records} mốc báo cáo MA-7 · {values} giá trị ghi nhận",
+        "welcomeNoSource": "Bộ nguồn NASA thiếu hoặc không hợp lệ. Có thể mở kho để xem lỗi.",
+        "welcomeReal": "Xem các bản ghi NASA MA-7",
+        "welcomeUtc": "Xem dữ liệu UTC",
+        "homeNotice": "Không đọc hồ sơ người bệnh khi chưa có nguồn được cấp quyền.",
+        "time": "TIME CONDUCTOR",
+        "timeHelp": "Khoảng UTC dùng chung cho biểu đồ, bảng và Inspect",
+        "from": "Từ",
+        "to": "Đến",
+        "recentDay": "24 giờ",
+        "recentWeek": "7 ngày",
+        "recentMonth": "30 ngày",
+        "apply": "Áp dụng UTC",
+        "timeInvalid": "Khoảng UTC không hợp lệ: thời điểm bắt đầu phải trước kết thúc.",
+        "timeWindow": "Khoảng UTC: {start} — {end}",
+        "timeSource": "Mốc báo cáo MA-7 không có thời điểm UTC tuyệt đối được xác minh. Bộ lọc UTC không tác động vào dữ liệu lịch sử này.",
+        "sourceTitle": "Mercury-Atlas 7 · giá trị nguồn NASA",
+        "sourceNotes": "Chỉ trình bày mốc/giai đoạn báo cáo gốc; không diễn giải là chuỗi cảm biến liên tục.",
+        "group": "Phần báo cáo",
+        "record": "Mốc ghi nhận",
+        "metrics": "Biến đo",
+        "value": "Giá trị gốc",
+        "unit": "Đơn vị gốc",
+        "qualifier": "Ghi chú / khoảng",
+        "missing": "KHÔNG CÔNG BỐ",
+        "chart": "GIÁ TRỊ NGUỒN  /  KHÔNG NỘI SUY",
+        "chartEmpty": "Không có số đo gốc dạng số cho biến này.",
+        "selectMetric": "Biến của biểu đồ",
+        "seriesDesc": "Mỗi cột là một mốc gốc; các giá trị trung bình giữ đúng nghĩa trung bình.",
+        "utcTitle": "Quan sát UTC · yêu cầu quyền truy cập",
+        "utcNote": "Chưa có bản ghi UTC nào được bộ điều khiển có quyền cấp vào. Không vẽ tín hiệu cảm biến giả.",
+        "utcCount": "{count} bản ghi có nguồn trong khoảng UTC",
+        "utcEmpty": "KHÔNG CÓ DỮ LIỆU UTC ĐƯỢC CẤP QUYỀN",
+        "utcAsk": "Mở Theo dõi có xác thực",
+        "utcMetric": "Chỉ số / nguồn",
+        "utcTime": "Ghi nhận UTC",
+        "utcValue": "Giá trị",
+        "utcSource": "Nguồn / chất lượng",
+        "utcPlot": "GIÁ TRỊ UTC THỰC TẾ  /  KHÔNG NỐI ĐIỂM",
+        "inspectNone": "Chọn mốc, biến hoặc quan sát UTC để xem nguồn và mức độ xác minh.",
+        "inspectArchive": "Nguồn NASA lịch sử thật, không trực tiếp",
+        "inspectUTC": "Quan sát có dấu thời gian và quyền xác thực (không tự nhập)",
+        "inspectSource": "Nguồn",
+        "inspectTable": "Bảng / trang",
+        "inspectGroup": "Nhóm báo cáo",
+        "inspectRecord": "Mốc gốc",
+        "inspectMetric": "Biến",
+        "inspectValue": "Giá trị",
+        "inspectUnit": "Đơn vị",
+        "inspectQualifier": "Chú thích",
+        "inspectRange": "Khoảng công bố",
+        "inspectCount": "Số lượt đo trong báo cáo",
+        "inspectUTCValue": "Dấu thời gian UTC",
+        "inspectVerification": "Trạng thái xác minh",
+        "inspectQuality": "Chất lượng",
+        "inspectNoUTC": "Nguồn không cung cấp thời điểm UTC chính xác",
+        "footer": "CÓ NGUỒN · KHÔNG ĐƯA DỮ LIỆU GIẢ LẬP VÀO TRANG CHÍNH",
+        "openOriginal": "Báo cáo NASA gốc",
+        "archiveUnavailable": "Không thể đọc nguồn NASA; không tạo số liệu thay thế.",
     },
 }
 
 
-def _locale(raw: str) -> str:
+def _locale(raw: object) -> str:
     return "en" if str(raw).lower().startswith("en") else "vi"
 
 
-class OrbitPanel(QFrame):
-    """Procedural visual ornament, NOT a spacecraft sensor or body model."""
+def _safe_utc(raw: object) -> datetime | None:
+    """Only literal UTC ISO8601 timestamps; NEVER convert uncertain local time."""
+    if not isinstance(raw, str) or not re.fullmatch(
+        r"\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|\+00:00)", raw
+    ):
+        return None
+    try:
+        timestamp = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        return timestamp.astimezone(timezone.utc)
+    except (TypeError, ValueError, OverflowError):
+        return None
 
-    def __init__(self, parent=None, *, reduce_motion=False):
+
+def _observed_utc(row: dict) -> datetime | None:
+    return _safe_utc(row.get("timestamp_utc")) if isinstance(row, dict) else None
+
+
+class ReportedBars(QWidget):
+    """Bars are *individual source values*, never a drawn continuous ECG/plot."""
+
+    def __init__(self, parent=None):
         super().__init__(parent)
-        self.setObjectName("contentPanel")
-        self.setMinimumHeight(140)
-        self.phase = 0.0
-        self.reduce_motion = bool(reduce_motion)
-        self.timer = QTimer(self)
-        self.timer.setInterval(100)
-        self.timer.timeout.connect(self._step)
+        self.setMinimumHeight(132)
+        self.setObjectName("opsReportedBars")
+        self._series: tuple[float | None, ...] = ()
+        self._theme = "daybreak"
+        self._mode = "light"
 
-    def showEvent(self, event):
-        super().showEvent(event)
-        self._animate()
-
-    def hideEvent(self, event):
-        self.timer.stop()
-        super().hideEvent(event)
-
-    def set_motion(self, reduced: bool):
-        self.reduce_motion = bool(reduced)
-        self._animate()
+    def set_series(self, points, theme="daybreak", mode="light"):
+        self._series = tuple(points)
+        self._theme = theme
+        self._mode = mode
         self.update()
 
-    def _animate(self):
-        if self.isVisible() and not self.reduce_motion:
-            self.timer.start()
-        else:
-            self.timer.stop()
-
-    def _step(self):
-        self.phase = (self.phase + 0.004) % 1.0
-        self.update()
-
-    def paintEvent(self, event):
-        super().paintEvent(event)
+    def paintEvent(self, _event):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        pal = palette_for(self._theme, self._mode)
         w, h = self.width(), self.height()
-        x, y = w * .75, h * .52
-        painter.translate(x, y)
-        light = QRadialGradient(0, 0, min(170, w * .2))
-        light.setColorAt(0, QColor(92, 156, 222, 78))
-        light.setColorAt(1, QColor(92, 156, 222, 0))
-        painter.setBrush(light)
-        painter.setPen(Qt.PenStyle.NoPen)
-        painter.drawEllipse(QRectF(-155, -155, 310, 310))
-        for index, r in enumerate((42, 67, 96)):
-            c = QColor(112, 197, 226, 118 - index * 24)
-            painter.setPen(QPen(c, 1.2))
-            painter.setBrush(Qt.BrushStyle.NoBrush)
-            painter.drawEllipse(QRectF(-r, -r * .5, r * 2, r))
-            theta = (self.phase * math.tau + index * 2.2)
-            px, py = r * math.cos(theta), r * .5 * math.sin(theta)
-            painter.setBrush(QColor(178, 238, 255, 200))
+        painter.setPen(QPen(QColor(pal.border), 1))
+        baseline = h - 22
+        painter.drawLine(16, baseline, w - 14, baseline)
+        values = [v for v in self._series if v is not None]
+        if not values:
+            painter.setPen(QColor(pal.muted))
+            painter.drawText(self.rect(), Qt.AlignmentFlag.AlignCenter, "—")
+            painter.end()
+            return
+        lo, hi = min(values), max(values)
+        span = hi - lo
+        count = len(self._series)
+        step = max(10.0, (w - 40) / max(1, count))
+        for i, v in enumerate(self._series):
+            if v is None:
+                continue
+            ratio = .5 if span == 0 else (v - lo) / span
+            height = 19 + ratio * max(12, h - 67)
+            x = 22 + (i + .45) * step
+            color = QColor(pal.accent if i % 2 == 0 else pal.second)
+            color.setAlpha(185)
+            painter.setBrush(color)
             painter.setPen(Qt.PenStyle.NoPen)
-            painter.drawEllipse(QRectF(px - 3, py - 3, 6, 6))
+            painter.drawRect(QRectF(x - min(16, step * .29),
+                                    baseline - height,
+                                    min(32, step * .58), height))
         painter.end()
 
 
 class MissionOperationsHome(QWidget):
-    """Composition-only desktop Home; host must attach real route handlers."""
+    """Functional native object browser, coordinated science views and inspector."""
 
     route_requested = Signal(str)
     simulated_demo_requested = Signal()
     nasa_archive_requested = Signal()
+    time_range_changed = Signal(str, str)
 
     def __init__(self, parent=None, *, locale="en", reduce_motion=False):
         super().__init__(parent)
         self.language = _locale(locale)
         self.reduce_motion = bool(reduce_motion)
+        self.theme = "daybreak"
+        self.mode = "light"
+        self.source_data: dict | None = None
+        self.source_error = ""
+        self._selection: tuple[str, str] = ("home", "")
+        self._utc_rows: tuple[dict, ...] = ()
+        self._filtered_utc: tuple[dict, ...] = ()
+        self._selected_nasa_record: dict | None = None
+        self._selected_nasa_metric: str | None = None
+        self._active_utc_row: dict | None = None
+        self._objects: dict[str, QTreeWidgetItem] = {}
         self.setObjectName("missionOperationsHome")
-        self._route_items = {}
-        self._action_buttons = {}
-        self._source_state = "unknown"
+        self._load_historical_source()
 
-        layout = QVBoxLayout(self)
-        layout.setContentsMargins(17, 12, 17, 12)
-        layout.setSpacing(11)
+        shell = QVBoxLayout(self)
+        shell.setContentsMargins(12, 9, 12, 8)
+        shell.setSpacing(7)
 
-        heading = QFrame()
-        heading.setObjectName("surface")
-        header = QHBoxLayout(heading)
-        header.setContentsMargins(18, 10, 18, 10)
+        command = QFrame()
+        command.setObjectName("surface")
+        command_row = QHBoxLayout(command)
+        command_row.setContentsMargins(12, 6, 12, 6)
         self.brand = QLabel()
         self.brand.setObjectName("eyebrow")
-        header.addWidget(self.brand, 1)
-        self.health_status = QLabel()
-        self.health_status.setObjectName("connectionPill")
-        header.addWidget(self.health_status)
-        self.primary_demo = QPushButton()
-        self.primary_demo.setObjectName("primaryAction")
-        self.primary_demo.setMinimumHeight(39)
-        self.primary_demo.clicked.connect(self.simulated_demo_requested.emit)
-        header.addWidget(self.primary_demo)
-        layout.addWidget(heading)
+        command_row.addWidget(self.brand, 1)
+        self.status = QLabel()
+        self.status.setObjectName("connectionPill")
+        command_row.addWidget(self.status)
+        self.demo = QPushButton()
+        self.demo.setMinimumHeight(39)
+        self.demo.setObjectName("primaryAction")
+        self.demo.clicked.connect(self.simulated_demo_requested.emit)
+        command_row.addWidget(self.demo)
+        shell.addWidget(command)
 
-        split = QSplitter(Qt.Orientation.Horizontal)
-        split.setChildrenCollapsible(False)
-        split.setHandleWidth(5)
-        self.navigator = QTreeWidget()
-        self.navigator.setObjectName("opsNavigator")
-        self.navigator.setHeaderHidden(True)
-        self.navigator.setMinimumWidth(190)
-        self.navigator.setMaximumWidth(265)
-        self.navigator.setUniformRowHeights(True)
-        self.navigator.itemClicked.connect(self._navigate)
-        split.addWidget(self.navigator)
-
-        center_container = QWidget()
-        center_container.setObjectName("opsContent")
-        center_outer = QVBoxLayout(center_container)
-        center_outer.setContentsMargins(0, 0, 0, 0)
-        self.center_scroll = QScrollArea()
-        self.center_scroll.setWidgetResizable(True)
-        self.center_scroll.setFrameShape(QFrame.Shape.NoFrame)
-        center_outer.addWidget(self.center_scroll)
-        center = QWidget()
-        self.center_scroll.setWidget(center)
-        content = QVBoxLayout(center)
-        content.setContentsMargins(13, 7, 13, 10)
-        content.setSpacing(14)
-
-        self.canvas = OrbitPanel(reduce_motion=reduce_motion)
-        canvas_layout = QVBoxLayout(self.canvas)
-        canvas_layout.setContentsMargins(23, 15, 180, 16)
-        canvas_layout.setSpacing(5)
-        self.canvas_eyebrow = QLabel()
-        self.canvas_eyebrow.setObjectName("eyebrow")
-        canvas_layout.addWidget(self.canvas_eyebrow)
-        self.main_title = QLabel()
-        self.main_title.setObjectName("heroTitle")
-        self.main_title.setWordWrap(True)
-        canvas_layout.addWidget(self.main_title)
-        self.main_subtitle = QLabel()
-        self.main_subtitle.setObjectName("heroCopy")
-        self.main_subtitle.setWordWrap(True)
-        canvas_layout.addWidget(self.main_subtitle)
-        content.addWidget(self.canvas)
-
-        actions = QGridLayout()
-        actions.setHorizontalSpacing(13)
-        actions.setVerticalSpacing(12)
-        for col, key in enumerate(("simulated", "nasa")):
-            card = QFrame()
-            card.setObjectName("contentPanel")
-            card_layout = QVBoxLayout(card)
-            card_layout.setContentsMargins(17, 14, 17, 14)
-            card_layout.setSpacing(7)
-            badge = QLabel()
-            badge.setObjectName("eyebrow")
-            card_layout.addWidget(badge)
-            title = QLabel()
-            title.setObjectName("heading")
-            title.setWordWrap(True)
-            card_layout.addWidget(title)
-            subtitle = QLabel()
-            subtitle.setObjectName("pageHint")
-            subtitle.setWordWrap(True)
-            card_layout.addWidget(subtitle)
-            detail = QLabel()
-            detail.setObjectName("pageHint")
-            detail.setWordWrap(True)
-            card_layout.addWidget(detail)
-            action = QPushButton()
-            action.setObjectName("primaryAction" if key == "simulated" else "navButton")
-            action.setMinimumHeight(38)
-            if key == "simulated":
-                action.clicked.connect(self.simulated_demo_requested.emit)
-            else:
-                action.clicked.connect(self.nasa_archive_requested.emit)
-            card_layout.addWidget(action)
-            actions.addWidget(card, 0, col)
-            self._action_buttons[key] = (badge, title, subtitle, detail, action)
-        content.addLayout(actions)
-
-        section = QFrame()
-        section.setObjectName("contentPanel")
-        block = QVBoxLayout(section)
-        block.setContentsMargins(18, 14, 18, 15)
-        self.integrity_title = QLabel()
-        self.integrity_title.setObjectName("eyebrow")
-        block.addWidget(self.integrity_title)
-        self.safety_lines = []
-        for _ in range(3):
-            line = QLabel()
-            line.setObjectName("pageHint")
-            line.setWordWrap(True)
-            block.addWidget(line)
-            self.safety_lines.append(line)
-        content.addWidget(section)
-        self.quick_heading = QLabel()
-        self.quick_heading.setObjectName("eyebrow")
-        content.addWidget(self.quick_heading)
-        quick_grid = QGridLayout()
-        self.quick_routes = ("health", "monitor", "assistant", "interview",
-                             "care", "science", "ecg", "crew")
-        self.quick_buttons = {}
-        for i, route in enumerate(self.quick_routes):
-            button = QPushButton()
+        # One shared time control owns the UTC window. All UTC views use it.
+        conductor = QFrame()
+        conductor.setObjectName("contentPanel")
+        conductor_row = QHBoxLayout(conductor)
+        conductor_row.setContentsMargins(10, 5, 10, 5)
+        conductor_row.setSpacing(7)
+        self.conductor_heading = QLabel()
+        self.conductor_heading.setObjectName("eyebrow")
+        conductor_row.addWidget(self.conductor_heading)
+        self.from_label = QLabel()
+        conductor_row.addWidget(self.from_label)
+        self.begin_utc = QDateTimeEdit()
+        self.begin_utc.setCalendarPopup(True)
+        self.begin_utc.setDisplayFormat("yyyy-MM-dd HH:mm 'UTC'")
+        self.begin_utc.setMinimumWidth(161)
+        conductor_row.addWidget(self.begin_utc)
+        self.to_label = QLabel()
+        conductor_row.addWidget(self.to_label)
+        self.end_utc = QDateTimeEdit()
+        self.end_utc.setCalendarPopup(True)
+        self.end_utc.setDisplayFormat("yyyy-MM-dd HH:mm 'UTC'")
+        self.end_utc.setMinimumWidth(161)
+        conductor_row.addWidget(self.end_utc)
+        end = QDateTime.currentDateTimeUtc()
+        self.end_utc.setDateTime(end)
+        self.begin_utc.setDateTime(end.addDays(-7))
+        self.preset_day = QPushButton()
+        self.preset_week = QPushButton()
+        self.preset_month = QPushButton()
+        for button, days in ((self.preset_day, 1),
+                             (self.preset_week, 7), (self.preset_month, 30)):
             button.setObjectName("navButton")
-            button.clicked.connect(lambda checked=False, key=route:
-                                   self.route_requested.emit(key))
-            quick_grid.addWidget(button, i // 4, i % 4)
-            self.quick_buttons[route] = button
-        content.addLayout(quick_grid)
-        content.addStretch(1)
-        split.addWidget(center_container)
+            button.clicked.connect(lambda checked=False, span=days:
+                                   self.set_recent_days(span))
+            conductor_row.addWidget(button)
+        self.apply_button = QPushButton()
+        self.apply_button.setObjectName("navButton")
+        self.apply_button.clicked.connect(self.apply_utc_window)
+        conductor_row.addWidget(self.apply_button)
+        shell.addWidget(conductor)
 
-        context = QFrame()
-        context.setObjectName("contentPanel")
-        context.setMinimumWidth(185)
-        context.setMaximumWidth(255)
-        context_layout = QVBoxLayout(context)
-        context_layout.setContentsMargins(14, 16, 14, 16)
-        context_layout.setSpacing(9)
-        self.context_title = QLabel()
-        self.context_title.setObjectName("eyebrow")
-        context_layout.addWidget(self.context_title)
-        self.context_heading = QLabel()
-        self.context_heading.setObjectName("heading")
-        self.context_heading.setWordWrap(True)
-        context_layout.addWidget(self.context_heading)
-        self.context_detail = QLabel()
-        self.context_detail.setObjectName("pageHint")
-        self.context_detail.setWordWrap(True)
-        context_layout.addWidget(self.context_detail)
-        self.context_items = []
-        for _ in range(3):
-            label = QLabel()
-            label.setObjectName("pageHint")
-            label.setWordWrap(True)
-            context_layout.addWidget(label)
-            self.context_items.append(label)
-        context_layout.addStretch(1)
-        self.science_action = QPushButton()
-        self.science_action.setObjectName("navButton")
-        self.science_action.clicked.connect(lambda: self.route_requested.emit("science"))
-        context_layout.addWidget(self.science_action)
-        self.context_panel = context
-        split.addWidget(context)
-        split.setSizes([235, 870, 230])
-        layout.addWidget(split, 1)
-        self.splitter = split
+        self.window_status = QLabel()
+        self.window_status.setObjectName("pageHint")
+        shell.addWidget(self.window_status)
+
+        horizontal = QSplitter(Qt.Orientation.Horizontal)
+        horizontal.setHandleWidth(5)
+        horizontal.setChildrenCollapsible(False)
+        shell.addWidget(horizontal, 1)
+        self.splitter = horizontal
+
+        # Browse: meaningful object selection previews native data, double click
+        # opens existing authenticated feature route without changing its ACL.
+        left = QFrame()
+        left.setObjectName("contentPanel")
+        nav_layout = QVBoxLayout(left)
+        nav_layout.setContentsMargins(8, 9, 8, 9)
+        self.browse_heading = QLabel()
+        self.browse_heading.setObjectName("eyebrow")
+        nav_layout.addWidget(self.browse_heading)
+        self.navigator = QTreeWidget()
+        self.navigator.setHeaderHidden(True)
+        self.navigator.setUniformRowHeights(True)
+        self.navigator.setMinimumWidth(172)
+        self.navigator.itemSelectionChanged.connect(self._browse_selected)
+        self.navigator.itemDoubleClicked.connect(self._browse_open)
+        nav_layout.addWidget(self.navigator, 1)
+        self.open_action = QPushButton()
+        self.open_action.setObjectName("navButton")
+        self.open_action.clicked.connect(self._open_selected)
+        nav_layout.addWidget(self.open_action)
+        horizontal.addWidget(left)
+
+        middle = QFrame()
+        middle.setObjectName("contentPanel")
+        middle_layout = QVBoxLayout(middle)
+        middle_layout.setContentsMargins(8, 9, 8, 9)
+        self.workspace_heading = QLabel()
+        self.workspace_heading.setObjectName("eyebrow")
+        middle_layout.addWidget(self.workspace_heading)
+        self.workspace_stack = QStackedWidget()
+        middle_layout.addWidget(self.workspace_stack, 1)
+        horizontal.addWidget(middle)
+
+        overview = QWidget()
+        ov = QVBoxLayout(overview)
+        ov.setContentsMargins(12, 8, 12, 8)
+        ov.setSpacing(8)
+        self.welcome = QLabel()
+        self.welcome.setObjectName("heading")
+        self.welcome.setWordWrap(True)
+        ov.addWidget(self.welcome)
+        self.welcome_lead = QLabel()
+        self.welcome_lead.setObjectName("pageHint")
+        self.welcome_lead.setWordWrap(True)
+        ov.addWidget(self.welcome_lead)
+        self.source_count = QLabel()
+        self.source_count.setObjectName("heading")
+        self.source_count.setWordWrap(True)
+        ov.addWidget(self.source_count)
+        self.provenance = QLabel()
+        self.provenance.setObjectName("pageHint")
+        self.provenance.setWordWrap(True)
+        ov.addWidget(self.provenance)
+        overview_actions = QHBoxLayout()
+        self.nasa_view = QPushButton()
+        self.nasa_view.setObjectName("navButton")
+        self.nasa_view.clicked.connect(lambda: self._choose("archive"))
+        overview_actions.addWidget(self.nasa_view)
+        self.utc_view = QPushButton()
+        self.utc_view.setObjectName("navButton")
+        self.utc_view.clicked.connect(lambda: self._choose("utc"))
+        overview_actions.addWidget(self.utc_view)
+        self.nasa_full = QPushButton()
+        self.nasa_full.setObjectName("primaryAction")
+        self.nasa_full.clicked.connect(self.nasa_archive_requested.emit)
+        overview_actions.addWidget(self.nasa_full)
+        ov.addLayout(overview_actions)
+        self.welcome_note = QLabel()
+        self.welcome_note.setObjectName("pageHint")
+        self.welcome_note.setWordWrap(True)
+        ov.addWidget(self.welcome_note)
+        ov.addStretch(1)
+        self.workspace_stack.addWidget(overview)
+
+        archive = QWidget()
+        archive_layout = QVBoxLayout(archive)
+        archive_layout.setContentsMargins(4, 4, 4, 4)
+        archive_layout.setSpacing(5)
+        self.archive_title = QLabel()
+        self.archive_title.setObjectName("heading")
+        archive_layout.addWidget(self.archive_title)
+        self.archive_caveat = QLabel()
+        self.archive_caveat.setObjectName("pageHint")
+        self.archive_caveat.setWordWrap(True)
+        archive_layout.addWidget(self.archive_caveat)
+        self.group_selector = QComboBox()
+        self.group_selector.currentIndexChanged.connect(self._load_report_group)
+        archive_layout.addWidget(self.group_selector)
+        archive_split = QSplitter(Qt.Orientation.Vertical)
+        self.records = QListWidget()
+        self.records.setMinimumHeight(78)
+        self.records.currentRowChanged.connect(self._select_report_record)
+        archive_split.addWidget(self.records)
+        self.measurements = QTableWidget(0, 4)
+        self.measurements.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.measurements.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.measurements.setAlternatingRowColors(True)
+        self.measurements.verticalHeader().hide()
+        self.measurements.itemSelectionChanged.connect(self._select_report_metric)
+        self.measurements.horizontalHeader().setStretchLastSection(True)
+        archive_split.addWidget(self.measurements)
+        archive_split.setSizes([100, 220])
+        archive_layout.addWidget(archive_split, 1)
+        self.metric_selector = QComboBox()
+        self.metric_selector.currentIndexChanged.connect(self._update_report_chart)
+        archive_layout.addWidget(self.metric_selector)
+        self.report_chart = ReportedBars()
+        archive_layout.addWidget(self.report_chart)
+        self.archive_note = QLabel()
+        self.archive_note.setObjectName("pageHint")
+        self.archive_note.setWordWrap(True)
+        archive_layout.addWidget(self.archive_note)
+        self.workspace_stack.addWidget(archive)
+
+        utc = QWidget()
+        utc_layout = QVBoxLayout(utc)
+        utc_layout.setContentsMargins(4, 4, 4, 4)
+        utc_layout.setSpacing(7)
+        self.utc_heading = QLabel()
+        self.utc_heading.setObjectName("heading")
+        utc_layout.addWidget(self.utc_heading)
+        self.utc_note = QLabel()
+        self.utc_note.setObjectName("pageHint")
+        self.utc_note.setWordWrap(True)
+        utc_layout.addWidget(self.utc_note)
+        self.utc_count = QLabel()
+        self.utc_count.setObjectName("eyebrow")
+        utc_layout.addWidget(self.utc_count)
+        self.utc_table = QTableWidget(0, 4)
+        self.utc_table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.utc_table.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.utc_table.setAlternatingRowColors(True)
+        self.utc_table.verticalHeader().hide()
+        self.utc_table.horizontalHeader().setStretchLastSection(True)
+        self.utc_table.itemSelectionChanged.connect(self._select_utc_row)
+        utc_layout.addWidget(self.utc_table, 1)
+        self.utc_chart = ReportedBars()
+        utc_layout.addWidget(self.utc_chart)
+        self.utc_empty = QLabel()
+        self.utc_empty.setObjectName("pageHint")
+        self.utc_empty.setWordWrap(True)
+        utc_layout.addWidget(self.utc_empty)
+        self.open_monitor = QPushButton()
+        self.open_monitor.setObjectName("navButton")
+        self.open_monitor.clicked.connect(lambda: self.route_requested.emit("monitor"))
+        utc_layout.addWidget(self.open_monitor)
+        self.workspace_stack.addWidget(utc)
+
+        preview = QWidget()
+        preview_layout = QVBoxLayout(preview)
+        preview_layout.setContentsMargins(13, 9, 13, 9)
+        self.preview_heading = QLabel()
+        self.preview_heading.setObjectName("heading")
+        self.preview_heading.setWordWrap(True)
+        preview_layout.addWidget(self.preview_heading)
+        self.preview_summary = QLabel()
+        self.preview_summary.setObjectName("pageHint")
+        self.preview_summary.setWordWrap(True)
+        preview_layout.addWidget(self.preview_summary)
+        self.preview_button = QPushButton()
+        self.preview_button.setObjectName("primaryAction")
+        self.preview_button.clicked.connect(self._open_selected)
+        preview_layout.addWidget(self.preview_button)
+        preview_layout.addStretch()
+        self.workspace_stack.addWidget(preview)
+
+        # Inspect: displays the *same* selected report row or UTC observation.
+        right = QFrame()
+        right.setObjectName("contentPanel")
+        right_layout = QVBoxLayout(right)
+        right_layout.setContentsMargins(8, 9, 8, 9)
+        self.inspect_heading = QLabel()
+        self.inspect_heading.setObjectName("eyebrow")
+        right_layout.addWidget(self.inspect_heading)
+        self.inspect_title = QLabel()
+        self.inspect_title.setObjectName("heading")
+        self.inspect_title.setWordWrap(True)
+        right_layout.addWidget(self.inspect_title)
+        self.inspector = QTableWidget(0, 2)
+        self.inspector.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.inspector.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection)
+        self.inspector.verticalHeader().hide()
+        self.inspector.horizontalHeader().hide()
+        self.inspector.horizontalHeader().setStretchLastSection(True)
+        right_layout.addWidget(self.inspector, 1)
+        self.source_link = QPushButton()
+        self.source_link.setObjectName("navButton")
+        self.source_link.clicked.connect(self.open_nasa_original)
+        right_layout.addWidget(self.source_link)
+        horizontal.addWidget(right)
+        horizontal.setSizes([215, 770, 235])
+
         self.footer = QLabel()
         self.footer.setObjectName("pageHint")
-        layout.addWidget(self.footer)
+        shell.addWidget(self.footer)
 
-        self.set_locale(locale)
-        self._size_context()
+        self.set_locale(self.language)
+        self.set_visuals()
+        self._choose("home")
+        self.apply_utc_window()
+
+    def _load_historical_source(self):
+        try:
+            self.source_data = load_real_nasa_data()
+        except (OSError, ValueError, TypeError, KeyError) as error:
+            self.source_data = None
+            self.source_error = type(error).__name__
 
     def _t(self, key, **fields):
-        text = TEXT[self.language][key]
-        return text.format(**fields) if fields else text
+        value = TEXT[self.language][key]
+        return value.format(**fields) if fields else value
+
+    def _archive_counts(self):
+        if self.source_data is None:
+            return 0, 0
+        groups = self.source_data["groups"]
+        return (
+            sum(len(g["records"]) for g in groups),
+            sum(1 for group in groups for r in group["records"]
+                for m in r["measures"].values() if m["value"] is not None),
+        )
+
+    def _fill_tree(self):
+        selected = self._selection[0]
+        self.navigator.blockSignals(True)
+        self.navigator.clear()
+        self._objects = {}
+        groups = (
+            ("workspace", (("home", "home"), ("archive", "archive"), ("utc", "utc"))),
+            ("clinical", tuple((route, route) for route in
+                         ("mission", "crew", "health", "monitor", "ecg",
+                          "assistant", "interview", "care"))),
+            ("science", tuple((route, "science_route" if route == "science" else route)
+                              for route in ("science", "hazards", "medical_library", "atlas"))),
+            ("systems", (("settings", "settings"),)),
+        )
+        for name, rows in groups:
+            parent = QTreeWidgetItem([self._t(name)])
+            parent.setFlags(parent.flags() & ~Qt.ItemFlag.ItemIsSelectable)
+            self.navigator.addTopLevelItem(parent)
+            for route, title in rows:
+                item = QTreeWidgetItem([self._t(title)])
+                item.setData(0, Qt.ItemDataRole.UserRole, route)
+                parent.addChild(item)
+                self._objects[route] = item
+            parent.setExpanded(True)
+        self.navigator.blockSignals(False)
+        if selected in self._objects:
+            self.navigator.setCurrentItem(self._objects[selected])
+
+    def _choose(self, route):
+        if route not in self._objects:
+            return
+        self._selection = (route, "")
+        self.navigator.blockSignals(True)
+        self.navigator.setCurrentItem(self._objects[route])
+        self.navigator.blockSignals(False)
+        self._select_workspace(route)
+
+    def _browse_selected(self):
+        item = self.navigator.currentItem()
+        if item is None:
+            return
+        route = item.data(0, Qt.ItemDataRole.UserRole)
+        if isinstance(route, str):
+            self._selection = (route, "")
+            self._select_workspace(route)
+
+    def _browse_open(self, item, _column):
+        route = item.data(0, Qt.ItemDataRole.UserRole)
+        if isinstance(route, str):
+            self._open_route(route)
+
+    def _open_selected(self):
+        self._open_route(self._selection[0])
+
+    def _open_route(self, route):
+        if route == "archive":
+            self.nasa_archive_requested.emit()
+        elif route == "utc":
+            self.route_requested.emit("monitor")
+        elif route == "home":
+            self._choose("home")
+        elif route in ROUTE_IDS:
+            self.route_requested.emit(route)
+
+    def _select_workspace(self, route):
+        self._active_utc_row = None
+        if route == "home":
+            self.workspace_stack.setCurrentIndex(0)
+            self._inspect(self._t("welcomeSource"), [
+                ("inspectSource", "NASA Mercury-Atlas 7"),
+                ("inspectVerification", self._t("realBadge")),
+                ("inspectUTCValue", self._t("inspectNoUTC")),
+            ])
+        elif route == "archive":
+            self.workspace_stack.setCurrentIndex(1)
+            self._load_report_group()
+        elif route == "utc":
+            self.workspace_stack.setCurrentIndex(2)
+            self._refresh_utc()
+        else:
+            self.workspace_stack.setCurrentIndex(3)
+            self.preview_heading.setText(self._t(route if route != "science"
+                                                  else "science_route"))
+            self.preview_summary.setText(self._t("homeNotice"))
+            self._inspect(self.preview_heading.text(), [
+                ("inspectVerification", self._t("homeNotice")),
+            ])
+        self.open_action.setEnabled(route in ROUTE_IDS or route in ("archive", "utc"))
+        self.preview_button.setText(self._t("launch"))
+
+    def _load_report_group(self, *_):
+        self.records.blockSignals(True)
+        self.records.clear()
+        self.group_selector.blockSignals(True)
+        if self.group_selector.count() == 0:
+            for group in (self.source_data or {}).get("groups", []):
+                self.group_selector.addItem(group["title"][self.language], group["id"])
+        else:
+            for ix, group in enumerate((self.source_data or {}).get("groups", [])):
+                self.group_selector.setItemText(ix, group["title"][self.language])
+        self.group_selector.blockSignals(False)
+        index = self.group_selector.currentIndex()
+        if self.source_data and 0 <= index < len(self.source_data["groups"]):
+            group = self.source_data["groups"][index]
+            for record in group["records"]:
+                self.records.addItem(record["title"][self.language])
+        self.records.blockSignals(False)
+        self.records.setCurrentRow(0)
+        self._select_report_record(0)
+
+    def _selected_group(self):
+        index = self.group_selector.currentIndex()
+        if self.source_data and 0 <= index < len(self.source_data["groups"]):
+            return self.source_data["groups"][index]
+        return None
+
+    def _select_report_record(self, index):
+        group = self._selected_group()
+        if not group or not 0 <= index < len(group["records"]):
+            self._selected_nasa_record = None
+            self.measurements.setRowCount(0)
+            self._inspect(self._t("archiveUnavailable"), [])
+            return
+        record = group["records"][index]
+        self._selected_nasa_record = record
+        self.measurements.blockSignals(True)
+        self.measurements.setRowCount(0)
+        for metric_id, observed in record["measures"].items():
+            row = self.measurements.rowCount()
+            self.measurements.insertRow(row)
+            value = observed["value"]
+            cells = (
+                self.source_data["metric_names"][metric_id][self.language],
+                str(value) if value is not None else self._t("missing"),
+                observed["unit"],
+                str(observed.get("qualifier") or "—"),
+            )
+            for column, cell in enumerate(cells):
+                item = QTableWidgetItem(cell)
+                item.setData(Qt.ItemDataRole.UserRole, metric_id)
+                self.measurements.setItem(row, column, item)
+        self.measurements.blockSignals(False)
+        self.metric_selector.blockSignals(True)
+        old_metric = self.metric_selector.currentData()
+        self.metric_selector.clear()
+        # A source group's measures may differ among timepoints.
+        keys = tuple(dict.fromkeys(k for row in group["records"]
+                                   for k in row["measures"]))
+        for key in keys:
+            self.metric_selector.addItem(
+                self.source_data["metric_names"][key][self.language], key)
+        old_index = self.metric_selector.findData(old_metric)
+        self.metric_selector.setCurrentIndex(old_index if old_index >= 0 else 0)
+        self.metric_selector.blockSignals(False)
+        self._update_report_chart()
+        if self.measurements.rowCount():
+            self.measurements.selectRow(0)
+        self._select_report_metric()
+
+    def _select_report_metric(self):
+        group, record = self._selected_group(), self._selected_nasa_record
+        if not group or not record:
+            return
+        row = self.measurements.currentRow()
+        if row < 0 or not self.measurements.item(row, 0):
+            return
+        metric_id = self.measurements.item(row, 0).data(Qt.ItemDataRole.UserRole)
+        observed = record["measures"][metric_id]
+        self._selected_nasa_metric = metric_id
+        self._inspect(self.source_data["metric_names"][metric_id][self.language], [
+            ("inspectSource", self.source_data["source_title"]),
+            ("inspectTable", group["table"]),
+            ("inspectGroup", group["title"][self.language]),
+            ("inspectRecord", record["title"][self.language]),
+            ("inspectMetric", metric_id),
+            ("inspectValue", str(observed["value"]) if observed["value"] is not None
+             else self._t("missing")),
+            ("inspectUnit", observed["unit"]),
+            ("inspectQualifier", str(observed.get("qualifier") or "—")),
+            ("inspectRange", str(observed.get("range") or "—")),
+            ("inspectCount", str(observed.get("sample_count") or "—")),
+            ("inspectUTCValue", self._t("inspectNoUTC")),
+        ])
+
+    def _update_report_chart(self, *_):
+        group = self._selected_group()
+        metric_id = self.metric_selector.currentData()
+        if not group or not isinstance(metric_id, str):
+            self.report_chart.set_series(())
+            return
+        values = []
+        for record in group["records"]:
+            data = record["measures"].get(metric_id, {})
+            value = data.get("value")
+            values.append(float(value) if isinstance(value, (int, float))
+                          and not isinstance(value, bool) and math.isfinite(value)
+                          else None)
+        self.report_chart.set_series(values, self.theme, self.mode)
+
+    def _inspect(self, title, properties):
+        self.inspect_title.setText(title)
+        self.inspector.setRowCount(0)
+        for field, value in properties:
+            row = self.inspector.rowCount()
+            self.inspector.insertRow(row)
+            self.inspector.setItem(row, 0, QTableWidgetItem(self._t(field)))
+            self.inspector.setItem(row, 1, QTableWidgetItem(str(value)))
+        self.inspector.resizeColumnToContents(0)
+
+    def set_recent_days(self, days: int):
+        """One UTC conductor applies the same time window to table/chart/inspect."""
+        if days not in (1, 7, 30):
+            return
+        end = QDateTime.currentDateTimeUtc()
+        self.begin_utc.setDateTime(end.addDays(-days))
+        self.end_utc.setDateTime(end)
+        self.apply_utc_window()
+
+    def apply_utc_window(self):
+        start, end = self.begin_utc.dateTime(), self.end_utc.dateTime()
+        if start >= end:
+            self.window_status.setText(self._t("timeInvalid"))
+            return
+        self._start_epoch, self._end_epoch = start.toSecsSinceEpoch(), end.toSecsSinceEpoch()
+        self.window_status.setText(self._t(
+            "timeWindow",
+            start=start.toUTC().toString("yyyy-MM-dd HH:mm:ss"),
+            end=end.toUTC().toString("yyyy-MM-dd HH:mm:ss"),
+        ))
+        self._refresh_utc()
+        # The same UTC window is available for future authenticated plot adapters.
+        self.time_range_changed.emit(
+            start.toUTC().toString(Qt.DateFormat.ISODate),
+            end.toUTC().toString(Qt.DateFormat.ISODate),
+        )
+
+    def set_verified_observations(self, rows):
+        """Optional host-supplied, *already authorized* original UTC observations.
+
+        Never opens a URL or an arbitrary patient DB; no mock data fallback.
+        Reject ambiguous timezone, missing source, synthetic flag or non-finite
+        values before merging into the shared UTC plot + table.
+        """
+        valid = []
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            utc = _observed_utc(row)
+            value = row.get("value")
+            if (utc is None or row.get("synthetic") is not False
+                    or row.get("verification_state") != "VERIFIED"
+                    or not isinstance(row.get("source_id"), str)
+                    or not row["source_id"].strip()
+                    or not isinstance(row.get("metric"), str)
+                    or not row["metric"].strip()
+                    or not isinstance(row.get("unit"), str)
+                    or not row["unit"].strip()
+                    or isinstance(value, bool)
+                    or not isinstance(value, (float, int))
+                    or not math.isfinite(float(value))):
+                continue
+            accepted = dict(row)
+            accepted["_epoch"] = utc.timestamp()
+            valid.append(accepted)
+        valid.sort(key=lambda row: row["_epoch"])
+        self._utc_rows = tuple(valid)
+        self._refresh_utc()
+
+    def _refresh_utc(self):
+        start = getattr(self, "_start_epoch", None)
+        end = getattr(self, "_end_epoch", None)
+        if start is None or end is None:
+            return
+        self._filtered_utc = tuple(
+            row for row in self._utc_rows if start <= row["_epoch"] <= end
+        )
+        self.utc_table.blockSignals(True)
+        self.utc_table.setRowCount(0)
+        for record in self._filtered_utc:
+            ix = self.utc_table.rowCount()
+            self.utc_table.insertRow(ix)
+            entries = (
+                record["timestamp_utc"],
+                record["metric"],
+                f'{record["value"]} {record["unit"]}',
+                f'{record["source_id"]} · VERIFIED',
+            )
+            for column, value in enumerate(entries):
+                self.utc_table.setItem(ix, column, QTableWidgetItem(value))
+        self.utc_table.blockSignals(False)
+        self.utc_count.setText(self._t("utcCount", count=len(self._filtered_utc)))
+        self.utc_empty.setText(
+            self._t("utcEmpty") if not self._filtered_utc else ""
+        )
+        self.utc_chart.set_series(
+            [float(x["value"]) for x in self._filtered_utc[:32]],
+            self.theme, self.mode,
+        )
+        if self._filtered_utc:
+            self.utc_table.selectRow(0)
+            self._select_utc_row()
+        else:
+            self._active_utc_row = None
+            if self._selection[0] == "utc":
+                self._inspect(self._t("utcEmpty"), [])
+
+    def _select_utc_row(self):
+        row = self.utc_table.currentRow()
+        if not 0 <= row < len(self._filtered_utc):
+            return
+        record = self._filtered_utc[row]
+        self._active_utc_row = record
+        self._inspect(self._t("inspectUTC"), [
+            ("inspectUTCValue", record["timestamp_utc"]),
+            ("inspectSource", record["source_id"]),
+            ("inspectMetric", record["metric"]),
+            ("inspectValue", record["value"]),
+            ("inspectUnit", record["unit"]),
+            ("inspectVerification", record["verification_state"]),
+            ("inspectQuality", record.get("quality", "—")),
+        ])
+
+    def open_nasa_original(self):
+        if self.source_data is None:
+            return
+        url = str(self.source_data.get("source_url") or "")
+        u = urlsplit(url)
+        if u.scheme == "https" and u.hostname in ("www.nasa.gov", "nasa.gov"):
+            QDesktopServices.openUrl(QUrl(url))
 
     def set_locale(self, raw):
         self.language = _locale(raw)
-        self.brand.setText(self._t("eyebrow"))
-        self.canvas_eyebrow.setText(self._t("workspace"))
-        self.main_title.setText(self._t("title"))
-        self.main_subtitle.setText(self._t("subtitle"))
-        self.health_status.setText(self._t("status.unknown"))
-        self.primary_demo.setText(self._t("demo.title"))
-        self.primary_demo.setAccessibleName(self._t("demo.badge"))
-        self.integrity_title.setText(self._t("data.title"))
-        self.quick_heading.setText(self._t("quick.title"))
-        self.footer.setText(self._t("footer"))
-        for name, row in self._action_buttons.items():
-            prefix = "demo" if name == "simulated" else "nasa"
-            for label, key in zip(row, ("badge", "title", "subtitle", "detail", "action")):
-                label.setText(self._t(prefix + "." + key))
-            row[4].setAccessibleName(self._t(prefix + ".title"))
-        for label, key in zip(self.safety_lines, ("health", "science", "demo")):
-            label.setText(self._t("data."+key) + "   /   " + self._t("data."+key+"State"))
-        for key, button in self.quick_buttons.items():
-            button.setText(self._t(key))
-            button.setAccessibleName(self._t("open", title=self._t(key)))
-        self.context_title.setText(self._t("context"))
-        self.context_heading.setText(self._t("context.title"))
-        self.context_detail.setText(self._t("context.copy"))
-        for label, key in zip(self.context_items, ("context.source", "context.scenario", "context.privacy")):
-            label.setText("• " + self._t(key))
-        self.science_action.setText(self._t("context.link"))
-        self._fill_navigator()
-
-    def _fill_navigator(self):
-        self.navigator.blockSignals(True)
-        self.navigator.clear()
-        self._route_items.clear()
-        categories = (
-            ("navigator", ("mission", "crew")),
-            ("clinical", ("health", "monitor", "ecg", "assistant", "interview", "care")),
-            ("sources", ("science", "hazards", "medical_library", "atlas")),
-            ("systems", ("settings",)),
-        )
-        for category, routes in categories:
-            parent = QTreeWidgetItem([self._t(category)])
-            parent.setFlags(parent.flags() & ~Qt.ItemFlag.ItemIsSelectable)
-            self.navigator.addTopLevelItem(parent)
-            for route in routes:
-                item = QTreeWidgetItem([self._t(route)])
-                item.setData(0, Qt.ItemDataRole.UserRole, route)
-                parent.addChild(item)
-                self._route_items[route] = item
-            parent.setExpanded(True)
-        self.navigator.blockSignals(False)
-        self.navigator.setAccessibleName(self._t("navigator"))
-
-    def _navigate(self, item, _column):
-        route = item.data(0, Qt.ItemDataRole.UserRole)
-        if isinstance(route, str) and route in ROUTE_IDS:
-            self.route_requested.emit(route)
+        t = self._t
+        self.brand.setText(t("brand"))
+        self.status.setText(getattr(self, "_connection_text", t("connection")))
+        self.demo.setText(t("demo"))
+        self.demo.setAccessibleName(t("demo") + " · " + t("sim"))
+        self.conductor_heading.setText(t("time"))
+        self.from_label.setText(t("from"))
+        self.to_label.setText(t("to"))
+        self.preset_day.setText(t("recentDay"))
+        self.preset_week.setText(t("recentWeek"))
+        self.preset_month.setText(t("recentMonth"))
+        self.apply_button.setText(t("apply"))
+        self.browse_heading.setText(t("browse"))
+        self.open_action.setText(t("launch"))
+        self.workspace_heading.setText(t("workspace"))
+        self.inspect_heading.setText(t("inspect"))
+        self.welcome.setText(t("welcome"))
+        self.welcome_lead.setText(t("welcomeLead"))
+        count, values = self._archive_counts()
+        self.source_count.setText(
+            t("welcomeCount", records=count, values=values) if count else
+            t("welcomeNoSource"))
+        self.provenance.setText(t("archiveHint") if count else t("archiveUnavailable"))
+        self.nasa_view.setText(t("welcomeReal"))
+        self.utc_view.setText(t("welcomeUtc"))
+        self.nasa_full.setText(t("runArchive"))
+        self.welcome_note.setText(t("homeNotice"))
+        self.archive_title.setText(t("sourceTitle"))
+        self.archive_caveat.setText(t("timeSource"))
+        self.archive_note.setText(t("seriesDesc"))
+        self.utc_heading.setText(t("utcTitle"))
+        self.utc_note.setText(t("utcNote"))
+        self.utc_empty.setText(t("utcEmpty") if not self._filtered_utc else "")
+        self.open_monitor.setText(t("utcAsk"))
+        self.source_link.setText(t("openOriginal"))
+        self.source_link.setEnabled(self.source_data is not None)
+        self.footer.setText(t("footer"))
+        self.measurements.setHorizontalHeaderLabels(
+            [t(k) for k in ("metrics", "value", "unit", "qualifier")])
+        self.utc_table.setHorizontalHeaderLabels(
+            [t(k) for k in ("utcTime", "utcMetric", "utcValue", "utcSource")])
+        self._fill_tree()
+        self._load_report_group()
+        # Maintain selected object while translating chrome.
+        self._select_workspace(self._selection[0])
+        self.window_status.setText(t("timeHelp"))
+        if hasattr(self, "_start_epoch"):
+            self.window_status.setText(t(
+                "timeWindow",
+                start=self.begin_utc.dateTime().toUTC().toString("yyyy-MM-dd HH:mm:ss"),
+                end=self.end_utc.dateTime().toUTC().toString("yyyy-MM-dd HH:mm:ss"),
+            ))
 
     def set_visuals(self, theme=None, reduce_motion=False, mode=None, intensity=48):
-        """Theme styles are inherited from host app; no owner theme override."""
         self.reduce_motion = bool(reduce_motion)
-        self.canvas.set_motion(self.reduce_motion)
+        self.theme = theme or "daybreak"
+        self.mode = mode or "light"
+        self.report_chart.set_series(self.report_chart._series, self.theme, self.mode)
+        self.utc_chart.set_series(self.utc_chart._series, self.theme, self.mode)
 
     def set_connection_state(self, state):
-        # Never infer connectivity from demo availability.
-        self._source_state = str(state)
-        # Callers must source state from a successful real /health request.
-        self.health_status.setText(self._source_state if self._source_state != "unknown"
-                                   else self._t("status.unknown"))
-
-    def resizeEvent(self, event):
-        super().resizeEvent(event)
-        self._size_context()
-
-    def _size_context(self):
-        if hasattr(self, "context_panel"):
-            self.context_panel.setVisible(self.width() >= 1210)
+        # The host only supplies actual /health results. Preserve verbatim.
+        self._connection_text = str(state)
+        self.status.setText(self._connection_text)
 
 
 def build_mission_ops_home(parent=None, **kwargs):
