@@ -351,6 +351,9 @@ class AetherionWindow(QMainWindow):
         """Retitle the localized shell without rewriting NASA/clinical content."""
         self.portal_page.set_locale(self.ui_language)
         self.knowledge_browser_page.set_locale(self.ui_language)
+        for page in (self.mission_control_page, self.personal_today_page,
+                     self.medical_library_page, self.nasa_explore_page):
+            page.set_locale(self.ui_language)
         for action in self.observatory_menu_actions:
             action.setText(tr(self.ui_language, "observatory.hero"))
         for section in (
