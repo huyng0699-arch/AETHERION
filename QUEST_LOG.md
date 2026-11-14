@@ -27,7 +27,7 @@ Quest IDs and counts evolve. At the most recent full directory inspection before
 | Native desktop / Windows EXE | [Q-0002](quests/v1/Q-0002.md), [Q-0003](quests/v1/Q-0003.md), [Q-0010](quests/v1/Q-0010.md) | Real Windows startup, packaged EXE/hash, screenshots and independent review |
 | New Mission Operations Home | [Q-0485](quests/v1/Q-0485.md) | Compact, native mission workspace rather than rejected five oversized cards |
 | Clearly synthetic patient Demo | [Q-0484](quests/v1/Q-0484.md), [Q-0478](quests/v1/Q-0478.md) | Demo explanation → 5 fictional patients/540-day data, separately from actual 1962 NASA MA-7 archive |
-| Monitoring / ECG | [Q-0477](quests/v1/Q-0477.md), [Q-0481](quests/v1/Q-0481.md) | Fix Qt paint-crash evidence, authorize ECG API and verify real behavior on Windows |
+| Monitoring / ECG | [Q-0477](quests/v1/Q-0477.md), [Q-0481](quests/v1/Q-0481.md) | Q-0477 now has an interactive UTC conductor, authenticated paged telemetry, plot/table sync, source/quality legend, explicit gap segmentation, hover/zoom/pan; [headless QA geometry](docs/evidence/q0477_monitor_headless_gap_model.png) is **not** a Qt screenshot. Native Windows/render, API paging and independent review remain pending. |
 | NASA CliFF 119 offline documents | [Q-0421](quests/v1/Q-0421.md), [Q-0425](quests/v1/Q-0425.md), [Q-0426](quests/v1/Q-0426.md), [Q-0427](quests/v1/Q-0427.md), [Q-0435](quests/v1/Q-0435.md) | Actual source, media rights, SQLite import, complete offline reader and native verification |
 | Independent acceptance | [REVIEW-0001](quests/review/REVIEW-0001.md) | Different reviewing agent must assess real evidence; never self-approve |
 
