@@ -15,7 +15,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 SOURCE = "https://www.nasa.gov/integrated-medical-model-documentation/"
-OUTPUT = Path("data/nasa/cliff_119_2023")
+OUTPUT = Path("knowledge/nasa/cliff_119_2023")
 ORIGINAL = OUTPUT / "original"
 EXPECTED = 119
 
