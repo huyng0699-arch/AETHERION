@@ -296,6 +296,9 @@ class BodyAtlas3D(QWidget):
                 raise ValueError('Empty/degenerate geometry')
             if self.viewer is None:
                 self.viewer = QtInteractor(self)
+                # Real viewer-scoped camera transforms; preserve native mouse.
+                from .render3d.camera_controls import install_camera_shortcuts
+                install_camera_shortcuts(self.viewer)
                 self.viewer.setMinimumHeight(340)
                 self.content.addWidget(self.viewer, 1)
                 self.empty.hide()
