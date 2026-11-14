@@ -1,0 +1,24 @@
+{
+  "article_id": "CLIFF-031",
+  "slot": 31,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/pancreatitis-acute-cliff-2023.pdf?emrc=d22155",
+  "http_status": 200,
+  "pdf_bytes": 328268,
+  "pdf_sha256": "a0102490b46747a91f928da56689a78b9bef15e029953fca8a0e9f01c77fd2fd",
+  "pdf_pages": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "references_count": 18,
+  "media_count": 4,
+  "media_sha256s": [
+    "a07f90206abe0d072d27061b66b2fcf4c6d6fe135049a8d442cc8849e9a342f9",
+    "a411317364c849e8b398551bc7b1045829c70b97cdcd6f1aa5a0734423eca74a",
+    "2e19a8d648b867ce6105a59187f76d82014160838c89f36ec47bbff017acef14",
+    "6ea5b29bd056a7b5cac5ba0f20f0d307af78b2d8f51a9f89e7303b66dbdd6408"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-SA-4.0 / CC-BY-SA-3.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "offline_render_note": "SQLite ingestion and offline BLOB/section/table/citation verification passed on Linux; native Windows Qt GUI rendering deferred to Windows desktop gate.",
+  "missing_items": []
+}
