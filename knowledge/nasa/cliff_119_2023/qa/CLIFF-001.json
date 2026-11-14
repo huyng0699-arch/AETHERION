@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-001",
+  "slot": 1,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/abdominal-injury-cliff.pdf?emrc=b0ea58",
+  "http_status": 200,
+  "pdf_bytes": 1039252,
+  "pdf_sha256": "748d93e56613f9445331fef2cd001b1f8e82b94583ac3e29df4bb814551b3b82",
+  "pdf_pages": 11,
+  "sections_count": 11,
+  "tables_count": 4,
+  "references_count": 18,
+  "media_count": 3,
+  "media_sha256s": [
+    "04a8957c8c2ad7567114d57b0d31dda522e26013f90ef095e9d392b6139555b9",
+    "0d92965e2f615cf99b5c7a473756c23ebfe4420c5793ba37a17bf8bad820281c",
+    "9f7d9f13d99a5b695035a3d9a20aeaf561c9b10b55c9178f309ed9c31d225780"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-3.0 / CC-BY-SA-3.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}
