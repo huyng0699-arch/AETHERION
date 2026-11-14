@@ -602,5 +602,16 @@
   "ecg.uploading": "Đang lưu mẫu đo gốc vào Server theo quyền truy cập…",
   "ecg.upload_error": "Chưa lưu được bản ghi. Kiểm tra quyền và thông tin nguồn.",
   "ecg.uploaded": "Đã lưu vào SQLite đúng hồ sơ, có mã băm toàn vẹn (chưa thẩm định lâm sàng).",
-  "ecg.offline": "OFFLINE / ERROR · Không có kết nối API ECG hoặc bản ghi."
+  "ecg.offline": "OFFLINE / ERROR · Không có kết nối API ECG hoặc bản ghi.",
+  "care.journey.new_heading": "Bắt đầu một đợt chăm sóc",
+  "care.journey.new_concern": "Vấn đề cần theo dõi (do người dùng khai)",
+  "care.journey.new_consent": "Tôi đồng ý lưu nội dung tự báo cáo này vào hồ sơ trên Server.",
+  "care.journey.create": "Tạo đợt chăm sóc",
+  "care.journey.create_required": "Cần nhập vấn đề và đồng ý lưu trước khi tạo.",
+  "care.journey.create_confirm": "Xác nhận lưu đợt chăm sóc vào hồ sơ được cấp quyền? Nội dung chưa được xác minh y khoa.",
+  "care.journey.created": "Đã lưu đợt chăm sóc có nguồn trên Server.",
+  "care.journey.stage_gather": "Thu thập",
+  "care.journey.stage_evaluate": "Đánh giá",
+  "care.journey.stage_act": "Hành động",
+  "care.journey.stage_recheck": "Kiểm tra lại"
 }
