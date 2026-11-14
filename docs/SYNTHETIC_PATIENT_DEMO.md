@@ -1,12 +1,17 @@
 # AETHERION — Synthetic Patient Demo / Demo hồ sơ bệnh nhân hư cấu
 
-## Direct desktop user journey
-1. Open the **five-card AETHERION Portal**.
-2. Select **DEMO FOR HACKATHON**. The existing NASA source/limitations briefing still opens first.
-3. Read the **540-day patient demo walkthrough** at the top: scope, how to navigate, and the explicit synthetic-data notice.
-4. Select **Start patient data demo / Bắt đầu Demo bệnh nhân**. A separate offline SQLite database is seeded (or validated and reused), and the real native Qt demo patient workspace opens.
-5. In **Crew / Patients**, double-click a fictional profile; **Personal** shows 12 measurement types for the selected day; **Monitoring** plots 30, 90, 180, 365 or 540 days; **History** displays the readings and source IDs; **Data source** exposes the generator flags and a reset control.
-6. **Back to guide** returns to the full NASA/Demo introduction. The original NASA research replay and science catalog remain available through their original actions.
+## User journey — Q-0485 target, not yet visually accepted
+
+**Current five-card Portal is a rejected baseline.** The owner wants the appearance of the AETHERION *native application itself* changed to an operations-style Home with an immediately visible **DEMO FOR HACKATHON** action; this is **not** a Server Admin UI technology decision. Q-0485 is responsible for integrating the replacement Home after shared-path owner ACKs.
+
+1. Open the compact **Mission Operations Home** (new Q-0485 target; no verified Windows runtime yet).
+2. Select the prominently placed **DEMO FOR HACKATHON** control.
+3. Read the short **SIMULATED / TEST DATA ONLY** introduction: five fictional patients, 540 days, twelve metric types and a dedicated SQLite database.
+4. Select **Start Patient Demo**. The existing Q-0484 `build_synthetic_patient_demo(...)` widget is shown; `start()` initiates the loader. Only actual SQLite readback confirms whether seeding succeeded.
+5. **Crew / Patients** supports selection; **Personal** shows the selected day; **Monitoring** offers 30/90/180/365/540 days; **History** and **Data source** expose row history, provenance and reset.
+6. **Back to guide** returns to the synthetic introduction. **NASA REAL ARCHIVE — MA-7 (1962)** is another independent source-labelled choice and contains 83 genuinely published historical data values, not simulated ones.
+
+Q-0484's owner gave Q-0485 *routing consent only* in [GitHub Issue #8 ACK](https://github.com/huyng0699-arch/AETHERION/issues/8#issuecomment-6876297980). This is **not permission** to rewrite Q-0484 modules or shared `main.py`, `portal.py` or VI/EN catalogs without other owners' ACK and fresh SHA/CAS.
 
 ## Dataset contract
 
