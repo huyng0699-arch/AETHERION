@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-072",
+  "slot": 72,
+  "quest_id": "Q-0372",
+  "checked_at_utc": "2026-11-14T06:28:25.897624+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/mouth-ulcer-cliff-2023.pdf?emrc=3e8fc9",
+  "http_status": 200,
+  "pdf_sha256": "e2917d579fa5081b18cff4ed579a0acb57610c6226fd5fc6bb1bed4b47551065",
+  "pdf_bytes": 281572,
+  "pages_extracted": 12,
+  "sections_count": 12,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-072-IMG-01": "43f0eb82f3ab105bbc3fd384de10cea36310d5ac4790b072314bc4cd3d5ba026",
+    "CLIFF-072-IMG-02": "ac8ef5eb27fe52246149fb527f59514391193e94e7a6baba07fe7e23028d3c21",
+    "CLIFF-072-IMG-03": "98dd025b638dca2ea742d83a437867e2018299887f15e71093868b94508d1e44"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
