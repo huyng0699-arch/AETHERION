@@ -293,5 +293,18 @@
   "personal.status.sourceDenied": "Một phần dữ liệu bị từ chối truy cập; không suy đoán giá trị thiếu.",
   "personal.status.sourceError": "Nguồn chứa dữ liệu không hợp lệ; không diễn giải số đo này.",
   "personal.status.none": "Không có bản ghi dùng được; chưa biết không đồng nghĩa bình thường.",
-  "personal.metricSource": "Source: {source}  ·  {observed}"
+  "personal.metricSource": "Source: {source}  ·  {observed}",
+  "explore.field.systems": "Các hệ cơ quan được đề cập trong nghiên cứu",
+  "explore.field.consequences": "Bối cảnh nghiên cứu sinh lý",
+  "explore.field.indicators": "Chỉ số có thể theo dõi — không phải số đo trực tiếp",
+  "explore.field.wellbeing": "Các chỉ số sức khỏe tinh thần và giới hạn",
+  "explore.field.communication": "Liên lạc và tự chủ",
+  "explore.field.scope": "Số đo khoang tàu và sức khỏe cá nhân",
+  "explore.html.warning": "Đây là tài liệu giáo dục ngoại tuyến có dẫn nguồn, KHÔNG phải sinh hiệu trực tiếp, phép đo bức xạ, chẩn đoán hay hướng dẫn y khoa.",
+  "explore.html.observations": "Trạng thái quan sát:",
+  "explore.html.noData": "NO_DATA — phần tài liệu này không có số đo cảm biến hoặc quan sát cá nhân được cấp quyền.",
+  "explore.html.links": "Liên kết nguồn khoa học (cần Internet khi mở)",
+  "explore.html.limits": "Giới hạn bằng chứng",
+  "explore.html.notLive": "Tài liệu nghiên cứu NASA tách biệt với kho quan sát cá nhân được xác thực của AETHERION.",
+  "explore.html.missing": "Không diễn giải thiếu dữ liệu thành sức khỏe bình thường; không suy đoán số đo."
 }
