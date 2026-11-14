@@ -7,6 +7,8 @@ from __future__ import annotations
 
 from datetime import datetime
 
+from ...localization import tr
+
 # Exact named metric families only; never infer sensor capabilities from labels.
 # The actual metric key is always retained alongside the reading.
 TILES = (
@@ -181,7 +183,8 @@ def build_personal_visual(page) -> None:
         v.setContentsMargins(19, 14, 19, 15)
         v.setSpacing(6)
         title_row = QHBoxLayout()
-        num = QLabel(f"{i + 1:02d}  /  {label}")
+        num = QLabel(f"{i + 1:02d}  /  {tr(page.ui_language, f'personal.tile.{tile_id}')}")
+        page.metric_tiles.setdefault("_headers", {})[tile_id] = num
         num.setObjectName("eyebrow")
         title_row.addWidget(num)
         title_row.addStretch(1)
@@ -260,14 +263,15 @@ def update_personal_tiles(page, cards: tuple | list) -> None:
     for tile_id, (value, provenance, button) in page.metric_tiles.items():
         card = selected.get(tile_id)
         if card is None:
-            value.setText("Chưa có dữ liệu")
-            provenance.setText("Không có bản ghi phù hợp với bộ lọc hiện tại")
+            value.setText(tr(page.ui_language, "personal.noData"))
+            provenance.setText(tr(page.ui_language, "personal.filteredNoData"))
             button.setEnabled(False)
             continue
         # Exact original metric/source/time/quality must remain visible.
         value.setText(card.reading)
         provenance.setText(
             f"{card.metric}  ·  {card.scope}  ·  {card.quality} / {card.verification_state}\n"
-            f"Nguồn: {card.source_id}  ·  {card.observed_at}"
+            tr(page.ui_language, "personal.metricSource", source=card.source_id,
+               observed=card.observed_at)
         )
         button.setEnabled(True)
