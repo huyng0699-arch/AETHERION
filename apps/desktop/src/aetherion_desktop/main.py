@@ -22,6 +22,7 @@ from .visual_theme import THEMES, VisualPreferences
 from .medical_library import build_medical_library_page
 from .mission_control import build_mission_control_page
 from .features.personal.authorized_today import AuthorizedPersonalTodayPage
+from .features.explore.nasa_explore import build_nasa_explore_page
 
 
 class FeatureLanding(QWidget):
@@ -115,6 +116,8 @@ class AetherionWindow(QMainWindow):
         self.pages.addWidget(self.personal_today_page)
         self.medical_library_page = build_medical_library_page()
         self.pages.addWidget(self.medical_library_page)
+        self.nasa_explore_page = build_nasa_explore_page()
+        self.pages.addWidget(self.nasa_explore_page)
         self.mission_control_page.subject_activated.connect(self.open_personal_subject)
 
         self.monitor_page = FeatureLanding(
@@ -159,7 +162,8 @@ class AetherionWindow(QMainWindow):
         ))
         self._nav_button(bar, "Hỏi AI", self.show_assistant)
         self._nav_menu(bar, "Khám phá ▾", (
-            ("Thư viện NASA / y khoa", self.show_medical_library),
+            ("NASA Explore · Năm nguy cơ", self.show_nasa_explore),
+            ("Thư viện y khoa", self.show_medical_library),
             ("Cơ thể 3D", self.show_atlas),
         ))
         self._nav_button(bar, "Phi hành đoàn", self.show_mission)
@@ -285,6 +289,10 @@ class AetherionWindow(QMainWindow):
         self.medical_library_page.reload()
         self.pages.setCurrentWidget(self.medical_library_page)
 
+    def show_nasa_explore(self):
+        self.nasa_explore_page.reload()
+        self.pages.setCurrentWidget(self.nasa_explore_page)
+
     def show_monitor(self):
         self.pages.setCurrentWidget(self.monitor_page)
 
@@ -304,7 +312,7 @@ class AetherionWindow(QMainWindow):
             "health": self.show_personal,
             "monitor": self.show_monitor,
             "assistant": self.show_assistant,
-            "science": self.show_medical_library,
+            "science": self.show_nasa_explore,
             "crew": self.show_mission,
         }[route]()
 
