@@ -27,17 +27,17 @@ The items above describe what was **observed in the repository's task records**;
 
 Run from a clone at the intended Git commit:
 
-\`\`\`powershell
+```powershell
 py -3.11 scripts\release_readiness.py --scope demo --output release-demo.json
 py -3.11 scripts\release_readiness.py --scope release --output release-package.json
 py -3.11 scripts\release_readiness.py --scope library --output release-library.json
-\`\`\`
+```
 
-- \`demo\`: minimal NASA-facing evidence, including official association with the challenge.
-- \`release\`: server/desktop Windows package with safe startup and actual CI.
-- \`library\`: complete offline medical-library acceptance separately from the demo.
+- `demo`: minimal NASA-facing evidence, including official association with the challenge.
+- `release`: server/desktop Windows package with safe startup and actual CI.
+- `library`: complete offline medical-library acceptance separately from the demo.
 - Exit **2**: at least one documentary gate missing or unverified; see JSON.
-- Exit **0**: metadata gate complete **only**. The JSON still sets \`release_authorized=false\`, since it has not reproduced any Windows artifact, medical evidence, or submission.
+- Exit **0**: metadata gate complete **only**. The JSON still sets `release_authorized=false`, since it has not reproduced any Windows artifact, medical evidence, or submission.
 
 **Next required evidence:** native Windows install/run logs with hashes, API connect/disconnect/reconnect, a trustworthy EXE SHA-256, non-skipped CI, separate reviewer findings, authentic NASA material licenses/provenance, and the real Project-tab confirmation. No real patient data may be used for validation.
 
