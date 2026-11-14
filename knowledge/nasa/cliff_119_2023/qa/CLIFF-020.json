@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-020",
+  "slot": 20,
+  "quest_id": "Q-0320",
+  "checked_at_utc": "2026-11-14T05:57:06.287229+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/dental-crown-loss-cliff-2023.pdf?emrc=9ca58d",
+  "http_status": 200,
+  "pdf_sha256": "4abdeac7027ccebaa34ebd5d3a95a620481295a9dbf87537c9b376c49786c4d4",
+  "pdf_bytes": 349221,
+  "pages_extracted": 15,
+  "sections_count": 15,
+  "tables_count": 2,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-020-IMG-01": "135bdf720bd48f021bd1e2533a30c87df63e1bf03866ad6f5aa1f9c1b2e50c21",
+    "CLIFF-020-IMG-02": "66da8ae26cd73635a6230aec30abef9b08e82def5c975bfbf06de2946ec1c96b",
+    "CLIFF-020-IMG-03": "1ebc0c1dfe91bb7ab858b4f0529431428e02646569ae1e6f79922de2a6e08ad2"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
