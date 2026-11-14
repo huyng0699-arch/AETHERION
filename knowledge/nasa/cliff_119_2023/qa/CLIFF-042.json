@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-042",
+  "slot": 42,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-cliff-2023.pdf?emrc=206bd3",
+  "http_status": 200,
+  "pdf_bytes": 318529,
+  "pdf_sha256": "123666842b9a70a5a6821c8c22db8aed1e47fec68f081d56ce23509e7aef8250",
+  "pdf_pages": 13,
+  "sections_count": 13,
+  "tables_count": 3,
+  "references_count": 15,
+  "media_count": 3,
+  "media_sha256s": [
+    "6315531c8add0f6bbb784e5d982400f24314c87e01c5a291a30efc1e9febe3e1",
+    "d5be92236b33f54319e37fbf5f7bbc55dce0a5948cef95eeb3a0a1bffdf403b8",
+    "f37125294de9975df6c3892fe272704cf631f776c0bee5e9531f498a8128c30d"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons Public Domain / CC-BY-4.0 / CC-BY-SA-3.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}

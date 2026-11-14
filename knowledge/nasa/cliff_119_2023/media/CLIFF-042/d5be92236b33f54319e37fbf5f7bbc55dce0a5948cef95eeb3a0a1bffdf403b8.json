@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-042",
+  "title": "Paranasal Sinuses Anatomical Diagram",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Paranasal_Sinuses_ant-es.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Paranasal_Sinuses_ant-es.png",
+  "license": "CC-BY-4.0",
+  "author": "OpenStax College",
+  "caption": "Anterior anatomical view of the frontal, ethmoidal, sphenoidal, and maxillary paranasal sinuses relevant to headache differential diagnosis.",
+  "alt_text": "Anterior diagram of the human skull highlighting the paranasal sinuses.",
+  "clinical_relevance": "Sinus pressure and barotrauma are key differential considerations when evaluating headache in spaceflight (CLIFF-042, p.1, p.5).",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 534,
+  "height": 607,
+  "size_bytes": 238082,
+  "sha256": "d5be92236b33f54319e37fbf5f7bbc55dce0a5948cef95eeb3a0a1bffdf403b8",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Paranasal_Sinuses_ant-es.png",
+  "retrieved_at_utc": "2026-11-14T06:05:40.422262+00:00",
+  "asset_path": "d5be92236b33f54319e37fbf5f7bbc55dce0a5948cef95eeb3a0a1bffdf403b8.png",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "ANATOMY",
+  "topic_region": "Craniofacial / Paranasal Sinuses"
+}

@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-042",
+  "title": "Trigeminal Nerve (CN V) Sensory Distribution (Gray's Anatomy)",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Gray778_Trigeminal.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Gray778_Trigeminal.png",
+  "license": "CC-BY-SA-3.0",
+  "author": "No machine-readable author provided. Lipothymia assumed (based on copyright claims).",
+  "caption": "Anatomical diagram of the trigeminal nerve (cranial nerve V) ophthalmic, maxillary, and mandibular divisions innervating cranial meninges, face, and periorbital structures.",
+  "alt_text": "Anatomical illustration of the trigeminal nerve branches across the human head and face.",
+  "clinical_relevance": "Trigeminovascular activation and meningeal nociception underlie migraine and cluster headache syndromes (CLIFF-042, p.1, p.5).",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 1441,
+  "height": 1533,
+  "size_bytes": 2357094,
+  "sha256": "6315531c8add0f6bbb784e5d982400f24314c87e01c5a291a30efc1e9febe3e1",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Gray778_Trigeminal.png",
+  "retrieved_at_utc": "2026-11-14T06:05:40.119090+00:00",
+  "asset_path": "6315531c8add0f6bbb784e5d982400f24314c87e01c5a291a30efc1e9febe3e1.png",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "ANATOMY",
+  "topic_region": "Head & Face / Trigeminal System"
+}

@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-042",
+  "title": "Migraine Visual Aura (Scintillating Scotoma) Illustration",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Migraine_aura_illustration_on_page_Diseases_of_nervous_system_%28cropped%29.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Migraine_aura_illustration_on_page_Diseases_of_nervous_system_(cropped).jpg",
+  "license": "PUBLIC-DOMAIN",
+  "author": "Dr. Hubert Airy, illustration author\n\nJelliffe, Smith Ely and White, William Alanson, co-authors of Diseases of the nervous system\u00a0: a text-book of neurology and psychiatry",
+  "caption": "Historical clinical illustration of migraine visual aura (fortification spectrum / scintillating scotoma) preceding migraine headache.",
+  "alt_text": "Clinical medical illustration showing zigzag fortification patterns of a migraine visual aura.",
+  "clinical_relevance": "Visual aura is a classic focal neurological prodrome distinguishing migraine with aura from tension-type headache (CLIFF-042, p.5).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 600,
+  "height": 820,
+  "size_bytes": 110725,
+  "sha256": "f37125294de9975df6c3892fe272704cf631f776c0bee5e9531f498a8128c30d",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Migraine_aura_illustration_on_page_Diseases_of_nervous_system_%28cropped%29.jpg",
+  "retrieved_at_utc": "2026-11-14T06:05:40.298440+00:00",
+  "asset_path": "f37125294de9975df6c3892fe272704cf631f776c0bee5e9531f498a8128c30d.jpg",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "CLINICAL",
+  "topic_region": "Visual Cortex / Neuro-ophthalmology"
+}
