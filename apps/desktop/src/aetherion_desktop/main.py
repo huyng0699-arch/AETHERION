@@ -193,23 +193,31 @@ class AetherionWindow(QMainWindow):
             self.ambient_controller.add_page(page,self.preferences)
 
         # Main horizontal navigation; nested items use dropdown menus, never sidebars.
-        self._nav_button(bar, "Trang đầu", self.show_portal)
-        self._nav_menu(bar, "Sức khỏe ▾", (
+        self.nav_home = self._nav_button(bar, "Trang đầu", self.show_portal)
+        self.nav_health = self._nav_menu(bar, "Sức khỏe ▾", (
             ("Sức khỏe hôm nay", self.show_personal),
             ("Hành trình chăm sóc", self.show_care),
         ))
-        self._nav_menu(bar, "Theo dõi ▾", (
+        self.nav_monitor = self._nav_menu(bar, "Theo dõi ▾", (
             ("Tổng quan đo lường", self.show_monitor),
             ("Điện tim (ECG)", self.show_monitor),
             ("Bản ghi được cấp quyền", self.show_mission),
         ))
-        self._nav_button(bar, "Hỏi AI", self.show_assistant)
-        self._nav_menu(bar, "Khám phá ▾", (
+        self.nav_ai = self._nav_button(bar, "Hỏi AI", self.show_assistant)
+        self.nav_science = self._nav_menu(bar, "Khám phá ▾", (
             ("NASA Explore · Năm nguy cơ", self.show_nasa_explore),
             ("Thư viện y khoa", self.show_medical_library),
             ("Cơ thể 3D", self.show_atlas),
         ))
-        self._nav_button(bar, "Phi hành đoàn", self.show_mission)
+        self.nav_crew = self._nav_button(bar, "Phi hành đoàn", self.show_mission)
+        self.nav_more = self._nav_menu(bar, "Thêm ▾", (
+            ("Hỏi AI", self.show_assistant),
+            ("NASA Explore", self.show_nasa_explore),
+            ("Thư viện y khoa", self.show_medical_library),
+            ("Phi hành đoàn", self.show_mission),
+            ("Hành trình chăm sóc", self.show_care),
+        ))
+        self.nav_more.hide()
         bar.addStretch(1)
 
         self.status = QLabel("○  Đang kiểm tra")
@@ -297,6 +305,13 @@ class AetherionWindow(QMainWindow):
 
     def _build_theme_menu(self):
         self.theme_menu.clear()
+        for mode,icon in (("light","☀  "),("fusion","◐  "),("dark","☾  ")):
+            act=QAction(icon+settings_tr(mode,self.ui_language),self.theme_menu)
+            act.setCheckable(True)
+            act.setChecked(self.preferences.mode==mode)
+            act.triggered.connect(lambda checked=False,key=mode:self._change_mode(key))
+            self.theme_menu.addAction(act)
+        self.theme_menu.addSeparator()
         for code, theme in THEMES.items():
             action = QAction(translate_existing(theme.title, self.ui_language), self.theme_menu)
             action.setCheckable(True)
@@ -330,6 +345,7 @@ class AetherionWindow(QMainWindow):
         self.language_button.setAccessibleName(tr(self.ui_language, "main.locale.tooltip"))
         self._build_theme_menu()
         self.settings_button.setText("⚙  "+settings_tr("settings",self.ui_language))
+        self.nav_more.setText(settings_tr("more",self.ui_language)+" ▾")
         self.check_server()
 
     def _change_language(self):
@@ -337,6 +353,10 @@ class AetherionWindow(QMainWindow):
         self.preferences.set_language(self.ui_language)
         self._retranslate_shell()
         self.settings_page.retranslate()
+
+    def _change_mode(self,mode: str):
+        self.preferences.set_mode(mode)
+        self._apply_preferences()
 
     def _change_theme(self, theme_name: str):
         self.preferences.set_theme(theme_name)
@@ -369,6 +389,16 @@ class AetherionWindow(QMainWindow):
 
     def show_settings(self):
         self.pages.setCurrentWidget(self.settings_page)
+
+    def resizeEvent(self,event):
+        super().resizeEvent(event)
+        if hasattr(self,"nav_more"):
+            narrow=self.width()<1360
+            compact=self.width()<1200
+            self.nav_more.setVisible(narrow)
+            self.nav_science.setVisible(not narrow)
+            self.nav_crew.setVisible(not narrow)
+            self.nav_ai.setVisible(not compact)
 
     def show_portal(self):
         self.pages.setCurrentWidget(self.portal_page)
