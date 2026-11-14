@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-057",
+  "slot": 57,
+  "quest_id": "Q-0357",
+  "checked_at_utc": "2026-11-14T06:19:57.364465+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/dislocation-shoulder-cliff-2023.pdf?emrc=eaaf88",
+  "http_status": 200,
+  "pdf_sha256": "b3dd8c7e046a299c46e8e19e5f72ab74de20f023a1380993fecc97fd1186e779",
+  "pdf_bytes": 326484,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-057-IMG-01": "5f42323bf34a118e6a7b46718e8d79e894cdb93ea97e7a8a0b31df7bfa556ec1",
+    "CLIFF-057-IMG-02": "a572884d71083e15439651a694b527ea52ed87898330ebf2dbae2caeb715d1ff",
+    "CLIFF-057-IMG-03": "477bc3ad9f3fbb0d9187ef0c06a83b83fb824ee2980f2a4bfcc0a2703c3933b0"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
