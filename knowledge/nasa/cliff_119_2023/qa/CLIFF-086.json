@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-086",
+  "slot": 86,
+  "quest_id": "Q-0386",
+  "checked_at_utc": "2026-11-14T06:32:29.957849+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/skin-infection-bacterial-cliff-2023.pdf?emrc=5d1f38",
+  "http_status": 200,
+  "pdf_sha256": "1abf8e514fb0c6b948239b247f1eb5adc64dbf5db367c89e3d55328da7ee590c",
+  "pdf_bytes": 307847,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-086-IMG-01": "73f1a36f8060bc7f566ebdc3e1c8eda7d224c3d98f08d8b5a8750dc459bc37a3",
+    "CLIFF-086-IMG-02": "f915fb6f86327bf8b413af2343a75bfa209821f94f5e847e7419c67c5c95f142",
+    "CLIFF-086-IMG-03": "22840efaa9731d517d552e7b83be0b1e0ece76caf65dd037594b3884cbb9dd9e"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
