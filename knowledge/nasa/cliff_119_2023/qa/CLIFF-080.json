@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-080",
+  "slot": 80,
+  "quest_id": "Q-0380",
+  "checked_at_utc": "2026-11-14T06:30:48.639685+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/toxic-inhalation-exposure-combustion-products-cliff-2023.pdf?emrc=06b847",
+  "http_status": 200,
+  "pdf_sha256": "e0cb61c4c9a6298be0d1d32baaa8942a22a540ee456bd426263bee3001284cb5",
+  "pdf_bytes": 458588,
+  "pages_extracted": 19,
+  "sections_count": 19,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-080-IMG-01": "41a22e2a4d4a1beae75a31c9d7d45ad386c5bfb993983adf5c6bbbd1dfbd81a7",
+    "CLIFF-080-IMG-02": "a6b6ac2d7c4a5120633ec87f149095119e4d77153cae6705bf7f9302a1d7ee02",
+    "CLIFF-080-IMG-03": "67a7b18d0ec991f5295d1295a40080b2a356989af995fbd43d985137c1023985"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
