@@ -19,7 +19,7 @@ Trạng thái DONE vẫn phải phản ánh sản phẩm thực sự; giảm tes
 
 **Owner directive (14 Nov 2026):** `QUEUED` Quest may start **before its dependencies PASS**. Keep original `depends_on` and claim via exact file SHA with `execution_mode: PREPARE`. Implement direct code first, then focused evidence. A different agent reviews acceptance; missing dependencies prevent only **integration / final PASS**, not independent work. Do not weaken the concrete acceptance criteria in any of the 437 Quest records.
 
-**Standing review Quest:** [REVIEW-0001](quests/review/REVIEW-0001.md) is separate from the 435 numbered implementation tasks. [GitHub Actions](.github/workflows/quest-review-15m.yml) is configured to refresh its pending-review audit **on a 15-minute cron** (GitHub scheduling is best-effort, not guaranteed exactly at the minute). The workflow checks structured evidence and publishes a report; it does not automatically perform a different AI agent's semantic code review. An independently invoked reviewer follows the standing Quest to verify changed code/deliverables and resolve PASS/REWORK. No automatic acceptance without evidence.
+**Standing review Quest:** [REVIEW-0001](quests/review/REVIEW-0001.md) is separate from the 437 numbered implementation tasks. [GitHub Actions](.github/workflows/quest-review-15m.yml) is configured to refresh its pending-review audit **on a 15-minute cron** (GitHub scheduling is best-effort, not guaranteed exactly at the minute). The workflow checks structured evidence and publishes a report; it does not automatically perform a different AI agent's semantic code review. An independently invoked reviewer follows the standing Quest to verify changed code/deliverables and resolve PASS/REWORK. No automatic acceptance without evidence.
 
 **Useful distinction:** `status: RUNNING, execution_mode: PREPARE` allows coding; `implementation_state: COMPONENT_READY, review: PENDING` records code awaiting independent evaluation; `review: COMPONENT_APPROVED` is not final PASS; `status: DONE, review: APPROVED` is final after integration requirements are satisfied.
 
@@ -105,6 +105,49 @@ Full test/runtime verification across **Server**, **Desktop**, **Mobile**, **Wat
 - **Mobile (`apps/mobile`):** `README.md` only — no Android/mobile client code yet (`Q-0196`–`Q-0210`, currently `PLANNED` / `P2`).
 - **Watch (`apps/watch`):** `README.md` only — no Wear OS/watch client code yet (`Q-0181`–`Q-0195`, currently `PLANNED` / `P2`).
 - **CI / Data / Quest Tooling:** `scripts/quest_board.py` crashes on `Q-0436.md` multi-line YAML (`EXPECTED_COUNT=435` vs 436); 9 `test_encyclopedia_*.py` / `test_guide_*.py` modules pass under `pytest` (64 passed) but fail `unittest` in `.github/workflows/server-tests.yml` because `pytest` is not installed; `tests/test_cliff_044_sepsis.py` fails with `ImageRightsError: JPEG missing end marker` (`Q-0344`); `submission/SOURCES_AND_LICENSES.md` has a stale SHA-256 for `THIRD_PARTY_NOTICES.md` (`Q-0264`).
+
+
+## Windows 2026-11-14 15:54–16:00 ICT — owner-supplied test follow-up
+
+**Evidence boundary:** Results below come from a Windows PowerShell test report supplied by the project owner for local checkout d:\hoc\khoahoc2\AETHERION-main (Python 3.13.14; FastAPI 0.143.0; Pydantic 2.12.4; Uvicorn 0.54.0; httpx 0.28.1). This Quest-log edit does **not** rerun those Windows commands or authenticate their console logs; exact tested Git SHA and raw tracebacks were not supplied. Other agents continue committing, so this is a **historical test snapshot**, not a claim about every later commit.
+
+**Quest-count caveat:** The supplied report counted **436** Quests and recorded DONE 204 / QUEUED 107 / PLANNED 90 / BLOCKED 19 / RUNNING 13 / READY 2 / STALE 1 (sum 436). The current canonical backlog is **437** Quests (Q-0001–Q-0437). Do not copy the 436 snapshot into current Quest states; live statuses belong exclusively to individual files under quests/v1.
+
+### Owner-reported Windows test outcomes
+
+| Reported action | Outcome and evidence |
+| --- | --- |
+| python -m unittest discover -s tests -v | **FAIL: 606 tests in 72.069s; 3 failures and 63 errors** |
+| python scripts/lint_python.py | **PASS:** 334 Python files, 0 errors; Python 3.13 invalid-escape SyntaxWarnings reported in scripts/quest_review_queue.py |
+| python scripts/validate_nasa_registry.py | **PASS:** 5 source-registry entries |
+| python scripts/audit_nasa_truthfulness.py | **PASS:** 0 violations reported |
+| Server configuration and TestClient | **PASS (limited):** /health 200; /ready 200; unauthenticated /api/v1/observations 401 |
+| python scripts/verify_submission_team.py | **BLOCKED:** no verified official public team page; exit 1 |
+| python scripts/quest_board.py check and stats | **FAIL:** multiline frontmatter in Q-0436 cannot be parsed; script still expects 435 Quest records |
+| python scripts/release_readiness.py --scope demo | **NOT READY:** release_authorized=false; exit 2 |
+| python scripts/smoke_server.py | **FAIL:** reads engineering_test observation without include_non_live=true; default API query correctly hides fixture data |
+| python scripts/audit_cliff_119.py | **FAIL:** NOT_IMPORTED, zero verified original PDFs, no manifest |
+| python scripts/audit_cliff119_library.py | **FAIL:** zero imported articles, no manifest or final SQLite |
+| scripts/setup_windows.ps1 | **FAIL on reported Windows host:** hard-coded py -3.11 launcher unavailable, preventing venv/PySide6 installation |
+
+**Failure families reported (sum 66 = 3 failures + 63 errors):** 49 PermissionError [WinError 32] cases when cleanup meets open SQLite handles; 9 modules requiring pytest under unittest; 4 quest-board/Windows-runtime-path cases; 2 Pydantic-v2 request-validation HTTP-422 serialization crashes; 1 CliFF-044 JPEG end-marker error; 1 stale SHA-256 assertion for THIRD_PARTY_NOTICES.md. Root-cause categories should be confirmed against exact raw tracebacks before bulk fixes.
+
+### Remediation queue — prioritized and mapped to Quest records
+
+| Priority | Quest(s) / exact area | Proposed implementation and verification |
+| --- | --- | --- |
+| P0 | [Q-0001](quests/v1/Q-0001.md), [Q-0241](quests/v1/Q-0241.md), scripts/quest_board.py | Support multiline YAML list metadata; update EXPECTED_COUNT from 435 to the **current 437**; verify check/stats/ready on latest main; align CI dependency installation with nine pytest-only modules and add focused Windows SQLite-close checks |
+| P0 | [Q-0047](quests/v1/Q-0047.md), apps/server/src/aetherion_server/main.py, scripts/smoke_server.py | Sanitize exc.errors() before JSON serialization of HTTP 422; include engineering_test fixtures only when explicitly queried with include_non_live=true; close all SQLite connections before Windows TemporaryDirectory removal. Request independent re-review of earlier DONE/APPROVED acceptance rather than silently changing its status |
+| P0 | [Q-0002](quests/v1/Q-0002.md), [Q-0003](quests/v1/Q-0003.md), scripts/setup_windows.ps1 | Discover a valid supported Python executable without assuming py launcher; run actual Qt Windows start and document its observed result; do not assert EXE PASS from source alone |
+| P0 | [Q-0264](quests/v1/Q-0264.md), submission/SOURCES_AND_LICENSES.md | Recompute digest of THIRD_PARTY_NOTICES.md from actual bytes, repair stale attribution SHA, rerun the focused attribution check, request independent re-review |
+| P1 | [Q-0344](quests/v1/Q-0344.md), CliFF-044 Sepsis JPEG | Audit genuine bytes, JPEG EOI, license and media SHA; avoid weakening the image validator to admit truncated media, request independent clinical/rights re-review |
+| P0 | [Q-0436](quests/v1/Q-0436.md), [Q-0437](quests/v1/Q-0437.md), Desktop | Reconcile existing five-card Portal with V3 menu, real content versus placeholder Body Atlas/Explore/Care/Guide, native animated theme, Server Control GUI and Windows EXE/real session acceptance |
+| P2 / not implemented in reported snapshot | [Mobile](quests/INDEX_196_210.md) and [Watch](quests/INDEX_181_195.md) | README-only in test report; preserve planned phase and do not claim released APK/Wear OS client without real artifacts |
+
+**Current GitHub source spot-check during documentation update:** scripts/quest_board.py still has EXPECTED_COUNT=435 and colon-only frontmatter parsing; .github/workflows/server-tests.yml installs server then runs unittest without explicitly installing pytest; scripts/setup_windows.ps1 still invokes py -3.11; the server HTTP-422 handler still sends raw exc.errors(); submission/SOURCES_AND_LICENSES.md still shows the earlier notices hash prefix 51340c. These are **source observations only**, not a reproduced Windows test run.
+
+**Coordination:** These are remediation proposals and review requests, NOT automatic Quest state changes. In particular Q-0047, Q-0264 and Q-0344 retain their actual current metadata until a separate agent with exclusive file ownership reproduces/fixes/reviews the regression. CLAIM via current blob SHA and scoped lease; record actual smoke results and commit; leave review PENDING or REWORK_REQUIRED until an independent reviewer checks it. Source integrity, hardware evidence and final NASA submission requirements are not waived.
+
 
 Review owner and current state **on GitHub at HEAD** before each task claim. This file is not a daemon or automatic task runner.
 
