@@ -58,6 +58,49 @@ class PersonalToCareTest(unittest.TestCase):
         self.assertIsNone(self.selection(code=403))
         self.assertIsNone(self.selection(code=None))
 
+    def test_ready_self_report_downgrades_to_unverified_card(self):
+        # Canonical Personal Today preserves source but downgrades READY when
+        # verification_state is SELF_REPORTED; the exact record must still match.
+        selected = self.selection(record(quality="READY"))
+        self.assertIsNotNone(selected)
+        self.assertEqual(selected.quality, "UNVERIFIED")
+
+    def test_verified_old_record_matches_stale_card(self):
+        stale = "2026-11-10T09:00:00Z"
+        card = PersonalCard(
+            quality="STALE", verification_state="VERIFIED",
+            observed_at="2026-11-10T09:00:00+00:00",
+        )
+        selected = selected_observation_from_api(
+            "CREW-7", card, 200,
+            observations(record(quality="READY", verification_state="VERIFIED",
+                                observed_at=stale)),
+        )
+        self.assertIsNotNone(selected)
+        self.assertEqual(selected.quality, "STALE")
+
+    def test_unverified_ready_source_cannot_claim_verified_stale(self):
+        stale = "2026-11-10T09:00:00Z"
+        card = PersonalCard(
+            quality="STALE", verification_state="SELF_REPORTED",
+            observed_at="2026-11-10T09:00:00+00:00",
+        )
+        self.assertIsNone(selected_observation_from_api(
+            "CREW-7", card, 200,
+            observations(record(quality="READY", observed_at=stale)),
+        ))
+
+    def test_restricted_availability_and_future_timestamp_never_open_care(self):
+        for q in ("DENIED", "OFFLINE", "ERROR", "NO_DATA"):
+            with self.subTest(q=q):
+                self.assertIsNone(self.selection(record(quality=q)))
+        future = "2028-11-14T09:00:00Z"
+        card = PersonalCard(observed_at="2028-11-14T09:00:00+00:00")
+        self.assertIsNone(selected_observation_from_api(
+            "CREW-7", card, 200, observations(record(observed_at=future))
+        ))
+
+
     def test_mixed_identity_and_duplicate_measurements_fail_closed(self):
         self.assertIsNone(self.selection(record(), record(id=124, subject_id="CREW-8")))
         self.assertIsNone(self.selection(record(), record(id=124)))
