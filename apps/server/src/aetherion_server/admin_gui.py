@@ -543,10 +543,7 @@ class AdminWindow(QMainWindow):
         self.overview_text.setPlainText(json.dumps({
             "service": body.get("service"), "api_version": body.get("api_version"),
             "database": body.get("database"), "counts": body.get("counts"),
-            "subsystems": body.get("subsystems"),
-        }, ensure_ascii=False, indent=2))
-        self.source_text.setPlainText(json.dumps({
-            "knowledge": body.get("knowledge"), "subsystems": body.get("subsystems"),
+            "subsystems": body.get("subsystems"), "knowledge": body.get("knowledge"),
         }, ensure_ascii=False, indent=2))
         self.storage_text.setPlainText(json.dumps({
             "database": body.get("database"), "records": body.get("counts"),
