@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 import json
 import math
-from urllib.parse import urlencode
+from urllib.parse import quote, urlencode
 
 from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
 from .features.mission.crew_data_state import state_from_server_response
@@ -45,6 +45,27 @@ def observation_url(api_url: str, subject_id: str) -> str:
     if not (1 <= len(subject_id) <= 80) or any(ord(c) < 32 for c in subject_id):
         raise ValueError("Provide a subject ID between 1 and 80 printable characters")
     return f"{api_url.rstrip('/')}/api/v1/observations?{urlencode({'subject_id': subject_id, 'limit': 100})}"
+
+
+def authorized_subject_ids(login_payload: object) -> tuple[str, ...]:
+    """Return only explicit authenticated subject IDs; never treat '*' as a person."""
+    if not isinstance(login_payload, dict):
+        return ()
+    user = login_payload.get("user")
+    allowed = user.get("allowed_subjects") if isinstance(user, dict) else None
+    if not isinstance(allowed, list):
+        return ()
+    result: list[str] = []
+    for subject_id in allowed:
+        if not isinstance(subject_id, str) or subject_id == "*" or subject_id != subject_id.strip():
+            continue
+        try:
+            observation_url("http://127.0.0.1", subject_id)
+        except ValueError:
+            continue
+        if subject_id not in result:
+            result.append(subject_id)
+    return tuple(result)
 
 
 def parse_observations(payload: object, subject_id: str, *, now: datetime | None = None) -> MissionSnapshot:
@@ -101,7 +122,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
     from PySide6.QtCore import Qt, QUrl, Signal
     from PySide6.QtNetwork import QNetworkRequest
     from PySide6.QtWidgets import (QFormLayout, QHBoxLayout, QLabel, QLineEdit,
-        QListWidget, QPushButton, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+        QListWidget, QListWidgetItem, QPushButton, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 
     class MissionControlPage(QWidget):
         # The token is transferred in memory only, within the same Qt process.
@@ -116,6 +137,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._subjects: list[str] = []
             self._request_seq = 0
             self._login_seq = 0
+            self._profile_seq = 0
             self._authorized_subject: str | None = None  # only after successful GET for that exact subject
             # A single native responsive layout, not a second server or webview.
             from .features.mission.mission_layout import install_mission_layout
@@ -126,6 +148,58 @@ def build_mission_control_page(api_url: str, network, parent=None):
                             latest: str = "", sources: int | None = None):
             from .features.mission.mission_layout import update_summary
             update_summary(self, subject=subject, count=count, latest=latest, sources=sources)
+
+        def _selected_subject(self) -> str:
+            """Use immutable server ID, not a potentially localized display label."""
+            item = self.subjects.currentItem()
+            value = item.data(Qt.ItemDataRole.UserRole) if item is not None else None
+            return value if isinstance(value, str) else ""
+
+        def _append_subject(self, subject_id: str) -> None:
+            if subject_id in self._subjects:
+                return
+            self._subjects.append(subject_id)
+            item = QListWidgetItem(subject_id)
+            item.setData(Qt.ItemDataRole.UserRole, subject_id)
+            self.subjects.addItem(item)
+
+        def _load_selected_profile(self, subject_id: str, seq: int):
+            """Read registered subject name from the same permission-checked Server."""
+            self._profile_seq += 1
+            pseq, lseq, token = self._profile_seq, self._login_seq, self._token
+            request = QNetworkRequest(QUrl(
+                api_url.rstrip("/") + "/api/v1/subjects/" + quote(subject_id, safe="")
+            ))
+            request.setRawHeader(b"Authorization", ("Bearer " + token).encode())
+            reply = network.get(request)
+            reply.finished.connect(
+                lambda: self._profile_loaded(reply, subject_id, seq, pseq, lseq, token)
+            )
+
+        def _profile_loaded(self, reply, subject_id, seq, pseq, lseq, token):
+            code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
+            raw = bytes(reply.readAll())
+            reply.deleteLater()
+            if (code != 200 or seq != self._request_seq or pseq != self._profile_seq
+                    or lseq != self._login_seq or token != self._token
+                    or subject_id != self._selected_subject()):
+                return
+            try:
+                obj = json.loads(raw.decode("utf-8"))
+                person = obj.get("subject") if isinstance(obj, dict) else None
+                if not isinstance(person, dict) or person.get("subject_id") != subject_id:
+                    return
+                name = person.get("display_name")
+                if not isinstance(name, str) or not name.strip() or len(name) > 120:
+                    return
+            except (UnicodeError, ValueError):
+                return
+            item = self.subjects.currentItem()
+            if item is not None and item.data(Qt.ItemDataRole.UserRole) == subject_id:
+                # Protect selection and API identity from a cosmetic text update.
+                self.subjects.blockSignals(True)
+                item.setText(f"{name.strip()} · {subject_id}")
+                self.subjects.blockSignals(False)
 
         def set_locale(self, locale: str):
             """Switch presentation without logging out, discarding data or a new GET."""
@@ -164,6 +238,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._login_seq += 1
             seq = self._login_seq
             self._request_seq += 1
+            self._profile_seq += 1
             self._token = ""
             self._authorized_subject = None
             self.open_personal_button.setEnabled(False)
@@ -205,24 +280,35 @@ def build_mission_control_page(api_url: str, network, parent=None):
                 return
             self._token = token
             self._say("mission.authenticated")
-            self.refresh_subject()
+            # Enumerate only IDs issued to this authenticated account.
+            # A wildcard account must still enter an exact ID manually.
+            for subject_id in authorized_subject_ids(response):
+                self._append_subject(subject_id)
+            if self._subjects:
+                self.subjects.setCurrentRow(0)
+            else:
+                self.refresh_subject()
 
         def add_subject(self):
+            if not self._token:
+                self._say("mission.loginRequired")
+                return
             subject_id = self.subject_input.text().strip()
+            if subject_id == "*":
+                self._say("mission.invalidSubject")
+                return
             try:
                 observation_url(api_url, subject_id)
             except ValueError:
                 self._say("mission.invalidSubject")
                 return
-            if subject_id not in self._subjects:
-                self._subjects.append(subject_id)
-                self.subjects.addItem(subject_id)
+            self._append_subject(subject_id)
             self.subjects.setCurrentRow(self._subjects.index(subject_id))
 
         def open_selected_personal(self):
             """Never route to a guessed subject or silently reuse a logged-out session."""
-            selected = self.subjects.currentItem()
-            if selected is None:
+            selected_id = self._selected_subject()
+            if not selected_id:
                 self._say("mission.selectBeforeOpen")
                 return
             if not self._token:
@@ -230,14 +316,15 @@ def build_mission_control_page(api_url: str, network, parent=None):
                 return
             # A manually entered subject is not authorized merely because login
             # worked. Require a successful authenticated GET for the same ID.
-            if self._authorized_subject != selected.text():
+            if self._authorized_subject != selected_id:
                 self._say("mission.expired")
                 return
-            self.subject_activated.emit(selected.text(), self._token)
+            self.subject_activated.emit(selected_id, self._token)
 
         def refresh_subject(self, *_):
-            subject_id = self.subjects.currentItem().text() if self.subjects.currentItem() else ""
+            subject_id = self._selected_subject()
             self._request_seq += 1
+            self._profile_seq += 1
             seq = self._request_seq
             self._authorized_subject = None  # handoff disabled until this exact GET is accepted
             self.open_personal_button.setEnabled(False)
@@ -256,6 +343,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._say("mission.loading", subject=subject_id)
             reply = network.get(request)
             reply.finished.connect(lambda: self._loaded(reply, subject_id, seq))
+            self._load_selected_profile(subject_id, seq)
 
         def _loaded(self, reply, subject_id, seq):
             code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
@@ -267,6 +355,10 @@ def build_mission_control_page(api_url: str, network, parent=None):
             if code in (401, 403):
                 if code == 401:
                     self._token = ""
+                    self._profile_seq += 1
+                    self._subjects.clear()
+                    self.subjects.clear()
+                    self.subject_input.clear()
                 self._say("mission.expired")
                 self.table.setRowCount(0)
                 self._update_summary(subject=subject_id)
