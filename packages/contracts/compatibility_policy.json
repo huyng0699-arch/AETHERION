@@ -1,0 +1,17 @@
+{
+  "$schema": "https://aetherion.local/contracts/v1/compatibility_policy",
+  "api_version": "v1",
+  "path_prefix": "/api/v1",
+  "breaking_change_rules": [
+    "never_remove_published_path_without_deprecation_window",
+    "never_remove_published_http_method",
+    "never_add_required_field_to_existing_v1_request",
+    "never_remove_required_field_from_existing_v1_response",
+    "additive_optional_fields_are_non_breaking"
+  ],
+  "deprecation_policy": {
+    "minimum_notice_headers": ["Deprecation", "Sunset"],
+    "requires_new_major_prefix_for_breaking_changes": true,
+    "next_major_prefix": "/api/v2"
+  }
+}
