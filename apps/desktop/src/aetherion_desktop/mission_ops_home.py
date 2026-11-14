@@ -320,12 +320,15 @@ class UtcSamplePlot(QWidget):
         self.setObjectName("opsUtcSamplePlot")
         self.setMouseTracking(True)
         self._points: tuple[dict, ...] = ()
+        self._index_offset = 0
         self._positions: tuple[tuple[float, float, int], ...] = ()
+        self._plotted_by_index: dict[int, dict] = {}
         self._theme = "daybreak"
         self._mode = "light"
 
-    def set_points(self, points, theme="daybreak", mode="light"):
+    def set_points(self, points, theme="daybreak", mode="light", *, index_offset=0):
         self._points = tuple(points)
+        self._index_offset = max(0, int(index_offset))
         self._theme = theme
         self._mode = mode
         self.update()
@@ -337,14 +340,17 @@ class UtcSamplePlot(QWidget):
         width, height = self.width(), self.height()
         plot = QRectF(58, 12, max(1, width - 76), max(1, height - 54))
         positions = []
-        points = tuple(
-            (row, float(row["value"]), float(row["_epoch"]))
-            for row in self._points
-            if isinstance(row.get("value"), (int, float))
-            and math.isfinite(float(row["value"]))
-            and isinstance(row.get("_epoch"), (int, float))
-            and math.isfinite(float(row["_epoch"]))
-        )
+        plotted = []
+        for local_index, row in enumerate(self._points):
+            value, epoch = row.get("value"), row.get("_epoch")
+            if (isinstance(value, (int, float)) and math.isfinite(float(value))
+                    and isinstance(epoch, (int, float))
+                    and math.isfinite(float(epoch))):
+                plotted.append(
+                    (row, float(value), float(epoch),
+                     self._index_offset + local_index)
+                )
+        points = tuple(plotted)
         if not points:
             painter.setPen(QColor(pal.muted))
             painter.drawText(self.rect(), Qt.AlignmentFlag.AlignCenter, "—")
@@ -352,8 +358,8 @@ class UtcSamplePlot(QWidget):
             painter.end()
             return
 
-        values = [value for _row, value, _epoch in points]
-        times = [epoch for _row, _value, epoch in points]
+        values = [value for _row, value, _epoch, _index in points]
+        times = [epoch for _row, _value, epoch, _index in points]
         low, high = min(values), max(values)
         if low == high:
             padding = max(abs(low) * .05, 1.0)
@@ -389,8 +395,13 @@ class UtcSamplePlot(QWidget):
                 tick_label_format
             )
             painter.setPen(QColor(pal.muted))
+            label_width = min(98, max(54, int(plot.width() / 3)))
+            label_left = min(
+                max(0, x - label_width / 2),
+                max(0, width - label_width),
+            )
             painter.drawText(
-                QRectF(x - 49, plot.bottom() + 5, 98, 17),
+                QRectF(label_left, plot.bottom() + 5, label_width, 17),
                 Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop,
                 label,
             )
@@ -403,15 +414,17 @@ class UtcSamplePlot(QWidget):
         )
         painter.setPen(Qt.PenStyle.NoPen)
         radius = 4.5
-        for index, (_row, value, epoch) in enumerate(points):
+        self._plotted_by_index = {}
+        for _draw_index, (row, value, epoch, source_index) in enumerate(points):
             x_fraction = .5 if time_span == 0 else (epoch - first_time) / time_span
             y_fraction = (value - low) / (high - low)
             x = plot.left() + x_fraction * plot.width()
             y = plot.bottom() - y_fraction * plot.height()
-            color = QColor(pal.accent if index % 2 == 0 else pal.second)
+            color = QColor(pal.accent if _draw_index % 2 == 0 else pal.second)
             painter.setBrush(color)
             painter.drawEllipse(QRectF(x - radius, y - radius, radius * 2, radius * 2))
-            positions.append((x, y, index))
+            positions.append((x, y, source_index))
+            self._plotted_by_index[source_index] = row
 
         self._positions = tuple(positions)
         painter.end()
@@ -437,7 +450,11 @@ class UtcSamplePlot(QWidget):
         if hit is None:
             self.setToolTip("")
         else:
-            row = self._points[hit[2]]
+            row = self._plotted_by_index.get(hit[2])
+            if row is None:
+                self.setToolTip("")
+                super().mouseMoveEvent(event)
+                return
             self.setToolTip(
                 f'{row["timestamp_utc"]} · {row["value"]} {row["unit"]} · '
                 f'{row["source_id"]}'
@@ -718,6 +735,9 @@ class MissionOperationsHome(QWidget):
         self.utc_table.horizontalHeader().setStretchLastSection(True)
         self.utc_table.itemSelectionChanged.connect(self._select_utc_row)
         utc_layout.addWidget(self.utc_table, 1)
+        self.utc_chart_heading = QLabel()
+        self.utc_chart_heading.setObjectName("eyebrow")
+        utc_layout.addWidget(self.utc_chart_heading)
         self.utc_chart = UtcSamplePlot()
         self.utc_chart.sample_selected.connect(self._select_utc_plot_point)
         utc_layout.addWidget(self.utc_chart)
@@ -1273,11 +1293,15 @@ class MissionOperationsHome(QWidget):
         # One plot never combines unlike metrics, units or sources. The table
         # can show all filtered records, but the chart needs an explicit family.
         series = self._filtered_utc
+        index_offset = 0
         if metric_filter is None or source_filter is None:
             series = ()
         else:
-            series = series[-32:]
-        self.utc_chart.set_points(series, self.theme, self.mode)
+            index_offset = max(0, len(series) - 32)
+            series = series[index_offset:]
+        self.utc_chart.set_points(
+            series, self.theme, self.mode, index_offset=index_offset
+        )
         self.utc_chart_note.setText(self._t("utcChartSeries"))
         self._active_utc_row = None
         if self._filtered_utc and self._selection[0] == "utc":
@@ -1354,6 +1378,9 @@ class MissionOperationsHome(QWidget):
         self.utc_heading.setText(t("utcTitle"))
         self.utc_note.setText(t("utcNote"))
         self.utc_empty.setText(t("utcEmpty") if not self._filtered_utc else "")
+        self.utc_chart_heading.setText(t("utcPlot"))
+        self.utc_chart.setAccessibleName(t("utcPlot"))
+        self.utc_chart.setAccessibleDescription(t("utcChartSeries"))
         self.utc_chart_note.setText(t("utcChartSeries"))
         self.open_monitor.setText(t("utcAsk"))
         self.source_link.setText(t("openOriginal"))
