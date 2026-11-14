@@ -573,5 +573,6 @@
   "demo.official.research": "NASA · Nghiên cứu HRP",
   "demo.official.five": "5 nguy cơ chính: bức xạ; cô lập; xa Trái Đất; trọng lực; môi trường kín.",
   "demo.official.explain": "MA-7 (1962) là số đo NASA thực, nhưng là nguồn bổ sung, không thuộc 5 liên kết chính thức nói trên. Dữ liệu này không tự chứng minh hệ thống theo dõi liên tục.",
-  "demo.official.mode": "Tài liệu của đề thi ≠ tập dữ liệu MA-7"
+  "demo.official.mode": "Tài liệu của đề thi ≠ tập dữ liệu MA-7",
+  "care.intake.translation_note": "Nhãn tiếng Anh chỉ là bản thuật ngữ dự thảo, chưa được thẩm định lâm sàng. Phỏng vấn sử dụng mã và tên tiếng Việt gốc."
 }
