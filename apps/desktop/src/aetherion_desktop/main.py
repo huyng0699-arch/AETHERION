@@ -458,6 +458,9 @@ class AetherionWindow(QMainWindow):
         self.pages.setCurrentWidget(self.knowledge_browser_page)
 
     def show_monitor(self):
+        # Always recheck access before showing health records; cached data cannot
+        # silently survive a revoked session or a changed account.
+        self.monitor_page.refresh()
         self.pages.setCurrentWidget(self.monitor_page)
 
     def show_assistant(self):
