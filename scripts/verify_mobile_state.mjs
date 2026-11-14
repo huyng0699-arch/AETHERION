@@ -1,0 +1,42 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import vm from 'node:vm';
+import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
+import assert from 'node:assert/strict';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const require=createRequire(path.join(root,'apps/mobile/package.json'));
+const ts=require('typescript');
+const results=[];
+async function moduleFrom(file,platform='web',origin='https://aetherion.example',development=false){
+ const source=await fs.readFile(path.join(root,'apps/mobile',file),'utf8');
+ const js=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText;
+ const exports={}, values=new Map(), module={exports};
+ const storage={getItem:async key=>values.get(key)||null,setItem:async(key,value)=>values.set(key,value)};
+ const ctx={exports,module,require:name=>name==='react-native'?{Platform:{OS:platform}}:name==='@react-native-async-storage/async-storage'?storage:name==='../storage/session'?{readSession:async()=>null}:require(name),URL,process:{env:{}},__DEV__:development,window:platform==='web'?{location:new URL(origin)}:undefined,fetch,AbortController,setTimeout,clearTimeout,console};
+ vm.runInNewContext(js,ctx,{filename:file});
+ return module.exports;
+}
+async function check(name,run){try{await run();results.push({name,status:'PASS'});console.log('PASS '+name);}catch(e){results.push({name,status:'FAIL',error:e.message});console.log('FAIL '+name+': '+e.message);}}
+const nav=await moduleFrom('src/navigation.ts');
+await check('Cold start remains Login',()=>assert.equal(nav.initialNavigation.route,'login'));
+await check('Demo back stack returns Data to Intro to Login',()=>{let s=nav.initialNavigation;s=nav.navigate(s,{type:'open',route:'demoIntro',unlocked:false});s=nav.navigate(s,{type:'open',route:'demoData',unlocked:false});s=nav.navigate(s,{type:'back'});assert.equal(s.route,'demoIntro');s=nav.navigate(s,{type:'back'});assert.equal(s.route,'login');});
+await check('Protected route waits for explicit sign in',()=>{let s=nav.navigate(nav.initialNavigation,{type:'open',route:'health',unlocked:false});assert.equal(s.route,'login');assert.equal(s.pending,'health');s=nav.navigate(s,{type:'signedIn'});assert.equal(s.route,'health');});
+await check('Sign out resets navigation and cannot back into health',()=>{let s=nav.navigate(nav.initialNavigation,{type:'open',route:'care',unlocked:true});s=nav.navigate(s,{type:'signedOut'});assert.equal(s.route,'login');assert.equal(s.history.length,0);assert.equal(nav.navigate(s,{type:'back'}).route,'login');});
+await check('Bottom tabs reset history and Back returns to Home',()=>{let s=nav.navigate(nav.initialNavigation,{type:'signedIn'});s=nav.navigate(s,{type:'open',route:'settings',unlocked:true});s=nav.navigate(s,{type:'open',route:'monitor',unlocked:true,tab:true});assert.equal(s.route,'monitor');assert.equal(s.history.length,0);assert.equal(nav.navigate(s,{type:'back'}).route,'portal');});
+const client=await moduleFrom('src/api/client.ts');
+await check('HTTPS production resolves current web origin',async()=>assert.equal(await client.readServerUrl(),'https://aetherion.example'));
+await check('Production rejects remote cleartext HTTP',()=>assert.throws(()=>client.normalizeBaseUrl('http://10.1.2.3:8765')));
+await check('Local loopback HTTP remains usable',()=>assert.equal(client.normalizeBaseUrl('http://127.0.0.1:8765/'),'http://127.0.0.1:8765'));
+await check('URL credentials/query/fragment are rejected',()=>{for(const value of ['https://user:password@example.com','https://example.com?token=secret','https://example.com#token'])assert.throws(()=>client.normalizeBaseUrl(value));});
+await check('Saved server URL normalizes trailing slashes',async()=>{await client.saveServerUrl('https://server.example///');assert.equal(await client.readServerUrl(),'https://server.example');});
+await check('Local Expo development targets loopback API',async()=>{const c=await moduleFrom('src/api/client.ts','web','http://localhost:8081',true);assert.equal(await c.readServerUrl(),'http://127.0.0.1:8765');});
+await check('Android development selects the emulator host',async()=>{const c=await moduleFrom('src/api/client.ts','android','',true);assert.equal(await c.readServerUrl(),'http://10.0.2.2:8765');});
+await check('Unconfigured native release fails closed',async()=>{const c=await moduleFrom('src/api/client.ts','android','',false);await assert.rejects(c.readServerUrl());});
+await check('Bearer without a matching stored server scope never leaves client',async()=>{await assert.rejects(client.request('/api/v1/auth/me',{token:'stale-other-server-token'}),error=>error.code==='SESSION_SERVER_MISMATCH');});
+const report={scope:'Executed navigation and URL-policy modules. This is not a browser rendering or device interaction test.',recorded_at_utc:new Date().toISOString(),checks:results,total:results.length,passed:results.filter(x=>x.status==='PASS').length};
+report.pass_percent=Math.round(100*report.passed/report.total);
+await fs.mkdir(path.join(root,'.runtime/verification'),{recursive:true});
+await fs.writeFile(path.join(root,'.runtime/verification/mobile-state-report.json'),JSON.stringify(report,null,2));
+console.log(JSON.stringify({passed:report.passed,total:report.total,pass_percent:report.pass_percent}));
+process.exitCode=report.passed===report.total?0:1;

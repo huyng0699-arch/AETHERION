@@ -30,8 +30,10 @@ Thumbs.db
 node_modules/
 .gradle/
 
-# Local app accounts, databases and verification output
+# Local accounts, databases and generated client output
 .runtime/
 apps/mobile/install-logs/
 apps/mobile/.expo/
 apps/mobile/dist/
+apps/mobile/dist-android/
+

@@ -1,6 +1,6 @@
 import { AuthSession, SessionIdentity } from '../types';
 import { readServerUrl, request } from './client';
-import { deleteSession, readSession, writeSession } from '../storage/session';
+import { deleteSession, readSession } from '../storage/session';
 
 export async function signIn(username: string, password: string): Promise<AuthSession> {
   const response = await request<AuthSession>('/api/v1/auth/login', {
@@ -18,9 +18,9 @@ export async function validateSession(token: string): Promise<SessionIdentity> {
 
 export async function signOut(): Promise<void> {
   const session = await readSession();
-  if (session?.access_token) {
-    try { await request('/api/v1/auth/logout', { method: 'POST', token: session.access_token, timeoutMs: 5000 }); } catch { /* Local sign-out must still complete offline. */ }
-  }
   await deleteSession();
+  if (session?.access_token && session.server_url) {
+    try { await request('/api/v1/auth/logout', { method: 'POST', token: session.access_token, baseUrl: session.server_url, timeoutMs: 5000 }); } catch { /* Local sign-out must still complete offline. */ }
+  }
 }
 

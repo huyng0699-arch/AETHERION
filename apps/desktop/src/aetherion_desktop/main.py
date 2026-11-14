@@ -1,4 +1,4 @@
-"""AETHERION native Windows app — Mission Operations-first Qt shell.
+"""AETHERION native Windows app — login-first Qt shell with a public Demo.
 
 AETHERION Server remains the single source of data. The client never invents
 sensor readings, AI answers, anatomy, or an emergency dispatch service.
@@ -152,10 +152,11 @@ class AetherionWindow(QMainWindow):
         self.pages = QStackedWidget()
         self.pages.setObjectName("pageStack")
         self.login_page = LoginPage(self, network=self.network, api_url=self.api_url, locale=self.ui_language)
+        self.login_page.set_visuals(self.preferences.theme_name, self.preferences.mode, self.preferences.high_contrast, self.preferences.accent_override)
         self.login_page.authenticated.connect(self._login_complete)
         # Login Demo is the fictional crew walkthrough; genuine NASA archive
         # remains a separate, source-labelled route inside the briefing.
-        self.login_page.demo_requested.connect(self.show_simulated_briefing)
+        self.login_page.demo_requested.connect(self.show_hackathon_demo)
         self.pages.addWidget(self.login_page)
         # Q-0485: first native view is mission operations, not the five-card Portal.
         self.operations_home_page = build_mission_ops_home(
@@ -541,6 +542,7 @@ class AetherionWindow(QMainWindow):
         app = QApplication.instance()
         if app is not None:
             self.preferences.apply(app)
+        self.login_page.set_visuals(self.preferences.theme_name, self.preferences.mode, self.preferences.high_contrast, self.preferences.accent_override)
         self.portal_page.set_visuals(
             self.preferences.theme_name, self.preferences.reduce_motion,
             self.preferences.mode, self.preferences.animation_intensity,

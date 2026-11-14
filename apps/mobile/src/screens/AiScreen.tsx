@@ -1,5 +1,5 @@
 import { useRequestGate } from '../hooks/useRequestGate';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Image, Linking, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Locale } from '../types';
@@ -62,9 +62,11 @@ export function AiScreen({ locale, token, onBack, onUnauthorized }: {
     return status.cloud_available && cloudConsent;
   }, [checking, cloudConsent, provider, sending, status]);
 
+  const sendingLock = useRef(false);
   const send = async () => {
     const content = draft.trim();
-    if (!content || content.length > 3000 || !canSend || !status) return;
+    if (sendingLock.current || !content || content.length > 3000 || !canSend || !status) return;
+    sendingLock.current = true;
     const current = beginChat();
     setDraft('');
     setChatError(null);
@@ -92,6 +94,7 @@ export function AiScreen({ locale, token, onBack, onUnauthorized }: {
       else setChatError(errorMessageKey(error));
       if (error instanceof ApiError && error.status === 503) setStatus(null);
     } finally {
+      sendingLock.current = false;
       if (current()) setSending(false);
     }
   };

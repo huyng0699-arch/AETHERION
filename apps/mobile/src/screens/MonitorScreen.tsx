@@ -1,4 +1,5 @@
 import { useRequestGate } from '../hooks/useRequestGate';
+import { copy } from '../uiCopy';
 import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Locale, Observation } from '../types';
@@ -6,7 +7,7 @@ import { t } from '../i18n';
 import { ThemeColors, useThemedStyles } from '../theme';
 import { ApiError } from '../api/client';
 import { getObservations } from '../api/health';
-import { AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../components/ui';
+import { ActionButton, AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../components/ui';
 
 export function MonitorScreen({ locale, token, subjectId, onBack, onUnauthorized }: {
   locale: Locale; token: string; subjectId?: string; onBack: () => void; onUnauthorized: () => void;
@@ -16,12 +17,13 @@ export function MonitorScreen({ locale, token, subjectId, onBack, onUnauthorized
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [refresh, setRefresh] = useState(0);
+  const [cursor, setCursor] = useState<string | null>(null);
   const beginRequest = useRequestGate();
   const load = useCallback(async () => {
     const current = beginRequest();
     if (!subjectId) return;
     setBusy(true); setError(null);
-    try { const page = await getObservations(subjectId, token); if (current()) setItems(page.observations || []); }
+    try { const page = await getObservations(subjectId, token); if (current()) { setItems(page.observations || []); setCursor(page.has_more ? page.next_cursor : null); } }
     catch (cause) {
       if (!current()) return;
       if (cause instanceof ApiError && cause.status === 401) onUnauthorized();
@@ -29,6 +31,7 @@ export function MonitorScreen({ locale, token, subjectId, onBack, onUnauthorized
     } finally { if (current()) setBusy(false); }
   }, [locale, onUnauthorized, subjectId, token, refresh]);
   useEffect(() => { void load(); }, [load]);
+  const more = async () => { if (!subjectId || !cursor || busy) return; const current = beginRequest(); setBusy(true); try { const page = await getObservations(subjectId, token, cursor); if (current()) { setItems(items => [...new Map([...items, ...page.observations].map(item => [item.id, item])).values()]); setCursor(page.has_more ? page.next_cursor : null); } } catch (cause) { if (current()) { if (cause instanceof ApiError && cause.status === 401) onUnauthorized(); else setError(t(locale, 'networkError')); } } finally { if (current()) setBusy(false); } };
 
   return (
     <AppPage>
@@ -38,6 +41,7 @@ export function MonitorScreen({ locale, token, subjectId, onBack, onUnauthorized
       {!subjectId ? <Panel><Body>{t(locale, 'noSubject')}</Body></Panel> : busy && items.length === 0 ? <View style={styles.loading}><ActivityIndicator color={colors.cyan} /><Body>{t(locale, 'loading')}</Body></View> : error ? <Panel><Text style={styles.error}>{error}</Text></Panel> : items.length === 0 ? <Panel><Text style={styles.panelTitle}>{t(locale, 'noData')}</Text><Body>{t(locale, 'noObservation')}</Body></Panel> : (
         <View style={styles.list}>
           {items.map((item) => <ObservationCard key={String(item.id)} item={item} locale={locale} />)}
+          {cursor ? <ActionButton title={copy(locale, 'loadMore')} onPress={() => { void more(); }} loading={busy} secondary /> : null}
         </View>
       )}
     </AppPage>

@@ -1,5 +1,5 @@
 import { useRequestGate } from '../hooks/useRequestGate';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { ApiError } from '../api/client';
 import {
@@ -44,6 +44,7 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
   const [confirmed, setConfirmed] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
 
+  const actionLock = useRef(false);
   const beginList = useRequestGate(), beginAction = useRequestGate();
   const loadEpisodes = useCallback(async () => {
     const isCurrent = beginList();
@@ -64,6 +65,8 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
   useEffect(() => { void loadEpisodes(); }, [loadEpisodes]);
 
   const openEpisode = async (episodeId: string) => {
+    if (actionLock.current) return;
+    actionLock.current = true;
     const isCurrent = beginAction();
     setSaving(true);
     setError(null);
@@ -76,6 +79,7 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
       if (!isCurrent()) return;
       handleError(cause, locale, onUnauthorized, setError);
     } finally {
+      actionLock.current = false;
       if (isCurrent()) setSaving(false);
     }
   };
@@ -95,6 +99,8 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
       setError(copy(locale, 'careSymptomsInvalid'));
       return;
     }
+    if (actionLock.current) return;
+    actionLock.current = true;
     const isCurrent = beginAction();
     setSaving(true);
     setError(null);
@@ -118,6 +124,7 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
       if (!isCurrent()) return;
       handleError(cause, locale, onUnauthorized, setError);
     } finally {
+      actionLock.current = false;
       if (isCurrent()) setSaving(false);
     }
   };
@@ -134,6 +141,8 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
     if (nextPhase === 'ACT' && !actionStatus) return;
     if (nextPhase === 'RECHECK' && !outcome) return;
 
+    if (actionLock.current) return;
+    actionLock.current = true;
     const isCurrent = beginAction();
     setSaving(true);
     setError(null);
@@ -154,6 +163,7 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
       handleError(cause, locale, onUnauthorized, setError);
       if (cause instanceof ApiError && cause.status === 409) setRefreshKey((key) => key + 1);
     } finally {
+      actionLock.current = false;
       if (isCurrent()) setSaving(false);
     }
   };

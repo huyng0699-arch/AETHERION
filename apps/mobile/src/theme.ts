@@ -11,11 +11,11 @@ export type ThemeColors = typeof colors;
 export type ThemePreset = 'amethyst' | 'ocean' | 'rose' | 'midnight';
 export type ThemeMode = 'system' | 'light' | 'dark';
 export type Appearance = { preset: ThemePreset; mode: ThemeMode; reduceMotion: boolean };
-export const presets: Record<ThemePreset, { accent: string; tint: string; gradient: [string, string, string] }> = {
-  amethyst: { accent: '#6539F5', tint: '#F4F0FF', gradient: ['#5638D5', '#8B70F2', '#B8A6FF'] },
-  ocean: { accent: '#087A96', tint: '#EAF8FB', gradient: ['#086B90', '#2098B0', '#8ED3DD'] },
-  rose: { accent: '#B83F70', tint: '#FFF0F5', gradient: ['#963B68', '#CF668E', '#F2A2BC'] },
-  midnight: { accent: '#7163E8', tint: '#F1EFFF', gradient: ['#27264F', '#505481', '#8288B1'] },
+export const presets: Record<ThemePreset, { accent: string; darkAccent: string; tint: string; gradient: [string, string, string] }> = {
+  amethyst: { accent: '#6539F5', darkAccent: '#B2A0FF', tint: '#F4F0FF', gradient: ['#5638D5', '#8B70F2', '#B8A6FF'] },
+  ocean: { accent: '#087A96', darkAccent: '#67D4E8', tint: '#EAF8FB', gradient: ['#086B90', '#2098B0', '#8ED3DD'] },
+  rose: { accent: '#B83F70', darkAccent: '#F492BD', tint: '#FFF0F5', gradient: ['#963B68', '#CF668E', '#F2A2BC'] },
+  midnight: { accent: '#7163E8', darkAccent: '#A7B7FE', tint: '#F1EFFF', gradient: ['#27264F', '#505481', '#8288B1'] },
 };
 const DEFAULT: Appearance = { preset: 'amethyst', mode: 'light', reduceMotion: false };
 const STORAGE = 'aetherion.mobile.appearance.v1';
@@ -42,7 +42,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const isDark = appearance.mode === 'dark' || (appearance.mode === 'system' && system === 'dark');
   const value = useMemo(() => {
     const preset = presets[appearance.preset];
-    const palette = isDark ? { ...colors, background: '#12121F', backgroundRaised: '#1A192C', card: '#211F35', cardSoft: '#29253E', border: '#39334F', text: '#F3F0FF', muted: '#BDB6D3', faint: '#9C94B2', cyan: '#B2A0FF', green: '#5CD8A0', red: '#FF839A', amber: '#EAC279' }
+    const palette = isDark ? { ...colors, background: '#12121F', backgroundRaised: '#1A192C', card: '#211F35', cardSoft: '#29253E', border: '#39334F', text: '#F3F0FF', muted: '#BDB6D3', faint: '#9C94B2', cyan: preset.darkAccent, green: '#5CD8A0', red: '#FF839A', amber: '#EAC279' }
       : { ...colors, cyan: preset.accent, cardSoft: preset.tint, backgroundRaised: preset.tint };
     return { colors: palette, appearance, isDark, gradient: preset.gradient, updateAppearance };
   }, [appearance, isDark]);

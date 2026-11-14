@@ -29,8 +29,8 @@ def main() -> None:
     initialize(db)
     if count_users(db) == 0:
         password = secrets.token_urlsafe(24)
-        username = 'integration-operator' if args.verification else 'local-operator'
-        ensure_bootstrap_user(db, username=username, password=password, role='operator', allowed_subjects=['*'])
+        username = 'integration-operator' if args.verification else 'local-owner'
+        ensure_bootstrap_user(db, username=username, password=password, role='operator' if args.verification else 'admin', allowed_subjects=['*'])
         access_file.write_text(json.dumps({'url': f'http://127.0.0.1:{args.port}', 'username': username, 'password': password}, indent=2), encoding='utf-8')
         try:
             access_file.chmod(0o600)

@@ -16,7 +16,7 @@ def build_client_router(db_path: Callable[[], Path], require_session: Callable) 
         session, _ = identity
         with _connect(db_path()) as conn:
             rows = conn.execute("SELECT subject_id, display_name, scope, role_label, created_at FROM subjects ORDER BY display_name, subject_id").fetchall()
-        authorized = [dict(row) for row in rows if is_subject_authorized(session["role"], session["allowed_subjects"], row["subject_id"])]
+        authorized = [dict(row) for row in rows if row["subject_id"] != "*" and is_subject_authorized(session["role"], session["allowed_subjects"], row["subject_id"])]
         page = authorized[offset:offset + limit]
         return {"subjects": page, "total": len(authorized), "has_more": offset + len(page) < len(authorized), "next_offset": offset + len(page)}
 

@@ -25,9 +25,10 @@ export function SettingsDetailScreen({
 }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const [saved, setSaved] = useState(false);
+  const [saveError, setSaveError] = useState('');
   useEffect(() => { setSaved(false); }, [serverUrl]);
   const title = section === 'account' ? t(locale, 'accountTitle') : section === 'connection' ? t(locale, 'connectionTitle') : t(locale, 'language');
-  const save = async () => { await onSaveServerUrl(); setSaved(true); };
+  const save = async () => { setSaved(false); setSaveError(''); try { await onSaveServerUrl(); setSaved(true); } catch { setSaveError(t(locale, 'urlInvalid')); } };
 
   return (
     <AppPage>
@@ -45,6 +46,7 @@ export function SettingsDetailScreen({
         <Panel style={styles.panel}>
           <Field label={t(locale, 'serverUrl')} value={serverUrl} onChangeText={onChangeServerUrl} autoCapitalize="none" autoCorrect={false} keyboardType="url" placeholder="https://" />
           {saved ? <StatusPill label={t(locale, 'saved')} tone="good" /> : null}
+          {saveError ? <Text accessibilityRole="alert" style={{ color: colors.red }}>{saveError}</Text> : null}
           <ActionButton title={t(locale, 'save')} onPress={() => void save()} secondary />
         </Panel>
       ) : null}

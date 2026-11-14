@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
+import { readSession } from '../storage/session';
 
 const BASE_URL_KEY = 'aetherion.mobile.apiBaseUrl.v1';
 
@@ -30,8 +31,11 @@ export async function readServerUrl(): Promise<string> {
   if (value) return normalizeBaseUrl(value);
   const configured = process.env.EXPO_PUBLIC_AETHERION_SERVER_URL;
   if (configured) return normalizeBaseUrl(configured);
-  if (Platform.OS === 'web' && typeof window !== 'undefined' && window.location.port === '8765') return normalizeBaseUrl(window.location.origin);
-  if (__DEV__ || Platform.OS === 'web') return 'http://127.0.0.1:8765';
+  if (Platform.OS === 'web' && typeof window !== 'undefined') {
+    const localExpo = ['localhost', '127.0.0.1'].includes(window.location.hostname) && ['8081', '8082', '8083'].includes(window.location.port);
+    return localExpo ? 'http://127.0.0.1:8765' : normalizeBaseUrl(window.location.origin);
+  }
+  if (__DEV__) return Platform.OS === 'android' ? 'http://10.0.2.2:8765' : 'http://127.0.0.1:8765';
   throw new Error('SERVER_URL_MISSING');
 }
 
@@ -43,9 +47,13 @@ export async function saveServerUrl(value: string): Promise<string> {
 
 export async function request<T>(
   path: string,
-  options: { method?: string; body?: unknown; token?: string; timeoutMs?: number } = {},
+  options: { method?: string; body?: unknown; token?: string; timeoutMs?: number; baseUrl?: string } = {},
 ): Promise<T> {
-  const baseUrl = await readServerUrl();
+  const baseUrl = options.baseUrl ? normalizeBaseUrl(options.baseUrl) : await readServerUrl();
+  if (options.token && !options.baseUrl) {
+    const stored = await readSession();
+    if (stored?.access_token !== options.token || stored.server_url !== baseUrl) throw new ApiError(401, 'SESSION_SERVER_MISMATCH');
+  }
   const requestId = `mob_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), options.timeoutMs ?? 15000);

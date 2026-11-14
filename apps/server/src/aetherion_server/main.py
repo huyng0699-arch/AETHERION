@@ -55,6 +55,13 @@ class SubjectIn(BaseModel):
     scope: AllowedScope = "CREW"
     role_label: str = Field(default="crew_member", min_length=1, max_length=60)
 
+    @field_validator("subject_id")
+    @classmethod
+    def reject_permission_wildcard(cls, value: str) -> str:
+        if value.strip() == "*":
+            raise ValueError("The permission wildcard is not a subject identifier")
+        return value
+
     @field_validator("subject_id", "display_name", "role_label")
     @classmethod
     def require_non_blank_subject(cls, value: str) -> str:
@@ -493,6 +500,9 @@ def create_app(
     application.include_router(build_assistant_router(get_db_path, require_session))
     from .client_routes import build_client_router
     application.include_router(build_client_router(get_db_path, require_session))
+    @application.api_route("/api/{unmatched_path:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"], include_in_schema=False)
+    def unknown_api_route(unmatched_path: str):
+        raise HTTPException(status_code=404, detail="Unknown API route")
     # An explicit local export shares this API origin; no extra backend/store.
     mobile_web_dir = os.environ.get("AETHERION_MOBILE_WEB_DIR", "").strip()
     if mobile_web_dir:

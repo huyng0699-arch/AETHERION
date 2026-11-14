@@ -125,6 +125,15 @@ class LoginPage(QWidget):
     authenticated = Signal(dict, str)
     demo_requested = Signal()
 
+    def set_visuals(self, theme_name: str, mode: str, high_contrast: bool = False, accent_override: str = "") -> None:
+        from .visual_theme import palette_for
+        palette = palette_for(theme_name, mode, high_contrast, accent_override)
+        self.demo_button.setStyleSheet(
+            "QPushButton { background: " + palette.surface_alt + "; color: " + palette.accent
+            + "; border: 1px solid " + palette.accent + "; border-radius: 12px; padding: 10px 24px; font-weight: 700; }"
+            + "QPushButton:hover { background: " + palette.card_hover + "; }"
+        )
+
     def __init__(
         self,
         parent: QWidget | None = None,
@@ -156,7 +165,8 @@ class LoginPage(QWidget):
         centered.addStretch(1)
         self.card = QFrame(self)
         self.card.setObjectName("contentPanel")
-        self.card.setMaximumWidth(760)
+        self.card.setMinimumWidth(460)
+        self.card.setMaximumWidth(560)
         self.card.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Maximum)
         card_layout = QVBoxLayout(self.card)
         card_layout.setContentsMargins(34, 30, 34, 30)
