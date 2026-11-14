@@ -110,6 +110,8 @@ def build_mission_control_page(api_url: str, network, parent=None):
         def __init__(self):
             super().__init__(parent)
             self.ui_language = "vi"
+            self._status_key: str | None = None
+            self._status_values: dict[str, object] = {}
             self._token = ""  # ephemeral; never logged or saved to disk
             self._subjects: list[str] = []
             self._request_seq = 0
@@ -126,14 +128,35 @@ def build_mission_control_page(api_url: str, network, parent=None):
             update_summary(self, subject=subject, count=count, latest=latest, sources=sources)
 
         def set_locale(self, locale: str):
+            """Switch presentation without logging out, discarding data or a new GET."""
             self.ui_language = normalize_locale(locale)
             translate_shell_widgets(self, self.ui_language)
             self.events_widget.set_locale(self.ui_language)
-            # Never clear the currently displayed, authorized subject/metrics.
-            self.status.setText(translate_existing(self.status.text(), self.ui_language))
+            # The observation header "Observed at" is context-dependent.
+            # Semantic keys avoid an ambiguous English -> Vietnamese guess.
+            self.table.setHorizontalHeaderLabels([
+                tr(self.ui_language, "mission.metric"),
+                tr(self.ui_language, "mission.value"),
+                tr(self.ui_language, "mission.timestamp"),
+                tr(self.ui_language, "mission.source"),
+                tr(self.ui_language, "mission.scope"),
+                tr(self.ui_language, "mission.quality"),
+                tr(self.ui_language, "mission.verification"),
+            ])
+            if self._status_key:
+                self._say(self._status_key, **self._status_values)
 
         def _say(self, key: str, **values):
-            self.status.setText(tr(self.ui_language, key, **values))
+            # Keep the original format arguments; they can be rendered again
+            # after changing locale, including in-flight HTTP response states.
+            self._status_key = key
+            self._status_values = dict(values)
+            localized = dict(values)
+            if key == "mission.snapshot" and "note" in localized:
+                localized["note"] = translate_existing(
+                    str(localized["note"]), self.ui_language
+                )
+            self.status.setText(tr(self.ui_language, key, **localized))
 
         def sign_in(self):
             # A new attempt invalidates earlier data and outstanding GET/login
