@@ -1,21 +1,21 @@
 """Q-0425: real read-only SQLite catalog tests; fixture is synthetic engineering data."""
 from __future__ import annotations
 
-import importlib.util
+import importlib
 from pathlib import Path
 import sqlite3
+import sys
 import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-MODULE = ROOT / 'apps/desktop/src/aetherion_desktop/medical_library.py'
+DESKTOP_SRC = ROOT / "apps" / "desktop" / "src"
+if str(DESKTOP_SRC) not in sys.path:
+    sys.path.insert(0, str(DESKTOP_SRC))
 
-# Load without importing PySide6: actual Windows Qt execution is a separate gate.
-spec = importlib.util.spec_from_file_location('aetherion_medical_catalog', MODULE)
-module = importlib.util.module_from_spec(spec)
-import sys
-sys.modules[spec.name] = module
-spec.loader.exec_module(module)
+# Import in its real package context: relative localization/runtime-path imports
+# must resolve. The Qt widget imports remain lazy and are not run by these tests.
+module = importlib.import_module("aetherion_desktop.medical_library")
 
 
 class CatalogTests(unittest.TestCase):
