@@ -65,6 +65,15 @@ class EventListTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             mod.split_events([technical(), technical()], [])
 
+    def test_technical_unknown_scope_is_rejected(self):
+        with self.assertRaises(ValueError):
+            mod.split_events([technical(scope='CREW')], [])
+
+    def test_offsets_sort_by_absolute_utc_time(self):
+        a = technical(event_id='a', observed_at='2026-11-14T07:00:00+03:00')
+        b = technical(event_id='b', observed_at='2026-11-14T05:00:00+00:00')
+        self.assertEqual([x.event_id for x in mod.split_events([a, b], []).technical], ['b', 'a'])
+
     def test_future_server_integration_can_sort_by_time(self):
         early = technical(event_id='t1', observed_at='2026-11-13T02:00:00Z')
         late = technical(event_id='t2', observed_at='2026-11-14T03:00:00Z')
