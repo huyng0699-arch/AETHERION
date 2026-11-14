@@ -20,3 +20,11 @@ AETHERION's top-level Apache-2.0 license covers only project-owned original cont
 5. Do not use third-party text or figures without the necessary permission or license.
 
 This is an initial compliance inventory, **not a complete license audit**.
+
+## Vendored development references (not AETHERION runtime dependencies)
+
+The full **PyVistaQt** upstream source snapshot is preserved at `Các mã nguồn mở tham khảo/pyvistaqt/` with the original `LICENSE` and copyright notices. Source revision: `ad706903962a533032218e92f39e1a315eaf949f`; 51/51 tracked Git blobs verified. **MIT**: The PyVista Developers (2017–2026).
+
+The following additional references were named in ASTRA's 14 November 2026 reuse guidance, pinned but **not yet copied or independently redistributed**: VisPy (BSD-3-Clause), PyQtGraph (MIT), NASA Open MCT (Apache-2.0), napari (BSD-3-Clause), and 3D Slicer (BSD-style license with additional provisions). Exact repositories and commits: `Các mã nguồn mở tham khảo/SOURCES.lock.json`.
+
+Bundling a source snapshot is not an authorization to incorporate external anatomical meshes, NASA graphics, medical data, or third-party bundled assets into a commercial product. Their rights need separate review.

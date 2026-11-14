@@ -92,6 +92,10 @@ See **[full Windows installation and troubleshooting](docs/INSTALL_WINDOWS.md)**
 
 Read [ROADMAP_2050](docs/ROADMAP_2050.md) for explicit maturity gates rather than promises of completed capability.
 
+## Open-source reference source trees (from ASTRA's design review)
+
+The directory **[Các mã nguồn mở tham khảo](Các%20m%C3%A3%20ngu%E1%BB%93n%20m%E1%BB%9F%20tham%20kh%E1%BA%A3o/README.md)** contains immutable third-party research snapshots, not code currently loaded into the AETHERION runtime. **PyVistaQt is already present in full (51/51 original Git blobs verified).** VisPy, PyQtGraph, NASA Open MCT, napari and 3D Slicer are pinned for full source import, **not yet confirmed as copied** because the GitHub Actions import run failed. See [source lock](Các%20m%C3%A3%20ngu%E1%BB%93n%20m%E1%BB%9F%20tham%20kh%E1%BA%A3o/SOURCES.lock.json) and [import workflow](.github/workflows/vendor_reference_sources.yml). Source presence is not evidence of a working Qt integration.
+
 ## Scientific integrity, licensing and credits
 
 - This project is not affiliated with or endorsed by NASA.
