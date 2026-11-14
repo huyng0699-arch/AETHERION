@@ -38,6 +38,7 @@ class SymptomInterviewPage(QWidget):
         self.last_state = ""
         self._saving = False
         self._request_generation = 0
+        self._search_seq = 0  # discard out-of-order matches from earlier queries
 
         root = QVBoxLayout(self)
         root.setContentsMargins(26, 20, 26, 20)
@@ -64,6 +65,7 @@ class SymptomInterviewPage(QWidget):
         self.hits = QListWidget()
         self.hits.setMaximumHeight(120)
         self.hits.itemClicked.connect(self.select_symptom)
+        self.hits.itemActivated.connect(self.select_symptom)  # Enter / keyboard activation
         root.addWidget(self.hits)
         self.selection = QLabel()
         self.selection.setWordWrap(True)
@@ -199,6 +201,7 @@ class SymptomInterviewPage(QWidget):
 
     def reset_interview(self):
         self._request_generation += 1
+        self._search_seq += 1
         self.active_symptoms = []
         self.answers = {}
         self.question_id = None
@@ -250,26 +253,53 @@ class SymptomInterviewPage(QWidget):
         reply.finished.connect(finished)
 
     def find(self):
-        query = QUrlQuery()
-        query.addQueryItem("query", self.search.text().strip())
-        query.addQueryItem("limit", "25")
-        self._request("GET", "/api/v1/knowledge/symptoms?" + query.toString(),
-                      None, self._show_hits)
-
-    def _show_hits(self, body, error):
+        # Never let an older response replace newer source-backed suggestions.
+        query_text = self.search.text().strip()
+        self._search_seq += 1
+        seq = self._search_seq
         self.hits.clear()
-        if error or not isinstance(body, dict):
-            self.state.setText(self._s("intake.error") + " " + error)
+        if not query_text:
+            self.state.setText(self._s("intake.choose"))
             return
-        for row in body.get("items", []):
+        self.state.setText(self._s("intake.search"))
+        query = QUrlQuery()
+        query.addQueryItem("query", query_text)
+        query.addQueryItem("limit", "25")
+        self._request(
+            "GET", "/api/v1/knowledge/symptoms?" + query.toString(), None,
+            lambda body, error: self._show_hits(body, error, seq, query_text),
+        )
+
+    def _show_hits(self, body, error, seq: int, searched: str):
+        if seq != self._search_seq or searched != self.search.text().strip():
+            return  # a superseded/edited query has no authority over the view
+        self.hits.clear()
+        if error or not isinstance(body, dict) or not isinstance(body.get("items"), list):
+            self.state.setText(self._s("intake.error") + (" " + error if error else ""))
+            return
+        count = 0
+        for row in body["items"][:25]:
+            if not isinstance(row, dict):
+                continue
             name = row.get("name")
-            item = QListWidgetItem(str(name))
-            item.setData(Qt.ItemDataRole.UserRole, name)
+            # Display ONLY actual names supplied by the 819-entry source API.
+            # Never turn None, arbitrary objects or empty labels into symptoms.
+            if not isinstance(name, str) or not name.strip() or len(name) > 120:
+                continue
+            item = QListWidgetItem(name.strip())
+            item.setData(Qt.ItemDataRole.UserRole, name.strip())
             self.hits.addItem(item)
-        self.state.setText(self._s("intake.matched", count=body.get("matched", 0)))
+            count += 1
+        reported = body.get("matched")
+        matches = reported if isinstance(reported, int) and not isinstance(reported, bool) and reported >= count else count
+        self.state.setText(self._s("intake.matched", count=matches))
 
     def select_symptom(self, item):
-        text = str(item.data(Qt.ItemDataRole.UserRole))
+        value = item.data(Qt.ItemDataRole.UserRole)
+        if not isinstance(value, str) or not value.strip() or len(value) > 120:
+            self.state.setText(self._s("intake.unknown"))
+            return
+        text = value.strip()
         if text not in self.active_symptoms and len(self.active_symptoms) < 20:
             self.active_symptoms.append(text)
         self.answers.clear()
