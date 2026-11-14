@@ -565,5 +565,13 @@
   "demo.replay.version": "Nguồn: NASA MA-7, báo cáo 15/06/1962",
   "demo.intro.osdr569": "NASA OSDR · OSD-569 (Inspiration4 CBC)",
   "demo.intro.osdr575": "NASA OSDR · OSD-575 (Inspiration4 sinh hóa)",
-  "demo.intro.osdrWarning": "Nguồn nghiên cứu khác; chưa đưa kết quả của OSD-569/575 vào bản phát lại MA-7 này."
+  "demo.intro.osdrWarning": "Nguồn nghiên cứu khác; chưa đưa kết quả của OSD-569/575 vào bản phát lại MA-7 này.",
+  "demo.official.title": "TÀI NGUYÊN CHÍNH THỨC TRONG ĐỀ THI",
+  "demo.official.description": "Đề thi liệt kê 3 nguồn NASA HRP và 2 nguồn CSA. Các tài nguyên HRP giúp giải thích 5 mối nguy và giới hạn của việc diễn giải chỉ số; chúng không cung cấp luồng sinh hiệu cá nhân liên tục.",
+  "demo.official.hazards": "NASA · 5 mối nguy",
+  "demo.official.risks": "NASA · Nguy cơ sức khỏe",
+  "demo.official.research": "NASA · Nghiên cứu HRP",
+  "demo.official.five": "5 nguy cơ chính: bức xạ; cô lập; xa Trái Đất; trọng lực; môi trường kín.",
+  "demo.official.explain": "MA-7 (1962) là số đo NASA thực, nhưng là nguồn bổ sung, không thuộc 5 liên kết chính thức nói trên. Dữ liệu này không tự chứng minh hệ thống theo dõi liên tục.",
+  "demo.official.mode": "Tài liệu của đề thi ≠ tập dữ liệu MA-7"
 }
