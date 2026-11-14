@@ -132,12 +132,23 @@ def main() -> int:
             )
             assert replay_status == 200 and replay_body["idempotent_replay"] is True
 
-            get_status, get_body = _http_json(
+            default_status, default_body = _http_json(
                 "GET",
                 f"{base_url}/api/v1/observations?subject_id=SMOKE-1",
                 headers={"Authorization": f"Bearer {login_body['access_token']}"},
             )
-            assert get_status == 200 and len(get_body["observations"]) == 1
+            assert default_status == 200 and len(default_body["observations"]) == 0, (
+                f"Expected non-live engineering_test excluded by default, got {default_status} {default_body}"
+            )
+
+            get_status, get_body = _http_json(
+                "GET",
+                f"{base_url}/api/v1/observations?subject_id=SMOKE-1&include_non_live=true",
+                headers={"Authorization": f"Bearer {login_body['access_token']}"},
+            )
+            assert get_status == 200 and len(get_body["observations"]) == 1, (
+                f"Expected 1 observation with include_non_live=true, got {get_status} {get_body}"
+            )
         finally:
             proc.terminate()
             try:
