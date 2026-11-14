@@ -487,5 +487,17 @@
   "care.answer.minutes": "Vài phút",
   "care.answer.hours": "Vài giờ",
   "care.answer.days": "Vài ngày",
-  "care.answer.longer": "Lâu hơn"
+  "care.answer.longer": "Lâu hơn",
+  "mission.mainTitle": "Trung tâm nhiệm vụ",
+  "mission.brandLine": "AETHERION  /  ĐIỀU HÀNH PHI HÀNH ĐOÀN",
+  "mission.openAccessible": "Mở hồ sơ được chọn trong Sức khỏe cá nhân",
+  "mission.tableAccessible": "Bản ghi quan sát và nguồn gốc",
+  "personal.brandLine": "AETHERION  /  SỨC KHỎE CÁ NHÂN",
+  "personal.subjectAccessible": "Hồ sơ phi hành đoàn được chọn chính xác",
+  "personal.filterAccessible": "Lọc bản ghi theo nguồn gốc đã được ghi nhận",
+  "personal.tableAccessible": "Quan sát đã xác thực của hồ sơ đang chọn",
+  "portal.brandLine": "TRUY TINH  /  TRÍ TUỆ SỨC KHỎE NHIỆM VỤ",
+  "portal.vision": "AETHERION  •  TRÁI ĐẤT → VƯƠN XA",
+  "portal.side": "01 / TRANG ĐẦU\n\nMỘT SỨC KHỎE\nVƯƠN XA TRÁI ĐẤT",
+  "main.footer.brand": "TRUY TINH  /  TRÍ TUỆ SỨC KHỎE ĐỘC LẬP"
 }
