@@ -109,53 +109,14 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._token = ""  # ephemeral; never logged or saved to disk
             self._subjects: list[str] = []
             self._request_seq = 0
-            lay = QVBoxLayout(self)
-            title = QLabel("Mission Control · Recorded observations")
-            title.setObjectName("heading")
-            lay.addWidget(title)
-            self.status = QLabel("OFFLINE / NOT AUTHENTICATED — no health status inferred")
-            self.status.setWordWrap(True)
-            lay.addWidget(self.status)
-            auth = QHBoxLayout()
-            self.username = QLineEdit(); self.username.setPlaceholderText("Local username")
-            self.password = QLineEdit(); self.password.setPlaceholderText("Local password")
-            self.password.setEchoMode(QLineEdit.EchoMode.Password)
-            auth.addWidget(self.username)
-            auth.addWidget(self.password)
-            login = QPushButton("Sign in")
-            login.clicked.connect(self.sign_in)
-            auth.addWidget(login)
-            lay.addLayout(auth)
-            subject_row = QHBoxLayout()
-            self.subject_input = QLineEdit()
-            self.subject_input.setPlaceholderText("Authorized subject ID (no invented roster)")
-            subject_row.addWidget(self.subject_input)
-            add = QPushButton("Open subject")
-            add.clicked.connect(self.add_subject)
-            subject_row.addWidget(add)
-            self.refresh = QPushButton("Refresh recorded data")
-            self.refresh.clicked.connect(self.refresh_subject)
-            subject_row.addWidget(self.refresh)
-            lay.addLayout(subject_row)
-            self.open_personal_button = QPushButton("Open selected subject in Personal Health")
-            self.open_personal_button.setAccessibleName("Open selected subject in Personal Health")
-            self.open_personal_button.clicked.connect(self.open_selected_personal)
-            lay.addWidget(self.open_personal_button)
-            self.subjects = QListWidget()
-            self.subjects.setMaximumHeight(100)
-            self.subjects.currentTextChanged.connect(self.refresh_subject)
-            lay.addWidget(self.subjects)
-            self.latest = QLabel("NO_DATA — select an authorized subject")
-            lay.addWidget(self.latest)
-            self.table = QTableWidget(0, 7)
-            self.table.setHorizontalHeaderLabels(["Metric", "Recorded value", "Observed at", "Source", "Scope", "Quality", "Verification"])
-            self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
-            self.table.setAccessibleName("Recorded observations and provenance")
-            lay.addWidget(self.table, 1)
-            self.technical = QLabel("Technical connectivity and health observations are separate. "
-                                    "No clinical events or telemetry are inferred from silence.")
-            self.technical.setWordWrap(True)
-            lay.addWidget(self.technical)
+            # A single native responsive layout, not a second server or webview.
+            from .features.mission.mission_layout import install_mission_layout
+            install_mission_layout(self, api_url)
+
+        def _update_summary(self, *, subject: str = "", count: int | None = None,
+                            latest: str = "", sources: int | None = None):
+            from .features.mission.mission_layout import update_summary
+            update_summary(self, subject=subject, count=count, latest=latest, sources=sources)
 
         def sign_in(self):
             if not self.username.text().strip() or not self.password.text():
@@ -180,6 +141,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
                 self._token = ""
                 self.status.setText("DENIED / OFFLINE — login failed; no records shown")
                 self.table.setRowCount(0)
+                self._update_summary()
                 return
             self._token = token
             self.status.setText("Authenticated local session — choose an authorized subject")
@@ -214,6 +176,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._request_seq += 1
             seq = self._request_seq
             self.table.setRowCount(0)
+            self._update_summary(subject=subject_id)
             if not subject_id:
                 self.status.setText("NO_DATA — no authorized subject selected")
                 return
@@ -236,18 +199,20 @@ def build_mission_control_page(api_url: str, network, parent=None):
             if code in (401, 403):
                 self._token = "" if code == 401 else self._token
                 self.status.setText("DENIED — session expired or subject access forbidden")
-                self.latest.setText("No accessible observations")
+                self._update_summary(subject=subject_id)
                 return
             if code != 200:
                 self.status.setText("OFFLINE / ERROR — server unreachable or request rejected")
-                self.latest.setText("No observations displayed")
+                self._update_summary(subject=subject_id)
                 return
             try:
                 snapshot = parse_observations(json.loads(raw.decode("utf-8")), subject_id)
             except (ValueError, UnicodeDecodeError):
                 snapshot = MissionSnapshot("ERROR", subject_id, (), "", "Malformed JSON response")
             self.status.setText(f"{snapshot.state} — {snapshot.note}")
-            self.latest.setText("Last observed: " + snapshot.latest_at if snapshot.latest_at else "No recorded measurements")
+            self._update_summary(subject=subject_id, count=len(snapshot.rows),
+                                 latest=snapshot.latest_at,
+                                 sources=len({row.source_id for row in snapshot.rows}))
             self.table.setRowCount(len(snapshot.rows))
             for row_i, obs in enumerate(snapshot.rows):
                 for col_i, value in enumerate((obs.metric, obs.reading, obs.observed_at, obs.source_id,
