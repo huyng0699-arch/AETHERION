@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "quest_id": "Q-0419",
+  "article_id": "CLIFF-119",
+  "source_slot": 119,
+  "title": null,
+  "category": null,
+  "review_status": "BLOCKED_SOURCE_UNRESOLVED",
+  "observed_at_utc": "2026-11-14T05:33:00Z",
+  "sources": [
+    {
+      "type": "official_nasa_imm_index",
+      "url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+      "description": "NASA rendered documentation table; CliFF 119 column; 119th unique document not established"
+    },
+    {
+      "type": "aetherion_coordination_catalog",
+      "path": "quests/CLIFF_119_INDEX.md",
+      "git_blob_sha": "fec4b6c235075a19cceb2e26d606c54fa38ad18a",
+      "description": "119 declared work slots; 118 named entries and one explicitly unresolved placeholder"
+    }
+  ],
+  "audit": {
+    "method": "Inspect published NASA IMM CliFF 119 column; parse AETHERION assignment catalog slot rows, with slot 119 labeled RECONCILE MISSING 119TH",
+    "catalog_slots": 119,
+    "catalog_named_slots": 118,
+    "catalog_unresolved_slots": 1,
+    "official_unique_119th_identified": false,
+    "official_119th_absence_proven": false,
+    "direct_source_url": null,
+    "http_source_status": "NOT_TESTED_NO_VERIFIED_DIRECT_URL",
+    "original_bytes_acquired": false,
+    "original_document_sha256": null,
+    "original_pages_audited": 0,
+    "original_sections": 0,
+    "original_tables": 0,
+    "original_figures": 0,
+    "extra_licensed_images": 0,
+    "image_rights_review": "NOT_STARTED_NO_SOURCE_IDENTIFIED",
+    "sqlite_import": "NOT_ATTEMPTED_NO_SOURCE",
+    "windows_native_offline_preview": "NOT_ATTEMPTED_NO_SOURCE",
+    "clinical_review": "NOT_PERFORMED",
+    "independent_review": "PENDING"
+  },
+  "blockers": [
+    {
+      "code": "ORIGINAL_IDENTITY_UNRESOLVED",
+      "evidence": "AETHERION slot 119 is not associated with an individually identified NASA CliFF 119 item; official rendered index does not establish a distinct 119th source from this audit"
+    },
+    {
+      "code": "DIRECT_URL_UNVERIFIED",
+      "evidence": "No independently verified direct original CliFF 119 document URL exists for this unidentified slot"
+    },
+    {
+      "code": "RIGHTS_AND_NATIVE_RENDER_UNVERIFIED",
+      "evidence": "No original bytes, permitted licensed images, library import, or Windows native render proof exists"
+    }
+  ],
+  "next_actions": [
+    "Reconcile the official NASA 2023 CliFF 119 source roster with an authoritative NASA listing or NASA contact; identify distinct final item and exact category/title",
+    "Resolve the exact final file-level document URL; record actual retrieval outcome, version, page count and SHA-256",
+    "Only after authentic content is accessible, audit page-anchored sections/figures/tables, rights-cleared image assets, SQLite ingestion and real Windows offline preview",
+    "Obtain independent review before changing this Quest to DONE"
+  ],
+  "safety_note": "This is a missing-source audit only; it is not a clinical reference, a downloaded NASA document, a diagnosis, or proof that the complete 119 original documents are available."
+}
