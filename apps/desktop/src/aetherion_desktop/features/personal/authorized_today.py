@@ -10,13 +10,11 @@ import json
 
 from PySide6.QtCore import QUrl
 from PySide6.QtNetwork import QNetworkReply, QNetworkRequest
-from PySide6.QtWidgets import (
-    QComboBox, QHBoxLayout, QLabel, QPushButton, QTableWidget,
-    QTableWidgetItem, QVBoxLayout, QWidget,
-)
+from PySide6.QtWidgets import QTableWidgetItem, QWidget
 
 from .identity import checked_personal_handoff
 from .latest_metrics import latest_metric_cards
+from .personal_visual import build_personal_visual, update_personal_tiles, latest_tiles
 from .source_classification import record_origin
 from .today_dashboard import (
     build_personal_today_snapshot,
@@ -36,45 +34,8 @@ class AuthorizedPersonalTodayPage(QWidget):
         self._request_seq = 0
         self._displayed_cards = ()
 
-        layout = QVBoxLayout(self)
-        heading = QLabel("Personal Health / Today")
-        heading.setObjectName("heading")
-        layout.addWidget(heading)
-        self.subject_label = QLabel("No subject selected — choose a subject in Mission Control")
-        self.subject_label.setAccessibleName("Exact selected crew subject")
-        layout.addWidget(self.subject_label)
-        self.status_label = QLabel("NO_DATA — no personal observations requested")
-        self.status_label.setWordWrap(True)
-        layout.addWidget(self.status_label)
-
-        controls = QHBoxLayout()
-        self.refresh_button = QPushButton("Refresh selected subject")
-        self.refresh_button.clicked.connect(self.refresh)
-        controls.addWidget(self.refresh_button)
-        self.origin_filter = QComboBox()
-        self.origin_filter.setAccessibleName("Filter records by documented origin")
-        self.origin_filter.addItem("All record origins", "all")
-        self.origin_filter.addItem("Self-reported", "self")
-        self.origin_filter.addItem("Source verified", "verified")
-        self.origin_filter.addItem("Origin unverified", "unverified")
-        self.origin_filter.currentIndexChanged.connect(self._render_rows)
-        controls.addWidget(self.origin_filter)
-        controls.addStretch()
-        layout.addLayout(controls)
-
-        self.table = QTableWidget(0, 7)
-        self.table.setHorizontalHeaderLabels(
-            ["Metric", "Recorded value", "Observed at", "Source", "Quality", "Verification", "Record origin"]
-        )
-        self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
-        self.table.setAccessibleName("Selected person's authenticated observations")
-        layout.addWidget(self.table, 1)
-        self.note = QLabel(
-            "No symptom form is required. Missing readings are unknown, "
-            "not proof of health. NASA research is not live crew telemetry."
-        )
-        self.note.setWordWrap(True)
-        layout.addWidget(self.note)
+        self._visible_cards = ()
+        build_personal_visual(self)
 
     @property
     def selected_subject_id(self) -> str:
@@ -84,7 +45,9 @@ class AuthorizedPersonalTodayPage(QWidget):
         """Change subject atomically; never display the previous subject's records."""
         self._request_seq += 1  # invalidate any in-flight reply from prior subject
         self._displayed_cards = ()
+        self._visible_cards = ()
         self.table.setRowCount(0)
+        update_personal_tiles(self, ())
         self._subject_id = ""
         self._token = ""
         try:
@@ -107,7 +70,9 @@ class AuthorizedPersonalTodayPage(QWidget):
         self._request_seq += 1
         seq, subject = self._request_seq, self._subject_id
         self._displayed_cards = ()
+        self._visible_cards = ()
         self.table.setRowCount(0)
+        update_personal_tiles(self, ())
         request = QNetworkRequest(QUrl(personal_observations_url(self._api_url, subject)))
         request.setRawHeader(b"Authorization", ("Bearer " + self._token).encode("utf-8"))
         self.status_label.setText(f"Loading subject {subject} from local API…")
@@ -168,6 +133,8 @@ class AuthorizedPersonalTodayPage(QWidget):
             card for card in self._displayed_cards
             if mode == "all" or record_origin(card)[0] == mode
         ]
+        self._visible_cards = tuple(visible)
+        update_personal_tiles(self, self._visible_cards)
         self.table.setRowCount(len(visible))
         for row, card in enumerate(visible):
             label = record_origin(card)[1]
@@ -177,3 +144,17 @@ class AuthorizedPersonalTodayPage(QWidget):
             )
             for column, value in enumerate(values):
                 self.table.setItem(row, column, QTableWidgetItem(value))
+
+    def focus_metric_tile(self, tile_id: str) -> None:
+        """Reveal the actual source row behind a card, never a fabricated detail."""
+        card = latest_tiles(self._visible_cards).get(tile_id)
+        if card is None:
+            return
+        for index, visible in enumerate(self._visible_cards):
+            if (visible.metric == card.metric and visible.observed_at == card.observed_at
+                    and visible.source_id == card.source_id and visible.reading == card.reading):
+                self.table.selectRow(index)
+                self.table.scrollToItem(self.table.item(index, 0))
+                self.table.setFocus()
+                self.workspace_scroll.ensureWidgetVisible(self.records_panel)
+                break
