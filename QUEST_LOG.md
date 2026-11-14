@@ -98,3 +98,16 @@ Owner override: the rejected five oversized Portal cards / horizontal-menu-only 
 - An implementation with no genuine Windows/device/clinical validation remains `COMPONENT_READY` or `BLOCKED`; only an independent reviewer may approve a truly satisfied Quest. GitHub Actions failing with `runner_id=0` and zero steps does not constitute a Python test result.
 
 **Maintenance:** Record acceptance and owner coordination inside the relevant `quests/v1/Q-XXXX.md`; put lengthy test snapshots in dated `docs/qa/` documents. Keep this root index concise so it cannot become a growing, contradictory second ledger.
+
+## Branch activity — Open MCT visual correction (2026-11-15)
+
+This is activity on draft PR #11, not yet merged to canonical main. Canonical quest status remains unchanged until merge.
+
+| Quest | Current branch state | Completed in this slice | Still open |
+| --- | --- | --- | --- |
+| Q-0485 | RUNNING; visual review accepted; overall acceptance pending | Open MCT Browse → Workspace → Inspect shell, compact Status Area, prominent Demo CTA, readable Inspect, responsive Home; offscreen route flow and independent visual review | Native Windows capture, SQLite readback, shared UTC API/ack, NASA QUrl source-link fix, full route clickthrough, native review |
+| Q-0477 | RUNNING; visual component implemented; overall acceptance pending | Monitoring conductor moved to persistent bottom slot, compacted for 1040×650; no duplicate visible conductor; responsive scroll/table layout | Shared UTC semantics, authorized live API, interview E2E, native Windows render and review |
+
+Evidence: eight Qt offscreen PNG captures in the local preview folder; independent reviewer found all five Open MCT regions and the Monitoring controls readable at 1040×650. These are not Windows desktop captures. The latest GitHub Actions jobs failed at runner allocation with runner_id 0 before any steps, so they are not counted as test results.
+
+Important status rule: neither Quest is DONE; “visual correction complete” describes only this reviewed slice. The top-level Quest records and screen-status log list the remaining acceptance explicitly.
