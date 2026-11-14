@@ -92,6 +92,9 @@ New-Item -ItemType Directory -Force -Path $scienceOut | Out-Null
 if ($libraryExit -eq 0 -and (Test-Path -LiteralPath $library) -and
     (Test-Path -LiteralPath $manifest)) {
     $info = Get-Content -LiteralPath $manifest -Raw -Encoding UTF8 | ConvertFrom-Json
+    if ($RequireLibrary -and $info.import_status -ne "COMPLETE") {
+        throw ("CliFF library is only {0}/119; -RequireLibrary requires all 119 valid records." -f $info.imported_articles)
+    }
     $actualHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $library).Hash.ToLowerInvariant()
     if ($actualHash -ne [string]$info.sqlite_sha256) {
         throw "Scientific SQLite checksum mismatch; refused to bundle."
@@ -142,6 +145,43 @@ if (-not $SkipSmoke) {
         throw "Native window did not appear. EXE exists but has NOT passed Windows GUI boot."
     }
     $evidence.native_gui_smoke = "WINDOW_HANDLE_OBSERVED"
+    # Capture ONLY the AETHERION window rectangle, not the entire desktop.
+    # The PNG remains a local build artifact; it is not uploaded to a service.
+    try {
+        Add-Type -AssemblyName System.Drawing
+        $win32 = @'
+using System;
+using System.Runtime.InteropServices;
+public static class AetherionWindowRect {
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RECT { public int Left, Top, Right, Bottom; }
+    [DllImport("user32.dll")]
+    public static extern bool GetWindowRect(IntPtr hWnd, out RECT rectangle);
+}
+'@
+        Add-Type -TypeDefinition $win32 -ErrorAction SilentlyContinue
+        $rect = New-Object AetherionWindowRect+RECT
+        if ([AetherionWindowRect]::GetWindowRect($p.MainWindowHandle, [ref]$rect)) {
+            $w = [Math]::Min(3840, [Math]::Max(1, $rect.Right - $rect.Left))
+            $h = [Math]::Min(2160, [Math]::Max(1, $rect.Bottom - $rect.Top))
+            if ($w -gt 200 -and $h -gt 150) {
+                $bitmap = New-Object System.Drawing.Bitmap($w, $h)
+                $graphic = [System.Drawing.Graphics]::FromImage($bitmap)
+                try {
+                    $graphic.CopyFromScreen($rect.Left, $rect.Top, 0, 0, $bitmap.Size)
+                    $picture = Join-Path $app "windows-native-portal.png"
+                    $bitmap.Save($picture, [System.Drawing.Imaging.ImageFormat]::Png)
+                    $evidence.screenshot = "windows-native-portal.png"
+                    Write-Host "Actual Windows screenshot (local only): $picture"
+                } finally {
+                    $graphic.Dispose()
+                    $bitmap.Dispose()
+                }
+            }
+        }
+    } catch {
+        Write-Warning ("Window was observed, but screenshot could not be captured: {0}" -f $_.Exception.Message)
+    }
     $evidence | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $evidencePath -Encoding UTF8
     Write-Host "Windows GUI handle observed; inspect five Portal cards, language switch, offline state, then close the app."
     Write-Host "Window-handle evidence does NOT certify routes, medical content, or independent review."
