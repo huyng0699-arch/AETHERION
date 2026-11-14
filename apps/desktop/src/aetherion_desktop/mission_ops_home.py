@@ -1,8 +1,8 @@
 """Native, Open-MCT-inspired Mission Operations start workspace.
 
-An independent Q-0485 component. No modifications to current Portal/main.py.
-This UI publishes typed routing signals: the owning integration agent must
-wire them to *existing* real screens after all shared-file owners ACK.
+The native first-view operations workspace and the SIMULATED-data briefing.
+The application shell wires typed route signals to existing real screens.
+No fabricated status, vitals, diagnosis, astronaut identity or live telemetry.
 
 No fabricated status, vitals, diagnosis, astronaut identity or live telemetry.
 A SIMULATED scenario route is separate from real NASA MA-7 archival science.
@@ -56,6 +56,14 @@ TEXT = {
         "demo.badge": "SIMULATED · DỮ LIỆU GIẢ LẬP",
         "demo.detail": "Mở phần giới thiệu trước khi đi vào kịch bản giả lập. Không ghi vào bệnh án hoặc dữ liệu phi hành đoàn thật.",
         "demo.action": "Bắt đầu Demo",
+        "briefing.badge": "SIMULATED · KHÔNG PHẢI BỆNH ÁN",
+        "briefing.title": "Kịch bản hồ sơ giả lập",
+        "briefing.copy": "Khám phá bộ dữ liệu ngoại tuyến để thử trải nghiệm. Mọi người, giá trị và xu hướng đều hư cấu; đây không phải phép đo, chẩn đoán hay dữ liệu NASA.",
+        "briefing.dataset": "5 hồ sơ hư cấu · 540 ngày · 12 nhóm chỉ số",
+        "briefing.storage": "Dữ liệu nằm trong SQLite Demo riêng. Không ghi vào hồ sơ sức khỏe đã xác thực hoặc kho NASA.",
+        "briefing.provenance": "Nguồn: AETHERION-SYNTHETIC-PATIENTS-V1 · TEST_FIXTURE · UNVERIFIED",
+        "briefing.start": "Nạp dữ liệu giả lập",
+        "briefing.back": "Về Trung tâm điều hành",
         "nasa.title": "NASA · MA-7",
         "nasa.subtitle": "83 giá trị đo NASA công bố năm 1962",
         "nasa.badge": "HISTORICAL SOURCE · KHÔNG TRỰC TIẾP",
@@ -112,6 +120,14 @@ TEXT = {
         "demo.badge": "SIMULATED · FICTIONAL DATA",
         "demo.detail": "Read the scenario explanation before entering the fictional environment. Never writes into real crew or patient records.",
         "demo.action": "Start Demo",
+        "briefing.badge": "SIMULATED · NOT PATIENT DATA",
+        "briefing.title": "Synthetic patient scenario",
+        "briefing.copy": "Explore an offline usability dataset. Every person, value, and trend is fictional; these are not measurements, diagnoses, or NASA data.",
+        "briefing.dataset": "5 fictional profiles · 540 days · 12 metric families",
+        "briefing.storage": "Stored in a separate Demo SQLite database. Nothing is written to authenticated health records or the NASA archive.",
+        "briefing.provenance": "Source: AETHERION-SYNTHETIC-PATIENTS-V1 · TEST_FIXTURE · UNVERIFIED",
+        "briefing.start": "Load simulated data",
+        "briefing.back": "Back to Mission Operations",
         "nasa.title": "NASA · MA-7",
         "nasa.subtitle": "83 actual published NASA values from 1962",
         "nasa.badge": "HISTORICAL SOURCE · NOT LIVE",
@@ -483,5 +499,86 @@ class MissionOperationsHome(QWidget):
             self.context_panel.setVisible(self.width() >= 1210)
 
 
+class SimulatedDemoBriefing(QWidget):
+    """Clear source and privacy boundary shown before synthetic data is loaded."""
+
+    start_requested = Signal()
+    back_requested = Signal()
+
+    def __init__(self, parent=None, *, locale="en"):
+        super().__init__(parent)
+        self.setObjectName("simulatedDemoBriefing")
+        self.language = _locale(locale)
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(28, 22, 28, 25)
+        layout.setSpacing(14)
+
+        self.back_button = QPushButton()
+        self.back_button.setObjectName("navButton")
+        self.back_button.clicked.connect(self.back_requested.emit)
+        layout.addWidget(self.back_button, 0, Qt.AlignmentFlag.AlignLeft)
+
+        self.card = QFrame()
+        self.card.setObjectName("contentPanel")
+        card_layout = QVBoxLayout(self.card)
+        card_layout.setContentsMargins(24, 22, 24, 24)
+        card_layout.setSpacing(12)
+        self.badge = QLabel()
+        self.badge.setObjectName("connectionPill")
+        card_layout.addWidget(self.badge, 0, Qt.AlignmentFlag.AlignLeft)
+        self.title = QLabel()
+        self.title.setObjectName("heroTitle")
+        self.title.setWordWrap(True)
+        card_layout.addWidget(self.title)
+        self.description = QLabel()
+        self.description.setObjectName("heroCopy")
+        self.description.setWordWrap(True)
+        card_layout.addWidget(self.description)
+        self.dataset = QLabel()
+        self.dataset.setObjectName("heading")
+        self.dataset.setWordWrap(True)
+        card_layout.addWidget(self.dataset)
+        self.storage = QLabel()
+        self.storage.setObjectName("pageHint")
+        self.storage.setWordWrap(True)
+        card_layout.addWidget(self.storage)
+        self.provenance = QLabel()
+        self.provenance.setObjectName("pageHint")
+        self.provenance.setWordWrap(True)
+        card_layout.addWidget(self.provenance)
+        self.start_button = QPushButton()
+        self.start_button.setObjectName("primaryAction")
+        self.start_button.setMinimumHeight(46)
+        self.start_button.clicked.connect(self.start_requested.emit)
+        card_layout.addWidget(self.start_button, 0, Qt.AlignmentFlag.AlignLeft)
+        layout.addWidget(self.card)
+        layout.addStretch(1)
+        self.set_locale(self.language)
+
+    def _t(self, key):
+        return TEXT[self.language]["briefing." + key]
+
+    def set_locale(self, raw):
+        self.language = _locale(raw)
+        self.badge.setText(self._t("badge"))
+        self.badge.setAccessibleName(self._t("badge"))
+        self.title.setText(self._t("title"))
+        self.description.setText(self._t("copy"))
+        self.dataset.setText(self._t("dataset"))
+        self.storage.setText(self._t("storage"))
+        self.provenance.setText(self._t("provenance"))
+        self.start_button.setText(self._t("start"))
+        self.start_button.setAccessibleName(self._t("start"))
+        self.back_button.setText(self._t("back"))
+        self.back_button.setAccessibleName(self._t("back"))
+
+    def set_visuals(self, theme=None, reduce_motion=False, mode=None, intensity=48):
+        """Inherit the host application's palette; briefing has no animation."""
+
+
 def build_mission_ops_home(parent=None, **kwargs):
     return MissionOperationsHome(parent, **kwargs)
+
+
+def build_simulated_demo_briefing(parent=None, *, locale="en"):
+    return SimulatedDemoBriefing(parent, locale=locale)

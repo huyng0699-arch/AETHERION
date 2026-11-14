@@ -1,0 +1,45 @@
+name: Q-0485 native desktop smoke
+
+on:
+  pull_request:
+    paths:
+      - "apps/desktop/src/aetherion_desktop/main.py"
+      - "apps/desktop/src/aetherion_desktop/mission_ops_home.py"
+      - "apps/desktop/src/aetherion_desktop/ecg_page.py"
+      - "apps/desktop/src/aetherion_desktop/features/demo/synthetic_patient_ui.py"
+      - "apps/desktop/src/aetherion_desktop/features/demo/synthetic_patients.py"
+      - "apps/desktop/src/aetherion_desktop/features/demo/nasa_ma7.py"
+      - "scripts/q0485_desktop_smoke.py"
+      - ".github/workflows/q0485-desktop-smoke.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qt-offscreen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      QT_QPA_PLATFORM: offscreen
+      AETHERION_API_URL: http://127.0.0.1:9
+      Q0485_SCREENSHOT_DIR: outputs/q0485-desktop-smoke
+    steps:
+      - name: Check out the pull request source
+        uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the native Qt desktop package
+        run: python -m pip install ./apps/desktop
+      - name: Exercise Home, routes, Demo and NASA separation
+        run: python scripts/q0485_desktop_smoke.py
+      - name: Upload Qt offscreen render artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: q0485-qt-offscreen-renders
+          path: outputs/q0485-desktop-smoke/*.png
+          if-no-files-found: warn
+          retention-days: 14
