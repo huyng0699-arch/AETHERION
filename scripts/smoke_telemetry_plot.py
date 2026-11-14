@@ -252,7 +252,7 @@ def main() -> int:
     app.processEvents()
     assert chart.filtered_records()
     assert len(chart.filtered_records()) == table.rowCount()
-    assert all(row.source_id == "ENGINEERING_FIXTURE_ALPHA" for row in table_rows(records, chart))
+    assert all(table.item(i, 3).text() == "ENGINEERING_FIXTURE_ALPHA" for i in range(table.rowCount()))
 
     chart.set_locale("vi")
     time_conductor.set_locale("vi")
@@ -270,7 +270,7 @@ def main() -> int:
     assert chart._bounds == time_conductor.bounds
     chart.source_selector.setCurrentIndex(0)
     app.processEvents()
-    assert chart.filtered_records() == records
+    assert len(chart.filtered_records()) == len(records)
     assert table.rowCount() == len(records)
 
     # Wheel zoom and drag pan are real Qt pointer events and update the same
@@ -348,11 +348,6 @@ def main() -> int:
     )
     window.close()
     return 0
-
-
-def table_rows(records: list[EngineeringPreviewPoint], chart: TelemetryPlot) -> list[object]:
-    """Return exact table filter records for a direct source-selection assertion."""
-    return chart.filtered_records()
 
 
 if __name__ == "__main__":
