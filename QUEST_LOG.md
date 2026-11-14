@@ -4,6 +4,14 @@
 
 **Recovery 14 November 2026:** This navigation page was shortened to remove contradictory, growing historic snapshots. **The previous 45 KB version was archived without content loss** at [QUEST_LOG history](docs/qa/QUEST_LOG_HISTORY_20261114_BEFORE_RECOVERY.md). Past Windows test reports remain available there with their original caveats and dates. No original Quest status or evidence was erased or set to DONE by this change.
 
+## Coordinator status & contributor dispatch (2026-11-14T15:02Z)
+
+Full verified audit across Server, Desktop, Mobile, Watch, CliFF 119, 3D Atlas, failing tests, and 9 contributor role tracks: **[COORDINATOR_AUDIT_AND_DISPATCH_20261114.md](docs/qa/COORDINATOR_AUDIT_AND_DISPATCH_20261114.md)** (verified baseline `de4afef`, rebased on `c242a18`).
+
+- **Board & tooling verified:** `1e228106` repaired `Q-0483` `depends_on: []` -> `quest_board.py check` **PASS (485/485)**, `tests/test_quest_board.py` **7/7 PASS**, `lint_python.py` **490/490**, `audit_bilingual.py` **761 VI / 761 EN**, `smoke_server.py` **PASS**, CliFF SQLite pack **118/119** (`393,748,480` B, `CLIFF-119` empty). Live counts: `DONE: 217`, `BLOCKED: 104`, `PLANNED: 93`, `STALE: 50`, `QUEUED: 18`, `RUNNING: 2`, `READY: 1` (`P0: 111`, `P1: 247`, `P2: 95`, `P3: 32`).
+- **Priority reopens & lease cleanup:** Reopened 4 verified regressions to `STALE / REWORK_REQUIRED` (**`Q-0016`** OpenAPI 10 vs 45 paths, **`Q-0096`** clinical safety fail-open in `guidance_citations.py:52`, **`Q-0261`** diagram vs `Q-0197` Expo app, **`Q-0458`** Samsung SEFT trailer in `medical_image_rights.py:113`); preserved `antigravity-reviewer` `COMPONENT_APPROVED` on `Q-0122/0124/0133/0134` (`c242a189`) and `Q-0444/0445/0460/0471` (`01c9e2b6`, transitioning to `BLOCKED` after supplementary 9/9 test check); synced 19 reviewed `DONE` SHAs (`Q-0420..0431`, `Q-0439..0476`); released 45 expired/`null` `RUNNING` leases -> `STALE`; updated `Q-0319`/`Q-0321` URLs (`Q-0457`). Also noted `apps/mobile` `npm ci --dry-run` `EUSAGE` lockfile drift (`Q-0197`) and `apps/watch/` `PLANNED ONLY`.
+- **Active coordination locks — DO NOT OVERWRITE:** Active leases [`Q-0180`](quests/v1/Q-0180.md) (`15:10:00Z`) and [`Q-0268`](quests/v1/Q-0268.md) (`15:23:00Z`); Draft PR #9 (`Q-0486`); Draft PR #10 (`import/windows-tested-fixes-20261114` — `ClosingConnection`, `QUrl`, `QPalette`, UIA); Issue #8 (`Q-0477`/`Q-0485` UTC sync & `nasa_ma7.py` `QUrl`). Contributors claim 1–3 exact `owned_paths` via CAS on `main` using the role tracks in **[the dispatch guide](docs/qa/COORDINATOR_AUDIT_AND_DISPATCH_20261114.md)**.
+
 ## Current commands — always read the live repository
 
 ```powershell
