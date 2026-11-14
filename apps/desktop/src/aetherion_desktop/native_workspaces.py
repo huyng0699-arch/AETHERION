@@ -10,6 +10,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone, timedelta
 import json
 import math
+from html import escape
 from urllib.parse import urlencode
 
 from PySide6.QtCore import Qt, QUrl, Signal, QTimer, QPointF
@@ -476,6 +477,7 @@ class MonitoringWorkspace(Workspace):
         self.legend_title.setObjectName("heading")
         content.addWidget(self.legend_title)
         self.legend = _caption()
+        self.legend.setTextFormat(Qt.TextFormat.RichText)
         content.addWidget(self.legend)
         self.plot_caption = _caption()
         content.addWidget(self.plot_caption)
@@ -771,9 +773,13 @@ class MonitoringWorkspace(Workspace):
         line = []
         for (source_id, scope, metric, unit), samples in sorted(groups.items()):
             quals = sorted(set(p.quality + "/" + p.verification for p in samples))
-            line.append(self.tx("source_quality", source=source_id,
-                                quality=", ".join(quals), count=len(samples)))
-        self.legend.setText("  •  ".join(line) if line else self.tx("no_rows"))
+            color = self.plot._source_color(source_id).name()
+            legend_label = self.tx("source_quality", source=source_id,
+                                   quality=", ".join(quals), count=len(samples))
+            line.append(f'<span style="color:{color};font-weight:800">◆</span> '
+                        f'{escape(legend_label)}')
+        self.legend.setText(" &nbsp;&nbsp; • &nbsp;&nbsp; ".join(line) if line
+                            else escape(self.tx("no_rows")))
         count = len(filtered)
         if not count:
             self.plot_caption.setText(self.tx("no_rows"))
