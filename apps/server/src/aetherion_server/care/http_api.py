@@ -6,6 +6,7 @@ Routes deliberately use the existing session dependency rather than a second aut
 from __future__ import annotations
 
 import sqlite3
+from aetherion_server.sqlite_compat import connect_closing
 from pathlib import Path
 from typing import Callable, Literal
 
@@ -108,7 +109,7 @@ def build_care_router(
         session, _ = identity
         authorized_subject(session, subject_id)
         # Same canonical database as observations; only subject-owned rows returned.
-        with sqlite3.connect(db_path()) as connection:
+        with connect_closing(db_path()) as connection:
             rows = connection.execute(
                 "SELECT episode_id FROM care_episodes WHERE subject_id = ? "
                 "ORDER BY updated_at_utc DESC, episode_id DESC LIMIT ?",
