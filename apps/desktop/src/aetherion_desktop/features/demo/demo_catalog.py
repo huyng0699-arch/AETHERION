@@ -78,6 +78,35 @@ def load_demo_catalog(progress=None) -> dict:
         done += 1
         if progress:
             progress(done, expected, kind)
+    # A distributable wheel contains an integrity manifest for the copied
+    # JSON files. This checks local package integrity only, not NASA PDF SHA.
+    installed_hashes: dict[str, str] | None = None
+    if root is not None and (root / "snapshot.json").is_file():
+        snapshot, _ = _read_json(root / "snapshot.json", 100_000)
+        if snapshot.get("schema") != "aetherion-nasa-demo-package-v1":
+            raise ValueError("Unsupported packaged NASA reference manifest")
+        rows = snapshot.get("files")
+        if not isinstance(rows, list):
+            raise ValueError("Missing packaged NASA source inventory")
+        installed_hashes = {}
+        for item in rows:
+            if (not isinstance(item, dict) or
+                    not isinstance(item.get("path"), str) or
+                    not isinstance(item.get("sha256"), str)):
+                raise ValueError("Malformed packaged NASA source manifest")
+            if item["path"] in installed_hashes:
+                raise ValueError("Duplicate NASA package source path")
+            installed_hashes[item["path"]] = item["sha256"]
+
+    def check_hash(path: Path, digest: str):
+        if installed_hashes is None:
+            return
+        if root is None:
+            raise ValueError("Missing NASA source data root")
+        relative = path.relative_to(root).as_posix()
+        if installed_hashes.get(relative) != digest:
+            raise ValueError("NASA JSON package checksum does not match manifest")
+
     articles = []
     hazards = []
     glossary = []
@@ -96,7 +125,9 @@ def load_demo_catalog(progress=None) -> dict:
         for number in range(1, EXPECTED_CLIFF + 1):
             ident = f"CLIFF-{number:03}"
             try:
-                record, digest = _read_json(cliff_root / (ident + ".json"), MAX_ARTICLE_BYTES)
+                record_path = cliff_root / (ident + ".json")
+                record, digest = _read_json(record_path, MAX_ARTICLE_BYTES)
+                check_hash(record_path, digest)
                 if (record.get("article_id") != ident or
                         not isinstance(record.get("sections"), list) or
                         not isinstance(record.get("tables"), list) or
@@ -119,7 +150,9 @@ def load_demo_catalog(progress=None) -> dict:
             tick("cliff")
         for ident, filename in EXPECTED_HAZARDS:
             try:
-                hazard, digest = _read_json(hazard_root / filename, MAX_HAZARD_BYTES)
+                hazard_path = hazard_root / filename
+                hazard, digest = _read_json(hazard_path, MAX_HAZARD_BYTES)
+                check_hash(hazard_path, digest)
                 if (hazard.get("hazard_id") != ident or
                         hazard.get("is_live_telemetry") is not False or
                         not isinstance(hazard.get("primary_sources"), list) or
@@ -133,6 +166,7 @@ def load_demo_catalog(progress=None) -> dict:
             tick("hazards")
         try:
             dictionary, digest = _read_json(glossary_file, MAX_SYMPTOM_BYTES)
+            check_hash(glossary_file, digest)
             if (dictionary.get("total_labels") != 819 or
                     dictionary.get("clinical_validation_completed") is not False or
                     not isinstance(dictionary.get("entries"), list) or
