@@ -1,0 +1,50 @@
+name: AETHERION independent acceptance queue (15 min)
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: aetherion-quest-review-every-15min
+  cancel-in-progress: false
+
+jobs:
+  reviewer-queue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Refresh independent acceptance queue from actual Quests
+        run: python scripts/quest_review_queue.py --output quest-review-report.md
+      - name: Keep a single standing Issue for independent reviewer handoff
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          title='AETHERION: Independent Acceptance Review (15m)'
+          number=$(gh issue list --state all --limit 100 --json number,title --jq ".[] | select(.title == \"$title\") | .number" | head -1 || true)
+          if [ -z "$number" ]; then
+            gh issue create --title "$title" --body-file quest-review-report.md
+          else
+            gh issue edit "$number" --body-file quest-review-report.md
+          fi
+        continue-on-error: true
+      - name: Upload review queue even if Issues are disabled
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aetherion-quest-review-queue
+          path: quest-review-report.md
+          retention-days: 7
