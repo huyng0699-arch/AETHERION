@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-049",
+  "slot": 49,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/benzodiazapine-or-opioid-overdose-cliff-2023.pdf?emrc=5cc78e",
+  "http_status": 200,
+  "pdf_bytes": 379879,
+  "pdf_sha256": "950d0d559a3e8e9adb82a63eea68d55c511f6dc01c68f19cafd8b2bc704190ea",
+  "pdf_pages": 15,
+  "sections_count": 15,
+  "tables_count": 3,
+  "references_count": 36,
+  "media_count": 3,
+  "media_sha256s": [
+    "be5e1848b406bf125360849cc0a4910122a1bf6f2e1e9d4e9b645ca572f9a714",
+    "c264838aad2d121751130370a3e91bf07e83697184b8b9c549fb15667b3e1fd4",
+    "ca79669fb283094e7a7dd500b9f4fb559b71a79ee6e87dd4bb50d8203c8741c2"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons Public Domain / CC-BY-4.0 / CC-BY-SA-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}

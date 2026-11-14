@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-049",
+  "title": "Mu-Opioid G-Protein-Coupled Receptor (GPCR) Signaling Diagram",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Mu-opioid_receptor_%28GPCR%29.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Mu-opioid_receptor_(GPCR).png",
+  "license": "PUBLIC-DOMAIN",
+  "author": "Bensaccount at English Wikipedia",
+  "caption": "Molecular diagram of the mu-opioid receptor (GPCR) signaling pathway mediating analgesia, sedation, and central respiratory depression.",
+  "alt_text": "Diagram of the mu-opioid G-protein-coupled receptor in a cell membrane.",
+  "clinical_relevance": "Illustrates the receptor target for opioid agonists and competitive reversal by naloxone in opioid overdose (CLIFF-049, p.1, p.6).",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 704,
+  "height": 744,
+  "size_bytes": 168093,
+  "sha256": "c264838aad2d121751130370a3e91bf07e83697184b8b9c549fb15667b3e1fd4",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Mu-opioid_receptor_%28GPCR%29.png",
+  "retrieved_at_utc": "2026-11-14T06:15:19.027205+00:00",
+  "asset_path": "c264838aad2d121751130370a3e91bf07e83697184b8b9c549fb15667b3e1fd4.png",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "DIAGRAM",
+  "topic_region": "Central Nervous System / Brainstem Opioid Receptors"
+}

@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-049",
+  "title": "Bag-Valve-Mask (BVM) Resuscitator with Bacterial/Viral Filter",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Bag_valve_mask_with_BV_filter.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Bag_valve_mask_with_BV_filter.png",
+  "license": "CC-BY-4.0",
+  "author": "Open Critical Care &amp; World Health Organization",
+  "caption": "Manual bag-valve-mask (BVM) ventilation device equipped with a bacterial/viral filter for emergency airway and ventilatory support.",
+  "alt_text": "Medical photograph of a bag-valve-mask resuscitator with filter attached.",
+  "clinical_relevance": "Manual positive-pressure ventilation is a critical stabilization intervention for severe respiratory depression in medication overdose (CLIFF-049, p.5-6).",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 2048,
+  "height": 1356,
+  "size_bytes": 178838,
+  "sha256": "be5e1848b406bf125360849cc0a4910122a1bf6f2e1e9d4e9b645ca572f9a714",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Bag_valve_mask_with_BV_filter.png",
+  "retrieved_at_utc": "2026-11-14T06:15:19.467399+00:00",
+  "asset_path": "be5e1848b406bf125360849cc0a4910122a1bf6f2e1e9d4e9b645ca572f9a714.png",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "CLINICAL",
+  "topic_region": "Airway & Respiratory Support"
+}

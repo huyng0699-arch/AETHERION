@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-049",
+  "title": "Fingertip Pulse Oximetry Monitoring",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Pulse_Oximeter_Blue_Colour.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Pulse_Oximeter_Blue_Colour.jpg",
+  "license": "CC-BY-SA-4.0",
+  "author": "ParasharSarthak",
+  "caption": "Fingertip pulse oximeter measuring peripheral arterial oxygen saturation (SpO2) and pulse rate during respiratory monitoring.",
+  "alt_text": "Photograph of a fingertip pulse oximeter displaying SpO2 and heart rate.",
+  "clinical_relevance": "Hypoxemia and bradypnea are primary diagnostic indicators of acute benzodiazepine or opioid toxicity (CLIFF-049, p.5-6).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 3986,
+  "height": 2659,
+  "size_bytes": 2053120,
+  "sha256": "ca79669fb283094e7a7dd500b9f4fb559b71a79ee6e87dd4bb50d8203c8741c2",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Pulse_Oximeter_Blue_Colour.jpg",
+  "retrieved_at_utc": "2026-11-14T06:15:19.235573+00:00",
+  "asset_path": "ca79669fb283094e7a7dd500b9f4fb559b71a79ee6e87dd4bb50d8203c8741c2.jpg",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "CLINICAL",
+  "topic_region": "Cardiopulmonary / Oxygenation Monitoring"
+}
