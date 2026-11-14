@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-075",
+  "slot": 75,
+  "quest_id": "Q-0375",
+  "checked_at_utc": "2026-11-14T06:29:30.065462+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/otitis-media-cliff-2023.pdf?emrc=793032",
+  "http_status": 200,
+  "pdf_sha256": "07576bc0135a1b9b087844ab57c1a5f8b46daa3adddeeb178988f6e2e8d1f125",
+  "pdf_bytes": 359834,
+  "pages_extracted": 15,
+  "sections_count": 15,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-075-IMG-01": "97f45215f243e55a027d69e7208f98ffc077df24602f51a660d6877c37c9b442",
+    "CLIFF-075-IMG-02": "adb7219f330ee1971137ae7f236bc05fcced403802426b705f3b1d306de1f507",
+    "CLIFF-075-IMG-03": "1b8bc0cb7c407888135de753d9f2201007f1b40a05d9ff9237b69fd47fd79e23"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
