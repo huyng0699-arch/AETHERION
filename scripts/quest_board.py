@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate and inspect the AETHERION 435-Quest backlog; no third-party dependencies."""
+"""Validate and inspect the AETHERION Quest backlog; no third-party dependencies."""
 from __future__ import annotations
 
 import argparse
@@ -10,7 +10,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 QUESTS = ROOT / "quests" / "v1"
-EXPECTED_COUNT = 435
 VALID_STATES = {"READY", "QUEUED", "PLANNED", "RUNNING", "DONE", "BLOCKED", "STALE"}
 VALID_PRIORITIES = {"P0", "P1", "P2", "P3"}
 
@@ -21,15 +20,32 @@ def parse_quest(file: Path) -> dict[str, object]:
     if not match:
         raise ValueError(f"{file}: missing YAML-style front matter")
     meta: dict[str, object] = {}
+    current_list_key: str | None = None
     for raw in match.group(1).splitlines():
+        stripped = raw.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        if re.match(r"^\s*-\s+", raw) and current_list_key is not None:
+            item = re.sub(r"^\s*-\s+", "", raw).strip()
+            existing = meta.get(current_list_key)
+            if isinstance(existing, list):
+                existing.append(item)
+            else:
+                meta[current_list_key] = [item]
+            continue
+        current_list_key = None
         if ":" not in raw:
             raise ValueError(f"{file}: malformed metadata: {raw}")
         key, value = raw.split(":", 1)
+        key = key.strip()
         value = value.strip()
-        if value.startswith("[") and value.endswith("]"):
-            meta[key.strip()] = [s.strip() for s in value[1:-1].split(",") if s.strip()]
+        if value == "":
+            meta[key] = []
+            current_list_key = key
+        elif value.startswith("[") and value.endswith("]"):
+            meta[key] = [s.strip() for s in value[1:-1].split(",") if s.strip()]
         else:
-            meta[key.strip()] = value
+            meta[key] = value
     return meta
 
 
@@ -48,9 +64,12 @@ def load_all() -> dict[str, dict[str, object]]:
 
 def verify(tasks: dict[str, dict[str, object]]) -> list[str]:
     errors: list[str] = []
-    expected = {f"Q-{i:04d}" for i in range(1, EXPECTED_COUNT + 1)}
+    if not tasks:
+        errors.append("No Quest files found")
+        return errors
+    expected = {f"Q-{i:04d}" for i in range(1, len(tasks) + 1)}
     if set(tasks) != expected:
-        errors.append(f"Expected exactly {EXPECTED_COUNT} IDs; missing={sorted(expected - set(tasks))}, extra={sorted(set(tasks) - expected)}")
+        errors.append(f"Expected contiguous Q-0001..Q-{len(tasks):04d}; missing={sorted(expected - set(tasks))}, extra={sorted(set(tasks) - expected)}")
 
     for ident, info in tasks.items():
         state = info.get("status")
