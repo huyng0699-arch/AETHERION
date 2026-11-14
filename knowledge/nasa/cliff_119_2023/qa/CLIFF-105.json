@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-105",
+  "slot": 105,
+  "quest_id": "Q-0405",
+  "checked_at_utc": "2026-11-14T06:37:03.363196+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-wrist-cliff-2023.pdf?emrc=73e0e4",
+  "http_status": 200,
+  "pdf_sha256": "651d07b7e827755594eb9f07e882e70f582cc9be6cf43193e6770989627891eb",
+  "pdf_bytes": 357734,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-105-IMG-01": "1262662fe2504b462b4336069c05d7b9be5a20d92adc0b26a890c265da1f95af",
+    "CLIFF-105-IMG-02": "cbf7db6572202d29b64aebba395490f4fbd9522af12167fdb16a28d0a94613fe",
+    "CLIFF-105-IMG-03": "bb063b1ac9ffa0879dce6e4c22e6d344c41eb94651c4c9b853cd9ae573fa1d2f"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
