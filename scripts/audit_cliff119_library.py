@@ -135,6 +135,7 @@ def audit_library(
                         issue("DUPLICATE_ARTICLE_SLOT", "Duplicate article slots")
                     source_keys: list[str] = []
                     source_urls: list[str] = []
+                    source_hashes: list[str] = []
                     for slot in range(1, EXPECTED + 1):
                         a = byslot.get(slot)
                         if a is None:
@@ -143,6 +144,8 @@ def audit_library(
                         spec = slot_to_entry.get(slot)
                         source_keys.append(a["source_id"])
                         source_urls.append(a["source_url"])
+                        if _sha256(a["content_sha256"]):
+                            source_hashes.append(a["content_sha256"])
                         if spec and spec.get("article_id") != a["article_id"]:
                             issue("ARTICLE_ID_MISMATCH", f"Catalog {spec.get('article_id')!r}; SQLite {a['article_id']!r}", slot)
                         if spec and spec.get("source_title") and spec["source_title"].strip().casefold() != a["display_title"].strip().casefold():
@@ -179,6 +182,8 @@ def audit_library(
                                         issue("ORIGINAL_FILE_MISSING", "Original document absent or path outside archive", slot)
                                     else:
                                         data = sourcefile.read_bytes()
+                                        if not data.startswith(b"%PDF-") or sourcefile.suffix.lower() != ".pdf":
+                                            issue("ORIGINAL_NOT_PDF", "Original must be an actual PDF, not merely a renamed file", slot)
                                         if hashlib.sha256(data).hexdigest() != a["content_sha256"] or len(data) != a["original_bytes"]:
                                             issue("ORIGINAL_HASH_MISMATCH", "Original bytes differ from source SHA-256/size", slot)
                                         else:
@@ -209,7 +214,7 @@ def audit_library(
                         counts["approved_images"] += usable
                         if usable < min_approved_images:
                             issue("IMAGE_COVERAGE", f"{usable}/{min_approved_images} approved, integrity-checked images", slot)
-                    for key, keys in (("DUPLICATE_SOURCE_ID", source_keys), ("DUPLICATE_SOURCE_URL", source_urls)):
+                    for key, keys in (("DUPLICATE_SOURCE_ID", source_keys), ("DUPLICATE_SOURCE_URL", source_urls), ("DUPLICATE_SOURCE_HASH", source_hashes)):
                         if len(keys) != len(set(keys)):
                             issue(key, "Two distinct CliFF articles have the same original document identity")
             finally:
