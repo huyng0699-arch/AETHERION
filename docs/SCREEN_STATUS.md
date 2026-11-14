@@ -1,7 +1,26 @@
 # AETHERION — Native Windows Screen Status / Trạng thái màn hình
 
-**Latest authoring audit:** 2026-11-14, Q-0485 corrected true Home, bottom UTC conductor and always-readable Inspect; no Qt screenshot.  
+**Latest authoring audit:** 2026-11-14, P0 persistent hosted Mission Operations and original-phase NASA table; source only, no Qt screenshot.  
 **Evidence class:** GitHub file SHA and source inspection only. PySide6 unavailable in this runtime; **no new Linux offscreen or Windows screenshot and no runtime acceptance**.
+
+## P0 source checkpoint — persistent Mission Operations (2026-11-14)
+
+**Owner override:** Browse/Workspace/Inspect and bottom UTC conductor must persist throughout normal native routes, not just cold-start Home; the five-card Portal and duplicate horizontal top navigation are explicitly rejected. This is the user's **actual app visual**, not the Server Admin page.
+
+| P0 issue | Code integration on `main` | What is *not* proven |
+| --- | --- | --- |
+| Browse route previously left Mission Operations | `mission_ops_home.py` [`907a8bff`](https://github.com/huyng0699-arch/AETHERION/commit/907a8bff925c5c5754ab2f2cbcf2dfc705cd441b) adds `attach_feature` / `show_hosted`; `main.py` [`ec0a4399`](https://github.com/huyng0699-arch/AETHERION/commit/ec0a4399995d37cbcfe009987ebbd2b010dc7216) reparents already-constructed native QWidget instances into persistent center Workspace | Qt windowing, reparenting visual behavior, 1040×650 and 150% DPI still **PENDING** |
+| Monitoring / Health / ECG / Chat / other routes | All **13 existing routes** point to their original widgets inside central stack, with native signals and authorized identity/access pathways intact in source; Monitoring still calls its existing `refresh()` | Actual HTTP permission and clickthrough not performed |
+| Briefing and NASA left the shell | Both `SIMULATED briefing → Start → PatientDemo` and distinct real NASA MA-7 archival widget now mount inside center Workspace, preserving Browse and Inspect | No tested synthetic SQLite COUNT(*), five-tab GUI, original NASA QUrl link fix, or visual acceptance |
+| Cluttered duplicate global navigation and status | The old topBar's horizontal route buttons, AETHERION brand and connection pill are hidden, including on resize; global appearance/language/settings/help stay visible. The one displayed status pill in Operations is derived from actual HTTP `/health` reply | Actual post-fix screenshot **PENDING** |
+| Unreadable NASA QPainter bars (no phase, value, unit, axis) | **Removed** unlabelled bars from authentic MA-7 report view. Categorical phase-comparison **table** now displays exact original report timepoint, numeric/string value or missing state, unit and qualifier; click a phase to update original measurement table and right Inspect | Source-level view only; table legibility at minimum window and native clickthrough **PENDING** |
+| Monitor and Home time ranges | Home Time Conductor has explicit UTC bounds and controls its own validated UTC workspace. Q-0477 Monitoring widget's time controls remain independent. Requested narrow API ACK in [Issue #8 comment #6877383276](https://github.com/huyng0699-arch/AETHERION/issues/8#issuecomment-6877383276). | **Not synced** until Q-0477 owner explicitly approves a safe public API, then integration and tests |
+
+**Current source SHAs:** `main.py` blob `9889e109c52943064bf27dfb8a4f8e2284db18de` (commit `ec0a4399`); `mission_ops_home.py` blob `c6c874e0becdd3015a33facfacc53656918fbe68` (commit `907a8bff`). Q-0485 remains RUNNING/IN_PROGRESS/review PENDING.
+
+**Verification boundary:** focused **13/13 GitHub static contract checks** passed for presence of centralized host mappings, existing refresh/subject handoff, new QStackedWidget usage, source-readable NASA categorical table, and absence of topBar duplicate navigation reappearing on resize. No PySide6 Qt/offscreen screenshot, Windows screen, QA clickthrough or independent visual acceptance was obtained; **do not claim visual PASS or DONE.** Previous install attempts were unsuccessful in this runtime. External reviewer must verify rendering, all route switches, source boundaries, VI/EN, theme/reduced motion and minimum window ergonomics.
+
+---
 
 ## Latest corrected native Home layout (GitHub source only; 2026-11-14)
 
