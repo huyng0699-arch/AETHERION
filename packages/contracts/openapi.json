@@ -193,6 +193,16 @@
             }
           },
           {
+            "name": "include_non_live",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Include Non Live"
+            }
+          },
+          {
             "name": "limit",
             "in": "query",
             "required": false,

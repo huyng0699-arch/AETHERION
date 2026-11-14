@@ -247,6 +247,7 @@ def query_observations(
     *,
     scope: str | None = None,
     metric: str | None = None,
+    include_non_live: bool = False,
     limit: int = 100,
 ) -> list[dict[str, Any]]:
     initialize(path)
@@ -258,6 +259,11 @@ def query_observations(
     if metric is not None:
         clauses.append("metric = ?")
         params.append(metric)
+    if not include_non_live and scope != "engineering_test":
+        clauses.append("scope != 'engineering_test'")
+        clauses.append("verification_state != 'TEST_FIXTURE'")
+        clauses.append("LOWER(source_id) NOT LIKE 'nasa_osdr:%'")
+        clauses.append("LOWER(source_id) NOT LIKE 'research:%'")
     params.append(limit)
     where_sql = " AND ".join(clauses)
     with _connect(path) as conn:

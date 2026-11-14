@@ -205,6 +205,7 @@ def create_app(
         subject_id: str = Query(min_length=1, max_length=80),
         scope: AllowedScope | None = Query(default=None),
         metric: str | None = Query(default=None, min_length=1, max_length=80),
+        include_non_live: bool = Query(default=False),
         limit: int = Query(100, ge=1, le=500),
         session_and_token: tuple[dict, str] = Depends(require_session),
     ):
@@ -219,6 +220,7 @@ def create_app(
             subject_id,
             scope=scope,
             metric=metric,
+            include_non_live=include_non_live,
             limit=limit,
         )
         return {
