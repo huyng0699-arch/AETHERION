@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-092",
+  "slot": 92,
+  "quest_id": "Q-0392",
+  "checked_at_utc": "2026-11-14T06:34:07.408033+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/acute-radiation-syndrome-cliff-2023.pdf?emrc=cc2007",
+  "http_status": 200,
+  "pdf_sha256": "db95470265755ef844e15e8d0fd2e32f1809815a5f8227a9a89641bb35251da7",
+  "pdf_bytes": 338922,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-092-IMG-01": "276d81802f2d1c0566cb51470190796dcdd6c173b5c4df9d207319a939e2daaa",
+    "CLIFF-092-IMG-02": "c0178a027de1ac84157c923d4508a13571208214c5c86ae6192096692d4c9010",
+    "CLIFF-092-IMG-03": "06a234cb2f0be4905840309a8c4e56d1ee1b8be6f33af56ca58276a31014fa24"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
