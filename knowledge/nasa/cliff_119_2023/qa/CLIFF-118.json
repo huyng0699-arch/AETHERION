@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-118",
+  "slot": 118,
+  "quest_id": "Q-0418",
+  "checked_at_utc": "2026-11-14T06:40:41.641321+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-flight-associated-neuro-ocular-syndrome-sans-cliff-2023.pdf?emrc=1470b5",
+  "http_status": 200,
+  "pdf_sha256": "f5f41639a8668b9bda4839f1ea75f16762aa992fcb81f58f0a50ded05b3a4c42",
+  "pdf_bytes": 305579,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-118-IMG-01": "367c722b170732af93ae5a0ae98b153de4bf9861fcf7fbf17924163b43513cfe",
+    "CLIFF-118-IMG-02": "1b5fdcf4137f2033732d3c3a8f55fbe928cefaae42dd0e30769cd623ee73993e",
+    "CLIFF-118-IMG-03": "45868c8016ecf9e45fbf9c6355feff31692fee1816e032680d7f3becafee812e"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
