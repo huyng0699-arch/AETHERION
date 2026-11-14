@@ -385,7 +385,12 @@ class UtcSamplePlot(QWidget):
             painter.setPen(QPen(grid, 1))
 
         tick_fractions = (0.0, .5, 1.0) if time_span > 0 else (.5,)
-        tick_label_format = "%m-%d %H:%M" if time_span >= 86400 else "%H:%M:%S"
+        if time_span >= 31_536_000:
+            tick_label_format = "%Y-%m"
+        elif time_span >= 86_400:
+            tick_label_format = "%m-%d %H:%M"
+        else:
+            tick_label_format = "%H:%M:%S"
         for fraction in tick_fractions:
             x = plot.left() + fraction * plot.width()
             painter.setPen(QPen(grid, 1))
