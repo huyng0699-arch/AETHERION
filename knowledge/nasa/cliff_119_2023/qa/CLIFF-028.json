@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-028",
+  "slot": 28,
+  "quest_id": "Q-0328",
+  "checked_at_utc": "2026-11-14T06:07:12.038686+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eyelid-and-anterior-eye-infection-cliff-2023.pdf?emrc=6d65ba",
+  "http_status": 200,
+  "pdf_sha256": "a9a905240d1a6eeb5018fdea1a9040399fef2f02af2b49fb3e641a73995cab7d",
+  "pdf_bytes": 347441,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-028-IMG-01": "e610ec672bd4054a8915664f315984632787621f71b084f987bc5eebd50159b8",
+    "CLIFF-028-IMG-02": "dd23ffbbb53a35fa4e08871b1b28c7fb746882e621afa10d6fe5c7d56792082f",
+    "CLIFF-028-IMG-03": "eb0ebfddb2b1a3c377b6fd416d8bc7af89d58fe5d17d3373f0dcc567e8b424dd"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}

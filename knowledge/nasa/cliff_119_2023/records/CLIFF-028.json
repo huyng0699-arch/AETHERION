@@ -1,0 +1,592 @@
+{
+  "article_id": "CLIFF-028",
+  "slot": 28,
+  "display_title": "Eyelid and Anterior Eye Infection",
+  "category": "Eye Injury",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-028",
+    "publisher": "NASA",
+    "title": "Eyelid and Anterior Eye Infection \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eyelid-and-anterior-eye-infection-cliff-2023.pdf?emrc=6d65ba",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eyelid-and-anterior-eye-infection-cliff-2023.pdf?emrc=6d65ba",
+    "retrieved_at_utc": "2026-11-14T06:07:12.038686+00:00",
+    "content_sha256": "a9a905240d1a6eeb5018fdea1a9040399fef2f02af2b49fb3e641a73995cab7d",
+    "original_mime": "application/pdf",
+    "original_bytes": 347441,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-028-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch      Baseline\n\n\n\n ICL50_Eyelid And Anterior Eye Infection\n\n The eye is comprised of three layers: the exterior fibrous layer (cornea and sclera), the middle vascular layer (choroid, ciliary body, and iris) and the\n internal layer (retina). The lens partitions the anterior structures (iris, anterior chamber, and cornea) from the posterior structures (vitreous, retina,\n choroid, and optic nerve). This CLiFF concerns infections related to the eyelids and the anterior structures of the eye. Conditions that this CliFF\n encompasses include hordeola, infectious conjunctivitis, preseptal cellulitis, infectious uveitis, infectious keratitis. Infection means a disease caused\n by a pathogen or microorganism. Consequently, non-infectious causes such as autoimmune uveitis, allergic conjunctivitis and ulcerative keratitis\n (corneal ulcer) are not covered here. Further, herpes zoster opthalmicus is covered in the CLiFF entitled \u201cHerpes Zoster Reactivation.\u201d Infectious\n conjunctivitis, which is covered in the best-case scenario refers to inflammation resulting from infection of the conjunctiva: the thin, clear membrane\n that lies against the anterior part of the sclera and inside the eyelids (Azari et al., 2020). Cases of conjunctivitis are characterized by hyperemia,\n edema, and discharge. The worst-case scenario can refer to a case of preseptal (or periorbital) cellulitis, but markedly not orbital cellulitis. Preseptal\n and orbital cellulitis are distinct clinical diseases, though have overlapping clinical features and therefore can be difficult to differentiate. Preseptal\n cellulitis involves infection of the eye lids and surrounding skin not involving the orbit (the structures anterior to the orbital septum). Orbital cellulitis\n involves the contents of the orbit (fat and ocular muscles) (Baiu et al., 2020). For simplicity, this CLiFF covers only category 1 of the Chandler\n classification system.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Spaceflight literature were derived from two LSAH data gathering events (Walton, 2010; Saile et. al, 2017) and a NASA white paper (Antonsen et\n  al., 2017). Unfortunately, the authors of this CLiFF did not have direct access to the data from those LSAH events. Consequently, information was\n  taken detailing these events from previous IMM CLiFF entitled \"Eye Infection.\u201d Of note, this IMM previously covered herpes zoster opthalmicus\n  which is now covered in the worst-case scenario of the CLiFF \u2018Herpes Zoster Reactivation\u2019 and was not covered in this condition. From the Walton\n  LSAH pull there were 5 events: \u201c3 styes, 1 blepharitis caused by hair and eyelid pustules.\u201d From the Saile LSAH pull, there were seven more\n  events: three from ISS and four from STS. On ISS, two events involved an extended infection treated with tobramycin/dexamethasone drops and\n  ciprofloxacin. The other case involved keratitis that was treated with ciprofloxacin drops. On STS, two events were styes, one event was a report of\n  \"eye goop\" and one event was recorded as \"eye infection.\" Treatments for these events on STS are unavailable. The statistician of this CLiFF was\n  also able to contact the authors of Antonsen et al. and verify the data (which was also based on the prior LSAH events). During her analysis it was\n  observed that in the Antonsen et al. paper Table 1 was mislabeled as 'ISS through Exp 40' when it should read ' ISS expeditions 9 and 14 through\n  40'; this CLIFF corrects for that error. Antonsen et al. was rated less than the LSAH pulls as they categorized events as \u201ceye abnormalit[ies]\u201d as\n  opposed to specific pathologies. At the time of this CLIFF completion, a repeat LSAH data gathering event was not possible and missions past 2017\n  are not represented.\n\n  ANALOG LITERATURE\n\n  Although analog studies included larger sample sizes, studies did not accurately reflect condition environments or spaceflight populations. As a\n  result, spaceflight data was rated much higher than analog data in the incidence calculation. In Psolka et al. (2007), a retrospective review was\n  conducted of 107 United States military personnel who were referred to the Walter Reed Army Medical Center ophthalmology service between\n  January 1, 2003 and September 30, 2005 with non-battle pathologies. During this time, there were five cases of infectious keratitis (4.7%), one\n  case of blepharitis (0.9%), one case of viral conjunctivitis (0.9%), four cases of anterior uveitis (3.7%), and one case of toxoplasmosis uveitis (0.9%)\n  found in the 33 months of this study. The total number of cases in this study may underestimate true incidence as patients were initially evaluated\n  by their \u201cprimary service\u201d and not every ocular event likely warranted an ophthalmology referral. In a prospective epidemiological study describing\n  the distribution and rates of medical conditions suffered during a physically demanding 25-week Naval Special Warfare Center indoctrination\n  training of male U.S. Navy SEALs, Linenger et al. (1993) reported one \u201ceye infection\u201d event in 482 trainee-months at risk (0.2 per 100 trainee\n  months). Another study (Tansey et al., 1979) analyzed medical reports from 885 Fleet ballistic missile submarine patrols from 1963-1973 and\n  compared them to illness rates found in crewmembers on surface-level vessels. Within this timespan there were nine reported events of\n  \u201ckeratoconjunctivitis,\u201d three cases of \u201ciridocyclitis\u201d and one case of \u201cuveitis\u201d out a total of 48 eye medical cases in a total of 7,650,000 man-days.\n  There are no details whether these cases were secondary to infection, trauma, or autoimmune pathologies. The authors did comment that they\n  believed the reporting of medical conditions on submarines was artificially low secondary to the lack of medical personnel and fear of retribution. In\n\n\n\n\n8/23/2023 5:48:50 PM                                            ICL50_Eyelid And Anterior Eye Infection Cliff                                                     page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-028-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  Thomas et al. (2003), a retrospective analysis was conducted of the medical records between January 1, 1997 and September 30, 2000 of 1389\n  officers and 11,952 enlisted crew members. This accounted for a total of 215,086 and 1,955,521 person-days at sea, respectively. The subjects in\n  this study were a highly screened, healthy population and the study was conducted to develop epidemiological data to determine risk in space\n  medicine. \u201cDisorders of the eye and adnexa\u201d had a reported six officer events for 1.0/100 person-years and 54 enlisted men events for 1.0/100\n  person-years. Unfortunately, there were no further details regarding the types of pathologies involved. A retrospective analysis (Aslam et al., 2005)\n  of medical records presenting to a British Army Field Hospital during Operation Telic, study period March 27 and May 1 2003, reported that\n  conjunctivitis was the most frequent non-traumatic presentation, 22.22% (10 cases out of 45 eye complaints). Other cases reported include two\n  corneal abscesses, two sties, one iritis, one episcleritis, one dacrocystitis and seven \u201cother.\u201d Unfortunately, despite the relevance of the population\n  of this study, an incidence can not be calculated as there is not enough information provided to calculate person-years. Lastly, a study analyzing\n  medical visit data between 1996-2005 of active-duty personnel via the Defense Medical Surveillance System (Hilber et al., 2010) described \u201cother\n  conjunctivitis\u201d and \u201cpunctate keratitis\u201d as two of the top-ten most frequent diagnoses of eye complaints (6.3% and 7.6% of all ocular injuries in\n  2005). Still, it is not known whether these presentations were secondary to infection versus traumatic injuries.\n\n  TERRESTRIAL LITERATURE\n\n  Terrestrial literature came from large retrospective studies with data gathered from nationally representative databases. These studies\n  encompassed populations with increased rates of comorbid conditions. There were no metanalysis incidence data available for this condition.\n  McGwin et al. (2005), analyzed the data from the Consumer Product Safety Commission\u2019s National Electronic Injury Surveillance System (NEISS) All\n  Injury Program in the year 2000 and found that the rate of emergency department treated eye injury in the United States was 3.15 per 1000\n  population (95% confidence interval, 2.66-3.63). \u201cConjunctivitis\u201d accounted for 9.9% of these presentations. Chana et al. (2016) reviewed data from\n  2006-2011 in the U.S Nationwide Emergency Department Sample (NEDS) for ocular problems. There were over 11,929,955 ED visits for ophthalmic\n  conditions during this timeframe; of these, 3,343,900 (28.0%) visits were for \u201cconjunctivitis\u201d and 450,831 (3.8%) visits were for \u201cexternal hordeolum.\u201d\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   0.2638 person-years; SD: 0.07658 person-years\n\n\n\n  INCIDENCE SUMMARY\n\n  Spaceflight data: \u2022 IMM \u2013 12 events (5 in Walton and 7 in Saile) over 45.49 person-years. IR: 0.2638 (95%CI: 0.1429, 0.4485) \u2022 Antonsen report \u2013 5\n  events in Table 2, which matches Walton (as expected). No relevant counts in Table 1. Because the IMM captures more events, those numbers\n  were used in the analysis. Gamma(shape=11.866, rate=44.983) with mean 0.2638 and SD 0.07658 is the Bayesian posterior distribution given the\n  inflight data (12 events over 45.49 person-years) under an uninformative prior.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     0.263789\n     SD\n     0.076578\n\n\n     Gamma\n     (Shape): 11.866\n     (Rate): 44.983\n\n\n\n\n8/23/2023 5:48:50 PM                                          ICL50_Eyelid And Anterior Eye Infection Cliff                                                 page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-028-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                             Source                                 LOC Value\n\n   Walton, et al. 2010                                                  Spaceflight                            4\n\n   Saile et al., 2017                                                   Spaceflight                            4\n\n   Antonsen et al., 2017                                                Spaceflight                            3\n\n   Psolka et al., 2007                                                  Analog                                 2\n\n   Linenger et al., 1993                                                Analog                                 2\n\n   Tansey et al., 1979                                                  Analog                                 2\n\n   Thomas et al., 2003                                                  Analog                                 1\n\n   Aslam et al., 2005                                                   Analog                                 0\n\n   Hilber et al., 2010                                                  Analog                                 1\n\n   McGwin et. al, 2005                                                  Terrestrial                            1\n\n   Channa et al., 2016                                                  Terrestrial                            1\n\n  Spaceflight incidence data was rated the highest as there was an appropriate sample size that occurred in space. Analog and terrestrial studies did\n  not accurately reflect the highly screened crewmembers or the spaceflight environmental conditions. Further, there was concern that analog and\n  terrestrial studies would exert an overwhelming influence on the final incidence distribution given their large number of poorly representative\n  subjects.\n\n\n\n\n8/23/2023 5:48:50 PM                                        ICL50_Eyelid And Anterior Eye Infection Cliff                                               page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-028-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Crewmembers undergo several preflight ocular examinations. Firstly, at L-21/18 m an MRI (3T or better using specific ocular imaging protocols) is\n  obtained. Then at L-21/18 m and L-9/6 m an eye exam is conducted which is inclusive of the following testing: refraction (manifest and cycloplegic),\n  visual acuity (distance and near), Amsler grid, threshold visual fields, pupil reflexes, contrast sensitivity, biomicroscopy (slit lamp), extraocular\n  muscle balance, tonometry, optical biometry, retinal photography, dilated fundoscopic examination and optical coherence tomography (high\n  resolution) including spontaneous venous pulsations (SVP) videography. Also, at L-9/6 m, 2-D ultrasound imaging and contact lens or spectacle\n  fitting is performed. Lastly, at L-90/30 d the best corrected visual acuity, color vision, refraction (manifest), biomicroscopy (slit lamp), tonometry,\n  fundus exam (undilated) and OCT (if any baseline scans need to be repeated) tests are performed. Of note, crew-members are trained to conduct\n  vision testing, fundoscopy and 2-D ultrasound so that they can conduct in-flight eye examinations. All astronauts must undergo annual medical\n  examination that includes a medical history review and clinical laboratory testing.\n\n  BEST CASE SCENARIO DEFINITION\n\n  Mild eyelid infection or bacterial/viral conjunctivitis that may require symptomatic treatment.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Moderate or severe eye infection which requires antibiotic or antiviral treatment.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  None.\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  In the precursor CLiFF entitled \u2018Eye Infection\u2019 the worst-case probability was calculated to be 14.29% (1/7) as \u201cthere were 7 events and 1 of them\n  were worst case. Since we now have worst case scenarios, which did not have before, we can use the empirical data so the worst case would be\n  14.29% (1/7).\u201d The specifics of that worst case are currently unknown as details were not documented in the prior IMM CLiFF. However, the authors\n  of this effort find fault in the prior calculation as it neglected the previous five cases found in the Walton LSAH pull. Adjusting for this, the worst-case\n  scenario happened 8.3% (1/12) of the time. In Chana et al, orbital cellulitis (authors did not separate preseptal cellulitis from the less frequent and\n  more concerning orbital cellulitis) was responsible for 0.9% of all ophthalmic cases presenting to an emergency department based on the\n  Nationwide Emergency Department Sample (NEDS) 2006-2011. Similarly, abscess of the eyelid accounted for 1.0% of these cases. The best-case\n  scenario counterparts, conjunctivitis (conjunctivitis, unspecified and acute conjunctivitis, unspecified) and hordeolum externum, accounted for 25%\n  and 3.8% of cases, respectively. Thus the estimated probability of the worst-case scenario based on data from this study would be 6.2% ((0.9%+\n  1.0%)/(0.9%+1.0%+25%+3.8%)). This is in good agreement with our spaceflight data. Of note, the data in this definition does likely include post-\n  septal/true orbital cellulitis cases which is not covered in the CLiFF condition (anterior eye infections only).\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                              Source                                     LOC Value\n\n   Walton, et al. 2010                                                   Spaceflight                                4\n\n   Saile et al., 2017                                                    Spaceflight                                4\n\n   Channa et al., 2016                                                   Terrestrial                                2\n\n  Both spaceflight and terrestrial data were obtainable to determine the worst-case probability. Ultimately, spaceflight data was rated higher, but the\n  terrestrial data seemed estimate the worst-case relatively well.\n\n\n\n\n8/23/2023 5:48:50 PM                                           ICL50_Eyelid And Anterior Eye Infection Cliff                                                     page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-028-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n\n                                                                CP1: Diagnosis       CP2: Treatment           CP3: Condition End State\n\n                                                                TI%      Duration    TI%         Duration     TI%         RTDC             LOCL\n                         Composite           Condition\n   Case Scenario         Incidence           Probability %      Preset   Preset      Preset      Min   Max Preset         Min%    Max%     Min%     Max%\n\n   Treated Best          mean 0.2638         92 - 92            100      1.1         0           24    336    0           0       0        0        0\n   Case (TBC)            SD 0.07658\n\n   Treated Worst                             8-8                100      1.1         15.9049     48    336    0           0       3.6      0        0\n   Case (TWC)\n\n   Untreated Best        N/A                 N/A                N/A      1.1         15.9049     24    336    0           0       0        0        0\n   Case (UTBC)\n\n   Untreated Worst       N/A                 N/A                N/A      1.1         49.4552     48    840    49.4552     0       100      0        0\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n8/23/2023 5:48:50 PM                                          ICL50_Eyelid And Anterior Eye Infection Cliff                                                   page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-028-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  The best case is an acute bacterial or viral conjunctivitis, hordeolum externum or blepharitis that easily resolves and does not require a prolonged\n  course of antibiotics. In terrestrial conditions, subjects may not even present for medical care and rarely pursue emergency department evaluation.\n  In the worst case, a preseptal cellulitis or an eyelid abscess develops requiring a course of systemic antibiotics. Other conditions associated with\n  the worst case but are even more rare in frequency include infectious iridocyclitis, infectious uveitis, infections keratitis and infectious dacryocystitis.\n  The RTDC surrogate for this CLiFF is hospitalization.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  By definition, the treated best case only requires symptomatic treatment and will resolve on its own without therapeutic intervention. Viral\n  conjunctivitis, the most common overall cause of infectious conjunctivitis, bacterial conjunctivitis or hordeolums/styes are included in the best-case\n  scenario. Most symptoms of viral conjunctivitis last between 3-7 days although infected individuals can transmit the pathogen 14 days from the time\n  of inoculation (Azari et al., 2020). These cases are often treated with artificial tears, antihistamines containing eye-drops, or cold-compresses.\n  Although most cases of acute bacterial conjunctivitis have strong recommendations to be treated with topical antibiotics (Azari et al., 2013), this\n  scenario only allows for symptomatic treatment. In more than 60% of cases, spontaneous cure of bacterial conjunctivitis will happen in 1-2 weeks\n  without any complications (Azari et al., 2020; Schiebel, 2003). Hordeolum or styes can resolve within several days (as little as one) with warm\n  compresses (Carlisle et al., 2015; Lindsley et al., 2017). RTDC or LOCL is not expected for this condition.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  The worst case is a moderate or severe eye infection that requires antibiotic or antiviral treatment. Most treatment regimens for infectious bacterial\n  conjunctivitis can range from 2-10 days (Sheikh et al., 2012; Rose, 2007). There are no controlled trials evaluating the duration of antimicrobial\n  therapy in preseptal cellulitis and duration is usually modified with response to treatment. Most recommendations are for a course of 5-7 days in a\n  combination of nasal decongestants and saline nasal irrigation (Gordan et al., 2020; Howe et al., 2004). However, since the upper-bound of this\n  duration was shorter than the treated best case, duration was increased to be aligned with the other condition. Most infections fulfilling the definition\n  for worst will be preseptal cellulitis. The most common bacterial infections causing preorbital cellulitis are gram positives (staphylococcus aureus,\n  streptococcus pneumoniae, and streptococcus pyogenes). It is planned that vancomycin will be carried onboard exploration missions. Vancomycin\n  will treat each of these bacterial except for vancomycin-resistant strains of staphylococcus aureus (VRSA). A review article (Shariati, et al. 2020)\n  states that 3.6% of staphylococcus aureus isolates were VRSA. This could result in treatment failure and the need for RTDC. Thus, the treated\n  worst case RTDC is 0 to 3.6%. LOCL is not expected for this condition unless it leads to sepsis or orbital cellulitis which are separate conditions.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  Since the treatment for the best-case scenario only involved symptomatic treatment and not therapeutic management, the duration and other\n  parameters are not expected to differ.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  We expect the duration for the untreated worst case to be no less than the treated worst case. In a retrospective observational case series design,\n  the medical records of 54 consecutive patients seen over a 6-year period at the Dean McGee Eye Institute (DMEI) with a diagnosis of adenoviral\n  keratoconjunctivitis were reviewed (Butt et al., 2006). The median duration of disease from onset of the conjunctivitis to resolution of symptomatic\n  subepithelial keratitis was 5 weeks (840 hours). These patients were not treated with any antivirals or antibiotics. The untreated worst case can\n  result in vision compromise; we would expect RTDC should this happen. Therefore, the worst-case estimate for RTDC is 0-100%, accounting for\n  uncertainty. LOCL is not expected for ocular conditions.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                Source                                   LOC Value\n\n   Azari et al., 2020                                                      Terrestrial\n\n   Azari et al., 2013                                                      Terrestrial\n\n\n\n\n8/23/2023 5:48:50 PM                                            ICL50_Eyelid And Anterior Eye Infection Cliff                                                    page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-028-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                               Source                                  LOC Value\n\n   Schiebel, 2003                                                         Terrestrial\n\n   Carlisle et al., 2015                                                  Terrestrial\n                                                                                                                                      3\n   Lindsley et al., 2017                                                  Terrestrial\n\n   Sheikh et al., 2012                                                    Terrestrial\n\n   Rose, 2007                                                             Terrestrial\n\n   Gordan et al., 2020                                                    Terrestrial\n\n   Howe et al., 2004                                                      Terrestrial\n\n   Butt et al., 2006                                                      Terrestrial\n\n  Available studies to determine durations for treated cases involved retrospective studies and review papers. There were no available consensus\n  guidelines for this condition. One cochrane review was available regarding antibiotic treatment for bacterial conjunctivitis (Sheikh et al., 2012). Due\n  to the increasingly more rigorous Institutional Review Board guidelines of American institutions, literature for untreated best and worst cases were\n  limited and this information was often extrapolated from single, low-powered studies.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                              Source                                   LOC Value\n\n   Channa et al., 2016                                                   Terrestrial\n                                                                                                                                     1\n   Shariati et al., 2020                                                 Terrestrial\n\n\n  RTDC for the treated and untreated best case are expected to be zero given the conditions' definition; as such articles were not reviewed for this\n  condition. The remaining scenarios used a retrospective reviews to determine RTDC. The authors performed a Medline search of all reports of\n  vancomycin-resistant Staphylococcus aureus globally from 1997-2019. However, their results are likely an overestimation of resistant bacteria that\n  would be found in a healthy, non-hospitalized cohort. As such, it was used as an upper bound of the RTDC probability. (Shariati, 2020)\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                       Source                                       LOC Value\n\n   N/A                                            N/A                                                                       3\n\n  Based on the definitions, loss of crew life is not expected for any of the scenarios associated with this CLiFF.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope Overview Worst Case Definition: Moderate or severe eye infection which requires antibiotic or antiviral\n  treatment. Best Case Definition: Mild eyelid infection or bacterial/viral conjunctivitis that may require symptomatic treatment. This is an eye infection\n  (such as conjunctivitis). The delineation between best and worst case simply involves antibiotics or not. Note: We are not currently scoping for\n  contact lens associated infections in this condition. Diagnostic Scope and Resourcing In the best-case scenario, diagnosis is based on history and\n  physical examination. In the worst-case scenario, diagnosis is based on history and physical examination. Clinical Phase 1 Duration and Rationale\n  This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\n  consensus duration is as follows: CP1 BC (Treated or Untreated): 1.1 hours This is the longest reasonable time to complete this task for an\n  experienced clinician adjusted for being in the spaceflight environment to do the following: 1 - Take a proper history of the patient 2 - Perform a\n  physical on the patient CP1 WC (Treated or Untreated): 1.1 hours This is the longest reasonable time to complete this task for an experienced\n  clinician adjusted for being in the spaceflight environment to do the following: 1 - Take a proper history of the patient 2 - Perform a physical on the\n  patient The highest scope of practice code used in this CRT which includes interpretation of diagnosis, performing diagnostic tests and performing\n  treatment would be a three, nurse level. Treatment Scope and Resourcing In the best-case scenario, treatment is limited to mild pain medications\n  and lubrication. The worst case scenario, treatment will include ophthalmic as well as systemic pain medication, eye lubrication, and ophthalmic\n  antibiotic therapy. Communications and Support Needs In the best-case and worst-case scenario, initial diagnosis and cleaning is uncomplicated\n  and likely within the scope of care of onboard crew members. Later diagnosis of damage will require ground communications.\n\n\n\n\n8/23/2023 5:48:50 PM                                           ICL50_Eyelid And Anterior Eye Infection Cliff                                                  page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-028-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  IMM CLIFF RECONCILATION COMMENTS\n\n\n  This CLiFF is the successor to the previous IMM CLiFFs entitled \"Eye Infection.\" CLiFF condition definitions for the ocular conditions were changed\n  from the previous IMM effort. Previously, the \u201cEye Infection\u201d CLiFF included herpes zoster opthalmicus; this is now covered in the worst-case\n  scenario of the CLiFF entitled \u201cHerpes Zoster reactivation.\u201d Based on an updated review of the literature, the authors of this CLiFF also significantly\n  changed the expected duration period of the scenarios.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  \u2022 Literature regarding the untreated worst-case scenario was extremely limited and several parameters are based on subject matter expert opinion.\n  \u2022 The worst-case definition was not explicitly defined to one type of pathology, allowing for a wide range of uncertainty. \u2022 There is some possible\n  overlap with other ocular CLiFF definitions. \u2022 There could be under-reporting of past spaceflight cases as many episodes may have been mild and\n  self-limited. \u2022 Viral conjunctivitis can be very contagious, so once any episode occurs, the incidence of further cases will likely increase significantly.\n  \u2022 It can be problematic to determine whether the pathologic causes of styes or blepharitis is caused by obstruction, inflammation or true infection.\n\n\n\n\n8/23/2023 5:48:50 PM                                           ICL50_Eyelid And Anterior Eye Infection Cliff                                                    page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-028-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                             Clinical Phase 2: Treatment\n                                                                                            Affected HSTCs\n                                                               Inter-\n              Cognitive -    Cognitive -                                                                   Cardio-\n                                           Communications    personal         Vision         Hearing                   Dentition          GI          GU\n               Simple        Complex                                                                     pulmonary\n                                                              Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                           854\n    Case\n   (UTBC)\n   Treated\n    Worst\n                                                                           854\n     Case\n    (TWC)\n  Untreated\n    Worst\n                            664                                            854\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                              TI Calculation                        TI Score\n                                                                                                                                                      Total\n                                                                                                                                                    Human\n                                                                                           Translation &                            Total Tasks\n                Hand                                           Lower         Ambul &                       Don/Doff    Pressure                     System\n                            Hand (Any)     Upper Extremity                                 Stabilization                           Impaired By                      TI Decimal         TI %\n               (Dom)                                         Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                          (microgravity)                            Condition\n                                                                                                                                                   Tasks Full\n                                                                                                                                                    Mission\n   Treated\n     Best\n                                                                                                                                   0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n            132                                                                                                       211          1197           3763          0.318097         31.8097\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                                                                                                        211          1197           3763          0.318097         31.8097\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132                                                                                                       211          1861           3763          0.494552         49.4552\n    Case\n   (UTWC)\n\n                                                                         Clinical Phase 3: Condition End State\n                                                                                            Affected HSTCs\n                                                               Inter-\n              Cognitive -    Cognitive -                                                                   Cardio-\n                                           Communications    personal         Vision         Hearing                   Dentition          GI          GU\n               Simple        Complex                                                                     pulmonary\n                                                              Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n    Case\n   (UTBC)\n   Treated\n    Worst\n     Case\n    (TWC)\n  Untreated\n    Worst\n                            664                                            854\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                              TI Calculation                        TI Score\n\n\n\n\n8/23/2023 5:48:50 PM                                         ICL50_Eyelid And Anterior Eye Infection Cliff                                                                             page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-028-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                Translation &                           Total Tasks\n               Hand                                     Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal        TI %\n              (Dom)                                   Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                               (microgravity)                           Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n   Treated\n     Best\n                                                                                                                       0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                                                                       0              3763          0                0\n    Case\n   (UTBC)\n   Treated\n    Worst\n                                                                                                                       0              3763          0                0\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132                                                                                            211         1861           3763          0.494552         49.4552\n    Case\n   (UTWC)\n\n\n\n\n8/23/2023 5:48:50 PM                                  ICL50_Eyelid And Anterior Eye Infection Cliff                                                                      page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-028-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n8/23/2023 5:48:50 PM                                         ICL50_Eyelid And Anterior Eye Infection Cliff                                                 page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-028-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. Antonsen, Erik, Tina Bayuse, Rebecca Blue, Vernie Daniels , Melinda Hailey, Sam Hussey, Eric Kerstman, Mike Krihak, Kara Latorella, Jennifer\n   Mindock, Jerry Myers, Robert Mulcahy, Rebekah Reed, Davis Reyes, Michelle Urbina, and Marlei Walton. 2017. \"Evidence Report: Risk of\n   Adverse Health Outcomes and Decrements in Performance due to In-Flight Medical Conditions.\" In.\n\n   2. Aslam, S., and M. F. Griffiths. 2005. 'Eye casualties during Operation Telic', J R Army Med Corps, 151: 34-6.\n\n   3. Azari, A. A., and N. P. Barney. 2013. 'Conjunctivitis: a systematic review of diagnosis and treatment', Jama, 310: 1721-9.\n\n   4. Azari, Amir A., and Amir Arabi. 2020. 'Conjunctivitis: A Systematic Review', Journal of ophthalmic & vision research, 15: 372-95.\n\n   5. Baiu, I., and E. Melendez. 2020. 'Periorbital and Orbital Cellulitis', Jama, 323: 196.\n\n   6. Butt, A. L., and J. Chodosh. 2006. 'Adenoviral keratoconjunctivitis in a tertiary care eye clinic', Cornea, 25: 199-202.\n\n   7. Carlisle, R. T., and J. Digiovanni. 2015. 'Differential Diagnosis of the Swollen Red Eyelid', Am Fam Physician, 92: 106-12.\n\n   8. Channa, R., S. N. Zafar, J. K. Canner, R. S. Haring, E. B. Schneider, and D. S. Friedman. 2016. 'Epidemiology of Eye-Related Emergency\n   Department Visits', JAMA Ophthalmol, 134: 312-9.\n\n   9. Gordon, A. A., and P. O. Phelps. 2020. 'Management of preseptal and orbital cellulitis for the primary care physician', Dis Mon, 66: 101044.\n\n   10. Hilber, D., T. A. Mitchener, J. Stout, B. Hatch, and M. Canham-Chervak. 2010. 'Eye injury surveillance in the U.S. Department of Defense,\n   1996-2005', Am J Prev Med, 38: S78-85.\n\n   11. Howe, L., and N. S. Jones. 2004. 'Guidelines for the management of periorbital cellulitis/abscess', Clin Otolaryngol Allied Sci, 29: 725-8.\n\n   12. Lindsley, K., J. J. Nichols, and K. Dickersin. 2017. 'Non-surgical interventions for acute internal hordeolum', Cochrane Database Syst Rev, 1:\n   Cd007742.\n\n   13. Linenger, Jerry M., Scott Flinn, Bruce Thomas, and Chrisanna Weech Johnson. 1993. 'Musculoskeletal and Medical Morbidity Associated with\n   Rigorous Physical Training', Clinical Journal of Sport Medicine, 3: 229-34.\n\n   14. McGwin, Gerald, Jr, and Cynthia Owsley. 2005. 'Incidence of Emergency Department\u2013Treated Eye Injury in the United States', Archives of\n   Ophthalmology, 123: 662-66.\n\n   15. Psolka, M., K. S. Bower, D. B. Brooks, S. J. Donnelly, M. Iglesias, W. R. Rimm, and T. P. Ward. 2007. 'Ocular diseases and nonbattle injuries\n   seen at a tertiary care medical center during the Global War on Terrorism', Mil Med, 172: 491-7.\n\n   16. Rose, Peter. 2007. 'Management strategies for acute infective conjunctivitis in primary care: a systematic review', Expert Opinion on\n   Pharmacotherapy, 8: 1903-21.\n\n   17. Saile L., Boley L., Kerstman E. 2017. 'Integration RWS ISS STS Observed Incidence V2.'.\n\n   18. Schiebel, N. E. 2003. 'Evidence-based emergency medicine/systematic review abstract. Use of antibiotics in patients with acute bacterial\n   conjunctivitis', Ann Emerg Med, 41: 407-9.\n\n   19. Sheikh, A., B. Hurwitz, C. P. van Schayck, S. McLean, and U. Nurmatov. 2012. 'Antibiotics versus placebo for acute bacterial conjunctivitis',\n   Cochrane Database Syst Rev: Cd001211.\n\n   20. Tansey, W. A., J. M. Wilson, and K. E. Schaefer. 1979. 'Analysis of health data from 10 years of Polaris submarine patrols', Undersea Biomed\n   Res, 6 Suppl: S217-46.\n\n   21. Thomas, T. L., F. C. Garland, D. Mol\u00e9, B. A. Cohen, T. M. Gudewicz, R. T. Spiro, and S. H. Zahm. 2003. 'Health of U.S. Navy submarine crew\n   during periods of isolation', Aviat Space Environ Med, 74: 260-5.\n\n   22. Walton M, Kerstman E. 2010. ' IMM In-flight Compilation v20100414_Incidence_calculation'.\n\n   23. Shariati, A., Dadashi, M., Moghadam, M.T. et al. Global prevalence and distribution of vancomycin resistant, vancomycin intermediate and\n   heterogeneously vancomycin intermediate Staphylococcus aureus clinical isolates: a systematic review and meta-analysis. Sci Rep 10, 12689\n   (2020). https://doi.org/10.1038/s41598-020-69058-z\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                        PHRASE\n\n   AAOMS                          American Association of Oral and Maxillofacial Surgeons\n\n   AMA                            American Medical Association\n\n\n\n\n8/23/2023 5:48:50 PM                                           ICL50_Eyelid And Anterior Eye Infection Cliff                                            page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-028-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   ARCL                All Remaining Conditions List\n\n   ARS                 Acute Radiation Sickness\n\n   BHP                 Behavioral Health and Performance\n\n   CAC                 Coronary Artery Calcium\n\n   CHS                 Crew Health and Safety\n\n   CL                  Condition List\n\n   CliFF               Clinical Finding Form\n\n   CMO                 Crew Medical Officer\n\n   COMFORT             Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                 Clinical Phase 1\n\n   CP2                 Clinical Phase 2\n\n   CP3                 Clinical Phase 3\n\n   CRL                 Clinical Resource Level\n\n   CRT                 Capability Resource Table\n\n   CST                 Clinical Science Team\n\n   DCS                 Decompression Syndrome\n\n   DRM                 Design Reference Mission\n\n   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n\n\n\n8/23/2023 5:48:50 PM                                 ICL50_Eyelid And Anterior Eye Infection Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    },
+    {
+      "section_id": "CLIFF-028-P14",
+      "ordinal": 13,
+      "heading": "Page 14 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n8/23/2023 5:48:50 PM                                ICL50_Eyelid And Anterior Eye Infection Cliff   page: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "page:14"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-028-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "General"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Poisson"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Gamma"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.263789"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.076578"
+        ],
+        [
+          "Gamma"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-028-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                             Source                                 LOC Value"
+        ],
+        [
+          "Walton, et al. 2010                                                  Spaceflight                            4"
+        ],
+        [
+          "Saile et al., 2017                                                   Spaceflight                            4"
+        ],
+        [
+          "Antonsen et al., 2017                                                Spaceflight                            3"
+        ],
+        [
+          "Psolka et al., 2007                                                  Analog                                 2"
+        ],
+        [
+          "Linenger et al., 1993                                                Analog                                 2"
+        ],
+        [
+          "Tansey et al., 1979                                                  Analog                                 2"
+        ],
+        [
+          "Thomas et al., 2003                                                  Analog                                 1"
+        ],
+        [
+          "Aslam et al., 2005                                                   Analog                                 0"
+        ],
+        [
+          "Hilber et al., 2010                                                  Analog                                 1"
+        ],
+        [
+          "McGwin et. al, 2005                                                  Terrestrial                            1"
+        ],
+        [
+          "Channa et al., 2016                                                  Terrestrial                            1"
+        ],
+        [
+          "Spaceflight incidence data was rated the highest as there was an appropriate sample size that occurred in space. Analog and terrestrial studies did"
+        ],
+        [
+          "not accurately reflect the highly screened crewmembers or the spaceflight environmental conditions. Further, there was concern that analog and"
+        ],
+        [
+          "terrestrial studies would exert an overwhelming influence on the final incidence distribution given their large number of poorly representative"
+        ],
+        [
+          "subjects."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-028-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                              Source                                     LOC Value"
+        ],
+        [
+          "Walton, et al. 2010                                                   Spaceflight                                4"
+        ],
+        [
+          "Saile et al., 2017                                                    Spaceflight                                4"
+        ],
+        [
+          "Channa et al., 2016                                                   Terrestrial                                2"
+        ],
+        [
+          "Both spaceflight and terrestrial data were obtainable to determine the worst-case probability. Ultimately, spaceflight data was rated higher, but the"
+        ],
+        [
+          "terrestrial data seemed estimate the worst-case relatively well."
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-028-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment           CP3: Condition End State"
+        ],
+        [
+          "TI%      Duration    TI%         Duration     TI%         RTDC             LOCL"
+        ],
+        [
+          "Composite           Condition"
+        ],
+        [
+          "Case Scenario         Incidence           Probability %      Preset   Preset      Preset      Min   Max Preset         Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best          mean 0.2638         92 - 92            100      1.1         0           24    336    0           0       0        0        0"
+        ],
+        [
+          "Case (TBC)            SD 0.07658"
+        ],
+        [
+          "Treated Worst                             8-8                100      1.1         15.9049     48    336    0           0       3.6      0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best        N/A                 N/A                N/A      1.1         15.9049     24    336    0           0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst       N/A                 N/A                N/A      1.1         49.4552     48    840    49.4552     0       100      0        0"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-028-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                Source                                   LOC Value"
+        ],
+        [
+          "Azari et al., 2020                                                      Terrestrial"
+        ],
+        [
+          "Azari et al., 2013                                                      Terrestrial"
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-028-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                              Source                                   LOC Value"
+        ],
+        [
+          "Channa et al., 2016                                                   Terrestrial"
+        ],
+        [
+          "1"
+        ],
+        [
+          "Shariati et al., 2020                                                 Terrestrial"
+        ],
+        [
+          "RTDC for the treated and untreated best case are expected to be zero given the conditions' definition; as such articles were not reviewed for this"
+        ],
+        [
+          "condition. The remaining scenarios used a retrospective reviews to determine RTDC. The authors performed a Medline search of all reports of"
+        ],
+        [
+          "vancomycin-resistant Staphylococcus aureus globally from 1997-2019. However, their results are likely an overestimation of resistant bacteria that"
+        ],
+        [
+          "would be found in a healthy, non-hospitalized cohort. As such, it was used as an upper bound of the RTDC probability. (Shariati, 2020)"
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-028-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                       Source                                       LOC Value"
+        ],
+        [
+          "N/A                                            N/A                                                                       3"
+        ],
+        [
+          "Based on the definitions, loss of crew life is not expected for any of the scenarios associated with this CLiFF."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-028-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                   Cardio-"
+        ],
+        [
+          "Communications    personal         Vision         Hearing                   Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                     pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "854"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "854"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664                                            854"
+        ],
+        [
+          "Case"
+        ]
+      ],
+      "page_number": 9,
+      "source_anchor": "page:9#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-028-IMG-01",
+      "ordinal": 0,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-028/anterior_blepharitis.jpg",
+      "mime_type": "image/jpeg",
+      "width": 2465,
+      "height": 1617,
+      "sha256": "e610ec672bd4054a8915664f315984632787621f71b084f987bc5eebd50159b8",
+      "creator": "Imrankabirhossain",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AAnterior_Blepharitis.jpg",
+      "attribution": "Imrankabirhossain, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Clinical photograph of anterior blepharitis showing eyelid margin inflammation and crusting at the lash base.",
+      "alt_text": "Close-up photograph of anterior blepharitis along the upper eyelid margin.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Anterior Blepharitis.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-028-IMG-02",
+      "ordinal": 1,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-028/hordeolum_stye.jpg",
+      "mime_type": "image/jpeg",
+      "width": 984,
+      "height": 723,
+      "sha256": "dd23ffbbb53a35fa4e08871b1b28c7fb746882e621afa10d6fe5c7d56792082f",
+      "creator": "Andre Riemann",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AStye02.jpg",
+      "attribution": "Andre Riemann, via Wikimedia Commons (Public domain)",
+      "caption": "Clinical photograph of an acute eyelid hordeolum (stye) with localized swelling and erythema.",
+      "alt_text": "Close-up photograph of a stye (hordeolum) on the eyelid.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Stye02.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-028-IMG-03",
+      "ordinal": 2,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-028/anterior_conjunctivitis.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1084,
+      "height": 888,
+      "sha256": "eb0ebfddb2b1a3c377b6fd416d8bc7af89d58fe5d17d3373f0dcc567e8b424dd",
+      "creator": "Aykhan Zayedzadeh",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AConjunctivitis_eye_2026_1.jpg",
+      "attribution": "Aykhan Zayedzadeh, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Clinical photograph of anterior ocular surface infection with diffuse conjunctival injection.",
+      "alt_text": "Close-up photograph of an eye with conjunctivitis.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Conjunctivitis eye 2026 1.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-028-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Eyelid and Anterior Eye Infection",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eyelid-and-anterior-eye-infection-cliff-2023.pdf?emrc=6d65ba",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External eyelid and anterior eye clinical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}
