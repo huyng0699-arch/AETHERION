@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field, ConfigDict
 
 from .admin_control import (
     backup_sqlite, probe_local_ai, test_local_model, read_ai_settings, recent_admin_events,
-    save_ai_settings, system_overview,
+    save_ai_settings, system_overview, list_observed_sources, list_admin_users,
 )
 
 
@@ -59,6 +59,14 @@ def build_admin_router(
     @router.post("/ai/local/test")
     def local_model_test(_admin: dict = Depends(require_admin)):
         return test_local_model(read_ai_settings(database_path()))
+
+    @router.get("/sources")
+    def observed_sources(_admin: dict = Depends(require_admin)):
+        return list_observed_sources(database_path())
+
+    @router.get("/users")
+    def admin_users(_admin: dict = Depends(require_admin)):
+        return list_admin_users(database_path())
 
     @router.get("/events")
     def events(_admin: dict = Depends(require_admin)):
