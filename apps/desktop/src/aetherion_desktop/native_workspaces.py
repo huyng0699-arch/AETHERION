@@ -394,7 +394,7 @@ class MonitoringWorkspace(Workspace):
                     p.source_id, p.scope, p.quality, p.verification)
             for col, value in enumerate(data):
                 self.table.setItem(i, col, QTableWidgetItem(str(value)))
-        plotted = filtered if metric else []
+        plotted = [p for p in filtered if p.quality in ("READY", "UNVERIFIED", "STALE")] if metric else []
         self.plot.set_records(plotted)
         if not filtered:
             self.plot_caption.setText(self.t("no_data"))
