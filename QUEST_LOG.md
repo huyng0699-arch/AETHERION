@@ -25,11 +25,21 @@ Quest IDs and counts evolve. At the most recent full directory inspection before
 | --- | --- | --- |
 | Quest ledger / CI | [Q-0001](quests/v1/Q-0001.md), [Q-0241](quests/v1/Q-0241.md) | Strict graph check, functioning read-only lists and actual CI runner-backed pass |
 | Native desktop / Windows EXE | [Q-0002](quests/v1/Q-0002.md), [Q-0003](quests/v1/Q-0003.md), [Q-0010](quests/v1/Q-0010.md) | Real Windows startup, packaged EXE/hash, screenshots and independent review |
-| New Mission Operations Home | [Q-0485](quests/v1/Q-0485.md) | Compact, native mission workspace rather than rejected five oversized cards |
+| New Mission Operations Home | [Q-0485](quests/v1/Q-0485.md) | NASA Open MCT-style Browse / Workspace / Inspect, correct Home overview, fixed bottom UTC conductor; Qt/Windows visual proof still PENDING |
 | Clearly synthetic patient Demo | [Q-0484](quests/v1/Q-0484.md), [Q-0478](quests/v1/Q-0478.md) | Demo explanation → 5 fictional patients/540-day data, separately from actual 1962 NASA MA-7 archive |
 | Monitoring / ECG | [Q-0477](quests/v1/Q-0477.md), [Q-0481](quests/v1/Q-0481.md) | Q-0477 now has an interactive UTC conductor, authenticated paged telemetry, plot/table sync, source/quality legend, explicit gap segmentation, hover/zoom/pan; [headless QA geometry](docs/evidence/q0477_monitor_headless_gap_model.png) is **not** a Qt screenshot. Native Windows/render, API paging and independent review remain pending. |
 | NASA CliFF 119 offline documents | [Q-0421](quests/v1/Q-0421.md), [Q-0425](quests/v1/Q-0425.md), [Q-0426](quests/v1/Q-0426.md), [Q-0427](quests/v1/Q-0427.md), [Q-0435](quests/v1/Q-0435.md) | Actual source, media rights, SQLite import, complete offline reader and native verification |
 | Independent acceptance | [REVIEW-0001](quests/review/REVIEW-0001.md) | Different reviewing agent must assess real evidence; never self-approve |
+
+## Latest Q-0485 native Home visual direction (2026-11-14)
+
+Owner override: the rejected five oversized Portal cards / horizontal-menu-only first-view guidance is superseded **for native Home layout only**. Q-0485 implemented NASA Open MCT-aligned object tree on the left, usable data workspace in the center, source properties/Inspect on the right, and one **bottom** UTC Time Conductor. The initial selected item is Mission Workspace overview, **not** NASA MA-7. NASA MA-7 is a distinct historical source object and remains separate from the prominent **DEMO FOR HACKATHON → SIMULATED briefing → fictional Q-0484 patient app**. Existing 13 feature routes and their authorization remain unchanged.
+
+- Latest source commit [`b92e1a9daac3c8ba036774e6b27aeef7b32633ae`](https://github.com/huyng0699-arch/AETHERION/commit/b92e1a9daac3c8ba036774e6b27aeef7b32633ae); `mission_ops_home.py` blob `d39354c4b7571847cf6ffc3eb79572573e9533d2`. Inspector remains at least 205 logical px with horizontal scrolling at a 1040px window. The shared UTC bounds affect only authorized UTC source data supplied to the Home workspace, **not** Q-0477 Monitoring filters without that owner's ACK, and NASA MA-7 receives no fabricated UTC timestamps.
+- Static code readback: **15/15 structural assertions passed**, not Qt runtime validation. `main.py` integration is unchanged and was previously committed (`dc49fe9` / `83355ec`).
+- **No offscreen Qt image or fresh Windows screenshot**: PySide6/PyQt6 unavailable, attempted venv installation did not find a distribution. Real 1040×650 / 150% DPI UI, clickthrough, source-link correction and independent reviewer remain pending. Full evidence and current Quest status: [Q-0485](quests/v1/Q-0485.md), [SCREEN_STATUS](docs/SCREEN_STATUS.md). Do not mark DONE.
+
+---
 
 ## Engineering and source-of-truth references
 
