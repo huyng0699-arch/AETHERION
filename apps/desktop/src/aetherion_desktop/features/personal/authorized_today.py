@@ -140,7 +140,7 @@ class AuthorizedPersonalTodayPage(QWidget):
             label = record_origin(card)[1]
             values = (
                 card.metric, card.reading, card.observed_at,
-                card.source_id, card.quality, card.verification_state, label
+                card.source_id, card.scope, card.quality, card.verification_state, label
             )
             for column, value in enumerate(values):
                 self.table.setItem(row, column, QTableWidgetItem(value))
