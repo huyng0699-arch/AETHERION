@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-010",
+  "title": "12-Lead ECG Showing ST-Elevation Myocardial Infarction (STEMI)",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/ST_elevation_myocardial_infarction_ECG.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:ST_elevation_myocardial_infarction_ECG.jpg",
+  "license": "CC-BY-4.0",
+  "author": "Various",
+  "caption": "12-lead electrocardiogram demonstrating acute ST-segment elevation characteristic of acute myocardial infarction.",
+  "alt_text": "12-lead ECG tracing with marked ST-segment elevation in contiguous leads.",
+  "clinical_relevance": "Illustrates ECG diagnostic findings for acute coronary syndrome and fibrinolytic/reperfusion risk-planning (CLIFF-010, p.5-9).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 1601,
+  "height": 913,
+  "size_bytes": 459452,
+  "sha256": "79ec942487bbb230b42c2e5e4b2433bcf7087d9eff42cc48eb48cc0b8d7e3849",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/ST_elevation_myocardial_infarction_ECG.jpg",
+  "retrieved_at_utc": "2026-11-14T05:39:48.542436+00:00",
+  "asset_path": "79ec942487bbb230b42c2e5e4b2433bcf7087d9eff42cc48eb48cc0b8d7e3849.jpg",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}

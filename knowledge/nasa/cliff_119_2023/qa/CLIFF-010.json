@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-010",
+  "slot": 10,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/acute-coronary-syndrome-cliff-2023.pdf?emrc=c1bc52",
+  "http_status": 200,
+  "pdf_bytes": 381832,
+  "pdf_sha256": "0f27e7e4d8af58295183406acc4bdd0e4f50dcc2fefbf31572cee48f6d8e3792",
+  "pdf_pages": 15,
+  "sections_count": 15,
+  "tables_count": 3,
+  "references_count": 83,
+  "media_count": 3,
+  "media_sha256s": [
+    "58d7560dbba506dacf5e5ca9ab9d2fe93f5c6ca345c564669835da998850a7dd",
+    "79ec942487bbb230b42c2e5e4b2433bcf7087d9eff42cc48eb48cc0b8d7e3849",
+    "fa0c2042774936dc45958a4ff358281d082a81e499c2b4220dcdd2b01dc36c79"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-3.0 / CC-BY-4.0 / CC-BY-SA-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}
