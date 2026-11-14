@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-113",
+  "slot": 113,
+  "quest_id": "Q-0413",
+  "checked_at_utc": "2026-11-14T06:39:07.482283+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-urinary-incontinence-cliff-2023.pdf?emrc=653898",
+  "http_status": 200,
+  "pdf_sha256": "344afc4255b99c973981240f5d329c01e6a9a7a2366f33da878fe181c5116e33",
+  "pdf_bytes": 293441,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-113-IMG-01": "cec93b337d96263d2655eaebf606d1e82053ddfe864fa8f90dd17535e6fe5f09",
+    "CLIFF-113-IMG-02": "74dd618d6390d3dffc27897606b7a10f8291085be9f5b6c16e7703f4058c9621",
+    "CLIFF-113-IMG-03": "a7dfd6513dfc914cfd5a37d62fc601801751e9457a945d0c3a45918044c8381b"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
