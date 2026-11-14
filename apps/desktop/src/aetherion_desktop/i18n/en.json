@@ -499,5 +499,10 @@
   "portal.brandLine": "TRUY TINH  /  MISSION HEALTH INTELLIGENCE",
   "portal.vision": "AETHERION  •  EARTH → BEYOND",
   "portal.side": "01 / HOME\n\nONE HEALTH\nBEYOND EARTH",
-  "main.footer.brand": "TRUY TINH  /  INDEPENDENT HEALTH INTELLIGENCE"
+  "main.footer.brand": "TRUY TINH  /  INDEPENDENT HEALTH INTELLIGENCE",
+  "explore.value.omitted": "Further nested detail omitted; see original source file.",
+  "explore.value.unspecified": "Not specified",
+  "explore.value.notDocumented": "Not documented in this source.",
+  "explore.value.linked": "Linked source IDs",
+  "explore.value.unsupported": "Unsupported reference field."
 }
