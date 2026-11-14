@@ -6,6 +6,7 @@ import tempfile
 import unittest
 
 from aetherion_server.environment_store import EnvironmentStore
+from aetherion_server.sqlite_compat import connect_sqlite
 
 
 class EnvironmentScopeTests(unittest.TestCase):
@@ -26,7 +27,7 @@ class EnvironmentScopeTests(unittest.TestCase):
             self.assertEqual(rec["metric"], "cabin_co2")
             self.assertEqual(len(store.list_environment_metrics(subject_id="CABIN-HAB-1")), 1)
 
-            with sqlite3.connect(db) as conn:
+            with connect_sqlite(db) as conn:
                 tables = {
                     row[0]
                     for row in conn.execute(

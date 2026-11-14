@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "audit_id": "cliff-119-2023-status-audit",
-  "audited_at_utc": "2026-11-14T09:35:00Z",
+  "audited_at_utc": "2026-11-14T23:30:00Z",
   "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
   "source_index_reachable": true,
   "source_page_last_updated": "2026-08-31",
@@ -12,15 +12,15 @@
   "manifest_exists": false,
   "verified_original_files_count": 0,
   "structured_json_records_dir": "knowledge/nasa/cliff_119_2023/records",
-  "structured_json_records_count": 116,
-  "structured_json_completeness": "116/119",
-  "missing_json_slots": ["CLIFF-019", "CLIFF-021", "CLIFF-119"],
+  "structured_json_records_count": 118,
+  "structured_json_completeness": "118/119",
+  "missing_json_slots": ["CLIFF-119"],
   "completeness_ratio": "0/119",
   "verification_state": "PARTIAL_STRUCTURED_JSON_NO_PDF_ARCHIVE",
   "importer_script": "knowledge/nasa/cliff_119_2023/importer.py",
   "limitations": [
-    "116 structured CliFF JSON records exist in knowledge/nasa/cliff_119_2023/records/ (missing CLIFF-019, CLIFF-021, CLIFF-119) and pack into AETHERION_NASA_CLIFF_119.sqlite.",
+    "118 structured CliFF JSON records exist in knowledge/nasa/cliff_119_2023/records/ (missing only CLIFF-119 after Q-0457 resolved CLIFF-019 and CLIFF-021) and pack into AETHERION_NASA_CLIFF_119.sqlite.",
     "Zero verified original NASA PDF archives are stored locally in knowledge/nasa/cliff_119_2023/original/ (PDFs were extracted into structured JSON during ingestion rather than archived as raw PDFs in git).",
-    "CLIFF-019, CLIFF-021, and the unresolved 119th slot remain missing and are never fabricated."
+    "The unresolved 119th slot (CLIFF-119) remains missing and is never fabricated."
   ]
 }

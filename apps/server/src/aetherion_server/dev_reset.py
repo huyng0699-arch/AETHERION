@@ -1,7 +1,8 @@
 """Local development test-data reset utility (Q-0043)."""
 
 from pathlib import Path
-import sqlite3
+
+from .sqlite_compat import connect_sqlite
 
 
 def reset_development_test_data(db_path: Path | str, *, confirm: bool = False) -> int:
@@ -13,7 +14,7 @@ def reset_development_test_data(db_path: Path | str, *, confirm: bool = False) -
     if not path.is_file():
         raise FileNotFoundError(f"Database not found: {path}")
 
-    with sqlite3.connect(path) as conn:
+    with connect_sqlite(path) as conn:
         cur = conn.execute(
             """
             DELETE FROM observations

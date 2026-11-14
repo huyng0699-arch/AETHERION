@@ -1,4 +1,5 @@
 """Q-0420: real SQLite schema tests; synthetic fixture is explicitly not NASA data."""
+from contextlib import closing
 import hashlib
 import importlib.util
 import sqlite3
@@ -57,7 +58,7 @@ class TestCliFFSQLiteSchema(unittest.TestCase):
         self.assertEqual(audit["media_assets"],1)
         self.assertFalse(audit["library_complete"])
         self.assertEqual(audit["media_hash_mismatches"],[])
-        with lib.connect(self.path,read_only=True) as readonly:
+        with closing(lib.connect(self.path, read_only=True)) as readonly:
             self.assertEqual(readonly.execute("SELECT data FROM media").fetchone()[0],blob)
             with self.assertRaises(sqlite3.OperationalError):
                 readonly.execute("DELETE FROM articles")

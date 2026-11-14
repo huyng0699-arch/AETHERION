@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import os
-from pathlib import Path, PureWindowsPath
+from pathlib import PurePosixPath, PureWindowsPath
 from typing import Mapping
 
 CONFIG_VERSION = 1
@@ -71,7 +71,7 @@ def read_runtime_config(environ: Mapping[str, str] | None = None) -> RuntimeConf
 
     if profile == "release":
         db_path = values.get("AETHERION_DB_PATH", "").strip()
-        if not db_path or not (Path(db_path).is_absolute() or PureWindowsPath(db_path).is_absolute()):
+        if not db_path or not (PurePosixPath(db_path).is_absolute() or PureWindowsPath(db_path).is_absolute()):
             raise ValueError("release profile requires an absolute AETHERION_DB_PATH (never the implicit dev DB)")
         if values.get("AETHERION_BOOTSTRAP_USER") or values.get("AETHERION_BOOTSTRAP_PASSWORD"):
             raise ValueError("release profile prohibits account bootstrap credentials in environment variables")

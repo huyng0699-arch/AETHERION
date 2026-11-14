@@ -6,6 +6,7 @@ import tempfile
 import unittest
 
 from aetherion_server.self_report import SelfReportStore
+from aetherion_server.sqlite_compat import connect_sqlite
 
 
 class SelfReportTests(unittest.TestCase):
@@ -27,7 +28,7 @@ class SelfReportTests(unittest.TestCase):
             self.assertEqual(len(items), 1)
             self.assertEqual(items[0]["symptom"], "headache")
 
-            with sqlite3.connect(db) as conn:
+            with connect_sqlite(db) as conn:
                 tables = {
                     row[0]
                     for row in conn.execute(

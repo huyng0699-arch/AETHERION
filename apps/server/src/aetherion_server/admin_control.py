@@ -14,6 +14,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 
+from .sqlite_compat import connect_sqlite
 from .store import check_readiness, initialize
 
 DEFAULT_AI = {
@@ -28,9 +29,7 @@ SUPPORTED_AI_MODES = frozenset({"off", "local_only"})
 
 
 def _db(path: str | Path):
-    connection = sqlite3.connect(str(path), timeout=5)
-    connection.row_factory = sqlite3.Row
-    return connection
+    return connect_sqlite(str(path), timeout=5, row_factory=sqlite3.Row)
 
 
 def _now() -> str:

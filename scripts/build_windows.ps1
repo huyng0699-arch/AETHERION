@@ -67,6 +67,7 @@ $hazards = Join-Path $root "knowledge\nasa\hazards"
 if (-not (Test-Path -LiteralPath (Join-Path $hazards "space_radiation.json"))) {
     throw "Local NASA hazards missing: scientific Explore view cannot be bundled."
 }
+$anatomy = Join-Path $root "knowledge\anatomy"
 $arguments = @(
     "-m", "PyInstaller", "--noconfirm", "--clean", "--onedir", "--windowed",
     "--name", "AETHERION-Desktop",
@@ -74,9 +75,12 @@ $arguments = @(
     "--paths", (Join-Path $root "apps\desktop\src"),
     "--collect-data", "aetherion_desktop",
     "--collect-submodules", "aetherion_desktop",
-    "--add-data", ("{0};{1}" -f $hazards, "knowledge/nasa/hazards"),
-    $launcher
+    "--add-data", ("{0};{1}" -f $hazards, "knowledge/nasa/hazards")
 )
+if (Test-Path -LiteralPath (Join-Path $anatomy "approved_models.json")) {
+    $arguments += @("--add-data", ("{0};{1}" -f $anatomy, "knowledge/anatomy"))
+}
+$arguments += $launcher
 & $python @arguments
 if ($LASTEXITCODE -ne 0) { throw "PyInstaller failed. No EXE can be claimed." }
 $app = Join-Path $dist "AETHERION-Desktop"
@@ -109,8 +113,16 @@ if ($libraryExit -eq 0 -and (Test-Path -LiteralPath $library) -and
 
 $exeSha = (Get-FileHash -Algorithm SHA256 -LiteralPath $exe).Hash.ToLowerInvariant()
 $exeBytes = (Get-Item -LiteralPath $exe).Length
-$gitSha = (& git rev-parse HEAD).Trim()
-if ($LASTEXITCODE -ne 0) { $gitSha = "UNKNOWN" }
+$gitSha = "UNKNOWN"
+if (Test-Path -LiteralPath (Join-Path $root ".git")) {
+    try {
+        $prevErr = $ErrorActionPreference
+        $ErrorActionPreference = "Continue"
+        $rawSha = (& git -C $root rev-parse HEAD 2>$null | Out-String).Trim()
+        $ErrorActionPreference = $prevErr
+        if ($LASTEXITCODE -eq 0 -and $rawSha) { $gitSha = $rawSha }
+    } catch { }
+}
 $evidence = [ordered]@{
     product = "AETHERION Desktop"
     kind = "WINDOWS_PYINSTALLER_ONEDIR_CANDIDATE"
@@ -132,24 +144,25 @@ Write-Host "Build evidence: $evidencePath"
 if (-not $SkipSmoke) {
     # A real Windows GUI handle, not an import test or a source-code assertion.
     $p = Start-Process -FilePath $exe -WorkingDirectory $app -PassThru
-    $visible = $false
-    for ($i = 0; $i -lt 20; $i++) {
-        Start-Sleep -Milliseconds 650
-        $p.Refresh()
-        if ($p.HasExited) { break }
-        if ($p.MainWindowHandle -ne [IntPtr]::Zero) { $visible = $true; break }
-    }
-    if (-not $visible) {
-        $evidence.native_gui_smoke = "FAILED_OR_NO_INTERACTIVE_DESKTOP"
-        $evidence | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $evidencePath -Encoding UTF8
-        throw "Native window did not appear. EXE exists but has NOT passed Windows GUI boot."
-    }
-    $evidence.native_gui_smoke = "WINDOW_HANDLE_OBSERVED"
-    # Capture ONLY the AETHERION window rectangle, not the entire desktop.
-    # The PNG remains a local build artifact; it is not uploaded to a service.
     try {
-        Add-Type -AssemblyName System.Drawing
-        $win32 = @'
+        $visible = $false
+        for ($i = 0; $i -lt 45; $i++) {
+            Start-Sleep -Milliseconds 650
+            $p.Refresh()
+            if ($p.HasExited) { break }
+            if ($p.MainWindowHandle -ne [IntPtr]::Zero) { $visible = $true; break }
+        }
+        if (-not $visible) {
+            $evidence.native_gui_smoke = "FAILED_OR_NO_INTERACTIVE_DESKTOP"
+            $evidence | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $evidencePath -Encoding UTF8
+            throw "Native window did not appear. EXE exists but has NOT passed Windows GUI boot."
+        }
+        $evidence.native_gui_smoke = "WINDOW_HANDLE_OBSERVED"
+        # Capture ONLY the AETHERION window rectangle, not the entire desktop.
+        # The PNG remains a local build artifact; it is not uploaded to a service.
+        try {
+            Add-Type -AssemblyName System.Drawing
+            $win32 = @'
 using System;
 using System.Runtime.InteropServices;
 public static class AetherionWindowRect {
@@ -159,31 +172,37 @@ public static class AetherionWindowRect {
     public static extern bool GetWindowRect(IntPtr hWnd, out RECT rectangle);
 }
 '@
-        Add-Type -TypeDefinition $win32 -ErrorAction SilentlyContinue
-        $rect = New-Object AetherionWindowRect+RECT
-        if ([AetherionWindowRect]::GetWindowRect($p.MainWindowHandle, [ref]$rect)) {
-            $w = [Math]::Min(3840, [Math]::Max(1, $rect.Right - $rect.Left))
-            $h = [Math]::Min(2160, [Math]::Max(1, $rect.Bottom - $rect.Top))
-            if ($w -gt 200 -and $h -gt 150) {
-                $bitmap = New-Object System.Drawing.Bitmap($w, $h)
-                $graphic = [System.Drawing.Graphics]::FromImage($bitmap)
-                try {
-                    $graphic.CopyFromScreen($rect.Left, $rect.Top, 0, 0, $bitmap.Size)
-                    $picture = Join-Path $app "windows-native-portal.png"
-                    $bitmap.Save($picture, [System.Drawing.Imaging.ImageFormat]::Png)
-                    $evidence.screenshot = "windows-native-portal.png"
-                    Write-Host "Actual Windows screenshot (local only): $picture"
-                } finally {
-                    $graphic.Dispose()
-                    $bitmap.Dispose()
+            Add-Type -TypeDefinition $win32 -ErrorAction SilentlyContinue
+            $rect = New-Object AetherionWindowRect+RECT
+            if ([AetherionWindowRect]::GetWindowRect($p.MainWindowHandle, [ref]$rect)) {
+                $w = [Math]::Min(3840, [Math]::Max(1, $rect.Right - $rect.Left))
+                $h = [Math]::Min(2160, [Math]::Max(1, $rect.Bottom - $rect.Top))
+                if ($w -gt 200 -and $h -gt 150) {
+                    $bitmap = New-Object System.Drawing.Bitmap($w, $h)
+                    $graphic = [System.Drawing.Graphics]::FromImage($bitmap)
+                    try {
+                        $graphic.CopyFromScreen($rect.Left, $rect.Top, 0, 0, $bitmap.Size)
+                        $picture = Join-Path $app "windows-native-portal.png"
+                        $bitmap.Save($picture, [System.Drawing.Imaging.ImageFormat]::Png)
+                        $evidence.screenshot = "windows-native-portal.png"
+                        Write-Host "Actual Windows screenshot (local only): $picture"
+                    } finally {
+                        $graphic.Dispose()
+                        $bitmap.Dispose()
+                    }
                 }
             }
+        } catch {
+            Write-Warning ("Window was observed, but screenshot could not be captured: {0}" -f $_.Exception.Message)
         }
-    } catch {
-        Write-Warning ("Window was observed, but screenshot could not be captured: {0}" -f $_.Exception.Message)
+        $evidence | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $evidencePath -Encoding UTF8
+        Write-Host "Windows GUI handle observed; inspect five Portal cards, language switch, offline state, then close the app."
+        Write-Host "Window-handle evidence does NOT certify routes, medical content, or independent review."
+    } finally {
+        if ($null -ne $p) {
+            $p.Refresh()
+            if (-not $p.HasExited) { Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue }
+        }
     }
-    $evidence | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $evidencePath -Encoding UTF8
-    Write-Host "Windows GUI handle observed; inspect five Portal cards, language switch, offline state, then close the app."
-    Write-Host "Window-handle evidence does NOT certify routes, medical content, or independent review."
 }
 Write-Host "Desktop and server remain independently launched. Never distribute without checking licenses and provenance."

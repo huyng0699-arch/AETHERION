@@ -2,7 +2,7 @@
 
 **Audited:** `2026-11-14T03:50:00Z`  
 **Official NASA Index:** https://www.nasa.gov/integrated-medical-model-documentation/ (page last updated `2026-08-31`)  
-**Verification State:** `NO_DATA` (`0 / 119` locally verified originals)
+**Verification State:** `PARTIAL_STRUCTURED_JSON_NO_PDF_ARCHIVE` (`0 / 119` locally stored raw PDF originals in `original/`; `118 / 119` verified structured JSON records in `records/`, missing only `CLIFF-119`)
 
 ## Findings
 

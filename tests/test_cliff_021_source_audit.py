@@ -1,107 +1,82 @@
-"""Regression guard for the unverified NASA 2023 CliFF Dental Exposed Pulp source.
+"""Regression guard for resolved NASA 2023 CliFF Dental Exposed Pulp source (Q-0457).
 
-This intentionally does NOT pretend the missing 2023 PDF or a native Windows
-reader was tested. It verifies that the committed source audit stays honest.
+Verifies that qa/CLIFF-021.json and records/CLIFF-021.json match on SHA-256,
+official NASA source provenance, extracted counts, and reject tampered claims.
 """
 from __future__ import annotations
 
 import copy
 import json
 from pathlib import Path
+import re
 import unittest
 from urllib.parse import urlparse
 
-AUDIT_PATH = (
-    Path(__file__).resolve().parents[1]
-    / "knowledge/nasa/cliff_119_2023/qa/CLIFF-021.json"
-)
+CLIFF_DIR = Path(__file__).resolve().parents[1] / "knowledge" / "nasa" / "cliff_119_2023"
+AUDIT_PATH = CLIFF_DIR / "qa" / "CLIFF-021.json"
+RECORD_PATH = CLIFF_DIR / "records" / "CLIFF-021.json"
 
 
-def validate_blocked_audit(audit: dict) -> None:
-    """Reject a false-positive source/clinical/media success claim."""
-    if audit["quest_id"] != "Q-0321" or audit["source_slot"] != 21:
-        raise ValueError("wrong source slot")
-    if audit["article_id"] != "CLIFF-021":
-        raise ValueError("wrong article identifier")
-    if audit["status"] != "BLOCKED_ORIGINAL_DOCUMENT_LINK_UNVERIFIED":
-        raise ValueError("the audit describes an unverified, blocked source")
-    index = audit["index"]
-    if index["source_pdf_link_verified"] or index["original_document_url"]:
-        raise ValueError("an unverified PDF cannot have an approved source link")
-    if index["dental_2023_item_is_clickable_in_rendered_page"]:
-        raise ValueError("the rendered 2023 index item has not been linked")
-    extraction = audit["extraction"]
-    if extraction["original_bytes_downloaded"] or extraction["original_pdf_sha256"]:
-        raise ValueError("the original 2023 PDF was not downloaded or hashed")
-    for key in (
-        "source_pages_verified", "sections_imported", "tables_imported",
-        "figures_imported", "licensed_medical_image_blobs"
-    ):
-        if extraction[key] != 0:
-            raise ValueError(f"false completed extraction claim: {key}")
-    for key in (
-        "full_source_text_provided", "imported_to_library_sqlite",
-        "native_windows_reader_proven", "clinical_content_accepted"
-    ):
-        if extraction[key]:
-            raise ValueError(f"false completed acceptance claim: {key}")
-    if extraction["independent_review"] != "PENDING":
-        raise ValueError("independent review is not complete")
+def validate_resolved_audit(audit: dict, record: dict | None = None) -> None:
+    """Reject tampered or unverified source/media/provenance claims."""
+    if audit.get("article_id") != "CLIFF-021" or audit.get("slot") != 21:
+        raise ValueError("wrong source slot or article identifier")
+    if int(audit.get("http_status", 0)) != 200:
+        raise ValueError("direct NASA PDF download did not return HTTP 200")
+    url = urlparse(str(audit.get("source_direct_url", "")))
+    if url.scheme != "https" or url.hostname not in ("nasa.gov", "www.nasa.gov"):
+        raise ValueError("source_direct_url must be an official HTTPS nasa.gov document")
+    digest = str(audit.get("pdf_sha256", ""))
+    if not re.fullmatch(r"[a-f0-9]{64}", digest) or int(audit.get("pdf_bytes", 0)) <= 0:
+        raise ValueError("missing verified PDF byte size or SHA-256 digest")
+    if audit.get("missing_items") != []:
+        raise ValueError("resolved audit must not have unresolved missing_items")
+    media_hashes = audit.get("media_sha256s", [])
+    if int(audit.get("media_count", -1)) != len(media_hashes) or len(media_hashes) < 1:
+        raise ValueError("media_count mismatch with media_sha256s")
+    if record is not None:
+        if record.get("article_id") != "CLIFF-021" or record.get("completeness_state") != "COMPLETE":
+            raise ValueError("record completeness state mismatch")
+        src = record.get("source", {})
+        if src.get("verification_state") != "VERIFIED" or src.get("content_sha256") != digest:
+            raise ValueError("record SHA-256 mismatch with QA audit")
 
 
 class Cliff021SourceAuditTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.audit = json.loads(AUDIT_PATH.read_text(encoding="utf-8"))
+        cls.record = json.loads(RECORD_PATH.read_text(encoding="utf-8"))
 
-    def test_exact_nasa_2023_slot_and_source_family(self) -> None:
-        audit = self.audit
-        self.assertEqual(audit["display_title"], "Dental Exposed Pulp")
-        self.assertEqual(audit["source_category"], "Dental Injury")
-        self.assertEqual(audit["source_family"], "CliFF 119 (2023)")
-        self.assertEqual(audit["index"]["evidence_text"], "Dental Exposed Pulp CliFF (2023)")
-        self.assertEqual(audit["index"]["indicated_source_family"], "CliFF 119")
-        self.assertEqual(urlparse(audit["index"]["url"]).hostname, "www.nasa.gov")
+    def test_resolved_nasa_2023_slot_and_record_parity(self) -> None:
+        validate_resolved_audit(self.audit, self.record)
+        self.assertEqual(self.audit["pdf_pages"], 13)
+        self.assertEqual(self.audit["sections_count"], 13)
+        self.assertEqual(self.audit["tables_count"], 6)
+        self.assertIn("PASS", self.audit["license_audit"])
+        self.assertIn("PASS", self.audit["content_safety"])
 
-    def test_missing_original_is_not_claimed_healthy_or_downloaded(self) -> None:
-        validate_blocked_audit(self.audit)
-        self.assertEqual(
-            self.audit["index"]["pdf_http_status"],
-            "NOT_ATTEMPTED_NO_VERIFIED_DIRECT_URL"
-        )
-        self.assertIsNone(self.audit["extraction"]["original_pdf_bytes"])
-
-    def test_2016_alternative_is_explicitly_excluded(self) -> None:
-        context = self.audit["independent_context"]
-        self.assertTrue(context)
-        for item in context:
-            self.assertFalse(item["considered_for_ingestion"])
-            self.assertNotEqual(item["url"], self.audit["index"]["original_document_url"])
-        self.assertTrue(any("2016" in item["relation"] for item in context))
-
-    def test_blocker_and_next_action_are_specific(self) -> None:
-        self.assertGreaterEqual(len(self.audit["blocking_requirements"]), 4)
-        self.assertIn("2023", self.audit["next_action"])
-        self.assertIn("not nonexistence", self.audit["evidence_qualification"])
-
-    def test_false_verified_document_is_rejected(self) -> None:
+    def test_false_non_nasa_source_is_rejected(self) -> None:
         tampered = copy.deepcopy(self.audit)
-        tampered["index"]["source_pdf_link_verified"] = True
-        tampered["index"]["original_document_url"] = "https://example.com/fake.pdf"
+        tampered["source_direct_url"] = "https://example.com/fake.pdf"
         with self.assertRaises(ValueError):
-            validate_blocked_audit(tampered)
+            validate_resolved_audit(tampered, self.record)
 
-    def test_false_offline_acceptance_is_rejected(self) -> None:
+    def test_false_hash_or_missing_items_is_rejected(self) -> None:
         tampered = copy.deepcopy(self.audit)
-        tampered["extraction"]["native_windows_reader_proven"] = True
+        tampered["pdf_sha256"] = "not-a-sha256"
         with self.assertRaises(ValueError):
-            validate_blocked_audit(tampered)
+            validate_resolved_audit(tampered, self.record)
+        tampered2 = copy.deepcopy(self.audit)
+        tampered2["missing_items"] = ["pdf"]
+        with self.assertRaises(ValueError):
+            validate_resolved_audit(tampered2, self.record)
 
-    def test_false_medical_images_are_rejected(self) -> None:
+    def test_false_media_count_is_rejected(self) -> None:
         tampered = copy.deepcopy(self.audit)
-        tampered["extraction"]["licensed_medical_image_blobs"] = 3
+        tampered["media_count"] = 99
         with self.assertRaises(ValueError):
-            validate_blocked_audit(tampered)
+            validate_resolved_audit(tampered, self.record)
 
 
 if __name__ == "__main__":

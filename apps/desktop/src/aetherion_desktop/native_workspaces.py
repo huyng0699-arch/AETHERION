@@ -623,6 +623,23 @@ class MonitoringWorkspace(Workspace):
         self._update_bounds_edits()
         self.refresh()
 
+    def sync_utc_window(self, start_iso: str, end_iso: str):
+        """Sync Home UTC window ONLY when a subject token is already authorized (Q-0477)."""
+        if not self.subject_id or not self._token:
+            return
+        try:
+            start = datetime.fromisoformat(str(start_iso).replace("Z", "+00:00"))
+            end = datetime.fromisoformat(str(end_iso).replace("Z", "+00:00"))
+            if start.tzinfo is None:
+                start = start.replace(tzinfo=timezone.utc)
+            if end.tzinfo is None:
+                end = end.replace(tzinfo=timezone.utc)
+            self.conductor.fixed(start.astimezone(timezone.utc), end.astimezone(timezone.utc))
+        except (TypeError, ValueError):
+            return
+        self._update_bounds_edits()
+        self.refresh()
+
     def _zoom(self, factor: float, anchor: float):
         try:
             self.conductor.zoom(factor, anchor)
@@ -1084,13 +1101,15 @@ class CareWorkspace(Workspace):
         super().__init__("care", locale, parent)
         self.active_step=0
         stagebar, stage_layout=_panel()
-        self.steps=QHBoxLayout()
-        self.step_buttons=[]
+        self.steps = QGridLayout()
+        self.steps.setSpacing(8)
+        self.step_buttons = []
         for i in range(4):
-            b=QPushButton()
+            b = QPushButton()
             b.setCheckable(True)
-            b.clicked.connect(lambda checked=False,j=i:self.select_step(j))
-            self.steps.addWidget(b)
+            b.setMinimumWidth(0)
+            b.clicked.connect(lambda checked=False, j=i: self.select_step(j))
+            self.steps.addWidget(b, i // 2, i % 2)
             self.step_buttons.append(b)
         stage_layout.addLayout(self.steps)
         self.body.addWidget(stagebar)

@@ -293,7 +293,7 @@
   "personal.status.sourceDenied": "Access to some data is denied; no unavailable values are inferred.",
   "personal.status.sourceError": "The source contains invalid data; do not interpret these readings.",
   "personal.status.none": "No usable recorded measurements; unknown does not mean normal.",
-  "personal.metricSource": "Nguồn: {source}  ·  {observed}",
+  "personal.metricSource": "Source: {source}  ·  {observed}",
   "explore.field.systems": "Systems discussed in the research",
   "explore.field.consequences": "Physiological research context",
   "explore.field.indicators": "Candidate indicators — not live sensor readings",

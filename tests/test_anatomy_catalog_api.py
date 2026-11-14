@@ -24,15 +24,16 @@ from aetherion_server.main import create_app
 class AnatomyCatalogApiTests(unittest.TestCase):
     def test_empty_repo_catalog_returns_no_data(self):
         with tempfile.TemporaryDirectory() as tmp:
-            app = create_app(db_path=Path(tmp) / "anat.sqlite3")
-            with TestClient(app) as client:
-                resp = client.get("/api/v1/knowledge/anatomy/models")
-                self.assertEqual(resp.status_code, 200)
-                body = resp.json()
-                self.assertEqual(body["status"], "NO_DATA")
-                self.assertEqual(body["models"], [])
-                missing = client.get("/api/v1/knowledge/anatomy/models/heart_lod0/file")
-                self.assertEqual(missing.status_code, 404)
+            with patch.object(anatomy_catalog, "DEFAULT_CATALOG_PATH", Path(tmp) / "missing_approved_models.json"):
+                app = create_app(db_path=Path(tmp) / "anat.sqlite3")
+                with TestClient(app) as client:
+                    resp = client.get("/api/v1/knowledge/anatomy/models")
+                    self.assertEqual(resp.status_code, 200)
+                    body = resp.json()
+                    self.assertEqual(body["status"], "NO_DATA")
+                    self.assertEqual(body["models"], [])
+                    missing = client.get("/api/v1/knowledge/anatomy/models/heart_lod0/file")
+                    self.assertEqual(missing.status_code, 404)
 
     def test_serves_only_approved_sha_verified_models_and_blocks_traversal(self):
         with tempfile.TemporaryDirectory() as tmp:

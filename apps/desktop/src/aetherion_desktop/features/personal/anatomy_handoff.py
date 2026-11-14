@@ -2,9 +2,11 @@
 from __future__ import annotations
 
 import json
+import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlencode
 
 from .identity import checked_personal_handoff
 
@@ -99,6 +101,8 @@ def build_anatomy_handoff(
     """Resolve a Today body-region selection into a subject-preserving Anatomy handoff."""
     try:
         checked_subject, _token = checked_personal_handoff(subject_id, access_token)
+        if any(unicodedata.category(ch) in {"Cc", "Cf"} for ch in checked_subject):
+            raise ValueError("control or format characters are not allowed in subject_id")
     except ValueError:
         return AnatomyHandoff(
             status="DENIED",
@@ -111,6 +115,7 @@ def build_anatomy_handoff(
             return_route="/personal/today",
         )
 
+    safe_query = urlencode({"subject_id": checked_subject})
     region_key = str(body_region or "").strip().lower()
     mapping = BODY_REGION_TO_ANATOMY.get(region_key)
     if not mapping:
@@ -122,7 +127,7 @@ def build_anatomy_handoff(
             model_entry=None,
             title_vi="Chưa có mô hình giải phẫu cho vùng cơ thể này",
             title_en="No approved anatomy model for this body region",
-            return_route=f"/personal/today?subject_id={checked_subject}",
+            return_route=f"/personal/today?{safe_query}",
         )
 
     approved = _load_approved_models(approved_models_path)
@@ -137,7 +142,7 @@ def build_anatomy_handoff(
             model_entry=None,
             title_vi=mapping["title_vi"],
             title_en=mapping["title_en"],
-            return_route=f"/personal/today?subject_id={checked_subject}",
+            return_route=f"/personal/today?{safe_query}",
         )
 
     return AnatomyHandoff(
@@ -148,5 +153,5 @@ def build_anatomy_handoff(
         model_entry=model,
         title_vi=mapping["title_vi"],
         title_en=mapping["title_en"],
-        return_route=f"/personal/today?subject_id={checked_subject}",
+        return_route=f"/personal/today?{safe_query}",
     )

@@ -11,6 +11,7 @@ import sys
 import tempfile
 import time
 import unittest
+from unittest.mock import patch
 import urllib.request
 
 from PySide6.QtNetwork import QNetworkProxy
@@ -119,37 +120,48 @@ class MissionToPersonalIdentityE2ETests(unittest.TestCase):
                     token=token,
                 )
 
-                app = QApplication.instance() or QApplication([])
-                QNetworkProxy.setApplicationProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
-                win = AetherionWindow()
-                win.network.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
-                win.personal_today_page._api_url = base_url
+                with patch.dict(
+                    os.environ,
+                    {
+                        "AETHERION_API_URL": base_url,
+                        "AETHERION_AUTOSTART_LOCAL_SERVER": "0",
+                    },
+                ):
+                    app = QApplication.instance() or QApplication([])
+                    QNetworkProxy.setApplicationProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
+                    win = AetherionWindow()
+                    win.network.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
+                    win.access_token = token
+                    win.personal_today_page._api_url = base_url
 
-                # 1. Mission -> Personal handoff for CREW-01
-                win.mission_control_page.subject_activated.emit("CREW-01", token)
-                wait_dl = time.monotonic() + 5.0
-                while not win.personal_today_page._displayed_cards and time.monotonic() < wait_dl:
+                    # 1. Mission -> Personal handoff for CREW-01
+                    win.mission_control_page.subject_activated.emit("CREW-01", token)
+                    wait_dl = time.monotonic() + 5.0
+                    while not win.personal_today_page._displayed_cards and time.monotonic() < wait_dl:
+                        app.processEvents()
+                        time.sleep(0.05)
+
+                    self.assertIs(
+                        win.operations_home_page.workspace_stack.currentWidget(),
+                        win.personal_today_page,
+                    )
+                    self.assertEqual(win.personal_today_page._subject_id, "CREW-01")
+                    self.assertEqual(len(win.personal_today_page._displayed_cards), 1)
+
+                    # 2. Unknown crew must clear prior CREW-01 records and never fall back
+                    win.mission_control_page.subject_activated.emit("UNKNOWN-999", token)
+                    for _ in range(15):
+                        app.processEvents()
+                        time.sleep(0.03)
+                    self.assertEqual(win.personal_today_page._displayed_cards, ())
+                    self.assertEqual(win.personal_today_page.table.rowCount(), 0)
+
+                    # 3. Invalid/empty handoff rejected without fallback
+                    win.mission_control_page.subject_activated.emit("", "")
                     app.processEvents()
-                    time.sleep(0.05)
-
-                self.assertIs(win.pages.currentWidget(), win.personal_today_page)
-                self.assertEqual(win.personal_today_page._subject_id, "CREW-01")
-                self.assertEqual(len(win.personal_today_page._displayed_cards), 1)
-
-                # 2. Unknown crew must clear prior CREW-01 records and never fall back
-                win.mission_control_page.subject_activated.emit("UNKNOWN-999", token)
-                for _ in range(15):
-                    app.processEvents()
-                    time.sleep(0.03)
-                self.assertEqual(win.personal_today_page._displayed_cards, ())
-                self.assertEqual(win.personal_today_page.table.rowCount(), 0)
-
-                # 3. Invalid/empty handoff rejected without fallback
-                win.mission_control_page.subject_activated.emit("", "")
-                app.processEvents()
-                self.assertEqual(win.personal_today_page._subject_id, "")
-                self.assertEqual(win.personal_today_page._displayed_cards, ())
-                win.close()
+                    self.assertEqual(win.personal_today_page._subject_id, "")
+                    self.assertEqual(win.personal_today_page._displayed_cards, ())
+                    win.close()
             finally:
                 proc.terminate()
                 try:

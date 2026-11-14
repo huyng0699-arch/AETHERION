@@ -1,6 +1,36 @@
 # AETHERION — Native Windows Screen Status / Trạng thái màn hình
 
-**Latest authoring audit:** 2026-11-14, P0 persistent hosted Mission Operations and original-phase NASA table; source only, no Qt screenshot.  
+**Latest Windows QA & build verification:** 2026-11-14 (Windows 10 `10.0.19045`, Python 3.13.14, PySide6 6.12.0, PyVista, PyInstaller 6.22.3).  
+**Evidence class:** Live Windows Qt rendering (`QWidget.grab()` connected to real local FastAPI/uvicorn server), Windows UI Automation offline probes on both source launch and compiled `AETHERION-Desktop.exe`, headless `tests/` suite, and governance/audit checks. Independent human/external reviewer sign-off remains `PENDING`.
+
+## Windows Runtime & Visual QA Update — 2026-11-14
+
+### Resolved integration & UI/visual findings (verified on Windows)
+
+- **Shared UTC window (`Q-0477` / `Q-0485`):** `MonitoringWorkspace.sync_utc_window(start_iso, end_iso)` implemented in `apps/desktop/src/aetherion_desktop/native_workspaces.py` and wired from `operations_home_page.time_range_changed` in `main.py`, preserving subject/token ACL gating (does not query without existing authorized subject + bearer token).
+- **Care Guide route wiring (`Q-0465`):** `care_guide` added to `mission_ops_home.py` (`ROUTE_IDS`, clinical navigation group, VI/EN labels) and mounted in `main.py` (`attach_feature("care_guide", self.care_page)` + `show_care_guide()`). `CareWorkspace` step selector laid out in a 2×2 `QGridLayout` to eliminate horizontal scrollbar overflow at `1040×650`.
+- **Mission Operations & Library selection (`Q-0430` / `Q-0485`):** `_browse_selected()` (`mission_ops_home.py`) and `show_selection()` / `open_selected_article()` (`medical_library.py`) now resolve `selectedItems()[0]` before falling back to `currentItem()`, matching Qt UIA point-click behavior reliably.
+- **MA-7 UTC & link fixes (`Q-0478` / `Q-0485`):** `QUrl` imported in `features/demo/nasa_ma7.py`; `QTimeZone.utc()` replaces deprecated `setTimeSpec(Qt.TimeSpec.UTC)` in `mission_ops_home.py` and `ecg_page.py`.
+- **Visual/i18n defects caught by real Qt captures and fixed:**
+  - `visual_theme.py`: added `QDateTimeEdit` / `QAbstractSpinBox` styling + `QPalette` + `QScrollArea` transparent viewport fix (fixed invisible white-on-white `TIME CONDUCTOR` date fields in Dark mode).
+  - `i18n/{en,vi}.json`: corrected swapped `"personal.metricSource"` strings (`"Source: ..."` in `en.json`, `"Nguồn: ..."` in `vi.json`).
+  - `personal_visual.py` (`Q-0087`): switched domain tiles to 2 columns with `setMinimumWidth(0)` and `setWordWrap(True)` cleanly fitting `1040×650`.
+  - `medical_library.py`: enabled `setWordWrap(True)` on the catalog heading (`1040×650` non-clipping).
+  - `atlas3d.py`: separated toolbar selector row and action buttons row cleanly + hid overlapping VTK picking banner overlay (`show_message=False`).
+  - `mission_ops_home.py`: enabled `ScrollBarAlwaysOff` + `Stretch` headers + `resizeRowsToContents()` on the right Inspector table.
+- **Packaged Windows EXE & UIA verification:**
+  - `scripts/build_windows.ps1` exited `0`: bundled `knowledge/anatomy/`, generated `AETHERION_NASA_CLIFF_119.sqlite` (`118/119 PARTIAL`, missing `CLIFF-119` upstream PDF/URL), built `AETHERION-Desktop.exe` (`15,128,073` bytes, SHA-256 `1ac92d650d8154d2e591cd185df291d54859a166702c25d66b60f47bece8578b`, `native_gui_smoke: WINDOW_HANDLE_OBSERVED`).
+  - Packaged EXE UIA check (`AETHERION_API_URL=http://127.0.0.1:1`): opened `AETHERION · TRUY TINH`, navigated to `Thư viện y khoa` -> `Trở về thư viện`, and navigated to `Cơ thể 3D` -> `Đặt lại góc nhìn`.
+  - `scripts/smoke_cliff_windows_offline.ps1` exited `0` (`WINDOWS_NATIVE_PROBE_PASSED_REVIEW_PENDING`, `docs/qa/windows-cliff-evidence/q0430-20261114T174601Z.json`).
+
+### Remaining limitations & gates
+
+- **Desktop GDI capture limitation:** Win32 `CopyFromScreen` raises `"The handle is invalid"` inside non-interactive background shells (`build_windows.ps1` warns cleanly), and Win32 `PrintWindow` captured white client pixels in `q0430-*.png`; actual rendered Qt pixels across Light (`vi`, `1040×650`) and Dark (`en`, `1360×850`) were captured via real Windows `QWidget.grab()` and visually inspected.
+- **Unresolved external/review gates:** `CLIFF-119` upstream record remains missing (`118/119`), EXE is unsigned, Windows 150% DPI interactive sign-off & independent external review remain `PENDING`. `apps/mobile/` excluded per user directive.
+
+---
+
+**Prior authoring audit (preserved for traceability):** 2026-11-14, P0 persistent hosted Mission Operations and original-phase NASA table; source only, no Qt screenshot.  
 **Evidence class:** GitHub file SHA and source inspection only. PySide6 unavailable in this runtime; **no new Linux offscreen or Windows screenshot and no runtime acceptance**.
 
 ## Final source SHA after MA-7 selection consistency patch

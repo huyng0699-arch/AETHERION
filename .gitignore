@@ -32,6 +32,7 @@ node_modules/
 
 # Local accounts, databases and generated client output
 .runtime/
+artifacts/
 apps/mobile/install-logs/
 apps/mobile/.expo/
 apps/mobile/dist/

@@ -13,6 +13,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
 
 from ..security import is_subject_authorized
+from ..sqlite_compat import connect_sqlite
 from ..store import get_subject
 from .episode import CareEpisodeStore, CareEpisodeTransitionError
 
@@ -108,7 +109,7 @@ def build_care_router(
         session, _ = identity
         authorized_subject(session, subject_id)
         # Same canonical database as observations; only subject-owned rows returned.
-        with sqlite3.connect(db_path()) as connection:
+        with connect_sqlite(db_path()) as connection:
             rows = connection.execute(
                 "SELECT episode_id FROM care_episodes WHERE subject_id = ? "
                 "ORDER BY updated_at_utc DESC, episode_id DESC LIMIT ?",

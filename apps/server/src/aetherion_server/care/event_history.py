@@ -8,6 +8,7 @@ import sqlite3
 from typing import Any
 
 from aetherion_server.care.episode import CareEpisodeStore
+from aetherion_server.sqlite_compat import connect_sqlite
 
 
 class CareEventHistory:
@@ -18,10 +19,7 @@ class CareEventHistory:
         CareEpisodeStore(self.db_path)
 
     def _connect(self) -> sqlite3.Connection:
-        conn = sqlite3.connect(self.db_path)
-        conn.row_factory = sqlite3.Row
-        conn.execute("PRAGMA foreign_keys = ON;")
-        return conn
+        return connect_sqlite(self.db_path, row_factory=sqlite3.Row, foreign_keys=True)
 
     def list_subject_transitions(
         self,

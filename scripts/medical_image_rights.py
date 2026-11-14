@@ -110,7 +110,11 @@ def _dimensions(data: bytes) -> tuple[str, int, int]:
             raise ImageRightsError("unsupported WebP variant")
         mime = "image/webp"
     elif data.startswith(b"\xff\xd8"):
-        if not data.endswith(b"\xff\xd9"):
+        eoi = data.rfind(b"\xff\xd9")
+        if eoi < 2:
+            raise ImageRightsError("JPEG missing end marker")
+        trailer = data[eoi + 2:]
+        if trailer and not trailer.endswith(b"SEFT"):
             raise ImageRightsError("JPEG missing end marker")
         mime = "image/jpeg"
         w = h = 0

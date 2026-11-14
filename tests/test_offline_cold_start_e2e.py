@@ -11,6 +11,7 @@ import sys
 import tempfile
 import time
 import unittest
+from unittest.mock import patch
 import urllib.request
 
 from PySide6.QtNetwork import QNetworkProxy
@@ -80,7 +81,7 @@ class OfflineColdStartE2ETests(unittest.TestCase):
                 with opener.open(f"{base_url}/api/v1/knowledge/status", timeout=3.0) as resp:
                     self.assertEqual(resp.status, 200)
                     status_body = json.loads(resp.read().decode("utf-8"))
-                    self.assertEqual(status_body["json_articles"], 116)
+                    self.assertEqual(status_body["json_articles"], 118)
                     self.assertEqual(status_body["symptom_labels"], 819)
 
                 # Block non-loopback DNS resolution in-process during Qt cold start
@@ -93,26 +94,57 @@ class OfflineColdStartE2ETests(unittest.TestCase):
 
                 socket.getaddrinfo = _loopback_only_getaddrinfo
                 try:
-                    app = QApplication.instance() or QApplication([])
-                    QNetworkProxy.setApplicationProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
-                    win = AetherionWindow()
-                    win.network.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
+                    with patch.dict(
+                        os.environ,
+                        {
+                            "AETHERION_API_URL": base_url,
+                            "AETHERION_AUTOSTART_LOCAL_SERVER": "0",
+                        },
+                    ):
+                        app = QApplication.instance() or QApplication([])
+                        QNetworkProxy.setApplicationProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
+                        win = AetherionWindow()
+                        win.network.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
 
-                    dl = time.monotonic() + 3.0
-                    while win._server_state == "checking" and time.monotonic() < dl:
+                        dl = time.monotonic() + 3.0
+                        while win._server_state == "checking" and time.monotonic() < dl:
+                            app.processEvents()
+                            time.sleep(0.05)
+
+                        win.api_url = base_url
+                        win.check_server()
+                        dl2 = time.monotonic() + 5.0
+                        while win._server_state != "online" and time.monotonic() < dl2:
+                            app.processEvents()
+                            time.sleep(0.05)
+
+                        self.assertEqual(win._server_state, "online")
+                        self.assertIs(win.pages.currentWidget(), win.login_page)
+
+                        # Public Demo button opens provenance briefing without credentials
+                        win.login_page.demo_button.click()
                         app.processEvents()
-                        time.sleep(0.05)
+                        self.assertIs(win.pages.currentWidget(), win.operations_home_page)
+                        self.assertIs(
+                            win.operations_home_page.workspace_stack.currentWidget(),
+                            win.simulated_briefing_page,
+                        )
 
-                    win.api_url = base_url
-                    win.check_server()
-                    dl2 = time.monotonic() + 5.0
-                    while win._server_state != "online" and time.monotonic() < dl2:
-                        app.processEvents()
-                        time.sleep(0.05)
+                        # Return to LoginPage (via unauthenticated Home/Portal) and sign in locally
+                        win.show_portal()
+                        self.assertIs(win.pages.currentWidget(), win.login_page)
+                        win.login_page.server_input.setText(base_url)
+                        win.login_page.username_input.setText("admin_offline")
+                        win.login_page.password_input.setText("TestPass1234!")
+                        win.login_page.sign_in_button.click()
+                        dl3 = time.monotonic() + 6.0
+                        while (win.pages.currentWidget() is win.login_page) and time.monotonic() < dl3:
+                            app.processEvents()
+                            time.sleep(0.05)
 
-                    self.assertEqual(win._server_state, "online")
-                    self.assertIs(win.pages.currentWidget(), win.portal_page)
-                    win.close()
+                        self.assertIs(win.pages.currentWidget(), win.operations_home_page)
+                        self.assertEqual(win.operations_home_page.workspace_stack.currentIndex(), 0)
+                        win.close()
                 finally:
                     socket.getaddrinfo = orig_getaddrinfo
             finally:

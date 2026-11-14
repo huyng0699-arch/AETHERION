@@ -13,6 +13,7 @@ from pydantic import BaseModel, Field
 
 from .security import is_subject_authorized
 from .signal_state import classify_technical_source_state
+from .sqlite_compat import connect_sqlite
 
 SENSITIVE_DETAIL_ROLES = frozenset({"crew", "flight_surgeon", "admin"})
 AUDIT_VIEW_ROLES = frozenset({"flight_surgeon", "admin"})
@@ -130,7 +131,7 @@ def build_safety_router(
         now_utc = datetime.now(timezone.utc).isoformat()
         incident_id = f"inc-{uuid.uuid4().hex[:12]}"
         receipt_id = f"rcpt-{uuid.uuid4().hex[:12]}"
-        with sqlite3.connect(db_path()) as conn:
+        with connect_sqlite(db_path()) as conn:
             _ensure_tables(conn)
             conn.execute(
                 """
@@ -172,7 +173,7 @@ def build_safety_router(
         identity: tuple[dict, str] = Depends(require_session),
     ):
         session, _ = identity
-        with sqlite3.connect(db_path()) as conn:
+        with connect_sqlite(db_path()) as conn:
             conn.row_factory = sqlite3.Row
             _ensure_tables(conn)
             row = conn.execute(
@@ -220,7 +221,7 @@ def build_safety_router(
     ):
         session, _ = identity
         now_utc = datetime.now(timezone.utc).isoformat()
-        with sqlite3.connect(db_path()) as conn:
+        with connect_sqlite(db_path()) as conn:
             conn.row_factory = sqlite3.Row
             _ensure_tables(conn)
             row = conn.execute(
@@ -277,7 +278,7 @@ def build_safety_router(
         session, _ = identity
         if session["role"] not in AUDIT_VIEW_ROLES:
             raise HTTPException(status_code=403, detail="Audit log requires flight_surgeon or admin role")
-        with sqlite3.connect(db_path()) as conn:
+        with connect_sqlite(db_path()) as conn:
             conn.row_factory = sqlite3.Row
             _ensure_tables(conn)
             rows = conn.execute(
@@ -312,7 +313,7 @@ def build_safety_router(
             raise HTTPException(status_code=422, detail="channel and transport_evidence_id are required")
 
         now_utc = datetime.now(timezone.utc).isoformat()
-        with sqlite3.connect(db_path()) as conn:
+        with connect_sqlite(db_path()) as conn:
             conn.row_factory = sqlite3.Row
             _ensure_tables(conn)
             inc = conn.execute("SELECT * FROM safety_incidents WHERE incident_id = ?", (incident_id,)).fetchone()
@@ -371,7 +372,7 @@ def build_safety_router(
         identity: tuple[dict, str] = Depends(require_session),
     ):
         session, _ = identity
-        with sqlite3.connect(db_path()) as conn:
+        with connect_sqlite(db_path()) as conn:
             conn.row_factory = sqlite3.Row
             _ensure_tables(conn)
             inc = conn.execute("SELECT * FROM safety_incidents WHERE incident_id = ?", (incident_id,)).fetchone()
@@ -405,7 +406,7 @@ def build_safety_router(
     ):
         session, _ = identity
         ref_now = (item.now_utc or datetime.now(timezone.utc)).astimezone(timezone.utc)
-        with sqlite3.connect(db_path()) as conn:
+        with connect_sqlite(db_path()) as conn:
             conn.row_factory = sqlite3.Row
             _ensure_tables(conn)
             inc = conn.execute("SELECT * FROM safety_incidents WHERE incident_id = ?", (incident_id,)).fetchone()
@@ -452,7 +453,7 @@ def build_safety_router(
 
         now_utc = datetime.now(timezone.utc).isoformat()
         last_obs = item.last_observed_at.astimezone(timezone.utc).isoformat() if item.last_observed_at else None
-        with sqlite3.connect(db_path()) as conn:
+        with connect_sqlite(db_path()) as conn:
             _ensure_tables(conn)
             conn.execute(
                 """
@@ -478,7 +479,7 @@ def build_safety_router(
         identity: tuple[dict, str] = Depends(require_session),
     ):
         session, _ = identity
-        with sqlite3.connect(db_path()) as conn:
+        with connect_sqlite(db_path()) as conn:
             conn.row_factory = sqlite3.Row
             _ensure_tables(conn)
             row = conn.execute(
@@ -524,7 +525,7 @@ def build_safety_router(
         if not is_subject_authorized(session["role"], session["allowed_subjects"], sid):
             raise HTTPException(status_code=403, detail=f"Not authorized for subject '{sid}'")
 
-        with sqlite3.connect(db_path()) as conn:
+        with connect_sqlite(db_path()) as conn:
             conn.row_factory = sqlite3.Row
             _ensure_tables(conn)
             rows = conn.execute(

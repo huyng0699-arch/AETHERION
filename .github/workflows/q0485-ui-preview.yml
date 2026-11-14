@@ -1,0 +1,42 @@
+name: Q-0485 integrated Open MCT UI preview
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "apps/desktop/src/aetherion_desktop/login_page.py"
+      - "apps/desktop/src/aetherion_desktop/mission_ops_home.py"
+      - "apps/desktop/src/aetherion_desktop/main.py"
+      - "apps/desktop/src/aetherion_desktop/features/demo/**"
+      - "scripts/render_q0485_ui.py"
+      - ".github/workflows/q0485-ui-preview.yml"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      QT_QPA_PLATFORM: offscreen
+      AETHERION_API_URL: http://127.0.0.1:1
+      AETHERION_AUTOSTART_LOCAL_SERVER: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install a deterministic Arial-compatible font
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-liberation
+      - name: Install the declared native desktop package
+        run: python -m pip install -e apps/desktop
+      - name: Render the integrated native screens and click primary routes
+        run: python scripts/render_q0485_ui.py
+      - name: Upload actual Qt offscreen renders
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: q0485-openmct-native-ui-preview
+          path: artifacts/q0485-ui-preview/*.png
+          if-no-files-found: warn
+          retention-days: 14

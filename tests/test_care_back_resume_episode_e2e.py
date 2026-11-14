@@ -90,48 +90,63 @@ class CareBackResumeEpisodeE2ETests(unittest.TestCase):
                         token=token,
                     )
 
-                    app = QApplication.instance() or QApplication([])
-                    QNetworkProxyFactory.setUseSystemConfiguration(False)
-                    QNetworkProxy.setApplicationProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
+                    with patch.dict(
+                        os.environ,
+                        {
+                            "AETHERION_API_URL": base_url,
+                            "AETHERION_AUTOSTART_LOCAL_SERVER": "0",
+                        },
+                    ):
+                        app = QApplication.instance() or QApplication([])
+                        QNetworkProxyFactory.setUseSystemConfiguration(False)
+                        QNetworkProxy.setApplicationProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
 
-                    win = AetherionWindow()
-                    win.network.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
-                    win.care_journal_page.api_url = base_url
-                    win.care_journal_page.net.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
-                    win.care_journal_page.set_identity("CREW-01", token)
-                    for _ in range(10):
+                        win = AetherionWindow()
+                        win.network.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
+                        win.access_token = token
+                        win.care_journal_page.api_url = base_url
+                        win.care_journal_page.net.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
+                        win.care_journal_page.set_identity("CREW-01", token)
+                        for _ in range(10):
+                            app.processEvents()
+                            time.sleep(0.03)
+
+                        win.care_journal_page.new_concern.setText("Post-EVA shoulder soreness")
+                        win.care_journal_page.new_consent.setChecked(True)
+                        with patch.object(QMessageBox, "question", return_value=QMessageBox.StandardButton.Yes):
+                            win.care_journal_page.create_episode()
+
+                        dl = time.monotonic() + 5.0
+                        while not win.care_journal_page.episode_id and time.monotonic() < dl:
+                            app.processEvents()
+                            time.sleep(0.05)
+
+                        ep_id = win.care_journal_page.episode_id
+                        self.assertTrue(ep_id)
+
+                        # Navigate away to medical library tab and operations overview
+                        win.show_medical_library()
                         app.processEvents()
-                        time.sleep(0.03)
+                        self.assertIs(
+                            win.operations_home_page.workspace_stack.currentWidget(),
+                            win.medical_library_page,
+                        )
 
-                    win.care_journal_page.new_concern.setText("Post-EVA shoulder soreness")
-                    win.care_journal_page.new_consent.setChecked(True)
-                    with patch.object(QMessageBox, "question", return_value=QMessageBox.StandardButton.Yes):
-                        win.care_journal_page.create_episode()
-
-                    dl = time.monotonic() + 5.0
-                    while not win.care_journal_page.episode_id and time.monotonic() < dl:
+                        win.show_portal()
                         app.processEvents()
-                        time.sleep(0.05)
+                        self.assertIs(win.pages.currentWidget(), win.operations_home_page)
+                        self.assertEqual(win.operations_home_page.workspace_stack.currentIndex(), 0)
 
-                    ep_id = win.care_journal_page.episode_id
-                    self.assertTrue(ep_id)
-
-                    # Navigate away to medical library tab and portal tab
-                    win.show_medical_library()
-                    app.processEvents()
-                    self.assertIs(win.pages.currentWidget(), win.medical_library_page)
-
-                    win.show_portal()
-                    app.processEvents()
-                    self.assertIs(win.pages.currentWidget(), win.portal_page)
-
-                    # Return to care tab and verify same subject and episode resumed
-                    win.show_care()
-                    app.processEvents()
-                    self.assertIs(win.pages.currentWidget(), win.care_journal_page)
-                    self.assertEqual(win.care_journal_page.subject_id, "CREW-01")
-                    self.assertEqual(win.care_journal_page.episode_id, ep_id)
-                    win.close()
+                        # Return to care tab and verify same subject and episode resumed
+                        win.show_care()
+                        app.processEvents()
+                        self.assertIs(
+                            win.operations_home_page.workspace_stack.currentWidget(),
+                            win.care_journal_page,
+                        )
+                        self.assertEqual(win.care_journal_page.subject_id, "CREW-01")
+                        self.assertEqual(win.care_journal_page.episode_id, ep_id)
+                        win.close()
                 finally:
                     proc.terminate()
                     try:

@@ -1,0 +1,48 @@
+﻿{
+    "quest":  "Q-0430",
+    "timestamp_utc":  "2026-11-14T17:46:01.4493146Z",
+    "status":  "WINDOWS_NATIVE_PROBE_PASSED_REVIEW_PENDING",
+    "library_path":  "D:\\hoc\\khoahoc2\\AETHERION-main\\knowledge\\nasa\\cliff_119_2023\\AETHERION_NASA_CLIFF_119.sqlite",
+    "library_sha256":  "9fa5a8c5db755b2562ac1715548950419510687704f8c996f11ba8debb2711b4",
+    "observed":  [
+                     "SQLite read-only integrity/identity passed, imported article count 118.",
+                     "Native Qt window opened under process 32164 (launcher 35952): AETHERION  ·  TRUY TINH.",
+                     "Medical Library navigation opened a native article-index view.",
+                     "Selected a real imported article, opened reader, and detected Back to library.",
+                     "Captured actual native-window pixels; SHA-256 recorded."
+                 ],
+    "screenshot":  "D:\\hoc\\khoahoc2\\AETHERION-main\\docs\\qa\\windows-cliff-evidence\\q0430-20261114T174601Z.png",
+    "screenshot_sha256":  "72c2f587c03830f74ca4a6adbe3975ffc06718e4f4f36e74652aac3751c22547",
+    "git_commit":  null,
+    "limitations":  [
+                        "GUI accessibility depends on real Qt Windows accessibility exposure.",
+                        "Loopback API is intentionally unavailable; this is not proof that all external network traffic is blocked.",
+                        "No clinical accuracy or image-license review is performed by this probe.",
+                        "Independent review is still required before status DONE."
+                    ],
+    "error":  null,
+    "sqlite_audit":  {
+                         "integrity":  "ok",
+                         "kind":  "NASA_CLIFF_119_MEDICAL_REFERENCE",
+                         "articles":  118,
+                         "complete_articles":  118,
+                         "rights_approved_image_rows":  321,
+                         "sample_articles":  [
+                                                 {
+                                                     "article_id":  "CLIFF-001",
+                                                     "display_title":  "Abdominal Injury",
+                                                     "completeness_state":  "COMPLETE"
+                                                 },
+                                                 {
+                                                     "article_id":  "CLIFF-002",
+                                                     "display_title":  "Abdominal Injury (Blunt/Trauma)",
+                                                     "completeness_state":  "COMPLETE"
+                                                 },
+                                                 {
+                                                     "article_id":  "CLIFF-003",
+                                                     "display_title":  "Allergic Reaction (Mild-Moderate)",
+                                                     "completeness_state":  "COMPLETE"
+                                                 }
+                                             ]
+                     }
+}

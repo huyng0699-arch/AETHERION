@@ -10,6 +10,7 @@ import sys
 import tempfile
 import time
 import unittest
+from unittest.mock import patch
 import urllib.request
 
 from PySide6.QtNetwork import QNetworkProxy
@@ -50,6 +51,9 @@ class DesktopQtStartupE2ETests(unittest.TestCase):
             env = os.environ.copy()
             env["AETHERION_DB_PATH"] = str(Path(tmp) / "desktop_e2e.sqlite3")
             env["AETHERION_API_URL"] = base_url
+            env["AETHERION_BOOTSTRAP_USER"] = "admin_qt_e2e"
+            env["AETHERION_BOOTSTRAP_PASSWORD"] = "TestPass1234!"
+            env["AETHERION_BOOTSTRAP_ROLE"] = "admin"
             proc = subprocess.Popen(
                 [
                     sys.executable,
@@ -68,34 +72,59 @@ class DesktopQtStartupE2ETests(unittest.TestCase):
             )
             try:
                 _wait_health(base_url)
-                app = QApplication.instance() or QApplication([])
-                QNetworkProxy.setApplicationProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
-                win = AetherionWindow()
-                win.network.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
-                drain_deadline = time.monotonic() + 2.0
-                while win._server_state == "checking" and time.monotonic() < drain_deadline:
+                with patch.dict(
+                    os.environ,
+                    {
+                        "AETHERION_API_URL": base_url,
+                        "AETHERION_AUTOSTART_LOCAL_SERVER": "0",
+                    },
+                ):
+                    app = QApplication.instance() or QApplication([])
+                    QNetworkProxy.setApplicationProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
+                    win = AetherionWindow()
+                    win.network.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
+                    drain_deadline = time.monotonic() + 2.0
+                    while win._server_state == "checking" and time.monotonic() < drain_deadline:
+                        app.processEvents()
+                        time.sleep(0.02)
+                    win.api_url = base_url
+
+                    # 1. Unauthenticated cold start begins on LoginPage
+                    self.assertIs(win.pages.currentWidget(), win.login_page)
+
+                    # 2. Authenticate via native LoginPage against the live test server
+                    win.login_page.server_input.setText(base_url)
+                    win.login_page.username_input.setText("admin_qt_e2e")
+                    win.login_page.password_input.setText("TestPass1234!")
+                    win.login_page.sign_in_button.click()
+                    auth_deadline = time.monotonic() + 6.0
+                    while (win.pages.currentWidget() is win.login_page) and time.monotonic() < auth_deadline:
+                        app.processEvents()
+                        time.sleep(0.03)
+                    self.assertTrue(win.access_token)
+                    self.assertIs(win.pages.currentWidget(), win.operations_home_page)
+                    self.assertEqual(win.operations_home_page.workspace_stack.currentIndex(), 0)
+
+                    # 3. Top navigation handlers switch workspace views and return to overview
+                    win.nav_ai.click()
                     app.processEvents()
-                    time.sleep(0.02)
-                win.api_url = base_url
-
-                # 1. Starts on 5-card Portal
-                self.assertIs(win.pages.currentWidget(), win.portal_page)
-
-                # 2. Top navigation buttons switch real pages and return home
-                win.nav_ai.click()
-                self.assertIsNot(win.pages.currentWidget(), win.portal_page)
-                win.nav_home.click()
-                self.assertIs(win.pages.currentWidget(), win.portal_page)
-
-                # 3. Live server health check completes against running uvicorn
-                win.check_server()
-                deadline = time.monotonic() + 5.0
-                while win._server_state == "checking" and time.monotonic() < deadline:
+                    self.assertIs(
+                        win.operations_home_page.workspace_stack.currentWidget(),
+                        win.assistant_page,
+                    )
+                    win.nav_home.click()
                     app.processEvents()
-                    time.sleep(0.05)
-                self.assertNotEqual(win._server_state, "checking")
-                self.assertIn(win._server_state, {"ready", "connected", "online", "ok"})
-                win.close()
+                    self.assertEqual(win.operations_home_page.workspace_stack.currentIndex(), 0)
+
+                    # 4. Live server health check completes against running uvicorn
+                    win.check_server()
+                    deadline = time.monotonic() + 5.0
+                    while win._server_state == "checking" and time.monotonic() < deadline:
+                        app.processEvents()
+                        time.sleep(0.05)
+                    self.assertNotEqual(win._server_state, "checking")
+                    self.assertIn(win._server_state, {"ready", "connected", "online", "ok"})
+                    win.close()
             finally:
                 proc.terminate()
                 try:

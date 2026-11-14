@@ -1,7 +1,7 @@
 """Tests actual SQLite behavior; no synthetic data is shown in the app UI."""
 
 from pathlib import Path
-import sqlite3
+from aetherion_server.sqlite_compat import connect_sqlite
 import tempfile
 import unittest
 
@@ -74,7 +74,7 @@ class StoreTests(unittest.TestCase):
     def test_legacy_starter_schema_migrates_cleanly(self):
         with tempfile.TemporaryDirectory() as directory:
             db = Path(directory) / "legacy.sqlite3"
-            with sqlite3.connect(db) as conn:
+            with connect_sqlite(db) as conn:
                 conn.execute(
                     """
                     CREATE TABLE observations (

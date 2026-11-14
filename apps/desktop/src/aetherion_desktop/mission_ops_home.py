@@ -24,10 +24,10 @@ import math
 import re
 from urllib.parse import urlsplit
 
-from PySide6.QtCore import Qt, QDateTime, QRectF, Signal, QUrl
+from PySide6.QtCore import Qt, QDateTime, QRectF, QTimeZone, Signal, QUrl
 from PySide6.QtGui import QColor, QDesktopServices, QPainter, QPen
 from PySide6.QtWidgets import (
-    QAbstractItemView, QComboBox, QDateTimeEdit, QFrame, QHBoxLayout, QLabel,
+    QAbstractItemView, QComboBox, QDateTimeEdit, QFrame, QHBoxLayout, QHeaderView, QLabel,
     QLineEdit, QListWidget, QPushButton, QSplitter, QStackedWidget, QTableWidget,
     QTableWidgetItem, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget,
 )
@@ -37,7 +37,7 @@ from .features.demo.nasa_ma7 import load_real_nasa_data
 
 ROUTE_IDS = (
     "mission", "health", "monitor", "ecg", "assistant", "interview",
-    "care", "science", "hazards", "medical_library", "atlas",
+    "care", "care_guide", "science", "hazards", "medical_library", "atlas",
     "crew", "settings",
 )
 
@@ -54,7 +54,7 @@ TEXT = {
         "utcSourceFilter": "Filter UTC records by verified source",
         "utcAllMetrics": "All metric families",
         "utcAllSources": "All verified sources",
-        "utcChartSeries": "Chart displays one metric/unit/source family, never mixed units",
+        "utcChartSeries": "UTC time axis · measured points only · no interpolation",
 
         "inspect": "INSPECT  /  PROPERTIES",
         "workspace": "WORKSPACE",
@@ -69,6 +69,7 @@ TEXT = {
         "assistant": "Ask AI",
         "interview": "Symptom Interview",
         "care": "Care Journey",
+        "care_guide": "Care Guide",
         "science_route": "Scientific Observatory",
         "hazards": "NASA Hazards",
         "medical_library": "Medical Library",
@@ -134,7 +135,7 @@ TEXT = {
         "utcTime": "Observed UTC",
         "utcValue": "Value",
         "utcSource": "Source / quality",
-        "utcPlot": "UTC-SCOPED NUMERIC VALUES  /  DISCRETE SAMPLES",
+        "utcPlot": "UTC SAMPLE TIMELINE  /  DISCRETE POINTS",
         "inspectNone": "Select a report timepoint, variable or UTC observation to inspect its original source and quality.",
         "homeInspectTitle": "Mission Workspace properties",
         "inspectCurrent": "Selected object",
@@ -172,7 +173,7 @@ TEXT = {
         "utcSourceFilter": "Lọc quan sát UTC theo nguồn đã xác minh",
         "utcAllMetrics": "Tất cả nhóm chỉ số",
         "utcAllSources": "Tất cả nguồn đã xác minh",
-        "utcChartSeries": "Biểu đồ chỉ vẽ cùng một chỉ số/đơn vị/nguồn, không trộn đơn vị",
+        "utcChartSeries": "Trục thời gian UTC · chỉ điểm đo thực tế · không nội suy",
 
         "inspect": "THUỘC TÍNH  /  NGUỒN",
         "workspace": "KHÔNG GIAN DỮ LIỆU",
@@ -187,6 +188,7 @@ TEXT = {
         "assistant": "Hỏi AI",
         "interview": "Hỏi triệu chứng",
         "care": "Hành trình chăm sóc",
+        "care_guide": "Hướng dẫn chăm sóc",
         "science_route": "Đài quan sát khoa học",
         "hazards": "Nguy cơ NASA",
         "medical_library": "Thư viện y khoa",
@@ -252,7 +254,7 @@ TEXT = {
         "utcTime": "Ghi nhận UTC",
         "utcValue": "Giá trị",
         "utcSource": "Nguồn / chất lượng",
-        "utcPlot": "GIÁ TRỊ UTC THỰC TẾ  /  KHÔNG NỐI ĐIỂM",
+        "utcPlot": "DÒNG THỜI GIAN UTC  /  ĐIỂM ĐO RỜI RẠC",
         "inspectNone": "Chọn mốc, biến hoặc quan sát UTC để xem nguồn và mức độ xác minh.",
         "homeInspectTitle": "Thuộc tính không gian điều hành",
         "inspectCurrent": "Đối tượng đang chọn",
@@ -305,19 +307,30 @@ def _observed_utc(row: dict) -> datetime | None:
     return _safe_utc(row.get("timestamp_utc")) if isinstance(row, dict) else None
 
 
-class ReportedBars(QWidget):
-    """Bars are *individual source values*, never a drawn continuous ECG/plot."""
+class UtcSamplePlot(QWidget):
+    """UTC scatter plot: measured timestamps are positioned on a real time axis.
+
+    Samples are drawn as independent points, never connected or interpolated.
+    Clicking a point selects the corresponding row for source inspection.
+    """
+
+    sample_selected = Signal(int)
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setMinimumHeight(132)
-        self.setObjectName("opsReportedBars")
-        self._series: tuple[float | None, ...] = ()
+        self.setMinimumHeight(176)
+        self.setObjectName("opsUtcSamplePlot")
+        self.setMouseTracking(True)
+        self._points: tuple[dict, ...] = ()
+        self._index_offset = 0
+        self._positions: tuple[tuple[float, float, int], ...] = ()
+        self._plotted_by_index: dict[int, dict] = {}
         self._theme = "daybreak"
         self._mode = "light"
 
-    def set_series(self, points, theme="daybreak", mode="light"):
-        self._series = tuple(points)
+    def set_points(self, points, theme="daybreak", mode="light", *, index_offset=0):
+        self._points = tuple(points)
+        self._index_offset = max(0, int(index_offset))
         self._theme = theme
         self._mode = mode
         self.update()
@@ -326,34 +339,134 @@ class ReportedBars(QWidget):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
         pal = palette_for(self._theme, self._mode)
-        w, h = self.width(), self.height()
-        painter.setPen(QPen(QColor(pal.border), 1))
-        baseline = h - 22
-        painter.drawLine(16, baseline, w - 14, baseline)
-        values = [v for v in self._series if v is not None]
-        if not values:
+        width, height = self.width(), self.height()
+        plot = QRectF(58, 12, max(1, width - 76), max(1, height - 54))
+        positions = []
+        plotted = []
+        for local_index, row in enumerate(self._points):
+            value, epoch = row.get("value"), row.get("_epoch")
+            if (isinstance(value, (int, float)) and math.isfinite(float(value))
+                    and isinstance(epoch, (int, float))
+                    and math.isfinite(float(epoch))):
+                plotted.append(
+                    (row, float(value), float(epoch),
+                     self._index_offset + local_index)
+                )
+        points = tuple(plotted)
+        if not points:
             painter.setPen(QColor(pal.muted))
             painter.drawText(self.rect(), Qt.AlignmentFlag.AlignCenter, "—")
+            self._positions = ()
             painter.end()
             return
-        lo, hi = min(values), max(values)
-        span = hi - lo
-        count = len(self._series)
-        step = max(10.0, (w - 40) / max(1, count))
-        for i, v in enumerate(self._series):
-            if v is None:
-                continue
-            ratio = .5 if span == 0 else (v - lo) / span
-            height = 19 + ratio * max(12, h - 67)
-            x = 22 + (i + .45) * step
-            color = QColor(pal.accent if i % 2 == 0 else pal.second)
-            color.setAlpha(185)
+
+        values = [value for _row, value, _epoch, _index in points]
+        times = [epoch for _row, _value, epoch, _index in points]
+        low, high = min(values), max(values)
+        if low == high:
+            padding = max(abs(low) * .05, 1.0)
+            low, high = low - padding, high + padding
+        first_time, last_time = min(times), max(times)
+        time_span = last_time - first_time
+
+        grid = QColor(pal.border)
+        grid.setAlpha(190)
+        painter.setPen(QPen(grid, 1))
+        painter.setBrush(Qt.BrushStyle.NoBrush)
+        for index in range(5):
+            fraction = index / 4
+            y = plot.top() + fraction * plot.height()
+            painter.drawLine(int(plot.left()), int(y), int(plot.right()), int(y))
+            tick_value = high - fraction * (high - low)
+            painter.setPen(QColor(pal.muted))
+            painter.drawText(
+                QRectF(0, y - 9, 52, 18),
+                Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter,
+                f"{tick_value:.3g}",
+            )
+            painter.setPen(QPen(grid, 1))
+
+        tick_fractions = (0.0, .5, 1.0) if time_span > 0 else (.5,)
+        if time_span >= 31_536_000:
+            tick_label_format = "%Y-%m"
+        elif time_span >= 86_400:
+            tick_label_format = "%m-%d %H:%M"
+        else:
+            tick_label_format = "%H:%M:%S"
+        for fraction in tick_fractions:
+            x = plot.left() + fraction * plot.width()
+            painter.setPen(QPen(grid, 1))
+            painter.drawLine(int(x), int(plot.top()), int(x), int(plot.bottom()))
+            tick_time = first_time + fraction * time_span
+            label = datetime.fromtimestamp(tick_time, tz=timezone.utc).strftime(
+                tick_label_format
+            )
+            painter.setPen(QColor(pal.muted))
+            label_width = min(98, max(54, int(plot.width() / 3)))
+            label_left = min(
+                max(0, x - label_width / 2),
+                max(0, width - label_width),
+            )
+            painter.drawText(
+                QRectF(label_left, plot.bottom() + 5, label_width, 17),
+                Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop,
+                label,
+            )
+
+        painter.setPen(QColor(pal.text))
+        painter.drawText(
+            QRectF(plot.right() - 31, plot.bottom() + 22, 32, 16),
+            Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter,
+            "UTC",
+        )
+        painter.setPen(Qt.PenStyle.NoPen)
+        radius = 4.5
+        self._plotted_by_index = {}
+        for _draw_index, (row, value, epoch, source_index) in enumerate(points):
+            x_fraction = .5 if time_span == 0 else (epoch - first_time) / time_span
+            y_fraction = (value - low) / (high - low)
+            x = plot.left() + x_fraction * plot.width()
+            y = plot.bottom() - y_fraction * plot.height()
+            color = QColor(pal.accent if _draw_index % 2 == 0 else pal.second)
             painter.setBrush(color)
-            painter.setPen(Qt.PenStyle.NoPen)
-            painter.drawRect(QRectF(x - min(16, step * .29),
-                                    baseline - height,
-                                    min(32, step * .58), height))
+            painter.drawEllipse(QRectF(x - radius, y - radius, radius * 2, radius * 2))
+            positions.append((x, y, source_index))
+            self._plotted_by_index[source_index] = row
+
+        self._positions = tuple(positions)
         painter.end()
+
+    def _nearest_position(self, x, y):
+        if not self._positions:
+            return None
+        nearest = min(self._positions, key=lambda point:
+                      (point[0] - x) ** 2 + (point[1] - y) ** 2)
+        return nearest if (nearest[0] - x) ** 2 + (nearest[1] - y) ** 2 <= 144 else None
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton:
+            hit = self._nearest_position(event.position().x(), event.position().y())
+            if hit is not None:
+                self.sample_selected.emit(hit[2])
+                event.accept()
+                return
+        super().mousePressEvent(event)
+
+    def mouseMoveEvent(self, event):
+        hit = self._nearest_position(event.position().x(), event.position().y())
+        if hit is None:
+            self.setToolTip("")
+        else:
+            row = self._plotted_by_index.get(hit[2])
+            if row is None:
+                self.setToolTip("")
+                super().mouseMoveEvent(event)
+                return
+            self.setToolTip(
+                f'{row["timestamp_utc"]} · {row["value"]} {row["unit"]} · '
+                f'{row["source_id"]}'
+            )
+        super().mouseMoveEvent(event)
 
 
 class MissionOperationsHome(QWidget):
@@ -408,6 +521,7 @@ class MissionOperationsHome(QWidget):
         # One shared time control owns the UTC window. All UTC views use it.
         conductor = QFrame()
         conductor.setObjectName("contentPanel")
+        self.time_conductor = conductor
         conductor_box = QVBoxLayout(conductor)
         conductor_box.setContentsMargins(10, 5, 10, 5)
         conductor_box.setSpacing(2)
@@ -420,7 +534,7 @@ class MissionOperationsHome(QWidget):
         self.from_label = QLabel()
         conductor_row.addWidget(self.from_label)
         self.begin_utc = QDateTimeEdit()
-        self.begin_utc.setTimeSpec(Qt.TimeSpec.UTC)
+        self.begin_utc.setTimeZone(QTimeZone.utc())
         self.begin_utc.setCalendarPopup(True)
         self.begin_utc.setDisplayFormat("yyyy-MM-dd HH:mm 'UTC'")
         self.begin_utc.setMinimumWidth(161)
@@ -428,7 +542,7 @@ class MissionOperationsHome(QWidget):
         self.to_label = QLabel()
         conductor_row.addWidget(self.to_label)
         self.end_utc = QDateTimeEdit()
-        self.end_utc.setTimeSpec(Qt.TimeSpec.UTC)
+        self.end_utc.setTimeZone(QTimeZone.utc())
         self.end_utc.setCalendarPopup(True)
         self.end_utc.setDisplayFormat("yyyy-MM-dd HH:mm 'UTC'")
         self.end_utc.setMinimumWidth(161)
@@ -628,7 +742,11 @@ class MissionOperationsHome(QWidget):
         self.utc_table.horizontalHeader().setStretchLastSection(True)
         self.utc_table.itemSelectionChanged.connect(self._select_utc_row)
         utc_layout.addWidget(self.utc_table, 1)
-        self.utc_chart = ReportedBars()
+        self.utc_chart_heading = QLabel()
+        self.utc_chart_heading.setObjectName("eyebrow")
+        utc_layout.addWidget(self.utc_chart_heading)
+        self.utc_chart = UtcSamplePlot()
+        self.utc_chart.sample_selected.connect(self._select_utc_plot_point)
         utc_layout.addWidget(self.utc_chart)
         self.utc_chart_note = QLabel()
         self.utc_chart_note.setObjectName("pageHint")
@@ -681,11 +799,12 @@ class MissionOperationsHome(QWidget):
         self.inspector = QTableWidget(0, 2)
         self.inspector.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.inspector.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection)
-        self.inspector.setHorizontalScrollMode(QAbstractItemView.ScrollMode.ScrollPerPixel)
+        self.inspector.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.inspector.setTextElideMode(Qt.TextElideMode.ElideRight)
         self.inspector.setWordWrap(True)
         self.inspector.verticalHeader().hide()
         self.inspector.horizontalHeader().hide()
-        self.inspector.horizontalHeader().setStretchLastSection(True)
+        self.inspector.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
         right_layout.addWidget(self.inspector, 1)
         self.source_link = QPushButton()
         self.source_link.setObjectName("navButton")
@@ -738,11 +857,17 @@ class MissionOperationsHome(QWidget):
         self.navigator.blockSignals(True)
         self.navigator.clear()
         self._objects = {}
+        selected = {
+            "simulated_briefing": "demo",
+            "synthetic_patient": "demo",
+            "nasa_archive": "archive",
+        }.get(selected, selected)
         groups = (
-            ("workspace", (("home", "home"), ("archive", "archive"), ("utc", "utc"))),
+            ("workspace", (("home", "home"), ("demo", "demo"),
+                           ("archive", "archive"), ("utc", "utc"))),
             ("clinical", tuple((route, route) for route in
                          ("mission", "crew", "health", "monitor", "ecg",
-                          "assistant", "interview", "care"))),
+                          "assistant", "interview", "care", "care_guide"))),
             ("science", tuple((route, "science_route" if route == "science" else route)
                               for route in ("science", "hazards", "medical_library", "atlas"))),
             ("systems", (("settings", "settings"),)),
@@ -784,9 +909,14 @@ class MissionOperationsHome(QWidget):
         self._select_workspace(route)
 
     def _browse_selected(self):
-        item = self.navigator.currentItem()
+        selected = self.navigator.selectedItems()
+        item = selected[0] if selected else self.navigator.currentItem()
         if item is None:
             return
+        if self.navigator.currentItem() is not item:
+            self.navigator.blockSignals(True)
+            self.navigator.setCurrentItem(item)
+            self.navigator.blockSignals(False)
         route = item.data(0, Qt.ItemDataRole.UserRole)
         if isinstance(route, str):
             if route in ROUTE_IDS:
@@ -806,7 +936,9 @@ class MissionOperationsHome(QWidget):
         self._open_route(self._selection[0])
 
     def _open_route(self, route):
-        if route == "archive":
+        if route == "demo":
+            self.simulated_demo_requested.emit()
+        elif route == "archive":
             self.nasa_archive_requested.emit()
         elif route == "utc":
             self.route_requested.emit("monitor")
@@ -835,9 +967,14 @@ class MissionOperationsHome(QWidget):
         if route not in self._hosted_features:
             return False
         self._selection = (route, "")
-        if route in self._objects:
+        browse_route = {
+            "simulated_briefing": "demo",
+            "synthetic_patient": "demo",
+            "nasa_archive": "archive",
+        }.get(route, route)
+        if browse_route in self._objects:
             self.navigator.blockSignals(True)
-            self.navigator.setCurrentItem(self._objects[route])
+            self.navigator.setCurrentItem(self._objects[browse_route])
             self.navigator.blockSignals(False)
         self._select_workspace(route)
         return True
@@ -847,6 +984,9 @@ class MissionOperationsHome(QWidget):
 
     def _select_workspace(self, route):
         self._active_utc_row = None
+        # Q-0477 Monitor owns an independent conductor until a shared-bounds
+        # adapter is accepted. Keep exactly one visible time control at a time.
+        self.time_conductor.setVisible(route != "monitor")
         if route in self._hosted_features:
             self.workspace_stack.setCurrentWidget(self._hosted_features[route])
             label = (self._t(route) if route in TEXT[self.language]
@@ -871,6 +1011,14 @@ class MissionOperationsHome(QWidget):
         elif route == "utc":
             self.workspace_stack.setCurrentIndex(2)
             self._refresh_utc()
+        elif route == "demo":
+            self.workspace_stack.setCurrentIndex(3)
+            self.preview_heading.setText(self._t("demo"))
+            self.preview_summary.setText(self._t("hostedBriefing"))
+            self._inspect(self._t("demo"), [
+                ("inspectAccess", self._t("sim")),
+                ("inspectTimeScope", self._t("hostedTimeScope")),
+            ])
         else:
             self.workspace_stack.setCurrentIndex(3)
             self.preview_heading.setText(self._t(route if route != "science"
@@ -879,7 +1027,9 @@ class MissionOperationsHome(QWidget):
             self._inspect(self.preview_heading.text(), [
                 ("inspectVerification", self._t("homeNotice")),
             ])
-        self.open_action.setEnabled(route in ROUTE_IDS or route in ("archive", "utc"))
+        self.open_action.setEnabled(
+            route in ROUTE_IDS or route in ("archive", "utc", "demo")
+        )
         self.preview_button.setText(self._t("launch"))
 
     def _load_report_group(self, *_):
@@ -1025,7 +1175,7 @@ class MissionOperationsHome(QWidget):
             self.inspector.insertRow(row)
             self.inspector.setItem(row, 0, QTableWidgetItem(self._t(field)))
             self.inspector.setItem(row, 1, QTableWidgetItem(str(value)))
-        self.inspector.resizeColumnToContents(0)
+        self.inspector.resizeRowsToContents()
 
     def set_recent_days(self, days: int):
         """One UTC conductor applies the same time window to table/chart/inspect."""
@@ -1156,12 +1306,15 @@ class MissionOperationsHome(QWidget):
         # One plot never combines unlike metrics, units or sources. The table
         # can show all filtered records, but the chart needs an explicit family.
         series = self._filtered_utc
+        index_offset = 0
         if metric_filter is None or source_filter is None:
             series = ()
         else:
-            series = series[-32:]
-        self.utc_chart.set_series(
-            [float(row["value"]) for row in series], self.theme, self.mode)
+            index_offset = max(0, len(series) - 32)
+            series = series[index_offset:]
+        self.utc_chart.set_points(
+            series, self.theme, self.mode, index_offset=index_offset
+        )
         self.utc_chart_note.setText(self._t("utcChartSeries"))
         self._active_utc_row = None
         if self._filtered_utc and self._selection[0] == "utc":
@@ -1169,6 +1322,10 @@ class MissionOperationsHome(QWidget):
             self._select_utc_row()
         elif not self._filtered_utc and self._selection[0] == "utc":
             self._inspect(self._t("utcEmpty"), [])
+
+    def _select_utc_plot_point(self, index):
+        if 0 <= index < len(self._filtered_utc):
+            self.utc_table.selectRow(index)
 
     def _select_utc_row(self):
         if self._selection[0] != "utc":
@@ -1234,6 +1391,9 @@ class MissionOperationsHome(QWidget):
         self.utc_heading.setText(t("utcTitle"))
         self.utc_note.setText(t("utcNote"))
         self.utc_empty.setText(t("utcEmpty") if not self._filtered_utc else "")
+        self.utc_chart_heading.setText(t("utcPlot"))
+        self.utc_chart.setAccessibleName(t("utcPlot"))
+        self.utc_chart.setAccessibleDescription(t("utcChartSeries"))
         self.utc_chart_note.setText(t("utcChartSeries"))
         self.open_monitor.setText(t("utcAsk"))
         self.source_link.setText(t("openOriginal"))
@@ -1263,7 +1423,7 @@ class MissionOperationsHome(QWidget):
         self.reduce_motion = bool(reduce_motion)
         self.theme = theme or "daybreak"
         self.mode = mode or "light"
-        self.utc_chart.set_series(self.utc_chart._series, self.theme, self.mode)
+        self.utc_chart.set_points(self.utc_chart._points, self.theme, self.mode, index_offset=self.utc_chart._index_offset)
 
     def set_connection_state(self, state):
         # The host only supplies actual /health results. Preserve verbatim.

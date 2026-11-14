@@ -9,6 +9,8 @@ import sqlite3
 from typing import Any
 import uuid
 
+from ..sqlite_compat import connect_sqlite
+
 CARE_PHASES = ("GATHER", "EVALUATE", "ACT", "RECHECK", "CLOSED")
 ALLOWED_TRANSITIONS: dict[str, tuple[str, ...]] = {
     "GATHER": ("EVALUATE",),
@@ -40,10 +42,7 @@ class CareEpisodeStore:
         self._init_schema()
 
     def _connect(self) -> sqlite3.Connection:
-        conn = sqlite3.connect(self.db_path)
-        conn.row_factory = sqlite3.Row
-        conn.execute("PRAGMA foreign_keys = ON;")
-        return conn
+        return connect_sqlite(self.db_path, row_factory=sqlite3.Row, foreign_keys=True)
 
     def _init_schema(self) -> None:
         with self._connect() as conn:

@@ -225,6 +225,15 @@ class StartupRuntime(QObject):
     def stop(self):
         """Release only the service this exact app launched, never an external one."""
         self._retry.stop()
+        if self._probe_reply is not None:
+            try:
+                from shiboken6 import isValid
+                if isValid(self._probe_reply):
+                    self._probe_reply.abort()
+                    self._probe_reply.deleteLater()
+            except Exception:
+                pass
+            self._probe_reply = None
         if self._server.state() != QProcess.ProcessState.NotRunning:
             self._server.terminate()
             if not self._server.waitForFinished(1500):

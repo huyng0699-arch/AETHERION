@@ -17,6 +17,7 @@ from PySide6.QtWidgets import (
     QMessageBox, QPushButton, QSizePolicy, QStackedWidget, QToolButton,
     QVBoxLayout, QWidget,
 )
+from shiboken6 import isValid
 
 from .login_page import LoginPage
 from .portal import PORTAL_ROUTES, build_portal_page
@@ -119,6 +120,7 @@ class AetherionWindow(QMainWindow):
         self.setMinimumSize(1040, 650)
         self.api_url = os.environ.get("AETHERION_API_URL", "http://127.0.0.1:8765").rstrip("/")
         self.network = QNetworkAccessManager(self)
+        self._health_reply = None
         self.access_token = ""
         self.session_identity = None
         self.preferences = VisualPreferences()
@@ -221,6 +223,7 @@ class AetherionWindow(QMainWindow):
         self.monitor_page = MonitoringWorkspace(self.api_url, self.network, self.ui_language)
         self.monitor_page.apply_theme(self.preferences)
         self.monitor_page.open_mission.connect(self.show_mission)
+        self.operations_home_page.time_range_changed.connect(self.monitor_page.sync_utc_window)
         self.pages.addWidget(self.monitor_page)
         self.ecg_page = ECGPage(self.api_url, self.network, self.ui_language)
         self.ecg_page.open_mission.connect(self.show_mission)
@@ -261,6 +264,7 @@ class AetherionWindow(QMainWindow):
             ("assistant", self.assistant_page),
             ("interview", self.symptom_page),
             ("care", self.care_journal_page),
+            ("care_guide", self.care_page),
             ("science", self.knowledge_browser_page),
             ("hazards", self.nasa_explore_page),
             ("medical_library", self.medical_library_page),
@@ -605,26 +609,33 @@ class AetherionWindow(QMainWindow):
         for page in self.findChildren(QWidget):
             if hasattr(page, "api_url"):
                 page.api_url = base_url
+            if hasattr(page, "_api_url"):
+                page._api_url = base_url
         self.logout_button.show()
         self.show_portal()
         self.check_server()
         request = QNetworkRequest(QUrl(base_url + "/api/v1/subjects"))
+        request.setTransferTimeout(5000)
+        request.setRawHeader(b"Connection", b"close")
         request.setRawHeader(b"Authorization", ("Bearer " + self.access_token).encode("utf-8"))
         reply = self.network.get(request)
         expected_token = self.access_token
-        def subjects_loaded():
+        def subjects_loaded(r=reply):
+            if not isValid(self) or not isValid(r):
+                return
             try:
                 if self.access_token != expected_token:
                     return
-                if reply.error() == QNetworkReply.NetworkError.NoError:
-                    rows = json.loads(bytes(reply.readAll()).decode("utf-8")).get("subjects", [])
+                if r.error() == QNetworkReply.NetworkError.NoError:
+                    rows = json.loads(bytes(r.readAll()).decode("utf-8")).get("subjects", [])
                     if rows:
                         self.open_personal_subject(rows[0]["subject_id"], expected_token)
                         self.show_portal()
             except (ValueError, KeyError, TypeError):
                 pass
             finally:
-                reply.deleteLater()
+                if isValid(r):
+                    r.deleteLater()
         reply.finished.connect(subjects_loaded)
 
     def sign_out(self):
@@ -641,9 +652,11 @@ class AetherionWindow(QMainWindow):
         self.care_journal_page.set_identity("", "")
         if token:
             request = QNetworkRequest(QUrl(self.api_url + "/api/v1/auth/logout"))
+            request.setTransferTimeout(2500)
+            request.setRawHeader(b"Connection", b"close")
             request.setRawHeader(b"Authorization", ("Bearer " + token).encode("utf-8"))
             reply = self.network.post(request, b"")
-            reply.finished.connect(reply.deleteLater)
+            reply.finished.connect(lambda r=reply: r.deleteLater() if isValid(r) else None)
 
     def show_portal(self):
         """Home means the persistent native Mission Operations overview."""
@@ -673,6 +686,7 @@ class AetherionWindow(QMainWindow):
             "assistant": self.show_assistant,
             "interview": self.show_symptom_interview,
             "care": self.show_care,
+            "care_guide": self.show_care_guide,
             "science": self.show_observatory,
             "hazards": self.show_nasa_explore,
             "medical_library": self.show_medical_library,
@@ -748,6 +762,9 @@ class AetherionWindow(QMainWindow):
         self._show_workspace_feature("care")
         self.care_journal_page.refresh()
 
+    def show_care_guide(self):
+        self._show_workspace_feature("care_guide")
+
     def show_symptom_interview(self):
         # Continue an existing D30 interview and preserve previously answered questions.
         previous = getattr(self.assistant_page, "symptom", None)
@@ -813,13 +830,23 @@ class AetherionWindow(QMainWindow):
         self.operations_home_page.set_connection_state(self.status.text())
 
     def check_server(self):
+        if self._health_reply is not None and isValid(self._health_reply):
+            self._health_reply.abort()
+            self._health_reply = None
         self._server_state = "checking"
         self._render_server_status()
         request = QNetworkRequest(QUrl(self.api_url + "/health"))
+        request.setTransferTimeout(2500)
+        request.setRawHeader(b"Connection", b"close")
         reply = self.network.get(request)
-        reply.finished.connect(lambda: self.finish_check(reply))
+        self._health_reply = reply
+        reply.finished.connect(lambda r=reply: self.finish_check(r))
 
     def finish_check(self, reply):
+        if not isValid(self) or not isValid(reply):
+            return
+        if self._health_reply is reply:
+            self._health_reply = None
         code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
         error = reply.error()
         body = bytes(reply.readAll()).decode("utf-8", errors="replace")
@@ -829,6 +856,22 @@ class AetherionWindow(QMainWindow):
             self._server_state = "online"
         self._render_server_status()
         reply.deleteLater()
+
+    def closeEvent(self, event):
+        if hasattr(self, "heartbeat") and self.heartbeat.isActive():
+            self.heartbeat.stop()
+        if self._health_reply is not None and isValid(self._health_reply):
+            self._health_reply.abort()
+            self._health_reply = None
+        if hasattr(self, "login_page"):
+            self.login_page._timeout_timer.stop()
+            login_reply = getattr(self.login_page, "_reply", None)
+            if login_reply is not None and isValid(login_reply):
+                login_reply.abort()
+                self.login_page._reply = None
+        if hasattr(self, "first_run_runtime"):
+            self.first_run_runtime.stop()
+        super().closeEvent(event)
 
 
 def main() -> int:

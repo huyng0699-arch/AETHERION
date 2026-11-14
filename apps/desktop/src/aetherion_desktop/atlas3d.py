@@ -16,11 +16,14 @@ from PySide6.QtGui import QDesktopServices
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import (QComboBox, QFrame, QHBoxLayout, QLabel, QPushButton,
                                QSizePolicy, QVBoxLayout, QWidget)
+from shiboken6 import isValid
 
 from .localization import normalize_locale
+from .runtime_paths import reference_path
 
 ROOT = Path(__file__).resolve().parents[4]
-MANIFEST = ROOT / 'knowledge' / 'anatomy' / 'approved_models.json'
+_RUNTIME_MANIFEST = reference_path('anatomy', 'approved_models.json')
+MANIFEST = _RUNTIME_MANIFEST if _RUNTIME_MANIFEST.is_file() else (ROOT / 'knowledge' / 'anatomy' / 'approved_models.json')
 ASSETS = MANIFEST.parent
 VALID_ID = re.compile(r'^[A-Za-z0-9_-]{1,64}$')
 SUPPORTED = {'.stl', '.obj', '.ply', '.vtk', '.vtp', '.vtu'}
@@ -92,6 +95,7 @@ class BodyAtlas3D(QWidget):
         self.fallback_2d = None  # real 2D list, only when native 3D is unavailable
         self._active_id = ''
         self._request_seq = 0
+        self._pending_reply = None
         self.setObjectName('aetherionAtlas3D')
 
         layout = QVBoxLayout(self)
@@ -107,14 +111,23 @@ class BodyAtlas3D(QWidget):
         layout.addWidget(self.description)
         toolbar = QFrame()
         toolbar.setObjectName('surface')
-        controls = QHBoxLayout(toolbar)
-        controls.setContentsMargins(14, 10, 14, 10)
+        toolbar_layout = QVBoxLayout(toolbar)
+        toolbar_layout.setContentsMargins(14, 10, 14, 10)
+        toolbar_layout.setSpacing(8)
+        selector_row = QHBoxLayout()
+        selector_row.setSpacing(8)
         self.label = QLabel()
-        controls.addWidget(self.label)
+        selector_row.addWidget(self.label)
         self.selector = QComboBox()
-        self.selector.setMinimumWidth(210)
+        self.selector.setMinimumWidth(140)
+        self.selector.setMinimumContentsLength(12)
+        self.selector.setSizeAdjustPolicy(QComboBox.SizeAdjustPolicy.AdjustToMinimumContentsLengthWithIcon)
+        self.selector.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         self.selector.currentIndexChanged.connect(self._select)
-        controls.addWidget(self.selector, 1)
+        selector_row.addWidget(self.selector, 1)
+        toolbar_layout.addLayout(selector_row)
+        controls = QHBoxLayout()
+        controls.setSpacing(8)
         self.load_button = QPushButton()
         self.load_button.clicked.connect(self.refresh_catalog)
         controls.addWidget(self.load_button)
@@ -127,6 +140,8 @@ class BodyAtlas3D(QWidget):
         self.inspect_button = QPushButton()
         self.inspect_button.clicked.connect(self.show_source_inspector)
         controls.addWidget(self.inspect_button)
+        controls.addStretch(1)
+        toolbar_layout.addLayout(controls)
         layout.addWidget(toolbar)
 
         self.content = QVBoxLayout()
@@ -197,15 +212,26 @@ class BodyAtlas3D(QWidget):
     def refresh_catalog(self):
         self._request_seq += 1
         seq = self._request_seq
+        if self._pending_reply is not None and isValid(self._pending_reply):
+            self._pending_reply.abort()
         req = QNetworkRequest(QUrl(self.api_url + '/api/v1/knowledge/anatomy/models'))
+        req.setTransferTimeout(2500)
+        req.setRawHeader(b'Connection', b'close')
         reply = self.network.get(req)
+        self._pending_reply = reply
         self.status.setText(self.t('loading'))
         reply.finished.connect(lambda: self._got_catalog(reply, seq))
 
     def _got_catalog(self, reply, seq):
+        if not isValid(reply):
+            return
         code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
         data = bytes(reply.readAll())
         reply.deleteLater()
+        if not isValid(self):
+            return
+        if self._pending_reply is reply:
+            self._pending_reply = None
         if seq != self._request_seq:
             return
         try:
@@ -280,16 +306,27 @@ class BodyAtlas3D(QWidget):
             self._render(location, identity)
             return
         self.status.setText(self.t('loading'))
+        if self._pending_reply is not None and isValid(self._pending_reply):
+            self._pending_reply.abort()
         req = QNetworkRequest(QUrl(self.api_url + '/api/v1/knowledge/anatomy/models/' + identity + '/file'))
+        req.setTransferTimeout(5000)
+        req.setRawHeader(b'Connection', b'close')
         reply = self.network.get(req)
+        self._pending_reply = reply
         self._request_seq += 1
         seq = self._request_seq
         reply.finished.connect(lambda: self._got_mesh(reply, identity, seq, location))
 
     def _got_mesh(self, reply, identity, seq, location):
+        if not isValid(reply):
+            return
         code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
         raw = bytes(reply.readAll())
         reply.deleteLater()
+        if not isValid(self):
+            return
+        if self._pending_reply is reply:
+            self._pending_reply = None
         if seq != self._request_seq or identity != self._active_id:
             return
         meta = self.models.get(identity, {})
@@ -338,7 +375,10 @@ class BodyAtlas3D(QWidget):
             self.viewer.add_mesh(mesh, name=identity, color='#ECCAA7',
                                  smooth_shading=True, specular=0.14, specular_power=20,
                                  pickable=True)
-            self.viewer.enable_mesh_picking(callback=self.on_pick, show=False)
+            try:
+                self.viewer.enable_mesh_picking(callback=self.on_pick, show=False, show_message=False)
+            except TypeError:
+                self.viewer.enable_mesh_picking(callback=self.on_pick, show=False)
             self.viewer.reset_camera()
             if self.fallback_2d is not None:
                 self.fallback_2d.hide()
@@ -408,6 +448,10 @@ class BodyAtlas3D(QWidget):
             QDesktopServices.openUrl(QUrl(url))
 
     def closeEvent(self, event):
+        self._request_seq += 1
+        if getattr(self, '_pending_reply', None) is not None and isValid(self._pending_reply):
+            self._pending_reply.abort()
+            self._pending_reply = None
         if self.viewer is not None:
             self.viewer.close()
         super().closeEvent(event)

@@ -3,6 +3,7 @@ import sys
 import types
 import unittest
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PERSONAL_DIR = ROOT / "apps" / "desktop" / "src" / "aetherion_desktop" / "features" / "personal"
@@ -53,6 +54,30 @@ class TestPersonalAnatomyHandoff(unittest.TestCase):
         self.assertEqual(res.status, "DENIED")
         self.assertIsNone(res.subject_id)
         self.assertIsNone(res.model_entry)
+
+    def test_subject_id_query_injection_is_encoded_and_controls_rejected(self):
+        ah = _load_anatomy_handoff()
+        for tricky in (
+            "CREW-ALPHA-01&view=other",
+            "CREW?extra=1",
+            "CREW#frag",
+            "CREW/sub/path",
+        ):
+            for region, expected_status in (("mandible", "READY"), ("unmapped_region", "NO_DATA")):
+                res = ah.build_anatomy_handoff(tricky, "tok-123", region)
+                self.assertEqual(res.status, expected_status)
+                parsed = urlsplit(res.return_route)
+                self.assertEqual(parsed.path, "/personal/today")
+                self.assertEqual(parsed.fragment, "")
+                qs = parse_qs(parsed.query, strict_parsing=True)
+                self.assertEqual(list(qs.keys()), ["subject_id"])
+                self.assertEqual(qs["subject_id"], [tricky])
+
+        for bad_subject in ("CREW\n01", "CREW\x0001", "CREW\u200b01"):
+            res = ah.build_anatomy_handoff(bad_subject, "tok-123", "mandible")
+            self.assertEqual(res.status, "DENIED")
+            self.assertIsNone(res.subject_id)
+            self.assertEqual(res.return_route, "/personal/today")
 
 
 if __name__ == "__main__":

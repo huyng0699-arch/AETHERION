@@ -129,6 +129,7 @@ def build_medical_library_page(parent=None):
             layout.setContentsMargins(18, 24, 18, 16)
             heading = QLabel("Medical Library · Offline CliFF index")
             heading.setObjectName("heading")
+            heading.setWordWrap(True)
             layout.addWidget(heading)
             self.status = QLabel("")
             self.status.setWordWrap(True)
@@ -215,10 +216,15 @@ def build_medical_library_page(parent=None):
                 self.detail.setText(tr(self.ui_language, "library.selectHint"))
 
         def show_selection(self) -> None:
-            item = self.items.currentItem()
+            selected = self.items.selectedItems()
+            item = selected[0] if selected else self.items.currentItem()
             if item is None:
                 self.read_article_button.setEnabled(False)
                 return
+            if self.items.currentItem() is not item:
+                self.items.blockSignals(True)
+                self.items.setCurrentItem(item)
+                self.items.blockSignals(False)
             article = self.current_articles.get(item.data(Qt.ItemDataRole.UserRole))
             if article is None:
                 self.read_article_button.setEnabled(False)
@@ -232,7 +238,8 @@ def build_medical_library_page(parent=None):
             ))
 
         def open_selected_article(self) -> None:
-            item = self.items.currentItem()
+            selected = self.items.selectedItems()
+            item = selected[0] if selected else self.items.currentItem()
             if item is None:
                 return
             article_id = item.data(Qt.ItemDataRole.UserRole)

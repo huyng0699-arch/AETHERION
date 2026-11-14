@@ -70,11 +70,10 @@ class ECGUpload(BaseModel):
         return self
 
 
+from ..sqlite_compat import connect_sqlite
+
 def _connect(db: Path | str):
-    conn = sqlite3.connect(db, timeout=10)
-    conn.row_factory = sqlite3.Row
-    conn.execute('PRAGMA foreign_keys = ON')
-    return conn
+    return connect_sqlite(db, timeout=10, row_factory=sqlite3.Row, foreign_keys=True)
 
 
 def ensure_schema(db: Path | str) -> None:

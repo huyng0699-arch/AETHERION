@@ -7,6 +7,8 @@ from pathlib import Path
 import sqlite3
 from typing import Any
 
+from .sqlite_compat import connect_sqlite
+
 from .security import (
     VALID_ROLES,
     compute_expiry_iso,
@@ -22,11 +24,8 @@ DEFAULT_QUALITY = "UNVERIFIED"
 DEFAULT_VERIFICATION_STATE = "UNVERIFIED"
 
 
-def _connect(path: str | Path) -> sqlite3.Connection:
-    conn = sqlite3.connect(path)
-    conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA foreign_keys = ON")
-    return conn
+def _connect(path: str | Path):
+    return connect_sqlite(path, row_factory=sqlite3.Row, foreign_keys=True)
 
 
 def _table_columns(conn: sqlite3.Connection, table_name: str) -> set[str]:

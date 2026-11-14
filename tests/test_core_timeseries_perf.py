@@ -8,6 +8,7 @@ import time
 import unittest
 
 from aetherion_server import store
+from aetherion_server.sqlite_compat import connect_sqlite
 
 
 class TimeSeriesPerformanceTests(unittest.TestCase):
@@ -36,7 +37,7 @@ class TimeSeriesPerformanceTests(unittest.TestCase):
                         )
                     )
 
-            with sqlite3.connect(db) as conn:
+            with connect_sqlite(db) as conn:
                 conn.executemany(
                     """
                     INSERT INTO observations (

@@ -11,7 +11,7 @@ import random
 from dataclasses import dataclass
 
 from PySide6.QtCore import Qt, QSettings, QTimer
-from PySide6.QtGui import QBrush, QColor, QFont, QLinearGradient, QPainter, QPen, QRadialGradient
+from PySide6.QtGui import QBrush, QColor, QFont, QLinearGradient, QPainter, QPalette, QPen, QRadialGradient
 from PySide6.QtWidgets import QWidget
 
 
@@ -335,9 +335,24 @@ class VisualPreferences:
         self.__init__()
 
     def apply(self,app):
+        p = palette_for(self.theme_name,self.mode,self.high_contrast,self.accent_override)
         app.setFont(QFont(self.font_family,self.font_size))
+        pal = QPalette()
+        pal.setColor(QPalette.ColorRole.Window, QColor(p.base))
+        pal.setColor(QPalette.ColorRole.WindowText, QColor(p.text))
+        pal.setColor(QPalette.ColorRole.Base, QColor(p.surface))
+        pal.setColor(QPalette.ColorRole.AlternateBase, QColor(p.surface_alt))
+        pal.setColor(QPalette.ColorRole.Text, QColor(p.text))
+        pal.setColor(QPalette.ColorRole.Button, QColor(p.surface))
+        pal.setColor(QPalette.ColorRole.ButtonText, QColor(p.text))
+        pal.setColor(QPalette.ColorRole.Highlight, QColor(p.accent))
+        pal.setColor(QPalette.ColorRole.HighlightedText, QColor(p.on_accent))
+        pal.setColor(QPalette.ColorRole.ToolTipBase, QColor(p.surface))
+        pal.setColor(QPalette.ColorRole.ToolTipText, QColor(p.text))
+        pal.setColor(QPalette.ColorRole.PlaceholderText, QColor(p.muted))
+        app.setPalette(pal)
         app.setStyleSheet(make_stylesheet(
-            palette_for(self.theme_name,self.mode,self.high_contrast,self.accent_override),
+            p,
             self.font_family,
             self.high_contrast,
             self.font_size,
@@ -384,8 +399,8 @@ def make_stylesheet(p: Palette, family="Segoe UI", high_contrast=False, font_siz
     QListWidget::item:selected {background:%(card_hover)s; color:%(text)s; border:1px solid %(accent)s;}
     QTextBrowser {background:%(surface)s; color:%(text)s; border:%(border_w)s solid %(border)s; border-radius:12px; padding:10px;}
     QHeaderView::section {background:%(surface_alt)s; color:%(text)s; border:0; border-bottom:1px solid %(border)s; padding:9px;}
-    QLineEdit, QComboBox, QTextEdit, QPlainTextEdit, QSpinBox {background:%(surface)s; border:%(border_w)s solid %(border)s; border-radius:9px; padding:8px 10px; min-height:24px; color:%(text)s;}
-    QLineEdit:focus, QComboBox:focus, QTextEdit:focus, QPlainTextEdit:focus, QSpinBox:focus, QListWidget:focus, QTableView:focus, QTextBrowser:focus {border:2px solid %(accent)s;}
+    QLineEdit, QComboBox, QTextEdit, QPlainTextEdit, QSpinBox, QDateTimeEdit, QAbstractSpinBox {background:%(surface)s; border:%(border_w)s solid %(border)s; border-radius:9px; padding:8px 10px; min-height:24px; color:%(text)s;}
+    QLineEdit:focus, QComboBox:focus, QTextEdit:focus, QPlainTextEdit:focus, QSpinBox:focus, QDateTimeEdit:focus, QAbstractSpinBox:focus, QListWidget:focus, QTableView:focus, QTextBrowser:focus {border:2px solid %(accent)s;}
     QMenu {background:%(surface)s; border:%(border_w)s solid %(border)s; padding:7px; color:%(text)s;}
     QMenu::item {padding:10px 25px; border-radius:7px;}
     QMenu::item:selected {background:%(surface_alt)s;}
@@ -393,7 +408,8 @@ def make_stylesheet(p: Palette, family="Segoe UI", high_contrast=False, font_siz
     QTabBar::tab {background:%(surface_alt)s; border:%(border_w)s solid %(border)s; border-radius:11px; padding:11px 17px; margin:0 3px 0 0; color:%(muted)s;}
     QTabBar::tab:selected {background:%(surface)s; color:%(accent)s; border-bottom:2px solid %(accent)s;}
     QTabBar::tab:focus {border:2px solid %(accent)s;}
-    QScrollArea, QScrollArea QWidget#qt_scrollarea_viewport {background:transparent; border:0;}
+    QScrollArea, QScrollArea QWidget#qt_scrollarea_viewport, QScrollArea > QWidget > QWidget {background:transparent; border:0;}
+    QSplitter::handle {background:%(border)s;}
     QScrollBar:vertical {background:transparent; width:10px;}
     QScrollBar::handle:vertical {background:%(border)s; border-radius:5px; min-height:25px;}
     QSlider::groove:horizontal {height:7px; background:%(border)s; border-radius:3px;}

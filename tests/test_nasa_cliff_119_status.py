@@ -31,6 +31,19 @@ def test_cliff_119_audit_matches_actual_disk_state() -> None:
     assert audit["verified_original_files_count"] == len(actual_originals)
     assert audit["completeness_ratio"] == f"{len(actual_originals)}/119"
 
+    records_dir = CLIFF_DIR / "records"
+    actual_records = (
+        sorted(p.stem for p in records_dir.glob("CLIFF-*.json"))
+        if records_dir.is_dir()
+        else []
+    )
+    assert audit["structured_json_records_count"] == len(actual_records)
+    assert audit["structured_json_completeness"] == f"{len(actual_records)}/119"
+
     if len(actual_originals) < 119 or not manifest_path.is_file():
-        assert audit["verification_state"] in {"NO_DATA", "UNVERIFIED"}
+        assert audit["verification_state"] in {
+            "NO_DATA",
+            "UNVERIFIED",
+            "PARTIAL_STRUCTURED_JSON_NO_PDF_ARCHIVE",
+        }
         assert "0 / 119" in AUDIT_MD.read_text(encoding="utf-8") or "0/119" in AUDIT_MD.read_text(encoding="utf-8")

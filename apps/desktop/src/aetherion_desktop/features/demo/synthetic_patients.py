@@ -59,8 +59,16 @@ def _safe_path(path: str | Path | None) -> Path:
     return resolved
 
 
+class _ClosingConnection(sqlite3.Connection):
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        try:
+            return super().__exit__(exc_type, exc_val, exc_tb)
+        finally:
+            self.close()
+
+
 def _connection(path: Path) -> sqlite3.Connection:
-    conn = sqlite3.connect(str(path), timeout=20)
+    conn = sqlite3.connect(str(path), timeout=20, factory=_ClosingConnection)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys=ON")
     return conn

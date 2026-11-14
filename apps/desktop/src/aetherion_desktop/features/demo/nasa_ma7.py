@@ -91,7 +91,7 @@ def measured_points(records: list[dict], metric_id: str) -> tuple[float | None, 
 
 def build_hackathon_demo(parent=None, **kwargs):
     """Create native QWidget lazily, keeping schema readable without Qt."""
-    from PySide6.QtCore import Qt, QTimer, QThread, Signal, QRectF
+    from PySide6.QtCore import Qt, QTimer, QThread, Signal, QRectF, QUrl
     from PySide6.QtGui import QDesktopServices, QColor, QPainter, QPen
     from PySide6.QtWidgets import (
         QAbstractItemView, QFrame, QGridLayout, QHBoxLayout, QHeaderView,

@@ -8,6 +8,8 @@ import sqlite3
 from typing import Any
 import uuid
 
+from ..sqlite_compat import connect_sqlite
+
 ALLOWED_TELEMETRY_STATES = ("READY", "NO_DATA", "STALE", "OFFLINE", "DENIED", "ERROR", "UNVERIFIED")
 
 
@@ -27,9 +29,7 @@ class AssistanceRequestStore:
         self._init_schema()
 
     def _connect(self) -> sqlite3.Connection:
-        conn = sqlite3.connect(self.db_path)
-        conn.row_factory = sqlite3.Row
-        return conn
+        return connect_sqlite(self.db_path, row_factory=sqlite3.Row)
 
     def _init_schema(self) -> None:
         with self._connect() as conn:

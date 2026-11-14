@@ -293,7 +293,7 @@
   "personal.status.sourceDenied": "Một phần dữ liệu bị từ chối truy cập; không suy đoán giá trị thiếu.",
   "personal.status.sourceError": "Nguồn chứa dữ liệu không hợp lệ; không diễn giải số đo này.",
   "personal.status.none": "Không có bản ghi dùng được; chưa biết không đồng nghĩa bình thường.",
-  "personal.metricSource": "Source: {source}  ·  {observed}",
+  "personal.metricSource": "Nguồn: {source}  ·  {observed}",
   "explore.field.systems": "Các hệ cơ quan được đề cập trong nghiên cứu",
   "explore.field.consequences": "Bối cảnh nghiên cứu sinh lý",
   "explore.field.indicators": "Chỉ số có thể theo dõi — không phải số đo trực tiếp",

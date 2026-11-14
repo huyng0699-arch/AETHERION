@@ -9,6 +9,7 @@ from fastapi.testclient import TestClient
 
 from aetherion_server.bootstrap import ensure_bootstrap_user
 from aetherion_server.main import create_app
+from aetherion_server.sqlite_compat import connect_sqlite
 from aetherion_server.store import initialize, list_observations
 
 
@@ -16,7 +17,7 @@ class CoreMigrationTests(unittest.TestCase):
     def test_starter_database_migrates_without_losing_observations(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db = Path(directory) / "starter.sqlite3"
-            with sqlite3.connect(db) as conn:
+            with connect_sqlite(db) as conn:
                 conn.execute(
                     """
                     CREATE TABLE observations (

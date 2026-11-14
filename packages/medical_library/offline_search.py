@@ -20,11 +20,19 @@ class SearchHit:
     image_count: int
 
 
+class _ClosingConnection(sqlite3.Connection):
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        try:
+            return super().__exit__(exc_type, exc_val, exc_tb)
+        finally:
+            self.close()
+
+
 def _connect(db_path: str | Path) -> sqlite3.Connection:
     path = Path(db_path).resolve()
     if not path.is_file():
         raise FileNotFoundError(f"Offline library does not exist: {path}")
-    db = sqlite3.connect(path.as_uri() + "?mode=ro", uri=True)
+    db = sqlite3.connect(path.as_uri() + "?mode=ro", uri=True, factory=_ClosingConnection)
     db.row_factory = sqlite3.Row
     db.execute("PRAGMA query_only=ON")
     db.execute("PRAGMA foreign_keys=ON")
