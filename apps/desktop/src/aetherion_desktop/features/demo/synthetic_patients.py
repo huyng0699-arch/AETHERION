@@ -5,6 +5,7 @@ and never promotes synthetic measurements to VERIFIED or live telemetry.
 """
 from __future__ import annotations
 
+from contextlib import closing
 from datetime import date, datetime, timedelta, timezone
 import math
 import os
@@ -141,7 +142,7 @@ def build_demo_database(
     target = _safe_path(path)
     target.parent.mkdir(parents=True, exist_ok=True)
     day = today or datetime.now(timezone.utc).date()
-    with _connection(target) as conn:
+    with closing(_connection(target)) as conn:
         initialized = _validate_existing(conn)
         if not initialized:
             _schema(conn)
@@ -215,7 +216,7 @@ def _verified_connection(path: str | Path | None = None) -> sqlite3.Connection:
 
 
 def demo_stats(path: str | Path | None = None) -> dict:
-    with _verified_connection(path) as conn:
+    with closing(_verified_connection(path)) as conn:
         row = conn.execute("SELECT generated_for_day FROM demo_metadata").fetchone()
         points = conn.execute("SELECT COUNT(*) FROM demo_observations").fetchone()[0]
         count = conn.execute("SELECT COUNT(*) FROM demo_subjects").fetchone()[0]
@@ -231,7 +232,7 @@ def demo_stats(path: str | Path | None = None) -> dict:
 
 
 def subjects(path: str | Path | None = None) -> list[dict]:
-    with _verified_connection(path) as conn:
+    with closing(_verified_connection(path)) as conn:
         return [dict(row) for row in conn.execute(
             "SELECT subject_id, display_name, age, synthetic "
             "FROM demo_subjects ORDER BY subject_id"
@@ -242,7 +243,7 @@ def series(subject_id: str, metric: str, *, limit: int = DAYS,
            path: str | Path | None = None) -> list[dict]:
     if metric not in METRIC_UNITS or not 1 <= limit <= DAYS:
         raise ValueError("Invalid metric or date range")
-    with _verified_connection(path) as conn:
+    with closing(_verified_connection(path)) as conn:
         rows = conn.execute(
             "SELECT day_utc, value, unit, source_id, verification_state "
             "FROM demo_observations WHERE subject_id=? AND metric=? "
@@ -255,7 +256,7 @@ def series(subject_id: str, metric: str, *, limit: int = DAYS,
 def day_values(subject_id: str, chosen_day: str,
                path: str | Path | None = None) -> list[dict]:
     date.fromisoformat(chosen_day)
-    with _verified_connection(path) as conn:
+    with closing(_verified_connection(path)) as conn:
         rows = conn.execute(
             "SELECT metric, value, unit, observed_at, source_id, quality, "
             "verification_state FROM demo_observations "
@@ -266,7 +267,7 @@ def day_values(subject_id: str, chosen_day: str,
 
 
 def latest(subject_id: str, path: str | Path | None = None) -> list[dict]:
-    with _verified_connection(path) as conn:
+    with closing(_verified_connection(path)) as conn:
         rows = conn.execute(
             "SELECT o.metric, o.value, o.unit, o.day_utc, o.source_id "
             "FROM demo_observations AS o WHERE o.subject_id=? AND o.id=("

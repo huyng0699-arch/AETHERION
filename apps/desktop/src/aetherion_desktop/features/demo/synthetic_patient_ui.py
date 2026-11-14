@@ -144,8 +144,18 @@ def build_synthetic_patient_demo(parent=None, *, locale="en",
             return tr(self.language, "demo.synthetic." + key, **values)
 
         def _page(self):
+            # A scrollable native page keeps both KPI rows and long history
+            # usable on 800x600 Windows laptops and HiDPI displays.
             widget = QWidget()
-            layout = QVBoxLayout(widget)
+            shell = QVBoxLayout(widget)
+            shell.setContentsMargins(0, 0, 0, 0)
+            area = QScrollArea()
+            area.setFrameShape(QFrame.Shape.NoFrame)
+            area.setWidgetResizable(True)
+            shell.addWidget(area)
+            content = QWidget()
+            area.setWidget(content)
+            layout = QVBoxLayout(content)
             layout.setContentsMargins(17, 18, 17, 20)
             layout.setSpacing(14)
             return widget, layout
