@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-047",
+  "title": "Acute Lateral Ankle Sprain Swelling (Clinical Photograph)",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Sprained_ankle_30min.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Sprained_ankle_30min.jpg",
+  "license": "PUBLIC-DOMAIN",
+  "author": "OdraciRRicardo",
+  "caption": "Clinical photograph of an acute lateral ankle sprain 30 minutes post-injury showing localized soft-tissue edema over the lateral malleolus.",
+  "alt_text": "Photograph of a human ankle with acute lateral swelling from a sprain.",
+  "clinical_relevance": "Demonstrates acute clinical presentation of ankle sprain requiring RICE/immobilization and evaluation for fracture exclusion (CLIFF-047, p.5-6).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 1869,
+  "height": 1563,
+  "size_bytes": 423221,
+  "sha256": "c34ba4491247c0f4689a815e2c2e7e62dea3d6c970b4b32b3f0133c25abb5f13",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Sprained_ankle_30min.jpg",
+  "retrieved_at_utc": "2026-11-14T06:13:12.388848+00:00",
+  "asset_path": "c34ba4491247c0f4689a815e2c2e7e62dea3d6c970b4b32b3f0133c25abb5f13.jpg",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "CLINICAL",
+  "topic_region": "Lower Extremity / Lateral Ankle"
+}

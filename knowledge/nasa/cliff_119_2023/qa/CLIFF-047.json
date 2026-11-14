@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-047",
+  "slot": 47,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/sprain-strain-lower-extremity-cliff-2023.pdf?emrc=d896a2",
+  "http_status": 200,
+  "pdf_bytes": 337433,
+  "pdf_sha256": "ff65930af80c732c842d1f69261c03f504d6d700e66b96cb9db8ded2b43cbe6b",
+  "pdf_pages": 14,
+  "sections_count": 14,
+  "tables_count": 3,
+  "references_count": 13,
+  "media_count": 3,
+  "media_sha256s": [
+    "c34ba4491247c0f4689a815e2c2e7e62dea3d6c970b4b32b3f0133c25abb5f13",
+    "ec2785320012de85935d1479ed961bc0ba387f8d29310b9652be91c0dd733127",
+    "ffc16df70a72a43ebd9ed0f826f3c599ddca879f3c784278777d5f40a042d1fd"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons Public Domain / CC-BY-3.0 / CC-BY-SA-3.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}
