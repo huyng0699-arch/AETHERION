@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-100",
+  "slot": 100,
+  "quest_id": "Q-0400",
+  "checked_at_utc": "2026-11-14T06:36:13.246162+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-fingernail-delamination-cliff-2023.pdf?emrc=48dd00",
+  "http_status": 200,
+  "pdf_sha256": "af0fa9ad674361df0158414115551cbb0f013b974507f90df692381363ea24ed",
+  "pdf_bytes": 299505,
+  "pages_extracted": 12,
+  "sections_count": 12,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-100-IMG-01": "b2bb1d0dffa39a496e0ca45174a337fadc87180a2b19040f9da29eaa10f22e03",
+    "CLIFF-100-IMG-02": "ede6a38c64c9cd443bdcd2b12ab01206640d0e00f972893b236f772cab916c4e",
+    "CLIFF-100-IMG-03": "0105fdcaba15bf9d8018541c47643c20281b8a4d46241180c8afccb99b8dfa85"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
