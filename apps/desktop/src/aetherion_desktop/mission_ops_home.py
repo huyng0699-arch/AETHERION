@@ -948,7 +948,13 @@ class MissionOperationsHome(QWidget):
         self.metric_selector.blockSignals(False)
         self._update_report_chart()
         if self.measurements.rowCount():
-            self.measurements.selectRow(0)
+            selected_metric = self.metric_selector.currentData()
+            matched_row = next((
+                row for row in range(self.measurements.rowCount())
+                if self.measurements.item(row, 0).data(Qt.ItemDataRole.UserRole)
+                == selected_metric
+            ), 0)
+            self.measurements.selectRow(matched_row)
         self._select_report_metric()
 
     def _select_report_metric(self):
@@ -959,6 +965,11 @@ class MissionOperationsHome(QWidget):
         if row < 0 or not self.measurements.item(row, 0):
             return
         metric_id = self.measurements.item(row, 0).data(Qt.ItemDataRole.UserRole)
+        # A selected source measurement drives the categorical comparison
+        # metric too, so the right Inspect and phase table never disagree.
+        comparison_index = self.metric_selector.findData(metric_id)
+        if comparison_index >= 0 and self.metric_selector.currentIndex() != comparison_index:
+            self.metric_selector.setCurrentIndex(comparison_index)
         observed = record["measures"][metric_id]
         self._selected_nasa_metric = metric_id
         self._inspect(self.source_data["metric_names"][metric_id][self.language], [
