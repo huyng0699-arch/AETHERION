@@ -17,6 +17,7 @@ from pydantic import BaseModel, Field, field_validator, model_validator
 
 from .availability import compute_availability
 from .bootstrap import bootstrap_from_env, default_database_path
+from .runtime_config import read_runtime_config
 from .scope_guard import validate_metric_scope
 from .security import DEFAULT_SESSION_TTL_SECONDS, is_subject_authorized, verify_password
 from .unit_validator import validate_metric_range, validate_metric_unit
@@ -132,6 +133,9 @@ def create_app(
     *,
     session_ttl_seconds: int | None = None,
 ) -> FastAPI:
+    # Fail before the HTTP listener opens, including direct 'uvicorn ...:app' usage.
+    read_runtime_config()
+
     def get_db_path() -> Path:
         return Path(db_path) if db_path is not None else default_database_path()
 
@@ -464,6 +468,5 @@ app = create_app()
 def run() -> None:
     import uvicorn
 
-    host = os.environ.get("AETHERION_HOST", "127.0.0.1")
-    port = int(os.environ.get("AETHERION_PORT", "8000"))
-    uvicorn.run(app, host=host, port=port)
+    config = read_runtime_config()
+    uvicorn.run(app, host=config.host, port=config.port)
