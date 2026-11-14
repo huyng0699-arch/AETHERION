@@ -16,6 +16,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field, model_validator
 
 from .admin_control import probe_local_ai, read_ai_settings, validate_local_url
+from .cloud_ai_runtime import cloud_public_status, resolve_cloud_configuration
 
 
 class ChatLine(BaseModel):
@@ -41,21 +42,24 @@ class FreeChatRequest(BaseModel):
 
 
 def _cloud_ready() -> bool:
-    return (os.getenv('AETHERION_ALLOW_CLOUD_AI', 'false').strip().lower() == 'true'
-            and os.getenv('AETHERION_ENABLE_CLOUD_CHAT', 'false').strip().lower() == 'true'
-            and bool(os.getenv('AETHERION_OPENAI_API_KEY', '').strip())
-            and bool(os.getenv('AETHERION_CHAT_CLOUD_MODEL', '').strip()))
+    # Either admin deliberately configured this process in memory, or an
+    # explicitly opted-in environment provider exists. Neither is fake uptime.
+    return resolve_cloud_configuration() is not None
 
 
 def available_models(db: Path) -> dict:
     settings = read_ai_settings(db)
     is_local = settings.get('mode') == 'local_only' and bool(settings.get('local_model'))
     local = probe_local_ai(settings) if is_local else {'model_ready': False, 'selected_model': '', 'connection':'OFF'}
+    cloud = cloud_public_status()
     return {
         'local_available': bool(local.get('model_ready')),
         'local_model': local.get('selected_model') if local.get('model_ready') else None,
-        'cloud_available': _cloud_ready(),
-        'cloud_model': os.getenv('AETHERION_CHAT_CLOUD_MODEL') if _cloud_ready() else None,
+        'cloud_available': cloud['enabled'],
+        'cloud_model': cloud['model'],
+        'cloud_provider': cloud['provider'],
+        'cloud_source': cloud['source'],
+        'cloud_tested': False,  # actual inference is not implied by configuration
         'cloud_requires_consent': True,
         'stored_by_server': False,
         'clinical_validation': False,
@@ -123,27 +127,84 @@ def ask_model(db: Path, request: FreeChatRequest) -> dict:
         reply = (body.get('message') or {}).get('content')
         provider, cloud_used = 'local', False
     else:
-        if not request.cloud_consent or not _cloud_ready():
-            raise HTTPException(403, detail='Cloud AI disabled by Server or consent not given')
-        # Server owns secret; Desktop never receives it. Endpoint is fixed, not caller URL.
-        model = os.environ['AETHERION_CHAT_CLOUD_MODEL']
-        payload = {'model': model, 'messages': messages, 'temperature':0.25,
-                   'max_tokens':750, 'store':False}
-        body = _invoke('https://api.openai.com/v1/chat/completions',payload,
-                       {'Content-Type':'application/json',
-                        'Authorization':'Bearer '+os.environ['AETHERION_OPENAI_API_KEY']},timeout=25)
-        try:
-            reply = body['choices'][0]['message']['content']
-        except (KeyError, IndexError, TypeError) as exc:
-            raise HTTPException(503, detail='Configured model returned no text') from exc
+        if not request.cloud_consent:
+            raise HTTPException(403, detail='Cloud consent required')
+        config = resolve_cloud_configuration()
+        if config is None:
+            raise HTTPException(503, detail='Cloud AI not configured by Server administrator')
+        # OnePad's provider dispatch, ported to this ONE server. Fixed upstream
+        # hosts, no user-selected URL, no secret exposed in request/response.
+        model = config.model
+        if config.provider == 'gemini':
+            payload = {
+                'systemInstruction': {'parts': [{'text':prompt['content']}]},
+                'contents': [
+                    {'role': 'model' if row['role'] == 'assistant' else 'user',
+                     'parts': [{'text':row['content']}]}
+                    for row in messages[1:]
+                ],
+                'generationConfig': {'temperature':0.25,'maxOutputTokens':750},
+            }
+            body = _invoke(
+                'https://generativelanguage.googleapis.com/v1beta/models/'
+                + model + ':generateContent',
+                payload,
+                {'Content-Type':'application/json', 'x-goog-api-key':config.api_key},
+                timeout=25,
+            )
+            try:
+                parts = body['candidates'][0]['content']['parts']
+                reply = ''.join(p['text'] for p in parts
+                                if isinstance(p, dict) and isinstance(p.get('text'), str))
+            except (KeyError, IndexError, TypeError, ValueError) as exc:
+                raise HTTPException(503, detail='Gemini provider returned no text') from exc
+        else:
+            payload = {'model':model,'messages':messages,'temperature':0.25,
+                       'max_tokens':750,'store':False}
+            body = _invoke(
+                'https://api.openai.com/v1/chat/completions',payload,
+                {'Content-Type':'application/json',
+                 'Authorization':'Bearer '+config.api_key},timeout=25,
+            )
+            try:
+                reply = body['choices'][0]['message']['content']
+            except (KeyError, IndexError, TypeError) as exc:
+                raise HTTPException(503, detail='OpenAI provider returned no text') from exc
         provider, cloud_used = 'cloud', True
     if not isinstance(reply, str) or not reply.strip() or len(reply) > 12000:
         raise HTTPException(503, detail='Configured model returned an invalid answer')
     return {
         'reply':reply.strip(), 'model':model, 'provider':provider,
-        'cloud_used':cloud_used, 'stored_by_server':False,
+        'cloud_used':cloud_used,
+        'cloud_provider':config.provider if cloud_used else None,
+        'stored_by_server':False,
         'clinical_validation':False, 'medical_decision':'NOT_PERFORMED',
         'sources':[], 'notice':'AI-generated conversation; not verified NASA or clinical guidance.'
+    }
+
+
+
+def test_cloud_connection(db: Path) -> dict:
+    """Real no-patient-data inference; administrative action only.
+
+    Never claims READY from a configured key alone, never discloses model text,
+    provider secrets, or any user's medical context in a test.
+    """
+    import time
+    config = resolve_cloud_configuration()
+    if config is None:
+        raise HTTPException(503, detail='Cloud provider and API key not configured')
+    start = time.monotonic()
+    result = ask_model(db, FreeChatRequest(
+        messages=[ChatLine(role='user',content='Reply only: connection_ok')],
+        provider='cloud', cloud_consent=True, locale='en',
+    ))
+    if not isinstance(result.get('reply'), str) or not result['reply'].strip():
+        raise HTTPException(503, detail='Cloud model did not generate a reply')
+    return {
+        'status':'READY','provider':config.provider,'model':config.model,
+        'latency_ms':round((time.monotonic()-start)*1000),
+        'actual_inference':True,
     }
 
 
