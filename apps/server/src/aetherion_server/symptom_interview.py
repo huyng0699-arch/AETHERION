@@ -88,7 +88,16 @@ def _pick_with_ai(names: list[str], answers: dict[str, str], choices: list[dict]
                          ensure_ascii=False)
     try:
         if provider == "ollama":
-            url = "http://127.0.0.1:11434/api/chat"
+            base = os.environ.get("AETHERION_OLLAMA_BASE_URL", "http://127.0.0.1:11434").strip().rstrip("/")
+            if not (
+                base.startswith("http://127.0.0.1:")
+                or base == "http://127.0.0.1"
+                or base.startswith("http://localhost:")
+                or base == "http://localhost"
+                or base.startswith("http://[::1]:")
+            ):
+                return None, "MODEL_UNAVAILABLE"
+            url = f"{base}/api/chat"
             request = {"model": config["model"], "stream": False, "format": "json",
                        "messages": [{"role": "system", "content": system},
                                     {"role": "user", "content": payload}], "options": {"temperature": 0}}

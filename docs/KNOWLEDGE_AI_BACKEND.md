@@ -30,6 +30,8 @@ Local:
 ```powershell
 $env:AETHERION_INTERVIEW_AI_PROVIDER="ollama"
 $env:AETHERION_INTERVIEW_AI_MODEL="your-installed-model-name"
+# Optional loopback override (default http://127.0.0.1:11434; non-loopback URLs are rejected)
+# $env:AETHERION_OLLAMA_BASE_URL="http://127.0.0.1:11434"
 # Install/run Ollama and pull that model separately; verify /api/v1/knowledge/interview/ai-status
 ```
 
