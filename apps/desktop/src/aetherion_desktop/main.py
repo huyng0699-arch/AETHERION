@@ -241,7 +241,7 @@ class AetherionWindow(QMainWindow):
                      self.atlas_page,self.care_page,self.care_journal_page):
             self.ambient_controller.add_page(page,self.preferences)
 
-        # Main horizontal navigation; nested items use dropdown menus, never sidebars.
+        # Existing global navigation coexists with the native Operations tree.
         self.nav_home = self._nav_button(bar, "Trang đầu", self.show_portal)
         self.nav_health = self._nav_menu(bar, "Sức khỏe ▾", (
             ("Sức khỏe hôm nay", self.show_personal),
@@ -667,6 +667,8 @@ class AetherionWindow(QMainWindow):
         else:
             self.status.setText(tr(self.ui_language, "main.status.checking"))
             self.status.setToolTip(tr(self.ui_language, "main.status.tooltip"))
+        # The operations status reflects this exact HTTP /health state; not demo data.
+        self.operations_home_page.set_connection_state(self.status.text())
 
     def check_server(self):
         self._server_state = "checking"
@@ -684,12 +686,6 @@ class AetherionWindow(QMainWindow):
         else:
             self._server_state = "online"
         self._render_server_status()
-        # Only an actual completed /health probe updates Mission Operations.
-        self.operations_home_page.set_connection_state(
-            tr(self.ui_language, "main.status.online")
-            if self._server_state == "online"
-            else tr(self.ui_language, "main.status.offline")
-        )
         reply.deleteLater()
 
 
