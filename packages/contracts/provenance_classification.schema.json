@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/contracts/v1/provenance_classification.schema.json",
+  "title": "AETHERION Data Provenance Classification Contract (Q-0019)",
+  "description": "Separates measured, self-reported, derived, unverified, and absent data without clinical overclaiming.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["source_id", "quality", "verification_state"],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "quality": {
+      "type": "string",
+      "enum": ["READY", "NO_DATA", "STALE", "OFFLINE", "DENIED", "ERROR", "UNVERIFIED"]
+    },
+    "verification_state": {
+      "type": "string",
+      "enum": ["UNVERIFIED", "SELF_REPORTED", "DEVICE_UNVERIFIED", "TEST_FIXTURE"]
+    },
+    "provenance_class": {
+      "type": "string",
+      "enum": ["measured", "self_reported", "derived", "unverified", "absent"]
+    }
+  },
+  "x-aetherion-semantics": {
+    "no_data_is_healthy": false,
+    "missing_heartbeat_means_unconscious": false,
+    "source_name_implies_device_verification": false
+  }
+}
