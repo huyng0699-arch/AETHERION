@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-032",
+  "title": "Abdominal Ultrasound of Acute Appendicitis",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/46/AppendicitisMark.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:AppendicitisMark.png",
+  "license": "CC-BY-SA-4.0",
+  "author": "James Heilman, MD",
+  "caption": "Right lower quadrant abdominal ultrasound demonstrating a dilated, non-compressible appendix (>6 mm) with surrounding inflammatory changes.",
+  "alt_text": "Ultrasound image with caliper markings measuring an enlarged tubular appendix in acute appendicitis.",
+  "clinical_relevance": "Directly illustrates bedside ultrasound diagnosis of appendicitis, which NASA CliFF-032 notes is >95% sensitive and >97% specific when available in flight (CLIFF-032, p.7).",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 961,
+  "height": 756,
+  "size_bytes": 481630,
+  "sha256": "67ade2603193b58ce0567b899710602ca33692e95459049c6f4c66ec2f81e208",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/4/46/AppendicitisMark.png",
+  "retrieved_at_utc": "2026-11-14T06:00:15.945237+00:00",
+  "asset_path": "67ade2603193b58ce0567b899710602ca33692e95459049c6f4c66ec2f81e208.png",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}

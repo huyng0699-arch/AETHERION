@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-032",
+  "title": "3D Anatomical Illustration of Acute Appendicitis",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/3D_still_showing_appendicitis.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:3D_still_showing_appendicitis.jpg",
+  "license": "CC-BY-SA-4.0",
+  "author": "Scientific Animations",
+  "caption": "3D anatomical illustration of the cecum and an inflamed, erythematous vermiform appendix in acute appendicitis.",
+  "alt_text": "3D medical illustration highlighting an inflamed appendix attached to the lower cecum.",
+  "clinical_relevance": "Illustrates the anatomical location and inflammatory pathology of acute appendicitis (CLIFF-032, p.1).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 1349,
+  "height": 881,
+  "size_bytes": 408565,
+  "sha256": "e5ba473671a3e168982d0295a37f90f6f0fb0c443277aab90ae6939987ef7341",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/3D_still_showing_appendicitis.jpg",
+  "retrieved_at_utc": "2026-11-14T06:00:14.323788+00:00",
+  "asset_path": "e5ba473671a3e168982d0295a37f90f6f0fb0c443277aab90ae6939987ef7341.jpg",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}

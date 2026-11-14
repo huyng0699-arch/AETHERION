@@ -1,0 +1,24 @@
+{
+  "article_id": "CLIFF-032",
+  "slot": 32,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/appendicitis-cliff-2023.pdf?emrc=d21c0a",
+  "http_status": 200,
+  "pdf_bytes": 339949,
+  "pdf_sha256": "7ccad0feb336baaf46795c5d545aa78b07474a68cbab375fd8ac25991045b1ae",
+  "pdf_pages": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "references_count": 23,
+  "media_count": 4,
+  "media_sha256s": [
+    "e5ba473671a3e168982d0295a37f90f6f0fb0c443277aab90ae6939987ef7341",
+    "67ade2603193b58ce0567b899710602ca33692e95459049c6f4c66ec2f81e208",
+    "603afab5b95a0f5b2440f104acd63d30e40a093951844a05ef6a190f68cf8705",
+    "ed6fe7e25acfb27845221d8ef2775d2cb964c08499be1a765ddfc2ad54263293"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-SA-4.0 / CC-BY-4.0 / CC-BY-2.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "offline_render_note": "SQLite ingestion and offline BLOB/section/table/citation verification passed on Linux; native Windows Qt GUI rendering deferred to Windows desktop gate.",
+  "missing_items": []
+}
