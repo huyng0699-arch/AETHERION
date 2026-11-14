@@ -27,12 +27,9 @@ class QuestBoardTests(unittest.TestCase):
             "Q-0002": {"id": "Q-0002", "status": "READY", "priority": "P1", "stream": "CORE", "depends_on": ["Q-0001"]},
         }
         self.assertEqual(module.verify(sample), [])
-        # On live board, only known upstream self-dependency entries in Q-0426/Q-0427 may appear
-        unexpected = [
-            err for err in module.verify(tasks)
-            if not any(qid in err for qid in ("Q-0426", "Q-0427"))
-        ]
-        self.assertEqual(unexpected, [])
+        # Previous Q-0426/Q-0427 self-links were repaired. Any newly
+        # introduced cycle or invalid approval must fail the strict gate.
+        self.assertEqual(module.verify(tasks), [])
 
     def test_multiline_yaml_list_parsing(self):
         with tempfile.TemporaryDirectory() as tmp:
