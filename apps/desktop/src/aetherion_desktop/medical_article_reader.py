@@ -235,7 +235,7 @@ def build_medical_article_reader(db_path: str | Path = DEFAULT_LIBRARY, parent=N
             outer = QVBoxLayout(self)
             toolbar = QHBoxLayout()
             back = QPushButton("Back to library")
-            back.clicked.connect(self.back_requested.emit)
+            back.clicked.connect(lambda checked=False: self.back_requested.emit())
             toolbar.addWidget(back)
             self.previous = QPushButton("Previous article")
             self.previous.clicked.connect(lambda: self._navigate(-1))
