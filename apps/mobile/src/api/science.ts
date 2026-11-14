@@ -39,19 +39,6 @@ export type ScienceSection = { section_id: string; heading: string; text_content
 export type ScienceReference = { reference_id: string; label: string; citation_url?: string | null; page_number?: number | null };
 export type ScienceTable = { table_id: string; title: string; rows: string[][]; page_number?: number | null; source_anchor?: string | null };
 
-export type ScienceSource = {
-  source_id: string;
-  kind: string;
-  article_id?: string | null;
-  title?: string | null;
-  publisher?: string | null;
-  source_uri?: string | null;
-  license?: string | null;
-  attribution?: string | null;
-  verification_status?: string | null;
-  content_sha256?: string | null;
-};
-
 export type ScienceArticle = {
   summary: ScienceArticleSummary;
   sections: ScienceSection[];
@@ -77,8 +64,6 @@ export type ScienceArticle = {
   clinical_decision_support: boolean;
 };
 
-export type ScienceSourcesResult = { total: number; items: ScienceSource[] };
-
 export function getKnowledgeStatus(): Promise<KnowledgeStatus> {
   return request('/api/v1/knowledge/status', { timeoutMs: 12000 });
 }
@@ -93,6 +78,3 @@ export function getScienceArticle(articleId: string): Promise<ScienceArticle> {
   return request(`/api/v1/knowledge/articles/${encodeURIComponent(articleId)}`, { timeoutMs: 20000 });
 }
 
-export function getScienceSources(limit = 200): Promise<ScienceSourcesResult> {
-  return request(`/api/v1/sources?kind=nasa_cliff_record&limit=${Math.max(1, Math.min(limit, 200))}`, { timeoutMs: 15000 });
-}
