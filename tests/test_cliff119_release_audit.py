@@ -4,6 +4,7 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+from contextlib import closing
 import sqlite3
 import struct
 import tempfile
@@ -105,14 +106,14 @@ class ReleaseAuditTest(unittest.TestCase):
 
     def test_corrupt_image_and_unlicensed_image_block_release(self):
         self.build_fixture()
-        with sqlite3.connect(self.db_path) as db:
+        with closing(sqlite3.connect(self.db_path)) as db:
             db.execute("UPDATE media SET data=?,license_identifier='UNKNOWN' WHERE media_id='m1-0'",(b'not png',))
         self.assertIn('IMAGE_CORRUPT',self.codes())
         self.assertIn('IMAGE_COVERAGE',self.codes())
 
     def test_missing_article_and_source_citation_block_release(self):
         self.build_fixture()
-        with sqlite3.connect(self.db_path) as db:
+        with closing(sqlite3.connect(self.db_path)) as db:
             db.execute("DELETE FROM articles WHERE slot=119")
             db.execute("DELETE FROM source_references WHERE article_id='CLIFF-001'")
         codes=self.codes()
@@ -120,7 +121,7 @@ class ReleaseAuditTest(unittest.TestCase):
 
     def test_duplicate_direct_source_is_rejected(self):
         self.build_fixture()
-        with sqlite3.connect(self.db_path) as db:
+        with closing(sqlite3.connect(self.db_path)) as db:
             db.execute("UPDATE sources SET source_url='https://www.nasa.gov/SYNTHETIC-TEST-ONLY-1.pdf' WHERE source_id='synthetic-002'")
         self.assertIn('DUPLICATE_SOURCE_URL',self.codes())
 

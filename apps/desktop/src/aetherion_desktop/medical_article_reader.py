@@ -6,6 +6,7 @@ The UI is constructed lazily so provenance queries can run without PySide6.
 """
 from __future__ import annotations
 
+from contextlib import closing
 from dataclasses import dataclass
 import hashlib
 import json
@@ -109,7 +110,7 @@ def load_article(db_path: str | Path, article_id: str) -> OfflineArticle:
     if not isinstance(article_id, str) or not article_id.strip():
         raise ValueError("Select a specific imported article ID")
     try:
-        with sqlite3.connect(path.as_uri() + "?mode=ro", uri=True) as db:
+        with closing(sqlite3.connect(path.as_uri() + "?mode=ro", uri=True)) as db, db:
             db.row_factory = sqlite3.Row
             db.execute("PRAGMA query_only=ON")
             row = db.execute(
@@ -275,6 +276,8 @@ def build_medical_article_reader(db_path: str | Path = DEFAULT_LIBRARY, parent=N
                 child = self.content.takeAt(0)
                 widget = child.widget()
                 if widget is not None:
+                    widget.hide()
+                    widget.setParent(None)
                     widget.deleteLater()
 
         def _navigate(self, direction: int) -> None:

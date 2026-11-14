@@ -1,6 +1,7 @@
 """Tests for Q-0039 cabin environmental data scopes."""
 
 from pathlib import Path
+from contextlib import closing
 import sqlite3
 import tempfile
 import unittest
@@ -26,7 +27,7 @@ class EnvironmentScopeTests(unittest.TestCase):
             self.assertEqual(rec["metric"], "cabin_co2")
             self.assertEqual(len(store.list_environment_metrics(subject_id="CABIN-HAB-1")), 1)
 
-            with sqlite3.connect(db) as conn:
+            with closing(sqlite3.connect(db)) as conn:
                 tables = {
                     row[0]
                     for row in conn.execute(

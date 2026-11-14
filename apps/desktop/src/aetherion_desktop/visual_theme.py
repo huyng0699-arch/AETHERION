@@ -11,7 +11,7 @@ import random
 from dataclasses import dataclass
 
 from PySide6.QtCore import Qt, QSettings, QTimer
-from PySide6.QtGui import QBrush, QColor, QFont, QLinearGradient, QPainter, QPen, QRadialGradient
+from PySide6.QtGui import QBrush, QColor, QFont, QLinearGradient, QPainter, QPalette, QPen, QRadialGradient
 from PySide6.QtWidgets import QWidget
 
 
@@ -335,6 +335,16 @@ class VisualPreferences:
         self.__init__()
 
     def apply(self,app):
+        p = palette_for(self.theme_name, self.mode, self.high_contrast, self.accent_override)
+        pal = app.palette()
+        pal.setColor(QPalette.ColorRole.Window, QColor(p.base))
+        pal.setColor(QPalette.ColorRole.WindowText, QColor(p.text))
+        pal.setColor(QPalette.ColorRole.Base, QColor(p.surface))
+        pal.setColor(QPalette.ColorRole.AlternateBase, QColor(p.surface_alt))
+        pal.setColor(QPalette.ColorRole.Text, QColor(p.text))
+        pal.setColor(QPalette.ColorRole.Button, QColor(p.surface))
+        pal.setColor(QPalette.ColorRole.ButtonText, QColor(p.text))
+        app.setPalette(pal)
         app.setFont(QFont(self.font_family,self.font_size))
         app.setStyleSheet(make_stylesheet(
             palette_for(self.theme_name,self.mode,self.high_contrast,self.accent_override),
@@ -393,7 +403,7 @@ def make_stylesheet(p: Palette, family="Segoe UI", high_contrast=False, font_siz
     QTabBar::tab {background:%(surface_alt)s; border:%(border_w)s solid %(border)s; border-radius:11px; padding:11px 17px; margin:0 3px 0 0; color:%(muted)s;}
     QTabBar::tab:selected {background:%(surface)s; color:%(accent)s; border-bottom:2px solid %(accent)s;}
     QTabBar::tab:focus {border:2px solid %(accent)s;}
-    QScrollArea, QScrollArea QWidget#qt_scrollarea_viewport {background:transparent; border:0;}
+    QScrollArea, QScrollArea QWidget#qt_scrollarea_viewport, QScrollArea QWidget#qt_scrollarea_viewport > QWidget {background:transparent; border:0;}
     QScrollBar:vertical {background:transparent; width:10px;}
     QScrollBar::handle:vertical {background:%(border)s; border-radius:5px; min-height:25px;}
     QSlider::groove:horizontal {height:7px; background:%(border)s; border-radius:3px;}

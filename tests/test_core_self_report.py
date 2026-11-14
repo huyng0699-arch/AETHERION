@@ -1,6 +1,7 @@
 """Tests for Q-0038 self-reported health observation model."""
 
 from pathlib import Path
+from contextlib import closing
 import sqlite3
 import tempfile
 import unittest
@@ -27,7 +28,7 @@ class SelfReportTests(unittest.TestCase):
             self.assertEqual(len(items), 1)
             self.assertEqual(items[0]["symptom"], "headache")
 
-            with sqlite3.connect(db) as conn:
+            with closing(sqlite3.connect(db)) as conn:
                 tables = {
                     row[0]
                     for row in conn.execute(

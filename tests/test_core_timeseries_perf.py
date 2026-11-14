@@ -2,6 +2,7 @@
 
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from contextlib import closing
 import sqlite3
 import tempfile
 import time
@@ -36,7 +37,7 @@ class TimeSeriesPerformanceTests(unittest.TestCase):
                         )
                     )
 
-            with sqlite3.connect(db) as conn:
+            with closing(sqlite3.connect(db)) as conn:
                 conn.executemany(
                     """
                     INSERT INTO observations (

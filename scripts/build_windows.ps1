@@ -131,13 +131,33 @@ Write-Host "Build evidence: $evidencePath"
 
 if (-not $SkipSmoke) {
     # A real Windows GUI handle, not an import test or a source-code assertion.
+    Add-Type -AssemblyName UIAutomationClient -ErrorAction SilentlyContinue
     $p = Start-Process -FilePath $exe -WorkingDirectory $app -PassThru
     $visible = $false
-    for ($i = 0; $i -lt 20; $i++) {
+    $hwnd = [IntPtr]::Zero
+    for ($i = 0; $i -lt 25; $i++) {
         Start-Sleep -Milliseconds 650
         $p.Refresh()
         if ($p.HasExited) { break }
-        if ($p.MainWindowHandle -ne [IntPtr]::Zero) { $visible = $true; break }
+        if ($p.MainWindowHandle -ne [IntPtr]::Zero) {
+            $hwnd = $p.MainWindowHandle
+            $visible = $true
+            break
+        }
+        try {
+            $childPids = @($p.Id) + @(Get-CimInstance Win32_Process -Filter ("ParentProcessId = {0}" -f $p.Id) -ErrorAction SilentlyContinue | Select-Object -ExpandProperty ProcessId)
+            $rootEl = [System.Windows.Automation.AutomationElement]::RootElement
+            $wins = $rootEl.FindAll([System.Windows.Automation.TreeScope]::Children, [System.Windows.Automation.Condition]::TrueCondition)
+            foreach ($wEl in $wins) {
+                $cur = $wEl.Current
+                if (($childPids -contains $cur.ProcessId) -and $cur.ClassName -ne "ConsoleWindowClass" -and $cur.BoundingRectangle.Width -gt 200) {
+                    $hwnd = [IntPtr][long]$cur.NativeWindowHandle
+                    $visible = $true
+                    break
+                }
+            }
+            if ($visible) { break }
+        } catch { }
     }
     if (-not $visible) {
         $evidence.native_gui_smoke = "FAILED_OR_NO_INTERACTIVE_DESKTOP"
@@ -161,7 +181,7 @@ public static class AetherionWindowRect {
 '@
         Add-Type -TypeDefinition $win32 -ErrorAction SilentlyContinue
         $rect = New-Object AetherionWindowRect+RECT
-        if ([AetherionWindowRect]::GetWindowRect($p.MainWindowHandle, [ref]$rect)) {
+        if ($hwnd -ne [IntPtr]::Zero -and [AetherionWindowRect]::GetWindowRect($hwnd, [ref]$rect)) {
             $w = [Math]::Min(3840, [Math]::Max(1, $rect.Right - $rect.Left))
             $h = [Math]::Min(2160, [Math]::Max(1, $rect.Bottom - $rect.Top))
             if ($w -gt 200 -and $h -gt 150) {
@@ -183,7 +203,7 @@ public static class AetherionWindowRect {
         Write-Warning ("Window was observed, but screenshot could not be captured: {0}" -f $_.Exception.Message)
     }
     $evidence | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $evidencePath -Encoding UTF8
-    Write-Host "Windows GUI handle observed; inspect five Portal cards, language switch, offline state, then close the app."
+    Write-Host "Windows GUI handle observed; inspect Mission Operations workspace, language switch, offline state, then close the app."
     Write-Host "Window-handle evidence does NOT certify routes, medical content, or independent review."
 }
 Write-Host "Desktop and server remain independently launched. Never distribute without checking licenses and provenance."

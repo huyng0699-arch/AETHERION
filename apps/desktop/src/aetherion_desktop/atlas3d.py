@@ -11,6 +11,7 @@ import json
 import re
 from pathlib import Path
 
+import shiboken6
 from PySide6.QtCore import QStandardPaths, Qt, QUrl
 from PySide6.QtGui import QDesktopServices
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
@@ -18,9 +19,10 @@ from PySide6.QtWidgets import (QComboBox, QFrame, QHBoxLayout, QLabel, QPushButt
                                QSizePolicy, QVBoxLayout, QWidget)
 
 from .localization import normalize_locale
+from .runtime_paths import reference_path
 
-ROOT = Path(__file__).resolve().parents[4]
-MANIFEST = ROOT / 'knowledge' / 'anatomy' / 'approved_models.json'
+# Use the same trusted read-only locator as the existing frozen Windows installer.
+MANIFEST = reference_path('anatomy', 'approved_models.json')
 ASSETS = MANIFEST.parent
 VALID_ID = re.compile(r'^[A-Za-z0-9_-]{1,64}$')
 SUPPORTED = {'.stl', '.obj', '.ply', '.vtk', '.vtp', '.vtu'}
@@ -195,6 +197,8 @@ class BodyAtlas3D(QWidget):
         reply.finished.connect(lambda: self._got_catalog(reply, seq))
 
     def _got_catalog(self, reply, seq):
+        if not shiboken6.isValid(reply):
+            return
         code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
         data = bytes(reply.readAll())
         reply.deleteLater()

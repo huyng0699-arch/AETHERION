@@ -712,13 +712,28 @@ class AetherionWindow(QMainWindow):
         self.operations_home_page.set_connection_state(self.status.text())
 
     def check_server(self):
+        prior = getattr(self, "_health_reply", None)
+        if prior is not None:
+            self._health_reply = None
+            try:
+                prior.abort()
+            except RuntimeError:
+                pass
         self._server_state = "checking"
         self._render_server_status()
         request = QNetworkRequest(QUrl(self.api_url + "/health"))
+        request.setTransferTimeout(2500)
+        request.setRawHeader(b"Connection", b"close")
         reply = self.network.get(request)
-        reply.finished.connect(lambda: self.finish_check(reply))
+        self._health_reply = reply
+        reply.finished.connect(lambda r=reply: self.finish_check(r))
 
     def finish_check(self, reply):
+        current = getattr(self, "_health_reply", None)
+        if current is not None and reply is not current:
+            reply.deleteLater()
+            return
+        self._health_reply = None
         code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
         error = reply.error()
         body = bytes(reply.readAll()).decode("utf-8", errors="replace")

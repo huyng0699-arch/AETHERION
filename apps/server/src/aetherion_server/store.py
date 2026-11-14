@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 import sqlite3
+from aetherion_server.sqlite_compat import connect_closing
 from typing import Any
 
 from .security import (
@@ -23,7 +24,7 @@ DEFAULT_VERIFICATION_STATE = "UNVERIFIED"
 
 
 def _connect(path: str | Path) -> sqlite3.Connection:
-    conn = sqlite3.connect(path)
+    conn = connect_closing(path)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
     return conn
