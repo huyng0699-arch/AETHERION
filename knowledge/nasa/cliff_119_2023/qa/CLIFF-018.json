@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-018",
+  "slot": 18,
+  "quest_id": "Q-0318",
+  "checked_at_utc": "2026-11-14T05:56:12.220100+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/trauma-chest-injury-blunt-cliff-2023.pdf?emrc=553b4f",
+  "http_status": 200,
+  "pdf_sha256": "130466e36c7d8b60cf57b8437d275f111c91aa3c42fe6b4ff5437bd4caebcb37",
+  "pdf_bytes": 337998,
+  "pages_extracted": 15,
+  "sections_count": 15,
+  "tables_count": 2,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-018-IMG-01": "86662567f37ffdd521fa1c8ccab6a2a3fa54f8b9db9c7f92822336cae53beb6f",
+    "CLIFF-018-IMG-02": "4bdb723d374c8cfc0f9e567ddc62bc3db2ee15f93d0db5660d74cdba72e581f7",
+    "CLIFF-018-IMG-03": "31b61a8a4bdf13bb9e51a62370e98fbb58a411c5ee0461f50f1f3b5fc181aed1"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
