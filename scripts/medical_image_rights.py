@@ -8,10 +8,12 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import ipaddress
 import json
 import re
 import struct
 import urllib.request
+import zlib
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
@@ -27,15 +29,72 @@ class ImageRightsError(ValueError):
 
 
 def _https(url: str) -> str:
-    parsed = urlparse(url) if isinstance(url, str) else None
-    if not parsed or parsed.scheme != "https" or not parsed.hostname or parsed.username:
-        raise ImageRightsError("source_url and rights_url must be absolute HTTPS URLs without credentials")
+    """Accept only ordinary HTTPS public-host URLs, never local or credentialed URLs.
+
+    This check rejects literal private addresses and localhost; public DNS must
+    still be trusted/reviewed by the image curator before downloading.
+    """
+    if not isinstance(url, str) or url != url.strip() or any(ord(ch) < 32 for ch in url):
+        raise ImageRightsError("URL must be nonempty, unambiguous HTTPS text")
+    try:
+        parsed = urlparse(url)
+        hostname, port = parsed.hostname, parsed.port
+    except ValueError as exc:
+        raise ImageRightsError("invalid URL authority or port") from exc
+    if (parsed.scheme != "https" or not hostname or parsed.username is not None
+            or parsed.password is not None or parsed.fragment or port not in (None, 443)):
+        raise ImageRightsError("only HTTPS URLs with public hosts and no credentials are allowed")
+    hostname = hostname.rstrip(".").lower()
+    if (hostname == "localhost" or hostname.endswith((".localhost", ".local", ".internal"))
+            or hostname in ("0", "0.0.0.0")):
+        raise ImageRightsError("local or internal network host is not an image source")
+    try:
+        address = ipaddress.ip_address(hostname)
+    except ValueError:
+        labels = hostname.split(".")
+        if len(labels) < 2 or any(not part for part in labels) or not re.search(r"[a-z]", labels[-1]):
+            raise ImageRightsError("non-public or ambiguous DNS name")
+    else:
+        if not address.is_global:
+            raise ImageRightsError("non-global IP address is not an image source")
     return url
 
 
+class SafeRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Reject unsafe redirect targets BEFORE urllib connects to them."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        _https(newurl)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
 def _dimensions(data: bytes) -> tuple[str, int, int]:
-    if data.startswith(b"\x89PNG\r\n\x1a\n") and len(data) >= 24:
+    if data.startswith(b"\x89PNG\r\n\x1a\n"):
+        # A PNG signature + dimensions alone can be a truncated or corrupt file.
+        if len(data) < 57 or data[8:16] != b"\x00\x00\x00\rIHDR":
+            raise ImageRightsError("PNG missing a complete IHDR")
         w, h = struct.unpack(">II", data[16:24])
+        position, saw_data, saw_end = 8, False, False
+        while position < len(data):
+            if position + 12 > len(data):
+                raise ImageRightsError("truncated PNG chunk header")
+            length = struct.unpack(">I", data[position:position + 4])[0]
+            end = position + 12 + length
+            if length > MAX_IMAGE_BYTES or end > len(data):
+                raise ImageRightsError("truncated or excessive PNG chunk")
+            chunk_type = data[position + 4:position + 8]
+            chunk_bytes = data[position + 4:position + 8 + length]
+            expected_crc = struct.unpack(">I", data[end - 4:end])[0]
+            if (zlib.crc32(chunk_bytes) & 0xffffffff) != expected_crc:
+                raise ImageRightsError("PNG chunk CRC mismatch")
+            if chunk_type == b"IDAT":
+                saw_data = True
+            elif chunk_type == b"IEND":
+                if length != 0 or not saw_data or end != len(data):
+                    raise ImageRightsError("invalid PNG end marker")
+                saw_end = True
+            position = end
+        if not saw_end:
+            raise ImageRightsError("PNG missing end marker")
         mime = "image/png"
     elif data[:6] in (b"GIF87a", b"GIF89a") and len(data) >= 10:
         w, h = struct.unpack("<HH", data[6:10])
@@ -51,6 +110,8 @@ def _dimensions(data: bytes) -> tuple[str, int, int]:
             raise ImageRightsError("unsupported WebP variant")
         mime = "image/webp"
     elif data.startswith(b"\xff\xd8"):
+        if not data.endswith(b"\xff\xd9"):
+            raise ImageRightsError("JPEG missing end marker")
         mime = "image/jpeg"
         w = h = 0
         i = 2
@@ -124,7 +185,7 @@ def acquire(meta: dict, output_dir: Path, opener=None) -> dict:
     req = urllib.request.Request(
         meta["source_url"], headers={"User-Agent": "AETHERION-medical-image-provenance/1.0"}
     )
-    fetch = opener or urllib.request.urlopen
+    fetch = opener or urllib.request.build_opener(SafeRedirectHandler()).open
     with fetch(req, timeout=20) as response:
         final_url = response.geturl()
         _https(final_url)
@@ -137,13 +198,24 @@ def acquire(meta: dict, output_dir: Path, opener=None) -> dict:
     path = output_dir / filename
     if path.exists() and path.read_bytes() != data:
         raise ImageRightsError("content-addressed asset differs from existing file")
-    path.write_bytes(data)
     record = {
         **meta, **verified, "final_url": final_url,
         "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),
         "asset_path": filename, "rights_review_status": "metadata_declared_manual_review_required"
     }
-    (output_dir / (verified["sha256"] + ".json")).write_text(
+    manifest_path = output_dir / (verified["sha256"] + ".json")
+    if manifest_path.exists():
+        if not path.is_file():
+            raise ImageRightsError("existing provenance manifest has no matching image")
+        previous = json.loads(manifest_path.read_text(encoding="utf-8"))
+        stable_fields = (*REQUIRED, "rights_verified", "final_url", "mime_type",
+                         "width", "height", "size_bytes", "sha256")
+        if any(previous.get(key) != record.get(key) for key in stable_fields):
+            raise ImageRightsError("same image bytes have conflicting provenance; review before reuse")
+        return previous
+    if not path.exists():
+        path.write_bytes(data)
+    manifest_path.write_text(
         json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     return record
