@@ -77,6 +77,10 @@ def read_ai_settings(path: str | Path) -> dict:
         return dict(DEFAULT_AI)
     try:
         saved = json.loads(row["value_json"])
+        if not isinstance(saved, dict) or saved.get("mode", "off") not in SUPPORTED_AI_MODES:
+            return dict(DEFAULT_AI)
+        if saved.get("cloud_data_sharing", False) is not False:
+            return dict(DEFAULT_AI)
         return {**DEFAULT_AI, **{key: saved[key] for key in DEFAULT_AI if key in saved}}
     except (ValueError, TypeError, KeyError):
         # Corruption must not silently activate AI.
