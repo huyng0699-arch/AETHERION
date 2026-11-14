@@ -315,7 +315,7 @@ class ECGPage(QWidget):
             self.status.setText(self.t('required'));return
         if len(self.file_samples)/self.hz.value()>120:
             self.status.setText(self.t('invalid_file'));return
-        observed=self.observed_at.dateTime().toString(Qt.DateFormat.ISODateWithMs)
+        observed=self.observed_at.dateTime().toUTC().toString(Qt.DateFormat.ISODateWithMs)
         body={'subject_id':self.subject_id,'source_id':self.source_id.text().strip(),
               'recorded_at':observed,'lead_name':self.lead.currentText(),
               'sample_rate_hz':self.hz.value(),'samples_millivolts':self.file_samples,
