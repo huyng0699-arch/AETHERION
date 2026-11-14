@@ -1,33 +1,70 @@
-"""Local-only API. No authentication; use development data only."""
+"""Local-first AETHERION HTTP server with provenance persistence and session auth."""
 
+from __future__ import annotations
+
+from contextlib import asynccontextmanager
+from datetime import datetime
+import math
 import os
 from pathlib import Path
-from datetime import datetime
+from typing import Literal
 
-from fastapi import FastAPI, Query
-from pydantic import BaseModel, Field, field_validator
+from fastapi import Depends, FastAPI, Header, HTTPException, Query, Response, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from pydantic import BaseModel, Field, field_validator, model_validator
 
-from .store import add_observation, list_observations
-
-app = FastAPI(
-    title="AETHERION API",
-    description="Local engineering prototype; not clinical decision support",
-    version="0.1.0",
+from .bootstrap import bootstrap_from_env, default_database_path
+from .security import DEFAULT_SESSION_TTL_SECONDS, is_subject_authorized, verify_password
+from .store import (
+    check_readiness,
+    create_session,
+    get_active_session,
+    get_user_by_username,
+    ingest_observation,
+    initialize,
+    query_observations,
+    revoke_session,
 )
 
+AllowedScope = Literal["crew", "habitat", "personal", "engineering_test"]
+AllowedQuality = Literal["READY", "NO_DATA", "STALE", "OFFLINE", "DENIED", "ERROR", "UNVERIFIED"]
+AllowedVerificationState = Literal["UNVERIFIED", "SELF_REPORTED", "DEVICE_UNVERIFIED", "TEST_FIXTURE"]
 
-def database_path() -> Path:
-    default = Path.home() / ".aetherion" / "observations.sqlite3"
-    return Path(os.environ.get("AETHERION_DB_PATH", str(default)))
+_bearer_scheme = HTTPBearer(auto_error=False)
+
+
+class LoginRequest(BaseModel):
+    username: str = Field(min_length=1, max_length=80)
+    password: str = Field(min_length=1, max_length=256)
 
 
 class ObservationIn(BaseModel):
     subject_id: str = Field(min_length=1, max_length=80)
+    scope: AllowedScope = "crew"
     metric: str = Field(min_length=1, max_length=80)
     value: float
     unit: str = Field(min_length=1, max_length=40)
-    source: str = Field(min_length=1, max_length=120)
+    source_id: str | None = Field(default=None, min_length=1, max_length=120)
+    source: str | None = Field(default=None, min_length=1, max_length=120)
     observed_at: datetime
+    quality: AllowedQuality = "UNVERIFIED"
+    verification_state: AllowedVerificationState = "UNVERIFIED"
+    idempotency_key: str | None = Field(default=None, min_length=1, max_length=128)
+
+    @field_validator("subject_id", "metric", "unit")
+    @classmethod
+    def require_non_blank(cls, value: str) -> str:
+        stripped = value.strip()
+        if not stripped:
+            raise ValueError("Field must not be blank")
+        return stripped
+
+    @field_validator("value")
+    @classmethod
+    def require_finite_value(cls, value: float) -> float:
+        if not math.isfinite(value):
+            raise ValueError("value must be a finite number")
+        return value
 
     @field_validator("observed_at")
     @classmethod
@@ -36,23 +73,195 @@ class ObservationIn(BaseModel):
             raise ValueError("observed_at must include a time-zone offset")
         return value
 
-
-@app.get("/health")
-def health() -> dict[str, str]:
-    return {"service": "aetherion-server", "status": "ok"}
-
-
-@app.get("/api/v1/observations")
-def observations(subject_id: str = Query(min_length=1, max_length=80), limit: int = Query(100, ge=1, le=500)):
-    return {
-        "subject_id": subject_id,
-        "observations": list_observations(database_path(), subject_id, limit),
-        "note": "Prototype data are unverified. No medical interpretation is provided.",
-    }
+    @model_validator(mode="after")
+    def require_source_identifier(self) -> "ObservationIn":
+        resolved = (self.source_id or self.source or "").strip()
+        if not resolved:
+            raise ValueError("source_id or source is required")
+        self.source_id = resolved
+        self.source = (self.source or resolved).strip()
+        return self
 
 
-@app.post("/api/v1/observations", status_code=201)
-def create_observation(item: ObservationIn):
-    record = item.model_dump(mode="json")
-    identifier = add_observation(database_path(), record)
-    return {"id": identifier, "status": "stored_unverified", "observation": record}
+def database_path() -> Path:
+    return default_database_path()
+
+
+def _resolve_session_ttl(override: int | None) -> int:
+    if override is not None:
+        return override
+    raw = os.environ.get("AETHERION_SESSION_TTL_SECONDS")
+    if raw:
+        try:
+            parsed = int(raw)
+            if parsed > 0:
+                return parsed
+        except ValueError:
+            pass
+    return DEFAULT_SESSION_TTL_SECONDS
+
+
+def create_app(
+    db_path: str | Path | None = None,
+    *,
+    session_ttl_seconds: int | None = None,
+) -> FastAPI:
+    def get_db_path() -> Path:
+        return Path(db_path) if db_path is not None else default_database_path()
+
+    @asynccontextmanager
+    async def lifespan(_app: FastAPI):
+        target = get_db_path()
+        initialize(target)
+        bootstrap_from_env(target)
+        yield
+
+    application = FastAPI(
+        title="AETHERION API",
+        description="Local-first health data foundation; not clinical decision support",
+        version="0.2.0",
+        lifespan=lifespan,
+    )
+
+    def require_session(
+        credentials: HTTPAuthorizationCredentials | None = Depends(_bearer_scheme),
+    ) -> tuple[dict, str]:
+        if credentials is None or credentials.scheme.lower() != "bearer" or not credentials.credentials:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Authentication required",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+        token = credentials.credentials
+        session = get_active_session(get_db_path(), token)
+        if session is None:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid, expired, or revoked session token",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+        return session, token
+
+    @application.get("/health")
+    def health() -> dict[str, str]:
+        return {"service": "aetherion-server", "status": "ok"}
+
+    @application.get("/ready")
+    def ready() -> dict[str, str]:
+        try:
+            info = check_readiness(get_db_path())
+        except Exception as exc:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail=f"Database not ready: {exc}",
+            ) from exc
+        return {"service": "aetherion-server", "status": "ready", "database": info["database"]}
+
+    @application.post("/api/v1/auth/login")
+    def login(payload: LoginRequest):
+        target = get_db_path()
+        initialize(target)
+        bootstrap_from_env(target)
+        user = get_user_by_username(target, payload.username.strip())
+        if user is None or not user["active"] or not verify_password(payload.password, user["password_hash"]):
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid username or password",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+        ttl = _resolve_session_ttl(session_ttl_seconds)
+        token_info = create_session(target, user_id=user["id"], ttl_seconds=ttl)
+        return {
+            **token_info,
+            "user": {
+                "username": user["username"],
+                "role": user["role"],
+                "allowed_subjects": user["allowed_subjects"],
+            },
+        }
+
+    @application.post("/api/v1/auth/logout")
+    def logout(session_and_token: tuple[dict, str] = Depends(require_session)):
+        _, token = session_and_token
+        revoke_session(get_db_path(), token)
+        return {"status": "logged_out"}
+
+    @application.get("/api/v1/auth/me")
+    def auth_me(session_and_token: tuple[dict, str] = Depends(require_session)):
+        session, _ = session_and_token
+        return {
+            "username": session["username"],
+            "role": session["role"],
+            "allowed_subjects": session["allowed_subjects"],
+            "expires_at": session["expires_at"],
+        }
+
+    @application.get("/api/v1/observations")
+    def observations(
+        subject_id: str = Query(min_length=1, max_length=80),
+        scope: AllowedScope | None = Query(default=None),
+        metric: str | None = Query(default=None, min_length=1, max_length=80),
+        limit: int = Query(100, ge=1, le=500),
+        session_and_token: tuple[dict, str] = Depends(require_session),
+    ):
+        session, _ = session_and_token
+        if not is_subject_authorized(session["role"], session["allowed_subjects"], subject_id):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Not authorized to access subject '{subject_id}'",
+            )
+        items = query_observations(
+            get_db_path(),
+            subject_id,
+            scope=scope,
+            metric=metric,
+            limit=limit,
+        )
+        return {
+            "subject_id": subject_id,
+            "observations": items,
+            "note": "Observations preserve recorded provenance; no automated clinical diagnosis is provided.",
+        }
+
+    @application.post("/api/v1/observations", status_code=status.HTTP_201_CREATED)
+    def create_observation(
+        item: ObservationIn,
+        response: Response,
+        idempotency_key_header: str | None = Header(default=None, alias="Idempotency-Key"),
+        session_and_token: tuple[dict, str] = Depends(require_session),
+    ):
+        session, _ = session_and_token
+        if not is_subject_authorized(session["role"], session["allowed_subjects"], item.subject_id):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Not authorized to record observations for subject '{item.subject_id}'",
+            )
+        record = item.model_dump(mode="json")
+        if idempotency_key_header and not record.get("idempotency_key"):
+            record["idempotency_key"] = idempotency_key_header.strip() or None
+        obs_id, created_new, stored = ingest_observation(
+            get_db_path(),
+            record,
+            created_by=session["username"],
+        )
+        if not created_new:
+            response.status_code = status.HTTP_200_OK
+        return {
+            "id": obs_id,
+            "status": "stored" if created_new else "idempotent_replay",
+            "idempotent_replay": not created_new,
+            "observation": stored,
+        }
+
+    return application
+
+
+app = create_app()
+
+
+def run() -> None:
+    import uvicorn
+
+    host = os.environ.get("AETHERION_HOST", "127.0.0.1")
+    port = int(os.environ.get("AETHERION_PORT", "8000"))
+    uvicorn.run(app, host=host, port=port)
