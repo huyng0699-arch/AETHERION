@@ -1,0 +1,634 @@
+{
+  "article_id": "CLIFF-102",
+  "slot": 102,
+  "display_title": "EVA-Related Shoulder Injury",
+  "category": "Musculoskeletal",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-102",
+    "publisher": "NASA",
+    "title": "EVA-Related Shoulder Injury \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-shoulder-injury-cliff-2023.pdf?emrc=94c789",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-shoulder-injury-cliff-2023.pdf?emrc=94c789",
+    "retrieved_at_utc": "2026-11-14T06:36:39.016937+00:00",
+    "content_sha256": "a7e02e2e6c9e5e13380fee900185c07e552fe503ab69780a8c977b952b9416b9",
+    "original_mime": "application/pdf",
+    "original_bytes": 330615,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-102-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n   Branch     Baseline\n\n\n\n ICL45_Eva Related Shoulder Injury\n\n There are multiple factors associated with the mechanism of shoulder injury related to the EVA such as suit fit, donning and doffing, body position,\n pre-existing injury, tool mass and configuration, age, in-suit activity, and training density. Notably, EVA density has been correlated with shoulder\n injury. For each EVA performed in spaceflight, crewmembers undergo 6-10 NBL training runs (Scheuring et al, 2012). The likelihood of symptoms\n increases with increased NBL test-runs with the following proportions of runs complaining of shoulder symptoms: 2.7% (0-9 runs), 5% (10-91 runs)\n and 15.8% (92 or more runs). Similarly, training volume is correlated with surgical shoulder injuries, with crewmembers who have performed more\n than 92 training runs (in either the planar or the pivoted hard upper torso suit) being 5.9 more likely to have shoulder surgery compared to\n crewmembers who have performed 0-9 training runs. (Scheuring et al, 2012) Suit design has been implicated in shoulder injuries. The Scye (arm\n openings) on both the planar hard upper torso (HUT) and pivoted HUT suits restrict normal shoulder motion, but the planar HUT to a greater degree.\n The planar HUT limits shoulder range of motion to the following approximates (Abduction 60-90\u00b0, Flexion 90\u00b0, Internal Rotation 40\u00b0, External rotation\n 35\u00b0). (Scheuring et al, 2012)\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Scheuring et al. (2009) was used to inform the incidence distribution for this condition. The study evaluated the incidence musculoskeletal in-flight\n  injuries among astronauts in a review spanning Mercury - Expedition 13 of the ISS Program. 6 shoulder injuries were attributed to the EVA suit\n  during that timeframe. Of note, these data are based on the Extravehicular Mobility Unit (EMU) suit used on the ISS \u2013 not the planned xEMU suit for\n  Lunar surface EVAs. Also of note, the study reports a total of 21 shoulder injuries from Mercury - ISS Expedition 13. As previously stated, 6 are\n  attributed to the EVA suit, 5 are attributed to exercise, an unknown amount are attributed to repetitive injury from contact with the glove box during\n  science experiments, and the remainder are attributed to general activities within the ISS. The following data sources were utilized in this review:\n  post-flight medical debriefs, the LSAH medical record database, the Johnson Space Center (JSC) electronic medical record system, including ASCR\n  specialist assessment and treatment logs, and the JSC Flight Medicine Clinic vault records. Musculoskeletal injury data in the ISS program was\n  extracted from the private medical conferences held between the ISS crewmembers and their flight surgeon up to and including Expedition 13, as\n  well as from the ASCR specialists supervising the crewmember\u2019s in-flight training regimen. Lastly, several entries came directly from personal\n  communications with astronaut crewmembers or flight surgeons and the authors when not otherwise duplicated. Information collected on each injury\n  included location, type, and a detailed narrative on the mechanism of injury, the type of exercise the crewmember performed during the flight,\n  previous history of injury, treatment, and post-flight outcome. The term \u201c in-flight\u201d included lunar surface operations. This article notes small\n  lacerations and abrasions to the hands are among the most common injuries occurring throughout the U.S. space program.\n\n  ANALOG LITERATURE\n\n  Analog data regarding shoulder injuries that occur during EVA training is readily available. Laughlin et al, 2014 is a retrospective review poster\n  presentation which reviewed all astronaut medical records (n = 330) for training injuries that occurred at the Weightless Environment Training\n  Facility (WETF) or Neutral Buoyancy Laboratory (NBL) in active astronauts. They report an overall incidence of 9.67 injuries per 100 astronauts\n  over 10 years in the EVA training environment. There was a non-statistically significant difference in incidence between male (8.88 injuries per 100\n  astronauts over 10 years) and females (13.97 injuries per 100 astronauts over 10 years). Viegas et al, 2004 presents retrospective data from an\n  NBL study of 83 astronauts, comprising 548 test-runs from July 19, 2002 - July 18, 2003. During the year-long study 66 shoulder injuries were\n  reported during these 548 test runs. Of note, while EVA training in water can achieve neutral buoyancy, the effect of gravity is still in place. Injuries\n  seen in the NBL, not seen in spaceflight have been attributed to gravity shifting inside the suit (Chappell et al, 2017).\n\n  TERRESTRIAL LITERATURE\n\n  It was assumed that terrestrial data would be inadequate for providing input that drives the incidence of this spaceflight specific condition. No\n  terrestrial data searches were performed.\n\n\n\n\n8/23/2023 5:47:11 PM                                              ICL45_Eva Related Shoulder Injury Cliff                                                     page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-102-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   Mean: 0.0282 SD: 0.0107\n\n\n\n  INCIDENCE SUMMARY\n\n  In incidence distribution for this condition is informed by Scheuring et al, 2009. This reports 6 EVA-related shoulder injuries from Mercury through\n  ISS Expedition 13. Total EVAs Mercury through Expedition 13 was 247. Total events 6 over 247 person-EVAs. IP: 0.0243 (95%CI: 0.009, 0.0521).\n  The Bayesian posterior distribution for the incidence proportion given the spaceflight data (6 events over 247 person-EVAs) under an\n  uninformative prior is Beta(shape1=6.722, shape2=231.64) with mean 0.0282 and SD 0.0107.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     EVA\n     Segment\n     EVA All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Binomial\n     Incidence Dist.\n     Beta\n     Mean\n     0.0282008\n     SD\n     0.0107002\n\n\n     Beta\n     (Alpha): 6.722\n     (Beta): 231.64\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                              Source                                   LOC Value\n\n   Scheuring et al, 2009                                                 Spaceflight                              4\n\n   Viegas et al, 2004                                                    Analog                                   3\n\n   Laughlin et al, 2014                                                  Analog                                   3\n\n  Scheuring et al, 2009 is a retrospective review of musculoskeletal injuries in U.S. Astronauts from Mercury - ISS Expedition 13. It reports 6 inflight\n  shoulder injuries secondary to the EVA suit. It was used to inform the incidence for this condition and given that it is spaceflight data, was ranked\n  with a level of confidence of 4. Viegas et al, 2004 presents retrospective data from an NBL study of 83 astronauts, comprising 548 test-runs. There\n  were 66 shoulder injuries reported during these 548 test runs. Laughlin et al, 2014 is a retrospective review poster presentation which reviewed all\n  astronaut medical records (n = 330) for training injuries that occurred at the Weightless Environment Training Facility (WETF) or Neutral Buoyancy\n  Laboratory (NBL) in active astronauts. They report an overall incidence of 9.67 injuries per 100 astronauts over 10 years in the EVA training\n  environment. Viegas et al, 2004 presents retrospective data from an NBL study of 83 astronauts, comprising 548 test-runs. 66 shoulder injuries\n  were reported during these 548 test runs.\n\n\n\n\n8/23/2023 5:47:11 PM                                             ICL45_Eva Related Shoulder Injury Cliff                                                   page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-102-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Prevention methods include optimizing suit fit, crew training including avoiding work outside of the normal work envelop, the application of suit\n  padding and pressure absorbing dressings to known affected body areas. (Strauss, 2004)\n\n  BEST CASE SCENARIO DEFINITION\n\n  Suit related overuse injury or Grade I or II strain/sprain (minimal or partial muscle or ligamentous tearing) in which symptoms can be readily\n  managed with oral or topical medications and supportive care (physical therapy is encouraged).\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Suit related overuse injury or Grade III strain/sprain (full thickness muscle or ligamentous tearing), instability, or suspected labral tear that requires\n  additional treatment. Physical therapy is mandatory.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  Shoulder - Labral Tear\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  Scheuring et al, 2012 is a presentation from the Aerospace Medical Association National Conference which presents data on shoulder injuries in US\n  Astronauts related to EVA suit design. NBL training data and spacesuit design data from 1995-2011 were analyzed. Shoulder surgery data was\n  acquired from JSC medical records. Causal mechanisms were obtained via personal interview with crewmembers who underwent surgery. An\n  analysis of the hard upper torso of the EMU was performed as it related to normal shoulder biomechanics. This study reviewed 330 US astronauts.\n  Data was unavailable for 176 astronauts. Of the remaining 154 which records were available for, 103 had performed at least 1 EVA prior to\n  shoulder surgery. Of these 103 crewmembers, there were 11 shoulder surgeries. Laughlin et al, 2014 is a retrospective review poster presentation\n  which reviewed all astronaut medical records (n = 330) for training injuries that occurred at the Weightless Environment Training Facility (WETF) or\n  Neutral Buoyancy Laboratory (NBL) in active astronauts. They report a total of 40 shoulder injuries. Using the 40 total shoulder injuries from\n  Laughlin et al, 2014 in the cohort of 330 crewmembers as the denominator for total shoulder injuries and the 11 shoulder surgeries from Scheuring\n  et al, 2012 as the numerator for worst-case scenario EVA related shoulder injuries, the worst-case probability was assigned as 27.5%. The best-\n  case scenario probability was assigned as 72.5%. Note, there are considerations that were not able to be factored into this best and worst-case\n  scenario, such as EVA volume per crewmember. Scheuring et al, 2012 concluded that crewmembers who had more than 92 total training runs (in\n  either the planar or pivoted hard upper torso (HUT) suit) were 5.9 times more likely to have shoulder surgery compared to crewmembers who had\n  0-9 training runs. The study also supported that training in the planar HUT only may decrease the risk of shoulder injury requiring surgery. Given\n  that this is based on NBL data, where higher severity shoulder injuries are more common than in spaceflight, to account for uncertainty the best\n  and worst-case scenarios were assigned a range: Best-case scenario 72.5%-100% and worst-case scenario 0-27.5%.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                       Source                          LOC Value\n\n   Scheuring et al, 2012                                                          Analog                          3\n\n   Laughlin et al, 2014                                                           Analog                          3\n\n\n  Scheuring et al, 2012 is a presentation from the Aerospace Medical Association National Conference which presents data on shoulder injuries in US\n  Astronauts related to EVA suit design. NBL training data and spacesuit design data from 1995-2011 were analyzed. Shoulder surgery data was\n  acquired from JSC medical records. Causal mechanisms were obtained via personal interview with crewmembers who underwent surgery. An\n  analysis of the hard upper torso of the EMU was performed as it related to normal shoulder biomechanics. This study reviewed 330 US astronauts.\n  Data was unavailable for 176 astronauts. Of the remaining 154 which records were available for, 103 had performed at least 1 EVA prior to\n  shoulder surgery. Of these 103 crewmembers, there were 11 shoulder surgeries. Laughlin et al, 2014 is a retrospective review poster presentation\n  which reviewed all astronaut medical records (n = 330) for training injuries that occurred at the Weightless Environment Training Facility (WETF) or\n  Neutral Buoyancy Laboratory (NBL) in active astronauts. They report a total of 40 shoulder injuries.\n\n\n\n\n8/23/2023 5:47:11 PM                                               ICL45_Eva Related Shoulder Injury Cliff                                                     page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-102-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                            CP1: Diagnosis       CP2: Treatment               CP3: Condition End State\n\n                                                            TI%      Duration    TI%        Duration          TI%         RTDC             LOCL\n                       Composite          Condition\n   Case Scenario       Incidence          Probability %     Preset   Preset      Preset     Min      Max      Preset      Min%    Max%     Min%     Max%\n\n   Treated Best        Mean: 0.0282       86 - 86           100      1.48        8.75631    504      2232     0           0       0        0        0\n   Case (TBC)          SD: 0.0107\n\n   Treated Worst                          14 - 14           100      1.48        19.2665    2232     8928     17.5126     0       0        0        0\n   Case (TWC)\n\n   Untreated Best      N/A                N/A               N/A      1.48        22.5884    2232     8928     6.51076     0       0        0        0\n   Case (UTBC)\n\n   Untreated Worst     N/A                N/A               N/A      1.48        29.2719    8760     87600    17.5126     0       0        0        0\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n8/23/2023 5:47:11 PM                                              ICL45_Eva Related Shoulder Injury Cliff                                                     page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-102-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  The RTDC surrogate selected was need for surgical intervention. See details for specific scenarios below.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  The duration for this scenario was assigned a range of 504-2232 hours (3 weeks - 3 months). The minimum duration was informed by the Hand to\n  Shoulder Center of Wisconsin, a private clinic website that states the average healing time for an upper extremity sprain/strain is 3 weeks (note this\n  source was also used in the Upper Extremity Sprain/Strain CLiFF). The maximum duration is based on a conservative/non-operative treatment\n  length of 3-6 months in patients with partial thickness rotator cuff tears (Deore et al, 2016; Matthewson et al, 2015). The RTDC probability was\n  assigned 0%. The RTDC surrogate selected was the need for surgical intervention. Most partial thickness tears (Grade I and II) can successfully be\n  treated non-operatively (Matthewson et al, 2015). Literature searches (Dynamed and NTRS) did not reveal any studies indicating mortality due to\n  best-case EVA-Related Shoulder injury. Therefore, the LOCL probability was assigned 0%.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  The duration was assigned a range of 2232-8928 hours (3-12 months). The minimum duration was informed by Osborne et al, 2016 which reports\n  a healing time of 3-6 months after rotator cuff repair surgery. The maximum duration was informed by Morgan et al, 1998 in which the majority of\n  athletes with SLAP (Superior Labrum Anterior Posterior) tears were able to return to the same level of play at 1-year post-op. This range was\n  corroborated by Casagranda and Thurlow (2016) who present a range of 4-9 months for return to play in athletes after surgical rotator cuff repair.\n  The RTDC surrogate for this Cliff was initially assigned as need for surgical intervention. Typically, patients present to the hospital due to pain. Pain\n  control could be provided during spaceflight, so this is not a realistic surrogate for RTDC. While a Grade III sprain/strain requiring surgical\n  intervention is possible in spaceflight, it is unlikely that RTDC would be executed for surgical intervention. Rather, pain control and PT would be the\n  mainstay of treatment inflight and surgical intervention would be pursued post-flight. Lack of prompt surgical intervention will be reflected in TI.\n  Thus, the RTDC probability was accordingly assigned as 0%. Literature searches (Dynamed and NTRS) did not reveal any studies indicating\n  mortality due to worst-case EVA-Related Shoulder injury. Therefore, the LOCL probability was assigned 0%.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  The duration was assigned a range of 2232-8928 hours (3-12 months). The minimum duration was informed by conservative (non-operative\n  treatment times) for rotator cuff tears (Deore et al, 2016;Matthewson et al, 2015). Despite this being an untreated scenario, it is feasible that\n  symptoms would plateau as early as 3 months without treatment. The maximum duration (12 months) was informed by Maman et al, 2009. This\n  was a retrospective review that followed rotator cuff tears radiographically (MRI) to assess for progression. At 12 months 87.5% of partial thickness\n  tears were asymptomatic. The RTDC surrogate for this Cliff was initially assigned as need for surgical intervention. Typically, patients present to the\n  hospital due to pain. Pain control could be provided during spaceflight, so this is not a realistic surrogate for RTDC. While a Grade III sprain/strain\n  requiring surgical intervention is possible in spaceflight, it is unlikely that RTDC would be executive for surgical intervention. Rather, pain control\n  and PT would be the mainstay of treatment inflight and surgical intervention would be pursued post-flight. Lack of prompt surgical intervention will\n  be reflected in TI. Thus, the RTDC probability was according assigned as 0%. Literature searches (Dynamed and NTRS) did not reveal any studies\n  indicating mortality due to best-case EVA-Related Shoulder injury. Therefore, the LOCL probability was assigned 0%.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  A duration of 8760-87600 hours (1-10 years) was assigned to this scenario. The minimum duration was informed by a Cochran review comparing\n  survey vs. placebo for full thickness rotator cuff tears (note that the \"untreated arm\" represents non-operative treatment with or without\n  glucocorticoid injection. The follow-up period was 1 year, at which time operative and non-operative outcomes were not statistically different.\n  (Karjalainen et al, 2019) The maximum duration was informed by American Academy of Orthopedic Surgery Guidelines for the Management of\n  Rotator Cuff Injuries (March 11, 2019) which states that despite physical therapy improving patient satisfaction, in non-operatively treated full\n  thickness rotator cuff tears, the size of the tear, muscle atrophy, and fatty infiltration progress for a period of 5-10 years. Two studies showed\n  intermediate duration lengths. Both were based on MRI surveillance of non-operatively treated full-thickness rotator cuff tears. Kim et al, 2016\n  found that over 100 months 82.4% of full-thickness rotator cuff tears enlarged in size, whereas Fucentense et al, 2012 found that at 3.5 years,\n  isolated full thickness supraspinatus tears that were treated non-operatively had not increased in size and had good outcomes. The RTDC\n  surrogate for this Cliff was initially assigned as need for surgical intervention. Typically, patients present to the hospital due to pain. Pain control\n  could be provided during spaceflight, so this is not a realistic surrogate for RTDC. While a Grade III sprain/strain requiring surgical intervention is\n  possible in spaceflight, it is unlikely that RTDC would be executive for surgical intervention. Rather, pain control and PT would be the mainstay of\n  treatment inflight and surgical intervention would be pursued post-flight. Lack of prompt surgical intervention will be reflected in TI. Thus, the RTDC\n  probability was according assigned as 0%. Literature searches (Dynamed and NTRS) did not reveal any studies indicating mortality due to worst-\n  case EVA-Related Shoulder injury. Therefore, the LOCL probability was assigned 0%.\n\n\n\n\n8/23/2023 5:47:11 PM                                              ICL45_Eva Related Shoulder Injury Cliff                                                     page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-102-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                                                            Source               LOC Value\n\n   Hand to Shoulder Center of Wisconsin, 2021                                                                          Terrestrial\n\n   Deore et al, 2016                                                                                                   Terrestrial\n\n   Matthewson et al, 2015                                                                                              Terrestrial\n\n   Osborne et al, 2016                                                                                                 Terrestrial\n\n   Morgan et al, 1998                                                                                                  Terrestrial\n\n   Casagranda and Thurlow, 2016                                                                                        Terrestrial                3\n\n   Maman et al, 2009                                                                                                   Terrestrial\n\n   Karjalainen et al, 2019                                                                                             Terrestrial\n\n   Kim et al, 2016                                                                                                     Terrestrial\n\n   Fucentense et al, 2012                                                                                              Terrestrial\n\n   AAOS Guidelines for \"Management of Rotator Cuff Injuries\" March 11, 2019                                            Terrestrial\n\n  Durations were provided from terrestrial data including sprains/strains and partial rotator cuff tears (best-case scenario) and full-thickness rotator\n  cuff tears and labral tears (worst-case scenario).\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                    Source                                 LOC Value\n\n   Maman et al, 2009                                                           Terrestrial\n\n   Matthewson et al, 2015                                                      Terrestrial\n                                                                                                                                        3\n   Scheuring et al, 2012                                                       Terrestrial\n\n   Minagawa et al, 2013                                                        Terrestrial\n\n  The RTDC surrogate selected was need for surgical intervention. Terrestrial data was used to inform indications for surgery. The most agreed\n  upon criteria is Grade III tears (> 50% tendon thickness). Therefore, data regarding progression of partial thickness tears (best-case scenario) to\n  large tears was used to inform the best-case scenario RTDC probabilities. This is unchanged by conservative management. For the worst-case\n  scenario data regarding crewmember surgical shoulder injuries and rate of full-thickness tears in a terrestrial population was used to inform the\n  RTDC probability.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                       Source                                       LOC Value\n\n   N/A                                            N/A                                                                        4\n\n  Literature searches in Dynamed (\"Rotator Cuff Tear\" and \"SLAP Tear\") as well as subsequent secondary references from the primary references\n  listed, and NTRS did not reveal any literature that indicates mortality as a result of EVA Related Shoulder Injury. Thus the LOCL probability was\n  assigned 0% for all scenarios.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope Overview EVA Related Shoulder Injury \u2013 This condition represents a spectrum of strains and sprains of the\n  shoulder that can occur during EVAs. Clinically the condition is similar to shoulder injuries incurred terrestrially without unique clinical features,\n  although the design of the suit\u2019s torso coupled with the atypical and repetitive motions of an EVA make this a likely source of injury. Shoulder\n\n\n\n\n8/23/2023 5:47:11 PM                                              ICL45_Eva Related Shoulder Injury Cliff                                                  page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-102-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  dislocations, tendinopathies, and other sprains/strains are not included in this outline as they are addressed elsewhere. CNES: N/A Diagnostic\n  Scope and Resourcing This condition in the best-case and worst-case is diagnosed by history and a focused musculoskeletal examination. A\n  neurological examination is also included to evaluate for corresponding nerve injury or impingement. Ultrasound has been included in the\n  diagnostic suite to look for muscle tears, dislocation, and fracture. Clinical Phase 1 Duration and Rationale This version of IMPACT presumes\n  physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME consensus duration is as follows: CP1 BC\n  (Treated or Untreated): 1.48 hours CP1 WC (Treated or Untreated: 1.48 hours This CRT includes a scope of practice code of 5 (which correlates\n  to an \u201cExperienced procedure trained generalist attending\u201d and was included for the performance and interpretation of specialized diagnostic\n  ultrasounds. Treatment Scope and Resourcing The major difference in spaceflight evaluation compared to that on Earth is the lack of specific\n  diagnostic testing, namely x-rays and MRIs. Terrestrially, shoulder sprains and strains would be treated with medications and physical therapy which\n  is effective for many of the milder cases. Refractory symptoms would prompt an MRI study that would provide a definitive diagnosis and severity,\n  thus driving additional treatments (to include surgery). Ultrasound offers some additional diagnostic capability, primarily to look for alternate and\n  more significant diagnoses, although it is very limited in this situation. MSK ultrasound typically requires specialized training and frequent practice,\n  which most generalist physicians do not have. Similar to terrestrial treatment, in spaceflight we can provide oral NSAIDs, topical medications, hot\n  and cold packs, and physical therapy for this condition. In the worst case, a sling may be required to provide short term stabilization and pain relief.\n  Surgical repair of severe shoulder strains and sprains is not available in spaceflight. Communications and Support Needs Additional ground\n  communication capability is indicated here primarily for physical therapy consultation and guidance. REFERENCES Vaughan A, Hulkower S.\n  Evaluation of the adult with shoulder complaints. UpToDate 2021. Holmes RE, Barfield WR, Woolf SK. Clinical evaluation of nonarthritic shoulder\n  pain: diagnosis and treatment. Phys Sportsmed 43:262.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  EVA Related Shoulder Injury is a unique condition to IMPACT 1.0. Therefore, the incidence, duration, and outcomes (RTDC, LOCL) are\n  appropriately unique in this CLiFF.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  \u2022 The CLiFF is heavily informed by rotator cuff tears. Best-case scenario data included sprains/strains and partial thickness tears (Grade I-II).\n  Worst-case scenario data included full thickness tears (Grade III). Labral tears were incorporated in the worst-case scenario as available literature\n  allowed. In the NBL most shoulder injuries involve the rotator cuff and/or labrum but shoulder injuries on orbit generally are more mild in nature.\n\n\n\n\n8/23/2023 5:47:11 PM                                             ICL45_Eva Related Shoulder Injury Cliff                                                     page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-102-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                               Clinical Phase 2: Treatment\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision         Hearing                   Dentition          GI          GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n     Case\n     (TBC)\n   Untreated\n     Best\n                             664\n     Case\n    (UTBC)\n    Treated\n     Worst\n      Case\n     (TWC)\n   Untreated\n     Worst\n                             664                              89\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                        Total\n                                                                                                                                                      Human\n                                                                                             Translation &                            Total Tasks\n                 Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                             Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n                (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                            (microgravity)                            Condition\n                                                                                                                                                     Tasks Full\n                                                                                                                                                      Mission\n    Treated\n      Best\n                                            414                                                           34            211          659            3763          0.175126      17.5126\n     Case\n     (TBC)\n   Untreated\n     Best\n             132                            414                                                           34            211          1455           3763          0.38666       38.666\n     Case\n    (UTBC)\n    Treated\n     Worst\n            132                             414                                                           34            211          791            3763          0.210205      21.0205\n      Case\n     (TWC)\n   Untreated\n     Worst\n             132                            414                                                           34            211          1544           3763          0.410311      41.0311\n     Case\n    (UTWC)\n\n                                                                           Clinical Phase 3: Condition End State\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision         Hearing                   Dentition          GI          GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n     Case\n     (TBC)\n   Untreated\n     Best\n     Case\n    (UTBC)\n    Treated\n     Worst\n      Case\n     (TWC)\n   Untreated\n     Worst\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n8/23/2023 5:47:11 PM                                               ICL45_Eva Related Shoulder Injury Cliff                                                                         page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-102-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                Translation &                           Total Tasks\n                Hand                                    Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal       TI %\n               (Dom)                                  Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                               (microgravity)                           Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n    Treated\n      Best\n                                                                                                                       0              3763          0                0\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                             34            211         245            3763          0.0651076 6.51076\n     Case\n    (UTBC)\n    Treated\n     Worst\n                                    414                                                      34            211         659            3763          0.175126         17.5126\n      Case\n     (TWC)\n   Untreated\n     Worst\n                                    414                                                      34            211         659            3763          0.175126         17.5126\n     Case\n    (UTWC)\n\n\n\n\n8/23/2023 5:47:11 PM                                     ICL45_Eva Related Shoulder Injury Cliff                                                                         page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-102-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n8/23/2023 5:47:11 PM                                            ICL45_Eva Related Shoulder Injury Cliff                                                    page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-102-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. Casagranda BU, Thurlow PC. The Role of Imaging in Determining Return to Play. Radiol Clin North Am. 2016; 54(5):979\u201388\n\n   2. Deore S. Diagnosis and Management of Partial Thickness Rotator Cuff Tears. Orthop Rheumatol Open Access J. 2016; 4(1)\n\n   3. Fucentese SF, von Roll AL, Pfirrmann CWA, Gerber C, Jost B. Evolution of nonoperatively treated symptomatic isolated full-thickness\n   supraspinatus tears. J Bone Joint Surg Am. 2012; 94(9):801\u20138\n\n   4. Karjalainen TV, Jain NB, Heikkinen J, Johnston RV, Page CM, Buchbinder R. Surgery for rotator cuff tears. Cochrane Database Syst Rev.\n   2019; 2019(12):CD013502\n\n   5. Kim Y-S, Kim S-E, Bae S-H, Lee H-J, Jee W-H, Park CK. Tear progression of symptomatic full-thickness and partial-thickness rotator cuff tears\n   as measured by repeated MRI. Knee Surg Sports Traumatol Arthrosc Off J ESSKA. 2017; 25(7):2073\u201380\n\n   6. Laughlin M, Murray JD, Foy M, Wear M, Van Baalen M. Shoulder Injury Incidence Rates in NASA Astronauts. 2014\n\n   7. Maman E, Harris C, White L, Tomlinson G, Shashank M, Boynton E. Outcome of nonoperative treatment of symptomatic rotator cuff tears\n   monitored by magnetic resonance imaging. J Bone Joint Surg Am. 2009; 91(8):1898\u2013906\n\n   8. Matthewson G, Beach CJ, Nelson AA, Woodmass JM, Ono Y, Boorman RS, et al. Partial Thickness Rotator Cuff Tears: Current Concepts. Adv\n   Orthop. 2015; 2015:458786\n\n   9. Minagawa H, Yamamoto N, Abe H, Fukuda M, Seki N, Kikuchi K, et al. Prevalence of symptomatic and asymptomatic rotator cuff tears in the\n   general population: From mass-screening in one village. J Orthop. 2013; 10(1):8\u201312\n\n   10. Morgan CD, Burkhart SS, Palmeri M, Gillespie M. Type II SLAP lesions: three subtypes and their relationships to superior instability and\n   rotator cuff tears. Arthrosc J Arthrosc Relat Surg Off Publ Arthrosc Assoc N Am Int Arthrosc Assoc. 1998; 14(6):553\u201365\n\n   11. Osborne JD, Gowda AL, Wiater B, Wiater JM. Rotator cuff rehabilitation: current theories and practice. Phys Sportsmed. 2016; 44(1):85\u201392\n\n   12. Scheuring RA. Shoulder Injuries in US Astronauts Related to EVA Suit Design. 2012\n\n   13. Scheuring RA, Mathers CH, Jones JA, Wear ML. Musculoskeletal injuries and minor trauma in space: incidence and injury mechanisms in U.S.\n   astronauts. Aviat Space Environ Med. 2009; 80(2):117\u201324\n\n   14. Strauss S. Extravehicular Mobility Unit Training Suit Symptom Study Report. Johnson Space Center: NASA; 2004. No: TP\u20132004\u2013212075.\n\n   15. Viegas SF, Williams D, Jones J, Strauss S, Clark J. Physical demands and injuries to the upper extremity associated with the space program.\n   J Hand Surg. 2004; 29(3):359\u201366\n\n   16. Management of Rotator Cuff Injuries Evidence-Based Clinical Practice Guideline. American Academy of Orthopaedic Surgeons; 2019.\n\n   17. Sprains and Strains: Symptoms, Diagnosis, and Treatment: Hand to Shoulder Center of Wisconsin; 2021 [cited 2021 July 13 ]. Available from:\n   https://www.handtoshoulderwisconsin.com/our-specialties/hand/sprains-and-strains/.\n\n\n\n\n  ACRONYMS\n\n\n\n   ACRONYM                      PHRASE\n\n   AAOMS                        American Association of Oral and Maxillofacial Surgeons\n\n   AMA                          American Medical Association\n\n   ARCL                         All Remaining Conditions List\n\n   ARS                          Acute Radiation Sickness\n\n   BHP                          Behavioral Health and Performance\n\n   CAC                          Coronary Artery Calcium\n\n   CHS                          Crew Health and Safety\n\n   CL                           Condition List\n\n   CliFF                        Clinical Finding Form\n\n   CMO                          Crew Medical Officer\n\n   COMFORT                      Clinical Outcome Metrics for Optimization of Robust Training\n\n\n\n\n8/23/2023 5:47:11 PM                                            ICL45_Eva Related Shoulder Injury Cliff                                               page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-102-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   CP1                 Clinical Phase 1\n\n   CP2                 Clinical Phase 2\n\n   CP3                 Clinical Phase 3\n\n   CRL                 Clinical Resource Level\n\n   CRT                 Capability Resource Table\n\n   CST                 Clinical Science Team\n\n   DCS                 Decompression Syndrome\n\n   DRM                 Design Reference Mission\n\n   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n\n\n\n8/23/2023 5:47:11 PM                                     ICL45_Eva Related Shoulder Injury Cliff   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-102-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n8/23/2023 5:47:11 PM                                   ICL45_Eva Related Shoulder Injury Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-102-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "EVA"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "EVA All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Binomial"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Beta"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.0282008"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.0107002"
+        ],
+        [
+          "Beta"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-102-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                              Source                                   LOC Value"
+        ],
+        [
+          "Scheuring et al, 2009                                                 Spaceflight                              4"
+        ],
+        [
+          "Viegas et al, 2004                                                    Analog                                   3"
+        ],
+        [
+          "Laughlin et al, 2014                                                  Analog                                   3"
+        ],
+        [
+          "Scheuring et al, 2009 is a retrospective review of musculoskeletal injuries in U.S. Astronauts from Mercury - ISS Expedition 13. It reports 6 inflight"
+        ],
+        [
+          "shoulder injuries secondary to the EVA suit. It was used to inform the incidence for this condition and given that it is spaceflight data, was ranked"
+        ],
+        [
+          "with a level of confidence of 4. Viegas et al, 2004 presents retrospective data from an NBL study of 83 astronauts, comprising 548 test-runs. There"
+        ],
+        [
+          "were 66 shoulder injuries reported during these 548 test runs. Laughlin et al, 2014 is a retrospective review poster presentation which reviewed all"
+        ],
+        [
+          "astronaut medical records (n = 330) for training injuries that occurred at the Weightless Environment Training Facility (WETF) or Neutral Buoyancy"
+        ],
+        [
+          "Laboratory (NBL) in active astronauts. They report an overall incidence of 9.67 injuries per 100 astronauts over 10 years in the EVA training"
+        ],
+        [
+          "environment. Viegas et al, 2004 presents retrospective data from an NBL study of 83 astronauts, comprising 548 test-runs. 66 shoulder injuries"
+        ],
+        [
+          "were reported during these 548 test runs."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-102-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                       Source                          LOC Value"
+        ],
+        [
+          "Scheuring et al, 2012                                                          Analog                          3"
+        ],
+        [
+          "Laughlin et al, 2014                                                           Analog                          3"
+        ],
+        [
+          "Scheuring et al, 2012 is a presentation from the Aerospace Medical Association National Conference which presents data on shoulder injuries in US"
+        ],
+        [
+          "Astronauts related to EVA suit design. NBL training data and spacesuit design data from 1995-2011 were analyzed. Shoulder surgery data was"
+        ],
+        [
+          "acquired from JSC medical records. Causal mechanisms were obtained via personal interview with crewmembers who underwent surgery. An"
+        ],
+        [
+          "analysis of the hard upper torso of the EMU was performed as it related to normal shoulder biomechanics. This study reviewed 330 US astronauts."
+        ],
+        [
+          "Data was unavailable for 176 astronauts. Of the remaining 154 which records were available for, 103 had performed at least 1 EVA prior to"
+        ],
+        [
+          "shoulder surgery. Of these 103 crewmembers, there were 11 shoulder surgeries. Laughlin et al, 2014 is a retrospective review poster presentation"
+        ],
+        [
+          "which reviewed all astronaut medical records (n = 330) for training injuries that occurred at the Weightless Environment Training Facility (WETF) or"
+        ],
+        [
+          "Neutral Buoyancy Laboratory (NBL) in active astronauts. They report a total of 40 shoulder injuries."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-102-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment               CP3: Condition End State"
+        ],
+        [
+          "TI%      Duration    TI%        Duration          TI%         RTDC             LOCL"
+        ],
+        [
+          "Composite          Condition"
+        ],
+        [
+          "Case Scenario       Incidence          Probability %     Preset   Preset      Preset     Min      Max      Preset      Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best        Mean: 0.0282       86 - 86           100      1.48        8.75631    504      2232     0           0       0        0        0"
+        ],
+        [
+          "Case (TBC)          SD: 0.0107"
+        ],
+        [
+          "Treated Worst                          14 - 14           100      1.48        19.2665    2232     8928     17.5126     0       0        0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best      N/A                N/A               N/A      1.48        22.5884    2232     8928     6.51076     0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst     N/A                N/A               N/A      1.48        29.2719    8760     87600    17.5126     0       0        0        0"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-102-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                                                            Source               LOC Value"
+        ],
+        [
+          "Hand to Shoulder Center of Wisconsin, 2021                                                                          Terrestrial"
+        ],
+        [
+          "Deore et al, 2016                                                                                                   Terrestrial"
+        ],
+        [
+          "Matthewson et al, 2015                                                                                              Terrestrial"
+        ],
+        [
+          "Osborne et al, 2016                                                                                                 Terrestrial"
+        ],
+        [
+          "Morgan et al, 1998                                                                                                  Terrestrial"
+        ],
+        [
+          "Casagranda and Thurlow, 2016                                                                                        Terrestrial                3"
+        ],
+        [
+          "Maman et al, 2009                                                                                                   Terrestrial"
+        ],
+        [
+          "Karjalainen et al, 2019                                                                                             Terrestrial"
+        ],
+        [
+          "Kim et al, 2016                                                                                                     Terrestrial"
+        ],
+        [
+          "Fucentense et al, 2012                                                                                              Terrestrial"
+        ],
+        [
+          "AAOS Guidelines for \"Management of Rotator Cuff Injuries\" March 11, 2019                                            Terrestrial"
+        ],
+        [
+          "Durations were provided from terrestrial data including sprains/strains and partial rotator cuff tears (best-case scenario) and full-thickness rotator"
+        ],
+        [
+          "cuff tears and labral tears (worst-case scenario)."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-102-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                    Source                                 LOC Value"
+        ],
+        [
+          "Maman et al, 2009                                                           Terrestrial"
+        ],
+        [
+          "Matthewson et al, 2015                                                      Terrestrial"
+        ],
+        [
+          "3"
+        ],
+        [
+          "Scheuring et al, 2012                                                       Terrestrial"
+        ],
+        [
+          "Minagawa et al, 2013                                                        Terrestrial"
+        ],
+        [
+          "The RTDC surrogate selected was need for surgical intervention. Terrestrial data was used to inform indications for surgery. The most agreed"
+        ],
+        [
+          "upon criteria is Grade III tears (> 50% tendon thickness). Therefore, data regarding progression of partial thickness tears (best-case scenario) to"
+        ],
+        [
+          "large tears was used to inform the best-case scenario RTDC probabilities. This is unchanged by conservative management. For the worst-case"
+        ],
+        [
+          "scenario data regarding crewmember surgical shoulder injuries and rate of full-thickness tears in a terrestrial population was used to inform the"
+        ],
+        [
+          "RTDC probability."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-102-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                       Source                                       LOC Value"
+        ],
+        [
+          "N/A                                            N/A                                                                        4"
+        ],
+        [
+          "Literature searches in Dynamed (\"Rotator Cuff Tear\" and \"SLAP Tear\") as well as subsequent secondary references from the primary references"
+        ],
+        [
+          "listed, and NTRS did not reveal any literature that indicates mortality as a result of EVA Related Shoulder Injury. Thus the LOCL probability was"
+        ],
+        [
+          "assigned 0% for all scenarios."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-102-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision         Hearing                   Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664                              89"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTWC)"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-102-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-102/shoulder_joint_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 800,
+      "height": 600,
+      "sha256": "6ca4b0c64884cf56124c841154b596ea24254ca10d411be2a105ec442cf4dda4",
+      "creator": "Gray326.png: Henry Vandyke Carter derivative work: Raf db (talk)",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AShoulder_joint_anatomy_quiz.jpg",
+      "attribution": "Gray326.png: Henry Vandyke Carter derivative work: Raf db (talk), via Wikimedia Commons (Public domain)",
+      "caption": "Anatomical diagram of the glenohumeral shoulder joint, clavicle, and scapula.",
+      "alt_text": "Diagram of shoulder joint anatomy.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Shoulder joint anatomy quiz.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-102-IMG-02",
+      "ordinal": 1,
+      "media_kind": "OTHER",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-102/shoulder_surface_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 3312,
+      "height": 2584,
+      "sha256": "cdd3320753f0e3f5811d6c513aa7caecf6a5d4ecf4df52f92451416e6f639565",
+      "creator": "Pittigrilli",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AMale_right_shoulder%2C_photographed_when_arm_stretched_out_to_side.jpg",
+      "attribution": "Pittigrilli, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Surface anatomy of the abducted shoulder joint relevant to EVA suit scye bearing contact.",
+      "alt_text": "Photograph of abducted human shoulder.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Male right shoulder, photographed when arm stretched out to side.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-102-IMG-03",
+      "ordinal": 2,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-102/humerus_proximal_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 4160,
+      "height": 3120,
+      "sha256": "8e47aaaac7e23917840f8f2245f858ac6cd6f5fa3ec4fe0fab9968c8727e3469",
+      "creator": "Jeremyida002",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AHumerus_bone.jpg",
+      "attribution": "Jeremyida002, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Anatomical photograph of the proximal humerus articulating with the glenoid fossa.",
+      "alt_text": "Photograph of human humerus bone.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Humerus bone.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-102-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 EVA-Related Shoulder Injury",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-shoulder-injury-cliff-2023.pdf?emrc=94c789",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

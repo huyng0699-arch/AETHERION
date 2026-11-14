@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-102",
+  "slot": 102,
+  "quest_id": "Q-0402",
+  "checked_at_utc": "2026-11-14T06:36:39.016937+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-shoulder-injury-cliff-2023.pdf?emrc=94c789",
+  "http_status": 200,
+  "pdf_sha256": "a7e02e2e6c9e5e13380fee900185c07e552fe503ab69780a8c977b952b9416b9",
+  "pdf_bytes": 330615,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-102-IMG-01": "6ca4b0c64884cf56124c841154b596ea24254ca10d411be2a105ec442cf4dda4",
+    "CLIFF-102-IMG-02": "cdd3320753f0e3f5811d6c513aa7caecf6a5d4ecf4df52f92451416e6f639565",
+    "CLIFF-102-IMG-03": "8e47aaaac7e23917840f8f2245f858ac6cd6f5fa3ec4fe0fab9968c8727e3469"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
