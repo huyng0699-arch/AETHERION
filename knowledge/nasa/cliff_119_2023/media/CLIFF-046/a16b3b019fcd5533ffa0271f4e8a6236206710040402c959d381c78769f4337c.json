@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-046",
+  "title": "Femur Biomechanics and Distribution of Forces (Blausen)",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Blausen_0401_Femur_DistributionofForces.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Blausen_0401_Femur_DistributionofForces.png",
+  "license": "CC-BY-3.0",
+  "author": "BruceBlaus. When using this image in external sources it can be cited as:\n\nBlausen.com staff (2014). \"Medical gallery of Blausen Medical 2014\". WikiJournal of Medicine 1 (2). DOI:10.15347/wjm/2014.010. ISSN 2002-4436.",
+  "caption": "Medical illustration showing tensile and compressive force distribution along the femoral neck and shaft.",
+  "alt_text": "Diagram of the human proximal femur illustrating mechanical load and force vectors.",
+  "clinical_relevance": "Illustrates mechanical stress lines in the femur relevant to microgravity bone demineralization and traumatic fracture risk (CLIFF-046, p.1, p.5).",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 1000,
+  "height": 1500,
+  "size_bytes": 423376,
+  "sha256": "a16b3b019fcd5533ffa0271f4e8a6236206710040402c959d381c78769f4337c",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Blausen_0401_Femur_DistributionofForces.png",
+  "retrieved_at_utc": "2026-11-14T06:11:10.989103+00:00",
+  "asset_path": "a16b3b019fcd5533ffa0271f4e8a6236206710040402c959d381c78769f4337c.png",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "ANATOMY",
+  "topic_region": "Lower Extremity / Proximal Femur & Shaft"
+}

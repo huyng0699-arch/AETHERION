@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-046",
+  "title": "Femur Gross Anatomy (Blausen)",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Long_Bone_%28Femur%29.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Long_Bone_(Femur).png",
+  "license": "CC-BY-3.0",
+  "author": "BruceBlaus. When using this image in external sources it can be cited as:\n\nBlausen.com staff (2014). \"Medical gallery of Blausen Medical 2014\". WikiJournal of Medicine 1 (2). DOI:10.15347/wjm/2014.010. ISSN 2002-4436.",
+  "caption": "Anatomical illustration of the human femur showing proximal epiphysis (head, neck, trochanters), diaphysis (shaft), and distal condyles.",
+  "alt_text": "Anatomical diagram of a human femur long bone.",
+  "clinical_relevance": "Identifies femoral neck, intertrochanteric, shaft, and distal regions encompassed by ICL54 Fracture - Femur (CLIFF-046, p.1, p.7).",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 750,
+  "height": 1500,
+  "size_bytes": 3377148,
+  "sha256": "009e9f79028ec638c4a030064c347064ee7b60d6ba7f552fc8698e5d41f7b1b1",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Long_Bone_%28Femur%29.png",
+  "retrieved_at_utc": "2026-11-14T06:11:11.297235+00:00",
+  "asset_path": "009e9f79028ec638c4a030064c347064ee7b60d6ba7f552fc8698e5d41f7b1b1.png",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "ANATOMY",
+  "topic_region": "Lower Extremity / Femur"
+}

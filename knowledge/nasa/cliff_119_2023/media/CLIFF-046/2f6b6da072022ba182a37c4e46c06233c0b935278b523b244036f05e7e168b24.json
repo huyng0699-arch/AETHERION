@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-046",
+  "title": "Femoral Fracture Plain Radiograph",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Medical_X-Ray_imaging_OZB06_nevit.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Medical_X-Ray_imaging_OZB06_nevit.jpg",
+  "license": "CC-BY-SA-3.0",
+  "author": "Nevit Dilmen (talk)",
+  "caption": "Plain radiograph demonstrating a displaced femoral fracture and surrounding soft-tissue alignment.",
+  "alt_text": "X-ray radiograph showing a fractured human femur.",
+  "clinical_relevance": "Demonstrates radiographic presentation of femur fracture, which carries high RTDC and LOCL risk without surgical fixation (CLIFF-046, p.4-6).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 2040,
+  "height": 2040,
+  "size_bytes": 304250,
+  "sha256": "2f6b6da072022ba182a37c4e46c06233c0b935278b523b244036f05e7e168b24",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Medical_X-Ray_imaging_OZB06_nevit.jpg",
+  "retrieved_at_utc": "2026-11-14T06:11:11.455720+00:00",
+  "asset_path": "2f6b6da072022ba182a37c4e46c06233c0b935278b523b244036f05e7e168b24.jpg",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "RADIOLOGY",
+  "topic_region": "Lower Extremity / Femoral Radiograph"
+}

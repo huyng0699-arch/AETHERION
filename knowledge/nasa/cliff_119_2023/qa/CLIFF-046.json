@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-046",
+  "slot": 46,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-femur-cliff-2023.pdf?emrc=9d8677",
+  "http_status": 200,
+  "pdf_bytes": 341780,
+  "pdf_sha256": "2e9fd1a9bbfe1e445199b31990486c1d20fdb76376597d8924a1c361d09ce468",
+  "pdf_pages": 14,
+  "sections_count": 14,
+  "tables_count": 3,
+  "references_count": 15,
+  "media_count": 3,
+  "media_sha256s": [
+    "009e9f79028ec638c4a030064c347064ee7b60d6ba7f552fc8698e5d41f7b1b1",
+    "2f6b6da072022ba182a37c4e46c06233c0b935278b523b244036f05e7e168b24",
+    "a16b3b019fcd5533ffa0271f4e8a6236206710040402c959d381c78769f4337c"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-3.0 / CC-BY-SA-3.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}
