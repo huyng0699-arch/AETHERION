@@ -26,6 +26,7 @@ from .medical_library import build_medical_library_page
 from .mission_control import build_mission_control_page
 from .features.personal.authorized_today import AuthorizedPersonalTodayPage
 from .features.explore.nasa_explore import build_nasa_explore_page
+from .knowledge_browser import KnowledgeBrowser
 
 
 class FeatureLanding(QWidget):
@@ -150,6 +151,13 @@ class AetherionWindow(QMainWindow):
         self.pages.addWidget(self.medical_library_page)
         self.nasa_explore_page = build_nasa_explore_page()
         self.pages.addWidget(self.nasa_explore_page)
+        self.knowledge_browser_page = KnowledgeBrowser(
+            self, api_url=self.api_url, locale=self.ui_language,
+            theme=self.preferences.theme_name, mode=self.preferences.mode,
+            reduce_motion=self.preferences.reduce_motion,
+            intensity=self.preferences.animation_intensity,
+        )
+        self.pages.addWidget(self.knowledge_browser_page)
         self.mission_control_page.subject_activated.connect(self.open_personal_subject)
 
         self.monitor_page = FeatureLanding(
@@ -188,6 +196,7 @@ class AetherionWindow(QMainWindow):
         self.ambient_controller=PageAmbientController(self)
         for page in (self.mission_control_page,self.personal_today_page,
                      self.medical_library_page,self.nasa_explore_page,
+                     self.knowledge_browser_page,
                      self.monitor_page,self.assistant_page,
                      self.atlas_page,self.care_page):
             self.ambient_controller.add_page(page,self.preferences)
@@ -205,6 +214,7 @@ class AetherionWindow(QMainWindow):
         ))
         self.nav_ai = self._nav_button(bar, "Hỏi AI", self.show_assistant)
         self.nav_science = self._nav_menu(bar, "Khám phá ▾", (
+            (tr(self.ui_language, "observatory.hero"), self.show_observatory),
             ("NASA Explore · Năm nguy cơ", self.show_nasa_explore),
             ("Thư viện y khoa", self.show_medical_library),
             ("Cơ thể 3D", self.show_atlas),
@@ -213,10 +223,15 @@ class AetherionWindow(QMainWindow):
         self.nav_more = self._nav_menu(bar, "Thêm ▾", (
             ("Hỏi AI", self.show_assistant),
             ("NASA Explore", self.show_nasa_explore),
+            (tr(self.ui_language, "observatory.hero"), self.show_observatory),
             ("Thư viện y khoa", self.show_medical_library),
             ("Phi hành đoàn", self.show_mission),
             ("Hành trình chăm sóc", self.show_care),
         ))
+        self.observatory_menu_actions = (
+            self.nav_science.menu().actions()[0],
+            self.nav_more.menu().actions()[2],
+        )
         self.nav_more.hide()
         bar.addStretch(1)
 
@@ -335,6 +350,9 @@ class AetherionWindow(QMainWindow):
     def _retranslate_shell(self):
         """Retitle the localized shell without rewriting NASA/clinical content."""
         self.portal_page.set_locale(self.ui_language)
+        self.knowledge_browser_page.set_locale(self.ui_language)
+        for action in self.observatory_menu_actions:
+            action.setText(tr(self.ui_language, "observatory.hero"))
         for section in (
             self.top_bar, self.monitor_page, self.assistant_page,
             self.atlas_page, self.care_page, self.footer_bar,
@@ -379,6 +397,10 @@ class AetherionWindow(QMainWindow):
             self.preferences.mode, self.preferences.animation_intensity,
         )
         self.settings_page.retranslate()
+        self.knowledge_browser_page.set_visuals(
+            self.preferences.theme_name, self.preferences.mode,
+            self.preferences.reduce_motion, self.preferences.animation_intensity,
+        )
         self.ambient_controller.update_preferences(self.preferences)
         if self.ui_language != self.preferences.language:
             self.ui_language = self.preferences.language
@@ -417,6 +439,10 @@ class AetherionWindow(QMainWindow):
         self.nasa_explore_page.reload()
         self.pages.setCurrentWidget(self.nasa_explore_page)
 
+    def show_observatory(self):
+        """Open the real native article search on the canonical AETHERION Server."""
+        self.pages.setCurrentWidget(self.knowledge_browser_page)
+
     def show_monitor(self):
         self.pages.setCurrentWidget(self.monitor_page)
 
@@ -436,7 +462,7 @@ class AetherionWindow(QMainWindow):
             "health": self.show_personal,
             "monitor": self.show_monitor,
             "assistant": self.show_assistant,
-            "science": self.show_nasa_explore,
+            "science": self.show_observatory,
             "crew": self.show_mission,
         }[route]()
 
