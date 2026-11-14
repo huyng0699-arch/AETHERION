@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-056",
+  "slot": 56,
+  "quest_id": "Q-0356",
+  "checked_at_utc": "2026-11-14T06:19:09.294632+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/sprain-strain-neck-cliff-2023.pdf?emrc=9832be",
+  "http_status": 200,
+  "pdf_sha256": "5158e62b9acd9921e731842a80a6487a7c1f7395ffe23c22a2993a1e82a00190",
+  "pdf_bytes": 341564,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-056-IMG-01": "276d46c67af8d66645f13ba6ba6a879b07c5ef3f14068d71668eb9974f90959e",
+    "CLIFF-056-IMG-02": "ffbe9e5b9cd2ebddd37df65cc958b21c72a7bb7cf0656fd7a43c10e294929eb4",
+    "CLIFF-056-IMG-03": "ae0af43d083140fa0acb14db627d63a34e0e696c5762d7e119736a7bd32d0d7b"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}

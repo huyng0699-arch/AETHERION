@@ -1,0 +1,604 @@
+{
+  "article_id": "CLIFF-056",
+  "slot": 56,
+  "display_title": "Neck Sprain/Strain",
+  "category": "Musculoskeletal",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-056",
+    "publisher": "NASA",
+    "title": "Neck Sprain/Strain \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/sprain-strain-neck-cliff-2023.pdf?emrc=9832be",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/sprain-strain-neck-cliff-2023.pdf?emrc=9832be",
+    "retrieved_at_utc": "2026-11-14T06:19:09.294632+00:00",
+    "content_sha256": "5158e62b9acd9921e731842a80a6487a7c1f7395ffe23c22a2993a1e82a00190",
+    "original_mime": "application/pdf",
+    "original_bytes": 341564,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-056-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch     Baseline\n\n\n\n ICL103_Sprain/Strain - Neck\n\n Non-specific neck pain is a very common complaint. It affects approximately 66% of individuals during their lifetime, with the highest prevalence being\n during middle aged years. Acute, non-specific neck pain resolves in 90% of cases and becomes chronic in 10% of cases. (Binder, 2008). There is a\n paucity of data specifically regarding neck sprains/strains as defined by this CLiFF.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Scheuring et al, 2009 is a retrospective review of musculoskeletal injuries in US Spaceflight from Mercury - ISS Expedition 13. The following data\n  sources were utilized in this review: post-flight medical debriefs, the LSAH medical record database, the Johnson Space Center (JSC) electronic\n  medical record system, including ASCR specialist assessment and treatment logs, and the JSC Flight Medicine Clinic vault records. Musculoskeletal\n  injury data in the ISS program was extracted from the private medical conferences held between the ISS crewmembers and their flight surgeon up to\n  and including Expedition 13, as well as from the ASCR specialists supervising the crewmember\u2019s in-flight training regimen. Lastly, several entries\n  came directly from personal communications with astronaut crewmembers or flight surgeons and the authors when not otherwise duplicated.\n  Information collected on each injury included location, type, and a detailed narrative on the mechanism of injury, the type of exercise the\n  crewmember performed during the flight, previous history of injury, treatment, and post-flight outcome. The term \u201c in-flight\u201d included lunar surface\n  operations. It reports 54 sprain/strain injuries and 9 \"neck injuries.\" (Note the 9 neck injuries are corroborated by Johnston III et al, 2020).\n  Unfortunately, Scheuring et al, 2009 does not report the number of neck sprain/strains specifically. The IMM version 6.5 2017 update obtained data\n  through ISS Expedition 40 to augment the Scheuring et al, 2009 study. They identified an additional 5 neck injuries (2 STS and 3 ISS). These two\n  sources together provide a total incidence of 14 inflight \"neck injuries\" in US spaceflight from Mercury - ISS Expedition 40. This was considered to\n  be the most robust data to inform this CLiFF and was used for the incidence distribution. Note that this may be an overestimate of the incidence\n  because \"neck injuries\" could include injuries beyond sprain/strains, but it was felt to be the best approximation available. Ramachandran et al,\n  2018 is a review of pre-flight neck injuries associated with training in the Neutral Buoyancy Lab. While prior neck injury could pre-dispose to repeat\n  injury, this does not provide in-flight neck injury incidence.\n\n  ANALOG LITERATURE\n\n  Thomas et al, 2003 is a large (n = 13,441) retrospective review of US Navy submarines. The study population consisted of US Navy officers and\n  enlisted men deployed on 240 submarine patrols. This analog is similar to spaceflight in that it is an isolated and confined environment. The\n  subjects are also highly screened, and healthy, similar to astronauts. Unlike astronaut crews, the Navy submariners were all male, 88-90% were\n  white, and most were between 18-35 years old. It provides an incidence of musculoskeletal strains/sprains or 0.7/100 person-years for officers over\n  30 years old. However, this incidence is not specific to the neck. Ballard, 2008 is a review of cervical spine disease in F16 fighter pilots and\n  associated need for corrective surgery. Degenerative joint disease of the cervical spine is common in fighter pilots and outside the scope of this\n  condition as it relates to the bones rather than the muscles, tendons, and ligaments. Neither of these sources were used to inform the incidence.\n\n  TERRESTRIAL LITERATURE\n\n  Safiri et al, 2020 reports annual incidence of neck pain of 806.6 per 100,000 person-years in the general public in 195 countries in the 2017 Global\n  Burden of Disease study. The annual incidence in \"High Income North America\" was higher, 906.4 per 100,000 person-years. \"Neck pain\" was\n  defined as, \"Pain in the cervical spine region (with or without pain referred to the arms) that lasts for at least 24 hours.\" Search terms included:\n  \u201cneck pain\u201d, \u201cneck ache\u201d, \u201cneckache\u201d, and \u201ccervical pain.\u201d This population is more heterogenous than the astronaut crewmember population.\n  Quinlan et al, 2004 is a review of neck sprains/strains presenting to the emergency department after a motor vehicle accident in the year 2000 in\n  the United States. Unless there is a catastrophic explosion in spaceflight or a crash landing, the forces experienced will not be equal to that of an\n  MVA. Neither of these sources were used to inform the incidence for this CLiFF.\n\n\n\n\n9/12/2022 9:46:16 PM                                                ICL103_Sprain/Strain - Neck Cliff                                                      page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-056-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   Mean: 0.3137 SD: 0.08432\n\n\n\n  INCIDENCE SUMMARY\n\n  The incidence for this CLiFF is informed by Scheuring et al, 2009; Johnston III et al, 2020; and NASA, Neck Sprain/Strain CLiFF, 2017. It is\n  approximated based on reported cases of \u201cneck injury\u201d in spaceflight. This may be an overestimate given it is not specific to neck sprain/strain, but\n  was felt to be the best data available. There have been a total of 14 cases of \u201cneck injury\u201d in U.S. spaceflight. The first 9 events occurred from\n  Mercury \u2013 ISS Expedition 13 and are published in Scheuring et al, 2009; Johnston III et al, 2020. The remaining 5 events occurred from ISS\n  Expedition 14 \u2013 ISS Expedition 40 and are documented in the prior IMM CLiFF (NASA, Neck Sprain/Strain CLiFF, 2017). This is the Bayesian\n  posterior distribution for the incidence rate given the spaceflight data (14 events over 44.58 person-years) under an uninformative prior is\n  Gamma(shape=13.84, rate=44.12) with mean 0.3137 and SD 0.08432.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     0.31369\n     SD\n     0.0843204\n\n\n     Gamma\n     (Shape): 13.84\n     (Rate): 44.12\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                                  Source                        LOC Value\n\n   Safiri et al, 2020                                                                        Terrestrial                   0\n\n   Quinlan et al, 2004                                                                       Terrestrial                   0\n\n   Scheuring et al, 2009                                                                     Spaceflight                   3\n\n   Johnston III et al, 2020                                                                  Spaceflight                   3\n\n   NASA, Neck Sprain/Strain CLiFF, 2017                                                      Spaceflight                   3\n\n   Ramachandran et al, 2018                                                                  Spaceflight                   2\n\n   Thomas et al, 2003                                                                        Analog                        1\n\n\n\n\n9/12/2022 9:46:16 PM                                                 ICL103_Sprain/Strain - Neck Cliff                                                    page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-056-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                                                     Source                          LOC Value\n\n   Ballard, 2008                                                                                Analog                          1\n\n  Scheuring et al, 2009 is a retrospective analysis of in-flight musculoskeletal injuries from Mercury - ISS Expedition 13. Sprains/strains and \"neck\n  injury\" are reported separately so it is unclear how many of the neck injuries were specifically diagnosed as a sprain/strain. The data from\n  Scheuring et al, 2009 is corroborated by Johnston III et al, 2020. The 2017, v6.5, update of the IMM CLiFF added an additional 5 neck injuries (3\n  ISS and 2 STS) through Expedition 40 of the ISS program (NASA, Neck Sprain/Strain CLiFF, 2017). Ramachandran et al, 2018 is a review of pre-\n  flight neck injuries secondary to NBL training. Thomas et al, 2003 is analog data from US Navy Submariners, and presents incidence of\n  sprain/strains but is not specific to back sprain/strain. Ballard, 2008 is a review of cervical spine disease in F16 fighter pilots. This is not applicable\n  as this relates to cervical spine degenerative changes, not sprain/strain. Safiri et al, 2020 is a terrestrial systematic review of neck pain incidence in\n  the general population. Quinlan et al, 2004 is a review of neck sprained/strains after motor vehicle accident. Unless there is a catastrophic\n  explosion in spaceflight or a crash landing, the forces experienced will not be equal to that of an MVA. This is not relevant to the incidence for this\n  condition.\n\n\n\n\n9/12/2022 9:46:16 PM                                                   ICL103_Sprain/Strain - Neck Cliff                                                        page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-056-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  The Astronaut Strength, Conditioning and Rehabilitation (ASCR) program and Astronaut gym at Johnson Space Center are strategic to providing\n  pre-flight strengthening in attempts to prevent or mitigate injuries as well as post-flight rehabilitation. The Strength Coach's primary role is to\n  provide an exercise plan designed to achieve flight physical readiness and prevent musculoskeletal injuries during spaceflight training.\n\n  BEST CASE SCENARIO DEFINITION\n\n  A Grade I or II strain/sprain in which there is minimal or partial muscle or ligamentous tearing.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  A Grade III strain/sprain in which there is full thickness muscle or ligamentous tearing, and/or instability.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  None\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  There is a paucity of data regarding the proportion of neck sprains/strains that are Grade I, II, or III based on the definition in this CLiFF. This is\n  likely because non-specific neck pain is graded on a different scale than the definitions used for this CLiFF. The Bone and Joint Decade 2000-2010\n  Task Force on Neck Pain recommends using a 4 point grading scale for non-specific neck pain, as follows: Grade I neck pain has no signs of major\n  pathology and no or little interference with daily activities; Grade II neck pain has no signs of major pathology, but interference with daily activities;\n  Grade III neck pain has neurologic signs of nerve compression; Grade IV neck pain has signs of major pathology (Guzman et al, 2008). Trying to\n  match these definitions to the current definitions, the split between best and worst-case would be somewhere in Grade II (i.e. some Grade II injuries\n  would be best-case and some would be worst-case). However, despite a discrete grading scale existing for non-specific neck pain, there is still a\n  paucity of data regarding the proportions of each of these grades in all-comer non-specific neck pain. Given the lack of data to inform best and\n  worst-case scenario probabilities, the IMM probabilities will help to inform the best-case and worst-case probabilities of this CLiFF. Using the IMM\n  CLiFF values alone is not an ideal solution, since the best-case and worst-case scenario definitions have changed, but it felt to be a reasonable\n  approximation given there are no available data. The IMM best-case scenario definition was a \"mild neck injury that resolves with minimal or no\n  treatment.\" The current definition is a Grade I or II sprain/strain in which there is minimal or partial muscle or ligamentous tearing. Although these\n  definitions vary, the IMM definition represents how the current best-case scenario would manifest symptoms and require treatment. The IMM\n  definition for worst-case scenario was defined as \"a moderate or severe neck injury that requires more prolonged treatment, or is refractory to\n  treatment.\" The current definition is Grade III strain/sprain in which there is full thickness muscle or ligamentous tearing, and/or instability. The IMM\n  definition again represents how the current worst-case scenario would manifest symptoms and the treatment required. Therefore, it is felt that it is\n  reasonable to use the IMM values (60% worst-case scenario and 40% best-case scenario). Another surrogate for consideration is acute vs. chronic\n  neck pain. 90% of non-specific neck pains resolve acutely, whereas only 60% of whiplash injuries resolve acutely (Binder, 2008). It would be\n  expected that a worst-case scenario neck sprain/strain would be more likely to become chronic than a best-case scenario sprain.\n  During spaceflight there have been 14 events over 44.58 person-years. Of the 14 events, none would be considered worst case. Under an\n  uninformative uniform(0,1) prior, given the observed 0 out of 14 cases, the posterior distribution for the probability of WC is Beta(alpha=1,\n  beta=15) which has mean 1/16 (6.25%) (95%CI: 0.017%, 21.8%). Recommendation min 0.01%, max 21.8%, and most likely 6.25%. Unfortunately,\n  the model can only handle min and max inputs, and sets the ML as the midpoint between. Given this limitation, I suggest we use the range 0 to\n  12.5% to get a most-likely close to the true posterior mean (6.25%).\n\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                                      Source                       LOC Value\n\n   Guzman et al, 2008                                                                            Terrestrial                  0\n\n   Binder, 2008                                                                                  Terrestrial                  2\n\n   NASA, Neck Sprain/Strain CLiFF, 2017                                                          Spaceflight                  2\n\n  Guzman et al, 2008 is the Bone and Joint Decade 2000-2010 Task Force on Neck Pain, which recommends using a 4 point grading scale for non-\n  specific neck pain, but does not inform the proportion of all-comer neck pain that fits into each grade. Binder, 2008 presents proportions of acute\n  neck pain that become chronic (10% non-specific neck pain, 40% whiplash injuries). The IMM CLiFF has a best-case scenario of 40% and worst-\n  case scenario of 60% based on 3 out of 5 cases in the Real World System data set being defined as worst-case according to the definition used in\n  that CLiFF (which notably is different than the definition in this CLiFF).\n\n\n\n\n9/12/2022 9:46:16 PM                                                   ICL103_Sprain/Strain - Neck Cliff                                                       page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-056-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n\n                                                                CP1: Diagnosis       CP2: Treatment            CP3: Condition End State\n\n                                                                TI%       Duration   TI%         Duration      TI%        RTDC             LOCL\n                        Composite            Condition\n   Case Scenario        Incidence            Probability %      Preset    Preset     Preset      Min   Max     Preset     Min%    Max%     Min%     Max%\n\n   Treated Best         Mean: 0.3137         87.5 - 100         100       0.87       21.0205     24    1095    0          0       0        0        0\n   Case (TBC)           SD: 0.08432\n\n   Treated Worst                             0 - 12.5           100       1.36       38.666      96    4380    38.666     0       0        0        0\n   Case (TWC)\n\n   Untreated Best       N/A                  N/A                N/A       0.87       38.666      24    2190    0          0       0        0        0\n   Case (UTBC)\n\n   Untreated Worst      N/A                  N/A                N/A       1.36       41.0311     96    8760    38.666     0       0        0        0\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n9/12/2022 9:46:16 PM                                                  ICL103_Sprain/Strain - Neck Cliff                                                       page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-056-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  The RTDC surrogate used for worst-case scenarios in this CLiFF was hospitalization and/or the need for surgical intervention. Incidence, duration,\n  RTDC, and LOCL are difficult to determine in the literature based on the definitions of the best and worst-case scenario presented in this CLiFF.\n  Most of the literature that relates to this CLiFF pertains to non-specific neck pain or whiplash. The Bone and Joint Decade 2000-2010 Task Force\n  on Neck Pain recommends using a 4 point grading scale for non-specific neck pain, as follows: Grade I neck pain has no signs of major pathology\n  and no or little interference with daily activities; Grade II neck pain has no signs of major pathology, but interference with daily activities; Grade III\n  neck pain has neurologic signs of nerve compression; Grade IV neck pain has signs of major pathology (Guzman et al, 2008). Trying to match\n  these definitions to the current definitions, the split between best and worst-case would be somewhere in Grade II (i.e. some Grade II injuries would\n  be best-case and some would be worst-case). Similarly, there are several grading scales for whiplash associated disorder (WAD), which also do not\n  correlate well with the definitions assigned in this CLiFF. It should be noted that for both non-specific neck pain and WAD the grading scales include\n  neurologic signs/involvement and/or fracture/dislocation (i.e. the worst-case for all of these grading scales is worse than the worst-case scenario for\n  a neck sprain/strain according to the definition in this CLiFF). For this reason, the durations are likely over-estimates. These juxtaposed grading\n  scales and definitions make correlating data to the CLiFF challenging. See specific comments for each scenario below.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  There is a paucity of data specific to neck \"sprain/strains.\" Most literature is regarding non-specific neck pain or whiplash. There is a paucity of data\n  specific to neck \"sprain/strains.\" Most literature is regarding non-specific neck pain or whiplash. Two such reviews, Verhagen et al, 2007 (non-\n  specific neck pain) and Hurwitz et al, 2009 (non-specific neck pain and whiplash) inform the duration. They both suggest a duration of 24 - 2190\n  hours (1 day - 6 months). While most of the studies included in these reviews represent best-case sprain strains based on the definition presented\n  in this CLiFF, some represent worst-case. They also represent a range of treatments or placebo. Therefore, half of this duration was selected for\n  the best-case treated scenario maximum duration (3 months) and the full 6 months was assigned as the maximum duration in the best-case\n  untreated scenario. The Clinical and Science Team of ExMC pre-determined the RTDC probability for best-case scenarios of this condition to be\n  0%. However, a literature search corroborated this assumption (Jarzy\u0144ski et al, 2020). No mortality literature was identified. Therefore the LOCL\n  probability was assigned as 0%.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  There is a paucity of data related to neck sprains/strains as defined in this CLiFF. Much of the terrestrial literature is based on whiplash (which,\n  mechanistically, is anticipated to be unlikely in the spaceflight environment). There is a great degree of heterogeneity regarding durations of neck\n  injuries the literature, leading to wide estimates from 96 hours to 1 year for the worst-case scenario (Verhagen et al, 2007; Hurwitz et al, 2009).\n  The duration range was assigned accordingly as 96-4830 hours. The RTDC surrogate for this Cliff was initially assigned as need for hospitalization\n  or surgical intervention. Typically, patients present to the hospital due to pain. Pain control could be provided during spaceflight, so this is not a\n  realistic surrogate for RTDC. While a Grade III sprain/strain requiring surgical intervention is possible in spaceflight, it is unlikely that RTDC would\n  be executed for surgical intervention. Rather, pain control and PT would be the mainstay of treatment inflight and surgical intervention would be\n  pursued post-flight. Lack of prompt surgical intervention will be reflected in TI. Thus, the RTDC probability was according assigned as 0%. No\n  mortality literature was identified. Therefore, the LOCL probability was assigned as 0%.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  There is a paucity of data specific to neck \"sprain/strains.\" Most literature is regarding non-specific neck pain or whiplash. Two such reviews,\n  Verhagen et al, 2007 (non-specific neck pain) and Hurwitz et al, 2009 (non-specific neck pain and whiplash) inform the duration. They both suggest\n  a duration of 24 - 2190 hours (1 day - 6 months), which was assigned as the duration range for this scenario. The Clinical and Science Team of\n  ExMC pre-determined the RTDC probability for best-case scenarios of this condition to be 0%. However, a literature search corroborated this\n  assumption (Jarzy\u0144ski et al, 2020). No mortality literature was identified. Therefore the LOCL probability was assigned as 0%.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  There is a paucity of data related to untreated worst-case scenario neck sprains/strains as defined by this CLiFF. There are several grading\n  scales for whiplash, but the literature used to inform previous scenarios defines Grade 4 whiplash as a fracture or dislocation, both of which is\n  outside the scope of this CLiFF definition. \"Instability\" in the worst-case scenario of this CLiFF is referring to muscular, tendon, and ligamentous\n  instability. While a ruptured ligament or tendon will not repair itself, it would be anticipated that a level of scarring would occur to achieve the point\n  of maximum medical improvement. In their conclusions, Hurwitz et al, 2009 often use 12 months as a clinical cutoff for duration of symptoms and/or\n  care in their systematic review. Therefore, the duration was assigned a range of 96-8760 hours. The RTDC surrogate for this Cliff was initially\n  assigned as need for hospitalization or surgical intervention. Typically, patients present to the hospital due to pain. Pain control could be provided\n  during spaceflight, so this is not a realistic surrogate for RTDC. While a Grade III sprain/strain requiring surgical intervention is possible in\n  spaceflight, it is unlikely that RTDC would be executed for surgical intervention. Rather, pain control and PT would be the mainstay of treatment\n  inflight and surgical intervention would be pursued post-flight. Lack of prompt surgical intervention will be reflected in TI. Thus, the RTDC probability\n  was accordingly assigned as 0%. No mortality literature was identified. Therefore the LOCL probability was assigned as 0%.\n\n\n\n\n9/12/2022 9:46:16 PM                                                  ICL103_Sprain/Strain - Neck Cliff                                                        page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-056-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                 Source                                  LOC Value\n\n   Verhagen et al, 2007                                                     Terrestrial\n                                                                                                                                       1\n   Hurwitz et al, 2009                                                      Terrestrial\n\n  There is a paucity of data related to neck sprains/strains as defined by this CLiFF. Most terrestrial literature either deals with non-specific neck\n  pain, neck injury (typically from high force accidents like motor vehicle accidents), or whiplash (again typically from MVA). This limits the applicability\n  of this data to this CLiFF. The durations are all driven by non-specific neck pain and whiplash data and are likely to be an overestimate of the true\n  duration of a neck sprain/strain as defined by this CLiFF. Note, the durations in this CLiFF are substantially longer than the IMM CLiFF.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                Source                                   LOC Value\n\n   Jarzy\u0144ski et al, 2020                                                   Terrestrial                                                 3\n\n\n  The best-case scenario RTDC probabilities were pre-determined by the Clinical and Science Team of ExMC to be 0%. This was corroborated by\n  Jarzy\u0144ski et al, 2020. Jarzy\u0144ski et al, 2020 was used to inform the worst-case scenario RTDC probabilities of 0-0.7%. This was based on a review of\n  307 cervical spine trauma patients, of which 283 were classified as sprains/strains (note the remaining 24 patients had cervical subluxation or\n  dislocation). The average age of subjects was 34.6 years and 52% were male. Approximately 70% of subjects experienced neck injury due to traffic\n  accidents (whiplash), although other mechanisms of injury were included (e.g. physical activity, fall). Of the all presenting injuries, 7% (24 subjects)\n  required hospitalization and 22 required surgery (including subluxation/dislocations). It is suspected that the majority of these surgical cases were\n  subluxation/dislocations, (implied by a statement in the article that \"surgery consisted of dislocation repositioning, decompression of nerve\n  structures if necessary.\") This is outside the scope of this CLiFF. Therefore the editor elected to make the maximum probability of RTDC 0.7%. This\n  correlates to the 2 patients that were admitted but did not require surgery in this study. (Jarzy\u0144ski et al, 2020) This may still be an overestimate of\n  RTDC for this condition.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                       Source                                       LOC Value\n\n   N/A                                            N/A                                                                        4\n\n\n  No evidence was identified in literature searches to indicate LOCL from this condition.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope Overview Sprain/strain \u2013 neck encompasses sprains or strains of any of the muscles of the neck. Best-case\n  scenario involves Grade I/II sprains/strains and worst-case scenario involves Grade III sprains/strains. CNES: N/A Diagnostic Scope and Resourcing\n  In the best-case and worst-case scenarios, diagnosis is based on history, physical examination (musculoskeletal, neurologic). Musculoskeletal\n  ultrasound may serve as a useful adjunct to rule out other pathologies in the differential diagnosis but was not considered essential to diagnosis.\n  The utility of musculoskeletal ultrasound would be determined on a case-by-case basis. It was included as a non-necessary capability in the worst-\n  case scenario. This diagnostic framework is consistent with the terrestrial workup for neck sprain/strain with the exception of the inability to perform\n  plain film X-Ray, and thereby using Musculoskeletal Ultrasound as a possible surrogate. Clinical Phase 1 Duration and Rationale This version of\n  IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME consensus duration is\n  as follows: CP1 BC (Treated or Untreated): 0.87 hours CP1 WC (Treated or Untreated: 1.36 hours This CRT includes a scope of practice code of 5\n  (which correlates to an \u201cExperienced procedure trained generalist attending (ED attending)\u201d and was included for musculoskeletal ultrasound and\n  interpretation. Treatment Scope and Resourcing Terrestrially, neck sprains and strains resolve quickly with a period of relative rest, analgesia, and\n  physical therapy. Exercise modification is also recommended, but not built into the CRT as this does not represent a clinical resource. Pain is\n  variable depending on the patient. NSAIDs (both oral and topical), cold packs, lidocaine patches, and acetaminophen were included in the best-\n  case treatment scenario. Muscle relaxing agents and narcotics were additionally included in the worst-case scenario. Bracing of the neck is not\n  recommended for sprains/strains. Communications and Support Needs While real-time video and audio loop communications are desired for\n  diagnosis and treatment, they were not considered a necessity and therefore were not included in this CRT. REFERENCES 1. Parikh P, Santaguida\n  P, Macdermid J, Gross A, Eshtiaghi A. Comparison of CPG\u2019s for the diagnosis, prognosis and management of non-specific neck pain: a systematic\n  review. BMC Musculoskelet Disord. 2019; 20(1):81\n\n\n\n\n9/12/2022 9:46:16 PM                                                   ICL103_Sprain/Strain - Neck Cliff                                                        page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-056-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  IMM CLIFF RECONCILATION COMMENTS\n\n\n  The incidence provided by the IMM CLiFF is the most up-to-date spaceflight incidence available and will be used in this CLiFF. (A total of 14 in-\n  flight cases from Mercury \u2013 ISS Expedition 40). The best and worst-case scenario definitions have changed. The IMM best-case scenario definition\n  was a \"mild neck injury that resolves with minimal or no treatment.\" The current definition is \u201ca Grade I or II sprain/strain in which there is minimal or\n  partial muscle or ligamentous tearing.\u201d The IMM definition for worst-case scenario was defined as \"a moderate or severe neck injury that requires\n  more prolonged treatment or is refractory to treatment.\" The current definition is \u201cGrade III strain/sprain in which there is full thickness muscle or\n  ligamentous tearing, and/or instability.\u201d As a result, the durations in this CLiFF are substantially longer than the IMM CLiFF. The RTDC and LOCL\n  probabilities are similar to the prior CLiFFs EVAC and LOCL probabilities.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  \u2022 The incidence for this CLiFF is based on in-flight \u201cneck injury\u201d data. While most of these injuries were likely sprains/strains, this may be an\n  overestimate of the true incidence. \u2022 Incidence, duration, RTDC, and LOCL are difficult to determine in the literature based on the definitions of the\n  best and worst-case scenario presented in this CLiFF. Most of the literature that relates to this CLiFF pertains to non-specific neck pain or\n  whiplash. The Bone and Joint Decade 2000-2010 Task Force on Neck Pain recommends using a 4 point grading scale for non-specific neck pain,\n  as follows: Grade I neck pain has no signs of major pathology and no or little interference with daily activities; Grade II neck pain has no signs of\n  major pathology, but interference with daily activities; Grade III neck pain has neurologic signs of nerve compression; Grade IV neck pain has signs\n  of major pathology (Guzman et al, 2008). Trying to match these definitions to the current definitions, the split between best and worst-case would\n  be somewhere in Grade II (i.e. some Grade II injuries would be best-case and some would be worst-case). Similarly, there are several grading\n  scales for whiplash associated disorder (WAD), which also do not correlate well with the definitions assigned in this CLiFF. It should be noted that\n  for both non-specific neck pain and WAD the grading scales include neurologic signs/involvement and/or fracture/dislocation (i.e. the worst-case for\n  all of these grading scales is worse than the worst-case scenario for a neck sprain/strain according to the definition in this CLiFF). For this reason,\n  the durations are likely over-estimates. These juxtaposed grading scales and definitions make correlating data to the CLiFF challenging. \u2022 There is\n  a paucity of data available to inform the best and worst-case probabilities, as defined, for this condition. Therefore, a range was assigned using\n  prior IMM values (BC: 40%, WC 60%) and data regarding the proportion of non-specific neck pain cases that become chronic (10%). The final\n  range assigned was BC: 40-90% and WC: 10-60%. This was felt to be the best approximation possible given the paucity of data. \u2022 There is a\n  paucity of data related to neck sprains/strains as defined by this CLiFF. Most terrestrial literature either deals with non-specific neck pain, neck\n  injury (typically from high force accidents like motor vehicle accidents), or whiplash (again typically from MVA). This limits the applicability of this\n  data to this CLiFF. The durations are all driven by non-specific neck pain and whiplash data and are likely to be an overestimate of the true\n  duration of a neck sprain/strain as defined by this CLiFF. \u2022 The treated worst-case scenario durations are based on selected (unknown) studies\n  within a Cochrane Review by Verhagen et al, 2007. The literature review effort did not provide primary references, so the Cochrane review will be\n  used as the citation. This is a limitation of this CLiFF.\n\n\n\n\n9/12/2022 9:46:16 PM                                                   ICL103_Sprain/Strain - Neck Cliff                                                       page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-056-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                              Clinical Phase 2: Treatment\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision         Hearing                   Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n                            664\n    Case\n   (UTBC)\n   Treated\n    Worst\n                            664\n     Case\n    (TWC)\n  Untreated\n    Worst\n                            664                              89\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                       Total\n                                                                                                                                                     Human\n                                                                                            Translation &                            Total Tasks\n                Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                            Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n               (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                           (microgravity)                            Condition\n                                                                                                                                                    Tasks Full\n                                                                                                                                                     Mission\n   Treated\n     Best\n           132                             414                                                           34            211          791            3763          0.210205      21.0205\n    Case\n    (TBC)\n  Untreated\n    Best\n            132                            414                                                           34            211          1455           3763          0.38666       38.666\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                             414                                                           34            211          1455           3763          0.38666       38.666\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132                            414                                                           34            211          1544           3763          0.410311      41.0311\n    Case\n   (UTWC)\n\n                                                                          Clinical Phase 3: Condition End State\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision         Hearing                   Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n    Case\n   (UTBC)\n   Treated\n    Worst\n                            664\n     Case\n    (TWC)\n  Untreated\n    Worst\n                            664\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n9/12/2022 9:46:16 PM                                                 ICL103_Sprain/Strain - Neck Cliff                                                                            page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-056-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                Translation &                           Total Tasks\n               Hand                                     Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal        TI %\n              (Dom)                                   Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                               (microgravity)                           Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n   Treated\n     Best\n                                                                                                                       0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                                                                       0              3763          0                0\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                      414                                                      34            211         1455           3763          0.38666          38.666\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132                     414                                                      34            211         1455           3763          0.38666          38.666\n    Case\n   (UTWC)\n\n\n\n\n9/12/2022 9:46:16 PM                                         ICL103_Sprain/Strain - Neck Cliff                                                                           page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-056-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment CP3: No comment\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n9/12/2022 9:46:16 PM                                                  ICL103_Sprain/Strain - Neck Cliff                                                    page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-056-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. Ballard TD. Cervical Spine Disease and Surgical Intervention in the US Air Force Fighter Aviator Population 2001-2006: An Assessment of\n   Relative Risk: University of Cincinnati; 2008.\n\n   2. Binder A. Neck pain. Clinical Evidence. 2008;08:1103.\n\n   3. Guzman J, Haldeman S, Carroll LJ, Carragee EJ, Hurwitz EL, Peloso P, et al. Clinical Practice Implications of the Bone and Joint Decade 2000\u2013\n   2010 Task Force on Neck Pain and Its Associated Disorders: From Concepts and Findings to Recommendations. Spine. 2008;33:S199-S213.\n\n   4. Hurwitz EL, Carragee EJ, van der Velde G, Carroll LJ, Nordin M, Guzman J, et al. Treatment of neck pain: noninvasive interventions: results of\n   the Bone and Joint Decade 2000\u20132010 Task Force on Neck Pain and Its Associated Disorders. Journal of manipulative and physiological\n   therapeutics. 2009;32(2):S141-S75.\n\n   5. Jarzy\u0144ski T, P\u0119kala P, Baranowska A. Analysis of neurological symptoms and mechanisms in dislocation, sprains and strains of joints and\n   ligaments at neck level. Pol Merkur Lekarski. 2020;48(288):410-4. Epub 2021/01/03. PubMed PMID: 33387428.\n\n   6. Johnston III SL, Smart KT, Pattarini JM. Medical Evacuation Risk and Crew Transport. In: Barratt MR, Baker ES, Pool SL, editors. Principles of\n   Clinical Medicine For Space Flight. 2nd ed. New York: Springer; 2020. p. 327-56.\n\n   7. NASA. Neck Sprain/Strain Clinical Information Findings Form. Integrated Medical Database of the Human Health and Performance Contract\n   Integrated Medical Model Project. 2017;v6.5.\n\n   8. Quinlan KP, Annest JL, Myers B, Ryan G, Hill H. Neck strains and sprains among motor vehicle occupants-United States, 2000. Accid Anal\n   Prev. 2004;36(1):21-7. Epub 2003/10/24. doi: 10.1016/s0001-4575(02)00110-0. PubMed PMID: 14572823.\n\n   9. Ramachandran V, Dalal S, Scheuring RA, Jones JA. Musculoskeletal injuries in astronauts: review of pre-flight, in-flight, post-flight, and\n   extravehicular activity injuries. Current Pathobiology Reports. 2018;6(3):149-58.\n\n   10. Safiri S, Kolahi A-A, Hoy D, Buchbinder R, Mansournia MA, Bettampadi D, et al. Global, regional, and national burden of neck pain in the\n   general population, 1990-2017: systematic analysis of the global burden of disease study 2017. BMJ. 2020;368.\n\n   11. Scheuring RA, Mathers CH, Jones JA, Wear ML. Musculoskeletal injuries and minor trauma in space: incidence and injury mechanisms in U.S.\n   astronauts. Aviat Space Environ Med. 2009;80(2):117-24. Epub 2009/02/10. doi: 10.3357/asem.2270.2009. PubMed PMID: 19198198.\n\n   12. Thomas TL, Garland FC, Mole D, Cohen BA, Gudewicz TM, Spiro RT, et al. Health of U.S. Navy submarine crew during periods of isolation.\n   Aviat Space Environ Med. 2003;74(3):260-5. Epub 2003/03/26. PubMed PMID: 12650274.\n\n   13. Verhagen AP, Scholten\u2010Peeters G, van Wijngaarden S, de Bie R, Bierma\u2010Zeinstra SMA. Conservative treatments for whiplash. Cochrane\n   Database of Systematic Reviews. 2007(2). doi: 10.1002/14651858.CD003338.pub3. PubMed PMID: CD003338.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                       PHRASE\n\n   AAOMS                         American Association of Oral and Maxillofacial Surgeons\n\n   AMA                           American Medical Association\n\n   ARCL                          All Remaining Conditions List\n\n   ARS                           Acute Radiation Sickness\n\n   BHP                           Behavioral Health and Performance\n\n   CAC                           Coronary Artery Calcium\n\n   CHS                           Crew Health and Safety\n\n   CL                            Condition List\n\n   CliFF                         Clinical Finding Form\n\n   CMO                           Crew Medical Officer\n\n   COMFORT                       Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                           Clinical Phase 1\n\n   CP2                           Clinical Phase 2\n\n\n\n\n9/12/2022 9:46:16 PM                                                 ICL103_Sprain/Strain - Neck Cliff                                                 page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-056-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   CP3                 Clinical Phase 3\n\n   CRL                 Clinical Resource Level\n\n   CRT                 Capability Resource Table\n\n   CST                 Clinical Science Team\n\n   DCS                 Decompression Syndrome\n\n   DRM                 Design Reference Mission\n\n   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n\n\n\n9/12/2022 9:46:16 PM                                        ICL103_Sprain/Strain - Neck Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    },
+    {
+      "section_id": "CLIFF-056-P14",
+      "ordinal": 13,
+      "heading": "Page 14 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n9/12/2022 9:46:16 PM                                         ICL103_Sprain/Strain - Neck Cliff   page: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "page:14"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-056-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "General"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Poisson"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Gamma"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.31369"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.0843204"
+        ],
+        [
+          "Gamma"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-056-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                                  Source                        LOC Value"
+        ],
+        [
+          "Safiri et al, 2020                                                                        Terrestrial                   0"
+        ],
+        [
+          "Quinlan et al, 2004                                                                       Terrestrial                   0"
+        ],
+        [
+          "Scheuring et al, 2009                                                                     Spaceflight                   3"
+        ],
+        [
+          "Johnston III et al, 2020                                                                  Spaceflight                   3"
+        ],
+        [
+          "NASA, Neck Sprain/Strain CLiFF, 2017                                                      Spaceflight                   3"
+        ],
+        [
+          "Ramachandran et al, 2018                                                                  Spaceflight                   2"
+        ],
+        [
+          "Thomas et al, 2003                                                                        Analog                        1"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-056-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                                      Source                       LOC Value"
+        ],
+        [
+          "Guzman et al, 2008                                                                            Terrestrial                  0"
+        ],
+        [
+          "Binder, 2008                                                                                  Terrestrial                  2"
+        ],
+        [
+          "NASA, Neck Sprain/Strain CLiFF, 2017                                                          Spaceflight                  2"
+        ],
+        [
+          "Guzman et al, 2008 is the Bone and Joint Decade 2000-2010 Task Force on Neck Pain, which recommends using a 4 point grading scale for non-"
+        ],
+        [
+          "specific neck pain, but does not inform the proportion of all-comer neck pain that fits into each grade. Binder, 2008 presents proportions of acute"
+        ],
+        [
+          "neck pain that become chronic (10% non-specific neck pain, 40% whiplash injuries). The IMM CLiFF has a best-case scenario of 40% and worst-"
+        ],
+        [
+          "case scenario of 60% based on 3 out of 5 cases in the Real World System data set being defined as worst-case according to the definition used in"
+        ],
+        [
+          "that CLiFF (which notably is different than the definition in this CLiFF)."
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-056-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment            CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration   TI%         Duration      TI%        RTDC             LOCL"
+        ],
+        [
+          "Composite            Condition"
+        ],
+        [
+          "Case Scenario        Incidence            Probability %      Preset    Preset     Preset      Min   Max     Preset     Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best         Mean: 0.3137         87.5 - 100         100       0.87       21.0205     24    1095    0          0       0        0        0"
+        ],
+        [
+          "Case (TBC)           SD: 0.08432"
+        ],
+        [
+          "Treated Worst                             0 - 12.5           100       1.36       38.666      96    4380    38.666     0       0        0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best       N/A                  N/A                N/A       0.87       38.666      24    2190    0          0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst      N/A                  N/A                N/A       1.36       41.0311     96    8760    38.666     0       0        0        0"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-056-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                 Source                                  LOC Value"
+        ],
+        [
+          "Verhagen et al, 2007                                                     Terrestrial"
+        ],
+        [
+          "1"
+        ],
+        [
+          "Hurwitz et al, 2009                                                      Terrestrial"
+        ],
+        [
+          "There is a paucity of data related to neck sprains/strains as defined by this CLiFF. Most terrestrial literature either deals with non-specific neck"
+        ],
+        [
+          "pain, neck injury (typically from high force accidents like motor vehicle accidents), or whiplash (again typically from MVA). This limits the applicability"
+        ],
+        [
+          "of this data to this CLiFF. The durations are all driven by non-specific neck pain and whiplash data and are likely to be an overestimate of the true"
+        ],
+        [
+          "duration of a neck sprain/strain as defined by this CLiFF. Note, the durations in this CLiFF are substantially longer than the IMM CLiFF."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-056-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                Source                                   LOC Value"
+        ],
+        [
+          "Jarzy\u0144ski et al, 2020                                                   Terrestrial                                                 3"
+        ],
+        [
+          "The best-case scenario RTDC probabilities were pre-determined by the Clinical and Science Team of ExMC to be 0%. This was corroborated by"
+        ],
+        [
+          "Jarzy\u0144ski et al, 2020. Jarzy\u0144ski et al, 2020 was used to inform the worst-case scenario RTDC probabilities of 0-0.7%. This was based on a review of"
+        ],
+        [
+          "307 cervical spine trauma patients, of which 283 were classified as sprains/strains (note the remaining 24 patients had cervical subluxation or"
+        ],
+        [
+          "dislocation). The average age of subjects was 34.6 years and 52% were male. Approximately 70% of subjects experienced neck injury due to traffic"
+        ],
+        [
+          "accidents (whiplash), although other mechanisms of injury were included (e.g. physical activity, fall). Of the all presenting injuries, 7% (24 subjects)"
+        ],
+        [
+          "required hospitalization and 22 required surgery (including subluxation/dislocations). It is suspected that the majority of these surgical cases were"
+        ],
+        [
+          "subluxation/dislocations, (implied by a statement in the article that \"surgery consisted of dislocation repositioning, decompression of nerve"
+        ],
+        [
+          "structures if necessary.\") This is outside the scope of this CLiFF. Therefore the editor elected to make the maximum probability of RTDC 0.7%. This"
+        ],
+        [
+          "correlates to the 2 patients that were admitted but did not require surgery in this study. (Jarzy\u0144ski et al, 2020) This may still be an overestimate of"
+        ],
+        [
+          "RTDC for this condition."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-056-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                       Source                                       LOC Value"
+        ],
+        [
+          "N/A                                            N/A                                                                        4"
+        ],
+        [
+          "No evidence was identified in literature searches to indicate LOCL from this condition."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-056-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision         Hearing                   Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664                              89"
+        ],
+        [
+          "Case"
+        ]
+      ],
+      "page_number": 9,
+      "source_anchor": "page:9#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-056-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-056/cervical_musculature_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1205,
+      "height": 1424,
+      "sha256": "276d46c67af8d66645f13ba6ba6a879b07c5ef3f14068d71668eb9974f90959e",
+      "creator": "Patrick J. Lynch, medical illustrator",
+      "license_identifier": "CC BY 2.5",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ALateral_head_anatomy_detail.jpg",
+      "attribution": "Patrick J. Lynch, medical illustrator, via Wikimedia Commons (CC BY 2.5)",
+      "caption": "Lateral anatomical illustration of the neck muscles (sternocleidomastoid, trapezius, and cervical soft tissues) involved in neck strain.",
+      "alt_text": "Lateral anatomical view of the human neck musculature.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Lateral head anatomy detail.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-056-IMG-02",
+      "ordinal": 1,
+      "media_kind": "RADIOLOGY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-056/cervical_sprain_xray_lordosis.jpg",
+      "mime_type": "image/jpeg",
+      "width": 593,
+      "height": 632,
+      "sha256": "ffbe9e5b9cd2ebddd37df65cc958b21c72a7bb7cf0656fd7a43c10e294929eb4",
+      "creator": "Jmarchn",
+      "license_identifier": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ALateral_neck_X-ray_of_whiplash.jpg",
+      "attribution": "Jmarchn, via Wikimedia Commons (CC BY-SA 3.0)",
+      "caption": "Lateral cervical spine radiograph showing straightening and loss of normal cervical lordosis from paraspinal muscle spasm.",
+      "alt_text": "Lateral cervical spine X-ray showing loss of normal lordotic curve.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Lateral neck X-ray of whiplash.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-056-IMG-03",
+      "ordinal": 2,
+      "media_kind": "DIAGRAM",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-056/cervical_collar_support.png",
+      "mime_type": "image/png",
+      "width": 900,
+      "height": 1200,
+      "sha256": "ae0af43d083140fa0acb14db627d63a34e0e696c5762d7e119736a7bd32d0d7b",
+      "creator": "BruceBlaus",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ACervical_Collar.png",
+      "attribution": "BruceBlaus, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Medical illustration of a soft/semi-rigid cervical collar used for temporary neck immobilization and support.",
+      "alt_text": "Medical illustration of a cervical collar neck brace.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Cervical Collar.png)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-056-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Neck Sprain/Strain",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/sprain-strain-neck-cliff-2023.pdf?emrc=9832be",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External cervical anatomy, radiograph, and collar images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}
