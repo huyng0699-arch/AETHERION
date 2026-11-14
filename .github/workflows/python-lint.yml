@@ -3,7 +3,20 @@ name: Python syntax and lint
 on:
   push:
     branches: [main]
+    paths:
+      - "apps/**/*.py"
+      - "scripts/**/*.py"
+      - "knowledge/**/*.py"
+      - "tests/**/*.py"
+      - ".github/workflows/python-lint.yml"
   pull_request:
+    paths:
+      - "apps/**/*.py"
+      - "scripts/**/*.py"
+      - "knowledge/**/*.py"
+      - "tests/**/*.py"
+      - ".github/workflows/python-lint.yml"
+  workflow_dispatch:
 
 jobs:
   lint:
