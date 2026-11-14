@@ -6,7 +6,7 @@ self-report. No event source is connected until a real server contract exists.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Iterable, Mapping, Any
 
 
@@ -14,6 +14,7 @@ TECHNICAL = "TECHNICAL"
 SELF_REPORTED = "SELF_REPORTED"
 CLINICAL_REVIEWED = "CLINICAL_REVIEWED"
 SUPPORTED_KINDS = frozenset({TECHNICAL, SELF_REPORTED, CLINICAL_REVIEWED})
+TECHNICAL_SCOPES = frozenset({"SERVER", "NETWORK", "DEVICE", "CABIN", "VEHICLE", "HABITAT", "SYSTEM"})
 
 
 @dataclass(frozen=True)
@@ -43,7 +44,7 @@ def _timestamp(value: object) -> str:
         raise ValueError("invalid event timestamp") from exc
     if dt.tzinfo is None or dt.utcoffset() is None:
         raise ValueError("event timestamp needs timezone")
-    return dt.isoformat()
+    return dt.astimezone(timezone.utc).isoformat()
 
 
 def split_events(records: Iterable[Mapping[str, Any]], allowed_subject_ids: Iterable[str]) -> EventLists:
@@ -77,7 +78,7 @@ def split_events(records: Iterable[Mapping[str, Any]], allowed_subject_ids: Iter
             raise ValueError("invalid subject_id")
         if kind == TECHNICAL:
             # Technical events must never carry an individual health profile.
-            if sid or scope == "CREW":
+            if sid or scope not in TECHNICAL_SCOPES:
                 raise ValueError("technical incident must not expose crew health")
             technical.append(EventRow(eid, title, kind, scope, source, at))
             continue
@@ -134,7 +135,7 @@ def build_mission_events_widget(parent=None):
                     self.health.setItem(i, j, QTableWidgetItem(field))
             self.note.setText(
                 f"Loaded: {len(result.technical)} technical / {len(result.health)} authorized health events; "
-                f"{result.withheld} subject-restricted. No automatic diagnoses."
+                "Restricted subjects are never displayed. No automatic diagnoses."
             )
 
     return MissionEventList()
