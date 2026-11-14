@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-039",
+  "slot": 39,
+  "quest_id": "Q-0339",
+  "checked_at_utc": "2026-11-14T06:13:41.769407+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/trauma-severe-head-cliff-2023.pdf?emrc=3cc14f",
+  "http_status": 200,
+  "pdf_sha256": "4ff2e4ae7371565719c7846f5b8b0fa0c8f1801cbfba05e168c8629d6a8f268d",
+  "pdf_bytes": 357646,
+  "pages_extracted": 15,
+  "sections_count": 15,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-039-IMG-01": "3613fce57f62dd3c8173bc1c00b4040a63a7d02c1947db32f9db0623079d53d6",
+    "CLIFF-039-IMG-02": "4271232873a2cbfdae3293666a5867f742e53e4699dcfb298a3cbed6683dfbc1",
+    "CLIFF-039-IMG-03": "b2ca056b2d6a02624f61a07be46105c0a191a82cc5b71c19f4e0f2ed086737f5"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
