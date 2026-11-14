@@ -118,6 +118,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             # A single native responsive layout, not a second server or webview.
             from .features.mission.mission_layout import install_mission_layout
             install_mission_layout(self, api_url)
+            self.open_personal_button.setEnabled(False)
 
         def _update_summary(self, *, subject: str = "", count: int | None = None,
                             latest: str = "", sources: int | None = None):
@@ -142,6 +143,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._request_seq += 1
             self._token = ""
             self._authorized_subject = None
+            self.open_personal_button.setEnabled(False)
             # Do not leak prior account's selected subject IDs into the next
             # session, even when the new login fails or the server is offline.
             self._subjects.clear()
@@ -215,6 +217,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._request_seq += 1
             seq = self._request_seq
             self._authorized_subject = None  # handoff disabled until this exact GET is accepted
+            self.open_personal_button.setEnabled(False)
             self.table.setRowCount(0)
             self.technical.setText(tr(self.ui_language, "mission.technicalDisclaimer"))
             self._update_summary(subject=subject_id)
@@ -272,6 +275,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
 
             # NO_DATA is a successful authorized read, not proof of health.
             self._authorized_subject = subject_id
+            self.open_personal_button.setEnabled(True)
             note_key = ("mission.note.noObservations" if data.status == "NO_DATA"
                         else "mission.note.recorded")
             self._say("mission.snapshot", state=data.status,
