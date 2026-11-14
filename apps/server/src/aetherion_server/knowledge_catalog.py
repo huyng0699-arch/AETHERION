@@ -50,7 +50,7 @@ def symptom_english_aliases() -> dict[str, dict]:
         return {}
     try:
         source_bytes = SYMPTOMS.read_bytes()
-        blob_bytes = b"blob " + str(len(source_bytes)).encode("ascii") + b"\\0" + source_bytes
+        blob_bytes = b"blob " + str(len(source_bytes)).encode("ascii") + bytes((0,)) + source_bytes
         source_sha = hashlib.sha1(blob_bytes).hexdigest()
         raw = json.loads(SYMPTOM_EN_ALIASES.read_text(encoding="utf-8"))
         if (not isinstance(raw, dict) or raw.get("schema_version") != "1.0.0"
