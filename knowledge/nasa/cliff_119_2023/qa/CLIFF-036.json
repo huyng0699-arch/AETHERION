@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-036",
+  "slot": 36,
+  "quest_id": "Q-0336",
+  "checked_at_utc": "2026-11-14T06:11:46.151023+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/hemorrhoids-cliff-2023.pdf?emrc=75f766",
+  "http_status": 200,
+  "pdf_sha256": "e3ac8844eeb858122e40ab416d95e5822c71d32e5e17888812860da30ae9a15b",
+  "pdf_bytes": 321647,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-036-IMG-01": "27b56ae48132cf9d31e2bc059ebe26ca27317d2a1dbcc9c0d2c4292f4d2a8db8",
+    "CLIFF-036-IMG-02": "e068472da4f8cad871354e4ad0375596e6e7dac7d8e174689e39ef81a671752f",
+    "CLIFF-036-IMG-03": "2493717301f0a5bc211ad14a5c403595916dca525a2151cb3dd2dc7b948d998a"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
