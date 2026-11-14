@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-087",
+  "slot": 87,
+  "quest_id": "Q-0387",
+  "checked_at_utc": "2026-11-14T06:32:45.022472+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/skin-laceration-cliff-2023.pdf?emrc=ff9785",
+  "http_status": 200,
+  "pdf_sha256": "983f95e4e929eac8a3be2b266ff6a85572d88790a1828b98b8124dcd01ab6116",
+  "pdf_bytes": 319101,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-087-IMG-01": "9857280031a998a5645482eeaa5a6fd060812b6ab87ceebb5a8783045c966a09",
+    "CLIFF-087-IMG-02": "ffd579623e4c4851e337ad9654c40cf8813adb0fb96a57a9bf503ab76fdf1146",
+    "CLIFF-087-IMG-03": "9878c0ef260dbd6fb527cc95d37f75045ea056c471e61acac3401753b88f49b1"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
