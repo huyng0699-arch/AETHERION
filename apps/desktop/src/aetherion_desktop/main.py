@@ -9,7 +9,7 @@ import os
 import sys
 
 from PySide6.QtCore import Qt, QUrl, QTimer
-from PySide6.QtGui import QAction
+from PySide6.QtGui import QAction, QShortcut, QKeySequence
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import (
     QApplication, QFrame, QHBoxLayout, QLabel, QMainWindow, QMenu,
@@ -20,6 +20,8 @@ from PySide6.QtWidgets import (
 from .portal import PORTAL_ROUTES, build_portal_page
 from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
 from .visual_theme import THEMES, VisualPreferences
+from .settings_page import SettingsPage
+from .localize import tr as settings_tr
 from .medical_library import build_medical_library_page
 from .mission_control import build_mission_control_page
 from .features.personal.authorized_today import AuthorizedPersonalTodayPage
@@ -108,9 +110,11 @@ class AetherionWindow(QMainWindow):
         self.pages.setObjectName("pageStack")
         self.portal_page = build_portal_page(theme_name=self.preferences.theme_name,
                                              reduce_motion=self.preferences.reduce_motion,
-                                             locale=self.ui_language)
+                                             locale=self.ui_language,
+                                             mode=self.preferences.mode,
+                                             intensity=self.preferences.animation_intensity)
         self.portal_page.route_requested.connect(self.open_portal_route)
-        self.portal_page.theme_requested.connect(self.open_theme_menu)
+        self.portal_page.theme_requested.connect(self.show_settings)
         self.pages.addWidget(self.portal_page)
 
         # Preserve real, already implemented features and their authenticated links.
@@ -152,6 +156,11 @@ class AetherionWindow(QMainWindow):
             (("Mở Sức khỏe của tôi", self.show_personal),),
         )
         self.pages.addWidget(self.care_page)
+        self.settings_page = SettingsPage(self.preferences, self.api_url)
+        self.settings_page.preferences_changed.connect(self._apply_preferences)
+        self.settings_page.connection_test_requested.connect(self.check_server)
+        self.settings_page.go_home.connect(self.show_portal)
+        self.pages.addWidget(self.settings_page)
 
         # Main horizontal navigation; nested items use dropdown menus, never sidebars.
         self._nav_button(bar, "Trang đầu", self.show_portal)
@@ -193,6 +202,11 @@ class AetherionWindow(QMainWindow):
         self.language_button.setToolTip(tr(self.ui_language, "main.locale.tooltip"))
         self.language_button.clicked.connect(self._change_language)
         bar.addWidget(self.language_button)
+        self.settings_button = QPushButton("⚙  "+settings_tr("settings",self.ui_language))
+        self.settings_button.setObjectName("navButton")
+        self.settings_button.setAccessibleName("AETHERION Settings")
+        self.settings_button.clicked.connect(self.show_settings)
+        bar.addWidget(self.settings_button)
         help_button = QToolButton()
         help_button.setText("?  Trợ giúp")
         help_button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextOnly)
@@ -202,7 +216,7 @@ class AetherionWindow(QMainWindow):
         outer.addWidget(self.pages, 1)
 
         footer = QFrame()
-        footer.setObjectName("topBar")
+        footer.setObjectName("footerBar")
         self.footer_bar = footer
         line = QHBoxLayout(footer)
         line.setContentsMargins(28, 6, 28, 6)
@@ -216,6 +230,10 @@ class AetherionWindow(QMainWindow):
         outer.addWidget(footer)
 
         self.setCentralWidget(root)
+        self.shortcut_settings = QShortcut(QKeySequence("Ctrl+,"), self)
+        self.shortcut_settings.activated.connect(self.show_settings)
+        self.shortcut_home = QShortcut(QKeySequence("Alt+Home"), self)
+        self.shortcut_home.activated.connect(self.show_portal)
         self._retranslate_shell()
         self.pages.setCurrentWidget(self.portal_page)
         self.heartbeat = QTimer(self)
@@ -281,12 +299,14 @@ class AetherionWindow(QMainWindow):
         self.language_button.setToolTip(tr(self.ui_language, "main.locale.tooltip"))
         self.language_button.setAccessibleName(tr(self.ui_language, "main.locale.tooltip"))
         self._build_theme_menu()
+        self.settings_button.setText("⚙  "+settings_tr("settings",self.ui_language))
         self.check_server()
 
     def _change_language(self):
         self.ui_language = "en" if self.ui_language == "vi" else "vi"
-        self.preferences.settings.setValue("ui/language", self.ui_language)
+        self.preferences.set_language(self.ui_language)
         self._retranslate_shell()
+        self.settings_page.retranslate()
 
     def _change_theme(self, theme_name: str):
         self.preferences.set_theme(theme_name)
@@ -304,10 +324,20 @@ class AetherionWindow(QMainWindow):
         app = QApplication.instance()
         if app is not None:
             self.preferences.apply(app)
-        self.portal_page.set_visuals(self.preferences.theme_name, self.preferences.reduce_motion)
+        self.portal_page.set_visuals(
+            self.preferences.theme_name, self.preferences.reduce_motion,
+            self.preferences.mode, self.preferences.animation_intensity,
+        )
+        self.settings_page.retranslate()
+        if self.ui_language != self.preferences.language:
+            self.ui_language = self.preferences.language
+            self._retranslate_shell()
 
     def open_theme_menu(self):
-        self.theme_button.showMenu()
+        self.show_settings()
+
+    def show_settings(self):
+        self.pages.setCurrentWidget(self.settings_page)
 
     def show_portal(self):
         self.pages.setCurrentWidget(self.portal_page)
