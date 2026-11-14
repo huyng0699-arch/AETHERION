@@ -146,6 +146,7 @@ def check_readiness(path: str | Path) -> dict[str, str]:
 
 def _row_to_observation(row: sqlite3.Row) -> dict[str, Any]:
     data = dict(row)
+    data["observation_uid"] = f"obs-{data['id']}"
     if not data.get("source_id"):
         data["source_id"] = data.get("source", "")
     if not data.get("source"):
@@ -241,6 +242,15 @@ def add_observation(path: str | Path, item: dict[str, Any]) -> int:
     return obs_id
 
 
+def _parse_utc(iso_str: str) -> datetime:
+    from datetime import datetime, timezone
+
+    dt = datetime.fromisoformat(iso_str)
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
+
+
 def query_observations(
     path: str | Path,
     subject_id: str,
@@ -248,8 +258,13 @@ def query_observations(
     scope: str | None = None,
     metric: str | None = None,
     include_non_live: bool = False,
+    order: str = "desc",
+    since: str | None = None,
+    until: str | None = None,
     limit: int = 100,
 ) -> list[dict[str, Any]]:
+    if order not in {"asc", "desc"}:
+        raise ValueError("order must be 'asc' or 'desc'")
     initialize(path)
     clauses = ["subject_id = ?"]
     params: list[Any] = [subject_id]
@@ -264,7 +279,6 @@ def query_observations(
         clauses.append("verification_state != 'TEST_FIXTURE'")
         clauses.append("LOWER(source_id) NOT LIKE 'nasa_osdr:%'")
         clauses.append("LOWER(source_id) NOT LIKE 'research:%'")
-    params.append(limit)
     where_sql = " AND ".join(clauses)
     with _connect(path) as conn:
         rows = conn.execute(
@@ -274,11 +288,21 @@ def query_observations(
                    idempotency_key, created_by, created_at
             FROM observations
             WHERE {where_sql}
-            ORDER BY observed_at DESC, id DESC LIMIT ?
             """,
             params,
         ).fetchall()
-    return [_row_to_observation(row) for row in rows]
+    items = [_row_to_observation(row) for row in rows]
+    if since is not None:
+        since_dt = _parse_utc(since)
+        items = [item for item in items if _parse_utc(item["observed_at"]) >= since_dt]
+    if until is not None:
+        until_dt = _parse_utc(until)
+        items = [item for item in items if _parse_utc(item["observed_at"]) <= until_dt]
+    items.sort(
+        key=lambda item: (_parse_utc(item["observed_at"]), int(item["id"])),
+        reverse=(order == "desc"),
+    )
+    return items[:limit]
 
 
 def list_observations(path: str | Path, subject_id: str, limit: int = 100) -> list[dict[str, Any]]:

@@ -206,6 +206,9 @@ def create_app(
         scope: AllowedScope | None = Query(default=None),
         metric: str | None = Query(default=None, min_length=1, max_length=80),
         include_non_live: bool = Query(default=False),
+        order: Literal["asc", "desc"] = Query(default="desc"),
+        since: datetime | None = Query(default=None),
+        until: datetime | None = Query(default=None),
         limit: int = Query(100, ge=1, le=500),
         session_and_token: tuple[dict, str] = Depends(require_session),
     ):
@@ -221,12 +224,53 @@ def create_app(
             scope=scope,
             metric=metric,
             include_non_live=include_non_live,
+            order=order,
+            since=since.isoformat() if since is not None else None,
+            until=until.isoformat() if until is not None else None,
             limit=limit,
         )
         return {
             "subject_id": subject_id,
+            "order": order,
             "observations": items,
             "note": "Observations preserve recorded provenance; no automated clinical diagnosis is provided.",
+        }
+
+    @application.get("/api/v1/observations/series")
+    def observation_series(
+        subject_id: str = Query(min_length=1, max_length=80),
+        metric: str = Query(min_length=1, max_length=80),
+        scope: AllowedScope | None = Query(default=None),
+        include_non_live: bool = Query(default=False),
+        order: Literal["asc", "desc"] = Query(default="asc"),
+        since: datetime | None = Query(default=None),
+        until: datetime | None = Query(default=None),
+        limit: int = Query(200, ge=1, le=500),
+        session_and_token: tuple[dict, str] = Depends(require_session),
+    ):
+        session, _ = session_and_token
+        if not is_subject_authorized(session["role"], session["allowed_subjects"], subject_id):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Not authorized to access subject '{subject_id}'",
+            )
+        items = query_observations(
+            get_db_path(),
+            subject_id,
+            scope=scope,
+            metric=metric,
+            include_non_live=include_non_live,
+            order=order,
+            since=since.isoformat() if since is not None else None,
+            until=until.isoformat() if until is not None else None,
+            limit=limit,
+        )
+        return {
+            "subject_id": subject_id,
+            "metric": metric,
+            "order": order,
+            "points": items,
+            "count": len(items),
         }
 
     @application.post("/api/v1/observations", status_code=status.HTTP_201_CREATED)
