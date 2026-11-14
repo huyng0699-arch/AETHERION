@@ -234,6 +234,49 @@ def recent_admin_events(path: str | Path, limit: int = 30) -> list[dict]:
     return [dict(row) for row in rows]
 
 
+def list_observed_sources(path: str | Path) -> dict:
+    """Inventory ONLY source IDs from persisted observations, not paired devices.
+
+    A previously recorded source is not evidence of an active sensor.
+    """
+    initialize_admin(path)
+    with closing(_db(path)) as db:
+        rows = db.execute(
+            "SELECT source_id, COUNT(*) AS records, "
+            "COUNT(DISTINCT subject_id) AS subjects, MAX(observed_at) AS last_observed_at, "
+            "MAX(received_at) AS last_received_at "
+            "FROM observations GROUP BY source_id "
+            "ORDER BY last_received_at DESC LIMIT 200"
+        ).fetchall()
+    return {
+        "sources": [
+            {"source_id": row["source_id"], "stored_records": row["records"],
+             "subjects_count": row["subjects"],
+             "last_observed_at": row["last_observed_at"],
+             "last_received_at": row["last_received_at"],
+             "connection_state": "NOT_VERIFIED"} for row in rows
+        ],
+        "connected_devices": None,
+        "note": "Historical source IDs do not prove a connected physical device.",
+    }
+
+
+def list_admin_users(path: str | Path) -> dict:
+    """Redacted account inventory; password hashes and session tokens excluded."""
+    initialize_admin(path)
+    with closing(_db(path)) as db:
+        rows = db.execute(
+            "SELECT username, role, allowed_subjects_json, active, created_at "
+            "FROM users ORDER BY username COLLATE NOCASE LIMIT 500"
+        ).fetchall()
+    return {"users": [
+        {"username": row["username"], "role": row["role"],
+         "allowed_subjects": json.loads(row["allowed_subjects_json"]),
+         "active": bool(row["active"]), "created_at": row["created_at"]}
+        for row in rows
+    ]}
+
+
 def backup_sqlite(path: str | Path, *, actor: str) -> dict:
     """Consistent online SQLite snapshot without exposing an arbitrary write path."""
     target = Path(path)
