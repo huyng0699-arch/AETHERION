@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-064",
+  "title": "Peripheral Vestibular Organs: Semicircular Canals and Otoliths",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Peripheral_vestibular_organs_in_the_inner_ear.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Peripheral_vestibular_organs_in_the_inner_ear.jpg",
+  "license": "CC-BY-3.0",
+  "author": "Christian Pfeiffer, Andrea Serino, and Olaf Blanke",
+  "caption": "Diagram of the peripheral vestibular sensory organs including the semicircular canals (angular acceleration) and utricle/saccule otolith organs (linear acceleration and gravity).",
+  "alt_text": "Diagram showing semicircular canals, utricle, saccule, and vestibular hair cells.",
+  "clinical_relevance": "Explains otolith unloading in microgravity and canal-otolith sensory mismatch underlying Space Adaptation Syndrome (CLIFF-064, p.1, p.6).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 850,
+  "height": 423,
+  "size_bytes": 111022,
+  "sha256": "e47cc604cb21b922b8dea2febd056fd5e64a88729bddde8600c081112d834c63",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Peripheral_vestibular_organs_in_the_inner_ear.jpg",
+  "retrieved_at_utc": "2026-11-14T06:23:01.093099+00:00",
+  "asset_path": "e47cc604cb21b922b8dea2febd056fd5e64a88729bddde8600c081112d834c63.jpg",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "DIAGRAM",
+  "topic_region": "Inner Ear / Otolith Organs & Semicircular Canals"
+}

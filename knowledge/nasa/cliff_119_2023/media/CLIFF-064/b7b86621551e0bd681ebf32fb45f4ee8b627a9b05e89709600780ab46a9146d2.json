@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-064",
+  "title": "NASA Astronaut Vestibular System Functional Testing",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Soyuz_MS-12_crew_member_Christina_Koch_tests_her_vestibular_system.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Soyuz_MS-12_crew_member_Christina_Koch_tests_her_vestibular_system.jpg",
+  "license": "PUBLIC-DOMAIN",
+  "author": "NASA/Victor Zelentsov",
+  "caption": "NASA astronaut Christina Koch undergoing vestibular system functional testing as part of spaceflight sensorimotor adaptation protocols.",
+  "alt_text": "Photograph of a NASA astronaut performing vestibular system balance and orientation testing.",
+  "clinical_relevance": "Illustrates operational vestibular assessment used in spaceflight crew adaptation and post-flight recovery monitoring (CLIFF-064, p.1-2, p.6).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 3371,
+  "height": 5056,
+  "size_bytes": 1217767,
+  "sha256": "b7b86621551e0bd681ebf32fb45f4ee8b627a9b05e89709600780ab46a9146d2",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Soyuz_MS-12_crew_member_Christina_Koch_tests_her_vestibular_system.jpg",
+  "retrieved_at_utc": "2026-11-14T06:23:01.285257+00:00",
+  "asset_path": "b7b86621551e0bd681ebf32fb45f4ee8b627a9b05e89709600780ab46a9146d2.jpg",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "CLINICAL",
+  "topic_region": "Neurovestibular / Crewmember Adaptation"
+}

@@ -1,0 +1,368 @@
+{
+  "article_id": "CLIFF-064",
+  "slot": 64,
+  "display_title": "Space Motion Sickness (Space Adaptation)",
+  "category": "Neurovestibular Disturbance",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "NASA Integrated Medical Model (IMM) Clinical Finding Form (CliFF 2023) for mission risk-planning; NOT a validated bedside clinical protocol or NASA endorsement of AETHERION.",
+  "source": {
+    "source_id": "NASA-CLIFF-064",
+    "publisher": "NASA",
+    "title": "Space Motion Sickness (Space Adaptation) CliFF (2023)",
+    "source_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+    "retrieved_at_utc": "2026-11-14T06:22:50.889518+00:00",
+    "content_sha256": "a3a7922ee413e2e28ca9cc7c31a80f740a669ad1fe9a06e33302555b99e642f1",
+    "original_mime": "application/pdf",
+    "original_bytes": 322845,
+    "license_identifier": "NASA-US-GOV-PUBLIC-DOMAIN",
+    "attribution": "NASA Integrated Medical Model (IMM) Documentation (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "limitations": [
+    "NASA IMM CliFF is probabilistic spaceflight medical risk-planning evidence, not a validated bedside treatment protocol.",
+    "Authors did not have access to original LSAH data; incidence and severity rely on published spaceflight cohort summaries (p.2, p.8).",
+    "Potential underreporting of Space Motion Sickness symptoms during early orbital flight and recall bias in crew debriefs (p.8)."
+  ],
+  "sections": [
+    {
+      "section_id": "CLIFF-064-sec-0",
+      "heading": "Branch Baseline & Clinical Overview",
+      "text_content": "Clinical Finding Form (CliFF)\nBranch\n\nBaseline\n\nICL97_Space Adaptation - Space Motion Sickness\nSpace Motion Sickness (SMS) is a phenomenon that is experienced by large proportion of spaceflight crew members, up to 60% (Davis et al., 1998;\nOrtega et al., 2019), that results in general malaise, nausea, gastrointestinal discomfort, and fatigue. There are several theories to explain its etiology\nincluding cephalad fluid shifts and neuroanatomical sensory conflicts (Russomano et al., 2019; Lackner et al., 2006). SMS is considered to be part of\nSpace Adaptation Syndrome. This CLiFF condition only includes SMS which initiates from transitioning from gravity to microgravity. Entry Motion\nSickness (EMS) or Earth-readaptation syndrome is a similar condition that results from transitioning from microgravity to gravity, and is handled in a\ndifferent CLiFF.\n\nINCIDENCE DATA INCLUDED IN THE MODEL\n\nThe model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\nstatus, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\ntype of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\noccurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\nIncidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n(proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\nhistory characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\nare assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\noccurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\nincluded in the MEDPRAT Technical Description Document.\n\nINCIDENCE DATA\n\nSPACEFLIGHT LITERATURE\n\nThis condition is tied explicitly to being in spaceflight, and consequently incidence from LSAH pulls and previous IMM efforts are rated most highly.\nUnfortunately, at the time of this CLiFF completion, a repeat LSAH gathering event was not possible and missions past 2017 are not represented.\nOf note, the authors of this CLiFF recommend that should a repeat LSAH pull become available, the incidence for this CLiFF condition be\nrecalculated given the many limitations and assumptions needed to interpret the prior IMM incidence calculation. In the prior CLiFF effort, entitled\n\u201cSpace Motion Sickness (space adaptation)\u201d, the authors did not use LSAH data from the Walton pull as they believed that this condition was\nsignificantly under-reported in the early missions. Instead, data gathered from the Ortega et al. (2008) for Barratt et al (2008) which stemmed from\nReschke et al. (1993 and 1996). The crewmembers from Mercury and Gemini (a total of n=26) were subtracted as the other conditions in IMM did\nnot account for these missions. The authors report: \u201cthe incidences per mission are: Apollo 11/33 = 0.33; Skylab 5/9 = 0.56; Apollo-Soyuz Test\nProject = 0; Space Shuttle, 1981-1986 57/85= 0 .67, 1988-1998, 252/315 = 0.80.\u201d which led to \u201cthe cumulative incidence (# events / # crew) for the\nUS space program, from 1962 to 1998 is (325/445) = 0.73.\u201d When reviewing this data in the recent corresponding Barratt chapter (2019), the\nauthors of this effort noted some inconsistencies. For example, Shuttle 81-86 is reported as 74 events/103 mission. Further, the Ortega et al.\n(2019) hypothesize in their chapter that events were less frequent in the early missions as crewmembers had less freedom of movement in their\nsmaller cabin sizes, which is a protective factor against space motion sickness. The previous CliFF furthers adds data from the Saile pull (2017):\n\u201cAdded the incidence information from the real world system. Added 95 new medical events (18 ISS for a total of 18 and 77 STS to the existing 309\nevents for total of 386 STS events). Added 144 persons at risk to the 445 persons at risk for a new total of 589 persons at risk (Saile, 2017).\nUpdated the Persons at Risk based on the revised real world system integrated incidence data. The integrated RWS persons at risk from 144 to\n143 so the conditions integrated iMED value went from 589 to 588 (Saile L., 2017).\u201d Incidence calculated for the prior CliFF was noted to be 419\nevents/588 persons at risk. Again, the authors of this effort do not have access to the raw LSAH data, but they are unable to reconcile why the\nnumber of events was not 420 (=325 + 95). After consultation with the biostatistician, the authors of this effort chose to not change the previous\nIMM incidence uncorrected as there was no way to determine which calculations were more right than others without the raw data. However, should\nfuture LSAH pulls occur, it is recommended that a new incidence be recalculated using updated data, including the early missions. Antonsen et al.\n(2017) was rated less highly than the data in the previous IMM CLiFF as the data compiled in these tables come directly from LSAH pulls as well\nand Table 1 could not be adequately reconciled with this specific condition\u2019s definition. For example, \u2018SMS\u2019, \u2018Vestibular\u2019 and \u2018Fluid Shift categories\nare all potentially related to this condition.\u201d Table 1 was mislabeled as 'ISS through Exp 40' when it should read ' ISS expeditions 9 and 14 through\n40'. Of note, there are 325 events (similar to what is reported in the previous IMM effort above) in Table 2. The authors of this CliFF wonder\nwhether, the authors of the previous effort had mistakenly used this value rather than individually adding the incidences per mission as they report.\nThere are several other individual studies detailing both the United States and Russian (or Soviet Union) experience with SMS (Davis et al., 1988;\nHeer et al., 2006, Oman et al., 1996, Gontcharov et al., 2005) however these studies were downrated secondary to limited years of inclusivity and\noften small sample sizes.\nANALOG LITERATURE\n\nSMS has been attempted to be replicated by the similar conditions that evokes space adaptation-headache (ICL 94) with a head-down tilt bed rest\n(Prakash et al., 2015). However, unlike in space adaptation-headache, this is not a clinically relevant method for inducing SMS.\nTERRESTRIAL LITERATURE\n\nThis is a space-related condition and there are no applicable terrestrial studies.\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\npage: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "p.1"
+    },
+    {
+      "section_id": "CLIFF-064-sec-1",
+      "heading": "Overall Incidence Summary & Spaceflight Data",
+      "text_content": "OVERALL INCIDENCE SUMMARY\n\nINCIDENCE\n\nmean 0.7121 person-missions and SD 0.01875\n\nINCIDENCE SUMMARY\n\nThe Bayesian posterior distribution for the incidence proportion given the spaceflight data (419 events over 588 person-missions) under an\nuninformative prior is Beta(shape1=414.55, shape2=167.6) with mean 0.7121 person-missions and SD 0.01875. Spaceflight evidence \u2013 419 events\nover 588 person-missions. IP: 0.7126 (95%CI: 0.6742, 0.7489) This translates to a Beta (shape1=414.55, shape2=167.6) distribution.\nTABLE 1. INCIDENCE MODEL\n\nIncidence Details\nIncidence Type\nSAS\nSegment\nSpace Adaptation\nEnv. Exposure\nNA\nSex\nAny\nCrowns\nAny\nContacts\nAny\nPregnancy\nAny\nIncidence Distribution\nOccurrence Dist\nBinomial\nIncidence Dist.\nBeta\nMean\n0.712102\nSD\n0.01875\nBeta\n(Alpha): 414.55\n(Beta): 167.6\nOnset Timing (Hours)\n(Min): 1\n(Max): 120\n(Most Likely): 6\n\nTABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nOrtega et al., 2008\n\nSpaceflight\n\n3\n\nReshcke et al., 1993\n\nSpaceflight\n\n1\n\nReshcke et al., 1993\n\nSpaceflight\n\n1\n\nOrtega et al., 2019\n\nSpaceflight\n\n3\n\nSaile et al., 2017\n\nSpaceflight\n\n3\n\nAntonsen et al., 2017\n\nSpaceflight\n\n2\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\npage: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "p.2"
+    },
+    {
+      "section_id": "CLIFF-064-sec-2",
+      "heading": "Incidence Level of Confidence (LOC)",
+      "text_content": "Citation\n\nSource\n\nLOC Value\n\nDavis et al., 1988\n\nSpaceflight\n\n1\n\nHeer et al., 2006\n\nSpaceflight\n\n1\n\nOman et al., 1996\n\nSpaceflight\n\n1\n\nGontcharov et al., 2005\n\nSpaceflight\n\n1\n\nPrakash et al., 2015\n\nAnalog\n\n0\n\nSpaceflight incidence data was rated the highest as this is a condition, by definition, that can only occur in space. Analog and terrestrial studies\nwould not accurately represent incidence for this condition.\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\npage: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "p.3"
+    },
+    {
+      "section_id": "CLIFF-064-sec-3",
+      "heading": "Crewmember Selection, Prevention & Case Scenarios",
+      "text_content": "CREWMEMBER SELECTION/PREVENTION\n\nDISQUALIFYING CONDITIONS\n\nRefer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n(2016).\nPREFLIGHT PREVENTATIVE MEASURES\n\nThis CLiFF condition is event-based and consequently there are no known preventative measures. However, to help exclude other causes of\nneurological pathologies, at L-21/18 months, if greater than 2 years since ISS section, crewmembers undergo MRI/MRA neuroimaging, a full annual\nmedical exam L-6/9 months and brief medical exams at L-7/10 and L-1/2 days by the Flight Surgeon.\nBEST CASE SCENARIO DEFINITION\n\nSpace motion sickness including mild to moderate symptoms (e.g. loss of appetite, malaise, stomach awareness, 2 or fewer episodes of emesis,\nresolves within 72 hours, causes no or minimal performance decrement).\nWORSE CASE SCENARIO DEFINITION\n\nSMS with severe and persistent symptoms (e.g. need to keep head from moving, greater than 2 episodes of emesis, significant performance\ndecrement, persists for greater than 72 hours).\nCONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\nNone\n\nBEST CASE/WORST CASE PROBABILITY COMMENTS\n\nPer the prior IMM iteration: \u201cThe BC/WC percentages were updated based on the empirical data from the Real World System data set. We are\nestimating our worst-case scenario at 3.19% (3/94), thus our best case is 96.81% 91/94 (Saile L., 2017).\u201d However, in Davis et al. (1988) and\nreplicated in Barratt et al. (2019), severe cases were defined almost exactly to the worst-case definition (\u201c\u2026more than two episodes of vomiting...\u201d)\nand accounted for 15% of all SMS cases., whereas mild cases were 49% and moderate cases were 36%. The reason for the discrepancy between\nthese two sources is currently unclear, but the authors of this CliFF chose to use the more recent reported LSAH calculations given that it is\ninclusive of the later missions. However, should a LSAH pull occur in the next effort, the authors recommend repeating this calculation and justifying\nthe discrepancy.\nTABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nSaile et al., 2017\n\nSpaceflight\n\n3\n\nDavis et al., 1988\n\nSpaceflight\n\n2\n\nOnly spaceflight data was utilized given the condition\u2019s definition. Worst-case probability estimates from the previous IMM CLiFF effort were used as\nthere had been no further studies published in the interim.\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\npage: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "p.4"
+    },
+    {
+      "section_id": "CLIFF-064-sec-4",
+      "heading": "Table 4. CliFF Treatment & Outcome Table by Clinical Phase",
+      "text_content": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\nCase Scenario\n\nComposite Incidence\n\nTreated Best\nCase (TBC)\n\nmean: 0.7121\nperson-missions SD:\n0.01875\n\nTreated Worst\nCase (TWC)\n\nCP1: Diagnosis\n\nCP2: Treatment\n\nCP3: Condition End State\n\nTI%\n\nDuration\n\nTI%\n\nDuration\n\nCondition\nProbability %\n\nPreset\n\nPreset\n\nPreset\n\nMin\n\nMax Preset\n\nTI%\n\nRTDC\nMin%\n\nMax%\n\nLOCL\nMin%\n\nMax%\n\n97 - 97\n\n100\n\n0.53\n\n13.3138\n\n0\n\n72\n\n0\n\n0\n\n0\n\n0\n\n0\n\n3-3\n\n100\n\n0.53\n\n30.9593\n\n72\n\n336\n\n0\n\n0\n\n0\n\n0\n\n0\n\nUntreated Best\nCase (UTBC)\n\nN/A\n\nN/A\n\nN/A\n\n0.53\n\n33.3245\n\n0\n\n72\n\n0\n\n0\n\n0\n\n0\n\n0\n\nUntreated Worst\nCase (UTWC)\n\nN/A\n\nN/A\n\nN/A\n\n0.53\n\n66.7287\n\n72\n\n336\n\n0\n\n0\n\n0\n\n0\n\n0\n\nTABLE 4 KEY\nComposite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\nFor space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\nCondition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\nClinical Phase General Comments:\nTI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\nto the medical condition.\nDurations are defined in hours.\nRemoval to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\nend state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\npotential for intractable pain.\nLoss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\nClinical Phase 1: Initial Assessment and Diagnosis:\nCovers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\ncrewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\nconsidered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\napplicable.\"\nClinical Phase 2: Stabilization, Treatment, and Convalescence:\nThe affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\nto recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\nrecurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\nmaximum hours.\nClinical Phase 3: Condition End State:\nReached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\nenvironment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\ncondition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\nbe noted in the condition end state results.\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\npage: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "p.5"
+    },
+    {
+      "section_id": "CLIFF-064-sec-5",
+      "heading": "Scenario Overview & Treatment Comments",
+      "text_content": "SCENARIO OVERVIEW COMMENTS\n\nSpace motion sickness is part of space adaptation syndrome and is thought as a response of the neuro-vestibular system adapting to microgravity\n(Ortega et al., 2019). Symptoms of this condition have included nausea, pallor, cold sweating, increased salivation, drowsiness, pain, and central\nnervous system defects (Graybiel et al., 1968). Most symptoms develop within the first hours of microgravity but have begun to resolve or have\ndissipated completely by 72-96 hours (Lackner et al., 2006). The best-case adheres to this typical pattern and the worst-case refers to a\nparticularly symptomatic case that continues persist past the fourth day. Given that this condition only exists in microgravity, there is no acceptable\nRTDC terrestrial-surrogate for this condition.\n\nTREATED BEST CASE (TBC) SCENARIO COMMENTS\n\nSymptoms of SMS can occur within minutes of being in microgravity (Ortega et al., 2019); hence the lower bound for duration was set at zero hours.\nThe treated worst-case is defined as having both severe and persistent symptoms, greater than 72 hours. Consequently, the upper bound of\nduration was set at 72 hours.\n\nTREATED WORST CASE SCENARIO (TWC) COMMENTS\n\nBy definition, the lower bound for the worst-case is set at 72 hours. In Matsnev et al. (1983) there was a case of SMS that continued over 14 days\ninflight, creating the upper bound. In the Russian long-duration mission experience, some astronauts intermittently experienced symptoms\nthroughout their entire stay during microgravity (Ortega et al.2019; Kornilova et al., 1996). Still, these occurrences were described as relatively\nbenign and did not affect mission tasks. To date, there have been no instances of RTDC or LOCL secondary to this condition in spaceflight.\n\nUNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\nThere exists little accessible data regarding duration for the untreated best case. Subject matter expert consensus was that it would be no less than\nthe treated best-case-scenario. Again, RTDC and LOCL are not expected for this condition.\n\nUNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\nDuration is expected to be no less than the treated worst-case-scenario. To date, there have been no instances of RTDC or LOCL secondary to\nthis condition in spaceflight\n\nTABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nOrtega et al., 2019\n\nSpaceflight\n\nMatsnev et al., 1983\n\nSpaceflight\n\nKornilova et al., 1996\n\nSpaceflight\n\nLOC Value\n\n4\n\nThe duration of SMS has been well characterized in several reviews, cross-sectional surveys and case reports.\n\nTABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nWalton, 2010\n\nSpaceflight\n\nSaile et al., 2017\n\nSpaceflight\n\nLOC Value\n\n4\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\npage: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "p.6"
+    },
+    {
+      "section_id": "CLIFF-064-sec-6",
+      "heading": "Outcome Level of Confidence (LOC)",
+      "text_content": "Only spaceflight data was utilized given the condition\u2019s definition.\n\nTABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nWalton, 2010\n\nSpaceflight\n\nSaile et al., 2017\n\nSpaceflight\n\nLOC Value\n\n4\n\nOnly spaceflight data was utilized given the condition\u2019s definition.\n\nCAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\nCapabilities and Resourcing Scope\nOverview\nSpace adaptation motion sickness is a common condition experienced by most astronauts. It can often be exacerbated by frequent rapid head\nmovements soon after entering microgravity, and mitigated by limiting such movements until the brain has had time to adapt to the new\nsurroundings.\nCNES: NONE\nDiagnostic Scope and Resourcing\nDiagnosis relies on history and physical exam\nClinical Phase 1 Duration and Rationale\nThis version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\nconsensus duration is as follows:\nCP1 BC (Treated or Untreated): 0.53 hours for set up, history, and physical exam.\nCP1 WC (Treated or Untreated): 0.53 for a set up, history, and a more thorough exam including neurological, fundoscopic, and vision testing to rule\nout other, more dangerous causes of headaches.\nThis condition requires a Scope of Practice 4 to manage and rule out other similar presenting conditions, assess treatment response, and assess\nfitness for duty. However, most of the treatment will not rise above level 1 and the more common best case requires only SoP 1.\nTreatment Scope and Resourcing\nThe best case is mild and treatment includes oral antiemetics. The worst case has the same treatment but lasts longer and will require additional\ndoses of antiemetics. Ondansetron is given a primacy of 1. Anti-vertigo medications are also included for the worst case. and a reassessment of the\npatient.\nCommunications and Support Needs;\nCommunications are not expected to be necessary beyond the routine medical ground communications given the context and frequency of this\ncondition. However, it is expected that routine ground communication will be present and available to assist with treatment.\nReferences\nBarratt, Michael R., Ellen S. Baker, and Sam L. Pool. 2019. \"Principles of clinical medicine for space flight.\" In. New York, NY: New York, NY :\nSpringer.\n\nIMM CLIFF RECONCILATION COMMENTS\n\nThe predecessor to this CLiFF was entitled \u201cSpace Motion Sickness (space adaptation).\u201d Given lack of access to the original LSAH pulls and this\nbeing a condition that only occurs in microgravity, many of the resources between this CLiFF and the prior iteration remain the same. For this effort,\nwith the help of a biostatistician, incidence data was updated to reflect person-missions rather than person-years as this condition can only be\nexpected to occur at the initiation of spaceflight. The authors of this CLiFF did not agree with the duration values in the prior effort, and these were\nupdated to better reflect the best- and worst-case definitions with a broader literature search.\n\nLIMITATIONS SUMMARY\n\n\u2022 The incidence should be considered a floor as some crewmembers may have minimized or denied their symptoms over fear of not being\nconsidered for future crew assignment. This was probably more of an issue during the Shuttle era when spaceflight lasted 2 weeks or less than it is\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\npage: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "p.7"
+    },
+    {
+      "section_id": "CLIFF-064-sec-7",
+      "heading": "Limitations Summary & Model Caveats",
+      "text_content": "during long-duration flights. \u2022 The authors did not have access to the original LSAH data and thus there was an implied dependence on already\npublished sources. In the prior IMM CLiFF, the Walton LSAH pull was not used, and the authors of this CLiFF were unable to reconcile their\ncalculations. \u2022 There may be some overlap between this condition and other CLiFF conditions, such as space adaptation headache. \u2022 Several\nassumptions needed to be made regarding duration and the untreated cases given lack of available studies.\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\npage: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "p.8"
+    },
+    {
+      "section_id": "CLIFF-064-sec-8",
+      "heading": "Table 8. Task Impairment Calculation by Human Systems Task Categories",
+      "text_content": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\nClinical Phase 2: Treatment\nAffected HSTCs\nCognitive Simple\n\nCognitive Complex\n\nCommunications\n\nInterpersonal\nSkills\n\nVision\n\nHearing\n\nTreated\nBest\nCase\n(TBC)\nUntreated\nBest\nCase\n(UTBC)\n\n664\n\nTreated\nWorst\nCase\n(TWC)\n\n664\n\nUntreated\nWorst\n223\nCase\n(UTWC)\n\n664\n\n89\n\n89\n\nCardiopulmonary\n\nDentition\n\nGI\n\n145\n\n13\n\n145\n\n13\n\n145\n\n13\n\n145\n\n13\n\nAffected HSTCs (Continued)\n\nHand\n(Dom)\n\nHand (Any)\n\nUpper Extremity\n\nLower\nExtremity\n\nAmbul &\nStanding (g)\n\nGU\n\nTI Calculation\n\nTranslation &\nDon/Doff\nStabilization\nEquipment\n(microgravity)\n\nPressure\nOps\n\nTI Score\n\nTotal Tasks\nImpaired By\nCondition\n\nTotal\nHuman\nSystem\nCategory\nTasks Full\nMission\n\nTI Decimal\n\nTI %\n\nTreated\nBest\n132\nCase\n(TBC)\n\n211\n\n501\n\n3763\n\n0.133138\n\n13.3138\n\nUntreated\nBest\n132\nCase\n(UTBC)\n\n211\n\n1254\n\n3763\n\n0.333245\n\n33.3245\n\nTreated\nWorst\n132\nCase\n(TWC)\n\n211\n\n1165\n\n3763\n\n0.309593\n\n30.9593\n\n211\n\n2511\n\n3763\n\n0.667287\n\n66.7287\n\nUntreated\nWorst\n132\nCase\n(UTWC)\n\n564\n\n414\n\n22\n\n34\n\nClinical Phase 3: Condition End State\nAffected HSTCs\nCognitive Simple\n\nCognitive Complex\n\nCommunications\n\nInterpersonal\nSkills\n\nVision\n\nHearing\n\nCardiopulmonary\n\nDentition\n\nGI\n\nGU\n\nTreated\nBest\nCase\n(TBC)\nUntreated\nBest\nCase\n(UTBC)\nTreated\nWorst\nCase\n(TWC)\nUntreated\nWorst\nCase\n(UTWC)\nAffected HSTCs (Continued)\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\nTI Calculation\n\nTI Score\n\npage: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "p.9"
+    },
+    {
+      "section_id": "CLIFF-064-sec-9",
+      "heading": "Table 8. Full Mission Task Impairment Totals",
+      "text_content": "Total Tasks\nImpaired By\nCondition\n\nTotal\nHuman\nSystem\nCategory\nTasks Full\nMission\n\nTreated\nBest\nCase\n(TBC)\n\n0\n\n3763\n\n0\n\n0\n\nUntreated\nBest\nCase\n(UTBC)\n\n0\n\n3763\n\n0\n\n0\n\nTreated\nWorst\nCase\n(TWC)\n\n0\n\n3763\n\n0\n\n0\n\nUntreated\nWorst\nCase\n(UTWC)\n\n0\n\n3763\n\n0\n\n0\n\nHand\n(Dom)\n\n9/19/2022 4:51:25 PM\n\nHand (Any)\n\nUpper Extremity\n\nLower\nExtremity\n\nTranslation &\nAmbul &\nDon/Doff\nStabilization\nStanding (g)\nEquipment\n(microgravity)\n\nPressure\nOps\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\nTI Decimal\n\nTI %\n\npage: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "p.10"
+    },
+    {
+      "section_id": "CLIFF-064-sec-10",
+      "heading": "Table 8 Key. Human System Task Category (HSTC) Definitions",
+      "text_content": "TABLE 8 KEY\nHuman System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\nsimple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\ncomplex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\nwith inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\nrequiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\nwhich visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\nalarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\nactivities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\nsolids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n(Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n(Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\nTasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n(excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\nboth lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\nuse of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\nsetting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\nequipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\nCriteria for Assignment of Conditions to HSTCs (any of the following):\n1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n5) Does pain associated with the condition impair any further human system categories?\n\nTASK IMPAIRMENT COMMENTS\n\nCP2: No comment. CP3: No comment.\n\nEVIDENCE COLLECTION PROCESS\n\nMesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n(CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\nIncidence:\nDatabases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\nsearch, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\nNY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\nDuration, RTDC, LOCL:\nDatabases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\nLOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\napplicable, the article was included in the CLiFF.\n\nLEVEL OF CONFIDENCE (LOC) SCORING\n\nArticles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\nenvironment using the following grading scale:\n4 \u2013 Confident\n3 \u2013 Somewhat confident\n2 \u2013 Neutral\n1 \u2013 Somewhat unconfident\n0 \u2013 Not confident\nThe following considerations factor into the grading scale above:\n\u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n\u2022 How closely does the population included resemble the astronaut population?\n\u2022 Quality of the paper (number of subjects, methods, etc.)\n\u2022 How much does the editor trust the source of the evidence?\n\u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n\u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\npage: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "p.11"
+    },
+    {
+      "section_id": "CLIFF-064-sec-11",
+      "heading": "References",
+      "text_content": "REFERENCES\n\nReference\n1. Antonsen, Erik, Tina Bayuse, Rebecca Blue, Vernie Daniels , Melinda Hailey, Sam Hussey, Eric Kerstman, Mike Krihak, Kara Latorella, Jennifer\nMindock, Jerry Myers, Robert Mulcahy, Rebekah Reed, Davis Reyes, Michelle Urbina, and Marlei Walton. 2017. \"Evidence Report: Risk of\nAdverse Health Outcomes and Decrements in Performance due to In-Flight Medical Conditions.\" In.\n2. Barratt, Michael R., Ellen S. Baker, Sam L. Pool, and SpringerLink (Online service). 2019. \"Principles of Clinical Medicine for Space Flight.\" In,\nXVIII, 936 p. 362 illus., 268 illus. in color. New York, NY: Springer New York : Imprint: Springer,.\n3. Davis, J. R., J. M. Vanderploeg, P. A. Santy, R. T. Jennings, and D. F. Stewart. 1988. 'Space motion sickness during 24 flights of the space\nshuttle', Aviat Space Environ Med, 59: 1185-9.\n4. Gontcharov, I. B., I. V. Kovachevich, S. L. Pool, O. L. Navinkov, M. R. Barratt, V. V. Bogomolov, and N. House. 2005. 'In-flight medical incidents\nin the NASA-Mir program', Aviat Space Environ Med, 76: 692-6.\n5. Heer, M., and W. H. Paloski. 2006. 'Space motion sickness: incidence, etiology, and countermeasures', Auton Neurosci, 129: 77-9.\n6. Kornilova, L. N., Ch Mueller, and L. M. Chernobyl'skii. 1996. 'Phenomenology of spatial illusory reactions under conditions of weightlessness',\nHum Physiol, 21: 344-51.\n7. Lackner, James R., and Paul DiZio. 2006. 'Space motion sickness', Experimental Brain Research, 175: 377-99.\n8. Matsnev, E. I., I. Y. Yakovleva, I. K. Tarasov, V. N. Alekseev, L. N. Kornilova, A. D. Mateev, and G. I. Gorgiladze. 1983. 'Space motion sickness:\nphenomenology, countermeasures, and mechanisms', Aviat Space Environ Med, 54: 312-7.\n9. Oman, C. M., C. F. Pouliot, and A. Natapoff. 1996. 'Horizontal angular VOR changes in orbital and parabolic flight: human neurovestibular\nstudies on SLS-2', Journal of Applied Physiology, 81: 69-81.\n10. Ortega HJ, Harm DL. 2008. 'Space and Entry Motion Sickness.' in Pool S Barratt M (ed.), Principles of Clinical Medicine for Space Flight\n(Springer: New York).\n11. Ortega HJ, Harm DL, Reschke MF. 2019. 'Space and Entry Motion Sickness.' in Baker E. Barratt M, Pool S. (ed.), Principles of Clinical\nMedicine for Space Flight (Springer: New York, NY).\n12. Prakash, M., R. Fried, O. G\u00f6tze, F. May, P. Frings-Meuthen, E. Mulder, J. Valentini, M. Fox, M. Fried, W. Schwizer, and B. Misselwitz. 2015.\n'Microgravity Simulated by the 6\u00b0 Head-Down Tilt Bed Rest Test Increases Intestinal Motility but Fails to Induce Gastrointestinal Symptoms of\nSpace Motion Sickness', Dig Dis Sci, 60: 3053-61.\n13. Reschke MF, Harm DL, Parker DE, Sandoz G, Homick JL, Vanderploeg JM. 1993. 'Neurophysiologic Aspects Space Motion Sickness.' in\nLeach Huntoon C Nicogossian AE, Pool SL (ed.), Space Physiology and Medicine (Williams & Wilkins: Media, PA).\n14. Reschke MF, Kornilova L, Harm DL, Bloomberg J, Paloski WH. 1996. 'Neurosensory and Sensory Motor Function.' in Antipov V Leach\nHuntoon C, Grigoriev A (ed.), American Institute of Aeronautics and Astronautics (Reston, VA).\n15. Russomano, T., M. da Rosa, and M. A. Dos Santos. 2019. 'Space motion sickness: A common neurovestibular dysfunction in microgravity',\nNeurol India, 67: S214-s18.\n16. Saile L., Boley L., Kerstman E. 2017. 'Integration RWS ISS STS Observed Incidence V2.'.\n17. Walton M, Kerstman E. 2010. ' IMM In-flight Compilation v20100414_Incidence_calculation'.\n\nACRONYMS\n\nACRONYM\n\nPHRASE\n\nAAOMS\n\nAmerican Association of Oral and Maxillofacial Surgeons\n\nAMA\n\nAmerican Medical Association\n\nARCL\n\nAll Remaining Conditions List\n\nARS\n\nAcute Radiation Sickness\n\nBHP\n\nBehavioral Health and Performance\n\nCAC\n\nCoronary Artery Calcium\n\nCHS\n\nCrew Health and Safety\n\nCL\n\nCondition List\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\npage: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "p.12"
+    },
+    {
+      "section_id": "CLIFF-064-sec-12",
+      "heading": "Acronyms & Abbreviations (Part 1)",
+      "text_content": "CliFF\n\nClinical Finding Form\n\nCMO\n\nCrew Medical Officer\n\nCOMFORT\n\nClinical Outcome Metrics for Optimization of Robust Training\n\nCP1\n\nClinical Phase 1\n\nCP2\n\nClinical Phase 2\n\nCP3\n\nClinical Phase 3\n\nCRL\n\nClinical Resource Level\n\nCRT\n\nCapability Resource Table\n\nCST\n\nClinical Science Team\n\nDCS\n\nDecompression Syndrome\n\nDRM\n\nDesign Reference Mission\n\nED\n\nEmergency Medicine Doctor\n\nEL\n\nEvidence Library\n\nEMCL\n\nExploration Medical Condition List\n\nEMT\n\nEmergency Medical Technician\n\nEVA\n\nExtravehicular Activity\n\nEXMC\n\nExploration Medical Capability\n\nHRP\n\nHuman Research Program\n\nICD\n\nInternational Classification of Disease\n\nICL 1.0\n\nIMPACT 1.0 Medical Conditions List\n\nICU\n\nIntensive Care Unit\n\nIMCL\n\niMED Condition List\n\niMED\n\nIntegrated Medical Evidence Database\n\nIMM\n\nIntegrated Medical Model\n\nIMPACT-MD\n\nImpact Medical Database\n\nIP\n\nIncidence Proportion\n\nIR\n\nIncidence Rate\n\nISS\n\nInternational Space Station\n\nIV\n\nIntravenous\n\nJSC\n\nJohnson Space Center\n\nLEO\n\nLow-Earth orbit\n\nLEVA\n\nLunar Extravehicular Activity\n\nLOCL\n\nLoss of Crew Life\n\nLOM\n\nLoss of Mission\n\nLSAH\n\nLifetime Surveillance of Astronaut Health\n\nLSO\n\nLunar Surface Operations\n\nMCL\n\nMaster Condition List\n\nMEVA\n\nMedical Extravehicular Activity\n\nNASA\n\nNational Aeronautics and Space Administration\n\nN/A\n\nNot Applicable\n\nNP\n\nNurse Practitioner\n\nOBGYN\n\nObstetrics and Gynecology\n\nOR\n\nOccurrence Rate\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\npage: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "p.13"
+    },
+    {
+      "section_id": "CLIFF-064-sec-13",
+      "heading": "Acronyms & Abbreviations (Part 2)",
+      "text_content": "PA\n\nPhysician Assistant\n\nPDQ\n\nPain Disability Questionnaire\n\nPFCL\n\nProposed Future Conditions List\n\nPPE\n\nPersonal Protective Equipment\n\nPTRS\n\nProject Technical Requirements Specification\n\nPRL\n\nPharmaceutical Resource Level\n\nQTL\n\nQuality Time Lost\n\nRCL\n\nRemoved Conditions List\n\nREP\n\nRochester Epidemiology Study\n\nRTDC\n\nRemoval to Definitive Care\n\nSANS\n\nSpaceflight-Associated Neuro-ocular Syndrome\n\nSAS\n\nSpace Adaptation Syndrome\n\nSEVA\n\nSpaceflight Extravehicular Activity\n\nSME\n\nSubject Matter Expert\n\nSoP\n\nStandard Operating Procedure\n\nSPE\n\nSolar Particle Event\n\nTBD\n\nTo Be Determined\n\nTI\n\nTask Impairment\n\n9/19/2022 4:51:25 PM\n\nICL97_Space Adaptation - Space Motion Sickness Cliff\n\npage: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "p.14"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-064-tbl-1",
+      "title": "Table 1. Incidence Model (ICL97_Space Adaptation - Space Motion Sickness)",
+      "rows": [
+        [
+          "Incidence Type",
+          "Space Adaptation"
+        ],
+        [
+          "Incidence Mean / SD",
+          "Mean: 0.7121 person-missions, SD: 0.01875 (p.2)"
+        ],
+        [
+          "Reference Page",
+          "p.1-2"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "p.2"
+    },
+    {
+      "table_id": "CLIFF-064-tbl-4",
+      "title": "Table 4. CliFF Treatment & Outcome Table by Clinical Phase",
+      "rows": [
+        [
+          "Scenario",
+          "Treated Best Case (TBC)",
+          "Treated Worst Case (TWC)",
+          "Untreated Best Case (UTBC)",
+          "Untreated Worst Case (UTWC)"
+        ],
+        [
+          "Details",
+          "See extracted page 5 full table text",
+          "See extracted page 5 full table text",
+          "See extracted page 5 full table text",
+          "See extracted page 5 full table text"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "p.5"
+    },
+    {
+      "table_id": "CLIFF-064-tbl-8",
+      "title": "Table 8. Task Impairment Calculation by Human Systems Task Categories",
+      "rows": [
+        [
+          "Phase / Scenario",
+          "Full Mission Task Impairment Summary"
+        ],
+        [
+          "Details",
+          "See pages 9-10 HSTC breakdown"
+        ]
+      ],
+      "page_number": 9,
+      "source_anchor": "p.9-10"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-064-ref-0",
+      "label": "Antonsen, Erik, Tina Bayuse, Rebecca Blue, Vernie Daniels , Melinda Hailey, Sam Hussey, Eric Kerstman, Mike Krihak, Kara Latorella, Jennifer Mindock, Jerry Myers, Robert Mulcahy, Rebekah Reed, Davis Reyes, Michelle Urbina, and Marlei Walton. 2017. \"Evidence Report: Risk of Adverse Health Outcomes and Decrements in Performance due to In-Flight Medical Conditions.\" In.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-1",
+      "label": "Barratt, Michael R., Ellen S. Baker, Sam L. Pool, and SpringerLink (Online service). 2019. \"Principles of Clinical Medicine for Space Flight.\" In, XVIII, 936 p. 362 illus., 268 illus. in color. New York, NY: Springer New York : Imprint: Springer,.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-2",
+      "label": "Davis, J. R., J. M. Vanderploeg, P. A. Santy, R. T. Jennings, and D. F. Stewart. 1988. 'Space motion sickness during 24 flights of the space shuttle', Aviat Space Environ Med, 59: 1185-9.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-3",
+      "label": "Gontcharov, I. B., I. V. Kovachevich, S. L. Pool, O. L. Navinkov, M. R. Barratt, V. V. Bogomolov, and N. House. 2005. 'In-flight medical incidents in the NASA-Mir program', Aviat Space Environ Med, 76: 692-6.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-4",
+      "label": "Heer, M., and W. H. Paloski. 2006. 'Space motion sickness: incidence, etiology, and countermeasures', Auton Neurosci, 129: 77-9.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-5",
+      "label": "Kornilova, L. N., Ch Mueller, and L. M. Chernobyl'skii. 1996. 'Phenomenology of spatial illusory reactions under conditions of weightlessness', Hum Physiol, 21: 344-51.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-6",
+      "label": "Lackner, James R., and Paul DiZio. 2006. 'Space motion sickness', Experimental Brain Research, 175: 377-99.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-7",
+      "label": "Matsnev, E. I., I. Y. Yakovleva, I. K. Tarasov, V. N. Alekseev, L. N. Kornilova, A. D. Mateev, and G. I. Gorgiladze. 1983. 'Space motion sickness: phenomenology, countermeasures, and mechanisms', Aviat Space Environ Med, 54: 312-7.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-8",
+      "label": "Oman, C. M., C. F. Pouliot, and A. Natapoff. 1996. 'Horizontal angular VOR changes in orbital and parabolic flight: human neurovestibular studies on SLS-2', Journal of Applied Physiology, 81: 69-81.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-9",
+      "label": "Ortega HJ, Harm DL. 2008. 'Space and Entry Motion Sickness.' in Pool S Barratt M (ed.), Principles of Clinical Medicine for Space Flight (Springer: New York).",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-10",
+      "label": "Ortega HJ, Harm DL, Reschke MF. 2019. 'Space and Entry Motion Sickness.' in Baker E. Barratt M, Pool S. (ed.), Principles of Clinical Medicine for Space Flight (Springer: New York, NY).",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-11",
+      "label": "Prakash, M., R. Fried, O. G\u00f6tze, F. May, P. Frings-Meuthen, E. Mulder, J. Valentini, M. Fox, M. Fried, W. Schwizer, and B. Misselwitz. 2015. 'Microgravity Simulated by the 6\u00b0 Head-Down Tilt Bed Rest Test Increases Intestinal Motility but Fails to Induce Gastrointestinal Symptoms of Space Motion Sickness', Dig Dis Sci, 60: 3053-61.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-12",
+      "label": "Reschke MF, Harm DL, Parker DE, Sandoz G, Homick JL, Vanderploeg JM. 1993. 'Neurophysiologic Aspects Space Motion Sickness.' in Leach Huntoon C Nicogossian AE, Pool SL (ed.), Space Physiology and Medicine (Williams & Wilkins: Media, PA).",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-13",
+      "label": "Reschke MF, Kornilova L, Harm DL, Bloomberg J, Paloski WH. 1996. 'Neurosensory and Sensory Motor Function.' in Antipov V Leach Huntoon C, Grigoriev A (ed.), American Institute of Aeronautics and Astronautics (Reston, VA).",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-14",
+      "label": "Russomano, T., M. da Rosa, and M. A. Dos Santos. 2019. 'Space motion sickness: A common neurovestibular dysfunction in microgravity', Neurol India, 67: S214-s18.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-15",
+      "label": "Saile L., Boley L., Kerstman E. 2017. 'Integration RWS ISS STS Observed Incidence V2.'.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-064-ref-16",
+      "label": "Walton M, Kerstman E. 2010. ' IMM In-flight Compilation v20100414_Incidence_calculation'. ACRONYMS ACRONYM PHRASE AAOMS American Association of Oral and Maxillofacial Surgeons AMA American Medical Association ARCL All Remaining Conditions List ARS Acute Radiation Sickness BHP Behavioral Health and Performance CAC Coronary Artery Calcium CHS Crew Health and Safety CL Condition List",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+      "page_number": 12
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-064-img-0",
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-064/9454f21716e4195fcbf278979f7fa8c1b222c09d4d8371fc0b322690833e7645.png",
+      "mime_type": "image/png",
+      "width": 2500,
+      "height": 2500,
+      "sha256": "9454f21716e4195fcbf278979f7fa8c1b222c09d4d8371fc0b322690833e7645",
+      "creator": "BruceBlaus. When using this image in external sources it can be cited as:\n\nBlausen.com staff (2014). \"Medical gallery of Blausen Medical 2014\". WikiJournal of Medicine 1 (2). DOI:10.15347/wjm/2014.010. ISSN 2002-4436.",
+      "license_identifier": "CC-BY-3.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Blausen_0329_EarAnatomy_InternalEar.png",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Blausen_0329_EarAnatomy_InternalEar.png",
+      "attribution": "BruceBlaus. When using this image in external sources it can be cited as:\n\nBlausen.com staff (2014). \"Medical gallery of Blausen Medical 2014\". WikiJournal of Medicine 1 (2). DOI:10.15347/wjm/2014.010. ISSN 2002-4436. (CC-BY-3.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Blausen_0329_EarAnatomy_InternalEar.png)",
+      "caption": "Anatomical illustration of the internal ear showing the semicircular canals, vestibule, cochlea, and vestibulocochlear nerve.",
+      "alt_text": "Medical illustration of the human inner ear and vestibular semicircular canals.",
+      "clinical_relevance": "Identifies the semicircular canals and vestibular apparatus where microgravity sensory conflict triggers Space Motion Sickness (CLIFF-064, p.1, p.6).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 1",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-064-img-1",
+      "media_kind": "DIAGRAM",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-064/e47cc604cb21b922b8dea2febd056fd5e64a88729bddde8600c081112d834c63.jpg",
+      "mime_type": "image/jpeg",
+      "width": 850,
+      "height": 423,
+      "sha256": "e47cc604cb21b922b8dea2febd056fd5e64a88729bddde8600c081112d834c63",
+      "creator": "Christian Pfeiffer, Andrea Serino, and Olaf Blanke",
+      "license_identifier": "CC-BY-3.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Peripheral_vestibular_organs_in_the_inner_ear.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Peripheral_vestibular_organs_in_the_inner_ear.jpg",
+      "attribution": "Christian Pfeiffer, Andrea Serino, and Olaf Blanke (CC-BY-3.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Peripheral_vestibular_organs_in_the_inner_ear.jpg)",
+      "caption": "Diagram of the peripheral vestibular sensory organs including the semicircular canals (angular acceleration) and utricle/saccule otolith organs (linear acceleration and gravity).",
+      "alt_text": "Diagram showing semicircular canals, utricle, saccule, and vestibular hair cells.",
+      "clinical_relevance": "Explains otolith unloading in microgravity and canal-otolith sensory mismatch underlying Space Adaptation Syndrome (CLIFF-064, p.1, p.6).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 2",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-064-img-2",
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-064/b7b86621551e0bd681ebf32fb45f4ee8b627a9b05e89709600780ab46a9146d2.jpg",
+      "mime_type": "image/jpeg",
+      "width": 3371,
+      "height": 5056,
+      "sha256": "b7b86621551e0bd681ebf32fb45f4ee8b627a9b05e89709600780ab46a9146d2",
+      "creator": "NASA/Victor Zelentsov",
+      "license_identifier": "PUBLIC-DOMAIN",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Soyuz_MS-12_crew_member_Christina_Koch_tests_her_vestibular_system.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Soyuz_MS-12_crew_member_Christina_Koch_tests_her_vestibular_system.jpg",
+      "attribution": "NASA/Victor Zelentsov (PUBLIC-DOMAIN) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Soyuz_MS-12_crew_member_Christina_Koch_tests_her_vestibular_system.jpg)",
+      "caption": "NASA astronaut Christina Koch undergoing vestibular system functional testing as part of spaceflight sensorimotor adaptation protocols.",
+      "alt_text": "Photograph of a NASA astronaut performing vestibular system balance and orientation testing.",
+      "clinical_relevance": "Illustrates operational vestibular assessment used in spaceflight crew adaptation and post-flight recovery monitoring (CLIFF-064, p.1-2, p.6).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 3",
+      "usage_review": "APPROVED"
+    }
+  ]
+}

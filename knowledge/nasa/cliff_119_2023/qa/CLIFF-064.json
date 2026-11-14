@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-064",
+  "slot": 64,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-space-motion-sickness-cliff-2023.pdf?emrc=f09f5b",
+  "http_status": 200,
+  "pdf_bytes": 322845,
+  "pdf_sha256": "a3a7922ee413e2e28ca9cc7c31a80f740a669ad1fe9a06e33302555b99e642f1",
+  "pdf_pages": 14,
+  "sections_count": 14,
+  "tables_count": 3,
+  "references_count": 17,
+  "media_count": 3,
+  "media_sha256s": [
+    "9454f21716e4195fcbf278979f7fa8c1b222c09d4d8371fc0b322690833e7645",
+    "b7b86621551e0bd681ebf32fb45f4ee8b627a9b05e89709600780ab46a9146d2",
+    "e47cc604cb21b922b8dea2febd056fd5e64a88729bddde8600c081112d834c63"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons Public Domain / CC-BY-3.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}

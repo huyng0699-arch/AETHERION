@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-064",
+  "title": "Internal Ear and Vestibular Apparatus Anatomy (Blausen)",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Blausen_0329_EarAnatomy_InternalEar.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Blausen_0329_EarAnatomy_InternalEar.png",
+  "license": "CC-BY-3.0",
+  "author": "BruceBlaus. When using this image in external sources it can be cited as:\n\nBlausen.com staff (2014). \"Medical gallery of Blausen Medical 2014\". WikiJournal of Medicine 1 (2). DOI:10.15347/wjm/2014.010. ISSN 2002-4436.",
+  "caption": "Anatomical illustration of the internal ear showing the semicircular canals, vestibule, cochlea, and vestibulocochlear nerve.",
+  "alt_text": "Medical illustration of the human inner ear and vestibular semicircular canals.",
+  "clinical_relevance": "Identifies the semicircular canals and vestibular apparatus where microgravity sensory conflict triggers Space Motion Sickness (CLIFF-064, p.1, p.6).",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 2500,
+  "height": 2500,
+  "size_bytes": 3166287,
+  "sha256": "9454f21716e4195fcbf278979f7fa8c1b222c09d4d8371fc0b322690833e7645",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Blausen_0329_EarAnatomy_InternalEar.png",
+  "retrieved_at_utc": "2026-11-14T06:23:00.923871+00:00",
+  "asset_path": "9454f21716e4195fcbf278979f7fa8c1b222c09d4d8371fc0b322690833e7645.png",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "ANATOMY",
+  "topic_region": "Inner Ear / Vestibular Apparatus"
+}
