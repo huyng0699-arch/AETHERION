@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-076",
+  "slot": 76,
+  "quest_id": "Q-0376",
+  "checked_at_utc": "2026-11-14T06:29:40.552459+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/streptococcal-pharyngitis-cliff-2023.pdf?emrc=a2f444",
+  "http_status": 200,
+  "pdf_sha256": "fb1f9ac3827143977cf35064c81f9c3f59cab93cf40a6d3aa230237399cf4632",
+  "pdf_bytes": 311488,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-076-IMG-01": "ad5da4232ea0725c9d69201d8dad0fbde3a5f066e8cab63fb769ba44f55124f6",
+    "CLIFF-076-IMG-02": "21427f2cdf4877e294d083c9fb43d7460f43faf78ccab25f7cf21e119f5bd05b",
+    "CLIFF-076-IMG-03": "a510de30436f4e5e8c9d4d98031feba1ed75b2f6d2fe6bd6fd186366a3404d0e"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
