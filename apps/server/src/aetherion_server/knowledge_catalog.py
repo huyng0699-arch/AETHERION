@@ -6,6 +6,7 @@ This is an on-demand metadata and text search; no fabricated record or diagnosis
 from __future__ import annotations
 
 from functools import lru_cache
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -14,6 +15,7 @@ import unicodedata
 REPOSITORY = Path(__file__).resolve().parents[4]
 RECORDS = REPOSITORY / "knowledge" / "nasa" / "cliff_119_2023" / "records"
 SYMPTOMS = REPOSITORY / "knowledge" / "symptoms" / "ASTRA_819_REFERENCE.json"
+SYMPTOM_EN_ALIASES = REPOSITORY / "knowledge" / "symptoms" / "label_aliases_en.json"
 ARTICLE_RE = re.compile(r"^CLIFF-\d{3}$")
 MAX_RESULTS = 100
 
@@ -36,8 +38,59 @@ def symptom_source() -> dict:
     return data
 
 
+@lru_cache(maxsize=1)
+def symptom_english_aliases() -> dict[str, dict]:
+    """Additive, UNREVIEWED English display/search terms keyed by Vietnamese name.
+
+    Never rewrite the source 819-entry catalog, infer risk levels, diagnose,
+    or pretend that translation drafts were reviewed by a clinician.
+    A stale/malformed overlay is ignored rather than silently mis-mapped.
+    """
+    if not SYMPTOM_EN_ALIASES.is_file() or not SYMPTOMS.is_file():
+        return {}
+    try:
+        source_bytes = SYMPTOMS.read_bytes()
+        blob_bytes = b"blob " + str(len(source_bytes)).encode("ascii") + b"\\0" + source_bytes
+        source_sha = hashlib.sha1(blob_bytes).hexdigest()
+        raw = json.loads(SYMPTOM_EN_ALIASES.read_text(encoding="utf-8"))
+        if (not isinstance(raw, dict) or raw.get("schema_version") != "1.0.0"
+                or raw.get("source_blob_sha") != source_sha
+                or raw.get("source_language") != "vi"
+                or raw.get("target_language") != "en"
+                or raw.get("translation_status") != "UNREVIEWED_TERMINOLOGY"
+                or not isinstance(raw.get("labels"), list)):
+            return {}
+        source_names = {
+            item["name"]: item for item in symptom_source()["entries"]
+            if isinstance(item, dict) and isinstance(item.get("name"), str)
+        }
+        labels: dict[str, dict] = {}
+        for item in raw["labels"]:
+            if not isinstance(item, dict):
+                continue
+            vi = item.get("source_label_vi")
+            ident = item.get("symptom_id")
+            en = item.get("label_en")
+            aliases = item.get("aliases_en")
+            if (not isinstance(vi, str) or not isinstance(ident, str)
+                    or not isinstance(en, str) or not en.strip()
+                    or len(en) > 140 or not isinstance(aliases, list)
+                    or len(aliases) > 12 or not all(
+                        isinstance(v, str) and v.strip() and len(v) <= 140 for v in aliases
+                    ) or vi not in source_names
+                    or ident not in source_names[vi].get("ids", [])
+                    or vi in labels):
+                continue
+            labels[vi] = {"label_en": en.strip(), "aliases_en": tuple(aliases),
+                          "review_status": "UNREVIEWED_TERMINOLOGY"}
+        return labels
+    except (OSError, UnicodeError, ValueError, TypeError):
+        return {}
+
+
 def symptoms(query: str = "", limit: int = 30, route: str = "") -> dict:
     source = symptom_source()
+    english = symptom_english_aliases()
     term = normalized(query[:200])
     route = route.strip().lower()
     hits = []
@@ -46,7 +99,11 @@ def symptoms(query: str = "", limit: int = 30, route: str = "") -> dict:
             continue
         if route and route not in item.get("routes", []):
             continue
-        key = normalized(" ".join([item.get("name", ""), *item.get("aliases", [])]))
+        localized = english.get(item.get("name", ""), {})
+        key = normalized(" ".join([
+            item.get("name", ""), *item.get("aliases", []),
+            localized.get("label_en", ""), *localized.get("aliases_en", ()),
+        ]))
         if term and term not in key:
             continue
         hits.append({
@@ -54,12 +111,18 @@ def symptoms(query: str = "", limit: int = 30, route: str = "") -> dict:
             "aliases": item.get("aliases", []), "routes": item.get("routes", []),
             "legacy_tier_unreviewed": item.get("tier"),
             "review_state": item.get("review_status", "unknown"),
+            "name_en": localized.get("label_en"),
+            "english_aliases": list(localized.get("aliases_en", ())),
+            "translation_review_state": localized.get(
+                "review_status", "NO_TRANSLATION"),
         })
     return {
         "total_source_labels": len(source["entries"]),
         "matched": len(hits), "items": hits[:max(1, min(limit, MAX_RESULTS))],
         "clinical_validation": False,
-        "notice": "ASTRA author-owned vocabulary; original tiers are NOT clinically reviewed risk classifications.",
+        "english_translation_coverage": len(english),
+        "english_translation_review_state": "UNREVIEWED_TERMINOLOGY",
+        "notice": "ASTRA author-owned vocabulary; original tiers and English translation drafts are NOT clinically reviewed.",
     }
 
 
