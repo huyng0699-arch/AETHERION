@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 import math
 from pathlib import Path
 import sqlite3
+from aetherion_server.sqlite_compat import connect_closing
 from typing import Any
 
 from aetherion_server.scope_guard import ENVIRONMENT_SCOPES, validate_metric_scope
@@ -19,7 +20,7 @@ class EnvironmentStore:
         self._init_schema()
 
     def _connect(self) -> sqlite3.Connection:
-        conn = sqlite3.connect(self.db_path)
+        conn = connect_closing(self.db_path)
         conn.row_factory = sqlite3.Row
         return conn
 
