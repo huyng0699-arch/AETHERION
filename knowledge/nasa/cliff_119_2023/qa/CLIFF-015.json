@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-015",
+  "slot": 15,
+  "quest_id": "Q-0315",
+  "checked_at_utc": "2026-11-14T05:54:26.364899+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/sudden-cardiac-arrest-cliff-2023.pdf?emrc=114071",
+  "http_status": 200,
+  "pdf_sha256": "b658870903960dc4cc4501b320e63a39c9cafbd8f64ef1347ebf00b597c0a354",
+  "pdf_bytes": 335111,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 2,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-015-IMG-01": "b2dfed315d565e0bc61bbc0484bdbc61dd5375f6a8292ec52479ace44748c0cb",
+    "CLIFF-015-IMG-02": "060df31ae7340240668cb312c6b92cccae26b812b9df3629af46100dfeca8de0",
+    "CLIFF-015-IMG-03": "cde569b04a093df1c9b16ed609bec517addf0c3d3e4e9ac27d31c5089ad40f28"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
