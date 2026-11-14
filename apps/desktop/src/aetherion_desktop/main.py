@@ -28,6 +28,7 @@ from .mission_control import build_mission_control_page
 from .features.personal.authorized_today import AuthorizedPersonalTodayPage
 from .features.explore.nasa_explore import build_nasa_explore_page
 from .knowledge_browser import KnowledgeBrowser
+from .features.demo.nasa_ma7 import build_hackathon_demo
 from .symptom_interview_page import SymptomInterviewPage
 from .features.care.journey_page import CareJourneyPage
 
@@ -143,6 +144,7 @@ class AetherionWindow(QMainWindow):
                                              intensity=self.preferences.animation_intensity)
         self.portal_page.route_requested.connect(self.open_portal_route)
         self.portal_page.theme_requested.connect(self.show_settings)
+        self.portal_page.demo_requested.connect(self.show_hackathon_demo)
         self.pages.addWidget(self.portal_page)
 
         # Preserve real, already implemented features and their authenticated links.
@@ -161,6 +163,14 @@ class AetherionWindow(QMainWindow):
             intensity=self.preferences.animation_intensity,
         )
         self.pages.addWidget(self.knowledge_browser_page)
+        self.hackathon_demo_page = build_hackathon_demo(
+            self, locale=self.ui_language, theme=self.preferences.theme_name,
+            mode=self.preferences.mode,
+            reduce_motion=self.preferences.reduce_motion,
+            intensity=self.preferences.animation_intensity,
+        )
+        self.hackathon_demo_page.home_requested.connect(self.show_portal)
+        self.pages.addWidget(self.hackathon_demo_page)
         self.mission_control_page.subject_activated.connect(self.open_personal_subject)
 
         # Native, bilingual workspaces; only Server-backed records and questions.
@@ -201,7 +211,7 @@ class AetherionWindow(QMainWindow):
         self.ambient_controller=PageAmbientController(self)
         for page in (self.mission_control_page,self.personal_today_page,
                      self.medical_library_page,self.nasa_explore_page,
-                     self.knowledge_browser_page,
+                     self.knowledge_browser_page,self.hackathon_demo_page,
                      self.monitor_page,self.assistant_page,self.symptom_page,
                      self.atlas_page,self.care_page,self.care_journal_page):
             self.ambient_controller.add_page(page,self.preferences)
@@ -232,6 +242,7 @@ class AetherionWindow(QMainWindow):
             ("Thư viện y khoa", self.show_medical_library),
             ("Phi hành đoàn", self.show_mission),
             ("Hành trình chăm sóc", self.show_care),
+            (tr(self.ui_language, "demo.portal.title"), self.show_hackathon_demo),
         ))
         self.observatory_menu_actions = (
             self.nav_science.menu().actions()[0],
@@ -356,6 +367,8 @@ class AetherionWindow(QMainWindow):
         """Retitle the localized shell without rewriting NASA/clinical content."""
         self.portal_page.set_locale(self.ui_language)
         self.knowledge_browser_page.set_locale(self.ui_language)
+        self.hackathon_demo_page.set_locale(self.ui_language)
+        self.nav_more.menu().actions()[-1].setText(tr(self.ui_language, "demo.portal.title"))
         for page in (self.mission_control_page, self.personal_today_page,
                      self.medical_library_page, self.nasa_explore_page):
             page.set_locale(self.ui_language)
@@ -414,6 +427,10 @@ class AetherionWindow(QMainWindow):
             self.preferences.theme_name, self.preferences.mode,
             self.preferences.reduce_motion, self.preferences.animation_intensity,
         )
+        self.hackathon_demo_page.set_visuals(
+            self.preferences.theme_name, self.preferences.mode,
+            self.preferences.reduce_motion, self.preferences.animation_intensity,
+        )
         self.ambient_controller.update_preferences(self.preferences)
         self.monitor_page.apply_theme(self.preferences)
         if self.ui_language != self.preferences.language:
@@ -456,6 +473,10 @@ class AetherionWindow(QMainWindow):
     def show_observatory(self):
         """Open the real native article search on the canonical AETHERION Server."""
         self.pages.setCurrentWidget(self.knowledge_browser_page)
+
+    def show_hackathon_demo(self):
+        """Read-only local NASA archive; never routes into personal health data."""
+        self.pages.setCurrentWidget(self.hackathon_demo_page)
 
     def show_monitor(self):
         # Always recheck access before showing health records; cached data cannot
