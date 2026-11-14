@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-111",
+  "slot": 111,
+  "quest_id": "Q-0411",
+  "checked_at_utc": "2026-11-14T06:38:49.861009+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/pregnancy-cliff-2023.pdf?emrc=b539d7",
+  "http_status": 200,
+  "pdf_sha256": "5c48da67e5d5a4a529a6086a90fd978d373f660440239ab6e546972902a55668",
+  "pdf_bytes": 317685,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-111-IMG-01": "a1fe0d8fd63f85dcd038296470a7df5e575ce37f5c54677190c7d53bc6c6f18e",
+    "CLIFF-111-IMG-02": "ceb2238d9c6a49fa6dd71a2f1ae32860ce78a646cd3b0cd53f1fe7d0b9452043",
+    "CLIFF-111-IMG-03": "69ce71caddf31c9b6bc7ac718d64748a2dc2c19285b463740fc1488a2ff6728f"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
