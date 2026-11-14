@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "AETHERION API",
-    "description": "Local engineering prototype; not clinical decision support",
-    "version": "0.1.0"
+    "description": "Local-first health data foundation; not clinical decision support",
+    "version": "0.2.0"
   },
   "paths": {
     "/health": {
@@ -28,10 +28,115 @@
         }
       }
     },
+    "/ready": {
+      "get": {
+        "summary": "Ready",
+        "operationId": "ready_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Ready Ready Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "summary": "Login",
+        "operationId": "login_api_v1_auth_login_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "summary": "Logout",
+        "operationId": "logout_api_v1_auth_logout_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "summary": "Auth Me",
+        "operationId": "auth_me_api_v1_auth_me_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/observations": {
       "get": {
         "summary": "Observations",
         "operationId": "observations_api_v1_observations_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
         "parameters": [
           {
             "name": "subject_id",
@@ -42,6 +147,46 @@
               "minLength": 1,
               "maxLength": 80,
               "title": "Subject Id"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "crew",
+                    "habitat",
+                    "personal",
+                    "engineering_test"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Scope"
+            }
+          },
+          {
+            "name": "metric",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Metric"
             }
           },
           {
@@ -81,6 +226,29 @@
       "post": {
         "summary": "Create Observation",
         "operationId": "create_observation_api_v1_observations_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -129,6 +297,28 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
+      "LoginRequest": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Username"
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Password"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username",
+          "password"
+        ],
+        "title": "LoginRequest"
+      },
       "ObservationIn": {
         "properties": {
           "subject_id": {
@@ -136,6 +326,17 @@
             "maxLength": 80,
             "minLength": 1,
             "title": "Subject Id"
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "crew",
+              "habitat",
+              "personal",
+              "engineering_test"
+            ],
+            "title": "Scope",
+            "default": "crew"
           },
           "metric": {
             "type": "string",
@@ -153,16 +354,74 @@
             "minLength": 1,
             "title": "Unit"
           },
+          "source_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 120,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Id"
+          },
           "source": {
-            "type": "string",
-            "maxLength": 120,
-            "minLength": 1,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 120,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Source"
           },
           "observed_at": {
             "type": "string",
             "format": "date-time",
             "title": "Observed At"
+          },
+          "quality": {
+            "type": "string",
+            "enum": [
+              "READY",
+              "NO_DATA",
+              "STALE",
+              "OFFLINE",
+              "DENIED",
+              "ERROR",
+              "UNVERIFIED"
+            ],
+            "title": "Quality",
+            "default": "UNVERIFIED"
+          },
+          "verification_state": {
+            "type": "string",
+            "enum": [
+              "UNVERIFIED",
+              "SELF_REPORTED",
+              "DEVICE_UNVERIFIED",
+              "TEST_FIXTURE"
+            ],
+            "title": "Verification State",
+            "default": "UNVERIFIED"
+          },
+          "idempotency_key": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency Key"
           }
         },
         "type": "object",
@@ -171,7 +430,6 @@
           "metric",
           "value",
           "unit",
-          "source",
           "observed_at"
         ],
         "title": "ObservationIn"
@@ -215,6 +473,12 @@
           "type"
         ],
         "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "HTTPBearer": {
+        "type": "http",
+        "scheme": "bearer"
       }
     }
   }

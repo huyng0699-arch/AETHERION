@@ -25,9 +25,11 @@ class ContractsTests(unittest.TestCase):
         self.assertIn("post", obs_path)
 
         obs_schema = spec["components"]["schemas"]["ObservationIn"]
-        for field in ("subject_id", "metric", "value", "unit", "source", "observed_at"):
+        for field in ("subject_id", "metric", "value", "unit", "observed_at"):
             self.assertIn(field, obs_schema["properties"])
             self.assertIn(field, obs_schema["required"])
+        for prop in ("source", "source_id", "scope", "quality", "verification_state"):
+            self.assertIn(prop, obs_schema["properties"])
 
         readme = self.readme_path.read_text(encoding="utf-8")
         self.assertIn("openapi.json", readme)
