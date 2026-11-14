@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/contracts/v1/scope_contract.schema.json",
+  "title": "AETHERION Scope Contract CREW/CABIN/VEHICLE (Q-0020)",
+  "description": "Separates person-level CREW observations from environmental CABIN and VEHICLE telemetry so cabin CO2 is never assigned to a person.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["scope", "metric"],
+  "properties": {
+    "scope": {
+      "type": "string",
+      "enum": ["CREW", "CABIN", "VEHICLE", "crew", "personal", "habitat", "engineering_test"]
+    },
+    "metric": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    }
+  },
+  "x-scope-metric-rules": {
+    "environment_metrics_disallowed_on_person": [
+      "cabin_co2",
+      "co2_partial_pressure",
+      "cabin_pressure",
+      "cabin_humidity",
+      "cabin_temperature",
+      "radiation_dose_rate"
+    ],
+    "person_metrics_disallowed_on_environment": [
+      "heart_rate",
+      "spo2",
+      "body_temperature",
+      "body_mass",
+      "fatigue_score",
+      "sleep_duration"
+    ]
+  }
+}

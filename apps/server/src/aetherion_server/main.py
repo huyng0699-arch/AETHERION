@@ -14,6 +14,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel, Field, field_validator, model_validator
 
 from .bootstrap import bootstrap_from_env, default_database_path
+from .scope_guard import validate_metric_scope
 from .security import DEFAULT_SESSION_TTL_SECONDS, is_subject_authorized, verify_password
 from .store import (
     check_readiness,
@@ -26,7 +27,7 @@ from .store import (
     revoke_session,
 )
 
-AllowedScope = Literal["crew", "habitat", "personal", "engineering_test"]
+AllowedScope = Literal["CREW", "CABIN", "VEHICLE", "crew", "habitat", "personal", "engineering_test"]
 AllowedQuality = Literal["READY", "NO_DATA", "STALE", "OFFLINE", "DENIED", "ERROR", "UNVERIFIED"]
 AllowedVerificationState = Literal["UNVERIFIED", "SELF_REPORTED", "DEVICE_UNVERIFIED", "TEST_FIXTURE"]
 
@@ -80,6 +81,7 @@ class ObservationIn(BaseModel):
             raise ValueError("source_id or source is required")
         self.source_id = resolved
         self.source = (self.source or resolved).strip()
+        validate_metric_scope(self.metric, self.scope)
         return self
 
 

@@ -157,6 +157,9 @@
               "anyOf": [
                 {
                   "enum": [
+                    "CREW",
+                    "CABIN",
+                    "VEHICLE",
                     "crew",
                     "habitat",
                     "personal",
@@ -330,6 +333,9 @@
           "scope": {
             "type": "string",
             "enum": [
+              "CREW",
+              "CABIN",
+              "VEHICLE",
               "crew",
               "habitat",
               "personal",
