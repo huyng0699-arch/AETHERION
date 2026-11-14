@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-098",
+  "slot": 98,
+  "quest_id": "Q-0398",
+  "checked_at_utc": "2026-11-14T06:35:22.117404+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/dust-exposure-lunar-surface-eva-cliff-2023.pdf?emrc=58d951",
+  "http_status": 200,
+  "pdf_sha256": "8361ca952533d27ee5ab204a477c9a76c6c579e227b0807d2eff2bbfc9cf1c6c",
+  "pdf_bytes": 347412,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-098-IMG-01": "8ba371f22da40019cb852438d48fc77b038eb54a0c69267a20b144b71773a56b",
+    "CLIFF-098-IMG-02": "b3086c8d8b97f9cc105c038d64e38f690d76347b9ce96eebf9b84c807c17fe3e",
+    "CLIFF-098-IMG-03": "41a22e2a4d4a1beae75a31c9d7d45ad386c5bfb993983adf5c6bbbd1dfbd81a7"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
