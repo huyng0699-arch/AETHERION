@@ -53,6 +53,26 @@ class AuthorizedPersonalTodayPage(QWidget):
         """Translate the existing health view without fetching or modifying data."""
         self.ui_language = normalize_locale(locale)
         translate_shell_widgets(self, self.ui_language)
+        # The common title 'Sức khỏe của tôi' is used in multiple contexts;
+        # translate it by semantic key, never by ambiguous literal matching.
+        self.hero_title.setText(tr(self.ui_language, "personal.title"))
+        # Preserve QComboBox itemData (all/self/verified/unverified), including
+        # the active filter and current authorized records.
+        for index, key in enumerate((
+            "personal.originAll", "personal.originSelf",
+            "personal.originVerified", "personal.originUnverified",
+        )):
+            self.origin_filter.setItemText(index, tr(self.ui_language, key))
+        self.table.setHorizontalHeaderLabels([
+            tr(self.ui_language, "mission.metric"),
+            tr(self.ui_language, "mission.value"),
+            tr(self.ui_language, "mission.time"),
+            tr(self.ui_language, "mission.source"),
+            tr(self.ui_language, "mission.scope"),
+            tr(self.ui_language, "mission.quality"),
+            tr(self.ui_language, "mission.verification"),
+            tr(self.ui_language, "personal.recordType"),
+        ])
         if self._subject_id:
             self.subject_label.setText(tr(self.ui_language, "personal.subject", subject=self._subject_id))
         if self._status_key:
