@@ -131,8 +131,21 @@ class MissionToPersonalIdentityE2ETests(unittest.TestCase):
                     QNetworkProxy.setApplicationProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
                     win = AetherionWindow()
                     win.network.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
-                    win.access_token = token
-                    win.personal_today_page._api_url = base_url
+                    # Exercise the actual Desktop login completion with the
+                    # bearer token and user returned by the running Server.
+                    self.assertIn("user", login_body)
+                    win._login_complete(login_body, base_url)
+                    self.assertEqual(win.access_token, token)
+                    self.assertEqual(win.session_identity, login_body["user"])
+
+                    # Login completion asynchronously loads the first authorized
+                    # subject. Drain that request before testing explicit handoff,
+                    # otherwise it could race the UNKNOWN-999 rejection below.
+                    login_deadline = time.monotonic() + 5.0
+                    while not win.personal_today_page._displayed_cards and time.monotonic() < login_deadline:
+                        app.processEvents()
+                        time.sleep(0.05)
+                    self.assertEqual(len(win.personal_today_page._displayed_cards), 1)
 
                     # 1. Mission -> Personal handoff for CREW-01
                     win.mission_control_page.subject_activated.emit("CREW-01", token)
@@ -141,6 +154,7 @@ class MissionToPersonalIdentityE2ETests(unittest.TestCase):
                         app.processEvents()
                         time.sleep(0.05)
 
+                    self.assertIs(win.pages.currentWidget(), win.operations_home_page)
                     self.assertIs(
                         win.operations_home_page.workspace_stack.currentWidget(),
                         win.personal_today_page,
@@ -153,8 +167,10 @@ class MissionToPersonalIdentityE2ETests(unittest.TestCase):
                     for _ in range(15):
                         app.processEvents()
                         time.sleep(0.03)
+                    self.assertEqual(win.personal_today_page._subject_id, "UNKNOWN-999")
                     self.assertEqual(win.personal_today_page._displayed_cards, ())
                     self.assertEqual(win.personal_today_page.table.rowCount(), 0)
+                    self.assertIs(win.pages.currentWidget(), win.operations_home_page)
 
                     # 3. Invalid/empty handoff rejected without fallback
                     win.mission_control_page.subject_activated.emit("", "")
