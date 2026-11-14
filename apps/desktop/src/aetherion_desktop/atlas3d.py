@@ -282,9 +282,11 @@ class BodyAtlas3D(QWidget):
 
     def _render(self, path, identity):
         try:
-            import pyvista as pv
-            from pyvistaqt import QtInteractor
-        except ImportError:
+            from .render3d.backend_policy import load_native_renderer
+            pv, QtInteractor = load_native_renderer()
+        except (ImportError, RuntimeError):
+            # One canonical 3D adapter; a missing or mismatched Qt binding is
+            # not evidence of a working GPU. Keep the source-verified 2D list.
             self.status.setText(self.t('install') + ' · 2D')
             self._show_2d_fallback()
             return
