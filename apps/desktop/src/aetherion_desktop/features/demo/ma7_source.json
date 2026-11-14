@@ -1,0 +1,1063 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "NASA-MA7-MERCURY-1962",
+  "origin": "NASA historical archival primary report, public/unclassified source",
+  "source_publisher": "NASA Manned Spacecraft Center",
+  "source_title": "Postlaunch Memorandum Report for Mercury-Atlas No. 7 (MA-7), Part I — Mission Analysis",
+  "source_publication": "1962-06-15",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/01/ma07-te2.pdf",
+  "origin_access_status": "NASA.gov archive of unclassified historical report",
+  "data_type": "HISTORICAL_ACTUAL_REPORTED_MEASUREMENTS",
+  "is_live": false,
+  "is_synthetic": false,
+  "is_inspiration4": false,
+  "is_current_medical_record": false,
+  "source_verified_as": "NASA published table values extracted from PDF text; page/units/timepoints cross-checked; original PDF binary SHA not bundled",
+  "challenge_link": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/",
+  "other_real_nasa_dataset_links": [
+    {
+      "study": "OSD-569",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-569",
+      "claim": "Inspiration4 CBC study, NOT this MA-7 replay; individual numeric files not bundled"
+    },
+    {
+      "study": "OSD-575",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-575",
+      "claim": "Inspiration4 comprehensive metabolic and cytokine study, NOT this MA-7 replay; individual numeric files not bundled"
+    }
+  ],
+  "limitations": [
+    "No unified NASA challenge-specific synchronized live astronaut dataset exists here.",
+    "Archive is from one astronaut on Mercury-Atlas 7 mission, not 2026 spacecraft health telemetry.",
+    "Flight summaries are aggregate means, not a continuous stream.",
+    "Inflight BP instrument/calibration issues explicitly discussed in original NASA report.",
+    "No original ECG waveform or waveform samples are available in this bundle.",
+    "SpO2, sleep, mood, serum glucose and individual radiation dose have NO_SOURCE_DATA in this bundle.",
+    "Original source PDF file hash and full archive download not stored; direct public NASA link supplied."
+  ],
+  "unavailable_metrics": [
+    "ecg_waveform",
+    "spo2",
+    "sleep",
+    "mood",
+    "serum_glucose",
+    "radiation_person_dose",
+    "continuous_ecg",
+    "longitudinal_sensor_stream"
+  ],
+  "metric_names": {
+    "heart_rate": {
+      "vi": "Nhịp tim",
+      "en": "Heart rate"
+    },
+    "respiration_rate": {
+      "vi": "Tần số thở",
+      "en": "Respiration rate"
+    },
+    "body_temperature": {
+      "vi": "Nhiệt độ cơ thể",
+      "en": "Body temperature"
+    },
+    "oral_temperature": {
+      "vi": "Nhiệt độ miệng",
+      "en": "Oral temperature"
+    },
+    "blood_pressure": {
+      "vi": "Huyết áp",
+      "en": "Blood pressure"
+    },
+    "body_weight": {
+      "vi": "Cân nặng",
+      "en": "Body weight"
+    },
+    "hemoglobin": {
+      "vi": "Hemoglobin",
+      "en": "Hemoglobin"
+    },
+    "hematocrit": {
+      "vi": "Hematocrit",
+      "en": "Hematocrit"
+    },
+    "white_blood_cells": {
+      "vi": "Bạch cầu",
+      "en": "White blood cells"
+    },
+    "red_blood_cells": {
+      "vi": "Hồng cầu",
+      "en": "Red blood cells"
+    },
+    "lymphocytes": {
+      "vi": "Lymphocyte",
+      "en": "Lymphocytes"
+    },
+    "neutrophils": {
+      "vi": "Bạch cầu trung tính",
+      "en": "Neutrophils"
+    },
+    "monocytes": {
+      "vi": "Bạch cầu đơn nhân",
+      "en": "Monocytes"
+    },
+    "eosinophils": {
+      "vi": "Bạch cầu ái toan",
+      "en": "Eosinophils"
+    },
+    "basophils": {
+      "vi": "Bạch cầu ái kiềm",
+      "en": "Basophils"
+    },
+    "systolic_pressure": {
+      "vi": "Huyết áp tâm thu",
+      "en": "Systolic pressure"
+    },
+    "diastolic_pressure": {
+      "vi": "Huyết áp tâm trương",
+      "en": "Diastolic pressure"
+    },
+    "pulse_pressure": {
+      "vi": "Hiệu áp",
+      "en": "Pulse pressure"
+    }
+  },
+  "groups": [
+    {
+      "id": "flight",
+      "title": {
+        "vi": "TỔNG HỢP SINH LÝ THEO GIAI ĐOẠN",
+        "en": "FLIGHT PHASE PHYSIOLOGY"
+      },
+      "table": "p.7-33, physiological data summary, §7.3.2.3",
+      "note": {
+        "vi": "Số trung bình tính từ các lần đo theo giai đoạn, KHÔNG PHẢI giá trị tức thời.",
+        "en": "Reported means aggregated from observations, NOT instantaneous telemetry."
+      },
+      "records": [
+        {
+          "id": "PRE",
+          "title": {
+            "en": "All preflight data",
+            "vi": "Toàn bộ dữ liệu trước bay"
+          },
+          "measures": {
+            "heart_rate": {
+              "value": "57",
+              "unit": "beats/min",
+              "range": "42–84",
+              "sample_count": 408,
+              "qualifier": "phase_mean",
+              "missing": null
+            },
+            "respiration_rate": {
+              "value": "15",
+              "unit": "breaths/min",
+              "range": "5–32",
+              "sample_count": 354,
+              "qualifier": "phase_mean",
+              "missing": null
+            },
+            "body_temperature": {
+              "value": "99.3",
+              "unit": "°F",
+              "range": "98.3–101.5",
+              "sample_count": 128,
+              "qualifier": "phase_mean",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "COUNTDOWN",
+          "title": {
+            "en": "Countdown",
+            "vi": "Đếm ngược"
+          },
+          "measures": {
+            "heart_rate": {
+              "value": "62",
+              "unit": "beats/min",
+              "range": "50–84",
+              "sample_count": 92,
+              "qualifier": "phase_mean",
+              "missing": null
+            },
+            "respiration_rate": {
+              "value": "15",
+              "unit": "breaths/min",
+              "range": "6–26",
+              "sample_count": 75,
+              "qualifier": "phase_mean",
+              "missing": null
+            },
+            "body_temperature": {
+              "value": "97.8",
+              "unit": "°F",
+              "range": "96.8–98.2",
+              "sample_count": 57,
+              "qualifier": "phase_mean",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "LAUNCH",
+          "title": {
+            "en": "Flight launch",
+            "vi": "Phóng"
+          },
+          "measures": {
+            "heart_rate": {
+              "value": "87",
+              "unit": "beats/min",
+              "range": "82–96",
+              "sample_count": 7,
+              "qualifier": "phase_mean",
+              "missing": null
+            },
+            "respiration_rate": {
+              "value": "16",
+              "unit": "breaths/min",
+              "range": "10–20",
+              "sample_count": 5,
+              "qualifier": "phase_mean",
+              "missing": null
+            },
+            "body_temperature": {
+              "value": "98",
+              "unit": "°F",
+              "range": "98",
+              "sample_count": 4,
+              "qualifier": "phase_mean",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "ORBIT",
+          "title": {
+            "en": "Orbital",
+            "vi": "Quỹ đạo"
+          },
+          "measures": {
+            "heart_rate": {
+              "value": "70",
+              "unit": "beats/min",
+              "range": "60–94",
+              "sample_count": 94,
+              "qualifier": "phase_mean",
+              "missing": null
+            },
+            "respiration_rate": {
+              "value": null,
+              "unit": "breaths/min",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "phase_mean",
+              "missing": "not_obtained"
+            },
+            "body_temperature": {
+              "value": "99.9",
+              "unit": "°F",
+              "range": "98–100.6",
+              "sample_count": 60,
+              "qualifier": "phase_mean",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "ENTRY",
+          "title": {
+            "en": "Reentry",
+            "vi": "Tái nhập"
+          },
+          "measures": {
+            "heart_rate": {
+              "value": "84",
+              "unit": "beats/min",
+              "range": "72–104",
+              "sample_count": 115,
+              "qualifier": "phase_mean",
+              "missing": null
+            },
+            "respiration_rate": {
+              "value": null,
+              "unit": "breaths/min",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "phase_mean",
+              "missing": "not_obtained"
+            },
+            "body_temperature": {
+              "value": "100.4",
+              "unit": "°F",
+              "range": "100.2–100.5",
+              "sample_count": 15,
+              "qualifier": "phase_mean",
+              "missing": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "clinical",
+      "title": {
+        "vi": "KHÁM TRƯỚC / SAU CHUYẾN BAY",
+        "en": "PRE- / POSTFLIGHT CLINICAL EXAMS"
+      },
+      "table": "p.7-41, Table 7.3.1.2-1",
+      "note": {
+        "vi": "Mỗi điểm là một lần khám ghi trong báo cáo; nhịp tim sau bay 76–80 là khoảng giá trị.",
+        "en": "Each timepoint is an examination from the original report; the postflight pulse 76–80 is a range."
+      },
+      "records": [
+        {
+          "id": "MAY17",
+          "title": {
+            "en": "Preflight exam · 17 May 1962",
+            "vi": "Khám trước bay · 17/05/1962"
+          },
+          "measures": {
+            "oral_temperature": {
+              "value": 97.9,
+              "unit": "°F",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "heart_rate": {
+              "value": 60,
+              "unit": "beats/min",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "blood_pressure": {
+              "value": "126/84",
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported_combined",
+              "missing": null
+            },
+            "respiration_rate": {
+              "value": 14,
+              "unit": "breaths/min",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "body_weight": {
+              "value": 151.5,
+              "unit": "lb",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "MAY24_PRE",
+          "title": {
+            "en": "Preflight exam · 24 May 1962",
+            "vi": "Khám trước bay · 24/05/1962"
+          },
+          "measures": {
+            "oral_temperature": {
+              "value": 97.4,
+              "unit": "°F",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "heart_rate": {
+              "value": 60,
+              "unit": "beats/min",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "blood_pressure": {
+              "value": "120/78",
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported_combined",
+              "missing": null
+            },
+            "respiration_rate": {
+              "value": 12,
+              "unit": "breaths/min",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "body_weight": {
+              "value": 154,
+              "unit": "lb",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "MAY24_POST",
+          "title": {
+            "en": "Postflight exam · 24 May 1962",
+            "vi": "Khám sau bay · 24/05/1962"
+          },
+          "measures": {
+            "oral_temperature": {
+              "value": 97.6,
+              "unit": "°F",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "heart_rate": {
+              "value": "76–80",
+              "unit": "beats/min",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported_range",
+              "missing": null
+            },
+            "blood_pressure": {
+              "value": "116/78",
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported_combined",
+              "missing": null
+            },
+            "respiration_rate": {
+              "value": null,
+              "unit": "breaths/min",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": "not_reported"
+            },
+            "body_weight": {
+              "value": 148,
+              "unit": "lb",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "MAY25_26",
+          "title": {
+            "en": "Follow-up · 25–26 May 1962",
+            "vi": "Tái khám · 25–26/05/1962"
+          },
+          "measures": {
+            "oral_temperature": {
+              "value": 97.5,
+              "unit": "°F",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "heart_rate": {
+              "value": null,
+              "unit": "beats/min",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": "not_reported"
+            },
+            "blood_pressure": {
+              "value": "124/80",
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported_combined",
+              "missing": null
+            },
+            "respiration_rate": {
+              "value": null,
+              "unit": "breaths/min",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": "not_reported"
+            },
+            "body_weight": {
+              "value": 151.75,
+              "unit": "lb",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "blood",
+      "title": {
+        "vi": "XÉT NGHIỆM MÁU TOÀN BỘ",
+        "en": "COMPLETE BLOOD COUNT"
+      },
+      "table": "p.7-42, Table 7.3.1.2-2",
+      "note": {
+        "vi": "Thời điểm lấy máu không đồng nhất với bốn lần khám. Thiếu số liệu hồng cầu trước bay 2 ngày.",
+        "en": "Blood draws do not align exactly with the clinical visits. The −2-day RBC count was not reported."
+      },
+      "records": [
+        {
+          "id": "PRE_D7",
+          "title": {
+            "en": "Preflight −7 days",
+            "vi": "Trước bay 7 ngày"
+          },
+          "measures": {
+            "hemoglobin": {
+              "value": 15,
+              "unit": "g/dL",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "hematocrit": {
+              "value": 47,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "white_blood_cells": {
+              "value": 12700,
+              "unit": "cells/mm³",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "red_blood_cells": {
+              "value": 5.2,
+              "unit": "million cells/mm³",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "lymphocytes": {
+              "value": 25,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "neutrophils": {
+              "value": 71,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "monocytes": {
+              "value": 2,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "eosinophils": {
+              "value": 2,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "basophils": {
+              "value": 0,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "PRE_D2",
+          "title": {
+            "en": "Preflight −2 days",
+            "vi": "Trước bay 2 ngày"
+          },
+          "measures": {
+            "hemoglobin": {
+              "value": 13.8,
+              "unit": "g/dL",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "hematocrit": {
+              "value": 42,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "white_blood_cells": {
+              "value": 11600,
+              "unit": "cells/mm³",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "red_blood_cells": {
+              "value": null,
+              "unit": "million cells/mm³",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": "not_reported"
+            },
+            "lymphocytes": {
+              "value": 19,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "neutrophils": {
+              "value": 79,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "monocytes": {
+              "value": 1,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "eosinophils": {
+              "value": 1,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "basophils": {
+              "value": 0,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "POST_25",
+          "title": {
+            "en": "Postflight 00:15 · 25 May 1962",
+            "vi": "Sau bay 00:15 · 25/05/1962"
+          },
+          "measures": {
+            "hemoglobin": {
+              "value": 16,
+              "unit": "g/dL",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "hematocrit": {
+              "value": 50,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "white_blood_cells": {
+              "value": 12500,
+              "unit": "cells/mm³",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "red_blood_cells": {
+              "value": 5.6,
+              "unit": "million cells/mm³",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "lymphocytes": {
+              "value": 27,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "neutrophils": {
+              "value": 65,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "monocytes": {
+              "value": 3,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "eosinophils": {
+              "value": 4,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "basophils": {
+              "value": 1,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "POST_26",
+          "title": {
+            "en": "Postflight 12:00 · 26 May 1962",
+            "vi": "Sau bay 12:00 · 26/05/1962"
+          },
+          "measures": {
+            "hemoglobin": {
+              "value": 14.8,
+              "unit": "g/dL",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "hematocrit": {
+              "value": 46,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "white_blood_cells": {
+              "value": 11900,
+              "unit": "cells/mm³",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "red_blood_cells": {
+              "value": 5.2,
+              "unit": "million cells/mm³",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "lymphocytes": {
+              "value": 37,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "neutrophils": {
+              "value": 58,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "monocytes": {
+              "value": 2,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "eosinophils": {
+              "value": 2,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            },
+            "basophils": {
+              "value": 1,
+              "unit": "%",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "reported",
+              "missing": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "pressure",
+      "title": {
+        "vi": "HUYẾT ÁP TRONG CHUYẾN BAY",
+        "en": "INFLIGHT BLOOD PRESSURE"
+      },
+      "table": "p.7-44, Table 7.3.2.3-1; discussion §7.3.2.3 pp.7-33–7-34",
+      "note": {
+        "vi": "Chỉ chép 6 điểm Category I có thể đọc rõ trong bản báo cáo. NASA lưu ý vấn đề hiệu chuẩn; KHÔNG kết luận tăng huyết áp lâm sàng từ loạt số này.",
+        "en": "Six legible Category I archival readings only. NASA documents unresolved instrument/calibration concerns: no clinical hypertension verdict is inferred."
+      },
+      "records": [
+        {
+          "id": "00_16_07",
+          "title": {
+            "en": "Flight elapsed 00:16:07",
+            "vi": "Thời gian bay 00:16:07"
+          },
+          "measures": {
+            "systolic_pressure": {
+              "value": 182,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "instrument_category_I_caveated",
+              "missing": null
+            },
+            "diastolic_pressure": {
+              "value": 70,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "instrument_category_I_caveated",
+              "missing": null
+            },
+            "pulse_pressure": {
+              "value": 112,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "source_tabulated",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "01_43_10",
+          "title": {
+            "en": "Flight elapsed 01:43:10",
+            "vi": "Thời gian bay 01:43:10"
+          },
+          "measures": {
+            "systolic_pressure": {
+              "value": 174,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "instrument_category_I_caveated",
+              "missing": null
+            },
+            "diastolic_pressure": {
+              "value": 60,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "instrument_category_I_caveated",
+              "missing": null
+            },
+            "pulse_pressure": {
+              "value": 114,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "source_tabulated",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "01_51_03",
+          "title": {
+            "en": "Flight elapsed 01:51:03",
+            "vi": "Thời gian bay 01:51:03"
+          },
+          "measures": {
+            "systolic_pressure": {
+              "value": 194,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "instrument_category_I_caveated",
+              "missing": null
+            },
+            "diastolic_pressure": {
+              "value": 70,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "instrument_category_I_caveated",
+              "missing": null
+            },
+            "pulse_pressure": {
+              "value": 124,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "source_tabulated",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "02_25_35",
+          "title": {
+            "en": "Flight elapsed 02:25:35",
+            "vi": "Thời gian bay 02:25:35"
+          },
+          "measures": {
+            "systolic_pressure": {
+              "value": 196,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "instrument_category_I_caveated",
+              "missing": null
+            },
+            "diastolic_pressure": {
+              "value": 54,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "instrument_category_I_caveated",
+              "missing": null
+            },
+            "pulse_pressure": {
+              "value": 142,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "source_tabulated",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "02_44_28",
+          "title": {
+            "en": "Flight elapsed 02:44:28",
+            "vi": "Thời gian bay 02:44:28"
+          },
+          "measures": {
+            "systolic_pressure": {
+              "value": 196,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "instrument_category_I_caveated",
+              "missing": null
+            },
+            "diastolic_pressure": {
+              "value": 60,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "instrument_category_I_caveated",
+              "missing": null
+            },
+            "pulse_pressure": {
+              "value": 136,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "source_tabulated",
+              "missing": null
+            }
+          }
+        },
+        {
+          "id": "03_15_24",
+          "title": {
+            "en": "Flight elapsed 03:15:24",
+            "vi": "Thời gian bay 03:15:24"
+          },
+          "measures": {
+            "systolic_pressure": {
+              "value": 202,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "instrument_category_I_caveated",
+              "missing": null
+            },
+            "diastolic_pressure": {
+              "value": 54,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "instrument_category_I_caveated",
+              "missing": null
+            },
+            "pulse_pressure": {
+              "value": 148,
+              "unit": "mmHg",
+              "range": null,
+              "sample_count": null,
+              "qualifier": "source_tabulated",
+              "missing": null
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
