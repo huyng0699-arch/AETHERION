@@ -277,5 +277,21 @@
   "observatory.status.disconnected": "SOURCE DISCONNECTED",
   "observatory.status.connected": "SOURCE-BACKED CATALOG",
   "observatory.source.unknown": "Source link not supplied",
-  "observatory.safety": "SCIENTIFIC REFERENCE · NOT A DIAGNOSIS"
+  "observatory.safety": "SCIENTIFIC REFERENCE · NOT A DIAGNOSIS",
+  "personal.status.offline": "Server unreachable (OFFLINE). Local cached state not fabricated.",
+  "personal.status.denied": "Access denied by server policy (DENIED).",
+  "personal.status.subjectMismatch": "Response subject mismatch or malformed payload (ERROR).",
+  "personal.status.missingArray": "Missing observations array (ERROR).",
+  "personal.status.noToday": "No personal observations recorded today (NO_DATA). Symptom intake is optional.",
+  "personal.status.identityMismatch": "Observation identity mismatch (ERROR).",
+  "personal.status.noProvenance": "Observation lacks required provenance fields (ERROR).",
+  "personal.status.badValue": "Invalid observation value or timestamp (ERROR).",
+  "personal.status.ready": "Source-backed readings available; this is not a health assessment.",
+  "personal.status.stale": "Some readings are stale; request a newer measurement before interpreting change.",
+  "personal.status.unverified": "Some readings are unverified or conflicting; no health conclusion is implied.",
+  "personal.status.sourceOffline": "The data source is offline; last readings cannot prove current health.",
+  "personal.status.sourceDenied": "Access to some data is denied; no unavailable values are inferred.",
+  "personal.status.sourceError": "The source contains invalid data; do not interpret these readings.",
+  "personal.status.none": "No usable recorded measurements; unknown does not mean normal.",
+  "personal.metricSource": "Nguồn: {source}  ·  {observed}"
 }
