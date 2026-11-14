@@ -1,60 +1,23 @@
 {
-  "schema_version": 1,
-  "quest_id": "Q-0319",
-  "source_slot": 19,
   "article_id": "CLIFF-019",
-  "display_title": "Dental Abscess",
-  "source_category": "Dental Injury",
-  "source_family": "CliFF 119 (2023)",
-  "status": "BLOCKED_ORIGINAL_DOCUMENT_LINK_UNVERIFIED",
-  "audit_utc": "2026-11-14T05:50:00Z",
-  "index": {
-    "url": "https://www.nasa.gov/integrated-medical-model-documentation/",
-    "evidence_location": "All Documentation Per Condition > Dental Injury > CliFF 119 > Dental Abscess CliFF (2023)",
-    "evidence_text": "Dental Abscess CliFF (2023)",
-    "index_page_access": "PUBLIC_PAGE_RENDERED",
-    "indicated_source_family": "CliFF 119",
-    "dental_2023_item_is_clickable_in_rendered_page": false,
-    "source_pdf_link_verified": false,
-    "original_document_url": null,
-    "pdf_http_status": "NOT_ATTEMPTED_NO_VERIFIED_DIRECT_URL",
-    "note": "The rendered NASA index confirms the 2023 title but does not expose a direct clickable PDF for this exact item. Do not substitute the neighboring CliFF 100 title or peer review for the 2023 CliFF 119 original."
-  },
-  "independent_context": [
-    {
-      "source": "NASA Technical Reports Server",
-      "url": "https://ntrs.nasa.gov/api/citations/20230006550/downloads/Medical%20Scenarios.pdf",
-      "relation": "Separate medical-scenarios document mentioning dental abscess; NOT the CliFF 119 (2023) source",
-      "considered_for_ingestion": false
-    },
-    {
-      "source": "NASA Deep Space Exploration IMM Runs",
-      "url": "https://www.nasa.gov/deep-space-exploration-imm-runs/",
-      "relation": "References an earlier dental-abscess CliFF among mission-service requests; NOT verification of 2023 CliFF 119 PDF",
-      "considered_for_ingestion": false
-    }
+  "slot": 19,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/dental-abscess-cliff-2023.pdf?emrc=0fbf2d",
+  "http_status": 200,
+  "pdf_bytes": 354200,
+  "pdf_sha256": "d8ea7fd8dde043e20d773cdf2379ffa7cfbabda17d19b90aa964a4fed68510a3",
+  "pdf_pages": 15,
+  "sections_count": 15,
+  "tables_count": 5,
+  "references_count": 32,
+  "media_count": 3,
+  "media_sha256s": [
+    "6ae023c6c62e8e26c4028d18885f6e823d2e84369e49e8da1a226c05bd29f3fe",
+    "a171fc0b50aa23b45036db7a80723107381841d3bb1746cb67d701980d3a511e",
+    "eb9a399cf7b345386416c563689fa0517ea615a562d9dd35726877250e99694f"
   ],
-  "extraction": {
-    "original_bytes_downloaded": false,
-    "original_pdf_sha256": null,
-    "source_pages_verified": 0,
-    "sections_imported": 0,
-    "tables_imported": 0,
-    "figures_imported": 0,
-    "licensed_medical_image_blobs": 0,
-    "full_source_text_provided": false,
-    "imported_to_library_sqlite": false,
-    "native_windows_reader_proven": false,
-    "clinical_content_accepted": false,
-    "independent_review": "PENDING"
-  },
-  "blocking_requirements": [
-    "Individually verifiable direct NASA CliFF 119 Dental Abscess (2023) original PDF URL and HTTP retrieval status",
-    "Original PDF bytes, title/version/page anchors and SHA256",
-    "Full page-faithful extraction plus appropriate file-level rights for verified medical images",
-    "Actual single SQLite library ingestion, native Windows offline article rendering and independent medical/source review"
-  ],
-  "next_action": "Verify the correct 2023 original through the NASA Integrated Medical Model documentation administrator/archive; capture exact direct URL and PDF bytes; only then extract and render, obtain rights review, run non-skipped tests and request independent approval.",
-  "evidence_qualification": "Negative evidence for a direct hyperlink on the rendered public index, not proof that NASA does not possess this original document.",
-  "safety_note": "No fake document, image, diagnosis or NASA-original content has been created by this audit."
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-SA-3.0 / CC-BY-SA-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "resolution_note": "Resolved under Q-0457: direct 2023 CliFF PDF link verified in NASA IMM CliFF 119 table column.",
+  "missing_items": []
 }

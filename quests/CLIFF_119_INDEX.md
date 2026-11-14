@@ -28,9 +28,9 @@ Native library engineering Quests: **Q-0420–Q-0435**. None is DONE at creation
 | 16 | [Q-0316](../../quests/v1/Q-0316.md) | Cardiovascular Conditions | Traumatic Hypovolemic Shock | **NOT VERIFIED** |
 | 17 | [Q-0317](../../quests/v1/Q-0317.md) | Cardiovascular Conditions | Venous Thromboembolism (VTE) | **NOT VERIFIED** |
 | 18 | [Q-0318](../../quests/v1/Q-0318.md) | Chest Injury | Chest Injury (Blunt/Trauma) | **NOT VERIFIED** |
-| 19 | [Q-0319](../../quests/v1/Q-0319.md) | Dental Injury | Dental Abscess | **NOT VERIFIED** |
+| 19 | [Q-0319](../../quests/v1/Q-0319.md) | Dental Injury | Dental Abscess | https://www.nasa.gov/wp-content/uploads/2026/08/dental-abscess-cliff-2023.pdf?emrc=0fbf2d |
 | 20 | [Q-0320](../../quests/v1/Q-0320.md) | Dental Injury | Dental Cross Loss | **NOT VERIFIED** |
-| 21 | [Q-0321](../../quests/v1/Q-0321.md) | Dental Injury | Dental Exposed Pulp | **NOT VERIFIED** |
+| 21 | [Q-0321](../../quests/v1/Q-0321.md) | Dental Injury | Dental Exposed Pulp | https://www.nasa.gov/wp-content/uploads/2026/08/dental-fracture-exposed-pulp-cliff-2023.pdf?emrc=8b0c49 |
 | 22 | [Q-0322](../../quests/v1/Q-0322.md) | Dental Injury | Dental Filling Loss | **NOT VERIFIED** |
 | 23 | [Q-0323](../../quests/v1/Q-0323.md) | Dental Injury | Dental Luxation/Avulsion (Tooth Loss) | **NOT VERIFIED** |
 | 24 | [Q-0324](../../quests/v1/Q-0324.md) | Eye Injury | Burn Chemical Eye | **NOT VERIFIED** |
@@ -128,7 +128,7 @@ Native library engineering Quests: **Q-0420–Q-0435**. None is DONE at creation
 | 116 | [Q-0416](../../quests/v1/Q-0416.md) | Urogenital Conditions | Vaginal Yeast Infection | **NOT VERIFIED** |
 | 117 | [Q-0417](../../quests/v1/Q-0417.md) | Vision Changes | Glaucoma (Acute Angle Closure) | **NOT VERIFIED** |
 | 118 | [Q-0418](../../quests/v1/Q-0418.md) | Vision Changes | Spaceflight Associated Neuro-Ocular Syndrom (SANS) | **NOT VERIFIED** |
-| 119 | [Q-0419](../../quests/v1/Q-0419.md) | UNRESOLVED | RECONCILE MISSING 119TH | **NOT VERIFIED** |
+| 119 | [Q-0419](../../quests/v1/Q-0419.md) | UNRESOLVED | RECONCILE MISSING 119TH (118 rows published on NASA IMM) | **UNRESOLVED (DO NOT FABRICATE)** |
 
 ## Cross-check gates
 1. At least 119 distinct verified NASA originals by source document ID and hash, not merely titles.

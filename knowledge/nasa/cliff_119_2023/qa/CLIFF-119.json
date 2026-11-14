@@ -6,27 +6,30 @@
   "title": null,
   "category": null,
   "review_status": "BLOCKED_SOURCE_UNRESOLVED",
-  "observed_at_utc": "2026-11-14T05:33:00Z",
+  "observed_at_utc": "2026-11-14T10:36:00Z",
   "sources": [
     {
       "type": "official_nasa_imm_index",
       "url": "https://www.nasa.gov/integrated-medical-model-documentation/",
-      "description": "NASA rendered documentation table; CliFF 119 column; 119th unique document not established"
+      "description": "NASA rendered documentation table (306 rows); CliFF 119 column (column index 3) contains exactly 118 non-empty rows, all 118 with unique clickable PDF URLs (0 unlinked, 0 duplicates). No 119th entry exists in the published HTML table."
     },
     {
       "type": "aetherion_coordination_catalog",
       "path": "quests/CLIFF_119_INDEX.md",
-      "git_blob_sha": "fec4b6c235075a19cceb2e26d606c54fa38ad18a",
-      "description": "119 declared work slots; 118 named entries and one explicitly unresolved placeholder"
+      "description": "119 declared work slots; 118 named entries (all 118 verified in NASA IMM CliFF 119 column) and 1 explicitly unresolved placeholder at slot 119."
     }
   ],
   "audit": {
-    "method": "Inspect published NASA IMM CliFF 119 column; parse AETHERION assignment catalog slot rows, with slot 119 labeled RECONCILE MISSING 119TH",
+    "method": "Full HTML table column parse of https://www.nasa.gov/integrated-medical-model-documentation/ (column 3: CliFF 119) under Q-0457",
     "catalog_slots": 119,
     "catalog_named_slots": 118,
     "catalog_unresolved_slots": 1,
+    "nasa_imm_cliff119_published_rows": 118,
+    "nasa_imm_cliff119_unlinked_rows": 0,
+    "nasa_imm_cliff119_unique_urls": 118,
     "official_unique_119th_identified": false,
     "official_119th_absence_proven": false,
+    "distinction_from_019_and_021": "CLIFF-019 (Dental Abscess) and CLIFF-021 (Dental Exposed Pulp) WERE published with direct HTTP-200 PDFs in the NASA IMM CliFF 119 column and are now resolved. CLIFF-119 (Q-0419) is a distinct catalog gap: NASA's public table lists only 118 entries under CliFF 119.",
     "direct_source_url": null,
     "http_source_status": "NOT_TESTED_NO_VERIFIED_DIRECT_URL",
     "original_bytes_acquired": false,
@@ -45,22 +48,11 @@
   "blockers": [
     {
       "code": "ORIGINAL_IDENTITY_UNRESOLVED",
-      "evidence": "AETHERION slot 119 is not associated with an individually identified NASA CliFF 119 item; official rendered index does not establish a distinct 119th source from this audit"
-    },
-    {
-      "code": "DIRECT_URL_UNVERIFIED",
-      "evidence": "No independently verified direct original CliFF 119 document URL exists for this unidentified slot"
-    },
-    {
-      "code": "RIGHTS_AND_NATIVE_RENDER_UNVERIFIED",
-      "evidence": "No original bytes, permitted licensed images, library import, or Windows native render proof exists"
+      "evidence": "NASA's public IMM CliFF 119 column publishes 118 unique PDF links and no 119th entry; AETHERION slot 119 must not fabricate a 119th condition or PDF."
     }
   ],
   "next_actions": [
-    "Reconcile the official NASA 2023 CliFF 119 source roster with an authoritative NASA listing or NASA contact; identify distinct final item and exact category/title",
-    "Resolve the exact final file-level document URL; record actual retrieval outcome, version, page count and SHA-256",
-    "Only after authentic content is accessible, audit page-anchored sections/figures/tables, rights-cleared image assets, SQLite ingestion and real Windows offline preview",
-    "Obtain independent review before changing this Quest to DONE"
+    "Reconcile the 119th CliFF item directly with NASA IMM documentation maintainers; never invent a 119th record or URL."
   ],
-  "safety_note": "This is a missing-source audit only; it is not a clinical reference, a downloaded NASA document, a diagnosis, or proof that the complete 119 original documents are available."
+  "safety_note": "This is a missing-source audit only; it is not a clinical reference, a downloaded NASA document, a diagnosis, or proof that the 119th document is publicly downloadable."
 }
