@@ -108,15 +108,22 @@ def build_medical_library_page(parent=None):
     from PySide6.QtCore import Qt
     from PySide6.QtWidgets import (
         QHBoxLayout, QLabel, QLineEdit, QListWidget, QListWidgetItem,
-        QPushButton, QSplitter, QVBoxLayout, QWidget,
+        QPushButton, QSplitter, QStackedWidget, QVBoxLayout, QWidget,
     )
+
+    from .medical_article_reader import build_medical_article_reader
 
     class MedicalLibraryPage(QWidget):
         def __init__(self, parent=None) -> None:
             super().__init__(parent)
             self.catalog = OfflineMedicalCatalog()
             self.current_articles: dict[str, ArticleSummary] = {}
-            layout = QVBoxLayout(self)
+            host_layout = QVBoxLayout(self)
+            host_layout.setContentsMargins(0, 0, 0, 0)
+            self.stack = QStackedWidget(self)
+            host_layout.addWidget(self.stack)
+            self.catalog_panel = QWidget(self.stack)
+            layout = QVBoxLayout(self.catalog_panel)
             layout.setContentsMargins(18, 24, 18, 16)
             heading = QLabel("Medical Library · Offline CliFF index")
             heading.setObjectName("heading")
@@ -144,6 +151,11 @@ def build_medical_library_page(parent=None):
             self.detail.setTextFormat(Qt.TextFormat.PlainText)
             self.detail.setAlignment(Qt.AlignmentFlag.AlignTop)
             detail_layout.addWidget(self.detail)
+            self.read_article_button = QPushButton("Read selected article offline")
+            self.read_article_button.setAccessibleName("Read imported article from local library")
+            self.read_article_button.setEnabled(False)
+            self.read_article_button.clicked.connect(self.open_selected_article)
+            detail_layout.addWidget(self.read_article_button)
             detail_layout.addStretch()
             split.addWidget(detail)
             split.setSizes([420, 600])
@@ -151,14 +163,22 @@ def build_medical_library_page(parent=None):
             warning = QLabel("Research reference only · Not a diagnosis, medical device, or NASA endorsement")
             warning.setWordWrap(True)
             layout.addWidget(warning)
+            # The new reader owns its own scrollable Qt page; no WebEngine/browser.
+            self.reader_page = build_medical_article_reader(self.catalog.path, self.stack)
+            self.reader_page.back_requested.connect(self.show_article_list)
+            self.stack.addWidget(self.catalog_panel)
+            self.stack.addWidget(self.reader_page)
             self.search.textChanged.connect(self.reload)
             self.items.itemSelectionChanged.connect(self.show_selection)
+            self.items.itemDoubleClicked.connect(lambda item: self.open_selected_article())
             self.reload()
 
         def reload(self) -> None:
             snapshot = self.catalog.list_articles(self.search.text())
             self.current_articles = {a.article_id: a for a in snapshot.articles}
             self.items.clear()
+            self.read_article_button.setEnabled(False)
+            self.stack.setCurrentWidget(self.catalog_panel)
             self.status.setText(f"{snapshot.total}/{MAX_ARTICLES} locally indexed · {snapshot.message}")
             for article in snapshot.articles:
                 item = QListWidgetItem(f"{article.slot:03d}  {article.title}  [{article.completeness}]")
@@ -169,22 +189,39 @@ def build_medical_library_page(parent=None):
             elif not snapshot.articles:
                 self.detail.setText("No matching imported article. Search does not query the internet.")
             else:
-                self.detail.setText("Select a local article. Full-text reader and figures require separate verification.")
+                self.detail.setText("Select a local article to inspect imported text, tables, citations and rights-reviewed images.")
 
         def show_selection(self) -> None:
             item = self.items.currentItem()
             if item is None:
+                self.read_article_button.setEnabled(False)
                 return
             article = self.current_articles.get(item.data(Qt.ItemDataRole.UserRole))
             if article is None:
+                self.read_article_button.setEnabled(False)
                 return
+            self.read_article_button.setEnabled(True)
             self.detail.setText(
                 f"{article.title}\n\nCategory: {article.category}\n"
                 f"Import completeness flag: {article.completeness}\n"
                 f"Source verification flag: {article.source_state}\n"
                 f"Source: {article.source_url}\n\n"
                 "Flags describe imported metadata, not independent clinical validation. "
-                "Full article text and image viewer are not yet implemented."
+                "Use Read selected article offline for source-anchored text and approved images."
             )
+
+        def open_selected_article(self) -> None:
+            item = self.items.currentItem()
+            if item is None:
+                return
+            article_id = item.data(Qt.ItemDataRole.UserRole)
+            if article_id not in self.current_articles:
+                return
+            # The reader renders missing/corrupt source states explicitly; no online fallback.
+            self.reader_page.open_article(article_id)
+            self.stack.setCurrentWidget(self.reader_page)
+
+        def show_article_list(self) -> None:
+            self.stack.setCurrentWidget(self.catalog_panel)
 
     return MedicalLibraryPage(parent)
