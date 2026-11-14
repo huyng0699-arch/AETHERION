@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "audit_id": "aetherion-encyclopedia-cliff-119-audit",
+  "audited_at_utc": "2026-11-14T03:53:00Z",
+  "expected_condition_count": 119,
+  "fetched_original_files_count": 0,
+  "sha256_verified_count": 0,
+  "completeness_percent": 0.0,
+  "medical_catalog_populated": false,
+  "verification_state": "NO_DATA",
+  "source_authority": {
+    "publisher": "NASA",
+    "url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+    "collection": "Integrated Medical Model (IMM) CliFF 119 (2023)"
+  },
+  "observed_gaps": [
+    "knowledge/nasa/cliff_119_2023/original/ does not exist; 0 original PDF/DOCX/DOC files fetched.",
+    "knowledge/nasa/cliff_119_2023/manifest.json does not exist; 0 SHA-256 digests verified.",
+    "knowledge/medical/ contains no verified condition catalog records yet."
+  ],
+  "policy": "Do not invent missing CliFF 119 conditions or present legacy ASTRA condition counts as verified AETHERION medical records."
+}
