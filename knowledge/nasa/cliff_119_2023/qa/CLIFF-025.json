@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-025",
+  "slot": 25,
+  "quest_id": "Q-0325",
+  "checked_at_utc": "2026-11-14T06:03:47.958680+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eye-foreign-body-cliff-2023.pdf?emrc=7687ee",
+  "http_status": 200,
+  "pdf_sha256": "92bc058aba47c933e39693cb5e96bc943028ff29a439363d4dc52028440ded29",
+  "pdf_bytes": 396493,
+  "pages_extracted": 16,
+  "sections_count": 16,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-025-IMG-01": "6cbccd186bb0d178d99a6b378e41cdd81297768fd7b1b0debb62cba98d46bce1",
+    "CLIFF-025-IMG-02": "e2fe9ba36651448f36bc4b0270c1877f531faa9b1df48268c6450a451f12cf0b",
+    "CLIFF-025-IMG-03": "3c2be5cd230d810d506cca0fcacffaea6ea33abb348f2b2164b8dbbad7fb3220"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
