@@ -22,6 +22,7 @@ python scripts/quest_board.py check
 python scripts/quest_board.py stats
 python scripts/quest_board.py ready
 python scripts/quest_board.py running
+python scripts/quest_parallel_candidates.py --limit 40  # READY + QUEUED tasks
 ```
 
 The index pages below are initial listings; individual Quest status is authoritative. There are **435** tasks: 300 original tasks, 119 individual NASA CliFF source-ingestion Quests and 16 medical-library App View engineering Quests.
