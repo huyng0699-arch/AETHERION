@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "hazard_id": "distance_from_earth",
+  "title": "Distance from Earth",
+  "quest_id": "Q-0114",
+  "retrieved_at_utc": "2026-11-14T03:58:15Z",
+  "is_live_telemetry": false,
+  "primary_sources": [
+    {
+      "source_id": "nasa-hrp",
+      "publisher": "NASA Human Research Program (HRP)",
+      "url": "https://www.nasa.gov/hrp/"
+    },
+    {
+      "source_id": "nasa-space-apps-2026",
+      "publisher": "NASA Space Apps Challenge 2026",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/"
+    }
+  ],
+  "communication_delay_and_autonomy_constraints": {
+    "operational_context": "Deep-space missions (lunar and future Mars transit) introduce significant signal-propagation latency and intermittent ground contact, requiring crew-autonomous health indicator gathering, local persistence, and offline-capable reference guidance.",
+    "design_implications_for_aetherion": [
+      "Local-first HTTP server + SQLite storage operates without internet or cloud AI.",
+      "Deterministic GATHER -> EVALUATE -> ACT -> RECHECK care flow remains available when ground flight-surgeon contact is delayed or OFFLINE.",
+      "Explicit delivery and verification states (OFFLINE, STALE, NO_DATA, UNVERIFIED) prevent false assumptions about ground acknowledgment."
+    ],
+    "source_ids": ["nasa-hrp", "nasa-space-apps-2026"]
+  },
+  "limitations": [
+    "No live spacecraft telemetry link or flight-surgeon ground console is integrated; offline autonomy refers to local software continuity, not clinical self-treatment authorization."
+  ]
+}
