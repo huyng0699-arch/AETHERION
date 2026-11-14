@@ -1,0 +1,520 @@
+{
+  "article_id": "CLIFF-065",
+  "slot": 65,
+  "display_title": "Barotrauma (Ear Sinus Block)",
+  "category": "Otolaryngology",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-065",
+    "publisher": "NASA",
+    "title": "Barotrauma (Ear Sinus Block) \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/barotrauma-ear-sinus-block-cliff-2023.pdf?emrc=4e336d",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/barotrauma-ear-sinus-block-cliff-2023.pdf?emrc=4e336d",
+    "retrieved_at_utc": "2026-11-14T06:23:06.633848+00:00",
+    "content_sha256": "9cf12087578325ac03cbe47e8d543d10b8b32d08640f4bb814b60dec73222d83",
+    "original_mime": "application/pdf",
+    "original_bytes": 309439,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-065-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch      Baseline\n\n\n\n ICL11_Barotrauma (Ear/Sinus Block)\n\n This condition is most likely to be associated with ambient pressure changes during an EVA. Therefore. inflight data would be most applicable.\n Barotrauma of the ear and sinuses occurs when there are pressure changes in the gases trapped within these cavities. This condition happens when\n there is a difference in pressure between the enclosed volume and the ambient pressure, and the change in ambient pressure overcomes the\n capacity of the enclosed space to equalize. Changes in pressure occur during space flight missions when the crewmember is transferring between\n habitable volumes of differing pressures (such as in an airlock), when pressurizing and depressurizing for an EVA, and when contingencies result in\n changing pressures in the spacecraft. During some space shuttle missions, the cabin pressure was lowered to 10.2 psi to reduce the amount of time\n needed to pre-breathe by EVA astronauts. It is felt that the risk of barotrauma at constant cabin pressure is extremely low and can be considered\n zero. Accordingly, the incidence is based on the number of EVA\u2019s that are performed during a mission with each participating crewmember at risk. It is\n felt that this approach represents a significant improvement from the previous IMM CLIFF that covered this condition. This medical condition is\n mission phase dependent. It is postulated to occur only during the pressure changes associated with EVA. The risk is considered to be zero during\n periods when the cabin pressure remains constant. Limitations \u2022 Under-reporting for this condition could have occurred during past space missions\n since barotrauma may be mild and easily cleared by the crew. This could result in underestimation of the incidence. \u2022 If there are significant cabin\n pressure changes during transition from a lunar/Martian lander and habitat to an orbiting vehicle, these events may also result in barotrauma. Each\n such occurrence should be considered as a separate at-risk event, equal to an individual EVA. Reconsideration of these risks will need to be done\n after IMPACT 1.0. \u2022 It is important that MPRAT implement the calculated incidence on a per-crewmember basis. In other words, if three crewmembers\n experience a pressure change as a result of an EVA, these are three separate events.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Spaceflight incidence was somewhat difficult to ascertain as the key paper used in previous CLIFF (Walton, 2010) was unable to be found via\n  search. A similar incidence was calculated using instances of barotrauma during the apollo program and calculating total person flight hours to\n  estimate an incidence (1 in-flight event/7494 hours of person flight time). Antonsen et al's \"Risk of Adverse Health Outcomes and Decrements in\n  Performance due to In-Flight Medical Conditions\" provides the most accurate number of events of barotrauma in astronauts, but no time frame is\n  given so it is impossible to calculate an incidence.\n\n  ANALOG LITERATURE\n\n  Analog literature mostly included diving and altitude (flight or altitude experiments). Barotrauma has a higher incidence in diving as expected, as\n  pressure changes in diving greatly exceed those in flight. Diving literature was used to estimate incidence of worst case outcomes, as the included\n  paper graded ear damage using a modified TEED score and I was able to calculate what percentage of cases were severe using a modified TEED\n  score >2.\n\n  TERRESTRIAL LITERATURE\n\n  No terrestrial incidence included, as barotrauma outside of diving//altitude/flight was not readily found in the literature.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   mean: 0.1043 and SD: 0.0142\n\n\n\n\n6/15/2023 1:35:07 PM                                              ICL11_Barotrauma (Ear/Sinus Block) Cliff                                                 page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-065-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  INCIDENCE SUMMARY\n\n  Beta(shape1=48.22, shape2=414.09) with mean: 0.1043 and SD: 0.0142. This reflects the Bayesian posterior distribution for the incidence\n  proportion given the inflight data of 48 events over 467 person-EVAs using an uninformative prior. Data: Inflight experience of 48 events over 467\n  person-EVAs. This aligns with the 2 IMM data requests matching the 31 for the initial LSAH data pull (Walton 2010) which is identical to Table 2 in\n  Antonsen, and 17 additional cases in the Saile 2017 RWS LSAH data request. IP 0.1028 (95%CI: 0.0768, 0.1340).\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     EVA\n     Segment\n     EVA All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Binomial\n     Incidence Dist.\n     Beta\n     Mean\n     0.104302\n     SD\n     0.0142001\n\n\n     Beta\n     (Alpha): 48.22\n     (Beta): 414.09\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                          Source                                   LOC Value\n\n   Walton, et al. 2010                                               Spaceflight                              3\n\n\n  LOE = 3 (somewhat confident) based on historical spaceflight data. Not assigned LOE 4 (confident) due to unknown vehicle and atmosphere\n  design for future exploration missions.\n\n\n\n\n6/15/2023 1:35:07 PM                                           ICL11_Barotrauma (Ear/Sinus Block) Cliff                                                 page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-065-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  No preflight preventive measures from a medical perspective. Prevention will be though vehicle and atmosphere design considerations, and inflight\n  procedures.\n\n  BEST CASE SCENARIO DEFINITION\n\n  Mild barotrauma including minimal ear or sinus pain and/or fullness that responds to analgesics and decongestants.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Moderate to severe barotrauma, including symptoms of significant ear and/or sinus pain, hearing loss, vertigo, nausea, dizziness, and/or ear canal\n  hemorrhage or epistaxis that may require surgical repair (e.g. oval window rupture).\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  Oval Window Rupture\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  This condition was well supported with decent analogue and reasonable spaceflight data. Data relied on military papers as well as dive data-- as\n  this is a reasonable terrestrial analogue to pressure ops, although acknowledging [?] that the characterization of the condition definition \"assumes\n  ambient spacecraft atmospheric pressure changes occur regularly in the course of ISS missions operations.\" BC definition did not support RTDC or\n  LOCL outcomes. There were multiple surrogates cited. Cumulatively, Tab 1A and 4D stated \"Hospitalization, Surgery and 'RTDC surrogate is\n  refractory vertigo'.\" After consultations with preceptors, all were considered for WC RTDC.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                         Source                                    LOC Value\n\n   Walton, et al. 2010                                              Spaceflight                               4\n\n\n\n\n6/15/2023 1:35:07 PM                                           ICL11_Barotrauma (Ear/Sinus Block) Cliff                                                  page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-065-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                               CP1: Diagnosis       CP2: Treatment            CP3: Condition End State\n\n                                                               TI%      Duration    TI%        Duration       TI%         RTDC             LOCL\n                       Composite             Condition\n   Case Scenario       Incidence             Probability %     Preset   Preset      Preset     Min    Max     Preset      Min%    Max%     Min%     Max%\n\n   Treated Best        mean: 0.1043          98 - 98           100      0.7         11.6264    24     288     0           0       0        0        0\n   Case (TBC)          and SD: 0.0142\n\n   Treated Worst                             2-2               100      1.25        45.3893    24     1344    0           0       9.1      0        0\n   Case (TWC)\n\n   Untreated Best      N/A                   N/A               N/A      0.7         11.6264    24     288     0           0       0        0        0\n   Case (UTBC)\n\n   Untreated Worst     N/A                   N/A               N/A      1.25        53.2421    24     1344    6.77651     0       100      0        0\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n6/15/2023 1:35:07 PM                                             ICL11_Barotrauma (Ear/Sinus Block) Cliff                                                     page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-065-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  The best-case scenario is a mild barotrauma event that easily resolves. Minimal pain is expected. The worst case is a moderate to severe\n  barotrauma. The definition also states hearing loss, vertigo, nausea, dizziness, and/or ear canal hemorrhage or epistaxis are all possible, but many\n  of these are separate conditions.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Excellent analogue paper from Aerospace medicine and human performance, with a similar cohort to the astronaut corps in age and fitness level\n  [limitation: Korean student pilots]. RTDC and LOCL are expected to be 0 per definition.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  Excellent analogue studies-- again citing Sohn 2017 as well as paper for WC definition [Klingmann, 2007], which cites diving accidents-- pressure\n  ops being one of the most likely etiologies for this condition in space. TWC LOCL as expected per definition, yielded no data supporting any\n  mortality.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  Similar data used as the treated scenarios, with useful data for UTBC duration. Per definition, Best case untreated are not expected to result in\n  RTDC or LOCL.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  Search methodologies as outlined for Untreated yielded no results. We may assume longer durations than best case definitions, therefore I copied\n  UTBC into UTWC duration with a \">\" sign, to give some data, albeit imperfect. One study [Roscycki, 2018--NOT CITED] summarized the conundrum\n  with reconciling WC definition with untreated outcomes \"The diagnosis of inner-ear barotrauma remains difficult to define short of visualization\n  through surgical exploration. Early treatment is defined by conservative management with a subsequent observational period to determine\n  symptomatic resolution and need for surgery.\" Inner ear DCS which requires early recompression cannot be considered equivalent, as many\n  symptoms of vertigo, etc., resolve after recompression confounding, per our definition, UNTREATED \"symptoms of significant ear and/or sinus pain,\n  hearing loss, vertigo, nausea, dizziness, and/or ear canal hemorrhage or epistaxis that may require surgical repair.\"\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                        Source                                    LOC Value\n\n   Sohn, et al. 2017                                               Terrestrial                                                   3\n\n  CP2 durations based on terrestrial studies. (Sohn, 2017). This data is assigned an LOE = 3 for treated scenarios and an LOE = 1 for untreated\n  scenarios.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                 Source                               LOC Value\n\n   Klingmann, et al. 2007                                                   Terrestrial                                              3\n\n\n\n\n6/15/2023 1:35:07 PM                                            ICL11_Barotrauma (Ear/Sinus Block) Cliff                                                 page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-065-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  LOE = 4 for best case scenarios. RTDC is not expected in best case scenarios based on best case definition. LOE = 3 for treated worst case\n  scenario. (Klingmann, 2007). LOE = 1 for untreated worst case scenario. Untreated worst case RTDC = 0-100% based on worst case definition and\n  RTDC surrogate of refractory vertigo.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                      Source                                      LOC Value\n\n   N/A                                           N/A                                                                     4\n\n  LOCL is not expected for this condition\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  ICL - 11, Barotrauma (Ear/Sinus Block) Definitions: Best Case: Mild barotrauma including minimal ear or sinus pain and/or fullness that responds to\n  analgesics and decongestants. Worst Case: Moderate to severe barotrauma, including symptoms of significant ear and/or sinus pain, hearing loss,\n  vertigo, nausea, dizziness, and/or ear canal hemorrhage or epistaxis that may require surgical repair (e.g. oval window rupture). Capabilities and\n  Resourcing Scope Overview Barotrauma is a tissue injury that occurs secondary to rapid, uncompensated fluctuations of a pressure differential\n  outside the body (Battisti et al. 2021). This condition is governed by Boyle\u2019s Law of Gases which states that if temperature is a constant, there is an\n  inverse relationship between pressure and volume of the gas. Physiological systems most affected by barotrauma are those that entrap air\n  including the auditory system, facial sinuses, and lungs. However, any tissue can be affected, especially if there is prior sustained injury. For\n  example, in aerospace conditions, barodontalgia and dental barotrauma occurs due to incompletely filled carries. This CRT condition focuses\n  solely on ear block or \u201coxygen ear\u201d and barosinusitis. Crew members are most at risks for these conditions during transitions from EVA pressure\n  suits. Most issues occur during repressurization back to craft or station (Barratt et al. 2019). To help circumnavigate ear block, helmets include a\n  \u2018Valsalva device\u2019 that astronauts can push against to open their eustachian tubes, which helps equalize their middle ear space. If pressure\n  continues to increase without equalization of the middle ear space, blood vessels will burst and lead to tympanic membrane rupture (Conkin et al.\n  2018; Landolfi et al. 2010). Implosive or explosive forces transmitted via perilymph can also result in damage to the round or oval windows (inner\n  ear) (OJ et al. 2021). Even once back at stable cabin pressures, eustachian tube function continues to be of importance as it can take several days\n  for pressure differential in the middle ear to resolve. Sinus barotraumas may affect any paranasal sinus (frontal, ethmoid, sphenoid, or maxillary)\n  (Misirovs et al. 2020). The maxillary sinus is often most affected resulting in cheek or facial pain. Sinus barotraumas are not readily relieved by\n  maneuvers to open the Eustachian tube because the obstructed ostia of the sinuses are not in the vicinity of eustachian tube and have their own\n  opening into the nasal cavity (Mohamad 2012). If the affected sinuses\u2019 ostium remains blocked, rupture of vessels inside the sinus can occur\n  resulting in epistaxis (resources for epistaxis are provided in a separate CRT). Treatments for both ear and sinus barotrauma emphasize on\n  relieving the offending obstructions, either eustachian tube or ostium dysfunction, and treating any resultant symptoms. Since both conditions rely\n  on nasal cavity patency, decongestants are a mainstay of treatment. The best-case scenario is a mild barotrauma event that easily resolves.\n  Minimal pain is expected. The worst case is a moderate to severe barotrauma. Although the definition states hearing loss, vertigo, nausea,\n  dizziness, and/or ear canal hemorrhage or epistaxis are all possible, many of these conditions are separate CRT conditions and not resourced\n  here. In the worst case, most resources are sourced for pain and vertigo treatment in addition to nasal patency. CNES: Oval Window Rupture\n  Diagnostic Scope and Resourcing In the best case, diagnosis will be made via history and physical exam. Given the benign nature of this condition,\n  ground communications are not resourced for the best case. For the worst case, a simple differential can be explored using inflight audiometry.\n  Inflight audiometry not only serves to quantify the severity of hearing loss but can also differentiate between the type of hearing loss by quantifying\n  Air- and bone conduction thresholds. Since crewmembers have immediate access to this technology, there is no need to possess a tuning fork to\n  conduct Weber and Rinne tests. Further, if a conductive loss is identified, the latest iteration of the inflight audiometric test (KUDUwaveTM) can\n  perform tympanograms or determine how the eardrum moves in response to the air pressure in the ear canal. Although inflight audiometry is\n  expected to be present secondary to other CRT conditions (Hearing Loss) it was group CRT consensus to make the necessity for this resource\n  \u2018zero\u2019 so that this condition can still be treated even if this resource is not available. Given the significant pain the crewmember is expected to\n  experience, ground communications is resourced for the worst case. Clinical Phase 1 Duration and Rationale This version of IMPACT presumes\n  physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME consensus duration is as follows: CP1 BC\n  (Treated or Untreated): 0.70 hours This is the longest reasonable time to complete the task for an experienced clinician (adjusted for being in the\n  spaceflight environment) 1) to remove a crewmember from duties 2) obtain a history and 3) examine the patient CP1 WC (Treated or Untreated):\n  1.25 hours This is the longest reasonable time to complete the task for an experienced clinician (adjusted for being in the spaceflight environment)\n  This is the longest reasonable time to complete the task for an experienced clinician (adjusted for being in the spaceflight environment) 1) to\n  remove a crewmember from duties 2) obtain a history 3) examine the patient 4) conduct and interpret an inflight audiometry test 5) set up for\n  ground communications. The highest scope of practice code used in this CRT which includes interpretation of diagnosis, performing diagnostic\n  tests and performing treatment would be a four: this is at intern/PA/NP level. Treatment Scope and Resourcing In the best-case scenario, treatment\n  is limited to oral and intranasal decongestants and mild pain medications. Given the concern for nasal patency, a nasal hygiene regimen is\n  recommended throughout CP2. Although in terrestrial conditions a Neti Pot is useful to relieve sinus block, it was CRT group consensus that\n  implementing this in space would be too technically difficult. The worst case scenario also allocates for opioid medications and vertiginous\n  medications acutely. Communications and Support Needs In the best-case scenario, diagnosis and course of treatment is uncomplicated and likely\n  within the scope of care of onboard crew members. In the worst-case condition, ground communications are necessary given the sudden\n  impairment of the affected crewmember and the need to ensure an accurate diagnosis. REFERENCES Barratt, Michael R., Ellen S. Baker, and\n  Sam L. Pool. 2019. \"Principles of clinical medicine for space flight.\" In. New York, NY: New York, NY : Springer. Battisti, A. S., A. Haftel, and H. M.\n  Murphy-Lavoie. 2021. 'Barotrauma.' in, StatPearls (StatPearls Publishing Copyright \u00a9 2021, StatPearls Publishing LLC.: Treasure Island (FL)).\n  Conkin, J., R. W. Sanders, M. D. Koslovsky, M. L. Wear, A. G. Kozminski, and A. F. J. Abercromby. 2018. 'A Systematic Review and Meta-Analysis\n  of Decompression Sickness in Altitude Physiological Training', Aerosp Med Hum Perform, 89: 941-51. Landolfi, A., A. Autore, F. Torchia, M. Ciniglio\n  Appiani, F. Morgagni, and G. Ciniglio Appiani. 2010. 'Ear pain after breathing oxygen at altitude: prevalence and prevention of delayed\n  barotrauma', Aviat Space Environ Med, 81: 130-2. Misirovs, R., and S. Mohamad. 2020. 'Reverse Squeeze Maxillary Sinus Barotrauma', Ear Nose\n  Throat J, 99: Np9-np10. Mohamad, I. 2012. 'Aeroplane headache and sinus barotrauma: any missing link?', Cephalalgia, 32: 1087. OJ, O. Neill, K.\n  Brett, and A. J. Frank. 2021. 'Middle Ear Barotrauma.' in, StatPearls (StatPearls Publishing Copyright \u00a9 2021, StatPearls Publishing LLC.: Treasure\n  Island (FL)).\n\n\n\n\n6/15/2023 1:35:07 PM                                            ICL11_Barotrauma (Ear/Sinus Block) Cliff                                                    page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-065-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  IMM CLIFF RECONCILATION COMMENTS\n\n\n  Barotrauma (ear/sinus block) functional impairments (FI) calculation follows the IMM mild non-space adaptation template. Barotrauma is not listed in\n  the AMA Guides for permanent impairment. By related symptomatology and location, we are using Vestibular Disorders, based on Table 11-4, p\n  258. (American Medical Association, 2008) and Complex Regional Pain (UEI) is based on Table 15-26, p.454. (American Medical Association,\n  2008) The CRPS (UEI) ratings are then converted to percentage of Whole Person Impairment (WPI), which are based on Table 15- 1, p 385\n  (American Medical Association, 2008). Combined FI ratings are calculated combining Vestibular disorders FI and Whole Body Impairment using the\n  Combined Values Chart as indicated in Appendix A, pp 604-606 (American Medical Association, 2008). For further description of gradings refer to\n  the CliFF Appendix. By definition in Clinical Phase I, FI is 100%. Duration to follow procedures specified in ISS checklist, i.e. ear and nose exam is\n  estimated to be 15 minutes. During Clinical Phase II, FI is estimated at 2 to 38%. Duration is estimated in 168 to 1008 hours, 7 to 42 days, or 1 to 6\n  weeks. For sinus barotrauma symptoms resolve spontaneously; recovery time may extend from 1-2 weeks up to 6 weeks (Weitzel, 2008); (Smith,\n  1972). For otic barotrauma, including the recommended waiting time for spontaneous resolution is 2-3 weeks (Clark, 2008)In Clinical Phase III,\n  barotrauma may recover or improve. FI is estimated at 0 to 16%. By definition EVAC and LOCL are not expected for the worst case scenario.\n  Barotrauma could be classified as a Class I Medical Event with no mission impact, or a Class IIa, manageable with the HMS and not likely to require\n  evacuation or affect mission duration (Johnston, 2008).\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  Under-reporting for this condition could have occurred during past space missions since barotrauma may be mild and easily cleared by the crew.\n  This could result in underestimation of the incidence. If there are significant cabin pressure changes during transition from a lunar/Martian lander\n  and habitat to an orbiting vehicle, these events may also result in barotrauma. Each such occurrence should be considered as a separate at-risk\n  event, equal to an individual EVA. Reconsideration of these risks will need to be done after IMPACT 1.0. It is important that MPRAT implement the\n  calculated incidence on a per-crewmember basis. In other words, if three crewmembers experience a pressure change as a result of an EVA, these\n  are three separate events.\n\n\n\n\n6/15/2023 1:35:07 PM                                            ICL11_Barotrauma (Ear/Sinus Block) Cliff                                                   page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-065-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                              Clinical Phase 2: Treatment\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                 Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n                            664\n    Case\n    (TBC)\n  Untreated\n    Best\n                            664\n    Case\n   (UTBC)\n   Treated\n    Worst\n                            664                              89             854            44             145                       13\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223             664            113               89             854            44             145                       13\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                       Total\n                                                                                                                                                     Human\n                                                                                            Translation &                            Total Tasks\n                Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                            Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n               (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                           (microgravity)                            Condition\n                                                                                                                                                    Tasks Full\n                                                                                                                                                     Mission\n   Treated\n     Best\n                                                                                                                       211          875            3763          0.232527      23.2527\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                                                                       211          875            3763          0.232527      23.2527\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132              564            414               22             196            34             34           211          3416           3763          0.907786      90.7786\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132             564            414               22             196            34             34           211          3752           3763          0.997077      99.7077\n    Case\n   (UTWC)\n\n                                                                          Clinical Phase 3: Condition End State\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                 Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n    Case\n   (UTBC)\n   Treated\n    Worst\n     Case\n    (TWC)\n  Untreated\n    Worst\n                                                                                           44\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n6/15/2023 1:35:07 PM                                              ICL11_Barotrauma (Ear/Sinus Block) Cliff                                                                        page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-065-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                Translation &                           Total Tasks\n               Hand                                     Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal       TI %\n              (Dom)                                   Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                               (microgravity)                           Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n   Treated\n     Best\n                                                                                                                       0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                                                                       0              3763          0                0\n    Case\n   (UTBC)\n   Treated\n    Worst\n                                                                                                                       0              3763          0                0\n     Case\n    (TWC)\n  Untreated\n    Worst\n                                                                                                           211         255            3763          0.0677651 6.77651\n    Case\n   (UTWC)\n\n\n\n\n6/15/2023 1:35:07 PM                                    ICL11_Barotrauma (Ear/Sinus Block) Cliff                                                                         page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-065-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n6/15/2023 1:35:07 PM                                            ICL11_Barotrauma (Ear/Sinus Block) Cliff                                                   page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-065-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   Walton M, Kerstman E, IMM. In-flight Compilation v20100414_Incidence_calculation. 2010. Sohn, J. H., & Cho, K. R. (2017). Middle ear\n   barotrauma in student pilots. Aerospace medicine and human performance, 88(4), 406-412. Klingmann, C., Praetorius, M., Baumann, I., &\n   Plinkert, P. K. (2007).\n\n   Barratt, Michael R., Ellen S. Baker, and Sam L. Pool. 2019. \"Principles of clinical medicine for space flight.\" In. New York, NY: New York, NY :\n   Springer.\n\n   Battisti, A. S., A. Haftel, and H. M. Murphy-Lavoie. 2021. 'Barotrauma.' in, StatPearls (StatPearls Publishing\n\n   Copyright \u00a9 2021, StatPearls Publishing LLC.: Treasure Island (FL)).\n\n   Conkin, J., R. W. Sanders, M. D. Koslovsky, M. L. Wear, A. G. Kozminski, and A. F. J. Abercromby. 2018. 'A Systematic Review and Meta-\n   Analysis of Decompression Sickness in Altitude Physiological Training', Aerosp Med Hum Perform, 89: 941-51.\n\n   Landolfi, A., A. Autore, F. Torchia, M. Ciniglio Appiani, F. Morgagni, and G. Ciniglio Appiani. 2010. 'Ear pain after breathing oxygen at altitude:\n   prevalence and prevention of delayed barotrauma', Aviat Space Environ Med, 81: 130-2.\n\n   Misirovs, R., and S. Mohamad. 2020. 'Reverse Squeeze Maxillary Sinus Barotrauma', Ear Nose Throat J, 99: Np9-np10.\n\n   Mohamad, I. 2012. 'Aeroplane headache and sinus barotrauma: any missing link?', Cephalalgia, 32: 1087.\n\n   OJ, O. Neill, K. Brett, and A. J. Frank. 2021. 'Middle Ear Barotrauma.' in, StatPearls (StatPearls Publishing\n\n   Copyright \u00a9 2021, StatPearls Publishing LLC.: Treasure Island (FL)).\n\n\n\n\n  ACRONYMS\n\n\n\n   ACRONYM                       PHRASE\n\n   AAOMS                         American Association of Oral and Maxillofacial Surgeons\n\n   AMA                           American Medical Association\n\n   ARCL                          All Remaining Conditions List\n\n   ARS                           Acute Radiation Sickness\n\n   BHP                           Behavioral Health and Performance\n\n   CAC                           Coronary Artery Calcium\n\n   CHS                           Crew Health and Safety\n\n   CL                            Condition List\n\n   CliFF                         Clinical Finding Form\n\n   CMO                           Crew Medical Officer\n\n   COMFORT                       Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                           Clinical Phase 1\n\n   CP2                           Clinical Phase 2\n\n   CP3                           Clinical Phase 3\n\n   CRL                           Clinical Resource Level\n\n   CRT                           Capability Resource Table\n\n   CST                           Clinical Science Team\n\n   DCS                           Decompression Syndrome\n\n   DRM                           Design Reference Mission\n\n   ED                            Emergency Medicine Doctor\n\n\n\n\n6/15/2023 1:35:07 PM                                             ICL11_Barotrauma (Ear/Sinus Block) Cliff                                                page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-065-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n\n\n\n6/15/2023 1:35:07 PM                                     ICL11_Barotrauma (Ear/Sinus Block) Cliff   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-065-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n6/15/2023 1:35:07 PM                                  ICL11_Barotrauma (Ear/Sinus Block) Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-065-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "EVA"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "EVA All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Binomial"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Beta"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.104302"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.0142001"
+        ],
+        [
+          "Beta"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-065-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                          Source                                   LOC Value"
+        ],
+        [
+          "Walton, et al. 2010                                               Spaceflight                              3"
+        ],
+        [
+          "LOE = 3 (somewhat confident) based on historical spaceflight data. Not assigned LOE 4 (confident) due to unknown vehicle and atmosphere"
+        ],
+        [
+          "design for future exploration missions."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-065-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                         Source                                    LOC Value"
+        ],
+        [
+          "Walton, et al. 2010                                              Spaceflight                               4"
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-065-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment            CP3: Condition End State"
+        ],
+        [
+          "TI%      Duration    TI%        Duration       TI%         RTDC             LOCL"
+        ],
+        [
+          "Composite             Condition"
+        ],
+        [
+          "Case Scenario       Incidence             Probability %     Preset   Preset      Preset     Min    Max     Preset      Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best        mean: 0.1043          98 - 98           100      0.7         11.6264    24     288     0           0       0        0        0"
+        ],
+        [
+          "Case (TBC)          and SD: 0.0142"
+        ],
+        [
+          "Treated Worst                             2-2               100      1.25        45.3893    24     1344    0           0       9.1      0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best      N/A                   N/A               N/A      0.7         11.6264    24     288     0           0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst     N/A                   N/A               N/A      1.25        53.2421    24     1344    6.77651     0       100      0        0"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-065-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                        Source                                    LOC Value"
+        ],
+        [
+          "Sohn, et al. 2017                                               Terrestrial                                                   3"
+        ],
+        [
+          "CP2 durations based on terrestrial studies. (Sohn, 2017). This data is assigned an LOE = 3 for treated scenarios and an LOE = 1 for untreated"
+        ],
+        [
+          "scenarios."
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-065-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                 Source                               LOC Value"
+        ],
+        [
+          "Klingmann, et al. 2007                                                   Terrestrial                                              3"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-065-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                      Source                                      LOC Value"
+        ],
+        [
+          "N/A                                           N/A                                                                     4"
+        ],
+        [
+          "LOCL is not expected for this condition"
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-065-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision           Hearing                 Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664                              89             854            44             145                       13"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223             664            113               89             854            44             145                       13"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-065-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-065/paranasal_sinuses_anatomy.png",
+      "mime_type": "image/png",
+      "width": 1024,
+      "height": 851,
+      "sha256": "bf7216ed083833d564031edd7265993fceb55f4095125292b00cd12244bc6865",
+      "creator": "RWhitwam",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AParanasal_Sinuses_labelled.png",
+      "attribution": "RWhitwam, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Anatomical illustration of the frontal, ethmoid, sphenoid, and maxillary paranasal sinuses vulnerable to pressure-change sinus block.",
+      "alt_text": "Labeled diagram of the human paranasal sinuses.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Paranasal Sinuses labelled.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-065-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-065/normal_tympanic_membrane_otoscopy.png",
+      "mime_type": "image/png",
+      "width": 671,
+      "height": 435,
+      "sha256": "33d0846e04e6c28a9204afab6f75e2ef9c5b195d35fb198bec20dfa8c10f7f4e",
+      "creator": "Peter0531",
+      "license_identifier": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ATympanic_membrane_viewed_by_otoscope.png",
+      "attribution": "Peter0531, via Wikimedia Commons (CC BY-SA 3.0)",
+      "caption": "Otoscopic view of a normal tympanic membrane with intact light reflex and ossicular landmarks for barotrauma baseline comparison.",
+      "alt_text": "Otoscopic diagram of a normal human eardrum.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Tympanic membrane viewed by otoscope.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-065-IMG-03",
+      "ordinal": 2,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-065/middle_ear_effusion_otoscopy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 2299,
+      "height": 2279,
+      "sha256": "1b8bc0cb7c407888135de753d9f2201007f1b40a05d9ff9237b69fd47fd79e23",
+      "creator": "Michael Hake MD",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AAdult_Serous_Otitis_Media.jpg",
+      "attribution": "Michael Hake MD, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Clinical otoscopic photograph showing serous middle ear effusion behind the tympanic membrane, a classic sequela of Eustachian tube barotrauma.",
+      "alt_text": "Otoscopic photograph of serous middle ear effusion.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Adult Serous Otitis Media.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-065-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Barotrauma (Ear Sinus Block)",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/barotrauma-ear-sinus-block-cliff-2023.pdf?emrc=4e336d",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External sinus anatomy and otoscopic images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

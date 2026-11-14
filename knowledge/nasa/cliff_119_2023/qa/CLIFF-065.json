@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-065",
+  "slot": 65,
+  "quest_id": "Q-0365",
+  "checked_at_utc": "2026-11-14T06:23:06.633848+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/barotrauma-ear-sinus-block-cliff-2023.pdf?emrc=4e336d",
+  "http_status": 200,
+  "pdf_sha256": "9cf12087578325ac03cbe47e8d543d10b8b32d08640f4bb814b60dec73222d83",
+  "pdf_bytes": 309439,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-065-IMG-01": "bf7216ed083833d564031edd7265993fceb55f4095125292b00cd12244bc6865",
+    "CLIFF-065-IMG-02": "33d0846e04e6c28a9204afab6f75e2ef9c5b195d35fb198bec20dfa8c10f7f4e",
+    "CLIFF-065-IMG-03": "1b8bc0cb7c407888135de753d9f2201007f1b40a05d9ff9237b69fd47fd79e23"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
