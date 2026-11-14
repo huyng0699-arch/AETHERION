@@ -92,4 +92,15 @@ These are **dependencies and priorities, not parallel agents already running**. 
 - [Official NASA 2026 challenge](https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/)
 - [NASA 2026 event schedule](https://www.spaceappschallenge.org/2026/)
 
+## Platform Test & Remediation Audit (2026-11-14)
+
+Full test/runtime verification across **Server**, **Desktop**, **Mobile**, **Watch**, and **CI/Tooling** is recorded in [docs/PLATFORM_TEST_AUDIT_2026_11_14.md](docs/PLATFORM_TEST_AUDIT_2026_11_14.md):
+
+- **Server (`apps/server`):** Boots and serves `/health` & `/api/v1/auth/login`, but **fails 6 validation test suites** (`TypeError: Object of type ValueError is not JSON serializable` in `apps/server/src/aetherion_server/main.py:187` under Pydantic v2) and **fails `scripts/smoke_server.py`** (`GET /api/v1/observations` missing `include_non_live=true` for `scope=engineering_test`). Server Control GUI (`Q-0436`) is not yet implemented.
+- **Desktop (`apps/desktop`):** Headless `PySide6` `AetherionWindow` boots and switches 8 pages (`PortalPage`, `MissionControlPage`, `AuthorizedPersonalTodayPage`, `MedicalLibraryPage`, 4 placeholders). Body Atlas, Explore, Care Journey, and Medical Guide remain placeholder `QWidget`s; `medical_image_gallery.py` & `medical_source_audit.py` sit outside `src/aetherion_desktop/`; Windows EXE (`Q-0010`/`Q-0011`) and live Windows boot (`Q-0002`) remain unverified.
+- **Mobile (`apps/mobile`):** `README.md` only — no Android/mobile client code yet (`Q-0196`–`Q-0210`, currently `PLANNED` / `P2`).
+- **Watch (`apps/watch`):** `README.md` only — no Wear OS/watch client code yet (`Q-0181`–`Q-0195`, currently `PLANNED` / `P2`).
+- **CI / Data / Quest Tooling:** `scripts/quest_board.py` crashes on `Q-0436.md` multi-line YAML (`EXPECTED_COUNT=435` vs 436); 9 `test_encyclopedia_*.py` / `test_guide_*.py` modules pass under `pytest` (64 passed) but fail `unittest` in `.github/workflows/server-tests.yml` because `pytest` is not installed; `tests/test_cliff_044_sepsis.py` fails with `ImageRightsError: JPEG missing end marker` (`Q-0344`); `submission/SOURCES_AND_LICENSES.md` has a stale SHA-256 for `THIRD_PARTY_NOTICES.md` (`Q-0264`).
+
 Review owner and current state **on GitHub at HEAD** before each task claim. This file is not a daemon or automatic task runner.
+
