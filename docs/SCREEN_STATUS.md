@@ -1,7 +1,21 @@
 # AETHERION — Native Windows Screen Status / Trạng thái màn hình
 
-**Latest authoring audit:** 2026-11-14, P0 persistent hosted Mission Operations and original-phase NASA table; source only, no Qt screenshot.  
-**Evidence class:** GitHub file SHA and source inspection only. PySide6 unavailable in this runtime; **no new Linux offscreen or Windows screenshot and no runtime acceptance**.
+**Latest authoring audit:** 2026-11-14T17:46:01Z, Q-0485 Open MCT UI correction on branch; source only.  
+**Evidence class:** GitHub branch and source diff inspected. No Qt render, GUI screenshot, desktop launch, or runtime acceptance; visual proof remains **PENDING**.
+
+## Current Open MCT visual checkpoint — branch source only (2026-11-14T17:46:01Z)
+
+**Branch:** `agent/q0485-openmct-visual-20261115` · **source commit:** `5938551aa0da8900382535b3d9c24993c40f1bb9`  
+**Changed screen:** Mission Operations Home, UTC observations, Browse Demo/NASA selection, hosted Monitoring shell.  
+**Changed file:** `apps/desktop/src/aetherion_desktop/mission_ops_home.py`
+
+- The bottom UTC Time Conductor was already below the three-pane splitter in current source; no change was needed to its placement.
+- Replaced index-based UTC bars with an interactive true-time scatter view: actual UTC timestamps set horizontal positions, no connecting/interpolated line, and point selection selects its source row for Inspect.
+- Browse now exposes Demo and keeps Demo/NASA objects selected while their hosted pages are open.
+- The outer conductor hides only while Q-0477 Monitoring is displayed, avoiding two independent visible time controls. No shared-time API or synchronization is claimed.
+- Source change status: **CHANGED ON BRANCH**. Native visual status: **RENDER PENDING**. This is not a screenshot or GUI PASS. No Windows desktop launch was performed; a Qt process could not be launched from the current restricted tool runtime. Independent source review is in progress.
+
+---
 
 ## Final source SHA after MA-7 selection consistency patch
 
