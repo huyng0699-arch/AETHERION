@@ -13,6 +13,7 @@ from fastapi import Depends, FastAPI, Header, HTTPException, Query, Response, st
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel, Field, field_validator, model_validator
 
+from .availability import compute_availability
 from .bootstrap import bootstrap_from_env, default_database_path
 from .scope_guard import validate_metric_scope
 from .security import DEFAULT_SESSION_TTL_SECONDS, is_subject_authorized, verify_password
@@ -256,6 +257,28 @@ def create_app(
                 detail=f"Subject '{subject_id}' not found",
             )
         return {"subject": subject}
+
+    @application.get("/api/v1/subjects/{subject_id}/summary")
+    def subject_summary(
+        subject_id: str,
+        stale_after_seconds: int = Query(3600, ge=1, le=2_592_000),
+        session_and_token: tuple[dict, str] = Depends(require_session),
+    ):
+        session, _ = session_and_token
+        if not is_subject_authorized(session["role"], session["allowed_subjects"], subject_id):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Not authorized to access subject '{subject_id}'",
+            )
+        items = query_observations(
+            get_db_path(),
+            subject_id,
+            include_non_live=False,
+            order="desc",
+            limit=500,
+        )
+        summary = compute_availability(items, stale_after_seconds=stale_after_seconds)
+        return {"subject_id": subject_id, **summary}
 
     @application.get("/api/v1/observations")
     def observations(
