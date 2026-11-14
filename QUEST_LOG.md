@@ -1,6 +1,6 @@
 # AETHERION — Quest control board
 
-**Scope:** 437 Quest specifications on `main`, **Q-0001 through Q-0437**. Q-0436 updates the owner design; Q-0437 implements a native desktop visual shell. Both remain subject to independent review. Each task's live metadata is stored **only in its own `quests/v1/Q-XXXX.md`**. This root file is navigational and does not claim task completion.
+**Scope:** 438 Quest specifications on `main`, **Q-0001 through Q-0438**. Q-0436 updates the owner design; Q-0437 implements the native Portal shell; Q-0438 adds light/dark/fusion visual themes and the animated D62 Settings page. All retain their independent-review requirements. Each task's live metadata is stored **only in its own `quests/v1/Q-XXXX.md`**. This root file is navigational and does not claim task completion.
 
 ## Owner language directive — VI / EN, mandatory for every agent (14/11/2026)
 
@@ -25,7 +25,7 @@ Trạng thái DONE vẫn phải phản ánh sản phẩm thực sự; giảm tes
 
 ## Current working contract — concurrent build, independent acceptance
 
-**Owner directive (14 Nov 2026):** `QUEUED` Quest may start **before its dependencies PASS**. Keep original `depends_on` and claim via exact file SHA with `execution_mode: PREPARE`. Implement direct code first, then focused evidence. A different agent reviews acceptance; missing dependencies prevent only **integration / final PASS**, not independent work. Do not weaken the concrete acceptance criteria in any of the 437 Quest records.
+**Owner directive (14 Nov 2026):** `QUEUED` Quest may start **before its dependencies PASS**. Keep original `depends_on` and claim via exact file SHA with `execution_mode: PREPARE`. Implement direct code first, then focused evidence. A different agent reviews acceptance; missing dependencies prevent only **integration / final PASS**, not independent work. Do not weaken the concrete acceptance criteria in any of the 438 Quest records.
 
 **Standing review Quest:** [REVIEW-0001](quests/review/REVIEW-0001.md) is separate from the 437 numbered implementation tasks. [GitHub Actions](.github/workflows/quest-review-15m.yml) is configured to refresh its pending-review audit **on a 15-minute cron** (GitHub scheduling is best-effort, not guaranteed exactly at the minute). The workflow checks structured evidence and publishes a report; it does not automatically perform a different AI agent's semantic code review. An independently invoked reviewer follows the standing Quest to verify changed code/deliverables and resolve PASS/REWORK. No automatic acceptance without evidence.
 
@@ -46,7 +46,7 @@ python scripts/quest_board.py running
 python scripts/quest_parallel_candidates.py --limit 40  # READY + QUEUED tasks
 ```
 
-The index pages below are initial listings; individual Quest status is authoritative. There are **437** tasks: 300 original tasks, 119 individual NASA CliFF source-ingestion Quests, 16 App View medical-library Quests, **Q-0436** (design correction), and **Q-0437** (Desktop Portal visual implementation).
+The index pages below are initial listings; individual Quest status is authoritative. There are **438** tasks: 300 original tasks, 119 individual NASA CliFF source-ingestion Quests, 16 App View medical-library Quests, **Q-0436** (design), **Q-0437** (Portal), **Q-0438** (immersive theme and Settings).
 
 | Stream | Quest range | Meaning |
 | --- | --- | --- |
@@ -89,6 +89,10 @@ For a short path to a credible NASA submission, prioritize:
 **Q-0001** (CI), **Q-0002** (actual Windows native boot), **Q-0016** (schema), **Q-0031** (observation provenance after schema), **Q-0047** (real observations endpoint), **Q-0061/0062** (Mission UI), **Q-0076/0077** (Personal UI), **Q-0091–0095** (Care), **Q-0106–0109** (real NASA sources), **Q-0241–0246** (tests), and **Q-0256–0265** (submission).
 
 These are **dependencies and priorities, not parallel agents already running**. Read the actual Quest links and claim according to `AGENTS.md`.
+
+## Animated appearance and Settings Q-0438
+
+[Q-0438](quests/v1/Q-0438.md) implements native Qt D62 Settings: 14 vivid theme palettes with Light/Dark/Fusion, adjustable colors/fonts/contrast/motion, animated owl/tree/sun/moon preview, VI/EN settings, connection/notifications/privacy/accessibility tabs and responsive top navigation. Current main.py preserves the existing NASA Explore and localized Portal. Source commits are recorded in the Quest. **Component-ready / Windows Qt visual acceptance and independent review PENDING.** Server Admin, true Mobile/Watch, full i18n and clinical capabilities are not claimed.
 
 ## Native Portal implementation Q-0437
 
