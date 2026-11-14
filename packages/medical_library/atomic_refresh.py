@@ -2,6 +2,7 @@
 import hashlib
 import os
 from pathlib import Path
+from contextlib import closing
 import sqlite3
 import tempfile
 
@@ -13,7 +14,7 @@ def install_verified_library(candidate, destination, *, expected_sha256, expecte
     digest = hashlib.sha256(source.read_bytes()).hexdigest()
     if digest != expected_sha256.lower():
         raise ValueError("Candidate SHA-256 mismatch")
-    with sqlite3.connect(f"file:{source.resolve()}?mode=ro", uri=True) as db:
+    with closing(sqlite3.connect(f"file:{source.resolve()}?mode=ro", uri=True)) as db:
         if db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
             raise ValueError("SQLite integrity check failed")
         if db.execute("PRAGMA user_version").fetchone()[0] != expected_schema_version:
