@@ -1,6 +1,7 @@
 """Verification tests for Q-0032 SQLite schema migration from starter."""
 
 from pathlib import Path
+from contextlib import closing
 import sqlite3
 import tempfile
 import unittest
@@ -16,7 +17,7 @@ class CoreMigrationTests(unittest.TestCase):
     def test_starter_database_migrates_without_losing_observations(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db = Path(directory) / "starter.sqlite3"
-            with sqlite3.connect(db) as conn:
+            with closing(sqlite3.connect(db)) as conn:
                 conn.execute(
                     """
                     CREATE TABLE observations (
