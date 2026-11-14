@@ -1,0 +1,586 @@
+{
+  "article_id": "CLIFF-093",
+  "slot": 93,
+  "display_title": "Altitude Sickness",
+  "category": "Environmental",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-093",
+    "publisher": "NASA",
+    "title": "Altitude Sickness \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/altitude-sickness-cliff-2023.pdf?emrc=967ef6",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/altitude-sickness-cliff-2023.pdf?emrc=967ef6",
+    "retrieved_at_utc": "2026-11-14T06:34:17.821741+00:00",
+    "content_sha256": "d0c551f968d762bb0bd3fe75e3ac8ca395566ea7bdb13dd204965535d9e0b188",
+    "original_mime": "application/pdf",
+    "original_bytes": 326998,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-093-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch      Baseline\n\n\n\n ICL6_Altitude Sickness\n\n Altitude Sickness, as we have defined the term, is hypoxia sufficient to cause impairment of function. Hypothetical situations that could cause this\n condition include: cabin leak that may result in reduced cabin pressure, environmental control mishap in which cabin pressure is maintained but\n oxygen level is inadequately sustained, inadequate gas mixing and uneven cabin ventilation, acute hypoxic exposure from an EVA suit leak. Altitude\n sickness represents a spectrum of pathologic states initiated by an exaggerated vascular response to hypoxia. Syndromes include acute mountain\n sickness (AMS), high altitude cerebral edema (HACE), high altitude pulmonary edema (HAPE), and high altitude retinal hemorrhage. The potential for\n AMS in space operations exists during staged decompression prior to EVA or following inadvertent pressure reduction due to partial loss of\n spacecraft atmosphere. (Clark, 2008). In this CLiFF the term \"descent\" is considered to be a return to a sufficient partial pressure of oxygen to treat\n symptoms of hypoxia associated with loss of pressurization.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  This condition has not occurred on a space mission to our knowledge. The major challenge of this condition is calculating its incidence.Per the\n  definition the condition itself does not exist outside of an \"altitude\" or non-ground equivalent atmospheric pressure and O2 concentration.\n  Therefore, without an engineering decision to the contrary, nominal operations would suggest an atmosphere of 14.7 psi and 21% O2. There may\n  be different configurations in the EMU or habitat or during airlock depressuration with lower pressures but higher concentrations of oxygen. Since\n  the condition occurs in the presence of hypoxia, the partial pressure of inspired oxygen is the key determinant. Secondly, the affected crewmember\n  will need to return to a habitable volume in order for the event to be treated. This implies that if the condition occurs but the vehicle is not\n  salvageable, a loss of mission event has occurred. Therefore, this condition will not apply because a loss of mission or emergency evacuation will\n  occur. Therefore, we have excluded these events. Given these assumptions, this CLiFF only considers EVA or surface ops in small vehicles\n  (rovers, etc) and failures resulting in depressurization events. Therefore, the time duration of exposure would necessarily be limited to events of\n  durations less than 24 hours. Having limited information regarding lunar vehicles, we only have the PRA model calculations using the existing EMU\n  suit. Using this model, (called SPLAT) as a guide to the probability of moderate leakages (Ebullism, or a large leak, is covered in a separate CLiFF)\n  the incidence becomes fairly straightforward. Based on this PRA a failure rate of 1 every 9,900 EVAs per can be applied per the engineering model\n  leakage report.\n\n  ANALOG LITERATURE\n\n  Given the assumptions of a return to normal pressures (or at least normal O2 pressure) within a short duration in a reliable (i.e. with a buddy on\n  EVAs, etc) it was not possible to find analog or terrestrial literature that replicated a brief (less than 24 hours at altitude) exposure and quick\n  descent to sea level pressure.\n\n  TERRESTRIAL LITERATURE\n\n  Given the assumptions of a return to normal pressures (or at least normal O2 pressure) within a short duration in a reliable (i.e. with a buddy on\n  EVAs, etc) it was not possible to find analog or terrestrial literature that replicated a brief (less than 24 hours at altitude) exposure and quick\n  descent to sea level pressure.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n\n\n\n6/15/2023 1:31:52 PM                                                    ICL6_Altitude Sickness Cliff                                                       page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-093-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Fixed incidence proportion of 1.01E-4\n\n\n\n  INCIDENCE SUMMARY\n\n  We used the EMU SPLAT Suit Leak Rates reported PRA estimate of the suit leak probability as 1.01E-4 per EVA. Since no uncertainty estimates\n  were included, we set the incidence proportion as fixed. This condition is tied to EVAs.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     EVA\n     Segment\n     EVA All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Binomial\n     Incidence Dist.\n     Fixed\n     Mean\n     0.000101\n     SD\n     0\n\n\n     Fixed Incidence\n     (Rate):\n     (Prop.): 0.000101\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                       Source                                               LOC Value\n\n   Derby, et al. 2010                                             Terrestrial                                          1\n\n   Gallagher, et al. 2004                                         Terrestrial                                          1\n\n   Hackett, et al. 2007                                           Analog                                               1\n\n   Duncan, G et al. 2017                                          Spaceflight model                                    3\n\n\n  As articulated earlier in this CLiFF, we were only able to use the SPLAT model data for our incidence of this condition. Condition is only possible\n  resulting from a suit leak on an EVA.\n\n\n\n\n6/15/2023 1:31:52 PM                                                    ICL6_Altitude Sickness Cliff                                                    page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-093-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  N/A\n\n  BEST CASE SCENARIO DEFINITION\n\n  High altitude headache or acute mountain sickenss (AMS); which resolves spontaneously, with normalization of oxygen partial pressures,\n  medications, or descent.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  High altitude pulmonary edema (HAPE) or high-altitude cerebral edema (HACE).\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  High Altitude Headache High Altitude Pulmonary Edema High Altitude Cerebral Edema\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  Escalation beyond AMS is not common in terrestrial settings and has never been seen on orbit. Previous CLiFF and universal literature data\n  supports the 0-3% \"worst case\" posture. To be conservative, we will use the 1/46 (2.2%) that is an approximation taken from Derby, R and\n  DeWeber, K 2010 using the mean estimation (an average of 46% from a range of 25-67%) hikers having AMS symptoms and 1% of hikers having\n  symptoms more severe (such as HACE, etc). Therefore, our calculation would be =(1/46)*100 or 2.2%\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                               Source                                 LOC Value\n\n   Derby, et al. 2010                                                     Terrestrial                            3\n\n   Gallagher, et al. 2004                                                 Terrestrial                            3\n\n   Hackett, et al. 2007                                                   Analog                                 3\n\n\n  The best and worst case breakdown is difficult as articulated elsewhere because of the duration of exposure and the probability that the crew could\n  possibly be exposed to low partial pressures of oxygen without return to the nominal pressures/oxygen levels of the vehicle. This breakdown\n  represents a \"worst worst\" case rather than a best approximation as it is essentially the probability of a patient reaching HAPE or HACE if they were\n  hypoxic far longer than would be expected.\n\n\n\n\n6/15/2023 1:31:52 PM                                                    ICL6_Altitude Sickness Cliff                                                      page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-093-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                                CP1: Diagnosis       CP2: Treatment           CP3: Condition End State\n\n                                                                TI%      Duration    TI%         Duration     TI%         RTDC             LOCL\n                       Composite              Condition\n   Case Scenario       Incidence              Probability %     Preset   Preset      Preset      Min   Max Preset         Min%    Max%     Min%     Max%\n\n   Treated Best        Fixed incidence        98 - 98           100      0.22        15.3069     0     4      0           0       0        0        0\n   Case (TBC)          proportion of\n                       1.01E-4\n   Treated Worst                              2-2               100      1.5         53.654      46    192    26.7606     0       0        0        0\n   Case (TWC)\n\n   Untreated Best      N/A                    N/A               N/A      0.22        15.4797     0     4      0           0       0        0        0\n   Case (UTBC)\n\n   Untreated Worst     N/A                    N/A               N/A      1.5         98.5384     48    504    98.5384     100     100      4.6      50\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n6/15/2023 1:31:52 PM                                                     ICL6_Altitude Sickness Cliff                                                         page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-093-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  The incidence for this condition is somewhat difficult to determine because as the definition of the condition states, the condition itself does not exist\n  outside of normal sea level pressures. Our current assumptions have nominal ops at 14.7 and 21%, we are unlikely to experience \u201caltitude\n  sickness\u201d outside of a failure. Therefore, only off-nominal conditions will result in this condition occurring. Secondly, the patient will need to return to\n  a habitable volume in order for the event to be treated. Meaning that if the condition occurs but the vehicle is not salvageable, and we have a loss\n  of mission event and this condition will not apply because a loss of mission or quick duration returns will occur. Therefore, we have excluded these\n  events. The above points taken together results in only considering EVA or surface ops in small vehicles (rovers, etc.) and failures resulting in\n  depressurization events. Therefore, the time duration of exposure would necessarily be limited to events of this type (i.e. less than 24 hours).\n  Having limited information regarding lunar vehicles, we only have the PRA model calculations using the existing EMU suit. Using this model, (called\n  SPLAT) as a guide to the probability of moderate leakages (Ebullism, or a large leak, is covered in a different location) the incidence becomes fairly\n  straightforward we could assume a failure rate of 1 every 9,900 EVAs per their model leakage report.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Under the situation of a mild exposure (hypoxia), the vast majority of patients will not experience any symptoms. Under these circumstances and\n  given our assumptions about small vehicles, the best treatment for this condition will be immediate return to a nominally pressurized vehicle and any\n  existing symptoms will resolve within 4 hours.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  We have been unable to find documented terrestrial cases of refractory cerebral edema or pulmonary edema (HACE and HAPE) leading to death\n  after descent of 300 - 1,000 meters. A descent of this magnitude is actually more conservative than our assumptions would suggest as a return to a\n  pressurized vehicle would represent a return to sea-level with normal partial pressure of oxygen or equivalent pressures (or perhaps a descent of\n  1,000's of meters depending on the pressure leakage rate). It is possible that a higher level of care (i.e. an RTDC event) may be required or that\n  even death may occur, it is just difficult to quantify this risk lacking any supporting data. Additionally, descent to a higher partial pressure of oxygen\n  is the most efficacious therapy for the constellation of symptoms associated with altitude sickness. Therefore, it is reasonable to assume that RTDC\n  and LOCL are 0%. One study specifically addressed this issue. Once descent to normal pressures/normal partial pressures of oxygen was\n  achieved, patients did well and that: \"None of the patients evacuated to CIWEC died, and all symptoms completely resolved by the end of the follow-\n  up period.\"\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  Similar to the \"Treated Best Case\", the Untreated case is difficult to separate because \"treatment\" is likely to simply be returning to the vehicle.\n  Therefore, under the conditions of a mild exposure, the vast majority of patients will not experience any symptoms. Under these circumstances and\n  given our assumptions about small vehicles, the best treatment for this condition will be immediate return to a nominally pressurized vehicle (i.e. with\n  normal partial pressures of oxygen) and any existing symptoms will resolve within 4 hours.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  For the purposes of this CLiFF, we have assumed that in the Untreated WC scenario, the patient has been exposed for long enough to lead to a\n  state similar to HAPE or HACE, even though the timing appears to require 24-48 hours duration of low pressure/low oxygen tension exposure.\n  Therefore, it is assumed that the patient could die and that their return to a nominally pressurized volume with normal O2 partial pressures is\n  inhibited. The inability to descend from altitude has been briefly studied in the Nepal region for trekkers who have climbed there. Some of these\n  trekkers are unable to return/descend (because they were alone for example, therefore without assistance, were exposed to lower pressures for\n  longer than we have assumed), this would closely represent the UTWC scenario for our crew leading to the need for escalation of care (RTDC) or\n  death. The RTDC for this scenario is 100% because the LOCL min and max were both greater than 0%. The LOCL min probability is based on the\n  lowest approximation from the death rate vs evacuation rate (i.e. treated vs untreated) from trekkers in the Nepal region. The number is from an\n  approximation of 7.7 deaths / 100,000 trekkers vs an evacuation rate of between 56 and 276 people/100,000 from Nepal. Taking an average of this\n  evacuation rate to be 166 (additional year data is lacking so this approximation is necessary). Therefore, our low end for approximation would be\n  (7.7/166) * 100 or 4.6%. I have taken the max LOCL for this condition to be the \"worst-worst\" case approximation of LOCL. Therefore, the\n  \"Estimation\" from the study reference notes of 166 hikers that HAPE if left untreated would lead death at a rate of 50%.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n6/15/2023 1:31:52 PM                                                      ICL6_Altitude Sickness Cliff                                                           page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-093-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                               Source                                 LOC Value\n\n   Fiore, DC et al. 2010                                                  Terrestrial\n\n   Imray, C et al. 2011                                                   Terrestrial                                              3\n\n   Luks, AM et al. 2019                                                   Analog\n\n\n  The duration of symptoms is difficult to assess, especially for patients who are untreated. For treated patients, we have fairly good data.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                             Source                          LOC Value\n\n   Fiore, DC et al. 2010                                                                Terrestrial\n\n   Imray, C et al. 2011                                                                 Terrestrial\n\n   Luks, AM et al. 2019                                                                 Analog                                         2\n\n   Ren, Y et al. 2010                                                                   Analog\n\n   Derby, R and DeWeber, K 2010                                                         Terrestrial\n\n  RTDC, like LOCL and duration, are all difficult because the most efficacious therapy for HAPE and HACE is descent, which will be performed rather\n  quickly upon onset of symptoms simply due to a return to the pressurized vehicle.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                             Source                          LOC Value\n\n   Fiore, DC et al. 2010                                                                Terrestrial\n\n   Imray, C et al. 2011                                                                 Terrestrial\n\n   Luks, AM et al. 2019                                                                 Analog\n                                                                                                                                       2\n   Ren, Y et al. 2010                                                                   Analog\n\n   Derby, R and DeWeber, K 2010                                                         Terrestrial\n\n   Leshem, E et al. 2008                                                                Terrestrial\n\n  LOCL, like RTDC and duration, are all difficult because the most efficacious therapy for HAPE and HACE is descent, which will be performed rather\n  quickly upon onset of symptoms simply due to a return to the pressurized vehicle. Additionally, it is complex associating Untreated patients with\n  death due to altitude alone, as the majority of patients who die at altitude suffer from concomitant hypothermia, blunt force trauma, avalanche-\n  related injuries, carbon monoxide intoxication, hyponatremia, and intoxication of other types (i.e. alcohol or other drugs of intoxication).\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope Overview Altitude Sickness covers the spectrum of disease including high altitude headache, acute mountain\n  sickness, high altitude retinopathy, high altitude cerebral edema (HACE), and high altitude pulmonary edema (HAPE). These conditions would\n  potentially occur due to a lower cabin atmospheric pressure in the transit vehicle, descent/ascent vehicle, or EVA suits. An engineering failure\n  causing a sudden drop in pressure without a complete depressurization that is not recoverable to baseline pressures is believed unlikely to occur.\n  Additionally since atmospheric pressures in the cabin would need to be less than a 1,829 meter pressure equivalent to cause a reasonable\n  incidence of altitude sickness and less than 4,267 meter pressure equivalent for an appreciable incidence of HACE or HAPE, these conditions are\n  also not likely to occur. The crew would be most at risk during periods of transition between vehicles from high pressure to low pressure, including\n  launches and descents. CNES: High Altitude Headache High Altitude Pulmonary Edema High Altitude Cerebral Edema Diagnostic Scope and\n  Resourcing Diagnosis is largely clinical and centers on history, physical exam, fundoscopic exam, and vital signs. Ultrasound is not necessary for\n  the diagnosis but may assist in identifying cerebral edema via ophthalmic ultrasound. For this reason it is included but not considered necessary.\n  Clinical Phase 1 Duration and Rationale This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the\n  mission. The CRT working group SME consensus duration is as follows: CP1 BC (Treated or Untreated): 0.22 hours representing history and a\n  cursory physical exam CP1 WC (Treated or Untreated): 1.5 hours representing, set up time, history, physical exam, fundoscopic exam, and\n  ultrasound scan (though this is not considered necessary). Without ultrasound the CP1 duration is expected to be approximately 1 hour. The\n  highest scope of practice for this condition is 5 commensurate with an attending level procedure trained generalist physician. This is due to the\n\n\n\n\n6/15/2023 1:31:52 PM                                                    ICL6_Altitude Sickness Cliff                                                     page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-093-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  complexity of the worst case scenario Treatment Scope and Resourcing The best case includes prevention and treatment with acetazolamide or\n  dexamethasone based on Wilderness Medical Society Guidelines, symptom control for mild pain with NSAIDs prioritized over acetaminophen, and\n  antiemetics. Only symptomatic treatment is considered necessary since the best case definition is not a severe case and patients will recover within\n  a few days. The worst case is far more complex and includes prevention and treatment with acetazolamide or dexamethasone based on Wilderness\n  Medical Society Guidelines, nifedipine for HAPE, and intramuscular and oral steroids for HACE, oxygen, and hyperbaric oxygen therapy utilizing\n  vehicle built in systems (e.g. a space suit, or airlock). Communications and Support Needs: The best case will not require ground communication\n  beyond routine discussions but the worst case will require frequent contact with ground support for both the diagnosis and treatment stages.\n  audio/video links are listed as the highest primacy for ground communication. REFERENCES Barratt, Michael R., Ellen S. Baker, and Sam L. Pool.\n  2019. \"Principles of clinical medicine for space flight.\" In. New York, NY: New York, NY : Springer. Andrew M. Luks, Paul S. Auerbach, Luanne Freer,\n  Colin K. Grissom, Linda E. Keyes, Scott E. McIntosh, George W. Rodway, Robert B. Schoene, Ken Zafren, Peter H. Hackett, Wilderness Medical\n  Society Clinical Practice Guidelines for the Prevention and Treatment of Acute Altitude Illness: 2019 Update, Wilderness & Environmental Medicine,\n  Volume 30, Issue 4, Supplement, 2019, Pages S3-S18\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  Altitude sickness has not occurred among US astronauts in flight. Lacking in-flight data IMM requested a risk trade study. The likelihood is based on\n  the probability of loss of function of the oxygen generation systems on ISS. It does not reflect the rate of change of ppO2 levels or the probability of\n  various ppO2 levels. The version 1.2 interim 10A PRA model was run for a 6 month mission time to extract the event probabilities from the model\n  end states. The results of this analysis include probability of occurrence over a 6 month period and the same probabilities expressed as failure\n  rates, in number of failures per hour. Put simply, the IMM CLiFF deduced the probability of a low pressure event occurring within a 6 month mission\n  duration and concluded that the probability of this condition occurring medically was the same. Our condition is significantly different because we\n  assume that the crew will need to return to a habitable volume and survive a return journey. As such, any mission event that necessarily leads to\n  LOCL is not considered because medical management will not need to be administered. Therefore, events such as a loss of pressure on Gateway\n  that will lead to LOCL are ignored because the medical kit will not be sufficient to resolve these issues. The above points taken together results in\n  only considering EVA or surface ops in small vehicles (rovers, etc.) and failures resulting in depressurization events. Therefore, the time duration of\n  exposure would necessarily be limited to events of this type (i.e. less than 24 hours). Having limited information regarding lunar vehicles, we only\n  have the PRA model calculations using the existing EMU suit. Using this model, (called SPLAT) as a guide to the probability of moderate leakages\n  (Ebullism, or a large leak, is covered in a different location) the incidence becomes fairly straightforward. It is assumed that a failure rate of 1 every\n  9,900 EVAs per the PRA model leakage report.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  The analysis assumes that the crew will need to return to a habitable volume and survive a return journey. As such, any mission event that\n  necessarily leads to LOCL is not considered because medical management will not need to be administered. Therefore, events such as a loss of\n  pressure on gateway that will lead to LOCL are ignored because the medical kit will not be sufficient to resolve these issues. Therefore, a major\n  limitation of this analysis is that moderate leaks that lead to modified missions could not be quantified and are ultimately not considered because\n  those contingencies could not be accurately calculated.\n\n\n\n\n6/15/2023 1:31:52 PM                                                      ICL6_Altitude Sickness Cliff                                                         page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-093-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                              Clinical Phase 2: Treatment\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                 Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n                            664                                                                           145\n    Case\n    (TBC)\n  Untreated\n    Best\n                            664                                                                           145                       13\n    Case\n   (UTBC)\n   Treated\n    Worst\n           223              664                              89             854                           145                       13\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223             664            113               89             854                           145                       13\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                       Total\n                                                                                                                                                     Human\n                                                                                            Translation &                            Total Tasks\n                Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                            Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n               (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                           (microgravity)                            Condition\n                                                                                                                                                    Tasks Full\n                                                                                                                                                     Mission\n   Treated\n     Best\n           132                                                                                                         211          1152           3763          0.306139      30.6139\n    Case\n    (TBC)\n  Untreated\n    Best\n            132                                                                                                        211          1165           3763          0.309593      30.9593\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                             414               22             196            34             34           211          3031           3763          0.805474      80.5474\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132             564            414               22             196            34             34           211          3708           3763          0.985384      98.5384\n    Case\n   (UTWC)\n\n                                                                          Clinical Phase 3: Condition End State\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                 Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n    Case\n   (UTBC)\n   Treated\n    Worst\n                            664\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223             664            113               89             854                           145                       13\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n6/15/2023 1:31:52 PM                                                       ICL6_Altitude Sickness Cliff                                                                           page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-093-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                           Total\n                                                                                                                                         Human\n                                                                                 Translation &                           Total Tasks\n               Hand                                      Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                              Stabilization                          Impaired By                      TI Decimal       TI %\n              (Dom)                                    Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                                (microgravity)                           Condition\n                                                                                                                                        Tasks Full\n                                                                                                                                         Mission\n   Treated\n     Best\n                                                                                                                        0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                                                                        0              3763          0                0\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                                                                                              211         1007           3763          0.267606         26.7606\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132        564          414               22           196         34             34            211         3708           3763          0.985384         98.5384\n    Case\n   (UTWC)\n\n\n\n\n6/15/2023 1:31:52 PM                                               ICL6_Altitude Sickness Cliff                                                                           page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-093-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n6/15/2023 1:31:52 PM                                                    ICL6_Altitude Sickness Cliff                                                       page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-093-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   Leshem E, Pandey P, Shlim DR, Hiramatsu K, Sidi Y, Schwartz E. Clinical features of patients with severe altitude illness in Nepal. J Travel Med.\n   2008 Sep-Oct;15(5):315-22. doi: 10.1111/j.1708-8305.2008.00229.x. PMID: 19006504.\n\n   Netzer, N., Strohl, K., Faulhaber, M., Gatterer, H., Burtscher, M., 2013. Hypoxia\u2010Related Altitude Illnesses. Journal of Travel Medicine 20, 247\u2013\n   255.. doi:10.1111/jtm.12017\n\n   Derby, Richard; deWeber, Kevin. The Athlete and High Altitude, Current Sports Medicine Reports: March 2010 - Volume 9 - Issue 2 - p 79-85\n   doi: 10.1249/JSR.0b013e3181d404ac\n\n   Hackett PH, Roach RC. High-altitude illness. In: Auerbach PS, editor. Wilderness Medicine, 5th ed., Philadelphia: Mosby; 2007, p. 2-35.\n\n   Taylor AT. High-altitude illnesses: physiology, risk factors, prevention, and treatment. Rambam Maimonides Med J. 2011;2(1):e0022. Published\n   2011 Jan 31. doi:10.5041/RMMJ.10022\n\n   Ren Y, Fu Z, Shen W, Jiang P, He Y, Peng S, Wu Z, Cui B. Incidence of high altitude illnesses among unacclimatized persons who acutely\n   ascended to Tibet. High Alt Med Biol. 2010 Spring;11(1):39-42. doi: 10.1089/ham.2009.1049. PMID: 20367487.\n\n   K\u00fchn C, Apel C, Bertsch D, Grass M, Gschwandtl C, Hundt N, M\u00fcller-Ost M, Risse J, Schmitz S, Sherpa K, Timmermann L, van der Giet M, van\n   der Giet S, Wernitz K, Morrison A, K\u00fcpper T. Inpatient treatment of trekkers and Nepalese workers in the high-altitude environment of Mt. Everest\n   Region 1996-2011: A retrospective analysis. Travel Med Infect Dis. 2019 Sep-Oct;31:101356. doi: 10.1016/j.tmaid.2018.11.012. Epub 2018 Nov\n   28. PMID: 30502547.\n\n   Korzeniewski K, Nitsch-Osuch A, Guzek A, Juszczak D. High altitude pulmonary edema in mountain climbers. Respir Physiol Neurobiol. 2015\n   Apr;209:33-8. doi: 10.1016/j.resp.2014.09.023. Epub 2014 Oct 5. PMID: 25291181.\n\n   Khodaee M, Grothe HL, Seyfert JH, VanBaak K. Athletes at High Altitude. Sports Health. 2016 Mar-Apr;8(2):126-32.\n\n   Lobenhoffer HP, Zink RA, Brendel W. High altitude pulmonary edema: analysis of 166 cases. In: Brendel W, Zink RA, eds. High altitude\n   physiology and medicine. New York: Springer-Verlag, 1982:219\u201331.\n\n   Gallagher, SA and Hackett PH. High-altitude illness. Emerg. Med. Clin. N. Am. 2004; 22:329-55.\n\n   Duncan, et al. DRD-MAPI-SA-06-ISSPRA-17-22, EMU SPLAT Suit Leak Rates. Report 2017\n\n   Imray C, Booth A, Wright A, Bradwell A. Acute altitude illnesses. BMJ. 2011 Aug 15;343:d4943\n\n   Luks AM, Auerbach PS, Freer L, et al. Wilderness Medical Society Practice Guidelines for the Prevention and Treatment of Acute Altitude Illness:\n   2019 Update. Wilderness Environ Med. 2019 Jun 24 early online\n\n\n\n\n  ACRONYMS\n\n\n\n   ACRONYM                       PHRASE\n\n   AAOMS                         American Association of Oral and Maxillofacial Surgeons\n\n   AMA                           American Medical Association\n\n   ARCL                          All Remaining Conditions List\n\n   ARS                           Acute Radiation Sickness\n\n   BHP                           Behavioral Health and Performance\n\n   CAC                           Coronary Artery Calcium\n\n   CHS                           Crew Health and Safety\n\n   CL                            Condition List\n\n   CliFF                         Clinical Finding Form\n\n   CMO                           Crew Medical Officer\n\n   COMFORT                       Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                           Clinical Phase 1\n\n   CP2                           Clinical Phase 2\n\n\n\n\n6/15/2023 1:31:52 PM                                                    ICL6_Altitude Sickness Cliff                                                   page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-093-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   CP3                 Clinical Phase 3\n\n   CRL                 Clinical Resource Level\n\n   CRT                 Capability Resource Table\n\n   CST                 Clinical Science Team\n\n   DCS                 Decompression Syndrome\n\n   DRM                 Design Reference Mission\n\n   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n\n\n\n6/15/2023 1:31:52 PM                                             ICL6_Altitude Sickness Cliff   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-093-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n6/15/2023 1:31:52 PM                                         ICL6_Altitude Sickness Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-093-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "EVA"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "EVA All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Binomial"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Fixed"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.000101"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0"
+        ],
+        [
+          "Fixed Incidence"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-093-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                       Source                                               LOC Value"
+        ],
+        [
+          "Derby, et al. 2010                                             Terrestrial                                          1"
+        ],
+        [
+          "Gallagher, et al. 2004                                         Terrestrial                                          1"
+        ],
+        [
+          "Hackett, et al. 2007                                           Analog                                               1"
+        ],
+        [
+          "Duncan, G et al. 2017                                          Spaceflight model                                    3"
+        ],
+        [
+          "As articulated earlier in this CLiFF, we were only able to use the SPLAT model data for our incidence of this condition. Condition is only possible"
+        ],
+        [
+          "resulting from a suit leak on an EVA."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-093-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                               Source                                 LOC Value"
+        ],
+        [
+          "Derby, et al. 2010                                                     Terrestrial                            3"
+        ],
+        [
+          "Gallagher, et al. 2004                                                 Terrestrial                            3"
+        ],
+        [
+          "Hackett, et al. 2007                                                   Analog                                 3"
+        ],
+        [
+          "The best and worst case breakdown is difficult as articulated elsewhere because of the duration of exposure and the probability that the crew could"
+        ],
+        [
+          "possibly be exposed to low partial pressures of oxygen without return to the nominal pressures/oxygen levels of the vehicle. This breakdown"
+        ],
+        [
+          "represents a \"worst worst\" case rather than a best approximation as it is essentially the probability of a patient reaching HAPE or HACE if they were"
+        ],
+        [
+          "hypoxic far longer than would be expected."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-093-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment           CP3: Condition End State"
+        ],
+        [
+          "TI%      Duration    TI%         Duration     TI%         RTDC             LOCL"
+        ],
+        [
+          "Composite              Condition"
+        ],
+        [
+          "Case Scenario       Incidence              Probability %     Preset   Preset      Preset      Min   Max Preset         Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best        Fixed incidence        98 - 98           100      0.22        15.3069     0     4      0           0       0        0        0"
+        ],
+        [
+          "Case (TBC)          proportion of"
+        ],
+        [
+          "1.01E-4"
+        ],
+        [
+          "Treated Worst                              2-2               100      1.5         53.654      46    192    26.7606     0       0        0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best      N/A                    N/A               N/A      0.22        15.4797     0     4      0           0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst     N/A                    N/A               N/A      1.5         98.5384     48    504    98.5384     100     100      4.6      50"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-093-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "6/15/2023 1:31:52 PM                                                      ICL6_Altitude Sickness Cliff                                                           page: 5"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-093-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                             Source                          LOC Value"
+        ],
+        [
+          "Fiore, DC et al. 2010                                                                Terrestrial"
+        ],
+        [
+          "Imray, C et al. 2011                                                                 Terrestrial"
+        ],
+        [
+          "Luks, AM et al. 2019                                                                 Analog                                         2"
+        ],
+        [
+          "Ren, Y et al. 2010                                                                   Analog"
+        ],
+        [
+          "Derby, R and DeWeber, K 2010                                                         Terrestrial"
+        ],
+        [
+          "RTDC, like LOCL and duration, are all difficult because the most efficacious therapy for HAPE and HACE is descent, which will be performed rather"
+        ],
+        [
+          "quickly upon onset of symptoms simply due to a return to the pressurized vehicle."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-093-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                             Source                          LOC Value"
+        ],
+        [
+          "Fiore, DC et al. 2010                                                                Terrestrial"
+        ],
+        [
+          "Imray, C et al. 2011                                                                 Terrestrial"
+        ],
+        [
+          "Luks, AM et al. 2019                                                                 Analog"
+        ],
+        [
+          "2"
+        ],
+        [
+          "Ren, Y et al. 2010                                                                   Analog"
+        ],
+        [
+          "Derby, R and DeWeber, K 2010                                                         Terrestrial"
+        ],
+        [
+          "Leshem, E et al. 2008                                                                Terrestrial"
+        ],
+        [
+          "LOCL, like RTDC and duration, are all difficult because the most efficacious therapy for HAPE and HACE is descent, which will be performed rather"
+        ],
+        [
+          "quickly upon onset of symptoms simply due to a return to the pressurized vehicle. Additionally, it is complex associating Untreated patients with"
+        ],
+        [
+          "death due to altitude alone, as the majority of patients who die at altitude suffer from concomitant hypothermia, blunt force trauma, avalanche-"
+        ],
+        [
+          "related injuries, carbon monoxide intoxication, hyponatremia, and intoxication of other types (i.e. alcohol or other drugs of intoxication)."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-093-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision           Hearing                 Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664                                                                           145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664                                                                           145                       13"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223              664                              89             854                           145                       13"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223             664            113               89             854                           145                       13"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-093-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-093/pulmonary_alveolus_nih.png",
+      "mime_type": "image/png",
+      "width": 895,
+      "height": 640,
+      "sha256": "41a22e2a4d4a1beae75a31c9d7d45ad386c5bfb993983adf5c6bbbd1dfbd81a7",
+      "creator": "NIH NIAID",
+      "license_identifier": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3APulmonary_Alveolus_%28NIH_BioArt_567%29.png",
+      "attribution": "NIH NIAID, via Wikimedia Commons (CC BY 4.0)",
+      "caption": "NIH BioArt illustration of the pulmonary alveolus and oxygen diffusion interface.",
+      "alt_text": "NIH BioArt diagram of a pulmonary alveolus.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Pulmonary Alveolus (NIH BioArt 567).png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-093-IMG-02",
+      "ordinal": 1,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-093/altitude_sickness_facial_edema.jpg",
+      "mime_type": "image/jpeg",
+      "width": 5184,
+      "height": 3888,
+      "sha256": "3f150793901ee29115abd2a96c28572e2fea9aa315a274cc21a0ee53dc672e11",
+      "creator": "Dibendu Nandi",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AAltitude_sickness_and_swelling-Vasuki_Tal_WTK20150919-DSC00107.jpg",
+      "attribution": "Dibendu Nandi, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Clinical photograph demonstrating facial edema associated with acute altitude sickness.",
+      "alt_text": "Clinical photograph of altitude sickness facial swelling.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Altitude sickness and swelling-Vasuki Tal WTK20150919-DSC00107.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-093-IMG-03",
+      "ordinal": 2,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-093/altitude_sickness_clinical.jpg",
+      "mime_type": "image/jpeg",
+      "width": 3648,
+      "height": 2736,
+      "sha256": "8150d15d63abf307037582b6d03de05bcefc312683c9f49fb29eec6b9f009f17",
+      "creator": "Adarsha005",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ASymptoms_of_altitude_sickness_at_Annuapurna_range_Nepal.jpg",
+      "attribution": "Adarsha005, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Clinical photograph of acute mountain sickness presentation.",
+      "alt_text": "Clinical photograph of altitude sickness symptoms.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Symptoms of altitude sickness at Annuapurna range Nepal.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-093-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Altitude Sickness",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/altitude-sickness-cliff-2023.pdf?emrc=967ef6",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

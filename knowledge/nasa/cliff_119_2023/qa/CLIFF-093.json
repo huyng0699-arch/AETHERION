@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-093",
+  "slot": 93,
+  "quest_id": "Q-0393",
+  "checked_at_utc": "2026-11-14T06:34:17.821741+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/altitude-sickness-cliff-2023.pdf?emrc=967ef6",
+  "http_status": 200,
+  "pdf_sha256": "d0c551f968d762bb0bd3fe75e3ac8ca395566ea7bdb13dd204965535d9e0b188",
+  "pdf_bytes": 326998,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-093-IMG-01": "41a22e2a4d4a1beae75a31c9d7d45ad386c5bfb993983adf5c6bbbd1dfbd81a7",
+    "CLIFF-093-IMG-02": "3f150793901ee29115abd2a96c28572e2fea9aa315a274cc21a0ee53dc672e11",
+    "CLIFF-093-IMG-03": "8150d15d63abf307037582b6d03de05bcefc312683c9f49fb29eec6b9f009f17"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
