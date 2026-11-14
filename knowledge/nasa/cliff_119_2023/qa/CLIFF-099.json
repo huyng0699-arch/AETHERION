@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-099",
+  "slot": 99,
+  "quest_id": "Q-0399",
+  "checked_at_utc": "2026-11-14T06:36:00.811824+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-arm-cliff-2023.pdf?emrc=68f157",
+  "http_status": 200,
+  "pdf_sha256": "24e0e15e70d5011dcf80882cfa0cd5bef03d1b9834def9a5532d17db7b5c5b92",
+  "pdf_bytes": 342711,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-099-IMG-01": "8e47aaaac7e23917840f8f2245f858ac6cd6f5fa3ec4fe0fab9968c8727e3469",
+    "CLIFF-099-IMG-02": "bb063b1ac9ffa0879dce6e4c22e6d344c41eb94651c4c9b853cd9ae573fa1d2f",
+    "CLIFF-099-IMG-03": "bd88039b964bb3a402f3562da4c329f771f2681be9cd7f324d769a823d7c7d7a"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
