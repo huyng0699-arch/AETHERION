@@ -5,6 +5,7 @@
 | Resource | URL | Intended usage | Current status |
 | --- | --- | --- | --- |
 | NASA Space Apps 2026 health-monitoring challenge | https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/ | Canonical challenge requirements and background | LINKED ONLY |
+| NASA IMM original CliFF 119 (2023) | https://www.nasa.gov/integrated-medical-model-documentation/ | Future NASA-original evidence library at `knowledge/nasa/cliff_119_2023/original/`; importer at `scripts/fetch_nasa_cliff_119.py` | NOT IMPORTED — workflow failed before completion; no PDF verified |
 | NASA Space Apps 2026 event | https://www.spaceappschallenge.org/2026/ | Event and submission details | LINKED ONLY |
 | NASA Space Apps participant terms | https://www.spaceappschallenge.org/legal/ | Original work licensing and attribution | LINKED ONLY |
 
