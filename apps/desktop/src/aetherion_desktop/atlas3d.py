@@ -89,6 +89,7 @@ class BodyAtlas3D(QWidget):
         self.network = network or QNetworkAccessManager(self)
         self.models = {v['anatomical_id']: v for v in approved_models()}
         self.viewer = None
+        self.fallback_2d = None  # real 2D list, only when native 3D is unavailable
         self._active_id = ''
         self._request_seq = 0
         self.setObjectName('aetherionAtlas3D')
@@ -162,6 +163,8 @@ class BodyAtlas3D(QWidget):
         self.load_button.setText(self.t('reload'))
         self.reset_button.setText(self.t('reset'))
         self.source_button.setText(self.t('source'))
+        if self.fallback_2d is not None:
+            self.fallback_2d.set_locale(self.locale)
         if not self._active_id:
             self.empty.setText(self.t('empty'))
         for i in range(self.selector.count()):
@@ -282,7 +285,8 @@ class BodyAtlas3D(QWidget):
             import pyvista as pv
             from pyvistaqt import QtInteractor
         except ImportError:
-            self.status.setText(self.t('install'))
+            self.status.setText(self.t('install') + ' · 2D')
+            self._show_2d_fallback()
             return
         try:
             mesh = pv.read(str(path))
@@ -304,11 +308,44 @@ class BodyAtlas3D(QWidget):
                                  pickable=True)
             self.viewer.enable_mesh_picking(callback=self.on_pick, show=False)
             self.viewer.reset_camera()
+            if self.fallback_2d is not None:
+                self.fallback_2d.hide()
+            self.viewer.show()
             self.reset_button.setEnabled(True)
             self.status.setText(self.t('ready', name=self.selector.currentText(),
                                        n=mesh.n_points, cells=mesh.n_cells))
         except (OSError, ValueError, RuntimeError) as exc:
             self.status.setText(self.t('invalid') + f' ({type(exc).__name__})')
+            # A failed native graphics/VTK environment must not strand the
+            # user on a blank area. This is a clearly labelled 2D list only.
+            if isinstance(exc, RuntimeError):
+                self._show_2d_fallback()
+
+    def _show_2d_fallback(self):
+        # Import lazily: a working VTK viewport still uses exactly the
+        # original renderer, while unsupported machines get a Qt-only list.
+        if self.fallback_2d is None:
+            from .render3d.accessibility_fallback import build_accessible_anatomy_2d
+            self.fallback_2d = build_accessible_anatomy_2d(self, locale=self.locale)
+            self.fallback_2d.structure_selected.connect(self._selected_from_2d)
+            self.content.addWidget(self.fallback_2d, 1)
+        else:
+            self.fallback_2d.set_locale(self.locale)
+        if self.viewer is not None:
+            self.viewer.hide()
+        self.empty.hide()
+        self.fallback_2d.show()
+        self.reset_button.setEnabled(False)
+
+    def _selected_from_2d(self, identity):
+        index = self.selector.findData(identity)
+        if index < 0:
+            return
+        if self.selector.currentIndex() != index:
+            self.selector.setCurrentIndex(index)
+        self._active_id = identity
+        # Explicitly label this as a 2D selection, not VTK mesh picking.
+        self.status.setText(self.t('selected', name=self.selector.currentText()) + ' · 2D')
 
     def reset_camera(self):
         if self.viewer is not None:
