@@ -32,7 +32,7 @@ The required entry on both clients is **Login with a visible Demo button**. Logi
 - One local FastAPI process serves the web export and HTTP API at `http://127.0.0.1:8765/`. No CORS proxy is required for this entry.
 - Normal use: `.runtime/local.sqlite3`, private random owner credentials in `.runtime/local-access.json`.
 - Verification: `.runtime/verification.sqlite3`, separate generated test credentials and explicitly classified test fixtures.
-- Normal and verification launchers default to ports 8765 and 8769, respectively. A running listener associated with the other database is rejected.
+- Normal and verification launchers default to ports 8765 and 8769, respectively. Reuse requires matching server-source fingerprint, web export and database scope; a listener associated with the other database is rejected.
 - A session is bound to its server origin. URL changes reset navigation to Login. Logout clears local storage before revoking the captured token at its original server.
 - Wildcard access resolves to registered authorized subjects; `*` cannot be registered as a patient ID. Older responses, unmounted-screen completions and duplicate write taps are guarded.
 

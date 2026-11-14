@@ -21,7 +21,7 @@ cd ../..
 .\scripts\start_mobile_local.ps1
 ```
 
-Open **http://127.0.0.1:8765/**. The FastAPI process serves both the Expo export and API on the same loopback origin. The launcher reuses a matching existing runtime and refuses to create a second listener on an occupied port.
+Open **http://127.0.0.1:8765/**. The FastAPI process serves both the Expo export and API on the same loopback origin. The launcher reuses an existing runtime only when its server-source fingerprint, client export and database scope match; it refuses to create a second listener on an occupied port.
 
 On a new local database only, the launcher creates a local owner account with a random password. Its credentials are written to `.runtime/local-access.json`; this directory is ignored by Git and is outside the served web export. No patient or measurement is created. Existing users are preserved.
 

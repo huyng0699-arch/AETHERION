@@ -1,6 +1,7 @@
 """Run the exported mobile web app and authoritative API on one loopback origin."""
 from __future__ import annotations
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -8,6 +9,20 @@ import secrets
 import socket
 import sys
 from urllib.request import urlopen
+
+
+def build_fingerprint(root: Path) -> str:
+    """Identify the server source and the exported client served together."""
+    digest = hashlib.sha256()
+    folders = (root / 'apps/server/src/aetherion_server', root / 'packages/medical_library')
+    files = [path for folder in folders for path in folder.rglob('*.py')]
+    files.append(root / 'apps/mobile/dist/index.html')
+    for path in sorted(files):
+        digest.update(path.relative_to(root).as_posix().encode('utf8'))
+        digest.update(b'\0')
+        digest.update(path.read_bytes())
+        digest.update(b'\0')
+    return digest.hexdigest()
 
 
 def main() -> None:
@@ -22,6 +37,8 @@ def main() -> None:
     access_file = runtime / ('verification-access.json' if args.verification else 'local-access.json')
     other_access_file = runtime / ('local-access.json' if args.verification else 'verification-access.json')
     requested_url = f'http://127.0.0.1:{args.port}'
+    fingerprint = build_fingerprint(root)
+    scope = 'verification' if args.verification else 'local'
     try:
         with socket.create_connection(('127.0.0.1', args.port), timeout=1):
             occupied = True
@@ -51,7 +68,10 @@ def main() -> None:
                 health = json.load(response)
             with urlopen(f'http://127.0.0.1:{args.port}/', timeout=2) as response:
                 html = response.read().decode('utf8')
-            if health.get('service') != 'aetherion-server' or html.strip() != (root / 'apps/mobile/dist/index.html').read_text(encoding='utf8').strip():
+            if (health.get('service') != 'aetherion-server'
+                    or health.get('runtime_fingerprint') != fingerprint
+                    or health.get('runtime_scope') != scope
+                    or html.strip() != (root / 'apps/mobile/dist/index.html').read_text(encoding='utf8').strip()):
                 raise ValueError('Different server or client export')
         except Exception as exc:
             raise SystemExit('Port is occupied by another or older runtime. Update that runtime before starting this client/server build; no duplicate listener was created.') from exc
@@ -65,6 +85,8 @@ def main() -> None:
     os.environ['AETHERION_PORT'] = str(args.port)
     os.environ['AETHERION_PROFILE'] = 'development'
     os.environ['AETHERION_MOBILE_WEB_DIR'] = str(root / 'apps/mobile/dist')
+    os.environ['AETHERION_RUNTIME_FINGERPRINT'] = fingerprint
+    os.environ['AETHERION_RUNTIME_SCOPE'] = scope
     from aetherion_server.bootstrap import ensure_bootstrap_user
     from aetherion_server.store import count_users, initialize
     initialize(db)

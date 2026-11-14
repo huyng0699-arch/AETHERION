@@ -257,7 +257,12 @@ def create_app(
 
     @application.get("/health")
     def health() -> dict[str, str]:
-        return {"service": "aetherion-server", "status": "ok"}
+        result = {"service": "aetherion-server", "status": "ok"}
+        fingerprint = os.environ.get("AETHERION_RUNTIME_FINGERPRINT")
+        scope = os.environ.get("AETHERION_RUNTIME_SCOPE")
+        if fingerprint and scope:
+            result.update(runtime_fingerprint=fingerprint, runtime_scope=scope)
+        return result
 
     @application.get("/ready")
     def ready() -> dict[str, str]:
