@@ -69,6 +69,14 @@
    - Located at `apps/desktop/` root instead of `apps/desktop/src/aetherion_desktop/`, so they are not packaged with `aetherion-desktop` and `medical_image_gallery.py` fails standalone `spec_from_file_location` import (`@dataclass` module lookup).
 8. **Placeholder Desktop views:** Body Atlas (`Q-0121`–`Q-0135`), Explore (`Q-0106`–`Q-0120`), Care Journey (`Q-0091`–`Q-0105`), Medical Guide (`Q-0151`–`Q-0165`), and Server Control / V3 themes (`Q-0436`).
 
+### 2.7 GitHub Actions 1–3s Failure Investigation (`Q-0454`)
+- **Observed GitHub Actions API state (`2026-11-14T09:28Z`):**
+  - Recent runs on `main` (e.g. `43580681886` `Python server tests`, `43580681811` `Python syntax and lint`, `43580656181`, `43580645378`) all terminate in **2–3 seconds** with `status: completed`, `conclusion: failure`.
+  - Querying `/actions/runs/{id}/jobs` (e.g. job `132404564373`, `132404564118`) shows **`runner_name: ""`** and **`steps: []` (0 steps executed)**.
+  - Querying `/actions/jobs/132404564373/logs` returns **`HTTP 404`** (`BlobNotFound: The specified blob does not exist`).
+- **Root-cause distinction:** These 1–3s failures are **GitHub Actions platform / runner-provisioning failures** (no `ubuntu-latest` runner was ever allocated, and no workflow step or test command ran), **not** Python lint or test assertion failures.
+- **Policy impact:** Do **not** force all development or Quest progress through broken GitHub Actions runner provisioning; verify locally with focused commands (`lint_python.py`, `unittest`/`pytest`, `smoke_server.py`) as specified in `AGENTS.md`.
+
 ---
 
 ## 3. Recommended Fix Order for Contributors
