@@ -213,7 +213,7 @@ def test_cloud_connection(db: Path) -> dict:
     ))
     if not isinstance(result.get('reply'), str) or not result['reply'].strip():
         raise HTTPException(503, detail='Cloud model did not generate a reply')
-    mark_cloud_tested()
+    mark_cloud_tested(config)
     return {
         'status':'READY','provider':config.provider,'model':config.model,
         'latency_ms':round((time.monotonic()-start)*1000),
