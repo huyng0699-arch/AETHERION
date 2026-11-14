@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import ast
+import hashlib
 import json
 from pathlib import Path
 import string
@@ -86,6 +87,76 @@ def check_catalogs() -> tuple[list[str], dict[str, int]]:
     }
 
 
+def audit_symptom_english_aliases() -> tuple[list[str], dict[str, int | str]]:
+    """Validate the additive English terminology without touching source JSON."""
+    errors: list[str] = []
+    source_path = DATA / "symptoms" / "ASTRA_819_REFERENCE.json"
+    overlay_path = DATA / "symptoms" / "label_aliases_en.json"
+    if not source_path.is_file() or not overlay_path.is_file():
+        return ["Original symptom source or English alias overlay missing"], {}
+    try:
+        source_bytes = source_path.read_bytes()
+        original = json.loads(source_bytes.decode("utf-8"))
+        overlay = read_json(overlay_path)
+        if not isinstance(original, dict) or not isinstance(overlay, dict):
+            return ["Symptom source/overlay must both be JSON objects"], {}
+        source_hash = hashlib.sha1(
+            b"blob " + str(len(source_bytes)).encode("ascii") + bytes((0,)) + source_bytes
+        ).hexdigest()
+        if overlay.get("source_blob_sha") != source_hash:
+            errors.append("English overlay targets a different source Git blob; labels are stale")
+        if (overlay.get("source_language"), overlay.get("target_language"),
+                overlay.get("translation_status")) != (
+                    "vi", "en", "UNREVIEWED_TERMINOLOGY"):
+            errors.append("English symptom overlay has incorrect language/review metadata")
+        original_by_name = {
+            row.get("name"): row for row in original.get("entries", [])
+            if isinstance(row, dict) and isinstance(row.get("name"), str)
+        }
+        entries = overlay.get("labels", [])
+        if not isinstance(entries, list):
+            return ["English alias labels must be an array"], {}
+        seen_ids: set[str] = set()
+        seen_terms: dict[str, str] = {}
+        for index, item in enumerate(entries):
+            if not isinstance(item, dict):
+                errors.append(f"Alias #{index} is not an object")
+                continue
+            vi = item.get("source_label_vi")
+            ident = item.get("symptom_id")
+            english = item.get("label_en")
+            other = item.get("aliases_en", [])
+            original_entry = original_by_name.get(vi) if isinstance(vi, str) else None
+            if (not original_entry or not isinstance(ident, str)
+                    or ident not in original_entry.get("ids", [])):
+                errors.append(f"Alias #{index} has no matching original Vietnamese label/ID")
+            if not isinstance(english, str) or not english.strip():
+                errors.append(f"Alias #{index} has no English label")
+                continue
+            if not isinstance(other, list) or not all(
+                isinstance(x, str) and x.strip() for x in other
+            ):
+                errors.append(f"Alias #{index} has invalid English synonyms")
+                continue
+            if ident in seen_ids:
+                errors.append(f"Repeated symptom ID in English overlay: {ident}")
+            seen_ids.add(str(ident))
+            for term in (english, *other):
+                normalized_term = " ".join(term.casefold().split())
+                previous = seen_terms.get(normalized_term)
+                if previous is not None and previous != ident:
+                    errors.append(f"Ambiguous English alias: {term}")
+                seen_terms[normalized_term] = str(ident)
+        return errors, {
+            "source_symptom_labels": len(original_by_name),
+            "english_draft_labels": len(entries),
+            "distinct_english_search_terms": len(seen_terms),
+            "translation_review_status": "UNREVIEWED_TERMINOLOGY",
+        }
+    except (OSError, UnicodeError, ValueError, TypeError) as exc:
+        return [f"Unable to audit English alias source integrity: {type(exc).__name__}"], {}
+
+
 def audit_data_paths() -> dict[str, int | bool]:
     # Counting records is not a verdict that the original PDFs are installed.
     records = list((SOURCES / "records").glob("CLIFF-*.json"))
@@ -119,9 +190,12 @@ def main() -> int:
     parser.add_argument("--json", action="store_true", help="Print machine-readable audit")
     args = parser.parse_args()
     errors, catalog = check_catalogs()
+    alias_errors, alias_stats = audit_symptom_english_aliases()
+    errors.extend(alias_errors)
     report = {
         "result": "PASS" if not errors else "FAIL",
         "catalogs": catalog,
+        "english_symptom_overlay": alias_stats,
         "source_data_observations": audit_data_paths(),
         "notes": (
             "Counts do not prove that NASA PDF originals were downloaded or reviewed.",
