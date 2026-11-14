@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/contracts/v1/subject_identity.schema.json",
+  "title": "AETHERION Crew/Subject Identity Contract (Q-0017)",
+  "description": "Rejects missing, blank, or unauthorized subject_id values; never falls back to another crew member.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["subject_id", "allow_fallback"],
+  "properties": {
+    "subject_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$"
+    },
+    "allow_fallback": {
+      "const": false
+    }
+  },
+  "x-aetherion-policy": {
+    "missing_subject_http_status": 422,
+    "unauthorized_subject_http_status": 403,
+    "fallback_to_default_crew": false
+  }
+}
