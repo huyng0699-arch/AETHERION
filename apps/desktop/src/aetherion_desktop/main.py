@@ -18,6 +18,7 @@ from PySide6.QtWidgets import (
 )
 
 from .portal import PORTAL_ROUTES, build_portal_page
+from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
 from .visual_theme import THEMES, VisualPreferences
 from .medical_library import build_medical_library_page
 from .mission_control import build_mission_control_page
@@ -79,6 +80,7 @@ class AetherionWindow(QMainWindow):
         self.api_url = os.environ.get("AETHERION_API_URL", "http://127.0.0.1:8765").rstrip("/")
         self.network = QNetworkAccessManager(self)
         self.preferences = VisualPreferences()
+        self.ui_language = normalize_locale(self.preferences.settings.value("ui/language", "vi"))
         app = QApplication.instance()
         if app is not None:
             self.preferences.apply(app)
@@ -91,6 +93,7 @@ class AetherionWindow(QMainWindow):
 
         top = QFrame()
         top.setObjectName("topBar")
+        self.top_bar = top
         bar = QHBoxLayout(top)
         bar.setContentsMargins(25, 10, 25, 10)
         bar.setSpacing(9)
@@ -104,7 +107,8 @@ class AetherionWindow(QMainWindow):
         self.pages = QStackedWidget()
         self.pages.setObjectName("pageStack")
         self.portal_page = build_portal_page(theme_name=self.preferences.theme_name,
-                                             reduce_motion=self.preferences.reduce_motion)
+                                             reduce_motion=self.preferences.reduce_motion,
+                                             locale=self.ui_language)
         self.portal_page.route_requested.connect(self.open_portal_route)
         self.portal_page.theme_requested.connect(self.open_theme_menu)
         self.pages.addWidget(self.portal_page)
@@ -183,6 +187,12 @@ class AetherionWindow(QMainWindow):
         self._build_theme_menu()
         self.theme_menu.aboutToShow.connect(self._build_theme_menu)
         bar.addWidget(self.theme_button)
+        # Locale is UI-only and persists locally; it never touches health records.
+        self.language_button = QToolButton()
+        self.language_button.setObjectName("languageButton")
+        self.language_button.setToolTip(tr(self.ui_language, "main.locale.tooltip"))
+        self.language_button.clicked.connect(self._change_language)
+        bar.addWidget(self.language_button)
         help_button = QToolButton()
         help_button.setText("?  Trợ giúp")
         help_button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextOnly)
@@ -193,6 +203,7 @@ class AetherionWindow(QMainWindow):
 
         footer = QFrame()
         footer.setObjectName("topBar")
+        self.footer_bar = footer
         line = QHBoxLayout(footer)
         line.setContentsMargins(28, 6, 28, 6)
         left = QLabel("TRUY TINH  /  INDEPENDENT HEALTH INTELLIGENCE")
@@ -205,6 +216,7 @@ class AetherionWindow(QMainWindow):
         outer.addWidget(footer)
 
         self.setCentralWidget(root)
+        self._retranslate_shell()
         self.pages.setCurrentWidget(self.portal_page)
         self.check_server()
         self.heartbeat = QTimer(self)
@@ -239,24 +251,43 @@ class AetherionWindow(QMainWindow):
     def _build_theme_menu(self):
         self.theme_menu.clear()
         for code, theme in THEMES.items():
-            action = QAction(theme.title, self.theme_menu)
+            action = QAction(translate_existing(theme.title, self.ui_language), self.theme_menu)
             action.setCheckable(True)
             action.setChecked(code == self.preferences.theme_name)
             action.triggered.connect(lambda checked=False, key=code: self._change_theme(key))
             self.theme_menu.addAction(action)
         self.theme_menu.addSeparator()
-        motion = QAction("Giảm chuyển động nền", self.theme_menu)
+        motion = QAction(tr(self.ui_language, "main.theme.motion"), self.theme_menu)
         motion.setCheckable(True)
         motion.setChecked(self.preferences.reduce_motion)
         motion.triggered.connect(self._change_motion)
         self.theme_menu.addAction(motion)
         self.theme_menu.addSeparator()
-        smaller = QAction("A−  Chữ nhỏ hơn", self.theme_menu)
+        smaller = QAction(tr(self.ui_language, "main.theme.smaller"), self.theme_menu)
         smaller.triggered.connect(lambda: self._change_font(-1))
-        larger = QAction("A+  Chữ lớn hơn", self.theme_menu)
+        larger = QAction(tr(self.ui_language, "main.theme.larger"), self.theme_menu)
         larger.triggered.connect(lambda: self._change_font(1))
         self.theme_menu.addAction(smaller)
         self.theme_menu.addAction(larger)
+
+    def _retranslate_shell(self):
+        """Retitle the localized shell without rewriting NASA/clinical content."""
+        self.portal_page.set_locale(self.ui_language)
+        for section in (
+            self.top_bar, self.monitor_page, self.assistant_page,
+            self.atlas_page, self.care_page, self.footer_bar,
+        ):
+            translate_shell_widgets(section, self.ui_language)
+        self.language_button.setText(f"VI / EN · {self.ui_language.upper()}")
+        self.language_button.setToolTip(tr(self.ui_language, "main.locale.tooltip"))
+        self.language_button.setAccessibleName(tr(self.ui_language, "main.locale.tooltip"))
+        self._build_theme_menu()
+        self.check_server()
+
+    def _change_language(self):
+        self.ui_language = "en" if self.ui_language == "vi" else "vi"
+        self.preferences.settings.setValue("ui/language", self.ui_language)
+        self._retranslate_shell()
 
     def _change_theme(self, theme_name: str):
         self.preferences.set_theme(theme_name)
@@ -326,14 +357,12 @@ class AetherionWindow(QMainWindow):
 
     def show_help(self):
         QMessageBox.information(
-            self, "Hỗ trợ AETHERION",
-            "Để xem dữ liệu, hãy khởi động AETHERION Server và đăng nhập vào hồ sơ "
-            "được cấp quyền. Truyền tin cấp cứu chưa được chứng nhận hoặc triển khai. "
-            "Đây là sản phẩm nghiên cứu độc lập, không phải thiết bị y tế.",
+            self, tr(self.ui_language, "main.help.title"),
+            tr(self.ui_language, "main.help.body"),
         )
 
     def check_server(self):
-        self.status.setText("○  Đang kiểm tra")
+        self.status.setText(tr(self.ui_language, "main.status.checking"))
         request = QNetworkRequest(QUrl(self.api_url + "/health"))
         reply = self.network.get(request)
         reply.finished.connect(lambda: self.finish_check(reply))
@@ -343,11 +372,11 @@ class AetherionWindow(QMainWindow):
         error = reply.error()
         body = bytes(reply.readAll()).decode("utf-8", errors="replace")
         if error != QNetworkReply.NetworkError.NoError or code != 200 or '"status":"ok"' not in body.replace(" ", ""):
-            self.status.setText("○  Server ngoại tuyến")
-            self.status.setToolTip(f"Không kết nối được tới {self.api_url}. Trang đầu vẫn dùng được.")
+            self.status.setText(tr(self.ui_language, "main.status.offline"))
+            self.status.setToolTip(tr(self.ui_language, "main.status.offline.tooltip", url=self.api_url))
         else:
-            self.status.setText("●  Server đã kết nối")
-            self.status.setToolTip(f"Phản hồi HTTP hợp lệ từ {self.api_url}/health")
+            self.status.setText(tr(self.ui_language, "main.status.online"))
+            self.status.setToolTip(tr(self.ui_language, "main.status.online.tooltip", url=self.api_url))
         reply.deleteLater()
 
 
