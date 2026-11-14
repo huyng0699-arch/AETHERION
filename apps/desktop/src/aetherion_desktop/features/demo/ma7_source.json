@@ -1060,5 +1060,31 @@
         }
       ]
     }
-  ]
+  ],
+  "challenge_resources": {
+    "description": "These NASA HRP background resources are in the 2026 NASA Space Apps Challenge health-monitoring Resources list; the supplementary 1962 MA-7 numerical archive above is not listed among the five challenge links.",
+    "list_verified_on": "2026-11-14",
+    "provenance_page": "https://hackathlone.com/challenges/health-monitoring-software",
+    "resources": [
+      {
+        "publisher": "NASA",
+        "title": "5 Hazards of Human Spaceflight",
+        "url": "https://www.nasa.gov/hrp/hazards/",
+        "usage": "contextualize radiation, isolation, distance, gravity and closed-environment risks; not numeric MA-7 source"
+      },
+      {
+        "publisher": "NASA",
+        "title": "Risks of Human Spaceflight",
+        "url": "https://www.nasa.gov/hrp/risks/",
+        "usage": "context of physiological hazards; not raw telemetry"
+      },
+      {
+        "publisher": "NASA",
+        "title": "Ongoing HRP Research in Space",
+        "url": "https://www.nasa.gov/hrp/ongoing-hrp-research/",
+        "usage": "current NASA research overview; not numeric MA-7 source"
+      }
+    ],
+    "partner_resources_count": 2
+  }
 }
