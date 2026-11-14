@@ -119,31 +119,31 @@ def load_hazard_references(directory: str | Path | None = None) -> tuple[HazardR
                  for hazard_id, label, filename in TOPICS)
 
 
-def _render_value(value: object, depth: int = 0) -> str:
+def _render_value(value: object, depth: int = 0, *, locale: str = "en") -> str:
     """Escape source text and give nested reference structures legible headings."""
     if depth >= 5:
-        return "<em>Further nested detail omitted; see original source file.</em>"
+        return "<em>" + escape(tr(locale, "explore.value.omitted")) + "</em>"
     if isinstance(value, str):
         return escape(value)
     if value is None:
-        return "Not specified"
+        return escape(tr(locale, "explore.value.unspecified"))
     if isinstance(value, (int, float, bool)):
         return escape(str(value))
     if isinstance(value, list):
         if not value:
-            return "<em>Not documented in this source.</em>"
-        return "<ul>" + "".join("<li>" + _render_value(v, depth + 1) + "</li>" for v in value) + "</ul>"
+            return "<em>" + escape(tr(locale, "explore.value.notDocumented")) + "</em>"
+        return "<ul>" + "".join("<li>" + _render_value(v, depth + 1, locale=locale) + "</li>" for v in value) + "</ul>"
     if isinstance(value, dict):
         rows = []
         for key, child in value.items():
             if key in ("source_ids",):
-                label = "Linked source IDs"
+                label = tr(locale, "explore.value.linked")
             else:
                 label = str(key).replace("_", " ").capitalize()
             rows.append("<p><strong>" + escape(label) + ":</strong> " +
-                        _render_value(child, depth + 1) + "</p>")
+                        _render_value(child, depth + 1, locale=locale) + "</p>")
         return "".join(rows)
-    return "<em>Unsupported reference field.</em>"
+    return "<em>" + escape(tr(locale, "explore.value.unsupported")) + "</em>"
 
 
 def hazard_display_title(hazard_id: str, title: str, locale: str) -> str:
@@ -156,7 +156,7 @@ def hazard_display_title(hazard_id: str, title: str, locale: str) -> str:
         "hostile_closed_environments": "explore.topic.habitat",
     }
     key = keys.get(hazard_id)
-    return tr(locale, key) if key else title
+    return (title if normalize_locale(locale) == "en" else tr(locale, key)) if key else title
 
 
 def render_hazard_html(item: HazardReference, locale: str = "en") -> str:
@@ -181,14 +181,14 @@ def render_hazard_html(item: HazardReference, locale: str = "en") -> str:
         f"{escape(tr(locale, 'explore.html.noData'))}</p>",
     ]
     for label, value in item.sections:
-        parts.append("<h3>" + escape(translate_existing(label, locale)) + "</h3>" + _render_value(value))
+        parts.append("<h3>" + escape(translate_existing(label, locale)) + "</h3>" + _render_value(value, locale=locale))
     parts.append(f"<h3>{escape(tr(locale, 'explore.html.links'))}</h3><ul>")
     for publisher, url in item.sources:
         safe = escape(url, quote=True)
         parts.append('<li><a href="' + safe + '">' + escape(publisher) + "</a> — "
                      + escape(url) + "</li>")
     parts.append(f"</ul><h3>{escape(tr(locale, 'explore.html.limits'))}</h3>")
-    parts.append(_render_value(list(item.limitations)))
+    parts.append(_render_value(list(item.limitations), locale=locale))
     parts.append(f"<p><em>{escape(tr(locale, 'explore.html.notLive'))}</em></p>")
     return "".join(parts)
 
