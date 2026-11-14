@@ -52,6 +52,27 @@ def personal_observations_url(api_url: str, subject_id: str) -> str:
     return f"{api_url.rstrip('/')}/api/v1/observations?{urlencode({'subject_id': cleaned, 'limit': 50})}"
 
 
+def aggregate_observation_quality(cards: tuple[PersonalObservationCard, ...] | list[PersonalObservationCard]) -> str:
+    """Choose a conservative data-availability label, never a health verdict.
+
+    A READY observation denotes an accepted data record, not a healthy person.
+    An unknown/unverified entry must not make the entire screen look READY.
+    """
+    if not cards:
+        return "NO_DATA"
+    qualities = {str(card.quality).upper() for card in cards}
+    if qualities - VALID_QUALITY:
+        return "ERROR"
+    for critical in ("ERROR", "DENIED", "OFFLINE", "UNVERIFIED"):
+        if critical in qualities:
+            return critical
+    if "STALE" in qualities:
+        return "STALE"
+    if "NO_DATA" in qualities:
+        return "NO_DATA" if qualities == {"NO_DATA"} else "UNVERIFIED"
+    return "READY" if qualities == {"READY"} else "UNVERIFIED"
+
+
 def build_personal_today_snapshot(
     payload: object,
     subject_id: str,
@@ -193,9 +214,16 @@ def build_personal_today_snapshot(
             )
         )
 
-    overall_state = "READY" if all(c.quality == "READY" for c in cards) else (
-        "STALE" if any(c.quality == "STALE" for c in cards) else "READY"
-    )
+    overall_state = aggregate_observation_quality(cards)
+    state_notes = {
+        "READY": "Source-backed readings available; this is not a health assessment.",
+        "STALE": "Some readings are stale; request a newer measurement before interpreting change.",
+        "UNVERIFIED": "Some readings are unverified or conflicting; no health conclusion is implied.",
+        "OFFLINE": "The data source is offline; last readings cannot prove current health.",
+        "DENIED": "Access to some data is denied; no unavailable values are inferred.",
+        "ERROR": "The source contains invalid data; do not interpret these readings.",
+        "NO_DATA": "No usable recorded measurements; unknown does not mean normal.",
+    }
     return PersonalTodaySnapshot(
         state=overall_state,
         subject_id=subject_id,
@@ -203,7 +231,7 @@ def build_personal_today_snapshot(
         latest_at=latest_dt.isoformat() if latest_dt else "",
         intake_required=False,
         care_flow_stage="RECHECK" if cards else "GATHER",
-        status_note="Personal Today overview loaded from authenticated observations.",
+        status_note=state_notes[overall_state],
         has_more=bool(payload.get("has_more", False)),
     )
 
