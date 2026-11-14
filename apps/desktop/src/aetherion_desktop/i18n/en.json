@@ -233,7 +233,7 @@
   "reader.imageWithheld": "Image withheld: {warning}",
   "reader.imageCaption": "{caption}\nAlt: {alt}\n{page} | Attribution: {attribution}\nLicense: {license} | Source: {source}",
   "reader.refLine": "{label} | {page}\n{url}",
-  "reader.sourceUnchanged": "Original NASA source — English; article text is not auto-translated.",
+  "reader.sourceUnchanged": "English-language content is shown as imported; no automatic translation or independent source certification.",
   "observatory.eyebrow": "AETHERION  /  KNOWLEDGE OBSERVATORY",
   "observatory.hero": "Explore the science",
   "observatory.lead": "A space for source-backed knowledge. Explore CliFF records and terminology without fabricated content.",
