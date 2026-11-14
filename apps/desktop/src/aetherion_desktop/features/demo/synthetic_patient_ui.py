@@ -37,10 +37,17 @@ def build_synthetic_patient_demo(parent=None, *, locale="en",
             self.setObjectName("demoSyntheticChart")
 
         def set_data(self, data, theme_name, display_mode):
+            # Keep one x-axis slot per calendar day; None is an intentional
+            # gap, NOT a zero or a measurement to be interpolated.
             self.points = [
-                (item["day_utc"], item["value"]) for item in data
-                if isinstance(item.get("value"), (int, float))
-                and isfinite(item["value"])
+                (
+                    item["day_utc"],
+                    item["value"] if (
+                        isinstance(item.get("value"), (int, float))
+                        and isfinite(item["value"])
+                    ) else None,
+                )
+                for item in data
             ]
             self.theme, self.mode = theme_name, display_mode
             self.update()
@@ -63,23 +70,38 @@ def build_synthetic_patient_demo(parent=None, *, locale="en",
             if not self.points:
                 painter.end()
                 return
-            values = [value for _, value in self.points]
+            values = [value for _, value in self.points if value is not None]
+            if not values:
+                painter.end()
+                return
             lo, hi = min(values), max(values)
             padding = max((hi - lo) * .12, max(abs(lo), 1) * .01)
             lo -= padding
             hi += padding
             span = max(hi - lo, 1e-9)
             n = len(self.points)
+            pen = QPen(QColor(pal.accent), 2.5)
+            painter.setPen(pen)
             curve = QPainterPath()
+            active = False
+            latest = None
             for ix, (_, value) in enumerate(self.points):
+                if value is None:
+                    if active:
+                        painter.drawPath(curve)
+                        curve = QPainterPath()
+                        active = False
+                    continue
                 x = chart.left() + chart.width() * ix / max(n-1, 1)
                 y = chart.bottom() - chart.height() * (value-lo)/span
-                if ix == 0:
+                if not active:
                     curve.moveTo(x, y)
+                    active = True
                 else:
                     curve.lineTo(x, y)
-            painter.setPen(QPen(QColor(pal.accent), 2.5))
-            painter.drawPath(curve)
+                latest = (x, y)
+            if active:
+                painter.drawPath(curve)
             painter.setPen(QPen(QColor(pal.text), 1))
             painter.drawText(2, chart.top()+7, f"{hi:.1f}")
             painter.drawText(2, chart.bottom(), f"{lo:.1f}")
@@ -88,11 +110,10 @@ def build_synthetic_patient_demo(parent=None, *, locale="en",
                 QRectF(chart.left(), chart.bottom()+7, chart.width(),
                        22), Qt.AlignmentFlag.AlignRight, self.points[-1][0]
             )
-            last_x = chart.right()
-            last_y = chart.bottom() - chart.height() * (values[-1]-lo)/span
-            painter.setPen(Qt.PenStyle.NoPen)
-            painter.setBrush(QColor(pal.accent))
-            painter.drawEllipse(QPointF(last_x, last_y), 5, 5)
+            if latest is not None:
+                painter.setPen(Qt.PenStyle.NoPen)
+                painter.setBrush(QColor(pal.accent))
+                painter.drawEllipse(QPointF(*latest), 5, 5)
             painter.end()
 
     class PatientDemo(QWidget):
@@ -462,7 +483,6 @@ def build_synthetic_patient_demo(parent=None, *, locale="en",
             if not self.ready or not self.subject_combo.currentData():
                 return
             self.refresh_day()
-            self.refresh_metric()
 
         def refresh_day(self, *_):
             if not self.ready:
@@ -486,22 +506,32 @@ def build_synthetic_patient_demo(parent=None, *, locale="en",
                 )
                 for col, value in enumerate(values):
                     self.day_table.setItem(i, col, self._text_item(value))
+            # A changed selected day also changes the chart's end date.
+            self.refresh_metric()
 
         def refresh_metric(self, *_):
             if not self.ready or not self.subject_combo.currentData():
                 return
             metric = self.metric_combo.currentData()
             window = self.period.currentData() or DAYS
-            rows = series(self.subject_combo.currentData(), metric, limit=window)
+            rows = series(
+                self.subject_combo.currentData(), metric, limit=window,
+                end_day=self.day_picker.date().toString("yyyy-MM-dd")
+            )
             self.trend.set_data(rows, self.theme, self.mode)
+            observed = sum(row["value"] is not None for row in rows)
             self.trend_summary.setText(
-                self.t("monitor.summary", n=len(rows), days=window,
+                self.t("monitor.summary", n=observed, days=window,
                        name=self.t("metric." + metric))
             )
             self.history_table.setRowCount(len(rows))
             for i, row in enumerate(reversed(rows)):
-                values = (row["day_utc"], self.t("metric." + metric),
-                          f"{row['value']:g}", row["unit"], row["source_id"])
+                values = (
+                    row["day_utc"], self.t("metric." + metric),
+                    f"{row['value']:g}" if row["value"] is not None else self.t("missing"),
+                    row["unit"],
+                    row["source_id"] if row["source_id"] else self.t("missing"),
+                )
                 for col, value in enumerate(values):
                     self.history_table.setItem(i, col, self._text_item(value))
 

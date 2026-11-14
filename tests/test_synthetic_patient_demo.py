@@ -2,6 +2,7 @@
 
 No real patient records or production database is accessed.
 """
+from contextlib import closing
 from datetime import date
 import importlib.util
 from pathlib import Path
@@ -34,12 +35,30 @@ class SyntheticPatientDemoTests(unittest.TestCase):
             self.assertEqual(info["from"], "2025-05-24")
             self.assertEqual(info["to"], "2026-11-14")
             items = demo.series("DEMO-P001", "heart_rate", path=db)
-            self.assertGreater(len(items), 500)
-            self.assertTrue(all(x["source_id"] == demo.SOURCE_ID for x in items))
+            self.assertEqual(len(items), 540)
+            self.assertEqual(items[0]["day_utc"], info["from"])
+            self.assertEqual(items[-1]["day_utc"], info["to"])
+            readings = [x for x in items if x["state"] == "MEASURED"]
+            gaps = [x for x in items if x["state"] == "NO_DATA"]
+            self.assertGreater(len(readings), 500)
+            self.assertGreater(len(gaps), 0)
+            self.assertTrue(all(x["source_id"] == demo.SOURCE_ID for x in readings))
+            self.assertTrue(all(x["value"] is None and x["source_id"] is None for x in gaps))
+            last30 = demo.series("DEMO-P001", "heart_rate", limit=30, path=db)
+            self.assertEqual(len(last30), 30)
+            self.assertEqual(last30[-1]["day_utc"], info["to"])
+            ending_early = demo.series(
+                "DEMO-P001", "heart_rate", limit=30,
+                end_day="2026-09-30", path=db
+            )
+            self.assertEqual(len(ending_early), 30)
+            self.assertEqual(ending_early[-1]["day_utc"], "2026-09-30")
+            with self.assertRaises(ValueError):
+                demo.series("DEMO-P001", "heart_rate", end_day="2024-01-01", path=db)
             day = demo.day_values("DEMO-P002", info["to"], db)
             self.assertGreater(len(day), 8)
             self.assertTrue(all(x["quality"] == "UNVERIFIED" for x in day))
-            with sqlite3.connect(db) as conn:
+            with closing(sqlite3.connect(db)) as conn:
                 states = conn.execute(
                     "SELECT DISTINCT scope, verification_state, quality, synthetic "
                     "FROM demo_observations"
@@ -53,11 +72,11 @@ class SyntheticPatientDemoTests(unittest.TestCase):
     def test_fail_closed_if_file_is_not_a_demo_database(self):
         with tempfile.TemporaryDirectory() as temp:
             db = Path(temp) / "private.sqlite3"
-            with sqlite3.connect(db) as conn:
+            with closing(sqlite3.connect(db)) as conn:
                 conn.execute("CREATE TABLE patients (id INTEGER)")
             with self.assertRaises(ValueError):
                 demo.build_demo_database(db)
-            with sqlite3.connect(db) as conn:
+            with closing(sqlite3.connect(db)) as conn:
                 self.assertIsNotNone(conn.execute(
                     "SELECT name FROM sqlite_master WHERE name='patients'"
                 ).fetchone())
