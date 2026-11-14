@@ -64,7 +64,10 @@ class AuthorizedPersonalTodayPage(QWidget):
 
     def refresh(self) -> None:
         if not self._subject_id or not self._token:
+            self._displayed_cards = ()
+            self._visible_cards = ()
             self.table.setRowCount(0)
+            update_personal_tiles(self, ())
             self.status_label.setText("DENIED — select a subject from Mission Control and sign in")
             return
         self._request_seq += 1
