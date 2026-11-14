@@ -28,7 +28,13 @@ if (-not (Test-Path $moduleEntry)) { throw "Desktop entrypoint missing: $moduleE
 # cannot safely be executed as a bare script.
 $launcher = Join-Path $root "build\aetherion_desktop_launcher.py"
 New-Item -ItemType Directory -Force -Path (Split-Path $launcher) | Out-Null
-Set-Content -Path $launcher -Encoding UTF8 -Value "from aetherion_desktop.main import main\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+$launcherSource = @'
+from aetherion_desktop.main import main
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+'@
+Set-Content -Path $launcher -Encoding UTF8 -Value $launcherSource
 $entry = $launcher
 $out = [IO.Path]::GetFullPath((Join-Path $root $OutputDirectory))
 $work = Join-Path $root "build\pyinstaller-work"
