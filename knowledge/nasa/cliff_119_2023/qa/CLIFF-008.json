@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-008",
+  "slot": 8,
+  "quest_id": "Q-0308",
+  "checked_at_utc": "2026-11-14T05:42:43.187856+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/bhp-grief-reaction-cliff-2023.pdf?emrc=3c9612",
+  "http_status": 200,
+  "pdf_sha256": "d8cd435b55c1387197103bfd19d54ffe3b0fca18738c2e1c9d0d6d07a5c6bb4d",
+  "pdf_bytes": 349988,
+  "pages_extracted": 15,
+  "sections_count": 15,
+  "tables_count": 3,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-008-IMG-01": "56b3523e01e56e84fbae597f8b494a95045cf54347b8629e370e8d71172cb3ac",
+    "CLIFF-008-IMG-02": "62d66c1488429f2ff48328b4eebf9342c30f71efa301441cdf739390e4fcdd41",
+    "CLIFF-008-IMG-03": "c100e0f06c681236ef45f9d9ccb47eb65c890b8d5d67ab71b3f749b6f0ab3e59"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
