@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-017",
+  "slot": 17,
+  "quest_id": "Q-0317",
+  "checked_at_utc": "2026-11-14T05:55:20.185210+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/venous-thromboembolism-cliff-2023.pdf?emrc=5c8ad7",
+  "http_status": 200,
+  "pdf_sha256": "41f4ded1ce5ea061d12691b4e17b70da7e8f4996c5ce422b764ef5fd8293f7b2",
+  "pdf_bytes": 353199,
+  "pages_extracted": 15,
+  "sections_count": 15,
+  "tables_count": 2,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-017-IMG-01": "b0d5fdaa88e497b13bf7989587959a197a88f9050b3ced04a1498b594d836074",
+    "CLIFF-017-IMG-02": "1e2b24dbbf81551d1d554ac3461617e5452671704c47f2f742371903dcafbf93",
+    "CLIFF-017-IMG-03": "77c6078c5ae90735659413ae751804e3c59be13862098849047d0e66b8fb972b"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
