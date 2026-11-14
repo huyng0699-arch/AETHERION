@@ -9,7 +9,7 @@ import math
 import random
 
 from PySide6.QtCore import Qt, QTimer, Signal
-from PySide6.QtGui import QColor, QLinearGradient, QPainter, QPainterPath, QPen, QRadialGradient
+from PySide6.QtGui import QBrush, QColor, QLinearGradient, QPainter, QPainterPath, QPen, QRadialGradient
 from PySide6.QtWidgets import (
     QButtonGroup, QCheckBox, QColorDialog, QComboBox, QDialog, QFrame,
     QGridLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QScrollArea,
@@ -85,7 +85,7 @@ class OwlGarden(QWidget):
         sky.setColorAt(0, _mix('#16264B', '#79C9F4', d))
         sky.setColorAt(.60, _mix('#3A416D', '#E7F6FA', d))
         sky.setColorAt(1, _mix('#7F718A', '#FFEDCF', d))
-        p.fillRect(0, 0, 800, 470, sky)
+        p.fillRect(0, 0, 800, 470, QBrush(sky))
         # Night sky fades as sun rises.
         p.setPen(Qt.PenStyle.NoPen)
         for x,y,r in self.stars:
@@ -104,12 +104,12 @@ class OwlGarden(QWidget):
             p.drawEllipse(x,y,115,24);p.drawEllipse(x+18,y-17,59,32)
         hill = QPainterPath();hill.moveTo(0,336);hill.cubicTo(160,247,293,375,456,294)
         hill.cubicTo(595,231,695,327,800,264);hill.lineTo(800,470);hill.lineTo(0,470);hill.closeSubpath()
-        p.fillPath(hill,_mix('#2A5872','#85B6A2',d))
+        p.fillPath(hill,QBrush(_mix('#2A5872','#85B6A2',d)))
         foreground = QPainterPath();foreground.moveTo(0,400)
         foreground.cubicTo(179,368,272,428,426,391)
         foreground.cubicTo(557,352,657,404,800,368)
         foreground.lineTo(800,470);foreground.lineTo(0,470);foreground.closeSubpath()
-        p.fillPath(foreground,_mix('#24435A','#A9D6AD',d))
+        p.fillPath(foreground,QBrush(_mix('#24435A','#A9D6AD',d)))
         p.setPen(QPen(_mix('#557D89','#E3F5E1',d),2))
         for n in range(6):
             yy=418+n*6
@@ -131,7 +131,7 @@ class OwlGarden(QWidget):
             base = _mix(base,theme.second,.15)
             g=QRadialGradient(x-r*.23,y-r*.28,r*1.12)
             g.setColorAt(0,_mix(base,'#FFFFFF',.24*d));g.setColorAt(1,_mix(base,'#152D50',.12))
-            p.setPen(Qt.PenStyle.NoPen);p.setBrush(g)
+            p.setPen(Qt.PenStyle.NoPen);p.setBrush(QBrush(g))
             sway = 0 if self.preferences.reduce_motion else 3*math.sin(self.phase*.70+i*.6)
             p.drawEllipse(int(x-r*.85+sway),int(y-r*.68),int(r*1.65),int(r*1.43))
         # Tiny floating leaves, only from the illustrative setting scene.
@@ -157,7 +157,7 @@ class OwlGarden(QWidget):
         # Pointed fluffy ear-tufts.
         left=QPainterPath();left.moveTo(-47,-23);left.lineTo(-59,-92);left.quadTo(-16,-78,-4,-45);left.closeSubpath()
         right=QPainterPath();right.moveTo(47,-23);right.lineTo(59,-92);right.quadTo(16,-78,4,-45);right.closeSubpath()
-        p.fillPath(left,body);p.fillPath(right,body)
+        p.fillPath(left,QBrush(body));p.fillPath(right,QBrush(body))
         face=_mix('#D8BDCA','#F7E6C5',d)
         p.setBrush(face);p.drawEllipse(-53,-61,57,60);p.drawEllipse(-4,-61,57,60)
         eye=_mix('#C9B9FA','#FFF4B9',d)
