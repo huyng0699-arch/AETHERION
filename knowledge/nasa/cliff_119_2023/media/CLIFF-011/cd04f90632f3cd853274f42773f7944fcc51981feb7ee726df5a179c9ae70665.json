@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-011",
+  "title": "12-Lead ECG Showing Atrial Fibrillation (90 bpm)",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/43/ECG_Atrial_Fibrillation_90_bpm.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:ECG_Atrial_Fibrillation_90_bpm.jpg",
+  "license": "CC-BY-SA-4.0",
+  "author": "Ewingdo",
+  "caption": "Electrocardiogram demonstrating atrial fibrillation with an irregularly irregular ventricular rhythm and absent discrete P waves.",
+  "alt_text": "12-lead ECG tracing showing irregular R-R intervals and fibrillatory baseline characteristic of atrial fibrillation.",
+  "clinical_relevance": "Illustrates ECG diagnosis of atrial fibrillation referenced in CLIFF-011 (p.1, p.5-9).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 1286,
+  "height": 593,
+  "size_bytes": 229542,
+  "sha256": "cd04f90632f3cd853274f42773f7944fcc51981feb7ee726df5a179c9ae70665",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/4/43/ECG_Atrial_Fibrillation_90_bpm.jpg",
+  "retrieved_at_utc": "2026-11-14T05:41:41.869347+00:00",
+  "asset_path": "cd04f90632f3cd853274f42773f7944fcc51981feb7ee726df5a179c9ae70665.jpg",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}

@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-011",
+  "title": "Atrial Fibrillation Cardiac Conduction Diagram",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Atrial_Fibrillation.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Atrial_Fibrillation.png",
+  "license": "CC-BY-SA-4.0",
+  "author": "BruceBlaus",
+  "caption": "Anatomical diagram comparing normal sinus rhythm electrical conduction with disorganized atrial electrical activity in atrial fibrillation.",
+  "alt_text": "Diagram of two hearts comparing coordinated sinus node conduction with chaotic atrial impulses in atrial fibrillation.",
+  "clinical_relevance": "Explains atrial arrhythmia mechanism and thromboembolic/hemodynamic risk in spaceflight (CLIFF-011, p.1).",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 1200,
+  "height": 750,
+  "size_bytes": 368984,
+  "sha256": "fc8ef3b315bdb8ae11af98e3b493f15b8aea1770b68dda9518d358aa14d01230",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Atrial_Fibrillation.png",
+  "retrieved_at_utc": "2026-11-14T05:41:42.184431+00:00",
+  "asset_path": "fc8ef3b315bdb8ae11af98e3b493f15b8aea1770b68dda9518d358aa14d01230.png",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}

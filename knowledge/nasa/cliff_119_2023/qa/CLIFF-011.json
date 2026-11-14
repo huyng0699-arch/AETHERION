@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-011",
+  "slot": 11,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+  "http_status": 200,
+  "pdf_bytes": 370365,
+  "pdf_sha256": "c4f54817eda3de23bacca5a01c931e1f022d03b5efa6867395c9716e2279cb72",
+  "pdf_pages": 15,
+  "sections_count": 15,
+  "tables_count": 3,
+  "references_count": 43,
+  "media_count": 3,
+  "media_sha256s": [
+    "b0b1118ef8616b9edb3fcfebec13ea1211f3efdd0ba7623524324199219bc538",
+    "cd04f90632f3cd853274f42773f7944fcc51981feb7ee726df5a179c9ae70665",
+    "fc8ef3b315bdb8ae11af98e3b493f15b8aea1770b68dda9518d358aa14d01230"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-SA-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}

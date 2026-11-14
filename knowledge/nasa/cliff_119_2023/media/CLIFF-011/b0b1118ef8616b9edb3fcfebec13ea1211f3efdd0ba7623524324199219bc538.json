@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-011",
+  "title": "ECG Showing Atrial Flutter Sawtooth Waves",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/ECG-atrial_flutter.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:ECG-atrial_flutter.jpg",
+  "license": "CC-BY-SA-4.0",
+  "author": "Ciernik M",
+  "caption": "Electrocardiogram demonstrating classic sawtooth atrial flutter (F) waves.",
+  "alt_text": "ECG tracing showing regular sawtooth flutter waves between QRS complexes.",
+  "clinical_relevance": "Illustrates ECG differentiation of atrial flutter within CLIFF-011 (p.1, p.5-9).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 1730,
+  "height": 1016,
+  "size_bytes": 1150815,
+  "sha256": "b0b1118ef8616b9edb3fcfebec13ea1211f3efdd0ba7623524324199219bc538",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/ECG-atrial_flutter.jpg",
+  "retrieved_at_utc": "2026-11-14T05:41:42.125213+00:00",
+  "asset_path": "b0b1118ef8616b9edb3fcfebec13ea1211f3efdd0ba7623524324199219bc538.jpg",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}
