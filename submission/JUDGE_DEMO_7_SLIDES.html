@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>AETHERION | Seven-slide judge briefing | TRUY TINH</title>
+<style>
+:root{color-scheme:dark;--bg:#07131f;--panel:#11263a;--edge:#35556b;--ink:#eaf3f7;--soft:#acc5d1;--mint:#80e4d8;--amber:#f6c477;--red:#ffa9a9}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% 18%,#154052 0,transparent 48%),radial-gradient(ellipse at 14% 85%,#15263f 0,transparent 53%),var(--bg);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);min-height:100vh}
+a{color:var(--mint);text-decoration-thickness:1px;text-underline-offset:3px}
+button{font:inherit;cursor:pointer;min-height:44px;border:1px solid var(--edge);border-radius:11px;background:#17344b;color:var(--ink);padding:.6rem 1rem}
+button:hover{border-color:var(--mint)}button:focus-visible,a:focus-visible{outline:3px solid var(--amber);outline-offset:3px}button:disabled{opacity:.35;cursor:not-allowed}
+.wrap{width:min(1080px,calc(100% - 32px));margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 0}.brand{letter-spacing:.15em;font-weight:750;color:var(--mint)}.meta{font-size:.77rem;color:var(--soft)}
+.langs{display:flex;gap:6px}.langs button[aria-pressed=true]{border-color:var(--mint);background:#24536a}
+.slide{display:none;min-height:min(70vh,690px);flex-direction:column;justify-content:center;padding:clamp(24px,5vw,70px);border-radius:24px;background:linear-gradient(145deg,rgba(24,54,73,.88),rgba(9,25,41,.94));border:1px solid var(--edge);box-shadow:0 22px 90px rgba(0,0,0,.2)}
+.slide.active,.slide:first-of-type:not(.hidden){display:flex}.kicker{text-transform:uppercase;letter-spacing:.16em;color:var(--mint);font-size:.8rem;font-weight:700;margin:0 0 14px}
+h1,h2{line-height:1.12;max-width:850px;letter-spacing:-.03em}h1{font-size:clamp(2.6rem,6.6vw,5rem);margin:0 0 16px}h2{font-size:clamp(2rem,4.2vw,3.3rem);margin:0 0 24px}
+p{font-size:clamp(1.05rem,1.7vw,1.35rem);line-height:1.55;max-width:850px;color:var(--soft);margin:0 0 17px}
+.bigs{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:12px;margin-top:18px}
+.tile{border:1px solid var(--edge);border-radius:13px;padding:17px;background:rgba(5,18,30,.35)}
+.tile strong{display:block;color:var(--ink);font-size:1.02rem;margin-bottom:8px}.tile small{font-size:.94rem;line-height:1.35;color:var(--soft)}
+.callout{border-left:4px solid var(--amber);background:rgba(246,196,119,.07);border-radius:6px;padding:13px 16px;margin-top:18px;color:var(--soft);font-size:.97rem;line-height:1.5}
+.source{font-size:.83rem;color:var(--soft);margin-top:22px;overflow-wrap:anywhere}
+.mark{color:var(--amber)}.flow{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}.flow span{border-radius:9px;border:1px solid var(--edge);padding:13px 15px;background:#0a1c2d;font-weight:700;color:var(--mint)}
+.controls{display:flex;align-items:center;gap:9px;justify-content:space-between;padding:19px 0 8px}.progress{flex:1;height:5px;background:#254056;border-radius:9px;overflow:hidden}.progress div{height:100%;width:14.2857%;background:var(--mint);transition:width .18s}.count{font-variant-numeric:tabular-nums;color:var(--soft);white-space:nowrap}.below{font-size:.79rem;color:var(--soft);line-height:1.4;padding-bottom:18px}
+html[lang=en] [data-lang=vi],html[lang=vi] [data-lang=en]{display:none!important}
+@media(max-width:650px){.top{flex-wrap:wrap}.slide{min-height:65vh;padding:22px}.controls{flex-wrap:wrap}.progress{min-width:90px}}
+@media(prefers-reduced-motion:reduce){.progress div{transition:none}}
+@media print{html,body{color:#0d2030;background:#fff!important}.top,.controls,.below{display:none!important}.wrap{width:100%;margin:0}.slide,.slide.hidden,.slide.active{display:flex!important;min-height:0;height:95vh;page-break-after:always;break-after:page;box-shadow:none;border:0;background:#fff;color:#0d2030;border-radius:0}.tile{background:#f2f6f7;border-color:#9eaeb8}.kicker,.flow span{color:#095b5f}.tile strong,h1,h2{color:#0d2030}p,.tile small,.source,.callout{color:#243f4c}.callout{background:#fff5e5}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div><div class="brand">AETHERION / TRUY TINH</div><div class="meta">NASA Space Apps Challenge 2026 · independent participant project</div></div>
+  <div class="langs" role="group" aria-label="Language / Ngôn ngữ">
+    <button type="button" id="btn-en" aria-pressed="true">English</button>
+    <button type="button" id="btn-vi" aria-pressed="false">Tiếng Việt</button>
+  </div>
+</header>
+<main id="deck" aria-label="Seven-slide judge briefing">
+<section class="slide active" data-slide="1" aria-label="Slide 1 of 7">
+ <div class="kicker">01 / The proposal</div>
+ <h1>AETHERION</h1>
+ <p data-lang="en">One health workspace for remote missions: understand what is measured, what is missing, and what action needs human follow-up.</p>
+ <p data-lang="vi">Không gian sức khỏe cho nhiệm vụ ở xa: phân biệt điều đã đo, điều chưa biết và hành động cần con người theo dõi.</p>
+ <div class="callout" data-lang="en">Independent prototype by Team TRUY TINH. Not a NASA system, flight-certified product or clinical device.</div>
+ <div class="callout" data-lang="vi">Sản phẩm thử nghiệm độc lập của đội TRUY TINH. Không phải hệ thống NASA, phần mềm được chứng nhận bay hay thiết bị y tế.</div>
+</section>
+<section class="slide hidden" data-slide="2" aria-label="Slide 2 of 7">
+ <div class="kicker">02 / Why this matters</div>
+ <h2 data-lang="en">Space health is a problem of context and uncertainty.</h2>
+ <h2 data-lang="vi">Sức khỏe không gian đòi hỏi hiểu bối cảnh và sự không chắc chắn.</h2>
+ <p data-lang="en">NASA Human Research Program describes five major hazards of human spaceflight. Clinical context matters, but hazard research is not a live sensor stream.</p>
+ <p data-lang="vi">NASA Human Research Program mô tả năm nhóm nguy cơ của bay vào không gian. Nghiên cứu về nguy cơ không đồng nghĩa dữ liệu cảm biến trực tiếp.</p>
+ <div class="bigs">
+ <div class="tile"><strong>Radiation</strong><small data-lang="en">Exposure risk</small><small data-lang="vi">Nguy cơ phơi nhiễm</small></div>
+ <div class="tile"><strong>Isolation</strong><small data-lang="en">Confinement and behavior</small><small data-lang="vi">Cô lập, hành vi và tâm lý</small></div>
+ <div class="tile"><strong>Distance</strong><small data-lang="en">Delayed ground support</small><small data-lang="vi">Hỗ trợ mặt đất có độ trễ</small></div>
+ <div class="tile"><strong>Gravity</strong><small data-lang="en">Altered physical adaptation</small><small data-lang="vi">Thích nghi sinh lý với trọng lực</small></div>
+ <div class="tile"><strong>Environment</strong><small data-lang="en">Closed and hostile habitat</small><small data-lang="vi">Môi trường khép kín, khắc nghiệt</small></div>
+ </div>
+ <div class="source">Primary reference: <a href="https://www.nasa.gov/hrp/hazards/" rel="noopener noreferrer" target="_blank">NASA — Five Hazards of Human Spaceflight</a></div>
+</section>
+<section class="slide hidden" data-slide="3" aria-label="Slide 3 of 7">
+ <div class="kicker">03 / System boundary</div>
+ <h2 data-lang="en">One local server. Native desktop. Explicit sources.</h2>
+ <h2 data-lang="vi">Một máy chủ cục bộ. Ứng dụng Windows thực. Nguồn dữ liệu rõ ràng.</h2>
+ <div class="flow"><span>Qt / Windows</span><span>HTTP API</span><span>FastAPI</span><span>SQLite</span></div>
+ <p data-lang="en">AETHERION keeps its authoritative records in the server's SQLite store. The desktop is a native PySide6 application, not an embedded browser. Cross-component integration is still subject to Windows review.</p>
+ <p data-lang="vi">AETHERION lưu bản ghi chuẩn trong SQLite phía máy chủ. Desktop dùng PySide6 bản địa, không bọc trang web. Liên kết các thành phần vẫn cần nghiệm thu Windows.</p>
+ <div class="callout" data-lang="en">Future mobile, wearable, AI and physical sensors are not represented as connected or deployed.</div>
+ <div class="callout" data-lang="vi">Mobile, đồng hồ, AI và cảm biến vật lý trong kế hoạch không được trình bày như đã kết nối hoặc triển khai.</div>
+</section>
+<section class="slide hidden" data-slide="4" aria-label="Slide 4 of 7">
+ <div class="kicker">04 / The intended care loop</div>
+ <h2 data-lang="en">GATHER → EVALUATE → ACT → RECHECK</h2>
+ <h2 data-lang="vi">THU THẬP → ĐÁNH GIÁ → HÀNH ĐỘNG → KIỂM TRA LẠI</h2>
+ <div class="bigs">
+ <div class="tile"><strong>GATHER</strong><small data-lang="en">Subject, time, unit, source and quality</small><small data-lang="vi">Chủ thể, thời gian, đơn vị, nguồn và chất lượng</small></div>
+ <div class="tile"><strong>EVALUATE</strong><small data-lang="en">Trends, missing data and uncertainty</small><small data-lang="vi">Xu hướng, thiếu dữ liệu và mức độ không chắc chắn</small></div>
+ <div class="tile"><strong>ACT</strong><small data-lang="en">Human-directed, source-linked next steps</small><small data-lang="vi">Hành động do con người quyết định, có dẫn nguồn</small></div>
+ <div class="tile"><strong>RECHECK</strong><small data-lang="en">Record what changed and review again</small><small data-lang="vi">Ghi nhận thay đổi và đánh giá lại</small></div>
+ </div>
+ <div class="callout" data-lang="en">This is the product workflow target, not proof of clinically validated diagnosis or full end-to-end Windows acceptance.</div>
+ <div class="callout" data-lang="vi">Đây là chu trình chức năng mục tiêu, không phải bằng chứng chẩn đoán được thẩm định hoặc nghiệm thu Windows từ đầu đến cuối.</div>
+</section>
+<section class="slide hidden" data-slide="5" aria-label="Slide 5 of 7">
+ <div class="kicker">05 / User experience</div>
+ <h2 data-lang="en">From mission operations to the right question.</h2>
+ <h2 data-lang="vi">Từ điều hành nhiệm vụ đến đúng câu hỏi sức khỏe.</h2>
+ <p data-lang="en">The current native UI work focuses on a persistent Mission Operations workspace with discoverable navigation, monitoring, personal context and a clearly marked demo route. No fabricated “healthy” measurements appear when data is absent.</p>
+ <p data-lang="vi">Giao diện bản địa đang hướng tới không gian Mission Operations liên tục, điều hướng dễ tìm, theo dõi, bối cảnh cá nhân và lối vào dữ liệu trình diễn được gắn nhãn rõ. Thiếu dữ liệu không được hiện số đo “bình thường” bịa đặt.</p>
+ <div class="bigs">
+ <div class="tile"><strong>Mission</strong><small data-lang="en">Overview and authorized crew context</small><small data-lang="vi">Tổng quan và bối cảnh phi hành đoàn đúng quyền</small></div>
+ <div class="tile"><strong>Monitor</strong><small data-lang="en">Time, units and source quality</small><small data-lang="vi">Thời gian, đơn vị và chất lượng nguồn</small></div>
+ <div class="tile"><strong>Care</strong><small data-lang="en">Human action and follow-up</small><small data-lang="vi">Hành động con người và theo dõi lại</small></div>
+ </div>
+ <div class="callout" data-lang="en">No application screenshot is shown here: a verified Windows capture for the latest main build is still an acceptance gate.</div>
+ <div class="callout" data-lang="vi">Không sử dụng ảnh chụp ứng dụng ở đây: ảnh Windows xác minh đúng bản main vẫn là điều kiện nghiệm thu.</div>
+</section>
+<section class="slide hidden" data-slide="6" aria-label="Slide 6 of 7">
+ <div class="kicker">06 / Research integrity</div>
+ <h2 data-lang="en">NASA science is evidence, not astronaut telemetry.</h2>
+ <h2 data-lang="vi">Khoa học NASA là bằng chứng, không phải sinh hiệu phi hành gia.</h2>
+ <p data-lang="en">AETHERION separates historical NASA research, condition references, manually entered observations and explicitly fictional testing data. The NASA CliFF 119 offline original-document collection is not yet verified complete.</p>
+ <p data-lang="vi">AETHERION phân biệt nghiên cứu NASA trong quá khứ, tài liệu bệnh học, quan sát nhập thủ công và dữ liệu hư cấu phục vụ thử nghiệm. Kho tài liệu gốc CliFF 119 chưa được xác minh đầy đủ.</p>
+ <div class="bigs">
+ <div class="tile"><strong>Source</strong><small data-lang="en">Publisher, URL, version and rights</small><small data-lang="vi">Cơ quan, liên kết, phiên bản và quyền sử dụng</small></div>
+ <div class="tile"><strong>Observation</strong><small data-lang="en">Identity, time, unit and verification state</small><small data-lang="vi">Danh tính, thời gian, đơn vị và trạng thái xác minh</small></div>
+ <div class="tile"><strong>Uncertainty</strong><small data-lang="en">NO_DATA is not normal health</small><small data-lang="vi">NO_DATA không có nghĩa sức khỏe bình thường</small></div>
+ </div>
+ <div class="source">NASA Open Science Data Repository: <a href="https://osdr.nasa.gov/" rel="noopener noreferrer" target="_blank">osdr.nasa.gov</a>. No access to restricted human records is implied.</div>
+</section>
+<section class="slide hidden" data-slide="7" aria-label="Slide 7 of 7">
+ <div class="kicker">07 / What judges can verify</div>
+ <h2 data-lang="en">A working foundation, with clearly stated limits.</h2>
+ <h2 data-lang="vi">Nền tảng đã có mã nguồn, cùng những giới hạn được nêu rõ.</h2>
+ <div class="bigs">
+ <div class="tile"><strong data-lang="en">Available in source</strong><strong data-lang="vi">Đã có trong mã nguồn</strong><small data-lang="en">Native Qt client, local HTTP service, SQLite modules and research references. Review the actual repository state.</small><small data-lang="vi">Ứng dụng Qt, HTTP cục bộ, mô-đun SQLite và tài liệu tham khảo. Cần đối chiếu mã thực tế.</small></div>
+ <div class="tile"><strong data-lang="en">Needs acceptance</strong><strong data-lang="vi">Chưa được nghiệm thu</strong><small data-lang="en">Latest Windows EXE and visible UI, all integrated journeys, original NASA documents and independent review.</small><small data-lang="vi">EXE và giao diện Windows mới nhất, hành trình tích hợp, tài liệu NASA gốc và đánh giá độc lập.</small></div>
+ </div>
+ <div class="callout" data-lang="en">This standalone presentation is NOT a recording of the app. A public, no-login hosting URL and private-browsing check must be supplied before Q-0260 can be marked DONE. The NASA Project tab must be submitted separately.</div>
+ <div class="callout" data-lang="vi">Bộ trình chiếu độc lập này KHÔNG phải video ứng dụng. Cần liên kết công khai không đăng nhập và kiểm tra ẩn danh trước khi Q-0260 được DONE. Phải nộp riêng qua Project tab của NASA.</div>
+ <div class="source"><a href="https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/" target="_blank" rel="noopener noreferrer">NASA Space Apps 2026 — challenge page</a></div>
+</section>
+</main>
+<nav class="controls" aria-label="Slide navigation">
+ <button id="previous" type="button" aria-label="Previous slide">← <span data-lang="en">Back</span><span data-lang="vi">Trước</span></button>
+ <div class="progress" role="progressbar" aria-label="Presentation progress" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1"><div id="progress-fill"></div></div>
+ <span id="count" class="count" aria-live="polite">1 / 7</span>
+ <button id="next" type="button" aria-label="Next slide"><span data-lang="en">Next</span><span data-lang="vi">Tiếp</span> →</button>
+ <button id="print" type="button" aria-label="Print seven slides as PDF"><span data-lang="en">Print / PDF</span><span data-lang="vi">In / PDF</span></button>
+</nav>
+<div class="below"><span data-lang="en">Keyboard: Left/Right, Home/End. On a phone, swipe left or right. All slide content works offline; citation URLs require Internet. A public host is not configured by this file.</span><span data-lang="vi">Bàn phím: Trái/Phải, Home/End. Trên điện thoại, vuốt trái/phải. Nội dung trình chiếu dùng ngoại tuyến; liên kết nguồn cần Internet. Tệp này chưa có nơi lưu trữ công khai.</span></div>
+</div>
+<script>
+(function(){
+ "use strict";
+ const slides=Array.from(document.querySelectorAll(".slide"));
+ const prev=document.getElementById("previous"),next=document.getElementById("next");
+ const count=document.getElementById("count"),bar=document.querySelector(".progress"),fill=document.getElementById("progress-fill");
+ let current=0, touchStart=null;
+ function show(index){
+   current=Math.max(0,Math.min(slides.length-1,index));
+   slides.forEach((slide,i)=>{slide.classList.toggle("active",i===current);slide.classList.toggle("hidden",i!==current);slide.setAttribute("aria-hidden",i===current?"false":"true");});
+   prev.disabled=current===0;next.disabled=current===slides.length-1;
+   count.textContent=(current+1)+" / "+slides.length;
+   fill.style.width=((current+1)/slides.length*100)+"%";
+   bar.setAttribute("aria-valuenow",String(current+1));
+ }
+ function locale(code){
+   document.documentElement.lang=code;
+   document.getElementById("btn-en").setAttribute("aria-pressed",String(code==="en"));
+   document.getElementById("btn-vi").setAttribute("aria-pressed",String(code==="vi"));
+ }
+ prev.addEventListener("click",()=>show(current-1));
+ next.addEventListener("click",()=>show(current+1));
+ document.getElementById("btn-en").addEventListener("click",()=>locale("en"));
+ document.getElementById("btn-vi").addEventListener("click",()=>locale("vi"));
+ document.getElementById("print").addEventListener("click",()=>window.print());
+ document.addEventListener("keydown",event=>{
+   if(event.altKey||event.ctrlKey||event.metaKey)return;
+   if(event.key==="ArrowRight"||event.key==="PageDown"){show(current+1);event.preventDefault();}
+   else if(event.key==="ArrowLeft"||event.key==="PageUp"){show(current-1);event.preventDefault();}
+   else if(event.key==="Home"){show(0);event.preventDefault();}
+   else if(event.key==="End"){show(slides.length-1);event.preventDefault();}
+ });
+ const deck=document.getElementById("deck");
+ deck.addEventListener("touchstart",event=>{if(event.touches.length===1)touchStart=event.touches[0].clientX;},{passive:true});
+ deck.addEventListener("touchend",event=>{if(touchStart===null)return;const delta=event.changedTouches[0].clientX-touchStart;touchStart=null;if(Math.abs(delta)>60)show(current+(delta<0?1:-1));},{passive:true});
+ locale("en");show(0);
+})();
+</script>
+</body>
+</html>
