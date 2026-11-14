@@ -22,7 +22,7 @@
 
 ## Mandatory startup (read narrowly)
 1. Read this file, then `QUEST_LOG.md`, and only the relevant sections of `docs/DESIGN_2026_11_14.md`.
-2. For a new Quest, select from `READY` **or** `QUEUED`; pending dependencies permit parallel `PREPARE`. Run `python scripts/quest_board.py check` only when checking overall task integrity. Do not read all 435 files.
+2. Run `python scripts/quest_parallel_candidates.py --limit 40` to select `READY` **and** `QUEUED` tasks for parallel `PREPARE` coding. Run `python scripts/quest_board.py check` only when checking task integrity; do not read all 435 task files into context.
 3. Open one `READY` or `QUEUED` Quest and claim with exact owned paths. An unfinished dependency blocks final integrated acceptance, **not initial coding**. Check concurrent owners and avoid shared-path collisions.
 4. Before editing, claim the Quest via its **current GitHub blob SHA** (compare-and-swap). Fill `owner`, unique `run_id`, `lease_until_utc`, the execution record's **exact owned paths**, and change `status` to `RUNNING`. Never assign yourself a task merely by describing work in chat. If a conflict occurs, refetch and reconcile.
 5. Implement the claimed outcome directly. Verify against its **specific acceptance criteria** using evidence appropriate to risk, and record commit SHA, observed result and blockers. Do not run broad suites for every low-risk content or UI change.
