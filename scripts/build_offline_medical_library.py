@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import sqlite3
 from pathlib import Path
 import sys
 
@@ -54,7 +55,7 @@ def build(db_path: Path, manifest_path: Path) -> dict:
                 succeeded.append(key)
                 record_hashes[key] = hashlib.sha256(raw).hexdigest()
             except (OSError, UnicodeError, ValueError, KeyError, TypeError,
-                    IndexError, RuntimeError, importer.ImportValidationError) as exc:
+                    IndexError, RuntimeError, sqlite3.Error) as exc:
                 # Never repair or fabricate missing source text, image bytes,
                 # hashes, citations or rights to satisfy the package count.
                 rejected[key] = f"{type(exc).__name__}: {str(exc)[:220]}"
