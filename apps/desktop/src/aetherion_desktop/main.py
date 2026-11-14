@@ -28,6 +28,8 @@ from .mission_control import build_mission_control_page
 from .features.personal.authorized_today import AuthorizedPersonalTodayPage
 from .features.explore.nasa_explore import build_nasa_explore_page
 from .knowledge_browser import KnowledgeBrowser
+from .symptom_interview_page import SymptomInterviewPage
+from .features.care.journey_page import CareJourneyPage
 
 
 class FeatureLanding(QWidget):
@@ -168,6 +170,14 @@ class AetherionWindow(QMainWindow):
         self.assistant_page = InterviewWorkspace(self.api_url, self.network, self.ui_language)
         self.assistant_page.open_library.connect(self.show_medical_library)
         self.pages.addWidget(self.assistant_page)
+        self.symptom_page = SymptomInterviewPage(self, api_url=self.api_url, locale=self.ui_language)
+        self.symptom_page.authorization_requested.connect(self.show_mission)
+        self.symptom_page.care_created.connect(self._open_care_from_interview)
+        self.pages.addWidget(self.symptom_page)
+        self._open_intake_button = QPushButton(tr(self.ui_language, "care.intake.title"))
+        self._open_intake_button.setObjectName("primaryAction")
+        self._open_intake_button.clicked.connect(self.show_symptom_interview)
+        self.assistant_page.body.insertWidget(3, self._open_intake_button)
         self.atlas_page = FeatureLanding(
             "04 / DISCOVERY", "Khám phá cơ thể",
             "Mô hình giải phẫu 3D chỉ được mở khi có mesh thật, camera và chọn vùng cơ thể. "
@@ -178,8 +188,10 @@ class AetherionWindow(QMainWindow):
         self.care_page = CareWorkspace(self.ui_language)
         self.care_page.open_personal.connect(self.show_personal)
         self.care_page.open_monitor.connect(self.show_monitor)
-        self.care_page.open_interview.connect(self.show_assistant)
+        self.care_page.open_interview.connect(self.show_symptom_interview)
         self.pages.addWidget(self.care_page)
+        self.care_journal_page = CareJourneyPage(self, api_url=self.api_url, locale=self.ui_language)
+        self.pages.addWidget(self.care_journal_page)
         self.settings_page = SettingsPage(self.preferences, self.api_url)
         self.settings_page.preferences_changed.connect(self._apply_preferences)
         self.settings_page.connection_test_requested.connect(self.check_server)
@@ -189,8 +201,8 @@ class AetherionWindow(QMainWindow):
         for page in (self.mission_control_page,self.personal_today_page,
                      self.medical_library_page,self.nasa_explore_page,
                      self.knowledge_browser_page,
-                     self.monitor_page,self.assistant_page,
-                     self.atlas_page,self.care_page):
+                     self.monitor_page,self.assistant_page,self.symptom_page,
+                     self.atlas_page,self.care_page,self.care_journal_page):
             self.ambient_controller.add_page(page,self.preferences)
 
         # Main horizontal navigation; nested items use dropdown menus, never sidebars.
@@ -355,6 +367,9 @@ class AetherionWindow(QMainWindow):
         self.monitor_page.set_locale(self.ui_language)
         self.assistant_page.set_locale(self.ui_language)
         self.care_page.set_locale(self.ui_language)
+        self.symptom_page.set_locale(self.ui_language)
+        self.care_journal_page.set_locale(self.ui_language)
+        self._open_intake_button.setText(tr(self.ui_language, "care.intake.title"))
         self.language_button.setText(f"VI / EN · {self.ui_language.upper()}")
         self.language_button.setToolTip(tr(self.ui_language, "main.locale.tooltip"))
         self.language_button.setAccessibleName(tr(self.ui_language, "main.locale.tooltip"))
@@ -450,7 +465,26 @@ class AetherionWindow(QMainWindow):
         self.pages.setCurrentWidget(self.atlas_page)
 
     def show_care(self):
-        self.pages.setCurrentWidget(self.care_page)
+        self.pages.setCurrentWidget(self.care_journal_page)
+        self.care_journal_page.refresh()
+
+    def show_symptom_interview(self):
+        # Continue an existing D30 interview and preserve previously answered questions.
+        previous = getattr(self.assistant_page, "symptom", None)
+        if previous is not None:
+            name = str(previous[0])
+            answers = dict(getattr(self.assistant_page, "answers", {}))
+            if self.symptom_page.active_symptoms != [name] or self.symptom_page.answers != answers:
+                self.symptom_page.reset_interview()
+                self.symptom_page.active_symptoms = [name]
+                self.symptom_page.answers = answers
+                self.symptom_page._selection_label()
+                self.symptom_page._ask()
+        self.pages.setCurrentWidget(self.symptom_page)
+
+    def _open_care_from_interview(self, episode_id: str):
+        self.care_journal_page.start_from_interview(episode_id)
+        self.pages.setCurrentWidget(self.care_journal_page)
 
     def open_portal_route(self, route: str):
         if route not in PORTAL_ROUTES:
@@ -467,6 +501,8 @@ class AetherionWindow(QMainWindow):
         """Preserve the existing authorized Mission → Personal handoff."""
         self.personal_today_page.select_subject(subject_id, access_token)
         self.monitor_page.select_subject(subject_id, access_token)
+        self.symptom_page.set_identity(subject_id, access_token)
+        self.care_journal_page.set_identity(subject_id, access_token)
         self.show_personal()
 
     def show_help(self):
