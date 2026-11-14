@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-117",
+  "slot": 117,
+  "quest_id": "Q-0417",
+  "checked_at_utc": "2026-11-14T06:39:51.302291+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/glaucoma-acute-angle-closure-cliff-2023.pdf?emrc=082bef",
+  "http_status": 200,
+  "pdf_sha256": "56eded41d55f42bc0752469d2def502b287756eaa04988faeb97c15db6b817b0",
+  "pdf_bytes": 345400,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-117-IMG-01": "0228c562281c0092d82818976f1f3098b91573c95cc489e57bbcc5797f50ad64",
+    "CLIFF-117-IMG-02": "7112ec488bcd45d2558945092a4dfdc2f74d7ba4ac77f6f07fe3a7afd12865cc",
+    "CLIFF-117-IMG-03": "45868c8016ecf9e45fbf9c6355feff31692fee1816e032680d7f3becafee812e"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
