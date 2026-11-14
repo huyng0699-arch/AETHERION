@@ -80,7 +80,7 @@ class _SeedFictionalCrew(QThread):
             if stats.get("days") != 540 or stats.get("metrics") != 12:
                 raise RuntimeError("Synthetic history does not match expected coverage")
             self.stats = stats
-        except (OSError, ValueError, RuntimeError, Exception) as error:
+        except Exception as error:
             # Do not reveal any patient contents / credentials in UI.
             self.failure = type(error).__name__
 
@@ -112,6 +112,7 @@ class StartupRuntime(QObject):
         self._seed = _SeedFictionalCrew(self)
         self._seed.finished.connect(self._seed_finished)
         self._seed_started = False
+        self._seed_complete = False
         self._demo_stats: dict | None = None
         self._waiting_demo_callbacks = []
 
@@ -193,6 +194,7 @@ class StartupRuntime(QObject):
             self.server_unavailable.emit(self._last_server_error or "LOCAL_SERVER_EXITED")
 
     def _seed_finished(self):
+        self._seed_complete = True
         self._demo_stats = self._seed.stats
         if self._seed.stats is not None:
             self.demo_ready.emit(dict(self._seed.stats))
@@ -209,10 +211,16 @@ class StartupRuntime(QObject):
         Callbacks receive a boolean; the owning widget may present an error
         or independently retry using Q-0484's existing public start() contract.
         """
-        if self._seed.isRunning():
+        # A click can occur before the queued Qt first-start timer runs, or
+        # between QThread.start() and isRunning() becoming true. Never let
+        # PatientDemo.start() race this fixture writer.
+        if not self._seed_started:
+            self._seed_started = True
+            self._seed.start()
+        if not self._seed_complete:
             self._waiting_demo_callbacks.append(callback)
-        else:
-            callback(self._demo_stats is not None)
+            return
+        callback(self._demo_stats is not None)
 
     def stop(self):
         """Release only the service this exact app launched, never an external one."""
@@ -223,4 +231,4 @@ class StartupRuntime(QObject):
                 self._server.kill()
                 self._server.waitForFinished(700)
         if self._seed.isRunning():
-            self._seed.wait(5000)
+            self._seed.wait()  # finish the dedicated SQLite transaction safely
