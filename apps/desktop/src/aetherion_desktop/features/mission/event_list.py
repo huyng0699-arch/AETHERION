@@ -109,6 +109,7 @@ def build_mission_events_widget(parent=None):
         def __init__(self):
             super().__init__(parent)
             self.ui_language = "vi"
+            self._loaded_counts: tuple[int, int] | None = None
             layout = QVBoxLayout(self)
             self.note = QLabel("NO_DATA — no event service connected; no health incident inferred")
             self.note.setWordWrap(True)
@@ -129,6 +130,24 @@ def build_mission_events_widget(parent=None):
         def set_locale(self, locale: str):
             self.ui_language = normalize_locale(locale)
             translate_shell_widgets(self, self.ui_language)
+            self.technical.setHorizontalHeaderLabels([
+                tr(self.ui_language, "events.event"),
+                tr(self.ui_language, "events.observed"),
+                tr(self.ui_language, "mission.source"),
+                tr(self.ui_language, "mission.scope"),
+            ])
+            self.health.setHorizontalHeaderLabels([
+                tr(self.ui_language, "events.event"),
+                tr(self.ui_language, "events.type"),
+                tr(self.ui_language, "events.observed"),
+                tr(self.ui_language, "mission.source"),
+            ])
+            if self._loaded_counts is not None:
+                self.note.setText(tr(
+                    self.ui_language, "events.loaded",
+                    technical=self._loaded_counts[0],
+                    health=self._loaded_counts[1],
+                ))
 
         def set_events(self, records, allowed_subject_ids):
             result = split_events(records, allowed_subject_ids)
@@ -140,9 +159,10 @@ def build_mission_events_widget(parent=None):
             for i, event in enumerate(result.health):
                 for j, field in enumerate((event.title, event.kind, event.observed_at, event.source_id)):
                     self.health.setItem(i, j, QTableWidgetItem(field))
+            self._loaded_counts = (len(result.technical), len(result.health))
             self.note.setText(tr(
                 self.ui_language, "events.loaded",
-                technical=len(result.technical), health=len(result.health),
+                technical=self._loaded_counts[0], health=self._loaded_counts[1],
             ))
 
     return MissionEventList()
