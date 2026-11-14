@@ -1,15 +1,17 @@
 """Q-0061 deterministic model checks. All records are synthetic engineering fixtures."""
 from datetime import datetime, timezone
-import importlib.util
+import importlib
 from pathlib import Path
 import sys
 import unittest
 
-MODULE = Path(__file__).resolve().parents[1] / 'apps/desktop/src/aetherion_desktop/mission_control.py'
-spec = importlib.util.spec_from_file_location('mission_control_fixture', MODULE)
-mod = importlib.util.module_from_spec(spec)
-sys.modules[spec.name] = mod
-spec.loader.exec_module(mod)
+DESKTOP_SRC = Path(__file__).resolve().parents[1] / "apps" / "desktop" / "src"
+if str(DESKTOP_SRC) not in sys.path:
+    sys.path.insert(0, str(DESKTOP_SRC))
+
+# The native source has package-relative i18n and mission-state imports.
+# Import it as packaged; PySide6 widgets are still constructed only on Windows.
+mod = importlib.import_module("aetherion_desktop.mission_control")
 
 NOW = datetime(2026, 11, 14, 6, 0, tzinfo=timezone.utc)
 
