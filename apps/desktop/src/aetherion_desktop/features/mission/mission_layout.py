@@ -1,8 +1,7 @@
 """Responsive, native Mission Control surface for Q-0072.
 
-Presentation only: it does not authenticate, write observations or synthesize
-crew, health status, clinical incidents or trends. The parent page supplies
-the existing authenticated HTTP handlers and observation parser.
+Presentation only: the parent Mission page supplies authenticated reads and
+writes. No patient, clinical finding, live device reading or trend is fabricated.
 """
 from __future__ import annotations
 
@@ -16,7 +15,7 @@ def install_mission_layout(page, api_url: str) -> None:
     from PySide6.QtCore import Qt
     from PySide6.QtWidgets import (
         QAbstractItemView, QFrame, QGridLayout, QHBoxLayout, QHeaderView,
-        QLabel, QLineEdit, QListWidget, QPushButton, QScrollArea, QSizePolicy,
+        QLabel, QLineEdit, QListWidget, QPushButton, QComboBox, QScrollArea, QSizePolicy,
         QTabWidget, QTableWidget, QVBoxLayout, QWidget,
     )
     from .event_list import build_mission_events_widget
@@ -176,6 +175,55 @@ def install_mission_layout(page, api_url: str) -> None:
     page.subjects.currentTextChanged.connect(page.refresh_subject)
     selector_layout.addWidget(page.subjects)
     root.addWidget(selector)
+
+    # Human-entered measurements are always marked SELF_REPORTED / UNVERIFIED.
+    # The real server validates, authorizes and persists; this form has no fixtures.
+    capture = QFrame()
+    capture.setObjectName("surface")
+    entry = QGridLayout(capture)
+    entry.setContentsMargins(19, 16, 19, 18)
+    entry.setHorizontalSpacing(12)
+    entry.setVerticalSpacing(9)
+    page.capture_heading = QLabel()
+    page.capture_heading.setObjectName("eyebrow")
+    entry.addWidget(page.capture_heading, 0, 0, 1, 4)
+    page.capture_help = QLabel()
+    page.capture_help.setObjectName("pageHint")
+    page.capture_help.setWordWrap(True)
+    entry.addWidget(page.capture_help, 1, 0, 1, 4)
+    page.capture_metric_label, page.capture_value_label = QLabel(), QLabel()
+    page.capture_source_label, page.capture_time_label = QLabel(), QLabel()
+    entry.addWidget(page.capture_metric_label, 2, 0)
+    entry.addWidget(page.capture_value_label, 2, 1)
+    entry.addWidget(page.capture_source_label, 2, 2)
+    entry.addWidget(page.capture_time_label, 2, 3)
+    page.capture_metric = QComboBox()
+    for metric, unit in (
+        ("heart_rate", "bpm"), ("spo2", "%"), ("body_temperature", "degC"),
+        ("body_mass", "kg"), ("sleep_duration", "h"), ("fatigue_score", "scale_1_10")
+    ):
+        page.capture_metric.addItem(f"{metric} · {unit}", (metric, unit))
+    page.capture_value = QLineEdit()
+    page.capture_value.setPlaceholderText("0.0")
+    page.capture_source = QLineEdit()
+    page.capture_at = QLineEdit()
+    page.capture_at.setText(__import__("datetime").datetime.now(
+        __import__("datetime").timezone.utc
+    ).isoformat(timespec="seconds"))
+    entry.addWidget(page.capture_metric, 3, 0)
+    entry.addWidget(page.capture_value, 3, 1)
+    entry.addWidget(page.capture_source, 3, 2)
+    entry.addWidget(page.capture_at, 3, 3)
+    page.capture_save = QPushButton()
+    page.capture_save.setObjectName("primaryAction")
+    page.capture_save.setEnabled(False)
+    page.capture_save.clicked.connect(page.save_capture)
+    entry.addWidget(page.capture_save, 4, 0, 1, 2)
+    page.capture_feedback = QLabel()
+    page.capture_feedback.setObjectName("pageHint")
+    page.capture_feedback.setWordWrap(True)
+    entry.addWidget(page.capture_feedback, 4, 2, 1, 2)
+    root.addWidget(capture)
 
     dataset = QFrame()
     dataset.setObjectName("surface")

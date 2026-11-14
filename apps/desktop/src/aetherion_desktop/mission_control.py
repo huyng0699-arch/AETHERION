@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 import json
 import math
+import uuid
 from urllib.parse import quote, urlencode
 
 from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
@@ -138,6 +139,11 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._request_seq = 0
             self._login_seq = 0
             self._profile_seq = 0
+            self._capture_seq = 0
+            self._capture_pending = False
+            self._capture_draft_key: str | None = None
+            self._capture_draft: tuple | None = None
+            self._entry_subject_id = ""
             self._authorized_subject: str | None = None  # only after successful GET for that exact subject
             # A single native responsive layout, not a second server or webview.
             from .features.mission.mission_layout import install_mission_layout
@@ -206,6 +212,21 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self.ui_language = normalize_locale(locale)
             translate_shell_widgets(self, self.ui_language)
             self.events_widget.set_locale(self.ui_language)
+            self.capture_heading.setText(tr(self.ui_language, "mission.dataTitle"))
+            self.capture_help.setText(
+                tr(self.ui_language, "personal.originSelf") + " · " +
+                tr(self.ui_language, "mission.note.recorded")
+            )
+            self.capture_metric_label.setText(tr(self.ui_language, "mission.metric"))
+            self.capture_value_label.setText(tr(self.ui_language, "mission.value"))
+            self.capture_source_label.setText(tr(self.ui_language, "mission.source"))
+            self.capture_time_label.setText(tr(self.ui_language, "mission.timestamp"))
+            self.capture_source.setPlaceholderText(tr(self.ui_language, "mission.source"))
+            self.capture_at.setPlaceholderText(tr(self.ui_language, "mission.timestamp"))
+            self.capture_save.setText(tr(
+                self.ui_language, "care.journey.advance",
+                phase=tr(self.ui_language, "mission.observationsTab")
+            ))
             # The observation header "Observed at" is context-dependent.
             # Semantic keys avoid an ambiguous English -> Vietnamese guess.
             self.table.setHorizontalHeaderLabels([
@@ -232,6 +253,125 @@ def build_mission_control_page(api_url: str, network, parent=None):
                 )
             self.status.setText(tr(self.ui_language, key, **localized))
 
+        def _sync_capture(self, subject_id: str) -> None:
+            """Keep the input bound to exactly one currently authorized identity."""
+            self._capture_seq += 1
+            self._capture_pending = False
+            self.capture_save.setEnabled(False)
+            if self._entry_subject_id != subject_id:
+                self.capture_value.clear()
+                self.capture_source.clear()
+                self.capture_at.setText(datetime.now(timezone.utc).isoformat(timespec="seconds"))
+                self._entry_subject_id = subject_id
+                self._capture_draft_key = None
+                self._capture_draft = None
+            self.capture_feedback.setText(tr(self.ui_language, "personal.originSelf"))
+
+        def save_capture(self):
+            """Persist user-entered observations; no auto-generated measurement."""
+            subject = self._selected_subject()
+            if (self._capture_pending or not self._token or
+                    not subject or self._authorized_subject != subject):
+                self.capture_feedback.setText(tr(self.ui_language, "mission.deniedOpen"))
+                return
+            metric, unit = self.capture_metric.currentData()
+            source_id = self.capture_source.text().strip()
+            try:
+                value = float(self.capture_value.text().strip().replace(",", "."))
+                observed = datetime.fromisoformat(
+                    self.capture_at.text().strip().replace("Z", "+00:00")
+                )
+                if (not math.isfinite(value) or not source_id
+                        or len(source_id) > 120 or observed.tzinfo is None
+                        or observed.utcoffset() is None
+                        or observed.astimezone(timezone.utc) >
+                        datetime.now(timezone.utc).replace(microsecond=0)):
+                    raise ValueError("Invalid measurement, source or observation time")
+            except (ValueError, TypeError, OverflowError):
+                self.capture_feedback.setText(tr(self.ui_language, "mission.note.badValue"))
+                return
+            fingerprint = (subject, metric, unit, value, source_id, observed.isoformat())
+            if self._capture_draft != fingerprint:
+                self._capture_draft = fingerprint
+                self._capture_draft_key = uuid.uuid4().hex
+            payload = {
+                "subject_id": subject, "scope": "CREW", "metric": metric,
+                "value": value, "unit": unit, "source_id": source_id,
+                "source": source_id, "observed_at": observed.isoformat(),
+                "quality": "UNVERIFIED", "verification_state": "SELF_REPORTED",
+                "idempotency_key": self._capture_draft_key,
+            }
+            self._capture_seq += 1
+            seq, token = self._capture_seq, self._token
+            self._capture_pending = True
+            self.capture_save.setEnabled(False)
+            self.capture_feedback.setText(tr(
+                self.ui_language, "mission.snapshot", state="PENDING",
+                note=tr(self.ui_language, "personal.originSelf")
+            ))
+            request = QNetworkRequest(QUrl(api_url.rstrip("/") + "/api/v1/observations"))
+            request.setHeader(QNetworkRequest.KnownHeaders.ContentTypeHeader, "application/json")
+            request.setRawHeader(b"Authorization", ("Bearer " + token).encode())
+            reply = network.post(request, json.dumps(payload).encode("utf-8"))
+            reply.finished.connect(
+                lambda: self._capture_finished(reply, seq, subject, token, source_id)
+            )
+
+        def _capture_finished(self, reply, seq, subject, token, source_id):
+            code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
+            raw = bytes(reply.readAll())
+            reply.deleteLater()
+            if (seq != self._capture_seq or token != self._token or
+                    subject != self._selected_subject()):
+                return
+            self._capture_pending = False
+            if code in (401, 403):
+                self._authorized_subject = None
+                self.open_personal_button.setEnabled(False)
+                self.capture_save.setEnabled(False)
+                self.table.setRowCount(0)
+                self._update_summary(subject=subject)
+                if code == 401:
+                    self._token = ""
+                    self._subjects.clear()
+                    self.subjects.clear()
+                self.capture_feedback.setText(tr(self.ui_language, "mission.expired"))
+                return
+            if code not in (200, 201):
+                self.capture_save.setEnabled(True)
+                self.capture_feedback.setText(tr(
+                    self.ui_language, "mission.note.badValue" if code == 422
+                    else "mission.offline"
+                ))
+                return
+            try:
+                payload = json.loads(raw.decode("utf-8"))
+                record = payload.get("observation") if isinstance(payload, dict) else None
+                valid = (
+                    isinstance(record, dict)
+                    and record.get("subject_id") == subject
+                    and record.get("source_id") == source_id
+                    and record.get("verification_state") == "SELF_REPORTED"
+                    and record.get("quality") == "UNVERIFIED"
+                    and payload.get("status") in ("stored", "idempotent_replay")
+                )
+            except (ValueError, UnicodeError):
+                valid = False
+            if not valid:
+                self.capture_save.setEnabled(True)
+                self.capture_feedback.setText(tr(self.ui_language, "mission.note.malformed"))
+                return
+            self._capture_draft = None
+            self._capture_draft_key = None
+            self.capture_value.clear()
+            self.capture_at.setText(datetime.now(timezone.utc).isoformat(timespec="seconds"))
+            self.tabs.setCurrentWidget(self.table)
+            self.refresh_subject()  # authoritative GET of the just-persisted record
+            self.capture_feedback.setText(tr(
+                self.ui_language, "mission.snapshot", state="STORED / UNVERIFIED",
+                note=tr(self.ui_language, "personal.originSelf")
+            ))
+
         def sign_in(self):
             # A new attempt invalidates earlier data and outstanding GET/login
             # callbacks. A failed login may never leave a prior session active.
@@ -242,6 +382,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._token = ""
             self._authorized_subject = None
             self.open_personal_button.setEnabled(False)
+            self._sync_capture("")
             # Do not leak prior account's selected subject IDs into the next
             # session, even when the new login fails or the server is offline.
             self._subjects.clear()
@@ -334,6 +475,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self.open_personal_button.setEnabled(False)
             self.table.setRowCount(0)
             self.technical.setText(tr(self.ui_language, "mission.technicalDisclaimer"))
+            self._sync_capture(subject_id)
             self._update_summary(subject=subject_id)
             if not subject_id:
                 self._say("mission.noSubject")
@@ -395,6 +537,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             # NO_DATA is a successful authorized read, not proof of health.
             self._authorized_subject = subject_id
             self.open_personal_button.setEnabled(True)
+            self.capture_save.setEnabled(True)
             note_key = ("mission.note.noObservations" if data.status == "NO_DATA"
                         else "mission.note.recorded")
             self._say("mission.snapshot", state=data.status,
