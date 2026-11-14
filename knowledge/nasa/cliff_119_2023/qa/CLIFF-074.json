@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-074",
+  "slot": 74,
+  "quest_id": "Q-0374",
+  "checked_at_utc": "2026-11-14T06:29:13.579021+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/otitis-externa-cliff-2023.pdf?emrc=d63969",
+  "http_status": 200,
+  "pdf_sha256": "56bfea3613c175dedaa9edcfd21712ebcb476521b04359d6640a9d4cc6ffe4fa",
+  "pdf_bytes": 349529,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-074-IMG-01": "97f45215f243e55a027d69e7208f98ffc077df24602f51a660d6877c37c9b442",
+    "CLIFF-074-IMG-02": "c2e7b8decc074e8d4643fc9dd4ca3e684c47c35673b1cb5de62a35d24df99674",
+    "CLIFF-074-IMG-03": "571886897a1aa07c5c30b445647171b7516eb3df24b8aa70eeb11338e010742a"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
