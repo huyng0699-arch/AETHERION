@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 import unittest
 
-MODULE = Path(__file__).with_name('mission_control.py')
+MODULE = Path(__file__).resolve().parents[1] / 'apps/desktop/src/aetherion_desktop/mission_control.py'
 spec = importlib.util.spec_from_file_location('mission_control_fixture', MODULE)
 mod = importlib.util.module_from_spec(spec)
 sys.modules[spec.name] = mod
