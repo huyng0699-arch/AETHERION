@@ -2,6 +2,24 @@
 
 **Product:** AETHERION, Team TRUY TINH, NASA Space Apps 2026. **Canonical new design:** [docs/DESIGN_2026_11_14.md](docs/DESIGN_2026_11_14.md). **Source of truth for live Quest status:** each `quests/v1/Q-XXXX.md` file. **`QUEST_LOG.md` is only the navigation/coordination guide**, not a competing mutable task ledger.
 
+## Owner override — parallel implementation with independent acceptance (14 November 2026)
+
+**Latest user instruction:** A Quest does **not** have to wait for its predecessor's PASS to **start coding**. Every Quest still needs explicit acceptance criteria, genuine evidence, and a review by **an agent other than its implementer** before the final PASS. This section supersedes older "all dependencies DONE before work can start" language and acceptance shortcuts below and in older task templates; it does not cancel clinical safety checks.
+
+### Separate three gates — START ≠ COMPONENT READY ≠ DONE
+
+1. **START / PREPARE:** `READY` and `QUEUED` Quests may be claimed immediately, **even if `depends_on` includes unfinished Quests**. Keep their original dependency IDs; never delete links to pretend the prerequisites were satisfied. Set `status: RUNNING`, `execution_mode: PREPARE`, owner, run ID and lease; coordinate exact paths by compare-and-swap. `PLANNED` long-term work remains off unless separately authorized. If the dependency exposes an unwritten API, implement behind a typed adapter or feature flag and declare the assumption. No duplicate server, store, shell or overlapping writer.
+2. **COMPONENT READY FOR REVIEW:** Implement a real component in its assigned scope. Record files and commit SHA, an actual test/run/inspection appropriate to the Quest, acceptance checks, known gaps and `review: PENDING`. The implementing agent may not self-approve. If end-to-end integration is blocked by a predecessor, record `implementation_state: COMPONENT_READY` and leave final `status: RUNNING` or `BLOCKED` with exact integration barrier; **do not report the entire user journey as complete**.
+3. **FINAL PASS / DONE:** A different reviewing agent independently reads that Quest's original acceptance criteria, code diff, artifact and evidence. It marks `review: APPROVED` only after verifying the component and its required integration preconditions; `status: DONE` only when the complete Quest criterion is met. If a dependency is still incomplete, it may record `review: COMPONENT_APPROVED` but not falsely certify the dependent integration. If evidence fails, write `review: REWORK_REQUIRED`, exact defect, suggested fix, and return the task to the implementer without erasing prior progress.
+
+### Clear acceptance remains mandatory
+
+- Every Quest must identify **what changed, where, why it meets its specific outcome, and what was actually observed**; no arbitrary "PASS all" labels, screenshots of placeholders, fake imported NASA records or AI-generated claims of a running app.
+- **Focused verification rather than blanket full-suite runs:** for low-risk visual/content work, inspect the actual rendered or imported artifact. For APIs/database/Qt linkages, run a minimal real interaction. For medical safety, patient privacy, provenance/copyright, offline medical library, 3D picking and Windows release, keep rigorous relevant tests/hardware evidence. Dedicated QA Quests own broader regression, not every developer Quest.
+- No skipped/expected-failure test is a PASS. A working component without a tested integration is **component-ready**, not a released feature.
+- **Independent reviewer must not be the implementer**, may not approve its own code or use a one-line status in place of observed evidence. Capture reviewer's distinct identity, UTC, reviewed commit and finding in the Quest. A reviewer can request changes without resetting other tasks.
+- **Standing reviewer Quest:** [quests/review/REVIEW-0001.md](quests/review/REVIEW-0001.md) defines periodic independent acceptance. The [GitHub Actions review workflow](.github/workflows/quest-review-15m.yml) schedules a mechanical review-queue refresh roughly every 15 minutes; this does **not** itself instantiate an AI reviewer. A separately invoked review agent must read and judge the queued code. Scheduled GitHub Actions may be delayed or fail if repository Actions cannot run.
+
 ## Mandatory startup (read narrowly)
 1. Read this file, then `QUEST_LOG.md`, and only the relevant sections of `docs/DESIGN_2026_11_14.md`.
 2. Run `python scripts/quest_board.py check` and `python scripts/quest_board.py ready`. Do not read all 435 Quest files into a prompt.
