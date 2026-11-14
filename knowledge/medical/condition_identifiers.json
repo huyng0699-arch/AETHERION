@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "aetherion-condition-identifiers",
+  "updated_at_utc": "2026-11-14T03:58:30Z",
+  "id_format": "COND-<12-hex-sha256>",
+  "verification_state": "NO_DATA",
+  "accepted_conditions_count": 0,
+  "accepted_conditions": [],
+  "notes": "No conditions are accepted as READY until their source documents are locally verified with SHA-256 digests."
+}
