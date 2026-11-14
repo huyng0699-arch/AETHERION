@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-044",
+  "title": "Time-to-Antimicrobials Survival Curve in Septic Shock",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Sepsis_mortality.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Sepsis_mortality.png",
+  "license": "CC-BY-SA-4.0",
+  "author": "Ian Furst",
+  "caption": "Graph illustrating decreasing survival probability with delayed initiation of effective antimicrobial therapy in septic shock.",
+  "alt_text": "Line chart plotting survival percentage against hours of delay before effective antimicrobial administration in septic shock.",
+  "clinical_relevance": "Highlights the time-critical nature of sepsis diagnosis and broad-spectrum antimicrobial treatment in resource-limited spaceflight environments (CLIFF-044, p.5-7).",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 822,
+  "height": 542,
+  "size_bytes": 17783,
+  "sha256": "73c40c846bc11b6a84ec17a093fd64d7a5f30c68ff7e3883c658c9c402beaa85",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Sepsis_mortality.png",
+  "retrieved_at_utc": "2026-11-14T05:58:33.593091+00:00",
+  "asset_path": "73c40c846bc11b6a84ec17a093fd64d7a5f30c68ff7e3883c658c9c402beaa85.png",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}

@@ -1,0 +1,24 @@
+{
+  "article_id": "CLIFF-044",
+  "slot": 44,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/sepsis-cliff-2023.pdf?emrc=97415d",
+  "http_status": 200,
+  "pdf_bytes": 334391,
+  "pdf_sha256": "9bd2a06e3308bb19f56554de59940c2faee094515f3bf260eb297d9a97b0337a",
+  "pdf_pages": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "references_count": 22,
+  "media_count": 4,
+  "media_sha256s": [
+    "6aa6a836b12488e97addf70e32754e2c3f7cb80e81d59d7c47f438ec6f113bb3",
+    "397db8ff18014e2eb817c4ee4566212d12e5bfb759bd068ea942b6c87e23a318",
+    "57d68895890915c2a98b6d5d8db8a8aceda253206528844bfcae93037279dfcb",
+    "73c40c846bc11b6a84ec17a093fd64d7a5f30c68ff7e3883c658c9c402beaa85"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-SA-4.0 & CC0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "offline_render_note": "SQLite ingestion and offline BLOB/section/table/citation verification passed on Linux; native Windows Qt GUI rendering deferred to Windows desktop gate.",
+  "missing_items": []
+}
