@@ -33,6 +33,10 @@ Quest IDs and counts evolve. At the most recent full directory inspection before
 
 ## P0 Mission Operations is now a persistent native shell (source only; 2026-11-14)
 
+**MA-7 categorical source-view follow-up:** commit [`b14978623ee530cc292048a412d4f02a927cff59`](https://github.com/huyng0699-arch/AETHERION/commit/b14978623ee530cc292048a412d4f02a927cff59) keeps the selected report phase, the metric table and right Inspect consistent; current Home blob `9e338397d9f61d63ac2ad4b420e31af8a67c80c2`. [Q-0486 PR #9](https://github.com/huyng0699-arch/AETHERION/pull/9) is a UTC telemetry widget and was not imported into categorical MA-7 research. No Qt image or source-output visual PASS; full [SCREEN_STATUS](docs/SCREEN_STATUS.md).
+
+
+
 **Owner-overridden layout:** Browse navigation, center Workspace and right Inspect with bottom UTC Time Conductor persist when opening existing native features; the old five-card Portal and duplicate topBar horizontal route buttons are not the app's primary UI.
 
 - Q-0485 `mission_ops_home.py` commit [`907a8bff`](https://github.com/huyng0699-arch/AETHERION/commit/907a8bff925c5c5754ab2f2cbcf2dfc705cd441b) adds native QWidget hosting in the central Workspace and replaces unreadable MA-7 QPainter source bars with a categorical **original report phase / value / unit / qualifier** comparison table. Historic MA-7 does **not** acquire fabricated UTC timestamps.
