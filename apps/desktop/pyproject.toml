@@ -20,3 +20,4 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 "aetherion_desktop" = ["i18n/*.json"]
+"aetherion_desktop.features.demo" = ["ma7_source.json"]
