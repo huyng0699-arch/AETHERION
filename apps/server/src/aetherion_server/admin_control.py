@@ -129,11 +129,11 @@ def probe_local_ai(settings: dict) -> dict:
         base = validate_local_url(str(settings["local_url"]))
         request = Request(base + "/api/tags", headers={"Accept": "application/json"})
         # Do not follow redirects: they could bypass loopback restrictions.
-        from urllib.request import build_opener, HTTPRedirectHandler
+        from urllib.request import build_opener, HTTPRedirectHandler, ProxyHandler
         class RejectRedirect(HTTPRedirectHandler):
             def redirect_request(self, request, fp, code, msg, headers, newurl):
                 return None
-        opener = build_opener(RejectRedirect())
+        opener = build_opener(ProxyHandler({}), RejectRedirect())
         with opener.open(request, timeout=min(3, int(settings["timeout_seconds"]))) as reply:
             if reply.status != 200:
                 raise ValueError(f"Runtime HTTP {reply.status}")
@@ -157,6 +157,41 @@ def probe_local_ai(settings: dict) -> dict:
             "models": [], "error": str(exc)[:240],
         }
 
+
+
+
+def test_local_model(settings: dict) -> dict:
+    """Run a bounded, PHI-free Ollama inference; daemon ping alone is insufficient."""
+    available = probe_local_ai(settings)
+    if not available["model_ready"]:
+        return {"status": "UNAVAILABLE", "model": available["selected_model"],
+                "reason": available.get("error") or "Selected model is not installed"}
+    request_data = json.dumps({
+        "model": available["selected_model"], "stream": False,
+        "prompt": "Return the single word AETHERION_READY. No other text.",
+        "options": {"temperature": 0, "num_predict": 24},
+    }).encode("utf-8")
+    request = Request(validate_local_url(settings["local_url"]) + "/api/generate",
+                      data=request_data, method="POST",
+                      headers={"Content-Type": "application/json", "Accept": "application/json"})
+    from urllib.request import build_opener, HTTPRedirectHandler, ProxyHandler
+    class RejectRedirect(HTTPRedirectHandler):
+        def redirect_request(self, request, fp, code, msg, headers, newurl):
+            return None
+    try:
+        opener = build_opener(ProxyHandler({}), RejectRedirect())
+        with opener.open(request, timeout=int(settings["timeout_seconds"])) as reply:
+            if reply.status != 200:
+                raise ValueError(f"Model HTTP {reply.status}")
+            payload = json.loads(reply.read(100_000))
+        generated = payload.get("response")
+        if not isinstance(generated, str) or not generated.strip() or payload.get("done") is not True:
+            raise ValueError("Model returned no complete answer")
+        return {"status": "READY", "model": available["selected_model"],
+                "response_received": True, "personal_data_sent": False}
+    except (OSError, ValueError, TypeError, KeyError, HTTPError, URLError) as exc:
+        return {"status": "ERROR", "model": available["selected_model"],
+                "response_received": False, "reason": str(exc)[:240]}
 
 def system_overview(path: str | Path) -> dict:
     """Admin-only facts from the canonical server database; no synthetic health values."""
