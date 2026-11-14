@@ -12,6 +12,7 @@ from typing import Literal
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Response, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel, Field, field_validator, model_validator
 
@@ -183,7 +184,7 @@ def create_app(
 
     @application.exception_handler(RequestValidationError)
     async def validation_exception_handler(_request: Request, exc: RequestValidationError) -> JSONResponse:
-        errors = exc.errors()
+        errors = jsonable_encoder(exc.errors(), custom_encoder={Exception: str})
         return JSONResponse(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
             content={
@@ -459,6 +460,8 @@ def create_app(
             "observation": stored,
         }
 
+    from .knowledge_api import router as knowledge_router
+    application.include_router(knowledge_router)
     return application
 
 
