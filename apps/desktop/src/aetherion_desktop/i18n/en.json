@@ -565,5 +565,13 @@
   "demo.replay.version": "Source: NASA MA-7, report published 15 June 1962",
   "demo.intro.osdr569": "NASA OSDR · OSD-569 (Inspiration4 CBC)",
   "demo.intro.osdr575": "NASA OSDR · OSD-575 (Inspiration4 CMP)",
-  "demo.intro.osdrWarning": "Separate NASA research sources; OSD-569/575 measurements have not been merged into the MA-7 replay."
+  "demo.intro.osdrWarning": "Separate NASA research sources; OSD-569/575 measurements have not been merged into the MA-7 replay.",
+  "demo.official.title": "OFFICIAL CHALLENGE RESOURCES",
+  "demo.official.description": "The challenge lists 3 NASA HRP sources and 2 CSA sources. NASA HRP contextualizes five hazards and the limits of interpreting indicators; it does not supply a continuous personal telemetry stream.",
+  "demo.official.hazards": "NASA · Five hazards",
+  "demo.official.risks": "NASA · Human-spaceflight risks",
+  "demo.official.research": "NASA · Ongoing HRP research",
+  "demo.official.five": "Five hazards: radiation; isolation; distance from Earth; altered gravity; closed environments.",
+  "demo.official.explain": "NASA's 1962 MA-7 report supplies real measurements, but it is a supplementary source, not one of the five listed challenge links. This archive is not proof of continuous health monitoring.",
+  "demo.official.mode": "Challenge background ≠ MA-7 data file"
 }
