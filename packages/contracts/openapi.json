@@ -128,6 +128,89 @@
         ]
       }
     },
+    "/api/v1/subjects": {
+      "post": {
+        "summary": "Register Subject",
+        "operationId": "register_subject_api_v1_subjects_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubjectIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/subjects/{subject_id}": {
+      "get": {
+        "summary": "Read Subject",
+        "operationId": "read_subject_api_v1_subjects__subject_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "subject_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Subject Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/observations": {
       "get": {
         "summary": "Observations",
@@ -647,6 +730,49 @@
           "observed_at"
         ],
         "title": "ObservationIn"
+      },
+      "SubjectIn": {
+        "properties": {
+          "subject_id": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Subject Id"
+          },
+          "display_name": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Display Name"
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "CREW",
+              "CABIN",
+              "VEHICLE",
+              "crew",
+              "habitat",
+              "personal",
+              "engineering_test"
+            ],
+            "title": "Scope",
+            "default": "CREW"
+          },
+          "role_label": {
+            "type": "string",
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Role Label",
+            "default": "crew_member"
+          }
+        },
+        "type": "object",
+        "required": [
+          "subject_id",
+          "display_name"
+        ],
+        "title": "SubjectIn"
       },
       "ValidationError": {
         "properties": {

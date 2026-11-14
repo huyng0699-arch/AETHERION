@@ -134,6 +134,18 @@ def initialize(path: str | Path) -> None:
             "CREATE INDEX IF NOT EXISTS idx_sessions_user_id ON sessions(user_id)"
         )
 
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS subjects (
+                subject_id TEXT PRIMARY KEY,
+                display_name TEXT NOT NULL,
+                scope TEXT NOT NULL DEFAULT 'CREW',
+                role_label TEXT NOT NULL DEFAULT 'crew_member',
+                created_at TEXT NOT NULL
+            )
+            """
+        )
+
 
 def check_readiness(path: str | Path) -> dict[str, str]:
     initialize(path)
@@ -455,3 +467,46 @@ def revoke_session(path: str | Path, raw_token: str) -> bool:
             (now_iso, token_digest),
         )
     return cursor.rowcount > 0
+
+
+def upsert_subject(
+    path: str | Path,
+    *,
+    subject_id: str,
+    display_name: str,
+    scope: str = "CREW",
+    role_label: str = "crew_member",
+) -> dict[str, Any]:
+    initialize(path)
+    clean_id = subject_id.strip()
+    if not clean_id:
+        raise ValueError("subject_id cannot be blank")
+    now_iso = utc_now_iso()
+    with _connect(path) as conn:
+        conn.execute(
+            """
+            INSERT INTO subjects (subject_id, display_name, scope, role_label, created_at)
+            VALUES (?, ?, ?, ?, ?)
+            ON CONFLICT(subject_id) DO UPDATE SET
+                display_name = excluded.display_name,
+                scope = excluded.scope,
+                role_label = excluded.role_label
+            """,
+            (clean_id, display_name.strip(), scope, role_label.strip(), now_iso),
+        )
+        row = conn.execute(
+            "SELECT subject_id, display_name, scope, role_label, created_at FROM subjects WHERE subject_id = ?",
+            (clean_id,),
+        ).fetchone()
+    assert row is not None
+    return dict(row)
+
+
+def get_subject(path: str | Path, subject_id: str) -> dict[str, Any] | None:
+    initialize(path)
+    with _connect(path) as conn:
+        row = conn.execute(
+            "SELECT subject_id, display_name, scope, role_label, created_at FROM subjects WHERE subject_id = ?",
+            (subject_id.strip(),),
+        ).fetchone()
+    return dict(row) if row is not None else None

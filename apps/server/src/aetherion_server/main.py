@@ -21,11 +21,13 @@ from .store import (
     check_readiness,
     create_session,
     get_active_session,
+    get_subject,
     get_user_by_username,
     ingest_observation,
     initialize,
     query_observations,
     revoke_session,
+    upsert_subject,
 )
 
 AllowedScope = Literal["CREW", "CABIN", "VEHICLE", "crew", "habitat", "personal", "engineering_test"]
@@ -38,6 +40,21 @@ _bearer_scheme = HTTPBearer(auto_error=False)
 class LoginRequest(BaseModel):
     username: str = Field(min_length=1, max_length=80)
     password: str = Field(min_length=1, max_length=256)
+
+
+class SubjectIn(BaseModel):
+    subject_id: str = Field(min_length=1, max_length=80)
+    display_name: str = Field(min_length=1, max_length=120)
+    scope: AllowedScope = "CREW"
+    role_label: str = Field(default="crew_member", min_length=1, max_length=60)
+
+    @field_validator("subject_id", "display_name", "role_label")
+    @classmethod
+    def require_non_blank_subject(cls, value: str) -> str:
+        stripped = value.strip()
+        if not stripped:
+            raise ValueError("Field must not be blank")
+        return stripped
 
 
 class ObservationIn(BaseModel):
@@ -200,6 +217,45 @@ def create_app(
             "allowed_subjects": session["allowed_subjects"],
             "expires_at": session["expires_at"],
         }
+
+    @application.post("/api/v1/subjects", status_code=status.HTTP_201_CREATED)
+    def register_subject(
+        payload: SubjectIn,
+        session_and_token: tuple[dict, str] = Depends(require_session),
+    ):
+        session, _ = session_and_token
+        if not is_subject_authorized(session["role"], session["allowed_subjects"], payload.subject_id):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Not authorized to register subject '{payload.subject_id}'",
+            )
+        subject = upsert_subject(
+            get_db_path(),
+            subject_id=payload.subject_id,
+            display_name=payload.display_name,
+            scope=payload.scope,
+            role_label=payload.role_label,
+        )
+        return {"subject": subject}
+
+    @application.get("/api/v1/subjects/{subject_id}")
+    def read_subject(
+        subject_id: str,
+        session_and_token: tuple[dict, str] = Depends(require_session),
+    ):
+        session, _ = session_and_token
+        if not is_subject_authorized(session["role"], session["allowed_subjects"], subject_id):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Not authorized to access subject '{subject_id}'",
+            )
+        subject = get_subject(get_db_path(), subject_id)
+        if subject is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Subject '{subject_id}' not found",
+            )
+        return {"subject": subject}
 
     @application.get("/api/v1/observations")
     def observations(
