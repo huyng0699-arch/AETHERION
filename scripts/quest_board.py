@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate and inspect the AETHERION 300-Quest backlog; no third-party dependencies."""
+"""Validate and inspect the AETHERION 435-Quest backlog; no third-party dependencies."""
 from __future__ import annotations
 
 import argparse
@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 QUESTS = ROOT / "quests" / "v1"
-EXPECTED_COUNT = 300
+EXPECTED_COUNT = 435
 VALID_STATES = {"READY", "QUEUED", "PLANNED", "RUNNING", "DONE", "BLOCKED", "STALE"}
 VALID_PRIORITIES = {"P0", "P1", "P2", "P3"}
 

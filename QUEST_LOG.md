@@ -1,6 +1,6 @@
 # AETHERION — Quest control board
 
-**Scope:** 300 distinct, executable Quest specifications on `main`, numbered **Q-0001 through Q-0300**. Each task's live metadata is stored **only in its own `quests/v1/Q-XXXX.md`**. This root file is navigational and does not claim task completion.
+**Scope:** 435 distinct, executable Quest specifications on `main`, numbered **Q-0001 through Q-0435**. Each task's live metadata is stored **only in its own `quests/v1/Q-XXXX.md`**. This root file is navigational and does not claim task completion.
 
 ## Current canonical product
 - AETHERION is a **new product and name**, not ASTRA. Legacy material dated November 14, 2026 is reference-only.
@@ -16,7 +16,7 @@ python scripts/quest_board.py ready
 python scripts/quest_board.py running
 ```
 
-The index pages below are initial listings; individual Quest status is authoritative. There are **300** tasks, organized into **20 independent workstreams**, 15 each.
+The index pages below are initial listings; individual Quest status is authoritative. There are **435** tasks: 300 original tasks, 119 individual NASA CliFF source-ingestion Quests and 16 medical-library App View engineering Quests.
 
 | Stream | Quest range | Meaning |
 | --- | --- | --- |
@@ -41,6 +41,16 @@ The index pages below are initial listings; individual Quest status is authorita
 | Earth health | [0271–0285](quests/INDEX_271_285.md) | Future public-health product |
 | Mars 2050 | [0286–0300](quests/INDEX_286_300.md) | Long-term research and qualification gates |
 
+## New NASA CliFF 119 + medical image-rich SQLite Library (2026-11-14)
+
+**OWNER PRIORITY:** Exactly **119 source Quests Q-0301–Q-0419** and **16 native desktop library Quests Q-0420–Q-0435** have been added. [119-source catalog](quests/CLIFF_119_INDEX.md) · [Library infrastructure](quests/INDEX_420_435.md).
+
+Each source Quest must resolve its *own actual NASA CliFF 119 original link*, ingest page-anchored source text/tables/figures and find additional medically relevant, rights-cleared image assets with full file-level provenance. Target at least three relevant licensed images per article when possible, without image padding. A single offline `.sqlite` knowledge library will be rendered by the native PySide6 desktop App View with search and offline images. **No old repository may be accessed as an input.**
+
+**Important audit:** The current rendered NASA table yielded only 118 individually named entries; Q-0419 must investigate the unresolved 119th instead of inventing data. All 119 Quests are work to do, not completed source documents. Source IDs, direct URLs and image bytes are not verified at backlog creation.
+
+Do not mark a source Quest DONE for a URL list, no data, fabricated copy, missing license, or missing offline render proof. Agent work only starts upon actual invocation and claim.
+
 ## Initial handoff and emergency priority
 
 At backlog creation, no Quest has been tested or accepted by these new task files. **No DONE is implied.** `READY` tasks are independently claimable after checking ownership; `QUEUED` tasks require their dependencies; `PLANNED` tasks are intentionally non-hackathon.
@@ -55,6 +65,5 @@ These are **dependencies and priorities, not parallel agents already running**. 
 - [Current design 2026-11-14](docs/DESIGN_2026_11_14.md)
 - [Official NASA 2026 challenge](https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/)
 - [NASA 2026 event schedule](https://www.spaceappschallenge.org/2026/)
-- [Original older UX audit, not the new source of instructions](https://github.com/huyng0699-arch/NASA-Space-Apps/blob/main/docs/ux/ASTRA_UX_REACCEPTANCE_OPEN_SOURCE_20261114.md)
 
 Review owner and current state **on GitHub at HEAD** before each task claim. This file is not a daemon or automatic task runner.
