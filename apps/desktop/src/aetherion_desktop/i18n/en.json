@@ -487,5 +487,17 @@
   "care.answer.minutes": "Minutes",
   "care.answer.hours": "Hours",
   "care.answer.days": "Days",
-  "care.answer.longer": "Longer"
+  "care.answer.longer": "Longer",
+  "mission.mainTitle": "Mission Control",
+  "mission.brandLine": "AETHERION  /  CREW OPERATIONS",
+  "mission.openAccessible": "Open selected subject in Personal Health",
+  "mission.tableAccessible": "Recorded observations and provenance",
+  "personal.brandLine": "AETHERION  /  PERSONAL HEALTH",
+  "personal.subjectAccessible": "Exact selected crew subject",
+  "personal.filterAccessible": "Filter records by documented origin",
+  "personal.tableAccessible": "Selected person's authenticated observations",
+  "portal.brandLine": "TRUY TINH  /  MISSION HEALTH INTELLIGENCE",
+  "portal.vision": "AETHERION  •  EARTH → BEYOND",
+  "portal.side": "01 / HOME\n\nONE HEALTH\nBEYOND EARTH",
+  "main.footer.brand": "TRUY TINH  /  INDEPENDENT HEALTH INTELLIGENCE"
 }
