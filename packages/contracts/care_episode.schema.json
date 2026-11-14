@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/contracts/v1/care_episode.schema.json",
+  "title": "AETHERION Care Episode Contract (Q-0025)",
+  "description": "Defines GATHER -> EVALUATE -> ACT -> RECHECK care episode transitions, persisted subject identity, human agency, deterministic safety continuity, and source observation IDs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "episode_id",
+    "subject_id",
+    "scope",
+    "phase",
+    "previous_phase",
+    "source_observation_ids",
+    "human_actor_id",
+    "deterministic_safety_active",
+    "ai_assisted",
+    "updated_at"
+  ],
+  "properties": {
+    "episode_id": { "type": "string", "minLength": 1 },
+    "subject_id": { "type": "string", "minLength": 1 },
+    "scope": { "type": "string", "enum": ["CREW", "CABIN", "VEHICLE"] },
+    "phase": {
+      "type": "string",
+      "enum": ["GATHER", "EVALUATE", "ACT", "RECHECK", "CLOSED"]
+    },
+    "previous_phase": {
+      "type": ["string", "null"],
+      "enum": [null, "GATHER", "EVALUATE", "ACT", "RECHECK"]
+    },
+    "source_observation_ids": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1 },
+      "minItems": 1
+    },
+    "human_actor_id": { "type": "string", "minLength": 1 },
+    "deterministic_safety_active": { "type": "boolean", "const": true },
+    "ai_assisted": { "type": "boolean" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "x-care-transitions": {
+    "GATHER": { "from": [null, "RECHECK"], "to": ["EVALUATE"] },
+    "EVALUATE": { "from": ["GATHER", "RECHECK"], "to": ["ACT", "RECHECK"] },
+    "ACT": { "from": ["EVALUATE"], "to": ["RECHECK"] },
+    "RECHECK": { "from": ["EVALUATE", "ACT"], "to": ["GATHER", "EVALUATE", "CLOSED"] },
+    "CLOSED": { "from": ["RECHECK"], "to": [] }
+  }
+}
