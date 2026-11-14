@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-014",
+  "slot": 14,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/gravity-well-orthostatic-intolerance-cliff-2023.pdf?emrc=124cdd",
+  "http_status": 200,
+  "pdf_bytes": 285917,
+  "pdf_sha256": "914517033215cda64eec5f99435ab470a42219f9f568d1582b176568c01f5e0a",
+  "pdf_pages": 11,
+  "sections_count": 11,
+  "tables_count": 3,
+  "references_count": 32,
+  "media_count": 3,
+  "media_sha256s": [
+    "36207ae4b9921147d856ffd738a39af57ecf37f9f637bbbcc51b7a977337b2f7",
+    "a0c2456bb54020b92c60cfacc51de7448337ef7d542a1da2a3a7d315f6aa4fc2",
+    "fee81e05df7a52bbb8f005e56853114f9892912e145ccdb8c276eccb7a5c1870"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; NASA Public Domain & Wikimedia Commons CC-BY-3.0 / CC-BY-SA-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}

@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-014",
+  "title": "Baroreceptor Reflex Blood Pressure Regulation",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/2116_Baroreceptor_Reflex_Flow_Art.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:2116_Baroreceptor_Reflex_Flow_Art.jpg",
+  "license": "CC-BY-3.0",
+  "author": "OpenStax College",
+  "caption": "OpenStax diagram of the arterial baroreceptor reflex responding to decreased or increased blood pressure to restore cardiovascular homeostasis.",
+  "alt_text": "Flowchart diagram showing baroreceptor sensing of blood pressure changes and autonomic heart rate and vasoconstriction responses.",
+  "clinical_relevance": "Explains the baroreceptor reflex mechanism that is deconditioned during microgravity, predisposing crew to orthostatic intolerance upon gravity well entry (CLIFF-014, p.1).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 2188,
+  "height": 1629,
+  "size_bytes": 601567,
+  "sha256": "fee81e05df7a52bbb8f005e56853114f9892912e145ccdb8c276eccb7a5c1870",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/2116_Baroreceptor_Reflex_Flow_Art.jpg",
+  "retrieved_at_utc": "2026-11-14T05:48:16.801683+00:00",
+  "asset_path": "fee81e05df7a52bbb8f005e56853114f9892912e145ccdb8c276eccb7a5c1870.jpg",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}
