@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0.0",
+  "recorded_at_utc": "2026-11-14T03:51:00Z",
+  "policy_summary": {
+    "software_license": "Apache-2.0 (AETHERION source code only)",
+    "third_party_nasa_relicensed": false,
+    "mandatory_rules": [
+      "Original NASA documents and datasets retain their publisher terms and are never automatically relicensed under Apache-2.0.",
+      "Every transformed record must retain source_url, dataset_id, version, original measurement units, and is_live_telemetry=false.",
+      "Controlled human raw files requiring OSDR Data Access Request (DAR) / IRB approval must never be fetched, stored, or fabricated.",
+      "Missing or unimported archives (such as CliFF 119 PDFs) must remain explicitly flagged NOT_IMPORTED / UNVERIFIED."
+    ]
+  },
+  "datasets": [
+    {
+      "dataset_id": "OSD-575",
+      "version": "3",
+      "source_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-575",
+      "doi": "10.26030/mc5d-p710",
+      "license_or_terms": "CC0-1.0 (open metadata/transformed tables); controlled raw human files subject to OSDR DAR / IRB Protocol 21-05023569",
+      "relicensed_under_apache_2_0": false,
+      "allowed_reuse": [
+        "Cite DOI and study version v3 in NASA Explore reference panels",
+        "Display open summary metadata and pre/post-flight mission-relative timepoint labels (L-92 to R+194)"
+      ],
+      "prohibited_reuse": [
+        "Redistributing controlled raw human files without DAR/IRB authorization",
+        "Presenting Inspiration4 ground draws as live in-flight crew telemetry or clinical thresholds"
+      ],
+      "exact_transformation": {
+        "transform_id": "osdr-metadata-to-reference-v1",
+        "operations": [
+          "Extract study metadata, assay types, and declared units (NPQ, pg/mL, Quest CMP units, day, degC) without altering numerical scales.",
+          "Attach provenance fields: source_id='OSD-575', version='3', is_live_telemetry=false, verification_state='VERIFIED_METADATA_FROM_OSDR'."
+        ]
+      }
+    },
+    {
+      "dataset_id": "OSD-569",
+      "version": "4",
+      "source_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-569",
+      "license_or_terms": "CC0-1.0 (open metadata/processed summaries); controlled human genomic files subject to OSDR DAR / IRB",
+      "relicensed_under_apache_2_0": false,
+      "allowed_reuse": [
+        "Reference processed summary metadata and hazard-domain mapping with attribution"
+      ],
+      "prohibited_reuse": [
+        "Downloading or redistributing controlled human genomic sequences without DAR/IRB",
+        "Claiming live astronaut monitoring"
+      ],
+      "exact_transformation": {
+        "transform_id": "osdr-metadata-to-reference-v1",
+        "operations": [
+          "Map study metadata and declared units without fabricating individual-level human measurements.",
+          "Attach provenance fields: source_id='OSD-569', version='4', is_live_telemetry=false."
+        ]
+      }
+    },
+    {
+      "dataset_id": "OSD-530",
+      "version": "3",
+      "source_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-530",
+      "license_or_terms": "NASA OSDR open science terms (de-identified processed RNA-seq tables; ethics approvals Tsukuba No. 251, JAXA JX-IRBA-20-071, NASA Pro1995, ESA 2017_04_09)",
+      "relicensed_under_apache_2_0": false,
+      "allowed_reuse": [
+        "Use de-identified processed summary metadata with full mission/ethics attribution"
+      ],
+      "prohibited_reuse": [
+        "Attempting subject re-identification",
+        "Relabeling historical RNA-seq summaries as live vital signs"
+      ],
+      "exact_transformation": {
+        "transform_id": "osdr-metadata-to-reference-v1",
+        "operations": [
+          "Preserve study version v3, ethics attribution, and original RNA-seq normalization units.",
+          "Attach provenance fields: source_id='OSD-530', version='3', is_live_telemetry=false."
+        ]
+      }
+    },
+    {
+      "dataset_id": "OSD-258",
+      "version": "2",
+      "source_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-258",
+      "license_or_terms": "NASA OSDR open science data",
+      "relicensed_under_apache_2_0": false,
+      "allowed_reuse": [
+        "Reference model-organism spaceflight dataset metadata and assay units with OSDR attribution"
+      ],
+      "prohibited_reuse": [
+        "Extrapolating model-organism results as direct human clinical diagnosis"
+      ],
+      "exact_transformation": {
+        "transform_id": "osdr-metadata-to-reference-v1",
+        "operations": [
+          "Preserve species taxon, assay type, and original measurement units.",
+          "Attach provenance fields: source_id='OSD-258', version='2', is_live_telemetry=false."
+        ]
+      }
+    },
+    {
+      "dataset_id": "OSD-374",
+      "version": "1",
+      "source_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-374",
+      "license_or_terms": "NASA OSDR open science data",
+      "relicensed_under_apache_2_0": false,
+      "allowed_reuse": [
+        "Reference model-organism spaceflight dataset metadata and assay units with OSDR attribution"
+      ],
+      "prohibited_reuse": [
+        "Extrapolating model-organism results as direct human clinical diagnosis"
+      ],
+      "exact_transformation": {
+        "transform_id": "osdr-metadata-to-reference-v1",
+        "operations": [
+          "Preserve species taxon, assay type, and original measurement units.",
+          "Attach provenance fields: source_id='OSD-374', version='1', is_live_telemetry=false."
+        ]
+      }
+    },
+    {
+      "dataset_id": "NASA-IMM-CLIFF-119",
+      "version": "2023",
+      "source_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+      "license_or_terms": "Original NASA documents; not relicensed under Apache-2.0; currently NOT_IMPORTED",
+      "relicensed_under_apache_2_0": false,
+      "allowed_reuse": [
+        "Link to official NASA IMM documentation page and report audit status via scripts/audit_cliff_119.py"
+      ],
+      "prohibited_reuse": [
+        "Claiming 119/119 PDFs are present or verified before SHA-256 manifest verification",
+        "Importing third-party/ASTRA medical catalogs as NASA CliFF originals"
+      ],
+      "exact_transformation": {
+        "transform_id": "cliff-119-direct-pdf-audit-v1",
+        "operations": [
+          "Direct download only via scripts/fetch_nasa_cliff_119.py from nasa.gov/nasa.sharepoint.com.",
+          "Verify %PDF- header and SHA-256 digest per file; until complete, status remains NOT_IMPORTED."
+        ]
+      }
+    }
+  ]
+}
