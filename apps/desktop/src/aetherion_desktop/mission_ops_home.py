@@ -76,9 +76,9 @@ TEXT = {
         "atlas": "Body Atlas",
         "settings": "Settings",
         "home": "Mission Workspace",
-        "archive": "NASA MA-7 · source records",
+        "archive": "NASA MA-7 · records",
         "utc": "UTC observations",
-        "demo": "DEMO FOR HACKATHON",
+        "demo": "DEMO",
         "sim": "SIMULATED",
         "real": "NASA MA-7 · 1962",
         "realBadge": "HISTORICAL · NASA SOURCE",
@@ -89,14 +89,18 @@ TEXT = {
         "sourceGuide": "Open NASA original report",
         "launch": "Open feature",
         "welcome": "Select a source or work area in Browse.",
-        "welcomeLead": "The workspace shows authentic historical NASA measurements and honest empty states for unconnected UTC observations. No fabricated live telemetry.",
+        "welcomeLead": "Your mission starts with a person. Explore the SIMULATED Demo, original NASA records, and authorized observations.",
+        "demoCardBadge": "SIMULATED  ·  FICTIONAL DATA",
+        "demoCardTitle": "Explore the Demo",
+        "demoCardBody": "Five fictional profiles · 540 days of history · kept separate from real records.",
+        "demoCardAction": "Start Demo",
         "welcomeSource": "Source inventory",
         "welcomeCount": "{records} original MA-7 report timepoints · {values} recorded values",
         "welcomeNoSource": "The NASA source package is unavailable or invalid. Open the archive for details.",
         "welcomeReal": "Read the NASA MA-7 records",
         "welcomeUtc": "Inspect UTC records",
         "homeNotice": "The mission workspace does not read authenticated patients until a permitted source supplies them.",
-        "time": "TIME CONDUCTOR",
+        "time": "UTC TIME CONDUCTOR",
         "timeHelp": "UTC window shared by UTC plot, table, and Inspect",
         "from": "From",
         "to": "To",
@@ -195,9 +199,9 @@ TEXT = {
         "atlas": "Cơ thể 3D",
         "settings": "Cài đặt",
         "home": "Không gian điều hành",
-        "archive": "NASA MA-7 · bản ghi gốc",
+        "archive": "NASA MA-7 · dữ liệu",
         "utc": "Quan sát UTC",
-        "demo": "DEMO FOR HACKATHON",
+        "demo": "DEMO",
         "sim": "SIMULATED",
         "real": "NASA MA-7 · 1962",
         "realBadge": "LỊCH SỬ THẬT · NGUỒN NASA",
@@ -208,14 +212,18 @@ TEXT = {
         "sourceGuide": "Xem báo cáo NASA gốc",
         "launch": "Mở chức năng",
         "welcome": "Chọn một nguồn hoặc chức năng từ cây bên trái.",
-        "welcomeLead": "Không gian hiển thị các số đo lịch sử thật từ NASA và trạng thái thiếu dữ liệu UTC trung thực. Không tạo sinh hiệu trực tiếp giả.",
+        "welcomeLead": "Hành trình bắt đầu từ mỗi phi hành gia. Khám phá Demo giả lập, dữ liệu NASA gốc và quan sát được cấp quyền.",
+        "demoCardBadge": "GIẢ LẬP  ·  DỮ LIỆU HƯ CẤU",
+        "demoCardTitle": "Khám phá Demo",
+        "demoCardBody": "Năm hồ sơ hư cấu · 540 ngày lịch sử · tách biệt dữ liệu thật.",
+        "demoCardAction": "Bắt đầu Demo",
         "welcomeSource": "Danh mục nguồn",
         "welcomeCount": "{records} mốc báo cáo MA-7 · {values} giá trị ghi nhận",
         "welcomeNoSource": "Bộ nguồn NASA thiếu hoặc không hợp lệ. Có thể mở kho để xem lỗi.",
         "welcomeReal": "Xem các bản ghi NASA MA-7",
         "welcomeUtc": "Xem dữ liệu UTC",
         "homeNotice": "Không đọc hồ sơ người bệnh khi chưa có nguồn được cấp quyền.",
-        "time": "TIME CONDUCTOR",
+        "time": "ĐIỀU KHIỂN THỜI GIAN UTC",
         "timeHelp": "Khoảng UTC dùng chung cho biểu đồ, bảng và Inspect",
         "from": "Từ",
         "to": "Đến",
@@ -627,6 +635,34 @@ class MissionOperationsHome(QWidget):
         self.welcome_lead.setObjectName("pageHint")
         self.welcome_lead.setWordWrap(True)
         ov.addWidget(self.welcome_lead)
+
+        # The first workspace presents a clear Demo action before source details.
+        self.demo_card = QFrame()
+        self.demo_card.setObjectName("contentPanel")
+        demo_card_row = QHBoxLayout(self.demo_card)
+        demo_card_row.setContentsMargins(14, 10, 14, 10)
+        demo_card_row.setSpacing(12)
+        demo_copy = QVBoxLayout()
+        demo_copy.setSpacing(3)
+        self.demo_card_badge = QLabel()
+        self.demo_card_badge.setObjectName("eyebrow")
+        demo_copy.addWidget(self.demo_card_badge)
+        self.demo_card_title = QLabel()
+        self.demo_card_title.setObjectName("heading")
+        self.demo_card_title.setWordWrap(True)
+        demo_copy.addWidget(self.demo_card_title)
+        self.demo_card_body = QLabel()
+        self.demo_card_body.setObjectName("pageHint")
+        self.demo_card_body.setWordWrap(True)
+        demo_copy.addWidget(self.demo_card_body)
+        demo_card_row.addLayout(demo_copy, 1)
+        self.demo_card_action = QPushButton()
+        self.demo_card_action.setObjectName("primaryAction")
+        self.demo_card_action.setMinimumHeight(42)
+        self.demo_card_action.clicked.connect(self.simulated_demo_requested.emit)
+        demo_card_row.addWidget(self.demo_card_action)
+        ov.addWidget(self.demo_card)
+
         self.source_count = QLabel()
         self.source_count.setObjectName("heading")
         self.source_count.setWordWrap(True)
@@ -803,8 +839,14 @@ class MissionOperationsHome(QWidget):
         self.inspector.setTextElideMode(Qt.TextElideMode.ElideRight)
         self.inspector.setWordWrap(True)
         self.inspector.verticalHeader().hide()
+        self.inspector.verticalHeader().setSectionResizeMode(
+            QHeaderView.ResizeMode.ResizeToContents)
         self.inspector.horizontalHeader().hide()
-        self.inspector.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+        self.inspector.horizontalHeader().setSectionResizeMode(
+            0, QHeaderView.ResizeMode.Fixed)
+        self.inspector.horizontalHeader().setSectionResizeMode(
+            1, QHeaderView.ResizeMode.Stretch)
+        self.inspector.setColumnWidth(0, 92)
         right_layout.addWidget(self.inspector, 1)
         self.source_link = QPushButton()
         self.source_link.setObjectName("navButton")
@@ -878,6 +920,7 @@ class MissionOperationsHome(QWidget):
             self.navigator.addTopLevelItem(parent)
             for route, title in rows:
                 item = QTreeWidgetItem([self._t(title)])
+                item.setToolTip(0, self._t(title))
                 item.setData(0, Qt.ItemDataRole.UserRole, route)
                 parent.addChild(item)
                 self._objects[route] = item
@@ -1173,8 +1216,12 @@ class MissionOperationsHome(QWidget):
         for field, value in properties:
             row = self.inspector.rowCount()
             self.inspector.insertRow(row)
-            self.inspector.setItem(row, 0, QTableWidgetItem(self._t(field)))
-            self.inspector.setItem(row, 1, QTableWidgetItem(str(value)))
+            key_item = QTableWidgetItem(self._t(field))
+            value_item = QTableWidgetItem(str(value))
+            key_item.setToolTip(key_item.text())
+            value_item.setToolTip(value_item.text())
+            self.inspector.setItem(row, 0, key_item)
+            self.inspector.setItem(row, 1, value_item)
         self.inspector.resizeRowsToContents()
 
     def set_recent_days(self, days: int):
@@ -1373,6 +1420,11 @@ class MissionOperationsHome(QWidget):
         self.inspect_heading.setText(t("inspect"))
         self.welcome.setText(t("welcome"))
         self.welcome_lead.setText(t("welcomeLead"))
+        self.demo_card_badge.setText(t("demoCardBadge"))
+        self.demo_card_title.setText(t("demoCardTitle"))
+        self.demo_card_body.setText(t("demoCardBody"))
+        self.demo_card_action.setText(t("demoCardAction"))
+        self.demo_card_action.setAccessibleName(t("demoCardAction") + " · " + t("sim"))
         count, values = self._archive_counts()
         self.source_count.setText(
             t("welcomeCount", records=count, values=values) if count else
