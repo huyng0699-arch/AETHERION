@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-068",
+  "slot": 68,
+  "quest_id": "Q-0368",
+  "checked_at_utc": "2026-11-14T06:27:16.656856+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-epistaxis-cliff-2023.pdf?emrc=dcde67",
+  "http_status": 200,
+  "pdf_sha256": "462eb4db950a1742213f7634ba68cc68b72762e56ec35c86b06e620f37782090",
+  "pdf_bytes": 340200,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-068-IMG-01": "03d89bb16f18e92f772823714368f9ccaa1eccdb9403508708e4435cc3bdc5ed",
+    "CLIFF-068-IMG-02": "47cce7b72c2f5c32c8c61d6c3ba18056570ebbeec398870999f319b557eacc4e",
+    "CLIFF-068-IMG-03": "effab96856a86dd5ced8689048146fc54f5ecbe260413f44027af43371697bda"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}

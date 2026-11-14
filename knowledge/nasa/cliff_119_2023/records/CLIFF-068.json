@@ -1,0 +1,595 @@
+{
+  "article_id": "CLIFF-068",
+  "slot": 68,
+  "display_title": "Epistaxis (Space Adaptation)",
+  "category": "Otolaryngology",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-068",
+    "publisher": "NASA",
+    "title": "Epistaxis (Space Adaptation) \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-epistaxis-cliff-2023.pdf?emrc=dcde67",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-epistaxis-cliff-2023.pdf?emrc=dcde67",
+    "retrieved_at_utc": "2026-11-14T06:27:16.656856+00:00",
+    "content_sha256": "462eb4db950a1742213f7634ba68cc68b72762e56ec35c86b06e620f37782090",
+    "original_mime": "application/pdf",
+    "original_bytes": 340200,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-068-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch      Baseline\n\n\n\n ICL93_Space Adaptation - Epistaxis\n\n Epistaxis, or nosebleeds, are regular events and often do not require medical treatment. Only six percent of people who experience an epistaxis\n event will ever seek additional expertise (Seikaly, 2021). Although nearly all nosebleeds will resolve with minimal involvement, the severity of the bleed\n can be complicated by the location, coagulation abnormalities, platelet dysfunction, and cardiovascular disease. Most bleeds are \u2018anterior bleeds\u2019 and\n occur along the septum from the Kiesselbach plexus in Little\u2019s area. This vascular supply is formed by terminal branches of the internal carotid artery\n and external carotid artery. Anterior bleeds are typically simpler to manage as the area is visible and compressible. Frequently, nasal compression\n and topical vasoconstrictors are all that is necessary; albeit cauterization, topical hemostasis agents and anterior packs are commonly used as well.\n Posterior bleeds comprise of 10-20% of cases and occur along the posterior septum, the lateral nasal wall, or the nasal floor (Krulewitz et al., 2019).\n These areas are supplied by the sphenopalatine and ascending pharyngeal arteries and often result in brisk bleeds warranting immediate\n intervention to prevent aspiration and hemorrhagic shock (Womack et al, 2018). Posterior packing is painful both upon insertion and in situ. This type\n of packing is associated with a higher risk of complications such as otitis media, sinusitis, pressure necrosis, airway obstruction, vagal nerve\n stimulation, cavernous sinus thrombosis, and toxic shock syndrome (Feusi et al., 2005; Morgan et al. 2014). There have been several epistaxis\n events in spaceflight. Nosebleeds occurring in the first five days of a mission are associated with space adaptation epistaxis. These are typically\n attributed to the cephalad fluid shift secondary to increased blood volume and intravascular pressure (Barratt et al., 2019). As a result of these shifts,\n astronauts experience facial edema and report subjective symptoms of nasal stuffiness and head pressure. The engorgement of the nasal mucosa,\n use of decongestants and the propensity for digital trauma during this time increases the likelihood of an epistaxis event. After the first five days, an\n equilibrium is established. The temporal nature of these fluid shifts is further supported by the finding that there is no significant difference in\n paranasal sinus opacification in head magnetic resonance imaging after spaceflight (Inglesby et al., 2020). Events that occur after five days are\n covered separately in another CLiFF (ICL 38- Epistaxis) and can be attributed to the low relative humidity of the mission craft, overuse of\n decongestants, trauma, sinusitis, or upper respiratory infections.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Spaceflight literature were derived from two LSAH data gathering events (Walton, 2010; Saile et. al, 2017) and a NASA white paper (Antonsen et al.\n  2017). Unfortunately the authors of this CLiFF did not have direct access to the data from those LSAH events. Consequently, information was taken\n  detailing these events from the previous IMM CLiFF entitled \"Nose bleed (space adaptation).\" Of importance, for this effort, epistaxis events were\n  divided into two categories: space adaptation associated epistaxis (detailed here) and epistaxis (detailed in a separate CLiFF) The statistician of\n  this CLiFF was able to contact the authors of Antonsen et al. and verify the data (which was also based on the prior LSAH events). During her\n  analysis it was observed that in the Antonsen et al. paper Table 1 was mislabeled as 'ISS through Exp 40' when it should read ' ISS expeditions 9\n  and 14 through 40'; this CLIFF corrects for that error. At the time of this CLIFF completion, a repeat LSAH data gathering event was not possible\n  and missions past 2017 are not represented.\n\n  ANALOG LITERATURE\n\n  Analog populations are not applicable to this condition as by condition definition, occurrences must happen in spaceflight. Analog literature for\n  epistaxis is included in ICL 38 Also not included in the incidence calculation as it did not occur during spaceflight, was one severe case of epistaxis\n  in an astronaut during a ground medical event that required hospitalization (Barratt et al., 2019).\n\n  TERRESTRIAL LITERATURE\n\n  Terrestrial literature is not applicable to this condition. Terrestrial literature for epistaxis is included in ICL 38.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n\n6/15/2023 2:09:51 PM                                                 ICL93_Space Adaptation - Epistaxis Cliff                                                 page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-068-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  INCIDENCE\n\n   mean: 0.0136 and SD:0.00417\n\n\n\n  INCIDENCE SUMMARY\n\n  Epistaxis needs to be defined for 2 types, those related to space adaptation (occurring within the first 5 days of the mission) and those that occur\n  later. We will use inflight data to inform those distributions. From the LSAH data requests (Walton 2010 and Saile 2014), there have been 14 cases,\n  6 known to occur in the first 5 days, 2 known to occur after 5 days, and 6 with unknown onset. To impute where those 6 with unknown onset should\n  be applied, we will split them according to the proportions of the known cases (0.75 related to space adaptation, and 0.25 after). This means 4.5\n  would be expected to be in the space adaptation. In order to not underestimate overall risk across both conditions, 4 will be attributed to space\n  adaptation, and 2 to afterwards. This gives 10 cases over 807 persons-at-risk for the space adaptation condition, and 4 cases over 34.44 person-\n  years (45.49 \u2013 (807*5/365.25)). Incidence proportion distribution is Beta(shape1=10.524, shape2=762.18) mean: 0.0136 and SD:0.00417. This is\n  the Bayesian posterior distribution for the proportion using the spaceflight data of 10 cases over 807 persons-at-risk using an uninformative prior.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     SAS\n     Segment\n     Space Adaptation\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Binomial\n     Incidence Dist.\n     Beta\n     Mean\n     0.0136197\n     SD\n     0.00416695\n\n\n     Beta\n     (Alpha): 10.524\n     (Beta): 762.18\n     Onset Timing (Hours)\n     (Min): 1\n     (Max): 120\n     (Most Likely): 12\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                             Source                                  LOC Value\n\n   Walton, 2010                                                         Spaceflight                             4\n\n   Saile et al., 2017                                                   Spaceflight                             4\n\n   Antonsen et al., 2017                                                Spaceflight                             3\n\n  Spaceflight incidence data was rated the highest as by definition, this condition must occur during spaceflight. Data gathered from the previous IMM\n  CLiFF efforts were rated slightly higher than the Antonsen NASA white paper as the older CLiFFs included timing of epistaxis events.\n\n\n\n\n6/15/2023 2:09:51 PM                                           ICL93_Space Adaptation - Epistaxis Cliff                                                  page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-068-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Crewmembers undergo preflight clinical laboratory testing at: L-90/30 days which includes Blood: Hematology \u2013 CBC w/differential, reticulocytes;\n  Chemistry profile \u2013 glucose, BUN, creatinine, AST, ALT, GGTP, alkaline phosphatase, total bilirubin, total protein, electrolytes, calcium, magnesium,\n  phosphorus, LDH, uric acid, albumin; Ionized calcium; Thyroid function \u2013 free T4, TSH; Iron profile \u2013 iron, iron binding capacity, transferrin\n  saturation, ferritin; Special chemistry \u2013 C-reactive protein, Serum lipids (total cholesterol, LDL, HDL, Triglycerides)Mouse IgE Allergen Panel Inflight,\n  at the discretion of the crew medical officer, crewmembers are scheduled for blood chemistries L+180 days All astronauts must undergo annual\n  medical examination that includes a medical history review and clinical laboratory testing.\n\n  BEST CASE SCENARIO DEFINITION\n\n  An anterior nosebleed that resolves with minimal or no treatment\n\n  WORSE CASE SCENARIO DEFINITION\n\n  A posterior nosebleed that requires nasal packing and possibly surgical treatment\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  Non-Space Adaptation Epistaxis is covered in a different CLiFF and epistaxis events that occurred after the first 5 days are excluded from this\n  CLiFF's incidence calculation.\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  There have been no worst-case events recorded in spaceflight. Consequently, analog and terrestrial literature searches were conducted with the\n  known limitation that these searches were more applicable to ICL 38 Epistaxis than spaceflight associated epistaxis. Analog studies that were found\n  did not differentiate between the best and worst case. Therefore, terrestrial data was used to determine the probability of the worst-case. In\n  Viducich et al. 2016, a review of Akron City Hospital emergency department medical records was conducted between January 1, 1987, and January\n  31, 1993. One thousand seven hundred episodes of epistaxis were identified and 81 patients (5%), ranging from 27 to 96 years of age (mean: 64.3\n  years) experienced a posterior bleed. In Sethi et al. 2018, a retrospective review of the United States Nationwide Emergency Sample (NEDS) from\n  2009-2011 was queried for a primary diagnosis of \u2018epistaxis.\u2019 Of the 243,268 epistaxis associated visits, 17,789 (7.3%) patients (average age 64.4\n  years) had both anterior and posterior packing placed. Lastly, in the INTEGRATE (The National ENT Trainee Research Network) 2017, 113\n  registered emergency department sites across the United Kingdom were audited for the diagnosis of \u2018epistaxis\u2019 during a 30-day window. Although\n  this study did not mention posterior epistaxis bleeds, it did determine that transfusion of blood products was performed in 4.5% of all the cases.\n  Since both Sethi et al. and INTEGRATE possessed ambiguity in how posterior epistaxis bleeds were defined, data from Viducich et al. was used to\n  represent the worst-case scenario. Of note, the terrestrial data include patients with comorbid conditions not seen in spaceflight crewmembers..\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                               Source                                  LOC Value\n\n   Viducich et al., 1995                                                  Terrestrial                             2\n\n   Sethi et al, 2019                                                      Terrestrial                             0\n\n   INTEGRATE, 2017                                                        Terrestrial                             0\n\n\n  Only terrestrial data were obtainable to determine the worst-case probability. Of the available studies, only one study (Viducich et al., 2016) defined\n  the worst-case similarly and provided prevalence data. As such, the other studies were excluded but listed here to help develop context.\n\n\n\n\n6/15/2023 2:09:51 PM                                             ICL93_Space Adaptation - Epistaxis Cliff                                                     page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-068-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                         CP1: Diagnosis        CP2: Treatment                   CP3: Condition End State\n\n                                                         TI%       Duration    TI%        Duration              TI%       RTDC             LOCL\n                     Composite           Condition\n   Case Scenario     Incidence           Probability %   Preset    Preset      Preset     Min           Max     Preset    Min%    Max%     Min%     Max%\n\n   Treated Best      mean: 0.0136        95 - 95         100       0.56        4.73027    0.0833333     0.58    0         0       0        0        0\n   Case (TBC)        and SD:0.00417\n\n   Treated Worst                         5-5             100       1.12        50         24            96      0         5.6     18       0        0\n   Case (TWC)\n\n   Untreated Best    N/A                 N/A             N/A       0.56        6.65692    0.0833333     0.58    0         0       0        0        0\n   Case (UTBC)\n\n   Untreated         N/A                 N/A             N/A       1.12        100        24            912     100       18      100      0        0\n   Worst Case\n   (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n6/15/2023 2:09:51 PM                                              ICL93_Space Adaptation - Epistaxis Cliff                                                    page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-068-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  The best case is a nosebleed that resolves with no or limited treatment. In terrestrial scenarios, patients that experience the best case might not\n  event seek medical care. The worst case, a posterior bleed, is at the minimum treated in the emergency department, often with subspecialist help.\n  The RTDC surrogate used for the CLiFF was hospitalization or unresolving hemorrhage. These definitions are identical to what was used in ICL 38\n  (Epistaxis) and the resultant values are the same.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Determining the duration of the treated best case (TBC) scenario is difficult as this definition is an episode that can be self-resolving. In a\n  multidisciplinary epistaxis clinical practice guideline for the American Academy of Otolaryngology- Head and Neck Surgery Foundation (Tunkel et\n  al., 2020), the statement: \u201cfirm and sustained pressure to the lower third of the nose, with or without assistance of the patient or caregiver, for 5\n  minutes or longer\u201d received a strong recommendation (0.08 hours). Outpatient recommendations from other disciplines are similar (Womack et al.,\n  2018; Morgan et al., 2014). The same authors also endorsed that even when active bleeding has ceased, patients should be monitored for next 30\n  minutes to ensure that epistaxis does not reoccur (0.08 hour + 0.50 hour = 0.58 hours). By definition, events that would lead to RTDC and LOCL\n  are not expected for this condition. This is further supported as only one-tenth of patients that experience nosebleeds will pursue any treatment\n  from a medical provider (Viehweg et al., 2006).\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  The treated worst-case definition involves a posterior nosebleed that requires packing and may require surgical treatment. Duration of the condition\n  will be limited by the length of treatment. In this case, nasal packing--by means of either an inflatable pack or a foley balloon would be expected.\n  Nasal packing can be removed in as little as 24 hours or left for as long as 72 hours. Longer durations are associated with pressure necrosis of\n  nasal tissues (Seikaly, 2021; Krulewitz et al., 2019). However, in cases of refractory bleeding, some articles mention leaving packs in place for as\n  much as 96 hours, but with the additional recommendation of initiating antibiotics for toxic shock syndrome (Viducich et al., 1995, Spielmann et al.,\n  2012). \u201cSevere epistaxis\u201d is considered a Class IIa medical event: an incident that can be managed using the International Space Station (ISS)\n  Health Maintenance System (HMS) and not likely to necessitate evacuation or affect mission length (Barratt et al., 2019). However a small number\n  of patients in terrestrial conditions experience refractory bleeds not responsive to local measures. Out of 933 patients that required admission for\n  epistaxis at NHS hospitals in England and Wales over a three-month period, 52 patients (5.6%) required general anesthesia and surgical\n  intervention for refractory bleeding (Kotecha et al., 1996). In another retrospective review, 16 out 88 (18%) patients who presented to the\n  emergency department for posterior epistaxis failed emergency medicine provider packing and required surgical intervention (Viducich et al., 1995).\n  Of note, many of these patients were on anticoagulants, had diagnosed liver disease or thrombocytopenia. Mortality in the treated best case is\n  rare: in one study 43 patients that required surgical intervention all survived their perioperative period (Abdelkader et al., 2007) and in another over\n  a 15-year study period and a total of 141 interventions, there were no mortalities reported in the operative or perioperative period (Tessler et al.,\n  2020).\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  Similar to the rationale used in in the treated best case, the untreated best case is still a self-limited illness. To our knowledge, there are no studies\n  detailing the time necessary to form a nasal clot without intervention. Consequently, duration was set to be identical to the treated best-case\n  condition. By definition RTDC and LOCL are not expected for the treated or untreated best-case scenario.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  Defining parameters for the untreated worst case is difficult as the terrestrial standard of care is to attempt tamponade of any active nasal\n  hemorrhage. Mortality from epistaxis primarily results from airway compromise or hemorrhagic shock, albeit other pathologies such as disseminated\n  intravascular coagulation are possible as well. The first stage of hemorrhagic shock can occur with as little as 750 mL of blood loss and patients\n  can exsanguinate in as little as two hours (median) without resuscitation from massive hemorrhage (Cannon, 2018). However, respiratory arrest\n  and hemorrhagic shock are not covered in this condition but rather in another CliFF. Consequently, the minimum duration for the untreated worst\n  case is estimated to be no less than the treated worst case (24 hours); albeit in actuality, the condition might proceed rapidly to the hemorrhagic\n  shock condition. Literature to gather the maximum duration was limited to dated case-studies. Most described intermittent massive hemorrhages\n  lasting several days (Quinn, 1961). One case described a 20-year-old miner who was struck in the face during an occupational accident in\n  Colorado. He developed severe epistaxis repeatedly which subsequently resolved but reoccurred. After 38 days, the patient died of hemorrhagic\n  shock (Levy, 1896). The minimum RTDC would be the maximum amount of the treated worst-case condition as the untreated version is presumed\n  to have a higher rate of hospitalization or persistent bleeding. The maximum RTDC is estimated in 100%, considering the risk for a crew member\n  with unstoppable bleeding.\n\n\n\n\n6/15/2023 2:09:51 PM                                              ICL93_Space Adaptation - Epistaxis Cliff                                                     page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-068-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                  Source                                 LOC Value\n\n   Tunkel et al., 2020                                                       Terrestrial\n\n   Womack et al., 2018                                                       Terrestrial\n\n   Morgan et al., 2014                                                       Terrestrial\n\n   Seikaly, 2021                                                             Terrestrial\n                                                                                                                                       2\n   Krulewitz et al., 2019                                                    Terrestrial\n\n   Viducich et al., 1995                                                     Terrestrial\n\n   Spielmann et al. 2021                                                     Terrestrial\n\n   Levy, 1896                                                                Terrestrial\n\n  Available studies to determine durations for treated cases involved clinical practice guidelines, systematic reviews, and retrospective studies. Due\n  to the increasingly more rigorous Institutional Review Board guidelines of American institutions, literature for untreated best and worst cases were\n  limited to extrapolation from dated case studies.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                Source                                  LOC Value\n\n   Viehweg et al., 2006                                                    Terrestrial\n\n   Kotecha et al., 1996                                                    Terrestrial                                                2\n\n   Viducich et al., 1995                                                   Terrestrial\n\n  RTDC percentages for the TBC and UTBC are expected to be zero given the conditions' definitions; as such articles were not reviewed for these\n  conditions. In the TWC, RTDC was determined from retrospective reviews. The UTWC RTDC used the same studies as the TWC along with subject\n  matter expert consensus given the lack of available literature detailing this scenario.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                    Source                                LOC Value\n\n   Viehweg et al., 2006                                                        Terrestrial\n\n   Abdelkader et al., 2007                                                     Terrestrial                                             1\n\n   Tessler et al., 2020                                                        Terrestrial\n\n\n  Based on the definitions, loss of crew life is not expected for any of the conditions. However, to validate the assumption that mortality was negligible\n  a literature search was still conducted. A narrative review along with two small retrospective studies do provide negligible mortality rates for\n  hospitalized patients.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  ICL - 93, Space Adaptation Epistaxis Definitions: Best Case: An anterior nosebleed that resolves with minimal or no treatment. Worst Case: A\n  posterior nosebleed that requires nasal packing and possibly surgical treatment. Capabilities and Resourcing Scope Overview Epistaxis, or\n  nosebleeds, are common terrestrial occurrences with only approximately 6% of events requiring care by a medical provider (Krulewitz et al. 2019).\n  Most events resolve spontaneously or with gentle pressure to the bilateral nares. Albeit less frequent, severe events can result in hemorrhage,\n  airway compromise and even hypovolemic shock. Causes of bleeding can range from dry or arid conditions, trauma, intranasal medications,\n  infections, inflammation, malignancy, and systemic pathologies (such as clotting or platelet disorders); however, in many cases, no obvious\n  precipitant is identified.(Seikaly 2021). Epistaxis is frequently classified by the anatomic source of bleeding as either anterior or posterior (Tunkel et\n\n\n\n\n6/15/2023 2:09:51 PM                                              ICL93_Space Adaptation - Epistaxis Cliff                                                     page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-068-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  al. 2020; Womack et al. 2018). Anterior bleeds usually arise from Kiesselbach\u2019s plexus: a vascular network of the five arteries that supply the nasal\n  septum. Anterior bleeds, somewhat less frequently, can be traced to the inferior or middle turbinates as well. Generally, anterior bleeds are less\n  difficult to treat as the source of bleeding is more readily visible (and therefore amenable to spot treatments such as cautery) and the area is\n  compressible. Approximately 10% of epistaxis occurrences will be from posterior bleeds (Seikaly 2021). Classically these bleeds arise from\n  branches of the sphenopalatine artery and are more profuse in flow. Although they are most likely to occur from the posterior septum, they can also\n  arise from the posterior nasal floor or lateral nasal wall. These areas are difficult to visualize without endoscopy and often require nasal packing,\n  otolaryngology consultation, surgical management, and even intensive care admission. In this CRT, the best-case refers to an anterior nosebleed\n  that is easily resolved. Terrestrially, patients that experience the best-case scenario may not even seek medical care. Conversely, given the\n  already inherent dangers of spaceflight and lack of access to immediate definitive care, resources are allocated to ensure that even a minor\n  epistaxis does not reoccur. The worst-case condition refers to a posterior bleed that requires treatment. Even though the definition states that this\n  condition may require surgical management, missions are not likely to carry the equipment necessary to definitively treat. Consequently. it is\n  feasible that without adequate treatment this condition may progress to more severe pathologies such as respiratory arrest. This CRT does not\n  include resources for these downstream conditions as they are provided for in other CRTs. Also of importance, nosebleeds that occur within the\n  after the five days of spaceflight are covered in a different, but similar CRT entitled \u2018Epistaxis.\u2019 Diagnostic Scope and Resourcing In the best case,\n  diagnosis will be made via history and physical exam. Given the benign nature of this condition, it was decided by CRT group consensus not to\n  allocate a tongue depressor or gloves for the exam. In the worst-case scenario, profuse nasal bleeding is expected and as such, personal\n  protective equipment is allocated along with diagnostic equipment for the nasal sand oropharyngeal exams. Although in terrestrial conditions an\n  otolaryngologist might be expected to visualize the bleed with fiberoptic rhinoscopy (Seikaly 2021), this is likely beyond the capabilities of onboard\n  crew members and accordingly, an endoscopic rhinoscope was not resourced in this CRT. Profuse bleeding might result in a hematocrit decrease,\n  but since hypovolemic shock is covered in a different CRT, a complete blood count was thought unnecessary by group CRT consensus for this\n  condition. Clinical Phase 1 Duration and Rationale This version of IMPACT presumes physician level knowledge, skill, and ability will be present on\n  the mission. The CRT working group SME consensus duration is as follows: CP1 BC (Treated or Untreated): 0.56 hours This is the longest\n  reasonable time to complete the task for an experienced clinician (adjusted for being in the spaceflight environment) 1) to remove a crewmember\n  from duties 2) obtain a history and 3) examine the patient. CP1 WC (Treated or Untreated): 1.12 hours This is the longest reasonable time to\n  complete the task for an experienced clinician (adjusted for being in the spaceflight environment) 1) to remove a crewmember from duties 2)obtain\n  a history 3) perform hand hygiene 4) don personal protective equipment 5) examine the patient 6) establish ground communications. Additional\n  time for the nasal and oropharyngeal exams were apportioned to this worst-case condition. The highest scope of practice code used in this CRT\n  which includes interpretation of diagnosis, performing diagnostic tests and performing treatment (particularly inserting posterior packing) would be a\n  five: this is at the experienced procedural trained generalist attending (emergency medicine attending). Treatment Scope and Resourcing In the\n  best-case scenario, treatment is limited to non-invasive procedures and medications. Resources are also allocated to preventing recurrence. By its\n  definition, the worst-case scenario requires intervention. The type of involvement will vary by the clinical scenario and resources are allocated for\n  medications, hemostatic agents, and nasal packing. Although the definition does state that this is likely a posterior bleed, spot treatments (silver\n  nitrate, tranexamic acid) are still allocated for the worst case as these would be important (and important to have on missions) in profuse anterior\n  bleeds not amenable to simple compression\u2014a case somewhat in the middle of the best and worst scenarios. In missions where access to definitive\n  care is not immediately accessible, removal of nasal packing would be expected anywhere between three to six days after placement. Removal of\n  packing would likely use the same resources as placement (syringe, etc.) and it would be expected to reuse these resources to limit waste. Similar\n  to the best case, resources to prevent recurrence of epistaxis are also provided in the worst case. Communications and Support Needs In the best-\n  case scenario, diagnosis and course of treatment is uncomplicated and likely within the scope of care of onboard crew members. In the worst-case\n  condition, ground communications are necessary as there may be uncertainty regarding packing placement and other course of care.\n  REFERENCES Krulewitz, N. A., and M. L. Fix. 2019. 'Epistaxis', Emerg Med Clin North Am, 37: 29-39. Seikaly, H. 2021. 'Epistaxis', N Engl J Med,\n  384: 944-51. Tunkel, David E., Samantha Anne, Spencer C. Payne, Stacey L. Ishman, Richard M. Rosenfeld, Peter J. Abramson, Jacqueline D.\n  Alikhaani, Margo McKenna Benoit, Rachel S. Bercovitz, Michael D. Brown, Boris Chernobilsky, David A. Feldstein, Jesse M. Hackell, Eric H.\n  Holbrook, Sarah M. Holdsworth, Kenneth W. Lin, Meredith Merz Lind, David M. Poetker, Charles A. Riley, John S. Schneider, Michael D. Seidman,\n  Venu Vadlamudi, Tulio A. Valdez, Lorraine C. Nnacheta, and Taskin M. Monjur. 2020. 'Clinical Practice Guideline: Nosebleed (Epistaxis) Executive\n  Summary', Otolaryngology\u2013Head and Neck Surgery, 162: 8-25. Womack, J. P., J. Kropa, and M. Jimenez Stabile. 2018. 'Epistaxis: Outpatient\n  Management', Am Fam Physician, 98: 240-45.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  This CLiFF is the successor to the previous IMM CLiFF entitled \"Nose bleed (space adaptation).\" Of most importance, in this CLiFF effort, Space\n  Adaptation Epistaxis and (conventional) Epistaxis were separated into two different conditions and calculated incidence rates reflect this. There is\n  also some concern that the person-years for the LSAH data gathering (Walton M 2010; Saile L. 2017) was calculated incorrectly. Further a\n  previous NASA internal whitepaper (Antonsen et al. 2017) had a table mislabeled as \u2018ISS through Exp 40\u2019 when in actuality, the data included in the\n  table was for only expeditions nine, and 14 through 40. Thus, the spaceflight incidence in this CLiFF does differ from what was reported previously.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  \u2022 The separation of 'day 5' for space adaptation epistaxis versus this condition is largely based on anecdotal experience. \u2022 The exact start dates of\n  several inflight occurrences of epistaxis are unknown. \u2022 Literature regarding the untreated worst-case scenario was extremely limited and several\n  parameters are based from subject matter expert opinion.\n\n\n\n\n6/15/2023 2:09:51 PM                                            ICL93_Space Adaptation - Epistaxis Cliff                                                   page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-068-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                                        Clinical Phase 2: Treatment\n                                                                                                       Affected HSTCs\n                                                                        Inter-\n                Cognitive -       Cognitive -                                                                       Cardio-\n                                                Communications        personal          Vision          Hearing                    Dentition          GI             GU\n                 Simple           Complex                                                                         pulmonary\n                                                                       Skills\n   Treated\n     Best\n           0                  0                 0                 0                 0              0              145          0                              0\n    Case\n    (TBC)\n  Untreated\n    Best\n            0                 0                 0                 0                 0              0              145          0               13             0\n    Case\n   (UTBC)\n   Treated\n    Worst\n           223                664               113               89                854            44             145          5               13             6\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223               664               113               89                854            44             145          5               13             6\n    Case\n   (UTWC)\n                                                            Affected HSTCs (Continued)                                                                     TI Calculation                        TI Score\n                                                                                                                                                                     Total\n                                                                                                                                                                   Human\n                                                                                                    Translation &                               Total Tasks\n                  Hand                                                  Lower         Ambul &                       Don/Doff       Pressure                        System\n                              Hand (Any)        Upper Extremity                                     Stabilization                              Impaired By                         TI Decimal         TI %\n                 (Dom)                                                Extremity     Standing (g)                  Equipment         Ops                           Category\n                                                                                                   (microgravity)                               Condition\n                                                                                                                                                                  Tasks Full\n                                                                                                                                                                   Mission\n   Treated\n     Best\n                              0                 0                 0                                0              0            211             356            3763             0.0946054 9.46054\n    Case\n    (TBC)\n  Untreated\n    Best\n            132               0                 0                 0                                0              0            211             501            3763             0.133138         13.3138\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                564               414               22                196            34             34           211             3763           3763             1                100\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132               564               414               22                196            34             34           211             3763           3763             1                100\n    Case\n   (UTWC)\n\n                                                                                  Clinical Phase 3: Condition End State\n                                                                                                       Affected HSTCs\n                                                                        Inter-\n                Cognitive -       Cognitive -                                                                       Cardio-\n                                                Communications        personal          Vision          Hearing                    Dentition          GI             GU\n                 Simple           Complex                                                                         pulmonary\n                                                                       Skills\n   Treated\n     Best\n           0                  0                 0                 0                 0              0              0            0               0              0\n    Case\n    (TBC)\n  Untreated\n    Best\n            0                 0                 0                 0                 0              0              0            0               0              0\n    Case\n   (UTBC)\n   Treated\n    Worst\n           0                  0                 0                 0                 0              0              0            0               0              0\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223               664               113               89                854            44             145          5               13             6\n    Case\n   (UTWC)\n                                                            Affected HSTCs (Continued)                                                                     TI Calculation                        TI Score\n\n\n\n\n6/15/2023 2:09:51 PM                                                     ICL93_Space Adaptation - Epistaxis Cliff                                                                                  page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-068-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                                  Total\n                                                                                                                                                Human\n                                                                                     Translation &                              Total Tasks\n                 Hand                                        Lower       Ambul &                     Don/Doff       Pressure                    System\n                        Hand (Any)   Upper Extremity                                 Stabilization                             Impaired By                      TI Decimal         TI %\n                (Dom)                                      Extremity   Standing (g)                Equipment         Ops                       Category\n                                                                                    (microgravity)                              Condition\n                                                                                                                                               Tasks Full\n                                                                                                                                                Mission\n   Treated\n     Best\n           0            0            0                 0               0           0              0             0              0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n            0           0            0                 0               0           0              0             0              0              3763          0                0\n    Case\n   (UTBC)\n   Treated\n    Worst\n           0            0            0                 0               0           0              0             0              0              3763          0                0\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132         564          414               22              196         34             34            211            3763           3763          1                100\n    Case\n   (UTWC)\n\n\n\n\n6/15/2023 2:09:51 PM                                          ICL93_Space Adaptation - Epistaxis Cliff                                                                           page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-068-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n6/15/2023 2:09:51 PM                                            ICL93_Space Adaptation - Epistaxis Cliff                                                   page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-068-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. Abdelkader, M., S. C. Leong, and P. S. White. 2007. 'Endoscopic control of the sphenopalatine artery for epistaxis: long-term results', J\n   Laryngol Otol, 121: 759-62.\n\n   2. Antonsen, Erik, Tina Bayuse, Rebecca Blue, Vernie Daniels , Melinda Hailey, Sam Hussey, Eric Kerstman, Mike Krihak, Kara Latorella, Jennifer\n   Mindock, Jerry Myers, Robert Mulcahy, Rebekah Reed, Davis Reyes, Michelle Urbina, and Marlei Walton. 2017. \"Evidence Report: Risk of\n   Adverse Health Outcomes and Decrements in Performance due to In-Flight Medical Conditions.\" In.\n\n   3. Barratt, Michael R., Ellen S. Baker, Sam L. Pool, and SpringerLink (Online service). 2019. \"Principles of Clinical Medicine for Space Flight.\" In,\n   XVIII, 936 p. 362 illus., 268 illus. in color. New York, NY: Springer New York : Imprint: Springer,.\n\n   4. Cannon, Jeremy W. 2018. 'Hemorrhagic Shock', New England Journal of Medicine, 378: 370-79.\n\n   5. 'Epistaxis 2016: national audit of management'. 2017. J Laryngol Otol, 131: 1131-41.\n\n   6. Feusi, B., D. Holzmann, and J. Steurer. 2005. 'Posterior epistaxis: systematic review on the effectiveness of surgical therapies', Rhinology, 43:\n   300-4.\n\n   7. Inglesby, D. C., M. U. Antonucci, M. V. Spampinato, H. R. Collins, T. A. Meyer, R. J. Schlosser, K. Shimada, and D. R. Roberts. 2020.\n   'Spaceflight-Associated Changes in the Opacification of the Paranasal Sinuses and Mastoid Air Cells in Astronauts', JAMA Otolaryngol Head\n   Neck Surg, 146: 571-77.\n\n   8. Kotecha, B., S. Fowler, P. Harkness, J. Walmsley, P. Brown, and J. Topham. 1996. 'Management of epistaxis: a national survey', Annals of the\n   Royal College of Surgeons of England, 78: 444-46.\n\n   9. Krulewitz, N. A., and M. L. Fix. 2019. 'Epistaxis', Emerg Med Clin North Am, 37: 29-39.\n\n   10. Levy, R. 1896. 'Fatal Hemorrhage from the Nose and Pharynx', Tr. Colorado M. Soc.: 101-03.\n\n   11. Morgan, D. J., and R. Kellerman. 2014. 'Epistaxis: evaluation and treatment', Prim Care, 41: 63-73.\n\n   12. Quinn, F. B., Jr. 1961. 'Fatal epistaxis', Calif Med, 94: 88-92.\n\n   13. Saile L., Boley L., Kerstman E. 2017. 'Integration RWS ISS STS Observed Incidence V2.'.\n\n   14. Seikaly, H. 2021. 'Epistaxis', N Engl J Med, 384: 944-51.\n\n   15. Sethi, R. K. V., E. D. Kozin, N. B. Abt, R. Bergmark, and S. T. Gray. 2018. 'Treatment disparities in the management of epistaxis in United\n   States emergency departments', Laryngoscope, 128: 356-62.\n\n   16. Spielmann, P. M., M. L. Barnes, and P. S. White. 2012. 'Controversies in the specialist management of adult epistaxis: an evidence-based\n   review', Clin Otolaryngol, 37: 382-9.\n\n   17. Tessler, I., M. Warman, S. Sharav, H. Rotem Batito, D. Halperin, and O. Cohen. 2020. 'The role of endoscopic sphenopalatine artery ligation\n   in the management of persistent epistaxis - A 15-year single-center experience', Am J Otolaryngol, 41: 102715.\n\n   18. Tunkel, D. E., S. Anne, S. C. Payne, S. L. Ishman, R. M. Rosenfeld, P. J. Abramson, J. D. Alikhaani, M. M. Benoit, R. S. Bercovitz, M. D.\n   Brown, B. Chernobilsky, D. A. Feldstein, J. M. Hackell, E. H. Holbrook, S. M. Holdsworth, K. W. Lin, M. M. Lind, D. M. Poetker, C. A. Riley, J. S.\n   Schneider, M. D. Seidman, V. Vadlamudi, T. A. Valdez, L. C. Nnacheta, and T. M. Monjur. 2020. 'Clinical Practice Guideline: Nosebleed\n   (Epistaxis) Executive Summary', Otolaryngol Head Neck Surg, 162: 8-25.\n\n   19. Viducich, R. A., M. P. Blanda, and L. W. Gerson. 1995. 'Posterior epistaxis: clinical features and acute complications', Ann Emerg Med, 25:\n   592-6.\n\n   20. Viehweg, T. L., J. B. Roberson, and J. W. Hudson. 2006. 'Epistaxis: diagnosis and treatment', J Oral Maxillofac Surg, 64: 511-8.\n\n   22. Walton M, Kerstman E. 2010. ' IMM In-flight Compilation v20100414_Incidence_calculation'.\n\n   23. Womack, J. P., J. Kropa, and M. Jimenez Stabile. 2018. 'Epistaxis: Outpatient Management', Am Fam Physician, 98: 240-45.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                        PHRASE\n\n   AAOMS                          American Association of Oral and Maxillofacial Surgeons\n\n   AMA                            American Medical Association\n\n   ARCL                           All Remaining Conditions List\n\n\n\n\n6/15/2023 2:09:51 PM                                               ICL93_Space Adaptation - Epistaxis Cliff                                                page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-068-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   ARS                 Acute Radiation Sickness\n\n   BHP                 Behavioral Health and Performance\n\n   CAC                 Coronary Artery Calcium\n\n   CHS                 Crew Health and Safety\n\n   CL                  Condition List\n\n   CliFF               Clinical Finding Form\n\n   CMO                 Crew Medical Officer\n\n   COMFORT             Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                 Clinical Phase 1\n\n   CP2                 Clinical Phase 2\n\n   CP3                 Clinical Phase 3\n\n   CRL                 Clinical Resource Level\n\n   CRT                 Capability Resource Table\n\n   CST                 Clinical Science Team\n\n   DCS                 Decompression Syndrome\n\n   DRM                 Design Reference Mission\n\n   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n\n\n\n6/15/2023 2:09:51 PM                                     ICL93_Space Adaptation - Epistaxis Cliff   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-068-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n6/15/2023 2:09:51 PM                                   ICL93_Space Adaptation - Epistaxis Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-068-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "SAS"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "Space Adaptation"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Binomial"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Beta"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.0136197"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.00416695"
+        ],
+        [
+          "Beta"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-068-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                             Source                                  LOC Value"
+        ],
+        [
+          "Walton, 2010                                                         Spaceflight                             4"
+        ],
+        [
+          "Saile et al., 2017                                                   Spaceflight                             4"
+        ],
+        [
+          "Antonsen et al., 2017                                                Spaceflight                             3"
+        ],
+        [
+          "Spaceflight incidence data was rated the highest as by definition, this condition must occur during spaceflight. Data gathered from the previous IMM"
+        ],
+        [
+          "CLiFF efforts were rated slightly higher than the Antonsen NASA white paper as the older CLiFFs included timing of epistaxis events."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-068-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                               Source                                  LOC Value"
+        ],
+        [
+          "Viducich et al., 1995                                                  Terrestrial                             2"
+        ],
+        [
+          "Sethi et al, 2019                                                      Terrestrial                             0"
+        ],
+        [
+          "INTEGRATE, 2017                                                        Terrestrial                             0"
+        ],
+        [
+          "Only terrestrial data were obtainable to determine the worst-case probability. Of the available studies, only one study (Viducich et al., 2016) defined"
+        ],
+        [
+          "the worst-case similarly and provided prevalence data. As such, the other studies were excluded but listed here to help develop context."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-068-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis        CP2: Treatment                   CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration    TI%        Duration              TI%       RTDC             LOCL"
+        ],
+        [
+          "Composite           Condition"
+        ],
+        [
+          "Case Scenario     Incidence           Probability %   Preset    Preset      Preset     Min           Max     Preset    Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best      mean: 0.0136        95 - 95         100       0.56        4.73027    0.0833333     0.58    0         0       0        0        0"
+        ],
+        [
+          "Case (TBC)        and SD:0.00417"
+        ],
+        [
+          "Treated Worst                         5-5             100       1.12        50         24            96      0         5.6     18       0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best    N/A                 N/A             N/A       0.56        6.65692    0.0833333     0.58    0         0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated         N/A                 N/A             N/A       1.12        100        24            912     100       18      100      0        0"
+        ],
+        [
+          "Worst Case"
+        ],
+        [
+          "(UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-068-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                  Source                                 LOC Value"
+        ],
+        [
+          "Tunkel et al., 2020                                                       Terrestrial"
+        ],
+        [
+          "Womack et al., 2018                                                       Terrestrial"
+        ],
+        [
+          "Morgan et al., 2014                                                       Terrestrial"
+        ],
+        [
+          "Seikaly, 2021                                                             Terrestrial"
+        ],
+        [
+          "2"
+        ],
+        [
+          "Krulewitz et al., 2019                                                    Terrestrial"
+        ],
+        [
+          "Viducich et al., 1995                                                     Terrestrial"
+        ],
+        [
+          "Spielmann et al. 2021                                                     Terrestrial"
+        ],
+        [
+          "Levy, 1896                                                                Terrestrial"
+        ],
+        [
+          "Available studies to determine durations for treated cases involved clinical practice guidelines, systematic reviews, and retrospective studies. Due"
+        ],
+        [
+          "to the increasingly more rigorous Institutional Review Board guidelines of American institutions, literature for untreated best and worst cases were"
+        ],
+        [
+          "limited to extrapolation from dated case studies."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-068-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                Source                                  LOC Value"
+        ],
+        [
+          "Viehweg et al., 2006                                                    Terrestrial"
+        ],
+        [
+          "Kotecha et al., 1996                                                    Terrestrial                                                2"
+        ],
+        [
+          "Viducich et al., 1995                                                   Terrestrial"
+        ],
+        [
+          "RTDC percentages for the TBC and UTBC are expected to be zero given the conditions' definitions; as such articles were not reviewed for these"
+        ],
+        [
+          "conditions. In the TWC, RTDC was determined from retrospective reviews. The UTWC RTDC used the same studies as the TWC along with subject"
+        ],
+        [
+          "matter expert consensus given the lack of available literature detailing this scenario."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-068-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                    Source                                LOC Value"
+        ],
+        [
+          "Viehweg et al., 2006                                                        Terrestrial"
+        ],
+        [
+          "Abdelkader et al., 2007                                                     Terrestrial                                             1"
+        ],
+        [
+          "Tessler et al., 2020                                                        Terrestrial"
+        ],
+        [
+          "Based on the definitions, loss of crew life is not expected for any of the conditions. However, to validate the assumption that mortality was negligible"
+        ],
+        [
+          "a literature search was still conducted. A narrative review along with two small retrospective studies do provide negligible mortality rates for"
+        ],
+        [
+          "hospitalized patients."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-068-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -       Cognitive -                                                                       Cardio-"
+        ],
+        [
+          "Communications        personal          Vision          Hearing                    Dentition          GI             GU"
+        ],
+        [
+          "Simple           Complex                                                                         pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "0                  0                 0                 0                 0              0              145          0                              0"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "0                 0                 0                 0                 0              0              145          0               13             0"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223                664               113               89                854            44             145          5               13             6"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223               664               113               89                854            44             145          5               13             6"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-068-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-068/nasal_cavity_anatomy.png",
+      "mime_type": "image/png",
+      "width": 642,
+      "height": 665,
+      "sha256": "03d89bb16f18e92f772823714368f9ccaa1eccdb9403508708e4435cc3bdc5ed",
+      "creator": "Stella G\u00e4nger and Katharina Schindowski",
+      "license_identifier": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AAnatomy_of_the_human_nasal_cavity.png",
+      "attribution": "Stella G\u00e4nger and Katharina Schindowski, via Wikimedia Commons (CC BY 4.0)",
+      "caption": "Anatomical diagram of the human nasal cavity and mucosal vascular regions.",
+      "alt_text": "Diagram of the human nasal cavity.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Anatomy of the human nasal cavity.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-068-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-068/nasal_septum_cartilage.png",
+      "mime_type": "image/png",
+      "width": 400,
+      "height": 369,
+      "sha256": "47cce7b72c2f5c32c8c61d6c3ba18056570ebbeec398870999f319b557eacc4e",
+      "creator": "Henry Vandyke Carter",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AGray854.png",
+      "attribution": "Henry Vandyke Carter, via Wikimedia Commons (Public domain)",
+      "caption": "Bones and cartilages of the nasal septum supporting the anterior vascular plexus.",
+      "alt_text": "Gray's Anatomy diagram of the nasal septum.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Gray854.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-068-IMG-03",
+      "ordinal": 2,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-068/epistaxis_clinical.jpg",
+      "mime_type": "image/jpeg",
+      "width": 960,
+      "height": 720,
+      "sha256": "effab96856a86dd5ced8689048146fc54f5ecbe260413f44027af43371697bda",
+      "creator": "Welleschik",
+      "license_identifier": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AEpistaxis1.jpg",
+      "attribution": "Welleschik, via Wikimedia Commons (CC BY-SA 3.0)",
+      "caption": "Clinical photograph of acute anterior epistaxis (nasal hemorrhage).",
+      "alt_text": "Clinical photograph of epistaxis.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Epistaxis1.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-068-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Epistaxis (Space Adaptation)",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-epistaxis-cliff-2023.pdf?emrc=dcde67",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}
