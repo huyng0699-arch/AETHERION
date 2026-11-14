@@ -25,11 +25,18 @@ class TestSubmissionArchitectureDiagram(unittest.TestCase):
         ):
             self.assertIn(required, text)
 
-        # Verify mobile and watch genuinely have no source code yet in repo
-        mobile_files = [p.name for p in (ROOT / "apps" / "mobile").iterdir()]
-        watch_files = [p.name for p in (ROOT / "apps" / "watch").iterdir()]
-        self.assertEqual(mobile_files, ["README.md"])
-        self.assertEqual(watch_files, ["README.md"])
+        # Source inventory: Expo is in PREPARE, while Wear OS remains planned.
+        mobile = ROOT / "apps" / "mobile"
+        watch = ROOT / "apps" / "watch"
+        self.assertTrue((mobile / "package.json").is_file())
+        self.assertTrue(any(mobile.rglob("*.tsx")) or any(mobile.rglob("*.ts")))
+        self.assertIn("PREPARE", text)
+        self.assertIn("Android unverified", text)
+        self.assertIn("118/119", text)
+        self.assertNotIn("apps/mobile/ - PLANNED ONLY", text)
+        self.assertTrue((watch / "README.md").is_file())
+        self.assertFalse(any(watch.rglob("*.kt")))
+        self.assertFalse(any(watch.rglob("*.java")))
 
 
 if __name__ == "__main__":
