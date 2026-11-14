@@ -54,7 +54,7 @@ export function PortalScreen({
           <Text style={styles.heroKicker}>{t(locale, 'demoKicker')}</Text>
           <Text style={styles.heroTitle}>{t(locale, 'demoBannerTitle')}</Text>
           <Pressable accessibilityRole="button" onPress={() => onOpen('demoIntro')} style={styles.heroAction}>
-            <Text style={styles.heroActionText}>{t(locale, 'demoOpen')}</Text>
+            <Text style={styles.heroActionText}>{t(locale, 'demoForHackathon')}</Text>
             <Ionicons name="chevron-forward" size={16} color="#4F31D0" />
           </Pressable>
         </View>
