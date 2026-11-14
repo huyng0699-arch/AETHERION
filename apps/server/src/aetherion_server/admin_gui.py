@@ -31,7 +31,7 @@ STRINGS = {
         "password_mismatch": "Hai mật khẩu không trùng nhau.",
         "already_setup": "Máy chủ đã có tài khoản; không thể tạo tài khoản đầu tiên lần nữa.",
         "setup_done": "Đã tạo tài khoản admin trong SQLite. Hãy đăng nhập để quản trị.",
-        "overview": "Tổng quan", "ai": "AI cục bộ", "sources": "Thành phần",
+        "overview": "Tổng quan", "ai": "AI cục bộ / Cloud", "sources": "Thành phần",
         "storage": "Dữ liệu", "events": "Nhật ký", "users": "Người dùng",
         "refresh_sources": "Đọc nguồn dữ liệu đã ghi", "refresh_users": "Đọc tài khoản thật",
         "refresh": "Làm mới dữ liệu thật", "load_models": "Lấy danh sách mô hình", "test_model": "Kiểm tra AI thực tế",
@@ -50,7 +50,7 @@ STRINGS = {
         "cloud_provider": "Nhà cung cấp Cloud", "cloud_model": "Mô hình Cloud",
         "cloud_key": "Khóa API (chỉ bộ nhớ)", "cloud_save": "Thiết lập API",
         "cloud_clear": "Xóa khóa", "cloud_test": "Gửi yêu cầu AI thật",
-        "cloud_settings": "Nạp cấu hình",
+        "cloud_settings": "Nạp cấu hình", "cloud_configured": "Đã thiết lập trong bộ nhớ Server, không lưu SQLite",
         "model_offline": "Ollama chưa sẵn sàng hoặc mô hình chưa được cài.",
         "missing_model": "Hãy lấy danh sách mô hình thật trước khi bật AI cục bộ.",
         "no_invented_data": "Dữ liệu chưa có nguồn xác thực được hiển thị là chưa kết nối, không phải bằng 0.",
@@ -67,7 +67,7 @@ STRINGS = {
         "password_mismatch": "Passwords do not match.",
         "already_setup": "This server already has accounts; first-admin setup is locked.",
         "setup_done": "Created admin in canonical SQLite. Sign in to manage this server.",
-        "overview": "Overview", "ai": "Local AI", "sources": "Subsystems",
+        "overview": "Overview", "ai": "Local / Cloud AI", "sources": "Subsystems",
         "storage": "Data", "events": "Audit events", "users": "Users",
         "refresh_sources": "Read stored source provenance", "refresh_users": "Read user accounts",
         "refresh": "Refresh live records", "load_models": "Discover installed models", "test_model": "Test actual AI inference",
@@ -86,7 +86,7 @@ STRINGS = {
         "cloud_provider": "Cloud provider", "cloud_model": "Cloud model",
         "cloud_key": "API key (memory only)", "cloud_save": "Configure API",
         "cloud_clear": "Clear key", "cloud_test": "Run real AI request",
-        "cloud_settings": "Load configuration",
+        "cloud_settings": "Load configuration", "cloud_configured": "Configured in Server memory only, not SQLite",
         "model_offline": "Ollama is offline or the selected model is not installed.",
         "missing_model": "Discover an installed model before enabling local AI.",
         "no_invented_data": "Missing verified sources remain disconnected, never zero-valued mock readings.",
@@ -680,7 +680,7 @@ class AdminWindow(QMainWindow):
 
     def _cloud_saved(self, data):
         self._cloud_loaded(data)
-        self._status(self.t("saved"))
+        self._status(self.t("cloud_configured"))
 
     def clear_cloud(self):
         self.cloud_key_input.clear()
