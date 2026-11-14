@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-066",
+  "slot": 66,
+  "quest_id": "Q-0366",
+  "checked_at_utc": "2026-11-14T06:24:32.706728+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/cerumen-impaction-cliff-2023.pdf?emrc=1a557b",
+  "http_status": 200,
+  "pdf_sha256": "67afe7a9b092e7eefb2c2ea2ac0504fc9d7812bd956f4ff98e22e3d30f38116c",
+  "pdf_bytes": 320114,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-066-IMG-01": "97f45215f243e55a027d69e7208f98ffc077df24602f51a660d6877c37c9b442",
+    "CLIFF-066-IMG-02": "8f57761e37c51fe4d283f5b54d8e16098bde98646cc0e91b041288ac587d12a0",
+    "CLIFF-066-IMG-03": "571886897a1aa07c5c30b445647171b7516eb3df24b8aa70eeb11338e010742a"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}

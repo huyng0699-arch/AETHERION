@@ -1,0 +1,517 @@
+{
+  "article_id": "CLIFF-066",
+  "slot": 66,
+  "display_title": "Cerumen Impaction",
+  "category": "Otolaryngology",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-066",
+    "publisher": "NASA",
+    "title": "Cerumen Impaction \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/cerumen-impaction-cliff-2023.pdf?emrc=1a557b",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/cerumen-impaction-cliff-2023.pdf?emrc=1a557b",
+    "retrieved_at_utc": "2026-11-14T06:24:32.706728+00:00",
+    "content_sha256": "67afe7a9b092e7eefb2c2ea2ac0504fc9d7812bd956f4ff98e22e3d30f38116c",
+    "original_mime": "application/pdf",
+    "original_bytes": 320114,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-066-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n   Branch     Baseline\n\n\n\n ICL24_Cerumen Impaction\n\n Cerumen (earwax) impaction is a common and often benign medical complication but can be accompanied by more serious symptoms including aural\n fullness, hearing loss, ear pain, tinnitus (ringing in the ears), and increase risk of otitis externa (ear infection). It occurs when the natural clearing\n process is impaired and often is iatrogenic in that cotton swabs or digital manipulation can pack cerumen deep into the ear canal. Irrigation of the ear\n canal and cerumenolytics are common therapies which are also performed with ease terrestrially, however, may be more complicated in a\n microgravity setting. Manual removal may be required, however is associated with elevated risks of canal laceration or eardrum perforation (Horton\n et. al., 2020).\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  There are no data regarding spaceflight incidence of cerumen impaction.\n\n  ANALOG LITERATURE\n\n  There are no data regarding analog incidence of cerumen impaction.\n\n  TERRESTRIAL LITERATURE\n\n  Eekhof et al 2001 discusses a 1994 Dutch study (Lamberts, 1994) which reported an incidence of cerumen impaction in 3.9% of patients, however\n  we cannot analyze that data further. Guest et al 2004 compiles the data from a number of smaller studies revealing an incidence of hearing loss\n  from cerumen impaction to be 2.1%. Lastly, Yang et al 2016 reports an incidence rate of 2.68% after evaluating over 1 million cerumen disimpaction\n  claims to Medicare over a year.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   mean 0.0268 SD 2.358E-5\n\n\n  INCIDENCE SUMMARY\n\n  The Bayesian posterior distribution for the incidence rate given the reference data (1,323,845 events in 49.4 million people during 1 year) under an\n  uninformative prior is Gamma(shape=1291760, rate=48200017) with mean 0.0268 and SD 2.358E-5. While unfortunately there are not spaceflight\n  or analog data to guide incidence estimation, numerous terrestrial studies have been performed attempting to provide epidemiologic data on\n  cerumen impaction. As explained in Table 2, we had the highest confidence in Yang et. al., 2016 which evaluated 1,323,845 cerumen disimpactions\n  over 49.4 million patients over a year via Medicare clams. From this an incidence rate was calculated to be: 0.0268 (95%CI: 0.02678, 0.02684).\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n\n\n\n\n11/22/2022 8:39:56 AM                                                  ICL24_Cerumen Impaction Cliff                                                          page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-066-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     0.0268\n     SD\n     2.358E-05\n\n\n     Gamma\n     (Shape): 1.29176E+06\n     (Rate): 4.82E+07\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                   Source                                     LOC Value\n\n   Schwartz, 2017                                             Terrestrial                                2\n\n   Eekhof, 2001                                               Terrestrial                                2\n\n   Roeser, 1997                                               Terrestrial                                2\n\n   Guest, 2004                                                Terrestrial                                2\n\n   Yang, 2016                                                 Terrestrial                                3\n\n  With exception of Yang et al 2016, all of these studies report incidence numbers based on estimations or provide strictly prevalence numbers. Yang\n  includes the data in terms of events and patients from records directly as opposed to citing secondary sources and thus garnered the highest level\n  of confidence and was used exclusively for chosen incidence above. With that said, with limited terrestrial data and no analog or spaceflight data,\n  confidence in this incidence is limited.\n\n\n\n\n11/22/2022 8:39:56 AM                                               ICL24_Cerumen Impaction Cliff                                                       page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-066-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Hearing assessments, consisting of audiometric tests at specified frequencies within the range of 250 Hz - 10,000 Hz, tympanometry, and additional\n  audiological tests as determined by an audiologist are performed pre-flight, on orbit, and post-flight.\n\n  BEST CASE SCENARIO DEFINITION\n\n  Cerumen impaction that is easily identified and removed on first attempt.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Cerumen impaction that results in pain, tinnitus, interferes with mission objectives, or requires multiple attempts at removal. (Note \"hearing loss\" is a\n  separate condition).\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  None\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  A worst-case probability is difficult to determine for a number of reasons. First, at least 50% of patients have a symptom such as pain or tinnitus that\n  brings them to the doctor in the first place, however, these symptoms may not be significantly interfering with ADLs. Second, there is not good data\n  on failure to disimpact or immediate recurrent risk, however, one study found a 2.1% failure rate combined with 3.8% of patients continuing to have\n  pain and 3.8% of patients suffering from ear bruising or laceration. These three combined for a 9.7% complication rate (Gabriel 2015). Lastly,\n  children under 20 and adults over 61, in addition to those with intellectual disability or medical comorbidities, are more likely to suffer from excessive\n  symptoms or complications, and thus the astronaut population may be at less risk than the terrestrial literature may present. Unfortunately, it is not\n  known whether microgravity or other factors unique to spaceflight might increase the risk of cerumen impaction. In light of all of these\n  considerations and uncertainties, a 10% worst case probability is reasonable.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                    Source                                        LOC Value\n\n   Gabriel, 2015                                               Terrestrial                                   3\n\n   Adegbiji, 2014                                              Terrestrial                                   2\n\n   Guest, 2004                                                 Terrestrial                                   2\n\n   Yang, 2016                                                  Terrestrial                                   2\n\n  All evidence is terrestrial and is limited by numbers, population, and environment. We have some confidence in the complication rates presented in\n  Gabriel et. Al. 2015 as discussed above.\n\n\n\n\n11/22/2022 8:39:56 AM                                                   ICL24_Cerumen Impaction Cliff                                                          page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-066-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                                CP1: Diagnosis       CP2: Treatment             CP3: Condition End State\n\n                                                                TI%       Duration   TI%         Duration       TI%       RTDC             LOCL\n                         Composite           Condition\n   Case Scenario         Incidence           Probability %      Preset    Preset     Preset      Min    Max     Preset    Min%    Max%     Min%     Max%\n\n   Treated Best          mean 0.0268 SD      90 - 90            100       0.533      100         0.25   0.36    0         0       0        0        0\n   Case (TBC)            2.358E-5\n\n   Treated Worst                             10 - 10            100       1.416      100         0.25   0.36    0         0       0        0        0\n   Case (TWC)\n\n   Untreated Best        N/A                 N/A                N/A       0.533      0           120    336     1.17      0       0        0        0\n   Case (UTBC)\n\n   Untreated Worst       N/A                 N/A                N/A       1.416      27.9298     120    336     27.93     0       0        0        0\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n11/22/2022 8:39:56 AM                                                  ICL24_Cerumen Impaction Cliff                                                          page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-066-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  Cerumen impaction is a very common every-day occurrence for humans on Earth. It rarely leads to complication or significantly complicates\n  activities of daily living. Further, there is a paucity of evidence evaluating durations, RTDC, or LOCL in the setting of these terrestrial symptoms.\n  However, though these measures are estimated by expert clinical opinion, given the relatively benign nature of cerumen impaction, it is logical to all\n  medical professionals that RTDC or LOCL would be 0%. It should be noted that irrigation, which is a typical treatment for cerumen impaction on\n  Earth would be a more difficult procedure to perform in space because of fluid containment issues. Manual disimpaction may be an alternative\n  consideration, however, it is associated with elevated risks of canal laceration or eardrum perforation.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Pavlidis, 2005 has revealed previous durations of treatment using water irrigation and syringes ranging from 0.25-0.36 hours to disimpact the ear.\n  RTDC or LOCL would not be expected for this condition.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  This review revealed no studies that specifically differentiate between the provided best and worst-case definitions. This is likely due to the benign\n  nature of the condition and the clinical practice guideline (Schwartz, 2017) that asymptomatic cerumen impaction should not be routinely treated as\n  long as the tympanic membrane can be adequately examined. With that said, Pavlidis, 2005 has revealed previous durations of treatment using\n  water and syringes ranging from 0.25-0.36 hours to disimpact the ear. RTDC or LOCL would not be expected for this condition.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  Especially in light of the fact that most patients with cerumen impaction that meets the BC definition do not present for care, it is difficult to estimate\n  the number of cerumen impactions that resolve spontaneously. Keane, 1995 revealed that after 5 days of observation 5% of those studied had\n  complete clearing of ear spontaneously and 26% had moderate clearing of the ear. Thus, while 31% of participants likely had spontaneous\n  improvement of the disimpaction, there is a paucity of evidence evaluating the upper limit of UTBC scenarios. Michaudet, 2018 reviews numerous\n  treatments for cerumen impaction and reveals that some non-irrigation home remedies may take up to 14 days. As these are the max ranges for\n  non-first-line therapy they are the closest reasonable estimation for a max untreated scenario. As with treated scenarios, an exhaustive literature\n  review does not find evidence concerning for RTDC or LOCL.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  Untreated worst-case scenarios are best felt to operate under the same considerations as UTBC scenarios. No additional literature affected\n  duration, RTDC, or LOCL.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                          Source                                      LOC Value\n\n   Pavlidis, 2005                                                    Terrestrial\n\n   Keane, 1995                                                       Terrestrial\n                                                                                                                                      2\n   Michaudet, 2018                                                   Terrestrial\n\n   Schwartz, 2017                                                    Terrestrial\n\n  These studies are limited by being terrestrial only, reporting bias, and incomplete reporting of timing of symptoms with or without treatment, thus the\n  level of confidence in this data remains neutral.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n11/22/2022 8:39:56 AM                                                   ICL24_Cerumen Impaction Cliff                                                           page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-066-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                         Source                                      LOC Value\n\n   Pavlidis, 2005                                                   Terrestrial\n\n   Keane, 1995                                                      Terrestrial\n                                                                                                                                     2\n   Michaudet, 2018                                                  Terrestrial\n\n   Schwartz, 2017                                                   Terrestrial\n\n  The LOC remains neutral in that there is only terrestrial data without evacuation data from any spaceflight or analog source. With that said, while\n  the LOC is neutral based off of the data, the LOC that RTDC would likely remain 0% remains high given the relatively benign nature of this\n  condition.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                         Source                                      LOC Value\n\n   Pavlidis, 2005                                                   Terrestrial\n\n   Keane, 1995                                                      Terrestrial\n                                                                                                                                     2\n   Michaudet, 2018                                                  Terrestrial\n\n   Schwartz, 2017                                                   Terrestrial\n\n  The LOC remains neutral in that there is only terrestrial data without evacuation data from any spaceflight or analog source. With that said, while\n  the LOC is neutral based off of the data, the LOC that LOCL would likely remain 0% remains high given the relatively benign nature of this\n  condition.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope\n\n  Overview\n  Cerumen, or earwax, is substance comprised of glandular secretions and exfoliated squamous epithelium that can accumulate in ear canals.\n  Although this substance is typically expelled from the ear canal in a self-cleaning manner via propulsion stemming from jaw improvement, in a\n  limited number of people, the substance can become stuck or obstructed (Michaudet et al. 2018). When cerumen impaction occurs, this can lead to\n  aural fullness, pruritis, otalgia, discharge, odor, hearing loss and tinnitus (McCarter et al. 2007).\n\n  The best-case scenario requires minimal intervention. In terrestrial conditions, most subjects who experience the best-case scenario would not seek\n  medical care. In the worst-case, an intervention is required given the high communication-related task-impairment associated with this condition. In\n  the worst case, although not explicitly stated, a conductive hearing loss would be expected secondary to the occlusion of the ear canal. However,\n  related conditions including hearing loss, barotrauma, otitis externa, otitis media are all covered in separated CRT conditions.\n\n  CNES: None\n\n  Diagnostic Scope and Resourcing\n  In the best case, the diagnosis will be made via history and physical exam. Given the benign nature of this condition, ground communications are\n  not resourced for the best case. Diagnostics in the worst case do not change except for the addition of inflight audiometry to help provide a simple\n  differential diagnosis. Although we expect the diagnosis to be readily apparent on exam with an otoscope, inflight audiometry can serve as a\n  reserve diagnostic in cases when an otoscope cannot be immediately provided. For this effort, we made inflight audiometry a necessity of \u2018zero\u2019 as\n  this condition can still be treated without this technology; still, for most missions, we expect crewmembers to have access to inflight audiometry as it\n  is necessary to treat other CRT conditions. Inflight audiometry not only serves to help quantify the severity of and expected hearing loss but can\n  also differentiate between the type of hearing loss by quantifying air- and bone conduction thresholds. With this technology, there is no need to\n  possess a tuning fork to conduct Weber and Rinne tests. Further, if a conductive loss is identified, the latest iteration of the inflight audiometric test\n  (KUDUwaveTM) can perform tympanograms. In the worst case, we would expect a Type B tympanogram, or a flat curve, given the lack of\n  compliance of the cerumen impaction. Of note, tympanometry and pneumatic otoscopy have equivalent sensitivity (approximately 90%) and\n  specificity (70%-80%); there is concern that pneumatic otoscopy may be difficult to perform in microgravity. Given the \u201cinterference with mission\n  objectives\u201d explicitly stated in this condition, CRT group consensus was to resource ground communications for the worst-case scenario.\n\n  Clinical Phase 1 Duration and Rationale\n  This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\n  consensus duration is as follows:\n\n  CP1 BC (Treated or Untreated): 0.53 hours\n  This is the longest reasonable time to complete the task for a crewmember (adjusted for being in the spaceflight environment) 1) to remove a\n  crewmember from duties 2) obtain a history and 3) examine the patient\n  CP1 WC (Treated or Untreated): 1.42 hours\n  This is the longest reasonable time to complete the task for a crewmember (adjusted for being in the spaceflight environment) 1) to remove a\n  crewmember from duties 2) obtain a history 3) examine the patient 4) conduct and interpret an inflight audiometry test 5) set up for ground\n\n\n\n\n11/22/2022 8:39:56 AM                                                   ICL24_Cerumen Impaction Cliff                                                          page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-066-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  communications.\n  The highest scope of practice code used in this CRT which includes interpretation of diagnosis, performing diagnostic tests and performing\n  treatment would be a two: this is at Paramedic/Military medic\n\n  Treatment Scope and Resourcing\n  In the best-case scenario, treatment is limited to irrigation. In general, there are only three recommended cerumen removal techniques in terrestrial\n  conditions: irrigation, topical cerumenolytics and manual removal (Schwartz et al. 2017). Cerumenolytics require multiple doses to be effective,\n  negating their usefulness in the best-case scenario. During microgravity conditions, manual removal is a less favorable option given the risk of\n  tympanic membrane perforation. In the worst-case scenario, cerumenolytics are preferred given the lack of risk of canal or membrane trauma\u2014\n  albeit, these may take longer to be effective. A recent Cochrane review revealed that water or saline are non-inferior to other solutions as\n  cerumenolytics (Aaron et al. 2018; Burton et al. 2009). Consequently, to save resources and space, this CRT prioritizes water and saline over\n  commercial preparations. For severe impactions, terrestrial patients are sometimes referred to otolaryngologists for manual removal with a\n  binocular microscope (Schwartz et al. 2017); in spaceflight, a binocular microscope would not be available. Therefore, manual removal will need to\n  be completed with a handheld otoscope or headlamp. Given the limited visibility with these instruments, CRT consensus was to allocate for only\n  blunt tools inside the canal to decrease the risk of tympanic membrane trauma.\n\n  Communications and Support Needs\n  In the best-case scenario, diagnosis and course of treatment is uncomplicated and likely within the scope of care of onboard crew members. In the\n  worst-case condition, ground communications are necessary given the sudden impairment of the affected crewmember and the need to ensure an\n  accurate diagnosis.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  There was no previous IMM CLiFF for this condition.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  There are numerous limitations of the data regarding the diagnosis and management of cerumen impaction in spaceflight. Likely the largest of\n  these limitations is that our robust review revealed no spaceflight or analog manuscripts that were able to inform these measures. Another large\n  limitation of this work is that cerumen impaction is a relatively benign medical complication for which most people can expectantly manage at home\n  or attempt home remedies or over the counter medications for, such as dripping olive oil into the ears or using water. Lastly, the literature on\n  cerumen impaction is very limited in separating out complicated and uncomplicated impactions, especially in ways that meet our definitions of BC\n  and WC.\n\n\n\n\n11/22/2022 8:39:56 AM                                                ICL24_Cerumen Impaction Cliff                                                        page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-066-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                               Clinical Phase 2: Treatment\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision           Hearing                    Dentition          GI             GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n            223              664            113               89             854            44             145          5               13             6\n     Case\n     (TBC)\n   Untreated\n     Best\n     Case\n    (UTBC)\n    Treated\n     Worst\n            223              664            113               89             854            44             145          5               13             6\n      Case\n     (TWC)\n   Untreated\n     Worst\n                             664                                                            44\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                                  TI Calculation                           TI Score\n                                                                                                                                                              Total\n                                                                                                                                                            Human\n                                                                                             Translation &                               Total Tasks\n                 Hand                                            Lower         Ambul &                       Don/Doff       Pressure                        System\n                             Hand (Any)     Upper Extremity                                  Stabilization                              Impaired By                         TI Decimal         TI %\n                (Dom)                                          Extremity     Standing (g)                  Equipment         Ops                           Category\n                                                                                            (microgravity)                               Condition\n                                                                                                                                                           Tasks Full\n                                                                                                                                                            Mission\n    Treated\n      Best\n            132              564            414               22             196            34             34           211             3763           3763             1                100\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                                                                        0              3763             0                0\n     Case\n    (UTBC)\n    Treated\n     Worst\n            132              564            414               22             196            34             34           211             3763           3763             1                100\n      Case\n     (TWC)\n   Untreated\n     Worst\n             132                                                                                                        211             1051           3763             0.279298         27.93\n     Case\n    (UTWC)\n\n                                                                           Clinical Phase 3: Condition End State\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision           Hearing                    Dentition          GI             GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                            44\n     Case\n    (UTBC)\n    Treated\n     Worst\n      Case\n     (TWC)\n   Untreated\n     Worst\n                             664                                                            44\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                                  TI Calculation                           TI Score\n\n\n\n\n11/22/2022 8:39:56 AM                                                  ICL24_Cerumen Impaction Cliff                                                                                           page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-066-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                           Total\n                                                                                                                                         Human\n                                                                                 Translation &                           Total Tasks\n                Hand                                     Lower       Ambul &                     Don/Doff    Pressure                    System\n                        Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal       TI %\n               (Dom)                                   Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                                (microgravity)                           Condition\n                                                                                                                                        Tasks Full\n                                                                                                                                         Mission\n    Treated\n      Best\n                                                                                                                        0              3763          0                0\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                                                        44             3763          0.0116928 1.17\n     Case\n    (UTBC)\n    Treated\n     Worst\n                                                                                                                        0              3763          0                0\n      Case\n     (TWC)\n   Untreated\n     Worst\n             132                                                                                            211         1051           3763          0.279298         27.93\n     Case\n    (UTWC)\n\n\n\n\n11/22/2022 8:39:56 AM                                          ICL24_Cerumen Impaction Cliff                                                                              page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-066-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  While most levels of Task Impairment increase from treated best case to untreated worst case, the CP2 TI warrants explanation. In the treated\n  scenarios, there is a high level impairment for the very short duration (<30 minutes) of treatment while astronauts are likely undergoing irrigation or\n  manual disimpaction. For untreated best case scenarios, the TI is 0 given neither the best case cerumen impaction itself or treatment is significantly\n  interfering with tasks. For untreated worst case scenarios, treatment is not interfering, however symptoms may be interfering with some tasks (and\n  for a much longer duration 5-14 days rather than < 30 minutes).\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n11/22/2022 8:39:56 AM                                                 ICL24_Cerumen Impaction Cliff                                                         page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-066-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "11/22/2022 8:39:56 AM   ICL24_Cerumen Impaction Cliff   page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-066-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   Horton GA et al. Cerumen Management: An updated clinical review and evidence-based approach for primary care physicians. J Prim Care\n   Community Health. 2020; 11:215-132720904.\n\n   Schwartz, S. R., A. E. Magit, R. M. Rosenfeld, B. B. Ballachanda, J. M. Hackell, H. J. Krouse, C. M. Lawlor, K. Lin, K. Parham, D. R. Stutz, S.\n   Walsh, E. A. Woodson, K. Yanagisawa, and E. R. Cunningham, Jr. 2017. 'Clinical Practice Guideline (Update): Earwax (Cerumen Impaction)',\n   Otolaryngol Head Neck Surg, 156: S1-s29.\n\n   Eekhof JA et al (2001). \"A quasi-randomized controlled trial of water as a quick softening agen of persistent earwax in general practice.\n\n   Roeser RJ, Ballachanda BB. Physiology, pathophysiology, and anthropology/epidemiology of human earcanal secretions. J Am Acad Audiol\n   1997;8:391\u2013 400.\n\n   Guest JF, Greener MJ, Robinson AC, et al. Impacted cerumen: composition, production, epidemiology and management. QJM 2004;97:477\u2013 88\n\n   Yang EL, Macy TM, Wang KH, et al. Cost burden of cerumen extraction in Medicare beneficiaries. JAMA Otolaryngol Head Neck Surg.\n   2016;142:157-161.\n\n   Aaron, K., T. E. Cooper, L. Warner, and M. J. Burton. 2018. 'Ear drops for the removal of ear wax', Cochrane Database Syst Rev, 7: CD012171.\n\n   Burton, M. J., and C. Doree. 2009. 'Ear drops for the removal of ear wax', Cochrane Database Syst Rev: CD004326.\n\n   McCarter, D. F., A. U. Courtney, and S. M. Pollart. 2007. 'Cerumen impaction', Am Fam Physician, 75: 1523-8.\n\n   Michaudet, C. and J. Malaty (2018). \"Cerumen impaction: diagnosis and management.\" American family physician 98(8): 525-529.\n\n   Adegbiji WA et al. Earwax Impaction: symptoms, predisposing factors and perception among Nigerians. J Fam Med Prim Care 2014;3(4):379-382.\n\n   Gabriel OT. Cerumen impaction: challenges and management profile in a rural health facility. Niger Med J. 2015;56(6):390-393.\n\n   Pavlidis C, Pickering JA. Water as a fast-acting wax softening agent before ear syringing. Aust Fam Physician. 2005 Apr;34(4):303-4. PMID:\n   15861762.\n\n   Keane EM, Wilson H, McGrane D, Coakley D, Walsh JB. Use of solvents to disperse ear wax. Br J Clin Pract. 1995 Mar-Apr;49(2):71-2. PMID:\n   7779647.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                      PHRASE\n\n   AAOMS                        American Association of Oral and Maxillofacial Surgeons\n\n   AMA                          American Medical Association\n\n   ARCL                         All Remaining Conditions List\n\n   ARS                          Acute Radiation Sickness\n\n   BHP                          Behavioral Health and Performance\n\n   CAC                          Coronary Artery Calcium\n\n   CHS                          Crew Health and Safety\n\n   CL                           Condition List\n\n   CliFF                        Clinical Finding Form\n\n   CMO                          Crew Medical Officer\n\n   COMFORT                      Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                          Clinical Phase 1\n\n   CP2                          Clinical Phase 2\n\n   CP3                          Clinical Phase 3\n\n   CRL                          Clinical Resource Level\n\n\n\n\n11/22/2022 8:39:56 AM                                                ICL24_Cerumen Impaction Cliff                                                   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-066-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   CRT                  Capability Resource Table\n\n   CST                  Clinical Science Team\n\n   DCS                  Decompression Syndrome\n\n   DRM                  Design Reference Mission\n\n   ED                   Emergency Medicine Doctor\n\n   EL                   Evidence Library\n\n   EMCL                 Exploration Medical Condition List\n\n   EMT                  Emergency Medical Technician\n\n   EVA                  Extravehicular Activity\n\n   EXMC                 Exploration Medical Capability\n\n   HRP                  Human Research Program\n\n   ICD                  International Classification of Disease\n\n   ICL 1.0              IMPACT 1.0 Medical Conditions List\n\n   ICU                  Intensive Care Unit\n\n   IMCL                 iMED Condition List\n\n   iMED                 Integrated Medical Evidence Database\n\n   IMM                  Integrated Medical Model\n\n   IMPACT-MD            Impact Medical Database\n\n   IP                   Incidence Proportion\n\n   IR                   Incidence Rate\n\n   ISS                  International Space Station\n\n   IV                   Intravenous\n\n   JSC                  Johnson Space Center\n\n   LEO                  Low-Earth orbit\n\n   LEVA                 Lunar Extravehicular Activity\n\n   LOCL                 Loss of Crew Life\n\n   LOM                  Loss of Mission\n\n   LSAH                 Lifetime Surveillance of Astronaut Health\n\n   LSO                  Lunar Surface Operations\n\n   MCL                  Master Condition List\n\n   MEVA                 Medical Extravehicular Activity\n\n   NASA                 National Aeronautics and Space Administration\n\n   N/A                  Not Applicable\n\n   NP                   Nurse Practitioner\n\n   OBGYN                Obstetrics and Gynecology\n\n   OR                   Occurrence Rate\n\n   PA                   Physician Assistant\n\n   PDQ                  Pain Disability Questionnaire\n\n   PFCL                 Proposed Future Conditions List\n\n   PPE                  Personal Protective Equipment\n\n   PTRS                 Project Technical Requirements Specification\n\n   PRL                  Pharmaceutical Resource Level\n\n   QTL                  Quality Time Lost\n\n\n\n\n11/22/2022 8:39:56 AM                                        ICL24_Cerumen Impaction Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    },
+    {
+      "section_id": "CLIFF-066-P14",
+      "ordinal": 13,
+      "heading": "Page 14 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   RCL                  Removed Conditions List\n\n   REP                  Rochester Epidemiology Study\n\n   RTDC                 Removal to Definitive Care\n\n   SANS                 Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                  Space Adaptation Syndrome\n\n   SEVA                 Spaceflight Extravehicular Activity\n\n   SME                  Subject Matter Expert\n\n   SoP                  Standard Operating Procedure\n\n   SPE                  Solar Particle Event\n\n   TBD                  To Be Determined\n\n   TI                   Task Impairment\n\n\n\n\n11/22/2022 8:39:56 AM                                         ICL24_Cerumen Impaction Cliff   page: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "page:14"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-066-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ]
+      ],
+      "page_number": 1,
+      "source_anchor": "page:1#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-066-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                   Source                                     LOC Value"
+        ],
+        [
+          "Schwartz, 2017                                             Terrestrial                                2"
+        ],
+        [
+          "Eekhof, 2001                                               Terrestrial                                2"
+        ],
+        [
+          "Roeser, 1997                                               Terrestrial                                2"
+        ],
+        [
+          "Guest, 2004                                                Terrestrial                                2"
+        ],
+        [
+          "Yang, 2016                                                 Terrestrial                                3"
+        ],
+        [
+          "With exception of Yang et al 2016, all of these studies report incidence numbers based on estimations or provide strictly prevalence numbers. Yang"
+        ],
+        [
+          "includes the data in terms of events and patients from records directly as opposed to citing secondary sources and thus garnered the highest level"
+        ],
+        [
+          "of confidence and was used exclusively for chosen incidence above. With that said, with limited terrestrial data and no analog or spaceflight data,"
+        ],
+        [
+          "confidence in this incidence is limited."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-066-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                    Source                                        LOC Value"
+        ],
+        [
+          "Gabriel, 2015                                               Terrestrial                                   3"
+        ],
+        [
+          "Adegbiji, 2014                                              Terrestrial                                   2"
+        ],
+        [
+          "Guest, 2004                                                 Terrestrial                                   2"
+        ],
+        [
+          "Yang, 2016                                                  Terrestrial                                   2"
+        ],
+        [
+          "All evidence is terrestrial and is limited by numbers, population, and environment. We have some confidence in the complication rates presented in"
+        ],
+        [
+          "Gabriel et. Al. 2015 as discussed above."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-066-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment             CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration   TI%         Duration       TI%       RTDC             LOCL"
+        ],
+        [
+          "Composite           Condition"
+        ],
+        [
+          "Case Scenario         Incidence           Probability %      Preset    Preset     Preset      Min    Max     Preset    Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best          mean 0.0268 SD      90 - 90            100       0.533      100         0.25   0.36    0         0       0        0        0"
+        ],
+        [
+          "Case (TBC)            2.358E-5"
+        ],
+        [
+          "Treated Worst                             10 - 10            100       1.416      100         0.25   0.36    0         0       0        0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best        N/A                 N/A                N/A       0.533      0           120    336     1.17      0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst       N/A                 N/A                N/A       1.416      27.9298     120    336     27.93     0       0        0        0"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-066-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                          Source                                      LOC Value"
+        ],
+        [
+          "Pavlidis, 2005                                                    Terrestrial"
+        ],
+        [
+          "Keane, 1995                                                       Terrestrial"
+        ],
+        [
+          "2"
+        ],
+        [
+          "Michaudet, 2018                                                   Terrestrial"
+        ],
+        [
+          "Schwartz, 2017                                                    Terrestrial"
+        ],
+        [
+          "These studies are limited by being terrestrial only, reporting bias, and incomplete reporting of timing of symptoms with or without treatment, thus the"
+        ],
+        [
+          "level of confidence in this data remains neutral."
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-066-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "11/22/2022 8:39:56 AM                                                   ICL24_Cerumen Impaction Cliff                                                           page: 5"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-066-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                         Source                                      LOC Value"
+        ],
+        [
+          "Pavlidis, 2005                                                   Terrestrial"
+        ],
+        [
+          "Keane, 1995                                                      Terrestrial"
+        ],
+        [
+          "2"
+        ],
+        [
+          "Michaudet, 2018                                                  Terrestrial"
+        ],
+        [
+          "Schwartz, 2017                                                   Terrestrial"
+        ],
+        [
+          "The LOC remains neutral in that there is only terrestrial data without evacuation data from any spaceflight or analog source. With that said, while"
+        ],
+        [
+          "the LOC is neutral based off of the data, the LOC that LOCL would likely remain 0% remains high given the relatively benign nature of this"
+        ],
+        [
+          "condition."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-066-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision           Hearing                    Dentition          GI             GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "223              664            113               89             854            44             145          5               13             6"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223              664            113               89             854            44             145          5               13             6"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664                                                            44"
+        ],
+        [
+          "Case"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-066-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-066/ear_structures_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1721,
+      "height": 1063,
+      "sha256": "97f45215f243e55a027d69e7208f98ffc077df24602f51a660d6877c37c9b442",
+      "creator": "OpenStax",
+      "license_identifier": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3A1404_The_Structures_of_the_Ear.jpg",
+      "attribution": "OpenStax, via Wikimedia Commons (CC BY 4.0)",
+      "caption": "Anatomical diagram of the external, middle, and inner ear showing the external auditory canal and tympanic membrane relevant to cerumen impaction.",
+      "alt_text": "Labeled anatomical diagram of human ear structures.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:1404 The Structures of the Ear.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-066-IMG-02",
+      "ordinal": 1,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-066/cerumen_impaction_otoscopy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 2541,
+      "height": 2262,
+      "sha256": "8f57761e37c51fe4d283f5b54d8e16098bde98646cc0e91b041288ac587d12a0",
+      "creator": "Didier Descouens",
+      "license_identifier": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ABouchonCerumen.jpg",
+      "attribution": "Didier Descouens, via Wikimedia Commons (CC BY-SA 3.0)",
+      "caption": "Clinical otoscopic photograph demonstrating cerumen impaction occluding the external auditory canal.",
+      "alt_text": "Otoscopic photograph of cerumen impaction in the ear canal.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:BouchonCerumen.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-066-IMG-03",
+      "ordinal": 2,
+      "media_kind": "OTHER",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-066/otoscope_ear_examination.jpg",
+      "mime_type": "image/jpeg",
+      "width": 4256,
+      "height": 2832,
+      "sha256": "571886897a1aa07c5c30b445647171b7516eb3df24b8aa70eeb11338e010742a",
+      "creator": "U.S. Air Force photo by Senior Airman Christopher Toon",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AOtoscope_exam.JPG",
+      "attribution": "U.S. Air Force photo by Senior Airman Christopher Toon, via Wikimedia Commons (Public domain)",
+      "caption": "Clinical otoscopic examination technique used to inspect the external auditory canal and tympanic membrane for cerumen impaction.",
+      "alt_text": "Clinician performing an otoscopic ear examination.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Otoscope exam.JPG)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-066-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Cerumen Impaction",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/cerumen-impaction-cliff-2023.pdf?emrc=1a557b",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External ear anatomy and otoscopic images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}
