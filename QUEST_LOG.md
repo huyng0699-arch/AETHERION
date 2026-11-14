@@ -25,11 +25,22 @@ Quest IDs and counts evolve. At the most recent full directory inspection before
 | --- | --- | --- |
 | Quest ledger / CI | [Q-0001](quests/v1/Q-0001.md), [Q-0241](quests/v1/Q-0241.md) | Strict graph check, functioning read-only lists and actual CI runner-backed pass |
 | Native desktop / Windows EXE | [Q-0002](quests/v1/Q-0002.md), [Q-0003](quests/v1/Q-0003.md), [Q-0010](quests/v1/Q-0010.md) | Real Windows startup, packaged EXE/hash, screenshots and independent review |
-| New Mission Operations Home | [Q-0485](quests/v1/Q-0485.md) | NASA Open MCT-style Browse / Workspace / Inspect, correct Home overview, fixed bottom UTC conductor; Qt/Windows visual proof still PENDING |
+| New Mission Operations Home | [Q-0485](quests/v1/Q-0485.md) | P0 persistent Browse / hosted native Workspace / Inspect + bottom UTC controls; 13 routes and Demo preserved, live Qt/Windows acceptance PENDING |
 | Clearly synthetic patient Demo | [Q-0484](quests/v1/Q-0484.md), [Q-0478](quests/v1/Q-0478.md) | Demo explanation → 5 fictional patients/540-day data, separately from actual 1962 NASA MA-7 archive |
 | Monitoring / ECG | [Q-0477](quests/v1/Q-0477.md), [Q-0481](quests/v1/Q-0481.md) | Q-0477 now has an interactive UTC conductor, authenticated paged telemetry, plot/table sync, source/quality legend, explicit gap segmentation, hover/zoom/pan; [headless QA geometry](docs/evidence/q0477_monitor_headless_gap_model.png) is **not** a Qt screenshot. Native Windows/render, API paging and independent review remain pending. |
 | NASA CliFF 119 offline documents | [Q-0421](quests/v1/Q-0421.md), [Q-0425](quests/v1/Q-0425.md), [Q-0426](quests/v1/Q-0426.md), [Q-0427](quests/v1/Q-0427.md), [Q-0435](quests/v1/Q-0435.md) | Actual source, media rights, SQLite import, complete offline reader and native verification |
 | Independent acceptance | [REVIEW-0001](quests/review/REVIEW-0001.md) | Different reviewing agent must assess real evidence; never self-approve |
+
+## P0 Mission Operations is now a persistent native shell (source only; 2026-11-14)
+
+**Owner-overridden layout:** Browse navigation, center Workspace and right Inspect with bottom UTC Time Conductor persist when opening existing native features; the old five-card Portal and duplicate topBar horizontal route buttons are not the app's primary UI.
+
+- Q-0485 `mission_ops_home.py` commit [`907a8bff`](https://github.com/huyng0699-arch/AETHERION/commit/907a8bff925c5c5754ab2f2cbcf2dfc705cd441b) adds native QWidget hosting in the central Workspace and replaces unreadable MA-7 QPainter source bars with a categorical **original report phase / value / unit / qualifier** comparison table. Historic MA-7 does **not** acquire fabricated UTC timestamps.
+- Q-0485 `main.py` commit [`ec0a4399`](https://github.com/huyng0699-arch/AETHERION/commit/ec0a4399995d37cbcfe009987ebbd2b010dc7216) reparents original Health/Monitor/ECG/Chat/Interview/Care/NASA/Atlas/Settings, SIMULATED briefing and PatientDemo into the central stack and leaves their original HTTP and identity logic unchanged. **Only Browse is the visible route navigator**; the topBar retains appearance, language, settings and help. A single /health status pill appears inside Mission Operations.
+- **Unresolved:** Home UTC bounds and Q-0477 Monitoring time filters are **not connected**. [Issue #8 comment #6877383276](https://github.com/huyng0699-arch/AETHERION/issues/8#issuecomment-6877383276) asks Q-0477 owner for a narrow public UTC setter contract. No `native_workspaces.py`, `monitoring_time.py`, Q-0484 module, shared i18n, or NASA raw-data file was changed.
+- **Source evidence only:** focused 13/13 static assertions passed; no GUI/offscreen or Windows render, no actual synthetic SQLite DB readback, no authenticated HTTP clickthrough or independent visual approval. Current status: [Q-0485 RUNNING / review PENDING](quests/v1/Q-0485.md), detailed [SCREEN_STATUS](docs/SCREEN_STATUS.md). Do not infer DONE from the commit.
+
+---
 
 ## Latest Q-0485 native Home visual direction (2026-11-14)
 
