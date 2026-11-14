@@ -32,7 +32,8 @@ STRINGS = {
         "already_setup": "Máy chủ đã có tài khoản; không thể tạo tài khoản đầu tiên lần nữa.",
         "setup_done": "Đã tạo tài khoản admin trong SQLite. Hãy đăng nhập để quản trị.",
         "overview": "Tổng quan", "ai": "AI cục bộ", "sources": "Thành phần",
-        "storage": "Dữ liệu", "events": "Nhật ký",
+        "storage": "Dữ liệu", "events": "Nhật ký", "users": "Người dùng",
+        "refresh_sources": "Đọc nguồn dữ liệu đã ghi", "refresh_users": "Đọc tài khoản thật",
         "refresh": "Làm mới dữ liệu thật", "load_models": "Lấy danh sách mô hình", "test_model": "Kiểm tra AI thực tế",
         "save": "Lưu cấu hình AI", "backup": "Sao lưu SQLite ngay",
         "mode": "Chế độ AI", "local_url": "API Ollama cục bộ",
@@ -63,7 +64,8 @@ STRINGS = {
         "already_setup": "This server already has accounts; first-admin setup is locked.",
         "setup_done": "Created admin in canonical SQLite. Sign in to manage this server.",
         "overview": "Overview", "ai": "Local AI", "sources": "Subsystems",
-        "storage": "Data", "events": "Audit events",
+        "storage": "Data", "events": "Audit events", "users": "Users",
+        "refresh_sources": "Read stored source provenance", "refresh_users": "Read user accounts",
         "refresh": "Refresh live records", "load_models": "Discover installed models", "test_model": "Test actual AI inference",
         "save": "Save AI settings", "backup": "Back up SQLite now",
         "mode": "AI mode", "local_url": "Local Ollama API",
@@ -228,6 +230,8 @@ class AdminWindow(QMainWindow):
 
         sources = QWidget()
         sources_layout = QVBoxLayout(sources)
+        self.source_refresh = self._button(self.load_sources)
+        sources_layout.addWidget(self.source_refresh)
         self.source_text = QTextEdit()
         self.source_text.setReadOnly(True)
         sources_layout.addWidget(self.source_text)
@@ -241,6 +245,15 @@ class AdminWindow(QMainWindow):
         self.storage_text.setReadOnly(True)
         storage_layout.addWidget(self.storage_text)
         self.tabs.addTab(storage, "")
+
+        users = QWidget()
+        users_layout = QVBoxLayout(users)
+        self.users_button = self._button(self.load_users)
+        users_layout.addWidget(self.users_button)
+        self.users_text = QTextEdit()
+        self.users_text.setReadOnly(True)
+        users_layout.addWidget(self.users_text, 1)
+        self.tabs.addTab(users, "")
 
         events = QWidget()
         events_layout = QVBoxLayout(events)
@@ -289,10 +302,11 @@ class AdminWindow(QMainWindow):
             (self.models_button, "load_models"), (self.save_button, "save"),
             (self.test_button, "test_model"),
             (self.backup_button, "backup"), (self.events_button, "refresh"),
+            (self.source_refresh, "refresh_sources"), (self.users_button, "refresh_users"),
             (self.cloud_notice, "ai_cloud"),
         ):
             widget.setText(self.t(key))
-        for index, key in enumerate(("overview", "ai", "sources", "storage", "events")):
+        for index, key in enumerate(("overview", "ai", "sources", "storage", "users", "events")):
             self.tabs.setTabText(index, self.t(key))
         self.ai_mode.setItemText(0, self.t("off"))
         self.ai_mode.setItemText(1, self.t("local_only"))
@@ -512,6 +526,18 @@ class AdminWindow(QMainWindow):
     def refresh(self):
         self.request("GET", "/api/v1/admin/overview", callback=self._overview)
         self.request("GET", "/api/v1/admin/ai/settings", callback=self._ai_settings)
+        self.load_sources()
+        self.load_users()
+
+    def load_sources(self):
+        self.request("GET", "/api/v1/admin/sources",
+                     callback=lambda data: self.source_text.setPlainText(
+                         json.dumps(data, ensure_ascii=False, indent=2)))
+
+    def load_users(self):
+        self.request("GET", "/api/v1/admin/users",
+                     callback=lambda data: self.users_text.setPlainText(
+                         json.dumps(data.get("users", []), ensure_ascii=False, indent=2)))
 
     def _overview(self, body):
         self.overview_text.setPlainText(json.dumps({
