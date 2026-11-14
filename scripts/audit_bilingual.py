@@ -100,10 +100,15 @@ def audit_symptom_english_aliases() -> tuple[list[str], dict[str, int | str]]:
         overlay = read_json(overlay_path)
         if not isinstance(original, dict) or not isinstance(overlay, dict):
             return ["Symptom source/overlay must both be JSON objects"], {}
-        source_hash = hashlib.sha1(
-            b"blob " + str(len(source_bytes)).encode("ascii") + bytes((0,)) + source_bytes
-        ).hexdigest()
-        if overlay.get("source_blob_sha") != source_hash:
+        def git_blob_sha(content: bytes) -> str:
+            blob = b"blob " + str(len(content)).encode("ascii") + bytes((0,)) + content
+            return hashlib.sha1(blob).hexdigest()
+
+        valid_hashes = {
+            git_blob_sha(source_bytes),
+            git_blob_sha(source_bytes.replace(bytes((13, 10)), bytes((10,)))),
+        }
+        if overlay.get("source_blob_sha") not in valid_hashes:
             errors.append("English overlay targets a different source Git blob; labels are stale")
         if (overlay.get("source_language"), overlay.get("target_language"),
                 overlay.get("translation_status")) != (
