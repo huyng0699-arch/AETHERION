@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-060",
+  "slot": 60,
+  "quest_id": "Q-0360",
+  "checked_at_utc": "2026-11-14T06:20:58.875616+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-paresthesia-cliff-2023.pdf?emrc=a34721",
+  "http_status": 200,
+  "pdf_sha256": "3f138342522c520bfa27bde8a43ab0b155077df1a7861a59a64bb1fd04836cf9",
+  "pdf_bytes": 295780,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-060-IMG-01": "1c40adfe2aae5a4e5e59fc5a0398f45128112e410bdbde403940fa30ec3d1163",
+    "CLIFF-060-IMG-02": "f35fb0d308606caba304b4e59a3df32362974e853467aadf934ae5ce86f6e1d6",
+    "CLIFF-060-IMG-03": "de7ceb14c706de30e830f7fe9abdbcf6a7b7217ffc0cf8c6fd152e6fbf2b04a1"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
