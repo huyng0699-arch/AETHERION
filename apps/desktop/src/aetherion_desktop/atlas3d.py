@@ -164,6 +164,11 @@ class BodyAtlas3D(QWidget):
         self.source_button.setText(self.t('source'))
         if not self._active_id:
             self.empty.setText(self.t('empty'))
+        for i in range(self.selector.count()):
+            identity = self.selector.itemData(i)
+            meta = self.models.get(identity, {})
+            name = meta.get('title_vi' if self.locale == 'vi' else 'title_en')
+            self.selector.setItemText(i, str(name or str(identity).replace('_', ' ').title()))
 
     def _populate(self):
         active = self._active_id
@@ -288,6 +293,11 @@ class BodyAtlas3D(QWidget):
                 self.viewer.setMinimumHeight(340)
                 self.content.addWidget(self.viewer, 1)
                 self.empty.hide()
+            if hasattr(self.viewer, 'disable_picking'):
+                try:
+                    self.viewer.disable_picking()
+                except RuntimeError:
+                    pass
             self.viewer.clear()
             self.viewer.add_mesh(mesh, name=identity, color='#ECCAA7',
                                  smooth_shading=True, specular=0.14, specular_power=20,
