@@ -29,6 +29,7 @@ from .store import (
     ingest_observation,
     initialize,
     query_observations,
+    query_observations_page,
     revoke_session,
     upsert_subject,
 )
@@ -350,6 +351,7 @@ def create_app(
         order: Literal["asc", "desc"] = Query(default="desc"),
         since: datetime | None = Query(default=None),
         until: datetime | None = Query(default=None),
+        cursor: str | None = Query(default=None),
         limit: int = Query(100, ge=1, le=500),
         session_and_token: tuple[dict, str] = Depends(require_session),
     ):
@@ -359,21 +361,30 @@ def create_app(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail=f"Not authorized to access subject '{subject_id}'",
             )
-        items = query_observations(
-            get_db_path(),
-            subject_id,
-            scope=scope,
-            metric=metric,
-            include_non_live=include_non_live,
-            order=order,
-            since=since.isoformat() if since is not None else None,
-            until=until.isoformat() if until is not None else None,
-            limit=limit,
-        )
+        try:
+            page = query_observations_page(
+                get_db_path(),
+                subject_id,
+                scope=scope,
+                metric=metric,
+                include_non_live=include_non_live,
+                order=order,
+                since=since.isoformat() if since is not None else None,
+                until=until.isoformat() if until is not None else None,
+                cursor=cursor,
+                limit=limit,
+            )
+        except ValueError as exc:
+            raise HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail=str(exc),
+            ) from exc
         return {
             "subject_id": subject_id,
             "order": order,
-            "observations": items,
+            "observations": page["observations"],
+            "has_more": page["has_more"],
+            "next_cursor": page["next_cursor"],
             "note": "Observations preserve recorded provenance; no automated clinical diagnosis is provided.",
         }
 

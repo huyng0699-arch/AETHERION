@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/contracts/v1/pagination.schema.json",
+  "title": "AETHERION Historical Cursor Pagination Contract (Q-0022)",
+  "description": "Ordered keyset cursor pagination over (observed_at_utc, id) preventing duplicates or skips under concurrent writes.",
+  "type": "object",
+  "required": ["observations", "has_more", "next_cursor"],
+  "properties": {
+    "observations": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "has_more": {
+      "type": "boolean"
+    },
+    "next_cursor": {
+      "type": ["string", "null"]
+    }
+  },
+  "x-cursor-semantics": {
+    "keyset_tuple": ["observed_at_utc", "id"],
+    "encoding": "base64url-json",
+    "stable_under_concurrent_inserts": true
+  }
+}

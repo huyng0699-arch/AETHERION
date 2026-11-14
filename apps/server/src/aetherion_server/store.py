@@ -317,6 +317,76 @@ def query_observations(
     return items[:limit]
 
 
+def encode_cursor(observed_at: str, obs_id: int) -> str:
+    import base64
+
+    payload = json.dumps({"t": _parse_utc(observed_at).isoformat(), "id": int(obs_id)}, separators=(",", ":"))
+    return base64.urlsafe_b64encode(payload.encode("utf-8")).decode("ascii")
+
+
+def decode_cursor(cursor: str) -> tuple[Any, int]:
+    import base64
+
+    try:
+        raw = base64.urlsafe_b64decode(cursor.encode("ascii")).decode("utf-8")
+        data = json.loads(raw)
+        if not isinstance(data, dict) or "t" not in data or "id" not in data:
+            raise ValueError("Missing cursor keys")
+        return _parse_utc(str(data["t"])), int(data["id"])
+    except Exception as exc:
+        raise ValueError(f"Invalid pagination cursor: {exc}") from exc
+
+
+def query_observations_page(
+    path: str | Path,
+    subject_id: str,
+    *,
+    scope: str | None = None,
+    metric: str | None = None,
+    include_non_live: bool = False,
+    order: str = "desc",
+    since: str | None = None,
+    until: str | None = None,
+    cursor: str | None = None,
+    limit: int = 100,
+) -> dict[str, Any]:
+    all_items = query_observations(
+        path,
+        subject_id,
+        scope=scope,
+        metric=metric,
+        include_non_live=include_non_live,
+        order=order,
+        since=since,
+        until=until,
+        limit=100_000,
+    )
+    if cursor is not None:
+        cursor_key = decode_cursor(cursor)
+        if order == "desc":
+            all_items = [
+                item for item in all_items
+                if (_parse_utc(item["observed_at"]), int(item["id"])) < cursor_key
+            ]
+        else:
+            all_items = [
+                item for item in all_items
+                if (_parse_utc(item["observed_at"]), int(item["id"])) > cursor_key
+            ]
+    has_more = len(all_items) > limit
+    page = all_items[:limit]
+    next_cursor = (
+        encode_cursor(page[-1]["observed_at"], int(page[-1]["id"]))
+        if has_more and page
+        else None
+    )
+    return {
+        "observations": page,
+        "has_more": has_more,
+        "next_cursor": next_cursor,
+    }
+
+
 def list_observations(path: str | Path, subject_id: str, limit: int = 100) -> list[dict[str, Any]]:
     return query_observations(path, subject_id, limit=limit)
 
