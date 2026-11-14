@@ -38,6 +38,17 @@ class AdminIntegrationTest(unittest.TestCase):
                 overview = client.get("/api/v1/admin/overview", headers=headers)
                 self.assertEqual(overview.status_code, 200, overview.text)
                 self.assertEqual(overview.json()["counts"]["users"], 2)
+                users = client.get("/api/v1/admin/users", headers=headers)
+                self.assertEqual(users.status_code, 200, users.text)
+                self.assertEqual(len(users.json()["users"]), 2)
+                self.assertNotIn("password_hash", str(users.json()))
+                sources = client.get("/api/v1/admin/sources", headers=headers)
+                self.assertEqual(sources.status_code, 200, sources.text)
+                self.assertEqual(sources.json()["sources"], [])
+                interview_status = client.get("/api/v1/knowledge/interview/ai-status")
+                self.assertEqual(interview_status.status_code, 200, interview_status.text)
+                self.assertFalse(interview_status.json()["configured"])
+                self.assertEqual(interview_status.json()["source"], "server_admin")
                 config = {
                     "mode": "off", "local_runtime": "ollama",
                     "local_url": "http://127.0.0.1:11434",
