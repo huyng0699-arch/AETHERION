@@ -19,9 +19,10 @@ from PySide6.QtWidgets import (QComboBox, QFrame, QHBoxLayout, QLabel, QPushButt
                                QSizePolicy, QVBoxLayout, QWidget)
 
 from .localization import normalize_locale
+from .runtime_paths import reference_path
 
-ROOT = Path(__file__).resolve().parents[4]
-MANIFEST = ROOT / 'knowledge' / 'anatomy' / 'approved_models.json'
+# Use the same trusted read-only locator as the existing frozen Windows installer.
+MANIFEST = reference_path('anatomy', 'approved_models.json')
 ASSETS = MANIFEST.parent
 VALID_ID = re.compile(r'^[A-Za-z0-9_-]{1,64}$')
 SUPPORTED = {'.stl', '.obj', '.ply', '.vtk', '.vtp', '.vtu'}
