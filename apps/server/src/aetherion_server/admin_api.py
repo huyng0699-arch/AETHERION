@@ -8,7 +8,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel, Field, ConfigDict
 
 from .admin_control import (
-    backup_sqlite, probe_local_ai, read_ai_settings, recent_admin_events,
+    backup_sqlite, probe_local_ai, test_local_model, read_ai_settings, recent_admin_events,
     save_ai_settings, system_overview,
 )
 
@@ -55,6 +55,10 @@ def build_admin_router(
     @router.get("/ai/local/models")
     def local_models(_admin: dict = Depends(require_admin)):
         return probe_local_ai(read_ai_settings(database_path()))
+
+    @router.post("/ai/local/test")
+    def local_model_test(_admin: dict = Depends(require_admin)):
+        return test_local_model(read_ai_settings(database_path()))
 
     @router.get("/events")
     def events(_admin: dict = Depends(require_admin)):
