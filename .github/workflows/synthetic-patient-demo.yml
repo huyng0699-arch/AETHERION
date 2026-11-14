@@ -1,0 +1,37 @@
+name: Synthetic patient demo smoke
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/desktop/src/aetherion_desktop/features/demo/synthetic_patients.py"
+      - "apps/desktop/src/aetherion_desktop/features/demo/synthetic_patient_ui.py"
+      - "tests/test_synthetic_patient_demo.py"
+      - ".github/workflows/synthetic-patient-demo.yml"
+  workflow_dispatch:
+jobs:
+  patient-demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile demo and GUI source
+        run: |
+          python -m py_compile apps/desktop/src/aetherion_desktop/features/demo/synthetic_patients.py apps/desktop/src/aetherion_desktop/features/demo/synthetic_patient_ui.py apps/desktop/src/aetherion_desktop/features/demo/nasa_ma7.py
+      - name: SQLite generator and provenance readback
+        run: python -m unittest tests.test_synthetic_patient_demo -v
+      - name: Bilingual UI keys
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          root = pathlib.Path("apps/desktop/src/aetherion_desktop/i18n")
+          en = json.loads((root/"en.json").read_text(encoding="utf-8"))
+          vi = json.loads((root/"vi.json").read_text(encoding="utf-8"))
+          assert en.keys() == vi.keys()
+          keys = [k for k in en if k.startswith("demo.synthetic.")]
+          assert len(keys) >= 60
+          assert all(en[k].strip() and vi[k].strip() for k in keys)
+          print("Localized demo labels:", len(keys))
+          PY
