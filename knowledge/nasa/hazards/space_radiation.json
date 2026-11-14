@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "hazard_id": "space_radiation",
+  "title": "Space Radiation",
+  "quest_id": "Q-0112",
+  "retrieved_at_utc": "2026-11-14T03:57:00Z",
+  "is_live_telemetry": false,
+  "primary_sources": [
+    {
+      "source_id": "nasa-hrp",
+      "publisher": "NASA Human Research Program (HRP)",
+      "url": "https://www.nasa.gov/hrp/"
+    },
+    {
+      "source_id": "nasa-space-apps-2026",
+      "publisher": "NASA Space Apps Challenge 2026",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/"
+    },
+    {
+      "source_id": "OSD-431",
+      "publisher": "NASA OSDR",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-431",
+      "note": "HMEC-1 endothelial cells exposed to microgravity vs space radiation (DNA repair, endothelial activation, apoptosis pathways)"
+    },
+    {
+      "source_id": "OSD-575",
+      "publisher": "NASA OSDR",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-575",
+      "note": "Inspiration4 serum metabolic/immune/cardiovascular cytokine arrays"
+    }
+  ],
+  "affected_organ_systems": [
+    {
+      "system_id": "immune_hematopoietic",
+      "label": "Immune & Hematopoietic System",
+      "evidence_summary": "Space radiation and spaceflight stressors are associated with immune dysregulation and DNA damage/repair activation.",
+      "source_ids": ["nasa-space-apps-2026", "OSD-431", "OSD-575"]
+    },
+    {
+      "system_id": "cardiovascular_endothelium",
+      "label": "Cardiovascular & Vascular Endothelium",
+      "evidence_summary": "Radiation-stimulated endothelial activation (hypoxia, inflammation) and cardiovascular risk pathways observed in OSDR studies.",
+      "source_ids": ["nasa-space-apps-2026", "OSD-431", "OSD-575"]
+    },
+    {
+      "system_id": "musculoskeletal_bone_marrow",
+      "label": "Bone & Musculoskeletal System",
+      "evidence_summary": "Combined unloading and radiation exposure studied for bone and cartilage degradation risks.",
+      "source_ids": ["nasa-hrp", "nasa-space-apps-2026"]
+    }
+  ],
+  "observable_indicators_in_aetherion": [
+    {
+      "metric": "radiation_dose_msv",
+      "unit": "mSv",
+      "missing_data_rule": "If no dosimeter/source is attached, report NO_DATA or UNVERIFIED; never fabricate radiation dose."
+    }
+  ],
+  "limitations": [
+    "Historical OSDR cellular/animal/short-LEO studies are research references, not live crew dosimetry or clinical cancer/radiation diagnosis."
+  ]
+}
