@@ -1,0 +1,24 @@
+{
+  "article_id": "CLIFF-067",
+  "slot": 67,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/choking-obstructed-airway-cliff-2023.pdf?emrc=b961b8",
+  "http_status": 200,
+  "pdf_bytes": 352910,
+  "pdf_sha256": "6616c8e9d82e4a721433d73d8a9e3173bc41d94f45c237f23de7c0dc5ba5b565",
+  "pdf_pages": 14,
+  "sections_count": 14,
+  "tables_count": 7,
+  "references_count": 18,
+  "media_count": 4,
+  "media_sha256s": [
+    "2af2d279ce8a49661a237fe4dab2308d37f894a0459f14a91bd46d6c0b3b88cd",
+    "89b641895325c34134f7f149d58b965a9b5e6a16ef926a553f0b9d98aa64b8df",
+    "8cd80f70c932f93728f64a18100985fe1835a3ef9d37442efcad194e91d42fd9",
+    "cba5bfd0260068e2ce00e45badff4721dec4b04743c4cad7ec70e95dd24068fe"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-3.0 / Public Domain images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "offline_render_note": "SQLite ingestion and offline BLOB/section/table/citation verification passed on Linux; native Windows Qt GUI rendering deferred to Windows desktop gate.",
+  "missing_items": []
+}
