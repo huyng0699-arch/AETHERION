@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-101",
+  "slot": 101,
+  "quest_id": "Q-0401",
+  "checked_at_utc": "2026-11-14T06:36:25.601925+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-hand-injury-cliff-2023.pdf?emrc=b708e0",
+  "http_status": 200,
+  "pdf_sha256": "68f7c0d655985ef3e5736026ff36922ce6b3ff7dfec4d4e7133bf4652bc32043",
+  "pdf_bytes": 294522,
+  "pages_extracted": 12,
+  "sections_count": 12,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-101-IMG-01": "0105fdcaba15bf9d8018541c47643c20281b8a4d46241180c8afccb99b8dfa85",
+    "CLIFF-101-IMG-02": "cbf7db6572202d29b64aebba395490f4fbd9522af12167fdb16a28d0a94613fe",
+    "CLIFF-101-IMG-03": "8d645b84f3c19e51c89d75cda5866f86c7b0dff0ff3fe9052e4e3c0955d87f43"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
