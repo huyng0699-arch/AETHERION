@@ -261,6 +261,25 @@ def build_synthetic_patient_demo(parent=None, *, locale="en",
 
         def _build_history(self):
             self.history, box = self._page()
+            selectors = QHBoxLayout()
+            self.history_metric_label = QLabel()
+            selectors.addWidget(self.history_metric_label)
+            self.history_metric = QComboBox()
+            for metric, _ in METRICS:
+                self.history_metric.addItem(metric, metric)
+            self.history_metric.currentIndexChanged.connect(self.metric_combo.setCurrentIndex)
+            self.metric_combo.currentIndexChanged.connect(self.history_metric.setCurrentIndex)
+            selectors.addWidget(self.history_metric, 2)
+            self.history_period_label = QLabel()
+            selectors.addWidget(self.history_period_label)
+            self.history_period = QComboBox()
+            for days in (30, 90, 180, 365, DAYS):
+                self.history_period.addItem(str(days), days)
+            self.history_period.setCurrentIndex(self.period.currentIndex())
+            self.history_period.currentIndexChanged.connect(self.period.setCurrentIndex)
+            self.period.currentIndexChanged.connect(self.history_period.setCurrentIndex)
+            selectors.addWidget(self.history_period, 1)
+            box.addLayout(selectors)
             self.history_note = QLabel()
             self.history_note.setObjectName("pageHint")
             self.history_note.setWordWrap(True)
@@ -386,6 +405,12 @@ def build_synthetic_patient_demo(parent=None, *, locale="en",
                 self.period.setItemText(index, self.t("days", count=days))
             self.trend_note.setText(self.t("monitor.note"))
             self.history_note.setText(self.t("history.note"))
+            self.history_metric_label.setText(self.t("metric"))
+            self.history_period_label.setText(self.t("period"))
+            for index, (metric, _) in enumerate(METRICS):
+                self.history_metric.setItemText(index, self.t("metric." + metric))
+            for index, days in enumerate((30, 90, 180, 365, DAYS)):
+                self.history_period.setItemText(index, self.t("days", count=days))
             self.history_table.setHorizontalHeaderLabels(
                 [self.t("col." + k) for k in
                  ("date", "metric", "value", "unit", "source")]
