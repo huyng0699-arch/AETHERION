@@ -16,7 +16,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field, model_validator
 
 from .admin_control import probe_local_ai, read_ai_settings, validate_local_url
-from .cloud_ai_runtime import cloud_public_status, resolve_cloud_configuration
+from .cloud_ai_runtime import cloud_public_status, mark_cloud_tested, resolve_cloud_configuration
 
 
 class ChatLine(BaseModel):
@@ -59,7 +59,7 @@ def available_models(db: Path) -> dict:
         'cloud_model': cloud['model'],
         'cloud_provider': cloud['provider'],
         'cloud_source': cloud['source'],
-        'cloud_tested': False,  # actual inference is not implied by configuration
+        'cloud_tested': cloud['tested'],
         'cloud_requires_consent': True,
         'stored_by_server': False,
         'clinical_validation': False,
@@ -87,7 +87,17 @@ def _invoke(url: str, payload: dict, headers: dict, *, timeout: int) -> dict:
             if not isinstance(body, dict):
                 raise ValueError('Invalid model response')
             return body
-    except (HTTPError, URLError, OSError, ValueError, TypeError) as exc:
+    except HTTPError as exc:
+        # OnePad's provider error categories, but sanitized: never pass along
+        # upstream body, headers, credentials, prompts or personal text.
+        reason = (
+            'API key rejected by provider' if exc.code in (401, 403) else
+            'Selected model or endpoint is unavailable' if exc.code in (400, 404) else
+            'Provider rate limit reached' if exc.code == 429 else
+            'Cloud provider service temporarily unavailable'
+        )
+        raise HTTPException(503, detail=reason) from exc
+    except (URLError, OSError, ValueError, TypeError) as exc:
         raise HTTPException(503, detail='Configured model unavailable; no answer was generated') from exc
 
 
@@ -203,6 +213,7 @@ def test_cloud_connection(db: Path) -> dict:
     ))
     if not isinstance(result.get('reply'), str) or not result['reply'].strip():
         raise HTTPException(503, detail='Cloud model did not generate a reply')
+    mark_cloud_tested()
     return {
         'status':'READY','provider':config.provider,'model':config.model,
         'latency_ms':round((time.monotonic()-start)*1000),
