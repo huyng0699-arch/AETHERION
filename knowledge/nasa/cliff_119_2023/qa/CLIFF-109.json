@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-109",
+  "slot": 109,
+  "quest_id": "Q-0409",
+  "checked_at_utc": "2026-11-14T06:38:23.056262+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/prostatitis-acute-cliff-2023.pdf?emrc=47a46d",
+  "http_status": 200,
+  "pdf_sha256": "08b0e42936999586e7ac473f02a0f3ae39ca58eb78c02b6625674a0b04525228",
+  "pdf_bytes": 290894,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-109-IMG-01": "a7dfd6513dfc914cfd5a37d62fc601801751e9457a945d0c3a45918044c8381b",
+    "CLIFF-109-IMG-02": "ea18d936892bbd7b1e1ebf07cfb5da83f8f134a78a9c64d6565884cb39ca3604",
+    "CLIFF-109-IMG-03": "cec93b337d96263d2655eaebf606d1e82053ddfe864fa8f90dd17535e6fe5f09"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
