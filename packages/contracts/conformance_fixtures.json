@@ -1,0 +1,52 @@
+{
+  "$schema": "https://aetherion.local/contracts/v1/conformance_fixtures",
+  "version": "1.0.0",
+  "target_clients": ["desktop-qt", "mobile", "watch", "cli"],
+  "fixtures": [
+    {
+      "name": "post_crew_observation_created",
+      "method": "POST",
+      "path": "/api/v1/observations",
+      "headers": {
+        "Idempotency-Key": "conformance-obs-001"
+      },
+      "request_body": {
+        "subject_id": "CREW-1",
+        "scope": "CREW",
+        "metric": "heart_rate",
+        "value": 68.0,
+        "unit": "beats/min",
+        "source_id": "manual_log",
+        "observed_at": "2026-11-14T05:11:00+00:00"
+      },
+      "expected_status": 201,
+      "expected_response_keys": ["id", "status", "idempotent_replay", "observation"]
+    },
+    {
+      "name": "get_subject_summary_no_data",
+      "method": "GET",
+      "path": "/api/v1/subjects/CREW-99/summary",
+      "expected_status": 200,
+      "expected_body_subset": {
+        "subject_id": "CREW-99",
+        "availability_status": "NO_DATA"
+      }
+    },
+    {
+      "name": "post_invalid_scope_returns_error_envelope",
+      "method": "POST",
+      "path": "/api/v1/observations",
+      "request_body": {
+        "subject_id": "CREW-1",
+        "scope": "INVALID_SCOPE",
+        "metric": "heart_rate",
+        "value": 68.0,
+        "unit": "beats/min",
+        "source_id": "manual_log",
+        "observed_at": "2026-11-14T05:11:00+00:00"
+      },
+      "expected_status": 422,
+      "expected_response_keys": ["error", "detail"]
+    }
+  ]
+}
