@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/schemas/medical/condition_schema.v1.json",
+  "title": "AETHERION Normalized Medical Condition Schema (Q-0140)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "condition_id",
+    "canonical_title",
+    "overview",
+    "symptoms",
+    "differential",
+    "uncertainties",
+    "evidence",
+    "review_state",
+    "verification_state"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0.0" },
+    "condition_id": { "type": "string", "pattern": "^COND-[0-9a-f]{12}$" },
+    "canonical_title": { "type": "string", "minLength": 1 },
+    "overview": { "type": "string", "minLength": 1 },
+    "symptoms": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "differential": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "uncertainties": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "source_url", "source_publisher", "source_sha256", "is_live_telemetry"],
+        "properties": {
+          "source_id": { "type": "string", "minLength": 1 },
+          "source_url": { "type": "string", "pattern": "^https://" },
+          "source_publisher": { "type": "string", "minLength": 1 },
+          "source_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "evidence_grade": { "type": "string" },
+          "is_live_telemetry": { "type": "boolean", "const": false }
+        }
+      }
+    },
+    "review_state": {
+      "type": "string",
+      "enum": ["DRAFT", "UNDER_REVIEW", "APPROVED", "NEEDS_REVISION", "UNVERIFIED"]
+    },
+    "verification_state": {
+      "type": "string",
+      "enum": ["READY", "NO_DATA", "UNVERIFIED", "STALE", "OFFLINE", "DENIED", "ERROR"]
+    },
+    "source_publisher": { "type": "string" },
+    "source_url": { "type": "string" },
+    "source_sha256": { "type": "string" }
+  }
+}
