@@ -1,0 +1,24 @@
+{
+  "article_id": "CLIFF-078",
+  "slot": 78,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/respiratory-failure-cliff-2023.pdf?emrc=d587e7",
+  "http_status": 200,
+  "pdf_bytes": 330772,
+  "pdf_sha256": "bd799ff5e964c9ef657ce8f784e64090c79db66e544b0147728d2cd00d363453",
+  "pdf_pages": 14,
+  "sections_count": 14,
+  "tables_count": 7,
+  "references_count": 13,
+  "media_count": 4,
+  "media_sha256s": [
+    "21a2746b8296b06ae4aeba3903dd5eb1b3a2f3c64fabb7aca0d3c8fdcfabc468",
+    "41a22e2a4d4a1beae75a31c9d7d45ad386c5bfb993983adf5c6bbbd1dfbd81a7",
+    "786f03ae4b939a6e0fc1590bea88852bd0f5623aac2faf29979e819a438650b5",
+    "794d16791b7ce7433d0a2c8d6e4e1c4c3bb4d81474d80693d908f830c6c4542f"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-4.0 / CC-BY-SA-3.0 / Public Domain images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "offline_render_note": "SQLite ingestion and offline BLOB/section/table/citation verification passed on Linux; native Windows Qt GUI rendering deferred to Windows desktop gate.",
+  "missing_items": []
+}
