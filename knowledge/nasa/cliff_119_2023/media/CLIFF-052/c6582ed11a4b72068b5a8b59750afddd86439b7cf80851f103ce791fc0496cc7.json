@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-052",
+  "title": "Vertebral Column Curvatures and Regions (OpenStax)",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/8/82/715_Vertebral_Column.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:715_Vertebral_Column.jpg",
+  "license": "CC-BY-3.0",
+  "author": "OpenStax College",
+  "caption": "Lateral and posterior anatomical views of the human vertebral column showing cervical, thoracic, lumbar, and sacral segments.",
+  "alt_text": "Anatomical illustration of the human vertebral column.",
+  "clinical_relevance": "Identifies thoracolumbar spinal segments affected by paraspinal muscle strain and ligamentous sprain during spaceflight (CLIFF-052, p.1, p.5).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 818,
+  "height": 781,
+  "size_bytes": 222271,
+  "sha256": "c6582ed11a4b72068b5a8b59750afddd86439b7cf80851f103ce791fc0496cc7",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/8/82/715_Vertebral_Column.jpg",
+  "retrieved_at_utc": "2026-11-14T06:17:13.830403+00:00",
+  "asset_path": "c6582ed11a4b72068b5a8b59750afddd86439b7cf80851f103ce791fc0496cc7.jpg",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "ANATOMY",
+  "topic_region": "Spine / Thoracolumbar Vertebral Column"
+}

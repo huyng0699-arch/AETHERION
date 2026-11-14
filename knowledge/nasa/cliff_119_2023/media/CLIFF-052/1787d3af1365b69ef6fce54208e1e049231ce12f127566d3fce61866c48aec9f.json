@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-052",
+  "title": "Sagittal T2-Weighted Lumbar Spine MRI",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/Lumbar_MRI_t2-tse-rst-sagittal_10.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Lumbar_MRI_t2-tse-rst-sagittal_10.jpg",
+  "license": "CC0",
+  "author": "Stillwaterising",
+  "caption": "Midline sagittal T2-weighted magnetic resonance image of the lumbar spine demonstrating vertebral bodies, intervertebral discs, and spinal canal.",
+  "alt_text": "Sagittal T2-weighted MRI scan of a human lumbar spine.",
+  "clinical_relevance": "Illustrates diagnostic neuroimaging used to exclude structural disc or spinal canal pathology in persistent worst-case back pain (CLIFF-052, p.5-6).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 799,
+  "height": 937,
+  "size_bytes": 290619,
+  "sha256": "1787d3af1365b69ef6fce54208e1e049231ce12f127566d3fce61866c48aec9f",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/Lumbar_MRI_t2-tse-rst-sagittal_10.jpg",
+  "retrieved_at_utc": "2026-11-14T06:17:14.215659+00:00",
+  "asset_path": "1787d3af1365b69ef6fce54208e1e049231ce12f127566d3fce61866c48aec9f.jpg",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "RADIOLOGY",
+  "topic_region": "Lower Back / Lumbar Spine MRI"
+}

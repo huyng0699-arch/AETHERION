@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-052",
+  "slot": 52,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/sprain-strain-back-cliff-2023.pdf?emrc=2c3786",
+  "http_status": 200,
+  "pdf_bytes": 318015,
+  "pdf_sha256": "6cfee682e58768b07f22e3c641790ed64a1310b0f356a5b94c4f0c4a36ef2520",
+  "pdf_pages": 13,
+  "sections_count": 13,
+  "tables_count": 3,
+  "references_count": 11,
+  "media_count": 3,
+  "media_sha256s": [
+    "1787d3af1365b69ef6fce54208e1e049231ce12f127566d3fce61866c48aec9f",
+    "20376dd1539a4e3c7ba323fdde4f5a353280607dbd40e62e8d16ed00c5472abb",
+    "c6582ed11a4b72068b5a8b59750afddd86439b7cf80851f103ce791fc0496cc7"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC0 / CC-BY-3.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}
