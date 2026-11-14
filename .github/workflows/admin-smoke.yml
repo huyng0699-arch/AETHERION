@@ -1,0 +1,25 @@
+name: Server Admin focused smoke
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/server/src/aetherion_server/admin_*.py"
+      - "apps/server/src/aetherion_server/main.py"
+      - "apps/server/pyproject.toml"
+      - "tests/test_server_admin_integration.py"
+      - ".github/workflows/admin-smoke.yml"
+  workflow_dispatch:
+
+jobs:
+  admin-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install minimal HTTP test dependencies
+        run: python -m pip install -e ./apps/server httpx
+      - name: Verify admin auth, settings and SQLite snapshot
+        run: python -m unittest tests/test_server_admin_integration.py -v
