@@ -140,7 +140,7 @@
           },
           "measures": {
             "heart_rate": {
-              "value": "57",
+              "value": 57,
               "unit": "beats/min",
               "range": "42–84",
               "sample_count": 408,
@@ -148,7 +148,7 @@
               "missing": null
             },
             "respiration_rate": {
-              "value": "15",
+              "value": 15,
               "unit": "breaths/min",
               "range": "5–32",
               "sample_count": 354,
@@ -156,7 +156,7 @@
               "missing": null
             },
             "body_temperature": {
-              "value": "99.3",
+              "value": 99.3,
               "unit": "°F",
               "range": "98.3–101.5",
               "sample_count": 128,
@@ -173,7 +173,7 @@
           },
           "measures": {
             "heart_rate": {
-              "value": "62",
+              "value": 62,
               "unit": "beats/min",
               "range": "50–84",
               "sample_count": 92,
@@ -181,7 +181,7 @@
               "missing": null
             },
             "respiration_rate": {
-              "value": "15",
+              "value": 15,
               "unit": "breaths/min",
               "range": "6–26",
               "sample_count": 75,
@@ -189,7 +189,7 @@
               "missing": null
             },
             "body_temperature": {
-              "value": "97.8",
+              "value": 97.8,
               "unit": "°F",
               "range": "96.8–98.2",
               "sample_count": 57,
@@ -206,7 +206,7 @@
           },
           "measures": {
             "heart_rate": {
-              "value": "87",
+              "value": 87,
               "unit": "beats/min",
               "range": "82–96",
               "sample_count": 7,
@@ -214,7 +214,7 @@
               "missing": null
             },
             "respiration_rate": {
-              "value": "16",
+              "value": 16,
               "unit": "breaths/min",
               "range": "10–20",
               "sample_count": 5,
@@ -222,7 +222,7 @@
               "missing": null
             },
             "body_temperature": {
-              "value": "98",
+              "value": 98,
               "unit": "°F",
               "range": "98",
               "sample_count": 4,
@@ -239,7 +239,7 @@
           },
           "measures": {
             "heart_rate": {
-              "value": "70",
+              "value": 70,
               "unit": "beats/min",
               "range": "60–94",
               "sample_count": 94,
@@ -255,7 +255,7 @@
               "missing": "not_obtained"
             },
             "body_temperature": {
-              "value": "99.9",
+              "value": 99.9,
               "unit": "°F",
               "range": "98–100.6",
               "sample_count": 60,
@@ -272,7 +272,7 @@
           },
           "measures": {
             "heart_rate": {
-              "value": "84",
+              "value": 84,
               "unit": "beats/min",
               "range": "72–104",
               "sample_count": 115,
@@ -288,7 +288,7 @@
               "missing": "not_obtained"
             },
             "body_temperature": {
-              "value": "100.4",
+              "value": 100.4,
               "unit": "°F",
               "range": "100.2–100.5",
               "sample_count": 15,
