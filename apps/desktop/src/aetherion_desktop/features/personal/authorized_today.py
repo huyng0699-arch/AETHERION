@@ -9,30 +9,17 @@ from __future__ import annotations
 import json
 
 from PySide6.QtCore import QUrl
-from PySide6.QtNetwork import QNetworkRequest
+from PySide6.QtNetwork import QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import (
     QHBoxLayout, QLabel, QPushButton, QTableWidget,
     QTableWidgetItem, QVBoxLayout, QWidget,
 )
 
+from .identity import checked_personal_handoff
 from .today_dashboard import (
     build_personal_today_snapshot,
     personal_observations_url,
 )
-
-
-def checked_personal_handoff(subject_id: str, access_token: str) -> tuple[str, str]:
-    """Validate the client handoff before network access; not authorization."""
-    if not isinstance(subject_id, str):
-        raise ValueError("A subject ID must be explicitly supplied")
-    cleaned = subject_id.strip()
-    # Apply the existing canonical URL validation, including control characters.
-    personal_observations_url("http://127.0.0.1", cleaned)
-    if not isinstance(access_token, str) or not access_token.strip():
-        raise ValueError("An authenticated local session is required")
-    if "\r" in access_token or "\n" in access_token:
-        raise ValueError("Invalid session token")
-    return cleaned, access_token
 
 
 class AuthorizedPersonalTodayPage(QWidget):
@@ -116,7 +103,7 @@ class AuthorizedPersonalTodayPage(QWidget):
 
     def _on_reply(self, reply, subject_id: str, seq: int) -> None:
         status_code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
-        network_error = reply.error() != reply.NetworkError.NoError
+        network_error = reply.error() != QNetworkReply.NetworkError.NoError
         raw = bytes(reply.readAll())
         reply.deleteLater()
         if seq != self._request_seq or subject_id != self._subject_id:
