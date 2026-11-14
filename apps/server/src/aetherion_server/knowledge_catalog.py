@@ -50,11 +50,19 @@ def symptom_english_aliases() -> dict[str, dict]:
         return {}
     try:
         source_bytes = SYMPTOMS.read_bytes()
-        blob_bytes = b"blob " + str(len(source_bytes)).encode("ascii") + bytes((0,)) + source_bytes
-        source_sha = hashlib.sha1(blob_bytes).hexdigest()
+        # Windows Git may check text files out as CRLF. Compare the raw blob
+        # and its Git-normalized LF variant; never modify either local file.
+        def git_blob_sha(content: bytes) -> str:
+            blob = b"blob " + str(len(content)).encode("ascii") + bytes((0,)) + content
+            return hashlib.sha1(blob).hexdigest()
+
+        valid_source_hashes = {
+            git_blob_sha(source_bytes),
+            git_blob_sha(source_bytes.replace(bytes((13, 10)), bytes((10,)))),
+        }
         raw = json.loads(SYMPTOM_EN_ALIASES.read_text(encoding="utf-8"))
         if (not isinstance(raw, dict) or raw.get("schema_version") != "1.0.0"
-                or raw.get("source_blob_sha") != source_sha
+                or raw.get("source_blob_sha") not in valid_source_hashes
                 or raw.get("source_language") != "vi"
                 or raw.get("target_language") != "en"
                 or raw.get("translation_status") != "UNREVIEWED_TERMINOLOGY"
