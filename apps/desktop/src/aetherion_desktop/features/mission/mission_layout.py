@@ -80,6 +80,7 @@ def install_mission_layout(page, api_url: str) -> None:
         name.setWordWrap(True)
         box.addWidget(name)
         value = QLabel(initial)
+        value.setTextFormat(Qt.TextFormat.PlainText)
         value.setObjectName("heading")
         value.setWordWrap(True)
         value.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
@@ -130,6 +131,7 @@ def install_mission_layout(page, api_url: str) -> None:
     auth_layout.addLayout(auth_grid)
 
     page.status = QLabel("CHƯA XÁC THỰC  ·  Không suy ra trạng thái sức khỏe")
+    page.status.setTextFormat(Qt.TextFormat.PlainText)
     page.status.setObjectName("pageHint")
     page.status.setWordWrap(True)
     page.status.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
