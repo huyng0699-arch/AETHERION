@@ -61,10 +61,19 @@ def translate_existing(text: str, locale: str) -> str:
 
 
 def translate_shell_widgets(root: object, locale: str) -> None:
-    """Update ONLY caller-selected UI containers, never medical document content."""
-    from PySide6.QtGui import QAction
-    from PySide6.QtWidgets import QLabel, QPushButton, QToolButton
+    """Translate a caller-scoped UI subtree, not arbitrary NASA/clinical text.
 
+    Does not mutate values in data tables, source document text, medical
+    records, input values or event/API identifiers. Only presentation chrome
+    with catalog-backed literal translations is modified.
+    """
+    from PySide6.QtGui import QAction
+    from PySide6.QtWidgets import (
+        QComboBox, QLabel, QLineEdit, QPushButton, QTabWidget,
+        QTableWidget, QToolButton,
+    )
+
+    locale = normalize_locale(locale)
     for kind in (QLabel, QPushButton, QToolButton, QAction):
         for item in root.findChildren(kind):
             if item.text():
@@ -73,3 +82,24 @@ def translate_shell_widgets(root: object, locale: str) -> None:
                 item.setToolTip(translate_existing(item.toolTip(), locale))
             if hasattr(item, "accessibleName") and item.accessibleName():
                 item.setAccessibleName(translate_existing(item.accessibleName(), locale))
+    for input_widget in root.findChildren(QLineEdit):
+        original = input_widget.placeholderText()
+        if original:
+            input_widget.setPlaceholderText(translate_existing(original, locale))
+        if input_widget.accessibleName():
+            input_widget.setAccessibleName(translate_existing(input_widget.accessibleName(), locale))
+    for tabs in root.findChildren(QTabWidget):
+        for index in range(tabs.count()):
+            tabs.setTabText(index, translate_existing(tabs.tabText(index), locale))
+    for combo in root.findChildren(QComboBox):
+        for index in range(combo.count()):
+            combo.setItemText(index, translate_existing(combo.itemText(index), locale))
+        if combo.accessibleName():
+            combo.setAccessibleName(translate_existing(combo.accessibleName(), locale))
+    for table in root.findChildren(QTableWidget):
+        for index in range(table.columnCount()):
+            header = table.horizontalHeaderItem(index)
+            if header is not None:
+                header.setText(translate_existing(header.text(), locale))
+        if table.accessibleName():
+            table.setAccessibleName(translate_existing(table.accessibleName(), locale))
