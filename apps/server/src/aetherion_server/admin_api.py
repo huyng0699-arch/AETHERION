@@ -5,12 +5,24 @@ from pathlib import Path
 from typing import Callable, Literal
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict, SecretStr
+from .cloud_ai_runtime import (
+    cloud_public_status, clear_cloud_configuration, set_cloud_configuration,
+)
+from .assistant_chat import test_cloud_connection
 
 from .admin_control import (
     backup_sqlite, probe_local_ai, test_local_model, read_ai_settings, recent_admin_events,
     save_ai_settings, system_overview, list_observed_sources, list_admin_users,
 )
+
+
+class CloudSettingsIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    provider: Literal["gemini", "openai"]
+    model: str = Field(min_length=1, max_length=120)
+    api_key: SecretStr | None = None
+    enabled: bool = True
 
 
 class AISettingsIn(BaseModel):
@@ -42,7 +54,8 @@ def build_admin_router(
     @router.get("/ai/settings")
     def ai_settings(_admin: dict = Depends(require_admin)):
         return {"settings": read_ai_settings(database_path()),
-                "cloud_provider": "NOT_IMPLEMENTED", "secrets_stored": False}
+                "cloud_provider": cloud_public_status(),
+                "secrets_stored": False}
 
     @router.put("/ai/settings")
     def update_ai_settings(payload: AISettingsIn, admin: dict = Depends(require_admin)):
@@ -51,6 +64,32 @@ def build_admin_router(
         except ValueError as exc:
             raise HTTPException(status_code=422, detail=str(exc)) from exc
         return {"settings": saved}
+
+    @router.get("/ai/cloud/settings")
+    def get_cloud_settings(_admin: dict = Depends(require_admin)):
+        # The key is NEVER returned by GET, logs or SQLite.
+        return cloud_public_status()
+
+    @router.put("/ai/cloud/settings")
+    def update_cloud_settings(payload: CloudSettingsIn, _admin: dict = Depends(require_admin)):
+        try:
+            return set_cloud_configuration(
+                provider=payload.provider,
+                model=payload.model,
+                api_key=payload.api_key.get_secret_value() if payload.api_key else None,
+                enabled=payload.enabled,
+            )
+        except ValueError as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+    @router.delete("/ai/cloud/settings")
+    def delete_cloud_settings(_admin: dict = Depends(require_admin)):
+        return clear_cloud_configuration()
+
+    @router.post("/ai/cloud/test")
+    def test_cloud_settings(_admin: dict = Depends(require_admin)):
+        # Only a safe fixed handshake is sent; not patient or user messages.
+        return test_cloud_connection(database_path())
 
     @router.get("/ai/local/models")
     def local_models(_admin: dict = Depends(require_admin)):
