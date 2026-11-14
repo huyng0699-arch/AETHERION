@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-069",
+  "slot": 69,
+  "quest_id": "Q-0369",
+  "checked_at_utc": "2026-11-14T06:27:28.002847+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/epistaxis-cliff-2023.pdf?emrc=dd4f9a",
+  "http_status": 200,
+  "pdf_sha256": "f5c5b6b1724b4cbe54888dc7210124152b9d9c51d805dc725544b3f53e947c32",
+  "pdf_bytes": 357306,
+  "pages_extracted": 15,
+  "sections_count": 15,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-069-IMG-01": "03d89bb16f18e92f772823714368f9ccaa1eccdb9403508708e4435cc3bdc5ed",
+    "CLIFF-069-IMG-02": "47cce7b72c2f5c32c8c61d6c3ba18056570ebbeec398870999f319b557eacc4e",
+    "CLIFF-069-IMG-03": "effab96856a86dd5ced8689048146fc54f5ecbe260413f44027af43371697bda"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
