@@ -4,6 +4,7 @@ import json
 import struct
 import tempfile
 import unittest
+import urllib.request
 import zlib
 from pathlib import Path
 
@@ -117,6 +118,58 @@ class ImageRightsTests(unittest.TestCase):
                         png(), url="http://example.org/unsafe"
                     ),
                 )
+
+
+    def test_reject_corrupted_and_truncated_png_bytes(self):
+        with self.assertRaises(rights.ImageRightsError):
+            rights.verify_image(png()[:24], "image/png")
+        with self.assertRaises(rights.ImageRightsError):
+            rights.verify_image(png()[:-12], "image/png")
+        corrupt = bytearray(png())
+        corrupt[30] ^= 1  # Corrupt IHDR CRC without changing dimensions.
+        with self.assertRaises(rights.ImageRightsError):
+            rights.verify_image(bytes(corrupt), "image/png")
+
+    def test_reject_private_network_hosts(self):
+        for unsafe in (
+            "https://127.0.0.1/image.png",
+            "https://192.168.1.20/image.png",
+            "https://[::1]/image.png",
+            "https://localhost/image.png",
+            "https://metadata.internal/secret",
+            "https://example.local/image.png",
+            "https://example.org:8443/image.png",
+            "https://2130706433/image.png",
+        ):
+            with self.subTest(url=unsafe):
+                meta = metadata()
+                meta["source_url"] = unsafe
+                with self.assertRaises(rights.ImageRightsError):
+                    rights.verify_metadata(meta)
+
+    def test_redirect_validator_rejects_local_target_before_connection(self):
+        handler = rights.SafeRedirectHandler()
+        req = urllib.request.Request("https://example.org/image.png")
+        with self.assertRaises(rights.ImageRightsError):
+            handler.redirect_request(
+                req, None, 302, "Found", {}, "https://127.0.0.1/private"
+            )
+
+    def test_existing_image_manifest_is_idempotent_and_immutable(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            opener = lambda req, timeout: FakeResponse(png())
+            first = rights.acquire(metadata(), folder, opener=opener)
+            manifest_path = folder / (first["sha256"] + ".json")
+            original = manifest_path.read_bytes()
+            again = rights.acquire(metadata(), folder, opener=opener)
+            self.assertEqual(again, first)
+            self.assertEqual(manifest_path.read_bytes(), original)
+            conflicting = metadata()
+            conflicting["license"] = "CC BY-SA 4.0"
+            with self.assertRaises(rights.ImageRightsError):
+                rights.acquire(conflicting, folder, opener=opener)
+            self.assertEqual(manifest_path.read_bytes(), original)
 
 
 if __name__ == "__main__":
