@@ -131,3 +131,22 @@ App launch → Mission Operations (first screen)
 ## Focused NASA source-link defect requiring owning-agent fix
 
 Source readback found `nasa_ma7.py` uses `QDesktopServices.openUrl(QUrl(...))` without an available `QUrl` import in `build_hackathon_demo()` or module globals. **Until the Q-0478/Q-0484 file owner imports `QUrl` with an ACK and SHA/CAS, original PDF/OSDR/official resource link clicks are a suspected `NameError` failure.** This is not proof of a Windows crash; no native click was attempted. See [Issue #8 comment 6876928259](https://github.com/huyng0699-arch/AETHERION/issues/8#issuecomment-6876928259). Q-0485 must not edit this multiply-owned source file without narrow authorization.
+
+## Latest Open MCT visual correction — reviewed Qt offscreen (2026-11-15 local)
+
+**Branch:** agent/q0485-openmct-visual-20261115 · **Draft PR:** #11 · **source files:** main.py, mission_ops_home.py, native_workspaces.py, scripts/render_q0485_ui.py. These changes are on the draft branch, not yet on main.
+
+**Reference used:** NASA Open MCT User Guide pp. 12–13. AETHERION's first screen now presents the same five interaction regions: top Status Area, left Browse/Object Tree, central Workspace/View Area, right Inspect/Inspection Pane, and bottom Time Conductor. This follows the published information architecture without copying NASA branding.
+
+| Screen | Branch status | Offscreen observation |
+| --- | --- | --- |
+| Mission Operations Home — 1040×650 | CHANGED | Compact status/actions; Demo CTA visible; Browse tree, central health/source workspace, wrapped Inspect properties, bottom UTC controls fit. Some long tree labels still ellipsize. |
+| Monitoring — 1040×650 | CHANGED | Home conductor hidden; existing Monitoring conductor visible in the shell bottom slot; empty/denied state readable and central content scrolls without covering controls. |
+| SIMULATED briefing and patient flow | CHANGED | Clicking Demo opens source/label briefing; explicit Start loads the synthetic patient page. |
+| NASA MA-7 archive | CHANGED | Separate archive entry and NASA source table remain distinct from SIMULATED data. |
+
+**Visual evidence:** eight Qt offscreen captures were produced in C:\Users\Admin\Documents\Codex\q0485-preview-20261115\artifacts\q0485-ui-preview\; the Home and Monitoring minimum-size PNGs were inspected by the implementer and an independent reviewer. This evidence is not a Windows desktop capture. After the capture, the first-screen button was shortened from DEMO FOR HACKATHON to DEMO; the layout is unchanged, but the exact final label has not been recaptured.
+
+**Behavior and limits:** a previous integrated offscreen run exercised Home 1600×900 / 1040×650, Monitoring, Demo → briefing → Start → patient view, NASA source table/archive, and English Home. The preview asserted readiness of the patient page; it did not independently count/read back SQLite rows. No authenticated live Server clickthrough, shared UTC bounds synchronization, or native Windows screenshot is proven. GitHub Actions runs failed before any step executed (runner_id 0, no job steps), so those runs provide no code-test result.
+
+**Quest state on this branch:** Q-0485 RUNNING / review PENDING; Q-0477 RUNNING / review PENDING. Main remains unchanged until PR #11 is accepted. Pending: native Windows render, SQLite readback, shared UTC bounds API/owner ACK, NASA QUrl source-link fix, full route clickthrough and native review.
