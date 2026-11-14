@@ -98,5 +98,40 @@ class NarrativePrivacyTests(unittest.TestCase):
         self.assertNotIn("PRIVATE", str(leaked))
 
 
+    def test_private_mood_and_unknown_metrics_never_leave_crew_overview(self):
+        for metric in ("mood", "mood_score", "self_reported_mood",
+                       "psychological_stress", "diary", "mental_state", "future_sensitive_metric"):
+            with self.subTest(metric=metric):
+                exposed = privacy.strip_private_fields_for_crew_overview({
+                    "subject_id": "CREW-A", "metric": metric, "value": 2.0,
+                    "unit": "self-report", "note": "PRIVATE",
+                })
+                self.assertEqual(exposed, {})
+
+    def test_overview_refuses_text_private_markers_and_invalid_numbers(self):
+        for change in ({"value": "Private mood entry"}, {"value": True},
+                       {"value": float("nan")}, {"is_private": True},
+                       {"privacy": "private"}, {"visibility": "restricted"},
+                       {"source_id": "diary:private_checkin"}):
+            with self.subTest(change=change):
+                exposed = privacy.strip_private_fields_for_crew_overview({
+                    "subject_id": "CREW-A", "metric": "heart_rate", "value": 72,
+                    **change,
+                })
+                self.assertEqual(exposed, {})
+
+    def test_authorized_public_metric_still_preserves_provenance_without_notes(self):
+        projected = privacy.strip_private_fields_for_crew_overview({
+            "subject_id": "CREW-A", "metric": "heart_rate", "value": 72,
+            "source_id": "manual_entry", "scope": "CREW", "unit": "beats/min",
+            "quality": "UNVERIFIED", "observed_at": "2026-11-14T09:00:00Z",
+            "note": "PRIVATE", "mood_text": "PRIVATE",
+        })
+        self.assertEqual(projected["value"], 72)
+        self.assertEqual(projected["source_id"], "manual_entry")
+        self.assertNotIn("note", projected)
+        self.assertNotIn("mood_text", projected)
+
+
 if __name__ == "__main__":
     unittest.main()
