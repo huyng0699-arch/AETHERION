@@ -56,6 +56,17 @@ Owner override: the rejected five oversized Portal cards / horizontal-menu-only 
 
 ---
 
+## Owner Windows ZIP reconciliation — draft PR #10 (2026-11-14)
+
+**Source:** owner-uploaded private `AETHERION-main-win-changes-20261114.zip`, SHA-256 `aaefb8144958770e66701b01bf0871dbdf9f92700928c2e85432a59fb9a72951` (75 entries). This was **safely unpacked and compared** to current AETHERION files before selectively importing. **No wholesale source replacement, stale Quest status overwrite or release approval.**
+
+- **Pending code review:** [PR #10 — selective owner Windows fixes](https://github.com/huyng0699-arch/AETHERION/pull/10) on branch `import/windows-tested-fixes-20261114` (33 changed source/test/QA files at PR creation). Branch adds Windows-safe SQLite connection closing across stores/APIs, reader/medical search, ECG UTC/QUrl fixes, Qt palette/reader/atlas guards, safer /health timeout and PyInstaller descendant-window UIAutomation detection. Existing Mission Operations Q-0485, newer Quest metadata, separate Q-0486 PR #9 and current `docs/SCREEN_STATUS.md` were **not replaced**.
+- **Owner-reported QA in private ZIP:** real Windows 10/Python 3.13.14/PySide6/PyInstaller; EXE `AETHERION-Desktop.exe` built as onedir (15,066,021 bytes; SHA-256 `402426c0e9aa62926c32f841baa9d451bd0310e8af20182beb0884dfde02f632`), focused **64/64** Windows tests passed, native 16-route/screen and API checks; offline CliFF SQLite **118/119** records, 321 stored image rows tagged rights-approved, **CLIFF-119 unresolved**. These are **user-supplied historical Windows observations**, not retested on the PR branch or proof that all original NASA PDFs/licenses/clinical content passed review.
+- **Evidence limitation:** the archived Q-0430 Win32 `PrintWindow` screenshot has **a blank widget client area**; it cannot verify rendering. Fifteen separate Qt `QWidget.grab()` PNG images exist in the original ZIP but their binary bytes are **not uploaded to GitHub by this text connector**. The detailed provenance, test/build evidence and outstanding actions are documented **in PR #10 branch** at [`docs/qa/WINDOWS_OWNER_ZIP_RECONCILIATION_20261114.md`](https://github.com/huyng0699-arch/AETHERION/blob/import/windows-tested-fixes-20261114/docs/qa/WINDOWS_OWNER_ZIP_RECONCILIATION_20261114.md). Do not link the not-yet-uploaded PNGs as repository files.
+- **Next gate:** an independent reviewer resolves overlap with current Quest owners, runs focused Windows SQLite/Qt/ECG/EXE tests at a pinned merged SHA, attaches original photo/test evidence via a binary-capable upload, and then determines acceptance in each Quest. **PR #10 is DRAFT and not merged into main; `review: PENDING` is not `DONE`.** The main `QUEST_LOG.md` remains a short navigation page, not a parallel task ledger.
+
+---
+
 ## Engineering and source-of-truth references
 
 - [AGENTS.md](AGENTS.md): active owner overrides, scoped Quest leases, review rules. **START ≠ COMPONENT READY ≠ DONE**. Work only in `huyng0699-arch/AETHERION`, no branch or import from older project repositories.
