@@ -103,9 +103,13 @@ def _pick_with_ai(names: list[str], answers: dict[str, str], choices: list[dict]
             raw = result.read(32768)
         response = json.loads(raw)
         message = (response.get("message") or {}).get("content", "") if provider == "ollama" else response["choices"][0]["message"]["content"]
+        if not isinstance(message, str) or len(message) > 1024:
+            return None, "MODEL_RESPONSE_TOO_LARGE"
         decision = json.loads(message)
+        if not isinstance(decision, dict):
+            return None, "INVALID_MODEL_SELECTION"
         ident = decision.get("next_question_id")
-        if ident not in question_ids:
+        if not isinstance(ident, str) or ident not in question_ids:
             return None, "INVALID_MODEL_SELECTION"
         return ident, "MODEL_SELECTED"
     except (OSError, ValueError, KeyError, IndexError, TypeError, urllib.error.URLError):
@@ -117,7 +121,8 @@ def next_question(symptom_ids: list[str], answers: dict[str, str], *,
     names, routes = _recognized(symptom_ids)
     if not names:
         return {"state": "UNKNOWN_SYMPTOM", "recognized": [], "next_question": None,
-                "model_status": "NOT_CALLED", "warning": "Select a recognized symptom first."}
+                "model_status": "NOT_CALLED", "cloud_used": False,
+                "warning": "Select a recognized symptom first."}
     accepted = {str(k): str(v).upper() for k, v in answers.items() if k in BY_ID and
                 isinstance(v, str) and str(v).upper() in BY_ID[k]["answers"]}
     candidates = [q for q in QUESTIONS if q["id"] not in accepted and
@@ -131,6 +136,10 @@ def next_question(symptom_ids: list[str], answers: dict[str, str], *,
         selected, model_state = _pick_with_ai(names, accepted, candidates, allow_cloud)
         if selected:
             chosen = BY_ID[selected]
+    status_info = ai_status()
+    cloud_used = bool(
+        use_ai and allow_cloud and status_info["provider"] == "openai" and model_state == "MODEL_SELECTED"
+    )
     emergency_yes = [k for k in CRITICAL if accepted.get(k) == "YES"]
     state = "WITNESSED_RED_FLAG_REPORTED" if emergency_yes else (
         "MORE_INFORMATION_REQUIRED" if chosen else "INTAKE_COMPLETED_UNVALIDATED"
@@ -144,7 +153,8 @@ def next_question(symptom_ids: list[str], answers: dict[str, str], *,
             {key: chosen[key] for key in ("id", "text", "answers")} if chosen else None
         ),
         "model_status": model_state,
-        "model_provider": ai_status()["provider"] if use_ai else "disabled",
+        "model_provider": status_info["provider"] if use_ai else "disabled",
+        "cloud_used": cloud_used,
         "red_flags_reported": emergency_yes,
         "recommendation": (
             "A serious symptom has been explicitly reported. Seek immediate qualified human assistance."

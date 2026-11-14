@@ -1,20 +1,41 @@
 """AETHERION searchable scientific library and symptom interview API (no second server)."""
 from __future__ import annotations
 
+import re
+
 from fastapi import APIRouter, HTTPException, Query
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from . import knowledge_catalog
 from .symptom_interview import ai_status, next_question
 
 router = APIRouter(prefix="/api/v1/knowledge", tags=["Knowledge and Symptom Intake"])
+_ARTICLE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
 
 
 class IntakeRequest(BaseModel):
     symptoms: list[str] = Field(min_length=1, max_length=20)
-    answers: dict[str, str] = Field(default_factory=dict)
+    answers: dict[str, str] = Field(default_factory=dict, max_length=50)
     use_ai: bool = False
     allow_cloud: bool = False
+
+    @field_validator("symptoms")
+    @classmethod
+    def _bound_symptoms(cls, values: list[str]) -> list[str]:
+        for item in values:
+            if len(item) > 120:
+                raise ValueError("Symptom identifier exceeds 120 characters")
+        return values
+
+    @field_validator("answers")
+    @classmethod
+    def _bound_answers(cls, values: dict[str, str]) -> dict[str, str]:
+        if len(values) > 50:
+            raise ValueError("Too many answer entries")
+        for key, val in values.items():
+            if len(key) > 64 or len(val) > 64:
+                raise ValueError("Answer key/value exceeds 64 characters")
+        return values
 
 
 @router.get("/status")
@@ -31,6 +52,8 @@ def search_articles(query: str = Query("", max_length=200),
 
 @router.get("/articles/{article_id}")
 def get_article(article_id: str):
+    if not _ARTICLE_ID_RE.fullmatch(article_id):
+        raise HTTPException(404, "Article unavailable or invalid ID")
     result = knowledge_catalog.article(article_id)
     if result is None:
         raise HTTPException(404, "Article unavailable or invalid ID")
