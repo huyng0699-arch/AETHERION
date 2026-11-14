@@ -42,22 +42,40 @@ def tr(locale: str, key: str, /, **placeholders: object) -> str:
 
 
 @lru_cache(maxsize=1)
-def _source_key_index() -> dict[str, str]:
-    """Temporary bridge for legacy shell literals; future pages use semantic IDs."""
+def _source_key_index() -> dict[str, str | None]:
+    """Legacy UI text -> semantic key, only when the translation is unambiguous.
+
+    Different screens can legitimately use the same visible text for different
+    meanings. Never choose a random last-write-wins translation from a catalog:
+    a collision could turn an outcome such as 'Better' into a care instruction.
+    Ambiguous labels must be translated with explicit semantic keys by the
+    owning screen. A None entry means 'leave this text untouched'.
+    """
     vi, en = catalog("vi"), catalog("en")
     if vi.keys() != en.keys():
         raise ValueError("The Vietnamese and English locale keys must match")
-    index: dict[str, str] = {}
+    index: dict[str, str | None] = {}
     for key in vi:
-        index[vi[key]] = key
-        index[en[key]] = key
+        for literal in (vi[key], en[key]):
+            if literal not in index:
+                index[literal] = key
+            else:
+                previous = index[literal]
+                if previous is not None and (
+                    vi[previous] != vi[key] or en[previous] != en[key]
+                ):
+                    index[literal] = None
     return index
 
 
 def translate_existing(text: str, locale: str) -> str:
-    """Translate exact known legacy labels, never arbitrary clinical content."""
+    """Translate a unique legacy UI label; ambiguous labels require semantic IDs.
+
+    This function must not be applied to medical facts, patient input, imported
+    NASA source text, citations, identifiers or source attributions.
+    """
     key = _source_key_index().get(text)
-    return tr(locale, key) if key else text
+    return tr(locale, key) if key is not None else text
 
 
 def translate_shell_widgets(root: object, locale: str) -> None:
