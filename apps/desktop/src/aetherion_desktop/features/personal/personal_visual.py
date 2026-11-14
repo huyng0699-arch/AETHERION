@@ -272,7 +272,7 @@ def update_personal_tiles(page, cards: tuple | list) -> None:
         value.setText(card.reading)
         provenance.setText(
             f"{card.metric}  ·  {card.scope}  ·  {card.quality} / {card.verification_state}\n"
-            tr(page.ui_language, "personal.metricSource", source=card.source_id,
+            + tr(page.ui_language, "personal.metricSource", source=card.source_id,
                observed=card.observed_at)
         )
         button.setEnabled(True)
