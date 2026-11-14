@@ -473,6 +473,11 @@ def create_app(
     application.include_router(build_care_router(get_db_path, require_session))
     from .admin_api import build_admin_router
     application.include_router(build_admin_router(get_db_path, require_session))
+    # Two independent feature routers; same canonical DB, bearer session and ACL.
+    from .ecg.http_api import build_ecg_router
+    application.include_router(build_ecg_router(get_db_path, require_session))
+    from .assistant_chat import build_assistant_router
+    application.include_router(build_assistant_router(get_db_path, require_session))
     return application
 
 
