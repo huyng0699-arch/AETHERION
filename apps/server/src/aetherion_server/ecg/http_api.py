@@ -10,6 +10,7 @@ import hashlib
 import math
 from pathlib import Path
 import sqlite3
+from aetherion_server.sqlite_compat import connect_closing
 import struct
 import uuid
 import zlib
@@ -71,7 +72,7 @@ class ECGUpload(BaseModel):
 
 
 def _connect(db: Path | str):
-    conn = sqlite3.connect(db, timeout=10)
+    conn = connect_closing(db, timeout=10)
     conn.row_factory = sqlite3.Row
     conn.execute('PRAGMA foreign_keys = ON')
     return conn
