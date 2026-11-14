@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-089",
+  "slot": 89,
+  "quest_id": "Q-0389",
+  "checked_at_utc": "2026-11-14T06:33:09.768508+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/toxic-dermal-exposure-cliff-2023.pdf?emrc=52b9bc",
+  "http_status": 200,
+  "pdf_sha256": "19c48ec80ba063c7f5f024340ea8f682d29bd98616eb98ed6cb8b4ac1600cec3",
+  "pdf_bytes": 318994,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-089-IMG-01": "9857280031a998a5645482eeaa5a6fd060812b6ab87ceebb5a8783045c966a09",
+    "CLIFF-089-IMG-02": "6b10870a5169e2833b27d9b425fa7c9aa759d524c5c5d64c0ef47df1990a72c7",
+    "CLIFF-089-IMG-03": "63637717b197b13f58c6f3987ea7dd593d19fd5ac954ef2f7f07860748b2ef2e"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
