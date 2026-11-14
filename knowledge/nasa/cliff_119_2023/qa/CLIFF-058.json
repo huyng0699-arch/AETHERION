@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-058",
+  "slot": 58,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/neuropathy-central-impingement-related-cliff-2023.pdf?emrc=e6506a",
+  "http_status": 200,
+  "pdf_bytes": 297536,
+  "pdf_sha256": "c910f9ea5a5a383e65989d98ab026f4b77a65172204224f60bf2a3bb960950e9",
+  "pdf_pages": 12,
+  "sections_count": 12,
+  "tables_count": 3,
+  "references_count": 6,
+  "media_count": 3,
+  "media_sha256s": [
+    "4b00e4d3902d618e8a3f2e8dfd53a91591e315d2c65b0d43b8b4bc3d85b580aa",
+    "7170769483a61d537d382bc182ede014ebfc3409871839e6941f7dd39f378c2d",
+    "b21ab659e55fbf96a2db5966fb3f288e080e70eb9192134315e0695211995654"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-3.0 / CC-BY-4.0 / CC-BY-SA-3.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}

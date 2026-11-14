@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-058",
+  "title": "Cervical Spine MRI Showing Nerve/Canal Impingement",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Neck_MRI_133023.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Neck_MRI_133023.png",
+  "license": "CC-BY-SA-3.0",
+  "author": "Nevit Dilmen (talk)",
+  "caption": "Sagittal T2-weighted MRI of the cervical spine demonstrating intervertebral disc protrusion and spinal canal narrowing.",
+  "alt_text": "Sagittal MRI scan of the cervical spine showing disc impingement.",
+  "clinical_relevance": "Illustrates neuroimaging used to diagnose structural spinal cord or nerve root impingement in worst-case radiculopathy/myelopathy (CLIFF-058, p.5-6).",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 508,
+  "height": 505,
+  "size_bytes": 294982,
+  "sha256": "7170769483a61d537d382bc182ede014ebfc3409871839e6941f7dd39f378c2d",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Neck_MRI_133023.png",
+  "retrieved_at_utc": "2026-11-14T06:21:02.230264+00:00",
+  "asset_path": "7170769483a61d537d382bc182ede014ebfc3409871839e6941f7dd39f378c2d.png",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "RADIOLOGY",
+  "topic_region": "Cervical Spine / Spinal Canal MRI"
+}
