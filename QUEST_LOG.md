@@ -4,6 +4,11 @@
 
 **Recovery 14 November 2026:** This navigation page was shortened to remove contradictory, growing historic snapshots. **The previous 45 KB version was archived without content loss** at [QUEST_LOG history](docs/qa/QUEST_LOG_HISTORY_20261114_BEFORE_RECOVERY.md). Past Windows test reports remain available there with their original caveats and dates. No original Quest status or evidence was erased or set to DONE by this change.
 
+## Reconciled cross-branch coordination pointer (2026-11-14T18:50Z)
+
+- **Super Quest & Pre-/Post-Sync Ledger:** **[Q-0488](quests/v1/Q-0488.md)** and **[docs/qa/unsynced_20261114/README.md](docs/qa/unsynced_20261114/README.md)** archive the pre-sync baseline measurements (`287 PASS / 14 FAIL`, `quest_board check` failing on missing `Q-0486`), reconcile **PR #9** ([Q-0486](quests/v1/Q-0486.md) released to `BLOCKED / PENDING`), **PR #10/#11** (`Q-0485` Open MCT shell + `UtcSamplePlot.set_points` visual switch fix), Windows QA fixes from `up.zip` ([WINDOWS_COMPLETION_REPORT_20261114.md](docs/qa/WINDOWS_COMPLETION_REPORT_20261114.md)), and **`98e92f5`** (`LoginPage.set_visuals`, `login_page.demo_requested -> show_hackathon_demo`, server wildcard guard, Mobile `export:android` + `getObservations(..., cursor)` fix). All reconciled Quests stay `review: PENDING` for independent review; see [SCREEN_STATUS](docs/SCREEN_STATUS.md).
+- **Board & active upstream leases respected:** **488 contiguous specs (`Q-0001..Q-0488`)** pass strict `quest_board.py check`. Do **not** overwrite active upstream leases on [Q-0261](quests/v1/Q-0261.md) (`19:11Z`) or [Q-0487](quests/v1/Q-0487.md) (`19:08Z`). `apps/watch/` remains **`PLANNED ONLY`** (`README.md` only); CliFF remains honestly **`118/119 PARTIAL`** (`CLIFF-119` missing upstream).
+
 ## Coordinator status & contributor dispatch (2026-11-14T15:02Z)
 
 Full verified audit across Server, Desktop, Mobile, Watch, CliFF 119, 3D Atlas, failing tests, and 9 contributor role tracks: **[COORDINATOR_AUDIT_AND_DISPATCH_20261114.md](docs/qa/COORDINATOR_AUDIT_AND_DISPATCH_20261114.md)** (verified baseline `de4afef`, rebased on `c242a18`).

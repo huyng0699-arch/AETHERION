@@ -89,6 +89,13 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                 self.assertIs(win.pages.currentWidget(), win.operations_home_page)
                 self.assertIs(
                     win.operations_home_page.workspace_stack.currentWidget(),
+                    win.hackathon_demo_page,
+                )
+
+                win.operations_home_page.demo.click()
+                app.processEvents()
+                self.assertIs(
+                    win.operations_home_page.workspace_stack.currentWidget(),
                     win.simulated_briefing_page,
                 )
 

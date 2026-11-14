@@ -156,8 +156,8 @@ class AetherionWindow(QMainWindow):
         self.login_page = LoginPage(self, network=self.network, api_url=self.api_url, locale=self.ui_language)
         self.login_page.set_visuals(self.preferences.theme_name, self.preferences.mode, self.preferences.high_contrast, self.preferences.accent_override)
         self.login_page.authenticated.connect(self._login_complete)
-        # Login Demo is the fictional crew walkthrough; genuine NASA archive
-        # remains a separate, source-labelled route inside the briefing.
+        # Login Demo opens the genuine NASA briefing without requiring credentials;
+        # the simulated crew walkthrough lives under Mission Operations Demo.
         self.login_page.demo_requested.connect(self.show_hackathon_demo)
         self.pages.addWidget(self.login_page)
         # Q-0485: first native view is mission operations, not the five-card Portal.

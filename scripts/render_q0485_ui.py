@@ -100,35 +100,38 @@ def main(argv: list[str] | None = None) -> int:
         raise RuntimeError("Cold start did not display LoginPage first")
     capture(window, output, "login-vi", 1360, 850)
 
-    # 2. Prominent Demo CTA on LoginPage enters SIMULATED briefing inside the persistent shell.
+    # 2. Prominent Demo CTA on LoginPage enters genuine NASA briefing inside the persistent shell (98e92f5).
     QTest.mouseClick(window.login_page.demo_button, Qt.MouseButton.LeftButton)
-    QTest.qWait(120)
+    QTest.qWait(150)
     if (
         window.pages.currentWidget() is not window.operations_home_page
-        or window.operations_home_page.workspace_stack.currentWidget() is not window.simulated_briefing_page
+        or window.operations_home_page.workspace_stack.currentWidget() is not window.hackathon_demo_page
+        or window.hackathon_demo_page.pages.currentWidget() is not window.hackathon_demo_page.briefing
     ):
-        raise RuntimeError("Login Demo CTA did not open the SIMULATED briefing")
+        raise RuntimeError("Login Demo CTA did not open the NASA briefing")
+    if window.operations_home_page.navigator.currentItem().data(0, Qt.ItemDataRole.UserRole) != "archive":
+        raise RuntimeError("Browse selection did not follow NASA MA-7")
+    capture(window, output, "nasa-ma7-archive-entry-vi", 1360, 850)
+
+    # 3. Direct Browse -> NASA MA-7 source table view.
+    window.operations_home_page._choose("archive")
+    capture(window, output, "nasa-ma7-source-table-vi", 1360, 850)
+
+    # 4. Operations Home Demo CTA -> SIMULATED briefing -> isolated Q-0484 demo SQLite fixture.
+    QTest.mouseClick(window.operations_home_page.demo, Qt.MouseButton.LeftButton)
+    QTest.qWait(120)
+    if window.operations_home_page.workspace_stack.currentWidget() is not window.simulated_briefing_page:
+        raise RuntimeError("Operations Demo CTA did not open the SIMULATED briefing")
     if window.operations_home_page.navigator.currentItem().data(0, Qt.ItemDataRole.UserRole) != "demo":
         raise RuntimeError("Browse selection did not follow the Demo briefing")
     capture(window, output, "simulated-briefing-vi", 1360, 850)
 
-    # 3. Explicit Start inside briefing waits for the isolated Q-0484 demo SQLite fixture.
     QTest.mouseClick(window.simulated_briefing_page.start, Qt.MouseButton.LeftButton)
     wait_until(
         lambda: window.synthetic_patient_page.ready,
         "the isolated SIMULATED database to load",
     )
     capture(window, output, "simulated-patient-experience-vi", 1360, 850)
-
-    # 4. Separate authentic NASA MA-7 table & archive module.
-    window.operations_home_page._choose("archive")
-    capture(window, output, "nasa-ma7-source-table-vi", 1360, 850)
-
-    window.show_hackathon_demo()
-    QTest.qWait(150)
-    if window.operations_home_page.navigator.currentItem().data(0, Qt.ItemDataRole.UserRole) != "archive":
-        raise RuntimeError("Browse selection did not follow NASA MA-7")
-    capture(window, output, "nasa-ma7-archive-entry-vi", 1360, 850)
 
     # 5. Authenticated shell overview (1600x900 & 1040x650) + Monitoring + theme switch regression check.
     window.access_token = "preview-ui-session"

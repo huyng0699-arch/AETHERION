@@ -121,10 +121,22 @@ class OfflineColdStartE2ETests(unittest.TestCase):
                         self.assertEqual(win._server_state, "online")
                         self.assertIs(win.pages.currentWidget(), win.login_page)
 
-                        # Public Demo button opens provenance briefing without credentials
+                        # Public Login Demo opens the NASA briefing without credentials
                         win.login_page.demo_button.click()
                         app.processEvents()
                         self.assertIs(win.pages.currentWidget(), win.operations_home_page)
+                        self.assertIs(
+                            win.operations_home_page.workspace_stack.currentWidget(),
+                            win.hackathon_demo_page,
+                        )
+                        self.assertIs(
+                            win.hackathon_demo_page.pages.currentWidget(),
+                            win.hackathon_demo_page.briefing,
+                        )
+
+                        # Mission Operations Demo button opens the isolated SIMULATED briefing
+                        win.operations_home_page.demo.click()
+                        app.processEvents()
                         self.assertIs(
                             win.operations_home_page.workspace_stack.currentWidget(),
                             win.simulated_briefing_page,
