@@ -1,6 +1,6 @@
 # AETHERION — Quest control board
 
-**Scope:** 435 distinct, executable Quest specifications on `main`, numbered **Q-0001 through Q-0435**. Each task's live metadata is stored **only in its own `quests/v1/Q-XXXX.md`**. This root file is navigational and does not claim task completion.
+**Scope:** 436 distinct Quest specifications on `main`, **Q-0001 through Q-0436**; Q-0436 is an owner-directed design reconciliation and remains subject to independent review. Each task's live metadata is stored **only in its own `quests/v1/Q-XXXX.md`**. This root file is navigational and does not claim task completion.
 
 ## Chính sách triển khai mới nhất — ít test, làm trực tiếp (14/11/2026)
 
@@ -17,15 +17,15 @@ Trạng thái DONE vẫn phải phản ánh sản phẩm thực sự; giảm tes
 
 ## Current working contract — concurrent build, independent acceptance
 
-**Owner directive (14 Nov 2026):** `QUEUED` Quest may start **before its dependencies PASS**. Keep original `depends_on` and claim via exact file SHA with `execution_mode: PREPARE`. Implement direct code first, then focused evidence. A different agent reviews acceptance; missing dependencies prevent only **integration / final PASS**, not independent work. Do not weaken the concrete acceptance criteria in any of the 435 Quest records.
+**Owner directive (14 Nov 2026):** `QUEUED` Quest may start **before its dependencies PASS**. Keep original `depends_on` and claim via exact file SHA with `execution_mode: PREPARE`. Implement direct code first, then focused evidence. A different agent reviews acceptance; missing dependencies prevent only **integration / final PASS**, not independent work. Do not weaken the concrete acceptance criteria in any of the 436 Quest records.
 
 **Standing review Quest:** [REVIEW-0001](quests/review/REVIEW-0001.md) is separate from the 435 numbered implementation tasks. [GitHub Actions](.github/workflows/quest-review-15m.yml) is configured to refresh its pending-review audit **on a 15-minute cron** (GitHub scheduling is best-effort, not guaranteed exactly at the minute). The workflow checks structured evidence and publishes a report; it does not automatically perform a different AI agent's semantic code review. An independently invoked reviewer follows the standing Quest to verify changed code/deliverables and resolve PASS/REWORK. No automatic acceptance without evidence.
 
 **Useful distinction:** `status: RUNNING, execution_mode: PREPARE` allows coding; `implementation_state: COMPONENT_READY, review: PENDING` records code awaiting independent evaluation; `review: COMPONENT_APPROVED` is not final PASS; `status: DONE, review: APPROVED` is final after integration requirements are satisfied.
 
 ## Current canonical product
-- AETHERION is a **new product and name**, not ASTRA. Legacy material dated November 14, 2026 is reference-only.
-- The native Windows app has its **top menu above the application content**, opens straight to Mission Control, and talks to a separate local-first HTTP server. Mobile and Wearable are independent planned clients.
+- AETHERION is the new canonical product/repository, evolving the earlier product vision without copying the old repository or borrowing old PASS results. **Owner-corrected design:** [DESIGN V3](docs/DESIGN_2026_11_14.md).
+- **Updated target:** Native Windows app starts at the **five-card Portal**, keeps its menu horizontally above the content; Mission Control opens only on selection by an authorized user. Server Admin GUI manages local/cloud AI, devices, knowledge, LAN and optional Earth Telegram relay. Mobile/Watch are distinct clients. Implementation code may still be behind this new target.
 - Every data point is source-backed or explicitly UNKNOWN/UNVERIFIED; historical NASA records are never passed off as live astronaut vital signs.
 - The hackathon **ends on November 15, 2026 at 23:59 local time**; full P2/P3 development is not required for initial submission. Use the 2026 official Project tab to submit.
 
@@ -38,7 +38,7 @@ python scripts/quest_board.py running
 python scripts/quest_parallel_candidates.py --limit 40  # READY + QUEUED tasks
 ```
 
-The index pages below are initial listings; individual Quest status is authoritative. There are **435** tasks: 300 original tasks, 119 individual NASA CliFF source-ingestion Quests and 16 medical-library App View engineering Quests.
+The index pages below are initial listings; individual Quest status is authoritative. There are **436** tasks: 300 original tasks, 119 individual NASA CliFF source-ingestion Quests, 16 App View medical-library Quests and **Q-0436** (owner-approved design reconciliation, still reviewer-pending).
 
 | Stream | Quest range | Meaning |
 | --- | --- | --- |
@@ -81,6 +81,10 @@ For a short path to a credible NASA submission, prioritize:
 **Q-0001** (CI), **Q-0002** (actual Windows native boot), **Q-0016** (schema), **Q-0031** (observation provenance after schema), **Q-0047** (real observations endpoint), **Q-0061/0062** (Mission UI), **Q-0076/0077** (Personal UI), **Q-0091–0095** (Care), **Q-0106–0109** (real NASA sources), **Q-0241–0246** (tests), and **Q-0256–0265** (submission).
 
 These are **dependencies and priorities, not parallel agents already running**. Read the actual Quest links and claim according to `AGENTS.md`.
+
+## Owner design reconciliation Q-0436
+
+[Q-0436](quests/v1/Q-0436.md) updates the canonical product blueprint, menu/screens and Server AI/network requirements. **This is a documentation correction only**, not Windows UI implementation or independent PASS. Existing code Quest writers must follow the new Portal-first contract when integrating. Review by a different agent is mandatory.
 
 ## Design and science references
 

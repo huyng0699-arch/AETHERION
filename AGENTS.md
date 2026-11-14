@@ -1,6 +1,6 @@
 # AETHERION — Single agent instruction source
 
-**Product:** AETHERION, Team TRUY TINH, NASA Space Apps 2026. **Canonical new design:** [docs/DESIGN_2026_11_14.md](docs/DESIGN_2026_11_14.md). **Source of truth for live Quest status:** each `quests/v1/Q-XXXX.md` file. **`QUEST_LOG.md` is only the navigation/coordination guide**, not a competing mutable task ledger.
+**Product:** AETHERION, Team TRUY TINH, NASA Space Apps 2026. **Canonical owner-corrected design (SPEC V3):** [docs/DESIGN_2026_11_14.md](docs/DESIGN_2026_11_14.md). **Source of truth for live Quest status:** each `quests/v1/Q-XXXX.md` file. **`QUEST_LOG.md` is only the navigation/coordination guide**, not a competing mutable task ledger.
 
 ## Chỉ thị mới nhất của chủ dự án — lập trình trực tiếp, hạn chế test (14/11/2026)
 
@@ -31,6 +31,10 @@
 - **Independent reviewer must not be the implementer**, may not approve its own code or use a one-line status in place of observed evidence. Capture reviewer's distinct identity, UTC, reviewed commit and finding in the Quest. A reviewer can request changes without resetting other tasks.
 - **Standing reviewer Quest:** [quests/review/REVIEW-0001.md](quests/review/REVIEW-0001.md) defines periodic independent acceptance. The [GitHub Actions review workflow](.github/workflows/quest-review-15m.yml) schedules a mechanical review-queue refresh roughly every 15 minutes; this does **not** itself instantiate an AI reviewer. A separately invoked review agent must read and judge the queued code. Scheduled GitHub Actions may be delayed or fail if repository Actions cannot run.
 
+## Owner UX/architecture correction — Portal first
+
+The owner has superseded Mission-first startup: show a **Portal with five large entry choices** on Desktop/Mobile before health data. Persistent Windows **top horizontal menu**, no two permanent sidebars; Mobile bottom/top touch nav. GUI themes have deeply blended ambient moving backgrounds (galaxy, rain, water, orbit), changeable palette/font and reduced-motion. **Server Control** has Local AI model/runtime choice, Cloud API key paste/test/store, user/access, device/knowledge, LAN and optional **Telegram relay for Earth testing only**; future vessel uses onboard server. NASA original full documents, clinical AI knowledge, and human encyclopedia are three **separate** knowledge surfaces. See complete buttons, routes, fields, data states in `docs/DESIGN_2026_11_14.md`. These are new target requirements; current code must be integrated and independently accepted before marking a feature DONE.
+
 ## Mandatory startup (read narrowly)
 1. Read this file, then `QUEST_LOG.md`, and only the relevant sections of `docs/DESIGN_2026_11_14.md`.
 2. Run `python scripts/quest_parallel_candidates.py --limit 40` to select `READY` **and** `QUEUED` tasks for parallel `PREPARE` coding. Run `python scripts/quest_board.py check` only when checking task integrity; do not read all 435 task files into context.
@@ -43,7 +47,7 @@
 
 - Both `READY` and `QUEUED` may be claimed and coded in parallel. For a `QUEUED` task with unmet dependencies, claim as `RUNNING` with `execution_mode: PREPARE`, preserve `depends_on` and flag open interfaces; integrate and mark final `DONE` only when warranted. `PLANNED` long-term work stays inactive without authorization.
 - Priorities: `P0` must-have for NASA 2026 challenge; `P1` enhancement for judging; `P2` post-hackathon; `P3` Earth/Mars 2050 aspiration. P0 is a prioritized backlog, **not a guarantee all 67 tasks fit the hackathon**.
-- Historical ASTRA implementation, NASA datasets, CliFF archives and linked research are **references**, not permission to clone a second product or count past PASS as new AETHERION acceptance.
+- AETHERION alone is the source repository for new implementation. It evolves the earlier product vision, but historical ASTRA source/data are **not** inputs to copy or import, and past PASS never counts as AETHERION acceptance. Use current AETHERION sources and independently verified NASA/third-party originals.
 - **No competing entrypoints:** one HTTP server, one authoritative observation store, one independent native Windows desktop application, future separately packaged mobile/watch clients. No website wrapped as the Windows app.
 - User-visible screens must contain working controls or explicitly label an unavailable feature, with no false 3D, live sensor or diagnosis claim.
 
@@ -57,7 +61,7 @@
 
 ## Engineering acceptance
 - **Acceptance remains mandatory:** verify each Quest's actual criterion. Use direct inspection for low-risk UI/content, focused smoke checks for API/data, and rigorous targeted verification for clinical safety, privacy, NASA source integrity, real 3D/device and Windows release. Broad regression belongs to QA Quests; code inspection alone never certifies a Windows EXE.
-- Qt desktop opens **directly** into a top-menu Mission Control dashboard; menu above app content. Genuine 3D requires depth-buffered mesh geometry, orbit, zoom, pan and triangle/object picking; otherwise call it 2D.
+- Qt desktop opens **directly into the five-card AETHERION PORTAL** with the top horizontal menu above app content. Mission Control is a secondary, explicitly selected authorized view. Do not auto-open biometrics, symptom intake or SOS. See `docs/DESIGN_2026_11_14.md`. Genuine 3D requires depth-buffered mesh geometry, orbit, zoom, pan and triangle/object picking; otherwise call it 2D.
 - One actual source/subject/time/unit/scope/quality trail per observation. Distinguish READY, NO_DATA, STALE, OFFLINE, DENIED, ERROR and UNVERIFIED. Missing sensor or user response does not mean unconsciousness. NASA research is not live human telemetry.
 - Required intended care flow: **GATHER → EVALUATE → ACT → RECHECK**, with persisted identity and human agency. Deterministic safety must continue when optional AI is disabled.
 - Do not use test fixtures or fake patient data as real, misstate CliFF 119 as 119 verified downloaded NASA originals, imply flight/clinical certification, or manufacture API/device integrations.

@@ -13,6 +13,10 @@ This is **an independent participant project**, not a NASA product, endorsement,
 
 Long-duration missions combine altered gravity, radiation, isolation, distance from Earth and constrained living environments. Crew members need to see what has been measured, understand changes over time, review trustworthy contextual knowledge, decide when to seek help and document follow-up. On Earth, people face related challenges: fragmented health data, unequal access to intelligible information and weak continuity between self-monitoring and professional care.
 
+## Updated AETHERION owner design
+
+**[Read the complete screen-by-screen AETHERION V3 design](docs/DESIGN_2026_11_14.md)**. The first native Windows and Mobile view is intended to be a **five-card Portal** (personal health, monitoring/ECG, AI, science, mission/journey), not direct Mission Control. Windows has a top horizontal menu and no dual permanent sidebars. A distinct Server Control GUI configures Local/Cloud AI (including admin-pasted API key), users, devices, NASA originals versus AI clinical knowledge versus human-readable encyclopedia, LAN and an optional Telegram *Earth test* relay. Animated ambient galaxy/planet/rain/water themes remain blended into the deepest background and can change fonts, colors and motion. This is an owner-directed **target design**; code may still implement earlier startup behavior and must be tested separately.
+
 ## The proposed approach: GATHER → EVALUATE → ACT → RECHECK
 
 1. **GATHER:** Collect health observations with explicit subject, source, timestamp, unit and quality.
@@ -47,7 +51,7 @@ The server is the single authority for observation data. Clients are separate ap
 | Mobile application, Wear OS, physical sensors, true 3D anatomy, local/cloud AI | Planned; **not implemented** |
 | Windows installer or packaged EXE | Planned; **not available yet** |
 
-**Do not use this prototype with real patient information.** The development API currently has no authentication or production-grade data protection. It binds to localhost by default. No invented sensor readings, fake live telemetry or unsupported health verdicts are displayed.
+**Do not use this prototype with real patient information.** The current code now includes some session/auth scaffolding, but production-grade authorization, encryption and privacy protections have not been independently accepted. It binds to localhost by default. No invented sensor readings, fake live telemetry or unsupported health verdicts are displayed.
 
 ## Install and launch on Windows
 
@@ -69,9 +73,9 @@ Then open **two PowerShell windows**, both inside the repository:
 .\scripts\start_desktop.ps1
 ```
 
-The local API runs at `http://127.0.0.1:8765`; interactive API documentation is at `http://127.0.0.1:8765/docs`. The desktop is a native Qt window, **not a browser wrapper**. The interface opens to its main dashboard.
+The local API runs at `http://127.0.0.1:8765`; interactive API documentation is at `http://127.0.0.1:8765/docs`. The desktop is a native Qt window, **not a browser wrapper**. **Current code still opens Mission Control**; the **new target** starts at the five-card Portal, as specified in [DESIGN V3](docs/DESIGN_2026_11_14.md).
 
-See **[full Windows installation and troubleshooting](docs/INSTALL_WINDOWS.md)**, [architecture](docs/ARCHITECTURE.md), [product definition](docs/PRODUCT_SPEC.md), [scientific and safety boundaries](docs/SCIENCE_AND_SAFETY.md), [roadmap](docs/ROADMAP_2050.md) and [2026 submission plan](submission/README.md).
+See **[full Windows installation and troubleshooting](docs/INSTALL_WINDOWS.md)**, [complete V3 owner design](docs/DESIGN_2026_11_14.md), [architecture](docs/ARCHITECTURE.md), [product definition](docs/PRODUCT_SPEC.md), [scientific and safety boundaries](docs/SCIENCE_AND_SAFETY.md), [roadmap](docs/ROADMAP_2050.md) and [2026 submission plan](submission/README.md).
 
 ## Repository map
 
@@ -92,7 +96,7 @@ See **[full Windows installation and troubleshooting](docs/INSTALL_WINDOWS.md)**
 
 Read [ROADMAP_2050](docs/ROADMAP_2050.md) for explicit maturity gates rather than promises of completed capability.
 
-## Open-source reference source trees (from ASTRA's design review)
+## Open-source third-party reference source trees
 
 The directory **[Các mã nguồn mở tham khảo](Các%20m%C3%A3%20ngu%E1%BB%93n%20m%E1%BB%9F%20tham%20kh%E1%BA%A3o/README.md)** contains immutable third-party research snapshots, not code currently loaded into the AETHERION runtime. **PyVistaQt is already present in full (51/51 original Git blobs verified).** VisPy, PyQtGraph, NASA Open MCT, napari and 3D Slicer are pinned for full source import, **not yet confirmed as copied** because the GitHub Actions import run failed. See [source lock](Các%20m%C3%A3%20ngu%E1%BB%93n%20m%E1%BB%9F%20tham%20kh%E1%BA%A3o/SOURCES.lock.json) and [import workflow](.github/workflows/vendor_reference_sources.yml). Source presence is not evidence of a working Qt integration.
 

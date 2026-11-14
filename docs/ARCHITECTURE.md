@@ -21,10 +21,19 @@
 
 The server runs as a distinct process, not inside a browser, while the Windows GUI runs as a native Qt process. The only shared mutable health observation store belongs to the server. Clients may cache authorized data in later versions but may not create diverging clinical truths.
 
+## Owner-corrected target architecture
+
+- **AETHERION Server:** FastAPI service + canonical SQLite/Core + separate **Server Control admin GUI**. Admin can configure Local model runtime or paste/test/store Cloud API secret without distributing that key to desktop/mobile. Unimplemented modules remain design targets, not reported as existing services.
+- **Desktop:** native Windows Qt, startup **Portal first**, five cards and top horizontal menu, no permanent dual sidebars. Personalized health/activity/calories/weight/sleep/ECG, conversations, Care, genuine 3D science and authorized Mission as deeper routes. Screen-by-screen button, field, action, state, visual layout specification: [DESIGN V3](DESIGN_2026_11_14.md).
+- **Mobile/Watch:** separate client builds, Portal/bottom nav on mobile and small-surface wearable actions; backend is the same authoritative server.
+- **Network:** HTTP/API over localhost or authenticated LAN/hotspot, optional Telegram Bot relay **for Earth network testing only** with delivery/ACK distinctions and no default personal health data transfer. Future spacecraft vision uses onboard AETHERION server, not Telegram. No duplicate clinical backend.
+- **Themes:** multiple deeply embedded ambient animation layers (galaxy, rain, water, Earth), palette/font/motion selection, reduced-motion and GPU accessibility limits.
+- **Knowledge:** NASA original CliFF 119 source text + figures and source license; **separate** clinical AI knowledge and human encyclopedia. Current working records/media are not proof of 119 authentic downloaded NASA originals.
+
 ## Source layout
 
 - `apps/server`: FastAPI HTTP service, typed endpoints, SQLite implementation. Default bind address is `127.0.0.1`.
-- `apps/desktop`: PySide6 Qt Widgets process. Main menu is a **top navigation row above the application content**. No separate landing page before the app.
+- `apps/desktop`: PySide6 Qt Widgets process. Main menu is a **top navigation row above the application content**. The native app's **first route is the five-card Portal**, then a user-selected Mission/Personal/Monitor/AI/Science page. Portal is the main Home, not an onboarding web wrapper. Its top horizontal menu stays above the selected application view.
 - `apps/mobile` and `apps/watch`: roadmap placeholders only; not working applications.
 - `packages/contracts`: API contract and evolution policy. A versioned schema will become the source of truth.
 - `knowledge`: scientific data with licensing, provenance and verification status. Not a fabricated dataset.
