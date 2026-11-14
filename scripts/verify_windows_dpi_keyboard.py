@@ -52,13 +52,11 @@ def main() -> int:
         try:
             window = AetherionWindow()
             # Set locale through existing user-facing setting rather than editing data.
-            if hasattr(window, "set_ui_language"):
-                window.set_ui_language(locale)
-            elif hasattr(window, "set_language"):
-                window.set_language(locale)
-            else:
-                # QSettings is not mutated by the probe; report lack of a switch.
-                failures.append(f"{locale}: language-switch API not found")
+            original_locale = window.ui_language
+            if window.ui_language != locale:
+                window._change_language()
+            if window.ui_language != locale:
+                failures.append(f"{locale}: language switch did not apply")
             for width, height in ((1040, 650), (1280, 720), (1600, 900)):
                 window.resize(width, height)
                 window.show()
@@ -96,6 +94,8 @@ def main() -> int:
             failures.append(f"{locale}: runtime exception: {type(exc).__name__}: {exc}")
         finally:
             if window is not None:
+                if window.ui_language != original_locale:
+                    window._change_language()
                 window.close()
                 window.deleteLater()
                 app.processEvents()
