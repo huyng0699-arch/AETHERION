@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-040",
+  "title": "ISS Carbon Dioxide Removal Assembly (CDRA) Maintenance",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/STS-134_ISS-28_Michael_Fincke_and_Ron_Garan_on_the_Carbon_Dioxide_Removal_Assembly.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:STS-134_ISS-28_Michael_Fincke_and_Ron_Garan_on_the_Carbon_Dioxide_Removal_Assembly.jpg",
+  "license": "US-GOV-PUBLIC-DOMAIN",
+  "author": "NASA",
+  "caption": "NASA astronauts working on the International Space Station Carbon Dioxide Removal Assembly (CDRA), which scrubs cabin CO2 to prevent hypercapnic symptoms.",
+  "alt_text": "Two astronauts inside the ISS Destiny laboratory working on the Carbon Dioxide Removal Assembly rack.",
+  "clinical_relevance": "Illustrates spacecraft environmental CO2 scrubbing hardware directly tied to preventing CO2-induced headaches (CLIFF-040, p.1, p.5).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 2848,
+  "height": 4288,
+  "size_bytes": 1472487,
+  "sha256": "654bd36bd7d31d447df79169f3ab50ebf1e3ca099c53618c94fe403af36dc50f",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/STS-134_ISS-28_Michael_Fincke_and_Ron_Garan_on_the_Carbon_Dioxide_Removal_Assembly.jpg",
+  "retrieved_at_utc": "2026-11-14T05:57:20.977147+00:00",
+  "asset_path": "654bd36bd7d31d447df79169f3ab50ebf1e3ca099c53618c94fe403af36dc50f.jpg",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}

@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-040",
+  "slot": 40,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+  "http_status": 200,
+  "pdf_bytes": 310846,
+  "pdf_sha256": "0159abb605f9ffa27cf866cf759f1b7fc71850fa3c16327d3f5c23aa82aee939",
+  "pdf_pages": 13,
+  "sections_count": 13,
+  "tables_count": 3,
+  "references_count": 33,
+  "media_count": 3,
+  "media_sha256s": [
+    "654bd36bd7d31d447df79169f3ab50ebf1e3ca099c53618c94fe403af36dc50f",
+    "8e8c5d14d098828242c11cd3042e786f6ec27cf1d5daf5872b5c41adfbfe7062",
+    "b55fa36af67b1418035d597d7013aea70b8d26598094aecbcdb9a2b9c91dee8a"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; NASA Public Domain & Wikimedia Commons CC-BY-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}
