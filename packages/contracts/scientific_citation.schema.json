@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/contracts/v1/scientific_citation.schema.json",
+  "title": "AETHERION Scientific Citation Contract (Q-0026)",
+  "description": "Requires publisher, source URL, license status, verification flag, and explicit non-live-telemetry marker for all scientific/NASA citations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "citation_id",
+    "title",
+    "publisher",
+    "source_url",
+    "license_status",
+    "verified",
+    "is_live_crew_telemetry"
+  ],
+  "properties": {
+    "citation_id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "publisher": { "type": "string", "minLength": 1 },
+    "source_url": { "type": "string", "format": "uri", "pattern": "^https?://" },
+    "license_status": {
+      "type": "string",
+      "enum": ["PUBLIC_DOMAIN", "OPEN_LICENSE_VERIFIED", "ATTRIBUTION_REQUIRED", "UNVERIFIED_RESTRICTED"]
+    },
+    "verified": { "type": "boolean" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "is_live_crew_telemetry": { "type": "boolean", "const": false }
+  }
+}
