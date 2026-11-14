@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-024",
+  "slot": 24,
+  "quest_id": "Q-0324",
+  "checked_at_utc": "2026-11-14T06:00:18.644267+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/burn-chemical-eye-cliff-2023.pdf?emrc=e42906",
+  "http_status": 200,
+  "pdf_sha256": "ed1c968f72a067bc35754ac3325905b7ca33e3de3cae4e3c5605057e7d523fd2",
+  "pdf_bytes": 324191,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 3,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-024-IMG-01": "3322ccbf6fd545362938ec9118a52502b12c7ab02a04032a62b27bc0c1914f46",
+    "CLIFF-024-IMG-02": "6cbccd186bb0d178d99a6b378e41cdd81297768fd7b1b0debb62cba98d46bce1",
+    "CLIFF-024-IMG-03": "e0005807ba24f9c74a966918697a2b0cf75fc272e6198d31ccf53546b9ebb179"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
