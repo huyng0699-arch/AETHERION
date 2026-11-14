@@ -12,6 +12,8 @@ from pathlib import Path
 import sqlite3
 from typing import Iterator
 
+from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
+
 MAX_ARTICLES = 119
 LIBRARY_NAME = "AETHERION_NASA_CLIFF_119.sqlite"
 
@@ -116,6 +118,8 @@ def build_medical_library_page(parent=None):
     class MedicalLibraryPage(QWidget):
         def __init__(self, parent=None) -> None:
             super().__init__(parent)
+            self.ui_language = "vi"
+            self._last_snapshot = None
             self.catalog = OfflineMedicalCatalog()
             self.current_articles: dict[str, ArticleSummary] = {}
             host_layout = QVBoxLayout(self)
@@ -173,23 +177,44 @@ def build_medical_library_page(parent=None):
             self.items.itemDoubleClicked.connect(lambda item: self.open_selected_article())
             self.reload()
 
+        def set_locale(self, locale: str) -> None:
+            self.ui_language = normalize_locale(locale)
+            translate_shell_widgets(self.catalog_panel, self.ui_language)
+            self.reader_page.set_locale(self.ui_language)
+            if self._last_snapshot is not None:
+                self._render_status(self._last_snapshot)
+            if self.items.currentItem() is not None:
+                self.show_selection()
+            else:
+                self.detail.setText(
+                    translate_existing(self.detail.text(), self.ui_language)
+                )
+
+        def _render_status(self, snapshot: CatalogSnapshot) -> None:
+            self.status.setText(tr(
+                self.ui_language, "library.indexed",
+                total=snapshot.total, max_articles=MAX_ARTICLES,
+                message=translate_existing(snapshot.message, self.ui_language),
+            ))
+
         def reload(self) -> None:
             snapshot = self.catalog.list_articles(self.search.text())
+            self._last_snapshot = snapshot
             self.current_articles = {a.article_id: a for a in snapshot.articles}
             self.items.clear()
             self.read_article_button.setEnabled(False)
             self.stack.setCurrentWidget(self.catalog_panel)
-            self.status.setText(f"{snapshot.total}/{MAX_ARTICLES} locally indexed · {snapshot.message}")
+            self._render_status(snapshot)
             for article in snapshot.articles:
                 item = QListWidgetItem(f"{article.slot:03d}  {article.title}  [{article.completeness}]")
                 item.setData(Qt.ItemDataRole.UserRole, article.article_id)
                 self.items.addItem(item)
             if snapshot.state != "READY":
-                self.detail.setText(snapshot.message)
+                self.detail.setText(translate_existing(snapshot.message, self.ui_language))
             elif not snapshot.articles:
-                self.detail.setText("No matching imported article. Search does not query the internet.")
+                self.detail.setText(tr(self.ui_language, "library.emptySearch"))
             else:
-                self.detail.setText("Select a local article to inspect imported text, tables, citations and rights-reviewed images.")
+                self.detail.setText(tr(self.ui_language, "library.selectHint"))
 
         def show_selection(self) -> None:
             item = self.items.currentItem()
@@ -201,14 +226,12 @@ def build_medical_library_page(parent=None):
                 self.read_article_button.setEnabled(False)
                 return
             self.read_article_button.setEnabled(True)
-            self.detail.setText(
-                f"{article.title}\n\nCategory: {article.category}\n"
-                f"Import completeness flag: {article.completeness}\n"
-                f"Source verification flag: {article.source_state}\n"
-                f"Source: {article.source_url}\n\n"
-                "Flags describe imported metadata, not independent clinical validation. "
-                "Use Read selected article offline for source-anchored text and approved images."
-            )
+            self.detail.setText(tr(
+                self.ui_language, "library.selectDetails",
+                title=article.title, category=article.category,
+                completeness=article.completeness, state=article.source_state,
+                url=article.source_url,
+            ))
 
         def open_selected_article(self) -> None:
             item = self.items.currentItem()
