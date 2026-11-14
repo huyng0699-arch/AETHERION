@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-104",
+  "slot": 104,
+  "quest_id": "Q-0404",
+  "checked_at_utc": "2026-11-14T06:40:32.986531+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-hand-cliff-2023.pdf?emrc=9603a1",
+  "http_status": 200,
+  "pdf_sha256": "455e51732eb346015057474dd7b5071e4bd0b7844a46fd427417e8d8c850d7c9",
+  "pdf_bytes": 319732,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-104-IMG-01": "cbf7db6572202d29b64aebba395490f4fbd9522af12167fdb16a28d0a94613fe",
+    "CLIFF-104-IMG-02": "0105fdcaba15bf9d8018541c47643c20281b8a4d46241180c8afccb99b8dfa85",
+    "CLIFF-104-IMG-03": "8d645b84f3c19e51c89d75cda5866f86c7b0dff0ff3fe9052e4e3c0955d87f43"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
