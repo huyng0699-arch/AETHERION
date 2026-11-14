@@ -2,6 +2,19 @@
 
 **Scope:** 435 distinct, executable Quest specifications on `main`, numbered **Q-0001 through Q-0435**. Each task's live metadata is stored **only in its own `quests/v1/Q-XXXX.md`**. This root file is navigational and does not claim task completion.
 
+## Chính sách triển khai mới nhất — ít test, làm trực tiếp (14/11/2026)
+
+**Lệnh của chủ dự án:** Đa số Quest chỉ cần **làm trực tiếp → kiểm tra nhanh kết quả đã làm → commit → chuyển Quest tiếp**. **Không bắt buộc tạo unit test, chạy toàn bộ CI, chụp ảnh, hay E2E cho từng Quest thường.** Các mô tả Quest cũ yêu cầu test chung áp dụng theo chính sách mới trong [AGENTS.md](AGENTS.md), không thay đổi mục tiêu hay tiêu chí tính năng.
+
+- Giao diện, sửa UX, cấu trúc file, nghiên cứu nguồn và tài liệu: không cần test formal. Agent nghiệm thu độc lập kiểm tra kết quả thực, không đòi file test.
+- Server/API/SQLite, tích hợp app và nhập nguồn: một smoke check có ích là đủ khi không có dấu hiệu lỗi.
+- Lõi an toàn y khoa, bảo mật/quyền, nguồn NASA, giấy phép, 3D thực, thiết bị thật và Windows release: vẫn cần bằng chứng phù hợp, không bỏ kiểm chứng quan trọng.
+- Các Quest QA/acceptance chuyên trách thực hiện kiểm thử tổng hợp; không rải nhiều bài test trùng lặp khắp 435 Quest.
+- Quest có thể **bắt đầu làm trước khi phụ thuộc PASS**, miễn giữ nguyên liên kết phụ thuộc, quyền ghi tệp và chỉ nghiệm thu tích hợp khi đã đủ đầu vào.
+- Reviewer khác người làm có quyền chấp thuận dựa trên diff và sản phẩm thật cho các nhiệm vụ ít rủi ro, **không yêu cầu log unit test**.
+
+Trạng thái DONE vẫn phải phản ánh sản phẩm thực sự; giảm test **không đồng nghĩa tự động PASS**.
+
 ## Current working contract — concurrent build, independent acceptance
 
 **Owner directive (14 Nov 2026):** `QUEUED` Quest may start **before its dependencies PASS**. Keep original `depends_on` and claim via exact file SHA with `execution_mode: PREPARE`. Implement direct code first, then focused evidence. A different agent reviews acceptance; missing dependencies prevent only **integration / final PASS**, not independent work. Do not weaken the concrete acceptance criteria in any of the 435 Quest records.
