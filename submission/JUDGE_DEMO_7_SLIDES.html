@@ -33,7 +33,7 @@ html[lang=en] [data-lang=vi],html[lang=vi] [data-lang=en]{display:none!important
 <body>
 <div class="wrap">
 <header class="top">
-  <div><div class="brand">AETHERION / TRUY TINH</div><div class="meta">NASA Space Apps Challenge 2026 · independent participant project</div></div>
+  <div><div class="brand">AETHERION / TRUY TINH</div><div class="meta"><span data-lang="en">NASA Space Apps Challenge 2026 · independent participant project</span><span data-lang="vi">NASA Space Apps Challenge 2026 · dự án độc lập của đội tham gia</span></div></div>
   <div class="langs" role="group" aria-label="Language / Ngôn ngữ">
     <button type="button" id="btn-en" aria-pressed="true">English</button>
     <button type="button" id="btn-vi" aria-pressed="false">Tiếng Việt</button>
@@ -41,7 +41,7 @@ html[lang=en] [data-lang=vi],html[lang=vi] [data-lang=en]{display:none!important
 </header>
 <main id="deck" aria-label="Seven-slide judge briefing">
 <section class="slide active" data-slide="1" aria-label="Slide 1 of 7">
- <div class="kicker">01 / The proposal</div>
+ <div class="kicker"><span data-lang="en">01 / The proposal</span><span data-lang="vi">01 / Giải pháp đề xuất</span></div>
  <h1>AETHERION</h1>
  <p data-lang="en">One health workspace for remote missions: understand what is measured, what is missing, and what action needs human follow-up.</p>
  <p data-lang="vi">Không gian sức khỏe cho nhiệm vụ ở xa: phân biệt điều đã đo, điều chưa biết và hành động cần con người theo dõi.</p>
@@ -49,22 +49,22 @@ html[lang=en] [data-lang=vi],html[lang=vi] [data-lang=en]{display:none!important
  <div class="callout" data-lang="vi">Sản phẩm thử nghiệm độc lập của đội TRUY TINH. Không phải hệ thống NASA, phần mềm được chứng nhận bay hay thiết bị y tế.</div>
 </section>
 <section class="slide hidden" data-slide="2" aria-label="Slide 2 of 7">
- <div class="kicker">02 / Why this matters</div>
+ <div class="kicker"><span data-lang="en">02 / Why this matters</span><span data-lang="vi">02 / Tại sao quan trọng</span></div>
  <h2 data-lang="en">Space health is a problem of context and uncertainty.</h2>
  <h2 data-lang="vi">Sức khỏe không gian đòi hỏi hiểu bối cảnh và sự không chắc chắn.</h2>
  <p data-lang="en">NASA Human Research Program describes five major hazards of human spaceflight. Clinical context matters, but hazard research is not a live sensor stream.</p>
  <p data-lang="vi">NASA Human Research Program mô tả năm nhóm nguy cơ của bay vào không gian. Nghiên cứu về nguy cơ không đồng nghĩa dữ liệu cảm biến trực tiếp.</p>
  <div class="bigs">
- <div class="tile"><strong>Radiation</strong><small data-lang="en">Exposure risk</small><small data-lang="vi">Nguy cơ phơi nhiễm</small></div>
- <div class="tile"><strong>Isolation</strong><small data-lang="en">Confinement and behavior</small><small data-lang="vi">Cô lập, hành vi và tâm lý</small></div>
- <div class="tile"><strong>Distance</strong><small data-lang="en">Delayed ground support</small><small data-lang="vi">Hỗ trợ mặt đất có độ trễ</small></div>
- <div class="tile"><strong>Gravity</strong><small data-lang="en">Altered physical adaptation</small><small data-lang="vi">Thích nghi sinh lý với trọng lực</small></div>
- <div class="tile"><strong>Environment</strong><small data-lang="en">Closed and hostile habitat</small><small data-lang="vi">Môi trường khép kín, khắc nghiệt</small></div>
+ <div class="tile"><strong data-lang="en">Radiation</strong><strong data-lang="vi">Bức xạ</strong><small data-lang="en">Exposure risk</small><small data-lang="vi">Nguy cơ phơi nhiễm</small></div>
+ <div class="tile"><strong data-lang="en">Isolation</strong><strong data-lang="vi">Cô lập</strong><small data-lang="en">Confinement and behavior</small><small data-lang="vi">Cô lập, hành vi và tâm lý</small></div>
+ <div class="tile"><strong data-lang="en">Distance</strong><strong data-lang="vi">Khoảng cách</strong><small data-lang="en">Delayed ground support</small><small data-lang="vi">Hỗ trợ mặt đất có độ trễ</small></div>
+ <div class="tile"><strong data-lang="en">Gravity</strong><strong data-lang="vi">Trọng lực</strong><small data-lang="en">Altered physical adaptation</small><small data-lang="vi">Thích nghi sinh lý với trọng lực</small></div>
+ <div class="tile"><strong data-lang="en">Environment</strong><strong data-lang="vi">Môi trường</strong><small data-lang="en">Closed and hostile habitat</small><small data-lang="vi">Môi trường khép kín, khắc nghiệt</small></div>
  </div>
- <div class="source">Primary reference: <a href="https://www.nasa.gov/hrp/hazards/" rel="noopener noreferrer" target="_blank">NASA — Five Hazards of Human Spaceflight</a></div>
+ <div class="source"><span data-lang="en">Primary reference:</span><span data-lang="vi">Nguồn chính:</span> <a href="https://www.nasa.gov/hrp/hazards/" rel="noopener noreferrer" target="_blank">NASA — Five Hazards of Human Spaceflight</a></div>
 </section>
 <section class="slide hidden" data-slide="3" aria-label="Slide 3 of 7">
- <div class="kicker">03 / System boundary</div>
+ <div class="kicker"><span data-lang="en">03 / System boundary</span><span data-lang="vi">03 / Ranh giới hệ thống</span></div>
  <h2 data-lang="en">One local server. Native desktop. Explicit sources.</h2>
  <h2 data-lang="vi">Một máy chủ cục bộ. Ứng dụng Windows thực. Nguồn dữ liệu rõ ràng.</h2>
  <div class="flow"><span>Qt / Windows</span><span>HTTP API</span><span>FastAPI</span><span>SQLite</span></div>
@@ -74,7 +74,7 @@ html[lang=en] [data-lang=vi],html[lang=vi] [data-lang=en]{display:none!important
  <div class="callout" data-lang="vi">Mobile, đồng hồ, AI và cảm biến vật lý trong kế hoạch không được trình bày như đã kết nối hoặc triển khai.</div>
 </section>
 <section class="slide hidden" data-slide="4" aria-label="Slide 4 of 7">
- <div class="kicker">04 / The intended care loop</div>
+ <div class="kicker"><span data-lang="en">04 / The intended care loop</span><span data-lang="vi">04 / Chu trình chăm sóc dự kiến</span></div>
  <h2 data-lang="en">GATHER → EVALUATE → ACT → RECHECK</h2>
  <h2 data-lang="vi">THU THẬP → ĐÁNH GIÁ → HÀNH ĐỘNG → KIỂM TRA LẠI</h2>
  <div class="bigs">
@@ -87,7 +87,7 @@ html[lang=en] [data-lang=vi],html[lang=vi] [data-lang=en]{display:none!important
  <div class="callout" data-lang="vi">Đây là chu trình chức năng mục tiêu, không phải bằng chứng chẩn đoán được thẩm định hoặc nghiệm thu Windows từ đầu đến cuối.</div>
 </section>
 <section class="slide hidden" data-slide="5" aria-label="Slide 5 of 7">
- <div class="kicker">05 / User experience</div>
+ <div class="kicker"><span data-lang="en">05 / User experience</span><span data-lang="vi">05 / Trải nghiệm người dùng</span></div>
  <h2 data-lang="en">From mission operations to the right question.</h2>
  <h2 data-lang="vi">Từ điều hành nhiệm vụ đến đúng câu hỏi sức khỏe.</h2>
  <p data-lang="en">The current native UI work focuses on a persistent Mission Operations workspace with discoverable navigation, monitoring, personal context and a clearly marked demo route. No fabricated “healthy” measurements appear when data is absent.</p>
@@ -101,7 +101,7 @@ html[lang=en] [data-lang=vi],html[lang=vi] [data-lang=en]{display:none!important
  <div class="callout" data-lang="vi">Không sử dụng ảnh chụp ứng dụng ở đây: ảnh Windows xác minh đúng bản main vẫn là điều kiện nghiệm thu.</div>
 </section>
 <section class="slide hidden" data-slide="6" aria-label="Slide 6 of 7">
- <div class="kicker">06 / Research integrity</div>
+ <div class="kicker"><span data-lang="en">06 / Research integrity</span><span data-lang="vi">06 / Tính trung thực nghiên cứu</span></div>
  <h2 data-lang="en">NASA science is evidence, not astronaut telemetry.</h2>
  <h2 data-lang="vi">Khoa học NASA là bằng chứng, không phải sinh hiệu phi hành gia.</h2>
  <p data-lang="en">AETHERION separates historical NASA research, condition references, manually entered observations and explicitly fictional testing data. The NASA CliFF 119 offline original-document collection is not yet verified complete.</p>
@@ -114,7 +114,7 @@ html[lang=en] [data-lang=vi],html[lang=vi] [data-lang=en]{display:none!important
  <div class="source">NASA Open Science Data Repository: <a href="https://osdr.nasa.gov/" rel="noopener noreferrer" target="_blank">osdr.nasa.gov</a>. No access to restricted human records is implied.</div>
 </section>
 <section class="slide hidden" data-slide="7" aria-label="Slide 7 of 7">
- <div class="kicker">07 / What judges can verify</div>
+ <div class="kicker"><span data-lang="en">07 / What judges can verify</span><span data-lang="vi">07 / Những gì giám khảo có thể kiểm tra</span></div>
  <h2 data-lang="en">A working foundation, with clearly stated limits.</h2>
  <h2 data-lang="vi">Nền tảng đã có mã nguồn, cùng những giới hạn được nêu rõ.</h2>
  <div class="bigs">
@@ -152,6 +152,14 @@ html[lang=en] [data-lang=vi],html[lang=vi] [data-lang=en]{display:none!important
  }
  function locale(code){
    document.documentElement.lang=code;
+   document.title=code==="vi"?"AETHERION | Trình bày bảy trang | TRUY TINH":"AETHERION | Seven-slide judge briefing | TRUY TINH";
+   document.getElementById("deck").setAttribute("aria-label",code==="vi"?"Bộ trình chiếu bảy trang":"Seven-slide judge briefing");
+   document.querySelector(".controls").setAttribute("aria-label",code==="vi"?"Điều hướng trang trình chiếu":"Slide navigation");
+   document.querySelector(".progress").setAttribute("aria-label",code==="vi"?"Tiến độ trình chiếu":"Presentation progress");
+   document.getElementById("previous").setAttribute("aria-label",code==="vi"?"Trang trước":"Previous slide");
+   document.getElementById("next").setAttribute("aria-label",code==="vi"?"Trang sau":"Next slide");
+   document.getElementById("print").setAttribute("aria-label",code==="vi"?"In bảy trang thành PDF":"Print seven slides as PDF");
+   slides.forEach((slide,i)=>slide.setAttribute("aria-label",code==="vi"?`Trang ${i+1} / ${slides.length}`:`Slide ${i+1} of ${slides.length}`));
    document.getElementById("btn-en").setAttribute("aria-pressed",String(code==="en"));
    document.getElementById("btn-vi").setAttribute("aria-pressed",String(code==="vi"));
  }
