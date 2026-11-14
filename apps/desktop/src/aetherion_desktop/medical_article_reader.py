@@ -14,11 +14,9 @@ import sqlite3
 from typing import Any
 
 from .localization import normalize_locale, tr, translate_existing
+from .runtime_paths import cliff_library_path
 
-DEFAULT_LIBRARY = (
-    Path(__file__).resolve().parents[4]
-    / "knowledge/nasa/cliff_119_2023/AETHERION_NASA_CLIFF_119.sqlite"
-)
+DEFAULT_LIBRARY = cliff_library_path()
 ALLOWED_RASTER = {"image/png", "image/jpeg", "image/webp"}
 
 
