@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-009",
+  "slot": 9,
+  "quest_id": "Q-0309",
+  "checked_at_utc": "2026-11-14T05:43:52.462876+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/bhp-psychosis-secondary-to-depression-cliff-2023.pdf?emrc=7e7b21",
+  "http_status": 200,
+  "pdf_sha256": "bcec0e456a57f36a419427ec6aba48050f7fd720d0b32838f40dee7d12a8f96b",
+  "pdf_bytes": 317620,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 2,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-009-IMG-01": "9ae885bade05376c1ca85a192108a96fb6d39f955c23eb68560f971f25467422",
+    "CLIFF-009-IMG-02": "0159b51ad809267e4333df5f950484fcc2667fb53ea81c9c3b3814735c3554dc",
+    "CLIFF-009-IMG-03": "eaa39657940223c1f41072c417d581ead815a611f30540c04c6b844544af4108"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
