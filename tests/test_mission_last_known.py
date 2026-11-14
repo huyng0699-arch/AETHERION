@@ -104,7 +104,7 @@ class OfflineLastKnownTest(unittest.TestCase):
         self.snapshot(Snapshot(measurements=(Row(observed_at="2026-11-14T10:00:00Z"),)))
         self.cache.transport_lost()
         v = self.cache.view(now=NOW)
-        self.assertEqual((v.state, v.readings), ("ERROR", ())
+        self.assertEqual((v.state, v.readings), ("ERROR", ()))
 
     def test_no_data_snapshot_replaces_old_history(self):
         self.snapshot()
