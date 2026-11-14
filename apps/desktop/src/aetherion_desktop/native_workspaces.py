@@ -134,6 +134,17 @@ class ObservationPlot(QWidget):
         self.setMinimumHeight(238)
         self.points: list[RecordedPoint] = []
         self.accent = QColor("#48A6C8")
+        self.chart_background = QColor("#FFFFFF")
+        self.chart_text = QColor("#536C7D")
+
+    def apply_palette(self, prefs):
+        from .visual_theme import palette_for
+        colors = palette_for(prefs.theme_name, prefs.mode,
+                             prefs.high_contrast, prefs.accent_override)
+        self.accent = QColor(colors.accent)
+        self.chart_background = QColor(colors.surface)
+        self.chart_text = QColor(colors.muted)
+        self.update()
 
     def set_records(self, points: list[RecordedPoint]):
         self.points = sorted(points, key=lambda p: p.observed_at)
@@ -142,12 +153,11 @@ class ObservationPlot(QWidget):
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
-        palette = self.palette()
-        painter.fillRect(self.rect(), palette.base())
+        painter.fillRect(self.rect(), self.chart_background)
         rect = self.rect().adjusted(46, 22, -21, -34)
         if rect.width() < 24 or rect.height() < 24:
             return
-        muted = QColor(palette.text().color())
+        muted = QColor(self.chart_text)
         muted.setAlpha(75)
         painter.setPen(QPen(muted, 1))
         for index in range(5):
@@ -277,6 +287,9 @@ class MonitoringWorkspace(Workspace):
         self.body.addStretch()
         self.set_locale(locale)
         self._empty()
+
+    def apply_theme(self, prefs):
+        self.plot.apply_palette(prefs)
 
     def set_locale(self, locale: str):
         super().set_locale(locale)
