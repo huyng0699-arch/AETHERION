@@ -32,7 +32,9 @@ _TEXT = {
     "en": {
         "metric": "Metric",
         "source": "Source",
+        "conductor": "TIME CONDUCTOR",
         "range": "Time range · UTC",
+        "no_bounds": "No loaded time bounds",
         "all_sources": "All sources",
         "all_loaded": "All loaded",
         "custom": "Custom range",
@@ -61,7 +63,9 @@ _TEXT = {
     "vi": {
         "metric": "Chỉ số",
         "source": "Nguồn",
+        "conductor": "ĐIỀU KHIỂN THỜI GIAN",
         "range": "Khoảng thời gian · UTC",
+        "no_bounds": "Chưa có giới hạn thời gian đã tải",
         "all_sources": "Tất cả nguồn",
         "all_loaded": "Toàn bộ dữ liệu đã tải",
         "custom": "Khoảng tùy chỉnh",
@@ -543,8 +547,149 @@ class _PlotCanvas(QWidget):
         super().leaveEvent(event)
 
 
+class UtcTimeConductor(QWidget):
+    """Compact shared UTC bounds control for coordinated plot and table views."""
+
+    time_bounds_changed = Signal(object, object)
+
+    def __init__(
+        self,
+        records: Iterable[object] = (),
+        *,
+        locale: str = "en",
+        parent: QWidget | None = None,
+    ):
+        super().__init__(parent)
+        self.locale = "vi" if locale == "vi" else "en"
+        self._records: list[_PlotPoint] = []
+        self._bounds: TimeBounds | None = None
+        row = QHBoxLayout(self)
+        row.setContentsMargins(12, 8, 12, 8)
+        row.setSpacing(10)
+        self.title = QLabel()
+        self.range_label = QLabel()
+        self.range_selector = QComboBox()
+        self.bounds_label = QLabel()
+        self.bounds_label.setTextFormat(Qt.TextFormat.PlainText)
+        self.bounds_label.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+        self.reset_button = QPushButton()
+        row.addWidget(self.title)
+        row.addWidget(self.range_label)
+        row.addWidget(self.range_selector)
+        row.addWidget(self.bounds_label, 1)
+        row.addWidget(self.reset_button)
+        self.range_selector.currentIndexChanged.connect(self._apply_selected_range)
+        self.reset_button.clicked.connect(self.reset_view)
+        self.set_locale(self.locale)
+        self.set_records(records)
+
+    @property
+    def bounds(self) -> TimeBounds | None:
+        return self._bounds
+
+    def set_locale(self, locale: str) -> None:
+        self.locale = "vi" if locale == "vi" else "en"
+        text = _TEXT[self.locale]
+        selected = self.range_selector.currentData()
+        self.title.setText(text["conductor"])
+        self.range_label.setText(text["range"])
+        self.reset_button.setText(text["reset"])
+        self.setAccessibleName(text["conductor"])
+        self.range_selector.setAccessibleName(text["range"])
+        self._rebuild_options(selected)
+        self._update_bounds_label()
+
+    def _rebuild_options(self, selected: object = None) -> None:
+        text = _TEXT[self.locale]
+        self.range_selector.blockSignals(True)
+        self.range_selector.clear()
+        for key, label_key in (
+            ("1h", "hours1"), ("24h", "hours24"), ("7d", "days7"),
+            ("30d", "days30"), ("all", "all_loaded"),
+        ):
+            self.range_selector.addItem(text[label_key], key)
+        if selected == "custom":
+            self.range_selector.addItem(text["custom"], "custom")
+        index = self.range_selector.findData(selected)
+        if index < 0:
+            index = self.range_selector.findData("all")
+        self.range_selector.setCurrentIndex(index)
+        self.range_selector.blockSignals(False)
+
+    def set_records(self, records: Iterable[object]) -> None:
+        self._records = sorted((_normalize(record) for record in records),
+                               key=lambda point: point.observed_at)
+        if self.range_selector.currentData() != "custom":
+            self._bounds = _expanded_bounds(self._records)
+        self._update_bounds_label()
+
+    def set_time_bounds(
+        self, start_utc: datetime, end_utc: datetime, *, emit: bool = True
+    ) -> None:
+        self._bounds = TimeBounds(start_utc, end_utc)
+        self.range_selector.blockSignals(True)
+        if self.range_selector.findData("custom") < 0:
+            self.range_selector.addItem(_TEXT[self.locale]["custom"], "custom")
+        self.range_selector.setCurrentIndex(self.range_selector.findData("custom"))
+        self.range_selector.blockSignals(False)
+        self._update_bounds_label()
+        if emit:
+            self.time_bounds_changed.emit(
+                self._bounds.start_utc, self._bounds.end_utc
+            )
+
+    def reset_view(self) -> None:
+        self.range_selector.blockSignals(True)
+        self.range_selector.setCurrentIndex(self.range_selector.findData("all"))
+        self.range_selector.blockSignals(False)
+        self._bounds = _expanded_bounds(self._records)
+        self._update_bounds_label()
+        if self._bounds:
+            self.time_bounds_changed.emit(
+                self._bounds.start_utc, self._bounds.end_utc
+            )
+
+    def _apply_selected_range(self, *_: object) -> None:
+        choice = self.range_selector.currentData()
+        if choice == "custom":
+            return
+        if choice == "all":
+            self._bounds = _expanded_bounds(self._records)
+        elif self._records:
+            duration = {
+                "1h": timedelta(hours=1),
+                "24h": timedelta(hours=24),
+                "7d": timedelta(days=7),
+                "30d": timedelta(days=30),
+            }.get(choice)
+            end = max(point.observed_at for point in self._records)
+            self._bounds = (
+                TimeBounds(end - duration, end)
+                if duration else _expanded_bounds(self._records)
+            )
+        else:
+            self._bounds = None
+        self._update_bounds_label()
+        if self._bounds:
+            self.time_bounds_changed.emit(
+                self._bounds.start_utc, self._bounds.end_utc
+            )
+
+    def _update_bounds_label(self) -> None:
+        text = _TEXT[self.locale]
+        if self._bounds is None:
+            self.bounds_label.setText(text["no_bounds"])
+            return
+        start = self._bounds.start_utc.strftime("%Y-%m-%d %H:%M")
+        end = self._bounds.end_utc.strftime("%Y-%m-%d %H:%M")
+        self.bounds_label.setText(
+            f'{text["range_from"]} {start} UTC   →   '
+            f'{text["range_to"]} {end} UTC'
+        )
+
+
 class TelemetryPlot(QWidget):
-    """Self-contained plot controls plus a table-compatible filtered-record API."""
+    """Native plot view; bounds are controlled by a shared UTC time conductor."""
 
     time_bounds_changed = Signal(object, object)
     filtered_records_changed = Signal(object)
@@ -555,7 +700,7 @@ class TelemetryPlot(QWidget):
         self,
         records: Iterable[object] = (),
         *,
-        locale: str = "en",
+        locale: str = "vi",
         max_visual_gap: timedelta | None = None,
         parent: QWidget | None = None,
     ):
@@ -571,26 +716,15 @@ class TelemetryPlot(QWidget):
         outer = QVBoxLayout(self)
         outer.setContentsMargins(12, 10, 12, 10)
         outer.setSpacing(8)
-
         controls = QHBoxLayout()
         self.metric_label = QLabel()
         self.metric_selector = QComboBox()
-        self.metric_selector.setAccessibleName("Metric and unit")
-        controls.addWidget(self.metric_label)
-        controls.addWidget(self.metric_selector, 2)
         self.source_label = QLabel()
         self.source_selector = QComboBox()
-        self.source_selector.setAccessibleName("Telemetry source")
+        controls.addWidget(self.metric_label)
+        controls.addWidget(self.metric_selector, 2)
         controls.addWidget(self.source_label)
         controls.addWidget(self.source_selector, 2)
-        self.range_label = QLabel()
-        self.range_selector = QComboBox()
-        self.range_selector.setAccessibleName("UTC time range")
-        controls.addWidget(self.range_label)
-        controls.addWidget(self.range_selector, 1)
-        self.reset_button = QPushButton()
-        self.reset_button.clicked.connect(self.reset_view)
-        controls.addWidget(self.reset_button)
         outer.addLayout(controls)
 
         self.legend = QLabel()
@@ -606,16 +740,17 @@ class TelemetryPlot(QWidget):
         outer.addWidget(self.canvas, 1)
 
         self.detail = QLabel()
+        self.detail.setTextFormat(Qt.TextFormat.PlainText)
         self.detail.setWordWrap(True)
         self.detail.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
         outer.addWidget(self.detail)
         self.caption = QLabel()
+        self.caption.setTextFormat(Qt.TextFormat.PlainText)
         self.caption.setWordWrap(True)
         outer.addWidget(self.caption)
 
         self.metric_selector.currentIndexChanged.connect(self._recompute)
         self.source_selector.currentIndexChanged.connect(self._recompute)
-        self.range_selector.currentIndexChanged.connect(self._on_range_changed)
         self.set_locale(self.locale)
         self.set_records(records)
 
@@ -624,42 +759,18 @@ class TelemetryPlot(QWidget):
         strings = _TEXT[self.locale]
         self.metric_label.setText(strings["metric"])
         self.source_label.setText(strings["source"])
-        self.range_label.setText(strings["range"])
-        self.reset_button.setText(strings["reset"])
         self.detail.setText(strings["hint"])
-        self.setAccessibleName("Biểu đồ telemetry AETHERION" if self.locale == "vi" else
-                               "AETHERION telemetry chart")
+        self.setAccessibleName(
+            "Biểu đồ telemetry AETHERION"
+            if self.locale == "vi" else "AETHERION telemetry chart"
+        )
         self.metric_selector.setAccessibleName(strings["metric"])
         self.source_selector.setAccessibleName(strings["source"])
-        self.range_selector.setAccessibleName(strings["range"])
-        self._rebuild_range_options()
         self._update_source_options()
         self._update_legend()
         self._recompute()
 
-    def _rebuild_range_options(self) -> None:
-        selected = self.range_selector.currentData() if hasattr(self, "range_selector") else None
-        self.range_selector.blockSignals(True)
-        self.range_selector.clear()
-        strings = _TEXT[self.locale]
-        options = [
-            ("1h", strings["hours1"]),
-            ("24h", strings["hours24"]),
-            ("7d", strings["days7"]),
-            ("30d", strings["days30"]),
-            ("all", strings["all_loaded"]),
-        ]
-        for key, label in options:
-            self.range_selector.addItem(label, key)
-        if selected == "custom":
-            self.range_selector.addItem(strings["custom"], "custom")
-        index = self.range_selector.findData(selected)
-        self.range_selector.setCurrentIndex(index if index >= 0 else self.range_selector.findData("all"))
-        self.range_selector.blockSignals(False)
-
     def _update_source_options(self) -> None:
-        if not hasattr(self, "source_selector"):
-            return
         selected = self.source_selector.currentData()
         self.source_selector.blockSignals(True)
         self.source_selector.clear()
@@ -671,167 +782,140 @@ class TelemetryPlot(QWidget):
         self.source_selector.blockSignals(False)
 
     def set_records(self, records: Iterable[object]) -> None:
-        previous_metric = self.metric_selector.currentData()
-        previous_source = self.source_selector.currentData()
-        self._records = sorted((_normalize(record) for record in records),
-                               key=lambda point: point.observed_at)
-        self._update_metric_options(previous_metric)
-        self._update_source_options()
-        if self.range_selector.currentData() != "custom":
-            self._bounds = None
-            self._rebuild_range_options()
-        self._recompute()
-
-    def _update_metric_options(self, selected: object = None) -> None:
+        selected_metric = self.metric_selector.currentData()
+        self._records = sorted(
+            (_normalize(record) for record in records),
+            key=lambda point: point.observed_at,
+        )
         self.metric_selector.blockSignals(True)
         self.metric_selector.clear()
-        for metric, unit in sorted({(point.metric, point.unit) for point in self._records}):
+        for metric, unit in sorted({(p.metric, p.unit) for p in self._records}):
             self.metric_selector.addItem(f"{metric} ({unit})", (metric, unit))
-        index = self.metric_selector.findData(selected)
-        if index >= 0:
-            self.metric_selector.setCurrentIndex(index)
+        metric_index = self.metric_selector.findData(selected_metric)
+        if metric_index >= 0:
+            self.metric_selector.setCurrentIndex(metric_index)
         elif self.metric_selector.count():
             self.metric_selector.setCurrentIndex(0)
         self.metric_selector.blockSignals(False)
-
-    def set_time_bounds(self, start_utc: datetime, end_utc: datetime) -> None:
-        """Set external/shared UTC bounds, for a host's time conductor and table."""
-        bounds = TimeBounds(start_utc, end_utc)
-        self._bounds = bounds
-        if self.range_selector.findData("custom") < 0:
-            self.range_selector.addItem(_TEXT[self.locale]["custom"], "custom")
-        self.range_selector.blockSignals(True)
-        self.range_selector.setCurrentIndex(self.range_selector.findData("custom"))
-        self.range_selector.blockSignals(False)
+        self._update_source_options()
+        if self.selected_record is not None and not any(
+            point.record is self.selected_record for point in self._records
+        ):
+            self.selected_record = None
         self._recompute()
-        self.time_bounds_changed.emit(bounds.start_utc, bounds.end_utc)
+
+    def set_time_bounds(
+        self, start_utc: datetime, end_utc: datetime, *, emit: bool = True
+    ) -> None:
+        """Apply shared bounds from the workspace time conductor."""
+        self._bounds = TimeBounds(start_utc, end_utc)
+        self._recompute()
+        if emit:
+            self.time_bounds_changed.emit(
+                self._bounds.start_utc, self._bounds.end_utc
+            )
 
     def reset_view(self) -> None:
+        """Clear local bounds; a host should reset its shared time conductor."""
         self._bounds = None
-        self._rebuild_range_options()
         self._recompute()
         loaded = _expanded_bounds(self._records)
         if loaded is not None:
             self.time_bounds_changed.emit(loaded.start_utc, loaded.end_utc)
 
-    def _on_range_changed(self, *_: object) -> None:
-        choice = self.range_selector.currentData()
-        if choice == "custom":
-            return
-        if choice == "all":
-            self._bounds = None
-        elif choice in {"1h", "24h", "7d", "30d"} and self._records:
-            duration = {
-                "1h": timedelta(hours=1),
-                "24h": timedelta(hours=24),
-                "7d": timedelta(days=7),
-                "30d": timedelta(days=30),
-            }[choice]
-            end = max(point.observed_at for point in self._records)
-            self._bounds = TimeBounds(end - duration, end)
-        else:
-            self._bounds = None
-        self._recompute()
-        if self._bounds:
-            self.time_bounds_changed.emit(self._bounds.start_utc, self._bounds.end_utc)
-        elif (loaded := _expanded_bounds(self._records)) is not None:
-            self.time_bounds_changed.emit(loaded.start_utc, loaded.end_utc)
-
-    def _on_canvas_bounds_changed(self, start_utc: datetime, end_utc: datetime) -> None:
-        self._bounds = TimeBounds(start_utc, end_utc)
-        if self.range_selector.findData("custom") < 0:
-            self.range_selector.addItem(_TEXT[self.locale]["custom"], "custom")
-        self.range_selector.blockSignals(True)
-        self.range_selector.setCurrentIndex(self.range_selector.findData("custom"))
-        self.range_selector.blockSignals(False)
-        self._recompute()
-        self.time_bounds_changed.emit(self._bounds.start_utc, self._bounds.end_utc)
+    def _on_canvas_bounds_changed(
+        self, start_utc: datetime, end_utc: datetime
+    ) -> None:
+        self.set_time_bounds(start_utc, end_utc, emit=True)
 
     def _recompute(self, *_: object) -> None:
         metric_key = self.metric_selector.currentData()
         source_id = self.source_selector.currentData()
-        selected = filter_records(
+        visible = filter_records(
             (point.record for point in self._records),
             metric_key=metric_key,
             source_id=source_id,
             time_bounds=self._bounds,
         )
-        self._visible = selected
-        allowed = {id(record) for record in selected}
+        self._visible = visible
+        visible_ids = {id(record) for record in visible}
         self._plot_points = [
             point for point in self._records
-            if id(point.record) in allowed and point.quality in DISPLAY_QUALITIES
+            if id(point.record) in visible_ids
+            and point.quality in DISPLAY_QUALITIES
         ]
-        visible_bounds = self._bounds or _expanded_bounds(self._plot_points)
+        if self.selected_record is not None and id(self.selected_record) not in visible_ids:
+            self.selected_record = None
+        display_bounds = self._bounds or _expanded_bounds(self._plot_points)
         metric_label = ""
         unit_label = ""
         if metric_key:
             metric_label, unit_label = metric_key
         self.canvas.set_data(
-            self._plot_points, visible_bounds, metric_label, unit_label, self.max_visual_gap,
-            _TEXT[self.locale]["empty"],
+            self._plot_points, display_bounds, metric_label, unit_label,
+            self.max_visual_gap, _TEXT[self.locale]["empty"],
         )
         self.filtered_records_changed.emit(list(self._visible))
         self._update_legend()
-        if self._plot_points:
-            self.caption.setText(self._gap_caption())
-        else:
-            self.caption.setText(_TEXT[self.locale]["empty"])
+        self.caption.setText(
+            self._gap_caption() if self._plot_points else _TEXT[self.locale]["empty"]
+        )
 
     def filtered_records(self) -> list[object]:
-        """Exact filtered rows for a companion table; includes non-displayable states."""
+        """Exact current rows for a companion table, including non-displayable states."""
         return list(self._visible)
 
     def _gap_caption(self) -> str:
         if self.max_visual_gap is None:
             return _TEXT[self.locale]["no_cadence"]
-        total_seconds = self.max_visual_gap.total_seconds()
-        if total_seconds >= 3600 and total_seconds % 3600 == 0:
-            gap = f"{total_seconds / 3600:g} h"
-        elif total_seconds >= 60 and total_seconds % 60 == 0:
-            gap = f"{total_seconds / 60:g} min"
+        seconds = self.max_visual_gap.total_seconds()
+        if seconds >= 3600 and seconds % 3600 == 0:
+            gap = f"{seconds / 3600:g} h"
+        elif seconds >= 60 and seconds % 60 == 0:
+            gap = f"{seconds / 60:g} min"
         else:
-            gap = f"{total_seconds:g} s"
+            gap = f"{seconds:g} s"
         return _TEXT[self.locale]["gap_rule"].format(gap=gap)
 
     def _update_legend(self) -> None:
         if not hasattr(self, "legend"):
             return
-        source_ids = sorted({point.source_id for point in self._plot_points})
-        source_html: list[str] = []
-        for source in source_ids:
-            color = self.canvas._source_color(source).name()
-            source_html.append(
-                f'<span style="color:{color}">●</span> {html_escape(source)}'
-            )
-        strings = _TEXT[self.locale]
+        sources = sorted({point.source_id for point in self._plot_points})
+        source_html = [
+            f'<span style="color:{self.canvas._source_color(source).name()}">●</span> '
+            f'{html_escape(source)}'
+            for source in sources
+        ]
+        text = _TEXT[self.locale]
         quality = (
-            f'● {strings["quality_ready"]}  ·  ◇ {strings["quality_unverified"]}  ·  '
-            f'□ {strings["quality_stale"]}'
+            f'● {text["quality_ready"]}  ·  ◇ {text["quality_unverified"]}  ·  '
+            f'□ {text["quality_stale"]}'
         )
         sections = []
         if source_html:
             sections.append("  ".join(source_html))
-        sections.append(f'{strings["quality"]}: {quality}')
+        sections.append(f'{text["quality"]}: {quality}')
         self.legend.setText(" &nbsp; | &nbsp; ".join(sections))
 
     def _format_point(self, record: object) -> str:
         point = _normalize(record)
-        stamp = point.observed_at.strftime("%Y-%m-%d %H:%M:%S UTC")
-        strings = _TEXT[self.locale]
+        timestamp = point.observed_at.strftime("%Y-%m-%d %H:%M:%S UTC")
+        text = _TEXT[self.locale]
         return (
-            f"{point.metric}: {point.value:g} {point.unit} · {stamp} · "
-            f'{strings["source"]}: {point.source_id} · {strings["scope"]}: {point.scope} · '
-            f'{strings["quality"]}: {point.quality} · '
-            f'{strings["verification"]}: {point.verification}'
+            f"{point.metric}: {point.value:g} {point.unit} · {timestamp} · "
+            f'{text["source"]}: {point.source_id} · {text["scope"]}: {point.scope} · '
+            f'{text["quality"]}: {point.quality} · '
+            f'{text["verification"]}: {point.verification}'
         )
 
     def _on_point_inspected(self, record: object) -> None:
         if record is None:
+            record = self.selected_record
+        if record is None:
             self.detail.setText(_TEXT[self.locale]["hint"])
+            self.point_inspected.emit(None)
             return
-        text = self._format_point(record)
-        self.detail.setText(text)
+        self.detail.setText(self._format_point(record))
         self.point_inspected.emit(record)
 
     def _on_point_selected(self, record: object) -> None:

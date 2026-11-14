@@ -240,17 +240,55 @@ def subjects(path: str | Path | None = None) -> list[dict]:
 
 
 def series(subject_id: str, metric: str, *, limit: int = DAYS,
-           path: str | Path | None = None) -> list[dict]:
-    if metric not in METRIC_UNITS or not 1 <= limit <= DAYS:
+           path: str | Path | None = None, end_day: str | None = None) -> list[dict]:
+    """Return an exact calendar-day series, including explicit missing days.
+
+    Each record has state MEASURED or NO_DATA. NO_DATA is a *display-only*
+    absence marker, never inserted into observations or claimed as a sensor
+    measurement. An N-day window means N calendar days, not N recorded rows.
+    """
+    if metric not in METRIC_UNITS or not isinstance(limit, int) or not 1 <= limit <= DAYS:
         raise ValueError("Invalid metric or date range")
     with closing(_verified_connection(path)) as conn:
-        rows = conn.execute(
-            "SELECT day_utc, value, unit, source_id, verification_state "
-            "FROM demo_observations WHERE subject_id=? AND metric=? "
-            "ORDER BY day_utc DESC LIMIT ?",
-            (subject_id, metric, limit)
-        )
-        return list(reversed([dict(row) for row in rows]))
+        metadata = conn.execute(
+            "SELECT generated_for_day FROM demo_metadata WHERE dataset_id=?",
+            (DATASET_ID,)
+        ).fetchone()
+        if metadata is None:
+            raise ValueError("Synthetic dataset metadata missing")
+        last = date.fromisoformat(metadata["generated_for_day"])
+        first = last - timedelta(days=DAYS - 1)
+        end = date.fromisoformat(end_day) if end_day is not None else last
+        if not first <= end <= last:
+            raise ValueError("Date outside synthetic dataset")
+        start = max(first, end - timedelta(days=limit - 1))
+        measured = {
+            row["day_utc"]: dict(row)
+            for row in conn.execute(
+                "SELECT day_utc, value, unit, source_id, verification_state "
+                "FROM demo_observations WHERE subject_id=? AND metric=? "
+                "AND day_utc BETWEEN ? AND ? ORDER BY day_utc",
+                (subject_id, metric, start.isoformat(), end.isoformat())
+            )
+        }
+        output = []
+        count = (end - start).days + 1
+        for offset in range(count):
+            day_utc = (start + timedelta(days=offset)).isoformat()
+            if day_utc in measured:
+                record = measured[day_utc]
+                record["state"] = "MEASURED"
+            else:
+                record = {
+                    "day_utc": day_utc,
+                    "value": None,
+                    "unit": METRIC_UNITS[metric],
+                    "source_id": None,
+                    "verification_state": None,
+                    "state": "NO_DATA",
+                }
+            output.append(record)
+        return output
 
 
 def day_values(subject_id: str, chosen_day: str,

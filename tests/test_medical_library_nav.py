@@ -1,21 +1,33 @@
 """Q-0425: real read-only SQLite catalog tests; fixture is synthetic engineering data."""
 from __future__ import annotations
 
-import importlib.util
+import importlib
+from contextlib import contextmanager
 from pathlib import Path
 import sqlite3
+import sys
 import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-MODULE = ROOT / 'apps/desktop/src/aetherion_desktop/medical_library.py'
+DESKTOP_SRC = ROOT / "apps" / "desktop" / "src"
+if str(DESKTOP_SRC) not in sys.path:
+    sys.path.insert(0, str(DESKTOP_SRC))
 
-# Load without importing PySide6: actual Windows Qt execution is a separate gate.
-spec = importlib.util.spec_from_file_location('aetherion_medical_catalog', MODULE)
-module = importlib.util.module_from_spec(spec)
-import sys
-sys.modules[spec.name] = module
-spec.loader.exec_module(module)
+# Import in its real package context: relative localization/runtime-path imports
+# must resolve. The Qt widget imports remain lazy and are not run by these tests.
+module = importlib.import_module("aetherion_desktop.medical_library")
+
+@contextmanager
+def _fixture_db(path):
+    """Commit/rollback then CLOSE SQLite before Windows TemporaryDirectory cleanup."""
+    connection = sqlite3.connect(path)
+    try:
+        with connection:
+            yield connection
+    finally:
+        connection.close()
+
 
 
 class CatalogTests(unittest.TestCase):
@@ -26,7 +38,7 @@ class CatalogTests(unittest.TestCase):
         self.catalog = module.OfflineMedicalCatalog(self.path)
 
     def _make_database(self):
-        with sqlite3.connect(self.path) as db:
+        with _fixture_db(self.path) as db:
             db.executescript('''
             CREATE TABLE library_info (key TEXT PRIMARY KEY, value TEXT NOT NULL);
             CREATE TABLE sources (source_id TEXT PRIMARY KEY, verification_state TEXT, source_url TEXT);
@@ -46,7 +58,7 @@ class CatalogTests(unittest.TestCase):
 
     def test_empty_db_honestly_reports_zero(self):
         self._make_database()
-        with sqlite3.connect(self.path) as db:
+        with _fixture_db(self.path) as db:
             db.execute('DELETE FROM articles')
         snap = self.catalog.list_articles()
         self.assertEqual((snap.state, snap.total, len(snap.articles)), ('EMPTY', 0, 0))
@@ -64,14 +76,14 @@ class CatalogTests(unittest.TestCase):
         self.assertEqual(len(self.catalog.list_articles("%' OR 1=1 --").articles), 0)
 
     def test_reject_unrelated_sqlite_database(self):
-        with sqlite3.connect(self.path) as db:
+        with _fixture_db(self.path) as db:
             db.execute('CREATE TABLE unrelated (id INTEGER)')
         snap = self.catalog.list_articles()
         self.assertEqual((snap.state, snap.total), ('ERROR', 0))
 
     def test_reject_wrong_library_identity(self):
         self._make_database()
-        with sqlite3.connect(self.path) as db:
+        with _fixture_db(self.path) as db:
             db.execute("UPDATE library_info SET value='OTHER' WHERE key='library_kind'")
         self.assertEqual(self.catalog.list_articles().state, 'ERROR')
 

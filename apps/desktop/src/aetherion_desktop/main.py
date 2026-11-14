@@ -1,4 +1,4 @@
-"""AETHERION native Windows app — Portal-first premium Qt shell.
+"""AETHERION native Windows app — Mission Operations-first Qt shell.
 
 AETHERION Server remains the single source of data. The client never invents
 sensor readings, AI answers, anatomy, or an emergency dispatch service.
@@ -18,6 +18,9 @@ from PySide6.QtWidgets import (
 )
 
 from .portal import PORTAL_ROUTES, build_portal_page
+from .mission_ops_home import build_mission_ops_home, ROUTE_IDS
+from .features.demo.synthetic_briefing import SimulatedDemoBriefing
+from .features.demo.synthetic_patient_ui import build_synthetic_patient_demo
 from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
 from .visual_theme import THEMES, VisualPreferences, AmbientBackdrop
 from .settings_page import SettingsPage
@@ -104,7 +107,7 @@ class PageAmbientController(QObject):
 
 
 class AetherionWindow(QMainWindow):
-    """One top menu, a native five-card Home, and existing authenticated views."""
+    """One native mission-operations Home with existing authenticated views."""
 
     def __init__(self) -> None:
         super().__init__()
@@ -140,6 +143,16 @@ class AetherionWindow(QMainWindow):
 
         self.pages = QStackedWidget()
         self.pages.setObjectName("pageStack")
+        # Q-0485: first native view is mission operations, not the five-card Portal.
+        self.operations_home_page = build_mission_ops_home(
+            self, locale=self.ui_language,
+            reduce_motion=self.preferences.reduce_motion,
+        )
+        self.operations_home_page.route_requested.connect(self.open_operations_route)
+        self.operations_home_page.simulated_demo_requested.connect(self.show_simulated_briefing)
+        self.operations_home_page.nasa_archive_requested.connect(self.show_hackathon_demo)
+        self.pages.addWidget(self.operations_home_page)
+        # Legacy Portal is retained for compatibility, never shown at cold launch.
         self.portal_page = build_portal_page(theme_name=self.preferences.theme_name,
                                              reduce_motion=self.preferences.reduce_motion,
                                              locale=self.ui_language,
@@ -147,7 +160,7 @@ class AetherionWindow(QMainWindow):
                                              intensity=self.preferences.animation_intensity)
         self.portal_page.route_requested.connect(self.open_portal_route)
         self.portal_page.theme_requested.connect(self.show_settings)
-        self.portal_page.demo_requested.connect(self.show_hackathon_demo)
+        self.portal_page.demo_requested.connect(self.show_simulated_briefing)
         self.pages.addWidget(self.portal_page)
 
         # Preserve real, already implemented features and their authenticated links.
@@ -174,6 +187,19 @@ class AetherionWindow(QMainWindow):
         )
         self.hackathon_demo_page.home_requested.connect(self.show_portal)
         self.pages.addWidget(self.hackathon_demo_page)
+        # SIMULATED patient experience is a separate widget, SQLite and identity
+        # namespace. Start is called only by the explicit briefing CTA.
+        self.simulated_briefing_page = SimulatedDemoBriefing(self, locale=self.ui_language)
+        self.simulated_briefing_page.back_requested.connect(self.show_portal)
+        self.simulated_briefing_page.start_requested.connect(self.start_simulated_demo)
+        self.simulated_briefing_page.nasa_requested.connect(self.show_hackathon_demo)
+        self.pages.addWidget(self.simulated_briefing_page)
+        self.synthetic_patient_page = build_synthetic_patient_demo(
+            self, locale=self.ui_language,
+            theme=self.preferences.theme_name, mode=self.preferences.mode,
+        )
+        self.synthetic_patient_page.back_requested.connect(self.show_simulated_briefing)
+        self.pages.addWidget(self.synthetic_patient_page)
         self.mission_control_page.subject_activated.connect(self.open_personal_subject)
 
         # Native, bilingual workspaces; only Server-backed records and questions.
@@ -215,7 +241,7 @@ class AetherionWindow(QMainWindow):
                      self.atlas_page,self.care_page,self.care_journal_page):
             self.ambient_controller.add_page(page,self.preferences)
 
-        # Main horizontal navigation; nested items use dropdown menus, never sidebars.
+        # Existing global navigation coexists with the native Operations tree.
         self.nav_home = self._nav_button(bar, "Trang đầu", self.show_portal)
         self.nav_health = self._nav_menu(bar, "Sức khỏe ▾", (
             ("Sức khỏe hôm nay", self.show_personal),
@@ -241,7 +267,7 @@ class AetherionWindow(QMainWindow):
             ("Thư viện y khoa", self.show_medical_library),
             ("Phi hành đoàn", self.show_mission),
             ("Hành trình chăm sóc", self.show_care),
-            (tr(self.ui_language, "demo.portal.title"), self.show_hackathon_demo),
+            (tr(self.ui_language, "demo.portal.title"), self.show_simulated_briefing),
         ))
         self.observatory_menu_actions = (
             self.nav_science.menu().actions()[0],
@@ -303,8 +329,11 @@ class AetherionWindow(QMainWindow):
         self.shortcut_settings.activated.connect(self.show_settings)
         self.shortcut_home = QShortcut(QKeySequence("Alt+Home"), self)
         self.shortcut_home.activated.connect(self.show_portal)
+        # Keep prior Portal available for compatibility without making it Home.
+        self.shortcut_legacy_portal = QShortcut(QKeySequence("Alt+Shift+Home"), self)
+        self.shortcut_legacy_portal.activated.connect(self.show_legacy_portal)
         self._retranslate_shell()
-        self.pages.setCurrentWidget(self.portal_page)
+        self.pages.setCurrentWidget(self.operations_home_page)
         self.check_server()
         self.heartbeat = QTimer(self)
         self.heartbeat.setInterval(30000)
@@ -366,6 +395,9 @@ class AetherionWindow(QMainWindow):
 
     def _retranslate_shell(self):
         """Retitle the localized shell without rewriting NASA/clinical content."""
+        self.operations_home_page.set_locale(self.ui_language)
+        self.simulated_briefing_page.set_locale(self.ui_language)
+        self.synthetic_patient_page.set_locale(self.ui_language)
         self.portal_page.set_locale(self.ui_language)
         self.knowledge_browser_page.set_locale(self.ui_language)
         self.hackathon_demo_page.set_locale(self.ui_language)
@@ -449,6 +481,17 @@ class AetherionWindow(QMainWindow):
             self.preferences.theme_name, self.preferences.reduce_motion,
             self.preferences.mode, self.preferences.animation_intensity,
         )
+        self.operations_home_page.set_visuals(
+            self.preferences.theme_name, self.preferences.reduce_motion,
+            self.preferences.mode, self.preferences.animation_intensity,
+        )
+        self.simulated_briefing_page.set_visuals(
+            self.preferences.theme_name, self.preferences.mode,
+            self.preferences.reduce_motion, self.preferences.animation_intensity,
+        )
+        self.synthetic_patient_page.set_visuals(
+            self.preferences.theme_name, self.preferences.mode,
+        )
         self.settings_page.retranslate()
         self.knowledge_browser_page.set_visuals(
             self.preferences.theme_name, self.preferences.mode,
@@ -481,7 +524,43 @@ class AetherionWindow(QMainWindow):
             self.nav_ai.setVisible(not compact)
 
     def show_portal(self):
+        """Home always means the mission-operations workspace."""
+        self.pages.setCurrentWidget(self.operations_home_page)
+
+    def show_legacy_portal(self):
+        """Compatibility-only access; never the native app cold-start view."""
         self.pages.setCurrentWidget(self.portal_page)
+
+    def open_operations_route(self, route: str):
+        """Resolve every source/health route through the original safe handlers."""
+        if route not in ROUTE_IDS:
+            return
+        handler = {
+            "mission": self.show_mission,
+            "crew": self.show_mission,
+            "health": self.show_personal,
+            "monitor": self.show_monitor,
+            "ecg": self.show_ecg,
+            "assistant": self.show_assistant,
+            "interview": self.show_symptom_interview,
+            "care": self.show_care,
+            "science": self.show_observatory,
+            "hazards": self.show_nasa_explore,
+            "medical_library": self.show_medical_library,
+            "atlas": self.show_atlas,
+            "settings": self.show_settings,
+        }.get(route)
+        if handler is not None:
+            handler()
+
+    def show_simulated_briefing(self):
+        """Every Demo entry starts with explicit SIMULATED provenance."""
+        self.pages.setCurrentWidget(self.simulated_briefing_page)
+
+    def start_simulated_demo(self):
+        """The sole user-initiated entrypoint to the isolated demo SQLite."""
+        self.pages.setCurrentWidget(self.synthetic_patient_page)
+        self.synthetic_patient_page.start()
 
     def show_personal(self):
         self.pages.setCurrentWidget(self.personal_today_page)
@@ -502,7 +581,7 @@ class AetherionWindow(QMainWindow):
         self.pages.setCurrentWidget(self.knowledge_browser_page)
 
     def show_hackathon_demo(self):
-        """Always show NASA provenance first, even on repeated Portal visits."""
+        """NASA MA-7 historical archive: distinct from synthetic Demo SQLite."""
         self.hackathon_demo_page.show_briefing()
         self.pages.setCurrentWidget(self.hackathon_demo_page)
 
@@ -588,6 +667,8 @@ class AetherionWindow(QMainWindow):
         else:
             self.status.setText(tr(self.ui_language, "main.status.checking"))
             self.status.setToolTip(tr(self.ui_language, "main.status.tooltip"))
+        # The operations status reflects this exact HTTP /health state; not demo data.
+        self.operations_home_page.set_connection_state(self.status.text())
 
     def check_server(self):
         self._server_state = "checking"

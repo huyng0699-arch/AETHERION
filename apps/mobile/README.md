@@ -9,7 +9,9 @@ npm install
 npm run web
 ```
 
-For Android Emulator, use `http://10.0.2.2:8765`. For a USB-connected phone, run `adb reverse tcp:8765 tcp:8765` and use `http://127.0.0.1:8765`. Production connections require HTTPS. The server remains the source of truth for accounts, health records, care journeys, science articles, and AI availability.
+For Expo Web development, run the server with `AETHERION_ENABLE_DEV_CORS=1`. This permits only `http://localhost:8081` and `http://127.0.0.1:8081`; it is disabled by default. Set the mobile Server address to `http://127.0.0.1:8765`.
+
+For Android Emulator development, set `AETHERION_ALLOW_DEV_HTTP=1` before `npm run android` and use `http://10.0.2.2:8765`. For a USB-connected phone, run `adb reverse tcp:8765 tcp:8765` and use `http://127.0.0.1:8765`. The server remains loopback-bound; physical-phone LAN pairing is not configured. Production connections require HTTPS. The server remains the source of truth for accounts, health records, care journeys, science articles, and AI availability.
 
 ## Screens
 

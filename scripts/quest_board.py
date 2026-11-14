@@ -6,6 +6,7 @@ import argparse
 import collections
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,51 +16,86 @@ VALID_PRIORITIES = {"P0", "P1", "P2", "P3"}
 
 
 def parse_quest(file: Path) -> dict[str, object]:
-    text = file.read_text(encoding="utf-8")
-    match = re.match(r"---\s*\n(.*?)\n---\s*\n", text, flags=re.DOTALL)
+    """Read the small YAML frontmatter subset used in Quest specs.
+
+    Supports inline arrays and indented '- item' lists. Ignore indented
+    description/block-scalar content: text containing colons is not a new
+    frontmatter key. Never execute arbitrary YAML tags or import PyYAML.
+    """
+    data = file.read_text(encoding="utf-8-sig")
+    match = re.match(r"\A---[ \t]*\r?\n(.*?)\r?\n---[ \t]*\r?\n", data, flags=re.DOTALL)
     if not match:
-        raise ValueError(f"{file}: missing YAML-style front matter")
+        raise ValueError(f"{file}: missing or malformed YAML frontmatter")
+
     meta: dict[str, object] = {}
-    current_list_key: str | None = None
+    active_list: str | None = None
     for raw in match.group(1).splitlines():
         stripped = raw.strip()
         if not stripped or stripped.startswith("#"):
             continue
-        if re.match(r"^\s*-\s+", raw) and current_list_key is not None:
-            item = re.sub(r"^\s*-\s+", "", raw).strip()
-            existing = meta.get(current_list_key)
-            if isinstance(existing, list):
-                existing.append(item)
-            else:
-                meta[current_list_key] = [item]
+        if raw[0].isspace():
+            if active_list and re.match(r"^\s*-\s+", raw):
+                existing = meta.get(active_list)
+                if isinstance(existing, list):
+                    item = re.sub(r"^\s*-\s+", "", raw).strip().strip("'\\\"")
+                    if item:
+                        existing.append(item)
+            # Continuation text, YAML literal block or nested object; not a
+            # new top-level attribute and never a silent status override.
             continue
-        current_list_key = None
-        if ":" not in raw:
-            raise ValueError(f"{file}: malformed metadata: {raw}")
-        key, value = raw.split(":", 1)
-        key = key.strip()
+        active_list = None
+        found = re.fullmatch(r"([A-Za-z_][A-Za-z_0-9-]*):[ \t]*(.*)", raw)
+        if not found:
+            raise ValueError(f"{file}: malformed top-level metadata: {raw!r}")
+        key, value = found.groups()
+        if key in meta:
+            raise ValueError(f"{file}: duplicate frontmatter key: {key}")
         value = value.strip()
-        if value == "":
+        if not value:
             meta[key] = []
-            current_list_key = key
+            active_list = key
+        elif value in {"|", "|-", "|+", ">", ">-", ">+"}:
+            meta[key] = ""  # multiline prose is not a machine state
         elif value.startswith("[") and value.endswith("]"):
-            meta[key] = [s.strip() for s in value[1:-1].split(",") if s.strip()]
+            meta[key] = [
+                part.strip().strip("'\\\"")
+                for part in value[1:-1].split(",")
+                if part.strip()
+            ]
         else:
-            meta[key] = value
+            meta[key] = value.strip("'\\\"")
     return meta
 
 
-def load_all() -> dict[str, dict[str, object]]:
-    result: dict[str, dict[str, object]] = {}
+def scan_all() -> tuple[dict[str, dict[str, object]], list[str]]:
+    """Collect every readable Quest even if one file has broken frontmatter."""
+    tasks: dict[str, dict[str, object]] = {}
+    problems: list[str] = []
+    if not QUESTS.is_dir():
+        return tasks, [f"Quest directory is missing: {QUESTS}"]
     for path in sorted(QUESTS.glob("Q-????.md")):
-        meta = parse_quest(path)
+        try:
+            meta = parse_quest(path)
+        except (OSError, UnicodeError, ValueError) as exc:
+            problems.append(str(exc))
+            continue
         quest_id = str(meta.get("id", ""))
-        if quest_id in result:
-            raise ValueError(f"Duplicate Quest ID: {quest_id}")
-        result[quest_id] = meta
         if quest_id != path.stem:
-            raise ValueError(f"{path}: frontmatter ID mismatch: {quest_id}")
-    return result
+            problems.append(f"{path}: frontmatter ID mismatch: {quest_id!r}")
+            continue
+        if quest_id in tasks:
+            problems.append(f"Duplicate Quest ID: {quest_id}")
+            continue
+        tasks[quest_id] = meta
+    return tasks, problems
+
+
+def load_all() -> dict[str, dict[str, object]]:
+    """Strict API used by validators/tests; do not silently drop corrupt files."""
+    tasks, errors = scan_all()
+    if errors:
+        raise ValueError("; ".join(errors[:10]))
+    return tasks
 
 
 def verify(tasks: dict[str, dict[str, object]]) -> list[str]:
@@ -89,8 +125,9 @@ def verify(tasks: dict[str, dict[str, object]]) -> list[str]:
         for dep in deps:
             if dep not in tasks:
                 errors.append(f"{ident}: unknown dependency {dep}")
-        if state == "READY" and any(tasks.get(dep, {}).get("status") != "DONE" for dep in deps):
-            errors.append(f"{ident}: READY with unfinished dependency")
+        # Owner policy permits READY/QUEUED components to start implementation
+        # before their prerequisites are DONE. Retain dependency edges; prevent
+        # final acceptance through the separate DONE/reviewer gates.
         if state == "DONE" and info.get("review") != "APPROVED":
             errors.append(f"{ident}: DONE without review: APPROVED")
         if state == "RUNNING" and (info.get("owner") in (None, "null", "") or info.get("run_id") in (None, "null", "")):
@@ -118,36 +155,61 @@ def verify(tasks: dict[str, dict[str, object]]) -> list[str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["check", "stats", "ready", "running", "json"], nargs="?", default="stats")
+    parser.add_argument(
+        "command", choices=["check", "stats", "ready", "running", "json"],
+        nargs="?", default="stats",
+    )
     args = parser.parse_args()
-    tasks = load_all()
-    issues = verify(tasks)
+    tasks, read_errors = scan_all()
+    issues = read_errors + verify(tasks)
+
+    # Validation is strict. Read-only listings must remain available if one
+    # Quest is malformed: the user must still be able to identify the work
+    # queue and repair the offending record.
     if args.command == "check":
         if issues:
             for issue in issues:
                 print("ERROR:", issue)
+            print(f"FAILED: {len(tasks)} readable Quest specs; {len(issues)} integrity issues")
             return 1
         print(f"OK: {len(tasks)} unique Quest specs; IDs contiguous; dependencies valid and acyclic")
         return 0
-    if issues:
-        for issue in issues:
-            print("ERROR:", issue)
+
+    if not tasks:
+        print("ERROR: No readable Quest files", file=sys.stderr)
         return 1
     if args.command == "stats":
         print("TOTAL", len(tasks))
-        print("STATUS", dict(sorted(collections.Counter(x["status"] for x in tasks.values()).items())))
-        print("PRIORITY", dict(sorted(collections.Counter(x["priority"] for x in tasks.values()).items())))
-        print("STREAMS", dict(sorted(collections.Counter(x["stream"] for x in tasks.values()).items())))
+        print("STATUS", dict(sorted(collections.Counter(
+            str(x.get("status", "UNKNOWN")) for x in tasks.values()
+        ).items())))
+        print("PRIORITY", dict(sorted(collections.Counter(
+            str(x.get("priority", "UNKNOWN")) for x in tasks.values()
+        ).items())))
+        print("STREAMS", dict(sorted(collections.Counter(
+            str(x.get("stream", "UNKNOWN")) for x in tasks.values()
+        ).items())))
     elif args.command == "ready":
-        for k, v in tasks.items():
-            if v["status"] == "READY":
-                print(k, v["stream"], v["priority"])
+        for ident, item in sorted(tasks.items()):
+            if item.get("status") == "READY":
+                print(ident, item.get("stream", "UNKNOWN"), item.get("priority", "UNKNOWN"))
     elif args.command == "running":
-        for k, v in tasks.items():
-            if v["status"] == "RUNNING":
-                print(k, v["owner"], v.get("lease_until_utc", ""))
+        for ident, item in sorted(tasks.items()):
+            if item.get("status") == "RUNNING":
+                print(ident, item.get("owner", "UNCLAIMED"), item.get("lease_until_utc", ""))
     else:
         print(json.dumps(tasks, indent=2, ensure_ascii=False))
+
+    if issues:
+        print(
+            f"WARNING: Quest integrity has {len(issues)} issue(s); "
+            "listing includes only readable Quest files. "
+            "Run 'python scripts/quest_board.py check' for every error. "
+            "This is NOT an acceptance PASS.",
+            file=sys.stderr,
+        )
+        for issue in issues[:6]:
+            print("WARNING:", issue, file=sys.stderr)
     return 0
 
 

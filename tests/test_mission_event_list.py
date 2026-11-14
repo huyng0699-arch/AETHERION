@@ -1,14 +1,15 @@
 """Q-0065: synthetic engineering fixtures only; no real patient incidents."""
 from pathlib import Path
-import importlib.util
+import importlib
 import sys
 import unittest
 
-MODULE = Path(__file__).resolve().parents[1] / 'apps/desktop/src/aetherion_desktop/features/mission/event_list.py'
-spec = importlib.util.spec_from_file_location('event_list_fixture', MODULE)
-mod = importlib.util.module_from_spec(spec)
-sys.modules[spec.name] = mod
-spec.loader.exec_module(mod)
+DESKTOP_SRC = Path(__file__).resolve().parents[1] / "apps" / "desktop" / "src"
+if str(DESKTOP_SRC) not in sys.path:
+    sys.path.insert(0, str(DESKTOP_SRC))
+
+# Preserve the event module's package context for its three-dot i18n import.
+mod = importlib.import_module("aetherion_desktop.features.mission.event_list")
 
 TIME = '2026-11-14T04:00:00Z'
 

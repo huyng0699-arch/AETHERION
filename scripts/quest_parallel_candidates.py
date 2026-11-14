@@ -5,23 +5,12 @@ Read-only: does not claim, approve, reorder, or modify dependencies.
 """
 from pathlib import Path
 import argparse
-import re
+import sys
+
+from quest_board import parse_quest
 
 ROOT = Path(__file__).resolve().parents[1]
 QUESTS = ROOT / "quests" / "v1"
-
-
-def parse(path):
-    data = path.read_text(encoding="utf-8")
-    block = re.match(r"\A---\s*\n(.*?)\n---\s*\n", data, re.S)
-    if not block:
-        return {}
-    result = {}
-    for line in block.group(1).splitlines():
-        if ":" in line:
-            key, value = line.split(":", 1)
-            result[key.strip()] = value.strip()
-    return result
 
 
 def main():
@@ -29,7 +18,13 @@ def main():
     ap.add_argument("--limit", type=int, default=50)
     ap.add_argument("--priority", choices=["P0", "P1", "P2", "P3"])
     args = ap.parse_args()
-    tasks = {p.stem: parse(p) for p in QUESTS.glob("Q-????.md")}
+    tasks = {}
+    malformed = []
+    for path in sorted(QUESTS.glob("Q-????.md")):
+        try:
+            tasks[path.stem] = parse_quest(path)
+        except (OSError, UnicodeError, ValueError) as exc:
+            malformed.append(f"{path.stem}: {exc}")
     rows = []
     for ident, info in tasks.items():
         status, priority = info.get("status"), info.get("priority", "P3")
@@ -39,8 +34,11 @@ def main():
             continue
         if not args.priority and priority in {"P2", "P3"}:
             continue
-        deps = re.findall(r"Q-\d{4}", info.get("depends_on", "[]"))
-        pending = [d for d in deps if tasks.get(d, {}).get("status") != "DONE"]
+        deps = info.get("depends_on", [])
+        if not isinstance(deps, list):
+            malformed.append(f"{ident}: depends_on is not a list")
+            continue
+        pending = [str(d) for d in deps if tasks.get(str(d), {}).get("status") != "DONE"]
         rows.append(({"P0": 0, "P1": 1, "P2": 2, "P3": 3}.get(priority, 9),
                      ident, status, priority, pending))
     rows.sort()
@@ -51,6 +49,11 @@ def main():
     print(f"Eligible: {len(rows)}; listed: {min(len(rows), max(0, args.limit))}")
     print("Claim by exact GitHub blob SHA; preserve dependencies, exclusive paths.")
     print("Only an independent reviewer can approve final integrated DONE.")
+    if malformed:
+        print(f"WARNING: {len(malformed)} malformed/incomplete Quest records were not selected. "
+              "Use scripts/quest_board.py check for strict diagnostics.", file=sys.stderr)
+        for item in malformed[:8]:
+            print("WARNING:", item, file=sys.stderr)
     return 0
 
 

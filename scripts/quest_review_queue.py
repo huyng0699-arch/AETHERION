@@ -14,6 +14,8 @@ from pathlib import Path
 import re
 import subprocess
 
+from quest_board import parse_quest
+
 ROOT = Path(__file__).resolve().parents[1]
 QUESTS = ROOT / "quests" / "v1"
 
@@ -59,7 +61,21 @@ def scan() -> tuple[list[dict[str, str]], collections.Counter]:
     counts: collections.Counter = collections.Counter()
     for path in sorted(QUESTS.glob("Q-????.md")):
         content = path.read_text(encoding="utf-8")
-        m = frontmatter(content)
+        try:
+            m = parse_quest(path)
+        except (OSError, UnicodeError, ValueError) as exc:
+            # Never crash the independent review scheduler because a single
+            # author produced malformed metadata. Queue that Quest for repair.
+            counts["MALFORMED"] += 1
+            tasks.append({
+                "id": path.stem,
+                "path": path.relative_to(ROOT).as_posix(),
+                "status": "MALFORMED",
+                "review": "PENDING",
+                "owner": "",
+                "reason": f"Invalid metadata; repair before independent acceptance: {str(exc)[:160]}",
+            })
+            continue
         status = m.get("status", "UNKNOWN")
         review = m.get("review", "PENDING")
         counts[status] += 1

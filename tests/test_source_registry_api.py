@@ -41,6 +41,38 @@ class SourceRegistryApiTests(unittest.TestCase):
                 self.assertEqual(sym_resp.status_code, 200)
                 self.assertEqual(sym_resp.json()["verification_status"], "UNREVIEWED_VOCABULARY_ONLY")
 
+                # The SHA-256 field must hash the actual vocabulary bytes,
+                # not repeat the Git SHA-1 used in provenance metadata.
+                from hashlib import sha256
+                vocabulary = REPO_ROOT / "knowledge/symptoms/ASTRA_819_REFERENCE.json"
+                expected = sha256(vocabulary.read_bytes()).hexdigest()
+                self.assertEqual(len(expected), 64)
+                self.assertEqual(sym_resp.json()["content_sha256"], expected)
+                self.assertEqual(sym_resp.json()["content_integrity_state"],
+                                 "SHA256_COMPUTED_FROM_LOCAL_BYTES")
+
+                # Current anatomy catalog is an object with a "models" array,
+                # not a top-level array. This verifies the API and real IDs.
+                anatomy_resp = client.get("/api/v1/sources", params={
+                    "kind": "anatomy_3d_model", "limit": 200,
+                })
+                self.assertEqual(anatomy_resp.status_code, 200)
+                anatomy = anatomy_resp.json()
+                self.assertGreaterEqual(anatomy["total"], 1)
+                model = next(
+                    (x for x in anatomy["items"] if
+                     x["source_id"] == "anatomy:mandible_visible_human_male"), None,
+                )
+                self.assertIsNotNone(model)
+                self.assertEqual(model["license"], "CC BY 4.0")
+                self.assertTrue(model["source_uri"].startswith("https://"))
+                self.assertEqual(model["verification_status"],
+                                 "RIGHTS_MANIFEST_APPROVED_BINARY_UNVERIFIED")
+                self.assertEqual(model["content_integrity_state"],
+                                 "EXPECTED_MANIFEST_SHA256_NOT_REHASHED")
+                self.assertRegex(model["content_sha256"], r"^[0-9a-f]{64}$")
+
+
                 # Negative test: unknown source_id -> 404
                 missing = client.get("/api/v1/sources/nonexistent-source-xyz")
                 self.assertEqual(missing.status_code, 404)

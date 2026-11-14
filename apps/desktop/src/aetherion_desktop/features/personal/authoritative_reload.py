@@ -16,9 +16,10 @@ from urllib.parse import urlencode, urlsplit
 from urllib.request import Request, urlopen
 
 _MAX_RESPONSE_BYTES = 1_048_576
-_ALLOWED_QUALITY = frozenset(
-    {"READY", "NO_DATA", "STALE", "OFFLINE", "DENIED", "ERROR", "UNVERIFIED"}
-)
+# A numeric record must never surface with a permission/error/no-data marker.
+# These are data availability states, not valid measured-value provenance.
+_MEASUREMENT_QUALITY = frozenset({"READY", "STALE", "UNVERIFIED"})
+_PERSONAL_SCOPES = frozenset({"CREW", "crew", "personal"})
 
 
 @dataclass(frozen=True)
@@ -88,8 +89,10 @@ def _validated_records(payload: object, subject: str) -> tuple[tuple[dict[str, A
         fields = ("metric", "unit", "source_id", "scope", "quality", "verification_state")
         if any(not isinstance(item.get(k), str) or not item[k].strip() for k in fields):
             raise ValueError("measurement provenance is incomplete")
-        if item["quality"] not in _ALLOWED_QUALITY:
-            raise ValueError("unknown source quality")
+        if item["quality"] not in _MEASUREMENT_QUALITY:
+            raise ValueError("numeric measurement has unsafe availability/quality status")
+        if item["scope"] not in _PERSONAL_SCOPES:
+            raise ValueError("non-personal observation cannot appear in Personal Health")
         reading = item.get("value")
         if (
             isinstance(reading, bool)
@@ -98,6 +101,14 @@ def _validated_records(payload: object, subject: str) -> tuple[tuple[dict[str, A
             or not _has_timezone(item.get("observed_at"))
         ):
             raise ValueError("invalid value or measured-at timestamp")
+        received_at = item.get("received_at")
+        if received_at is not None:
+            if not _has_timezone(received_at):
+                raise ValueError("invalid received-at provenance")
+            measured = datetime.fromisoformat(item["observed_at"].replace("Z", "+00:00"))
+            received = datetime.fromisoformat(received_at.replace("Z", "+00:00"))
+            if received < measured:
+                raise ValueError("receipt precedes observation")
         if item.get("verification_state") == "TEST_FIXTURE" or item.get("scope") == "engineering_test":
             raise ValueError("test fixture cannot appear as personal records")
         if item["source_id"].lower().startswith(("nasa_osdr:", "research:")):

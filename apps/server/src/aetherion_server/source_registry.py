@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from functools import lru_cache
+import hashlib
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -45,39 +47,68 @@ def _load_registry() -> dict[str, dict[str, Any]]:
 
     if ANATOMY_MODELS_PATH.is_file():
         try:
-            models = json.loads(ANATOMY_MODELS_PATH.read_text(encoding="utf-8"))
-            if isinstance(models, list):
-                for item in models:
-                    mid = str(item.get("id", "")).strip()
-                    if not mid:
-                        continue
-                    sid = f"anatomy:{mid}"
-                    registry[sid] = {
-                        "source_id": sid,
-                        "kind": "anatomy_3d_model",
-                        "title": item.get("label") or item.get("title") or mid,
-                        "publisher": item.get("creator") or item.get("source"),
-                        "source_uri": item.get("source_url") or item.get("url"),
-                        "license": item.get("license"),
-                        "attribution": item.get("attribution"),
-                        "verification_status": item.get("verification_state", "APPROVED_LOCAL_ASSET"),
-                        "content_sha256": item.get("sha256"),
-                    }
+            manifest = json.loads(ANATOMY_MODELS_PATH.read_text(encoding="utf-8"))
         except (OSError, ValueError):
-            pass
+            manifest = None
+        # The canonical AETHERION manifest is {"schema_version": ..., "models": [...]};
+        # accept an older list only for compatibility, never assume it is a list.
+        models = manifest.get("models") if isinstance(manifest, dict) else manifest
+        if isinstance(models, list):
+            for item in models:
+                if not isinstance(item, dict):
+                    continue
+                mid = item.get("anatomical_id") or item.get("id")
+                if not isinstance(mid, str) or not mid.strip():
+                    continue
+                mid = mid.strip()
+                if len(mid) > 160 or any(ord(ch) < 32 for ch in mid):
+                    continue
+                declared_sha = item.get("sha256")
+                valid_sha = (declared_sha.lower() if isinstance(declared_sha, str)
+                             and re.fullmatch(r"[0-9a-fA-F]{64}", declared_sha)
+                             else None)
+                rights = str(item.get("rights_status") or "").upper()
+                sid = f"anatomy:{mid}"
+                registry[sid] = {
+                    "source_id": sid,
+                    "kind": "anatomy_3d_model",
+                    "anatomical_id": mid,
+                    "title": item.get("title_en") or item.get("title_vi")
+                             or item.get("label") or item.get("title") or mid,
+                    "publisher": item.get("author") or item.get("creator") or item.get("source"),
+                    "source_uri": item.get("source_url") or item.get("url"),
+                    "license": item.get("license"),
+                    "attribution": item.get("citation") or item.get("attribution"),
+                    # Rights metadata is self-declared in the audited manifest.
+                    # Listing alone is not proof that a mesh file is present or hashed.
+                    "verification_status": (
+                        "RIGHTS_MANIFEST_APPROVED_BINARY_UNVERIFIED"
+                        if rights == "APPROVED" else "UNVERIFIED"
+                    ),
+                    "content_sha256": valid_sha,
+                    "content_integrity_state": "EXPECTED_MANIFEST_SHA256_NOT_REHASHED",
+                }
 
     if SYMPTOMS_REF_PATH.is_file():
-        registry["astra-symptom-vocabulary-819"] = {
-            "source_id": "astra-symptom-vocabulary-819",
-            "kind": "symptom_vocabulary",
-            "title": "ASTRA 819 Symptom Label Reference",
-            "publisher": "AETHERION Owner-Authorized Legacy Vocabulary Import",
-            "source_uri": "knowledge/symptoms/ASTRA_819_REFERENCE.json",
-            "license": "Project-Internal Reference",
-            "attribution": "Exact 819-label symptom vocabulary; clinical_validation_completed=false",
-            "verification_status": "UNREVIEWED_VOCABULARY_ONLY",
-            "content_sha256": "f76580a14166499433cea7f93cbb89f7db62ec17",
-        }
+        try:
+            # Hash the actual UTF-8 file bytes. A 40-character Git blob SHA-1
+            # is never a SHA-256 and must not be labelled as one.
+            symptom_sha256 = hashlib.sha256(SYMPTOMS_REF_PATH.read_bytes()).hexdigest()
+        except OSError:
+            pass
+        else:
+            registry["astra-symptom-vocabulary-819"] = {
+                "source_id": "astra-symptom-vocabulary-819",
+                "kind": "symptom_vocabulary",
+                "title": "ASTRA 819 Symptom Label Reference",
+                "publisher": "AETHERION Owner-Authorized Legacy Vocabulary Import",
+                "source_uri": "knowledge/symptoms/ASTRA_819_REFERENCE.json",
+                "license": "Project-Internal Reference",
+                "attribution": "Exact 819-label symptom vocabulary; clinical_validation_completed=false",
+                "verification_status": "UNREVIEWED_VOCABULARY_ONLY",
+                "content_sha256": symptom_sha256,
+                "content_integrity_state": "SHA256_COMPUTED_FROM_LOCAL_BYTES",
+            }
 
     return registry
 
