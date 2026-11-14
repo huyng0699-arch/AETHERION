@@ -144,6 +144,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._capture_draft_key: str | None = None
             self._capture_draft: tuple | None = None
             self._entry_subject_id = ""
+            self._registered_subject: str | None = None
             self._authorized_subject: str | None = None  # only after successful GET for that exact subject
             # A single native responsive layout, not a second server or webview.
             from .features.mission.mission_layout import install_mission_layout
@@ -202,6 +203,9 @@ def build_mission_control_page(api_url: str, network, parent=None):
                     return
             except (UnicodeError, ValueError):
                 return
+            self._registered_subject = subject_id
+            if self._authorized_subject == subject_id:
+                self.capture_save.setEnabled(True)
             item = self.subjects.currentItem()
             if item is not None and item.data(Qt.ItemDataRole.UserRole) == subject_id:
                 # Protect selection and API identity from a cosmetic text update.
@@ -275,7 +279,8 @@ def build_mission_control_page(api_url: str, network, parent=None):
             """Persist user-entered observations; no auto-generated measurement."""
             subject = self._selected_subject()
             if (self._capture_pending or not self._token or
-                    not subject or self._authorized_subject != subject):
+                    not subject or self._authorized_subject != subject or
+                    self._registered_subject != subject):
                 self.capture_feedback.setText(tr(self.ui_language, "mission.deniedOpen"))
                 return
             metric, unit = self.capture_metric.currentData()
@@ -331,6 +336,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._capture_pending = False
             if code in (401, 403):
                 self._authorized_subject = None
+                self._registered_subject = None
                 self.open_personal_button.setEnabled(False)
                 self.capture_save.setEnabled(False)
                 self.table.setRowCount(0)
@@ -385,6 +391,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._profile_seq += 1
             self._token = ""
             self._authorized_subject = None
+            self._registered_subject = None
             self.open_personal_button.setEnabled(False)
             self._sync_capture("")
             # Do not leak prior account's selected subject IDs into the next
@@ -476,6 +483,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._profile_seq += 1
             seq = self._request_seq
             self._authorized_subject = None  # handoff disabled until this exact GET is accepted
+            self._registered_subject = None
             self.open_personal_button.setEnabled(False)
             self.table.setRowCount(0)
             self.technical.setText(tr(self.ui_language, "mission.technicalDisclaimer"))
@@ -541,7 +549,9 @@ def build_mission_control_page(api_url: str, network, parent=None):
             # NO_DATA is a successful authorized read, not proof of health.
             self._authorized_subject = subject_id
             self.open_personal_button.setEnabled(True)
-            self.capture_save.setEnabled(True)
+            # Never allow creation of observations for a guessed/unregistered ID.
+            # Both authenticated GETs must have confirmed this exact profile.
+            self.capture_save.setEnabled(self._registered_subject == subject_id)
             note_key = ("mission.note.noObservations" if data.status == "NO_DATA"
                         else "mission.note.recorded")
             self._say("mission.snapshot", state=data.status,
