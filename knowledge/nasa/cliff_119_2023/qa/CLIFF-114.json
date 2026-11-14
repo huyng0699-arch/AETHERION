@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-114",
+  "slot": 114,
+  "quest_id": "Q-0414",
+  "checked_at_utc": "2026-11-14T06:39:17.562922+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-urinary-retention-cliff-2023.pdf?emrc=b78513",
+  "http_status": 200,
+  "pdf_sha256": "ed21b9856ada6d1caec803605991b17a4a2a3888255edd5d289d95cf8ba01a9e",
+  "pdf_bytes": 308586,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-114-IMG-01": "cec93b337d96263d2655eaebf606d1e82053ddfe864fa8f90dd17535e6fe5f09",
+    "CLIFF-114-IMG-02": "a7dfd6513dfc914cfd5a37d62fc601801751e9457a945d0c3a45918044c8381b",
+    "CLIFF-114-IMG-03": "74dd618d6390d3dffc27897606b7a10f8291085be9f5b6c16e7703f4058c9621"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
