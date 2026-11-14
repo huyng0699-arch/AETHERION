@@ -611,6 +611,10 @@ class AetherionWindow(QMainWindow):
                 page.api_url = base_url
             if hasattr(page, "_api_url"):
                 page._api_url = base_url
+        # Free-form AI Chat is authenticated to the actual login account, not
+        # to an invented medical subject. Clinical subject ACLs remain separate.
+        account_name = str(self.session_identity.get("username", ""))
+        self.assistant_page.set_identity("account:" + account_name, self.access_token)
         self.logout_button.show()
         self.show_portal()
         self.check_server()
