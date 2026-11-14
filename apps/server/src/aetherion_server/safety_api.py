@@ -543,4 +543,36 @@ def build_safety_router(
             "pending_ack_incident_ids": pending_ids,
         }
 
+    @router.get("/api/v1/safety/offline-fallback")
+    def offline_assistance_fallback(
+        locale: Literal["vi", "en"] = Query("vi"),
+        identity: tuple[dict, str] = Depends(require_session),
+    ):
+        _session, _ = identity
+        if locale == "en":
+            steps = [
+                "Verify crewmember responsiveness and airway/breathing locally on board.",
+                "Notify the onboard crew medical officer or nearby crewmates directly via local intercom.",
+                "Record observations and actions in the local Care Journal while offline.",
+                "Do not assume Ground/Earth delivery; sync queued events when link is restored.",
+            ]
+            notice = "Offline onboard fallback only. No message has been delivered to Earth or Mission Control."
+        else:
+            steps = [
+                "Kiểm tra trực tiếp phản ứng và đường thở/nhịp thở của phi hành gia trên tàu.",
+                "Báo trực tiếp cho sĩ quan y tế trên tàu hoặc đồng đội gần nhất qua liên lạc nội bộ.",
+                "Ghi lại quan sát và hành động vào Nhật ký Chăm sóc cục bộ khi đang ngoại tuyến.",
+                "Không mặc định tin đã gửi về Trái Đất; đồng bộ hàng đợi khi khôi phục kết nối.",
+            ]
+            notice = "Chỉ là hướng dẫn dự phòng ngoại tuyến trên tàu. Chưa có thông điệp nào được gửi về Trái Đất hoặc Trung tâm Điều khiển."
+        return {
+            "locale": locale,
+            "relay_status": "OFFLINE_ONBOARD_ONLY",
+            "earth_delivery_claimed": False,
+            "requires_local_crew_followup": True,
+            "notice": notice,
+            "local_followup_steps": steps,
+            "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        }
+
     return router
