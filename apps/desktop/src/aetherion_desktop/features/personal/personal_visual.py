@@ -50,11 +50,43 @@ def latest_tiles(cards: tuple | list) -> dict[str, object]:
 def build_personal_visual(page) -> None:
     """Replace the old plain table with a scrolling native health workspace."""
     from PySide6.QtCore import Qt
+    from PySide6.QtGui import QColor, QLinearGradient, QPainter, QPen
     from PySide6.QtWidgets import (
         QAbstractItemView, QComboBox, QFrame, QGridLayout, QHBoxLayout, QHeaderView,
         QLabel, QLineEdit, QPushButton, QScrollArea, QSizePolicy, QTableWidget,
         QVBoxLayout, QWidget,
     )
+
+    class HealthTileFrame(QFrame):
+        """A quiet orbital glow behind *real* data; no invented medical chart."""
+
+        ACCENTS = ("#80DCD5", "#8CAEFF", "#CAB0FC", "#81D8E8", "#E9C7A0", "#E0A7D4")
+
+        def __init__(self, index: int):
+            super().__init__()
+            self.setObjectName("surface")
+            self._accent = QColor(self.ACCENTS[index])
+
+        def paintEvent(self, event):
+            super().paintEvent(event)
+            painter = QPainter(self)
+            painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+            w = self.width()
+            glow = QLinearGradient(w * 0.55, 0, w, self.height() * 0.65)
+            c1 = QColor(self._accent)
+            c1.setAlpha(0)
+            c2 = QColor(self._accent)
+            c2.setAlpha(18)
+            glow.setColorAt(0, c1)
+            glow.setColorAt(1, c2)
+            painter.setPen(Qt.PenStyle.NoPen)
+            painter.setBrush(glow)
+            painter.drawRoundedRect(self.rect().adjusted(2, 2, -2, -2), 14, 14)
+            top = QColor(self._accent)
+            top.setAlpha(155)
+            painter.setPen(QPen(top, 2))
+            painter.drawLine(21, 2, max(22, int(w * 0.29)), 2)
+            painter.end()
 
     outer = QVBoxLayout(page)
     outer.setContentsMargins(0, 0, 0, 0)
@@ -143,8 +175,7 @@ def build_personal_visual(page) -> None:
     grid.setVerticalSpacing(14)
     page.metric_tiles = {}
     for i, (tile_id, label, title, _aliases) in enumerate(TILES):
-        panel = QFrame()
-        panel.setObjectName("surface")
+        panel = HealthTileFrame(i)
         panel.setMinimumHeight(154)
         v = QVBoxLayout(panel)
         v.setContentsMargins(19, 14, 19, 15)
