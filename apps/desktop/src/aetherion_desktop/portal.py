@@ -7,6 +7,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from .localization import normalize_locale, tr
+
 
 @dataclass(frozen=True)
 class PortalCard:
@@ -25,7 +27,7 @@ PORTAL_CARDS: tuple[PortalCard, ...] = (
 PORTAL_ROUTES = frozenset(card.route for card in PORTAL_CARDS)
 
 
-def build_portal_page(parent=None, *, theme_name: str = "orbit", reduce_motion: bool = False):
+def build_portal_page(parent=None, *, theme_name: str = "orbit", reduce_motion: bool = False, locale: str = "vi"):
     """Create a beautiful *native* Qt Portal. No server call or data fabrication."""
     from PySide6.QtCore import Qt, Signal
     from PySide6.QtWidgets import (
@@ -53,6 +55,7 @@ def build_portal_page(parent=None, *, theme_name: str = "orbit", reduce_motion: 
 
         def __init__(self):
             super().__init__(parent)
+            self.language = normalize_locale(locale)
             self.setObjectName("aetherionPortal")
             self.ambient = AmbientBackdrop(self, theme_name, reduce_motion)
             self.ambient.lower()
@@ -76,11 +79,13 @@ def build_portal_page(parent=None, *, theme_name: str = "orbit", reduce_motion: 
             hero_copy = QVBoxLayout()
             hero_copy.setSpacing(6)
             hero_copy.addStretch(1)
-            title = QLabel("Sức khỏe, có chiều sâu.")
+            title = QLabel(tr(self.language, "portal.hero.title"))
+            self.hero_title = title
             title.setObjectName("heroTitle")
             title.setWordWrap(True)
             hero_copy.addWidget(title)
-            subtitle = QLabel("Chọn nơi bạn muốn bắt đầu. Mọi số đo đều phải có nguồn và thời gian rõ ràng.")
+            subtitle = QLabel(tr(self.language, "portal.hero.subtitle"))
+            self.hero_subtitle = subtitle
             subtitle.setObjectName("heroCopy")
             subtitle.setWordWrap(True)
             hero_copy.addWidget(subtitle)
@@ -98,6 +103,7 @@ def build_portal_page(parent=None, *, theme_name: str = "orbit", reduce_motion: 
             grid.setVerticalSpacing(14)
             marks = ("◎", "⌁", "✧", "✦", "◇")
             self.card_buttons: dict[str, QPushButton] = {}
+            self.card_descriptions: dict[str, QLabel] = {}
             for index, card in enumerate(PORTAL_CARDS):
                 panel = PortalCardPanel(card.route)
                 panel.clicked.connect(self.route_requested.emit)
@@ -114,19 +120,21 @@ def build_portal_page(parent=None, *, theme_name: str = "orbit", reduce_motion: 
                 arrow.setObjectName("cardNumber")
                 head.addWidget(arrow)
                 content.addLayout(head)
-                action = QPushButton(card.title)
+                card_title = tr(self.language, f"portal.card.{card.route}.title")
+                action = QPushButton(card_title)
                 action.setObjectName("portalCardButton")
-                action.setAccessibleName(card.title)
-                action.setToolTip(f"Mở {card.title}")
+                action.setAccessibleName(card_title)
+                action.setToolTip(tr(self.language, "portal.open", title=card_title))
                 action.setCursor(Qt.CursorShape.PointingHandCursor)
                 action.setMinimumHeight(36)
                 action.clicked.connect(lambda checked=False, key=card.route: self.route_requested.emit(key))
                 content.addWidget(action)
-                description = QLabel(card.summary)
+                description = QLabel(tr(self.language, f"portal.card.{card.route}.summary"))
                 description.setObjectName("cardDescription")
                 description.setWordWrap(True)
                 content.addWidget(description)
                 self.card_buttons[card.route] = action
+                self.card_descriptions[card.route] = description
                 if index == 4:
                     grid.addWidget(panel, 2, 0, 1, 2)
                 else:
@@ -136,16 +144,33 @@ def build_portal_page(parent=None, *, theme_name: str = "orbit", reduce_motion: 
 
             footer = QHBoxLayout()
             footer.setSpacing(12)
-            trust = QLabel("●  LOCAL-FIRST   /   DỮ LIỆU CÓ NGUỒN   /   KHÔNG TẠO SỐ ĐO GIẢ")
+            trust = QLabel(tr(self.language, "portal.footer.trust"))
+            self.trust_label = trust
             trust.setObjectName("pageHint")
             footer.addWidget(trust)
             footer.addStretch()
-            theme = QPushButton("◐  Đổi giao diện")
-            theme.setAccessibleName("Đổi giao diện AETHERION")
+            theme = QPushButton(tr(self.language, "portal.theme"))
+            self.theme_button = theme
+            theme.setAccessibleName(tr(self.language, "portal.theme.accessible"))
             theme.setObjectName("navButton")
             theme.clicked.connect(self.theme_requested.emit)
             footer.addWidget(theme)
             root.addLayout(footer)
+
+        def set_locale(self, locale: str):
+            """Update every Portal UI string without changing routes or clinical data."""
+            self.language = normalize_locale(locale)
+            self.hero_title.setText(tr(self.language, "portal.hero.title"))
+            self.hero_subtitle.setText(tr(self.language, "portal.hero.subtitle"))
+            self.trust_label.setText(tr(self.language, "portal.footer.trust"))
+            self.theme_button.setText(tr(self.language, "portal.theme"))
+            self.theme_button.setAccessibleName(tr(self.language, "portal.theme.accessible"))
+            for route, button in self.card_buttons.items():
+                title = tr(self.language, f"portal.card.{route}.title")
+                button.setText(title)
+                button.setAccessibleName(title)
+                button.setToolTip(tr(self.language, "portal.open", title=title))
+                self.card_descriptions[route].setText(tr(self.language, f"portal.card.{route}.summary"))
 
         def resizeEvent(self, event):
             super().resizeEvent(event)
