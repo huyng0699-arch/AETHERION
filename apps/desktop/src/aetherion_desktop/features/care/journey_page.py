@@ -255,7 +255,11 @@ class CareJourneyPage(QWidget):
                 body = json.loads(bytes(reply.readAll()).decode("utf-8"))
             except (ValueError, UnicodeError):
                 body = {}
-            err = reply.errorString() if reply.error() or not (200 <= (code or 0) < 300) else ""
+            err = (
+                reply.errorString()
+                if reply.error() != QNetworkReply.NetworkError.NoError or not (200 <= (code or 0) < 300)
+                else ""
+            )
             reply.deleteLater()
             if code == 401:
                 self.token = ""
