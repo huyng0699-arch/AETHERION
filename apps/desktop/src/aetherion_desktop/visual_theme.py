@@ -1,8 +1,8 @@
-"""Native Qt visual system for AETHERION.
+"""Native, local-only visual engine for AETHERION Desktop.
 
-Deep ambient background is drawn procedurally under the UI. It is decorative,
-never medical imagery or an asserted live spacecraft feed. Theme choices are
-stored only in local QSettings; no user health data enters the theme system.
+Ambient art is purely decorative (never patient data or live NASA imagery).
+LIGHT / DARK / FUSION are independent of theme palette; colors are derived
+per mode to keep labels, tables and medical UI legible. Settings are local.
 """
 from __future__ import annotations
 
@@ -11,61 +11,137 @@ import random
 from dataclasses import dataclass
 
 from PySide6.QtCore import Qt, QSettings, QTimer
-from PySide6.QtGui import (
-    QColor, QFont, QLinearGradient, QPainter, QPen, QRadialGradient,
-)
+from PySide6.QtGui import QColor, QFont, QLinearGradient, QPainter, QPen, QRadialGradient
 from PySide6.QtWidgets import QWidget
 
 
 @dataclass(frozen=True)
 class Theme:
     title: str
+    scene: str
+    accent: str
+    second: str
+    light: str
+    dark: str
+
+
+# A genuinely varied, bright-first collection. Unlike a set of duplicate
+# wallpapers, each palette retains its own accent and procedural scene.
+THEMES: dict[str, Theme] = {
+    "daybreak": Theme("Bình minh", "sky", "#E47A4D", "#F8BE72", "#FFF8F0", "#283C58"),
+    "spring": Theme("Vườn mùa xuân", "leaf", "#3F9E78", "#B4D989", "#F5FCF5", "#183F3F"),
+    "orchid": Theme("Lan tím", "bloom", "#8B69D8", "#E5B3D8", "#FBF7FF", "#302A58"),
+    "coral": Theme("San hô", "ocean", "#E56F74", "#67C7D8", "#FFF9F7", "#233D59"),
+    "aurora": Theme("Cực quang", "nebula", "#3CB5B8", "#AC85EB", "#F3FAFF", "#183F55"),
+    "lavender": Theme("Oải hương", "bloom", "#8578CB", "#B6C4EF", "#F8F6FF", "#292E52"),
+    "ocean": Theme("Dòng nước", "ocean", "#269DB3", "#78D5C6", "#F2FBFF", "#153A50"),
+    "forest": Theme("Rừng sớm", "leaf", "#3A947A", "#D4BA6A", "#F5FBF0", "#224535"),
+    "orbit": Theme("Quỹ đạo Trái Đất", "orbit", "#398FCB", "#79D2CF", "#F3F9FF", "#182E52"),
+    "galaxy": Theme("Ngân hà", "nebula", "#9376D9", "#DB9ED8", "#F8F7FF", "#292A53"),
+    "rain": Theme("Mưa trong veo", "rain", "#429AC5", "#8DCEC9", "#F1FAFD", "#223C53"),
+    "lotus": Theme("Hoa sen", "bloom", "#D176A2", "#8FB78B", "#FFF7F9", "#46364F"),
+    "golden": Theme("Nắng mật ong", "sky", "#BE8B35", "#E3B76B", "#FFF9E8", "#4D3C3D"),
+    "minimal": Theme("Tối giản thanh lịch", "minimal", "#6084AB", "#88A8D3", "#F8FAFE", "#26364B"),
+}
+MODES = ("light", "dark", "fusion")
+LANGUAGES = ("vi", "en")
+FONTS = ("Segoe UI", "Arial", "Noto Sans", "Inter", "Roboto")
+
+
+def _mix(first: str | QColor, second: str | QColor, proportion: float) -> QColor:
+    a, b = QColor(first), QColor(second)
+    p = min(1.0, max(0.0, proportion))
+    return QColor(round(a.red() * (1-p) + b.red() * p),
+                  round(a.green() * (1-p) + b.green() * p),
+                  round(a.blue() * (1-p) + b.blue() * p))
+
+
+def _hex(color: str | QColor) -> str:
+    return QColor(color).name(QColor.NameFormat.HexRgb)
+
+
+@dataclass(frozen=True)
+class Palette:
     base: str
     top: str
     surface: str
+    surface_alt: str
     border: str
     accent: str
     second: str
     text: str
     muted: str
+    header: str
+    header_text: str
+    card: str
+    card_hover: str
+    on_accent: str
 
 
-THEMES: dict[str, Theme] = {
-    "orbit": Theme("Quỹ đạo Trái Đất", "#071421", "#0E2840", "#10253A", "#31526B", "#89E3DC", "#7EAEFF", "#F0F8FF", "#A5BED1"),
-    "galaxy": Theme("Dải ngân hà", "#0C1028", "#241A49", "#1C1E3A", "#4B466B", "#B8A0FF", "#8ECAE9", "#F5F3FF", "#B9B5D4"),
-    "rain": Theme("Mưa đêm", "#0A1720", "#1C3440", "#132B33", "#3D5962", "#8DD9E0", "#91B9DE", "#F0FAFC", "#ADC4C9"),
-    "ocean": Theme("Dòng nước", "#06252D", "#0A3C4A", "#103943", "#35636E", "#74D9CE", "#88C8F1", "#E9FCFA", "#B0D4D7"),
-    "minimal": Theme("Tối giản", "#101923", "#162635", "#1B2B38", "#415464", "#A7D8E6", "#B8D5E8", "#EDF5F9", "#B9C9D3"),
-}
+def palette_for(theme_name: str, mode: str, high_contrast: bool = False, accent_override: str = "") -> Palette:
+    theme = THEMES.get(theme_name, THEMES["daybreak"])
+    mode = mode if mode in MODES else "light"
+    accent = _hex(accent_override) if QColor(accent_override).isValid() else theme.accent
+    if mode == "dark":
+        base = _hex(_mix(theme.dark, "#334D68", 0.21))  # lucid, not black
+        surface = _hex(_mix(theme.dark, "#50617D", 0.25))
+        top = _hex(_mix(theme.dark, theme.second, 0.22))
+        return Palette(base, top, surface, _hex(_mix(surface, "#FFFFFF", .07)),
+                       "#61738B" if high_contrast else "#52667E",
+                       _hex(_mix(accent, "#F4FFFF", .24)), theme.second,
+                       "#FFFFFF", "#D6E4F0", "#223B56", "#FFFFFF",
+                       _hex(_mix(surface, theme.second, .08)),
+                       _hex(_mix(surface, "#FFFFFF", .13)), "#122638")
+    if mode == "fusion":
+        base = _hex(_mix(theme.light, "#D7E8F2", .31))
+        top = _hex(_mix(theme.dark, theme.second, .40))
+        return Palette(base, top, "#FFFFFF", "#F3F7FC",
+                       "#738FAD" if high_contrast else "#D6E1EB", accent, theme.second,
+                       "#193046", "#4F667A", "#263F5D", "#FFFFFF",
+                       "#FFFFFF", _hex(_mix(theme.light, theme.second, .23)), "#13293B")
+    # Light mode is deliberately the default and never a dim navy-only window.
+    base = theme.light
+    return Palette(base, _hex(_mix(theme.light, theme.second, .22)),
+                   "#FFFFFF", _hex(_mix(theme.light, "#FFFFFF", .50)),
+                   "#8AA4B7" if high_contrast else "#D5E2EB",
+                   accent, theme.second, "#203348", "#536C7D",
+                   "#FFFFFF", "#203348", "#FFFFFF",
+                   _hex(_mix(theme.light, theme.second, .13)), "#13293B")
 
 
 class AmbientBackdrop(QWidget):
-    """Small, deterministic, low-rate animated painter BELOW all user controls."""
+    """Efficient 15 FPS native QPainter artwork, beneath interactive children."""
 
-    def __init__(self, parent=None, theme_name: str = "orbit", reduce_motion: bool = False):
+    def __init__(self, parent=None, theme_name: str = "daybreak", reduce_motion: bool = False,
+                 mode: str = "light", intensity: int = 48):
         super().__init__(parent)
         self.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents)
         self.setAttribute(Qt.WidgetAttribute.WA_NoSystemBackground)
-        self.theme_name = theme_name if theme_name in THEMES else "orbit"
-        self.reduce_motion = reduce_motion
+        self.theme_name = theme_name if theme_name in THEMES else "daybreak"
+        self.mode = mode if mode in MODES else "light"
+        self.reduce_motion = bool(reduce_motion)
+        self.intensity = max(0, min(100, intensity))
         self.phase = 0.0
         rng = random.Random(2050)
-        self.stars = [(rng.random(), rng.random(), rng.uniform(0.4, 1.8), rng.uniform(0.3, 1.0)) for _ in range(115)]
-        self.drops = [(rng.random(), rng.random(), rng.uniform(0.006, 0.022), rng.uniform(5, 15)) for _ in range(88)]
+        self.stars = [(rng.random(), rng.random(), rng.uniform(0.4, 2.0)) for _ in range(115)]
+        self.drops = [(rng.random(), rng.random(), rng.uniform(6, 19)) for _ in range(78)]
         self.timer = QTimer(self)
-        self.timer.setInterval(70)  # <=15 updates/sec for a purely decorative surface
+        self.timer.setInterval(70)
         self.timer.timeout.connect(self._next_frame)
         self._update_timer()
 
-    def set_visuals(self, name: str, reduce_motion: bool):
-        self.theme_name = name if name in THEMES else "orbit"
-        self.reduce_motion = reduce_motion
+    def set_visuals(self, name: str, reduce_motion: bool, mode: str = "light", intensity: int = 48):
+        self.theme_name = name if name in THEMES else "daybreak"
+        self.reduce_motion = bool(reduce_motion)
+        self.mode = mode if mode in MODES else "light"
+        self.intensity = max(0, min(100, int(intensity)))
         self._update_timer()
         self.update()
 
     def _update_timer(self):
-        if not self.reduce_motion and self.theme_name != "minimal" and self.isVisible():
-            self.timer.start()
+        if self.isVisible() and not self.reduce_motion and self.intensity > 0 and THEMES[self.theme_name].scene != "minimal":
+            if not self.timer.isActive():
+                self.timer.start()
         else:
             self.timer.stop()
 
@@ -78,165 +154,232 @@ class AmbientBackdrop(QWidget):
         super().hideEvent(event)
 
     def _next_frame(self):
-        self.phase = (self.phase + 0.007) % 1.0
+        self.phase = (self.phase + .005 + .007 * self.intensity/100) % 1.0
         self.update()
 
     def paintEvent(self, event):
         w, h = self.width(), self.height()
-        if w < 1 or h < 1:
+        if w < 2 or h < 2:
             return
-        t = THEMES[self.theme_name]
+        theme = THEMES[self.theme_name]
+        colors = palette_for(self.theme_name, self.mode)
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
         bg = QLinearGradient(0, 0, w, h)
-        bg.setColorAt(0, QColor(t.base))
-        bg.setColorAt(0.62, QColor(t.top))
-        bg.setColorAt(1, QColor(t.base))
+        if self.mode == "fusion":
+            bg.setColorAt(0, QColor(colors.base))
+            bg.setColorAt(.56, QColor(colors.top))
+            bg.setColorAt(1, QColor(colors.base))
+        else:
+            bg.setColorAt(0, QColor(colors.base))
+            bg.setColorAt(.63, QColor(colors.top))
+            bg.setColorAt(1, QColor(colors.base))
         painter.fillRect(self.rect(), bg)
-
-        if self.theme_name == "minimal":
+        if theme.scene == "minimal":
             painter.end()
             return
-        self._glow(painter, w * 0.77, h * 0.22, w * 0.46, t.accent, 24)
-        self._glow(painter, w * 0.21, h * 0.81, w * 0.55, t.second, 13)
-        if self.theme_name in ("orbit", "galaxy"):
-            self._space(painter, w, h, t)
-        elif self.theme_name == "rain":
-            self._rain(painter, w, h, t)
+        opacity = (self.intensity / 100) * (0.38 if self.mode == "light" else 0.65)
+        self._glow(painter, w*.82, h*.25, min(w,h)*.58, theme.second, int(80*opacity))
+        self._glow(painter, w*.18, h*.85, min(w,h)*.70, theme.accent, int(55*opacity))
+        painter.setOpacity(.28 + opacity*.85)
+        if theme.scene in ("orbit", "nebula"):
+            self._space(painter, w, h, theme)
+        elif theme.scene in ("rain",):
+            self._rain(painter, w, h, theme)
+        elif theme.scene == "ocean":
+            self._waves(painter, w, h, theme)
+        elif theme.scene in ("bloom", "leaf"):
+            self._petals(painter, w, h, theme)
         else:
-            self._ocean(painter, w, h, t)
-        # Final dark tint keeps typography above this layer readable.
-        painter.fillRect(self.rect(), QColor(4, 12, 22, 46))
+            self._sky(painter, w, h, theme)
         painter.end()
 
     @staticmethod
     def _glow(painter, x, y, radius, color, opacity):
         grad = QRadialGradient(x, y, radius)
-        c = QColor(color)
-        c.setAlpha(opacity)
-        grad.setColorAt(0, c)
-        c.setAlpha(0)
-        grad.setColorAt(1, c)
+        a = QColor(color)
+        a.setAlpha(max(0, min(255, opacity)))
+        grad.setColorAt(0, a)
+        a.setAlpha(0)
+        grad.setColorAt(1, a)
         painter.setPen(Qt.PenStyle.NoPen)
         painter.setBrush(grad)
-        painter.drawEllipse(int(x - radius), int(y - radius), int(2 * radius), int(2 * radius))
+        painter.drawEllipse(int(x-radius), int(y-radius), int(radius*2), int(radius*2))
 
     def _space(self, painter, w, h, theme):
-        for x, y, size, lum in self.stars:
-            twinkle = 0.82 if self.reduce_motion else 0.70 + 0.26 * math.sin((x + y + self.phase) * 6.283)
-            painter.setBrush(QColor(224, 241, 255, int(135 * lum * twinkle)))
-            painter.setPen(Qt.PenStyle.NoPen)
-            painter.drawEllipse(int(x * w), int(y * h), max(1, int(size)), max(1, int(size)))
-        cx, cy = w * 0.86, h * 0.55
-        radius = min(w * 0.19, h * 0.30)
-        # Atmospheric disk is purely decorative; not a satellite feed.
-        globe = QRadialGradient(cx - radius * 0.31, cy - radius * 0.41, radius * 1.5)
-        globe.setColorAt(0.0, QColor("#497EA3" if self.theme_name == "orbit" else "#776CBA"))
-        globe.setColorAt(0.43, QColor("#143B67" if self.theme_name == "orbit" else "#393060"))
-        globe.setColorAt(0.96, QColor(6, 17, 33, 230))
-        globe.setColorAt(1, QColor(3, 8, 20, 255))
-        rim_color = QColor(theme.accent)
-        rim_color.setAlpha(68)
-        painter.setPen(QPen(rim_color, 1.5))
-        painter.setBrush(globe)
-        painter.drawEllipse(int(cx - radius), int(cy - radius), int(2 * radius), int(2 * radius))
-        painter.save()
-        painter.translate(cx, cy)
-        painter.rotate(-18)
-        painter.setBrush(Qt.BrushStyle.NoBrush)
-        painter.setPen(QPen(QColor(141, 204, 224, 40), 1))
-        painter.drawEllipse(int(-radius * 1.56), int(-radius * 0.51), int(radius * 3.12), int(radius * 1.02))
-        painter.setPen(QPen(QColor(152, 225, 235, 85), 2))
-        painter.drawArc(int(-radius * 1.56), int(-radius * 0.51), int(radius * 3.12), int(radius * 1.02), int(self.phase * 5760), 1250)
-        painter.restore()
+        painter.setPen(Qt.PenStyle.NoPen)
+        for x,y,r in self.stars:
+            lum = .5 + .35*math.sin((x+y+self.phase)*math.tau)
+            shade = QColor("#FFFFFF") if self.mode == "dark" else QColor(theme.accent)
+            shade.setAlpha(int(max(20, min(220, 180*lum))))
+            painter.setBrush(shade)
+            painter.drawEllipse(int(x*w), int(y*h), max(1,int(r)), max(1,int(r)))
+        if theme.scene == "orbit":
+            cx,cy,r = w*.83,h*.52,min(w,h)*.22
+            g=QRadialGradient(cx-r*.26,cy-r*.24,r*1.6)
+            g.setColorAt(0,QColor("#A9EDFC"));g.setColorAt(.35,QColor("#4EA9D8"));g.setColorAt(1,QColor("#35518C"))
+            painter.setBrush(g)
+            painter.setPen(QPen(QColor(theme.second), 2))
+            painter.drawEllipse(int(cx-r),int(cy-r),int(2*r),int(2*r))
+            painter.setBrush(Qt.BrushStyle.NoBrush)
+            painter.setPen(QPen(QColor(theme.accent), 2))
+            painter.drawArc(int(cx-r*1.42),int(cy-r*.59),int(r*2.84),int(r*1.18),int(self.phase*5760),1400)
 
-    def _rain(self, painter, w, h, theme):
-        painter.setPen(QPen(QColor(149, 207, 224, 61), 1))
-        for x, y, velocity, length in self.drops:
-            dy = ((y + (0 if self.reduce_motion else self.phase * velocity * 50)) % 1.0) * h
-            px = int(x * w)
-            painter.drawLine(px, int(dy), px - 4, int(dy + length))
+    def _rain(self,painter,w,h,theme):
+        painter.setPen(QPen(QColor(theme.accent),1.3))
+        for x,y,length in self.drops:
+            yy=((y+self.phase*2.6)%1)*h
+            painter.drawLine(int(x*w),int(yy),int(x*w-4),int(yy+length))
 
-    def _ocean(self, painter, w, h, theme):
-        for n in range(13):
-            ypos = h * (0.32 + n * 0.058)
-            painter.setPen(QPen(QColor(111, 224, 223, max(8, 43 - n * 2)), 1.2))
-            old = None
-            for i in range(0, w + 12, 12):
-                y = ypos + math.sin((i / max(w, 1)) * 12 + n * 0.44 + self.phase * 6.28) * (5 + n * 0.5)
-                if old is not None:
-                    painter.drawLine(old[0], int(old[1]), i, int(y))
-                old = (i, y)
+    def _waves(self,painter,w,h,theme):
+        for n in range(11):
+            ypos=h*(.37+n*.06)
+            col=QColor(theme.accent if n%2 else theme.second)
+            col.setAlpha(160-n*9)
+            painter.setPen(QPen(col,1.6))
+            last=None
+            for x in range(0,w+20,14):
+                y=ypos+math.sin(x/max(w,1)*14+n*.6+self.phase*math.tau)*(7+n*.3)
+                if last:painter.drawLine(last[0],int(last[1]),x,int(y))
+                last=(x,y)
+
+    def _petals(self,painter,w,h,theme):
+        painter.setPen(Qt.PenStyle.NoPen)
+        for i,(x,y,r) in enumerate(self.stars[:52]):
+            yy=((y+self.phase*.24*(.4+r))%1)*h
+            painter.setBrush(QColor(theme.second if i%3 else theme.accent))
+            painter.drawEllipse(int(x*w+math.sin(self.phase*math.tau+i)*13),int(yy),int(r*3+2),int(r*4+3))
+
+    def _sky(self,painter,w,h,theme):
+        cx=w*.84;cy=h*.42;r=min(w,h)*.145
+        painter.setPen(Qt.PenStyle.NoPen)
+        painter.setBrush(QColor(theme.second))
+        painter.drawEllipse(int(cx-r),int(cy-r),int(r*2),int(r*2))
+        for x,y,r0 in self.stars[:20]:
+            painter.setBrush(QColor("#FFFFFF"))
+            painter.drawEllipse(int(x*w),int(y*h),int(r0*2+2),int(r0*2+2))
 
 
 class VisualPreferences:
-    """Theme/typography settings, intentionally distinct from health data."""
+    """Settings are local device preferences; never stored with clinical data."""
 
     def __init__(self):
-        self.settings = QSettings("TRUY TINH", "AETHERION")
-        stored = str(self.settings.value("visual/theme", "orbit"))
-        self.theme_name = stored if stored in THEMES else "orbit"
-        self.reduce_motion = str(self.settings.value("visual/reduce_motion", "false")).lower() == "true"
-        self.font_size = int(self.settings.value("visual/font_size", 10))
-        self.font_size = max(9, min(13, self.font_size))
+        self.settings=QSettings("TRUY TINH", "AETHERION")
+        t=str(self.settings.value("visual/theme","daybreak"))
+        self.theme_name=t if t in THEMES else "daybreak"
+        m=str(self.settings.value("visual/mode","light"))
+        self.mode=m if m in MODES else "light"
+        lang=str(self.settings.value("ui/language","vi"))
+        self.language=lang if lang in LANGUAGES else "vi"
+        family=str(self.settings.value("visual/font_family","Segoe UI"))
+        self.font_family=family if family in FONTS else "Segoe UI"
+        self.font_size=self._clamp(self.settings.value("visual/font_size",10),9,15,10)
+        self.animation_intensity=self._clamp(self.settings.value("visual/animation_intensity",48),0,100,48)
+        self.reduce_motion=str(self.settings.value("visual/reduce_motion","false")).lower()=="true"
+        self.high_contrast=str(self.settings.value("visual/high_contrast","false")).lower()=="true"
+        override=str(self.settings.value("visual/accent_override",""))
+        self.accent_override=override if QColor(override).isValid() else ""
 
-    def set_theme(self, theme_name: str):
-        if theme_name not in THEMES:
+    @staticmethod
+    def _clamp(value, minimum, maximum, fallback):
+        try:return max(minimum,min(maximum,int(value)))
+        except (TypeError,ValueError):return fallback
+
+    def _write(self,key,value):
+        self.settings.setValue(key,value)
+
+    def set_theme(self,name):
+        if name in THEMES:self.theme_name=name;self._write("visual/theme",name)
+
+    def set_mode(self,mode):
+        if mode in MODES:self.mode=mode;self._write("visual/mode",mode)
+
+    def set_language(self,language):
+        if language in LANGUAGES:self.language=language;self._write("ui/language",language)
+
+    def set_font_family(self,family):
+        if family in FONTS:self.font_family=family;self._write("visual/font_family",family)
+
+    def set_font_size(self,size):
+        self.font_size=self._clamp(size,9,15,10);self._write("visual/font_size",self.font_size)
+
+    def set_animation_intensity(self,intensity):
+        self.animation_intensity=self._clamp(intensity,0,100,48);self._write("visual/animation_intensity",self.animation_intensity)
+
+    def set_reduced_motion(self,on):
+        self.reduce_motion=bool(on);self._write("visual/reduce_motion",on)
+
+    def set_high_contrast(self,on):
+        self.high_contrast=bool(on);self._write("visual/high_contrast",on)
+
+    def set_accent_override(self,color):
+        if color and not QColor(color).isValid():
             return
-        self.theme_name = theme_name
-        self.settings.setValue("visual/theme", theme_name)
+        self.accent_override=color
+        self._write("visual/accent_override",color)
 
-    def set_reduced_motion(self, enabled: bool):
-        self.reduce_motion = bool(enabled)
-        self.settings.setValue("visual/reduce_motion", self.reduce_motion)
+    def reset(self):
+        for key in ("visual/theme","visual/mode","visual/font_family","visual/font_size",
+                    "visual/animation_intensity","visual/reduce_motion","visual/high_contrast","ui/language","visual/accent_override"):
+            self.settings.remove(key)
+        self.__init__()
 
-    def set_font_size(self, size: int):
-        self.font_size = max(9, min(13, int(size)))
-        self.settings.setValue("visual/font_size", self.font_size)
-
-    def apply(self, app):
-        theme = THEMES[self.theme_name]
-        font = QFont("Segoe UI", self.font_size)
-        app.setFont(font)
-        app.setStyleSheet(make_stylesheet(theme))
+    def apply(self,app):
+        app.setFont(QFont(self.font_family,self.font_size))
+        app.setStyleSheet(make_stylesheet(palette_for(self.theme_name,self.mode,self.high_contrast,self.accent_override),self.font_family,self.high_contrast))
 
 
-def make_stylesheet(t: Theme) -> str:
-    return """
-    QMainWindow, QWidget { color: %(text)s; font-family: 'Segoe UI'; }
-    QMainWindow { background: %(base)s; }
-    QWidget#appRoot { background: %(base)s; }
-    QFrame#topBar { background: %(base)s; border-bottom:1px solid %(border)s; }
-    QLabel { background:transparent; }
-    QLabel#wordmark { color:%(text)s; font-size:17px; font-weight:800; letter-spacing:2px; }
-    QLabel#eyebrow { color:%(accent)s; font-size:11px; font-weight:700; letter-spacing:2px; }
-    QLabel#heroTitle { color:%(text)s; font-size:34px; font-weight:800; }
-    QLabel#heroCopy { color:%(muted)s; font-size:15px; }
-    QLabel#cardNumber { color:%(accent)s; font-size:12px; letter-spacing:1px; }
-    QLabel#cardDescription { color:%(muted)s; font-size:13px; }
-    QLabel#connectionPill { background:%(surface)s; color:%(muted)s; border:1px solid %(border)s; border-radius:13px; padding:7px 11px; }
-    QLabel#pageHint, QLabel#detail { color:%(muted)s; font-size:13px; }
-    QLabel#heading { color:%(text)s; font-size:25px; font-weight:700; }
-    QFrame#portalCard { background:rgba(22,41,59,215); border:1px solid %(border)s; border-radius:17px; }
-    QFrame#portalCard:hover { background:rgba(32,58,78,235); border:1px solid %(accent)s; }
-    QFrame#surface, QFrame#contentPanel { background:%(surface)s; border:1px solid %(border)s; border-radius:15px; }
-    QPushButton { background:%(surface)s; color:%(text)s; border:1px solid %(border)s; border-radius:11px; padding:9px 14px; min-height:22px; }
-    QPushButton:hover { border-color:%(accent)s; background:%(top)s; }
-    QPushButton:focus { border:2px solid %(accent)s; }
-    QPushButton#brandButton { background:transparent; border:0; font-size:17px; font-weight:800; letter-spacing:2px; color:%(text)s; padding:8px 0; }
-    QPushButton#navButton { background:transparent; border:0; font-size:12px; font-weight:600; padding:9px 10px; }
-    QPushButton#navButton:hover { background:%(surface)s; border-radius:9px; }
-    QPushButton#portalCardButton { background:transparent; border:0; padding:0; text-align:left; font-weight:700; font-size:19px; min-height:33px; }
-    QPushButton#portalCardButton:hover { color:%(accent)s; }
-    QPushButton#primaryAction { background:%(accent)s; color:%(base)s; border:0; font-weight:750; }
-    QPushButton#primaryAction:hover { background:%(second)s; }
-    QToolButton { background:transparent; border:1px solid %(border)s; border-radius:10px; color:%(text)s; padding:9px; }
-    QToolButton:hover { border-color:%(accent)s; }
-    QTableWidget, QTableView, QListView, QTreeView { background:%(surface)s; alternate-background-color:%(top)s; color:%(text)s; border:1px solid %(border)s; gridline-color:%(border)s; selection-background-color:%(top)s; }
-    QHeaderView::section { background:%(top)s; color:%(text)s; border:0; border-bottom:1px solid %(border)s; padding:8px; }
-    QLineEdit, QComboBox, QTextEdit, QPlainTextEdit { background:%(surface)s; border:1px solid %(border)s; border-radius:8px; padding:7px; color:%(text)s; }
-    QMenu { background:%(surface)s; border:1px solid %(border)s; padding:6px; color:%(text)s; }
-    QMenu::item { padding:9px 24px; border-radius:6px; }
-    QMenu::item:selected { background:%(top)s; }
-    QScrollArea, QScrollArea QWidget#qt_scrollarea_viewport { background:transparent; border:0; }
-    """ % {"base":t.base,"top":t.top,"surface":t.surface,"border":t.border,"accent":t.accent,"second":t.second,"text":t.text,"muted":t.muted}
+def make_stylesheet(p: Palette, family="Segoe UI", high_contrast=False) -> str:
+    """One consistent source for Portal, Mission, personal health and Library."""
+    style=r'''
+    QMainWindow, QWidget { color:%(text)s; font-family:"%(font)s"; }
+    QMainWindow, QWidget#appRoot, QStackedWidget#pageStack {background:%(base)s;}
+    QFrame#topBar {background:%(header)s; border-bottom:1px solid %(border)s;}
+    QFrame#footerBar {background:%(header)s; border-top:1px solid %(border)s;}
+    QLabel {background:transparent; color:%(text)s;}
+    QLabel#eyebrow, QLabel#cardNumber {color:%(accent)s; font-size:11px; font-weight:700; letter-spacing:1px;}
+    QLabel#heroTitle {font-size:37px; font-weight:800; color:%(text)s;}
+    QLabel#heroCopy {color:%(muted)s; font-size:15px;}
+    QLabel#pageHint, QLabel#cardDescription, QLabel#detail {color:%(muted)s; font-size:13px;}
+    QLabel#heading {font-size:27px; font-weight:750; color:%(text)s;}
+    QLabel#connectionPill {background:%(surface)s; color:%(muted)s; border:1px solid %(border)s; border-radius:14px; padding:7px 12px;}
+    QFrame#portalCard {background:%(card)s; border:1px solid %(border)s; border-radius:21px;}
+    QFrame#portalCard:hover {background:%(card_hover)s; border:2px solid %(accent)s;}
+    QFrame#surface, QFrame#contentPanel, QFrame#settingsCard {background:%(surface)s; border:1px solid %(border)s; border-radius:18px;}
+    QPushButton, QToolButton {background:%(surface)s; color:%(text)s; border:1px solid %(border)s; border-radius:11px; padding:9px 13px; min-height:26px;}
+    QPushButton:hover, QToolButton:hover {border-color:%(accent)s; background:%(surface_alt)s;}
+    QPushButton:focus, QToolButton:focus {border:2px solid %(accent)s;}
+    QPushButton:checked, QToolButton:checked {background:%(accent)s; color:%(on_accent)s; border:1px solid %(accent)s;}
+    QPushButton#brandButton {background:transparent; border:0; font-size:18px; font-weight:800; letter-spacing:2px; color:%(header_text)s; padding:6px 0;}
+    QPushButton#navButton {background:transparent; border:0; font-size:12px; font-weight:600; padding:8px 9px; color:%(header_text)s;}
+    QPushButton#navButton:hover {background:%(surface_alt)s; color:%(text)s; border-radius:9px;}
+    QPushButton#portalCardButton {background:transparent; border:0; padding:0; text-align:left; font-weight:750; font-size:20px; min-height:36px;}
+    QPushButton#portalCardButton:hover {color:%(accent)s;}
+    QPushButton#primaryAction {background:%(accent)s; color:%(on_accent)s; border:0; font-weight:750;}
+    QPushButton#primaryAction:hover {background:%(second)s;}
+    QToolButton#headerAction {background:transparent; border:1px solid %(border)s; color:%(header_text)s; padding:9px 10px;}
+    QToolButton#headerAction:hover {background:%(surface_alt)s; color:%(text)s;}
+    QTableWidget, QTableView, QListView, QTreeView {background:%(surface)s; alternate-background-color:%(surface_alt)s; color:%(text)s; border:1px solid %(border)s; gridline-color:%(border)s; selection-background-color:%(top)s;}
+    QHeaderView::section {background:%(surface_alt)s; color:%(text)s; border:0; border-bottom:1px solid %(border)s; padding:9px;}
+    QLineEdit, QComboBox, QTextEdit, QPlainTextEdit, QSpinBox {background:%(surface)s; border:1px solid %(border)s; border-radius:9px; padding:8px; color:%(text)s;}
+    QMenu {background:%(surface)s; border:1px solid %(border)s; padding:7px; color:%(text)s;}
+    QMenu::item {padding:10px 25px; border-radius:7px;}
+    QMenu::item:selected {background:%(surface_alt)s;}
+    QTabWidget::pane {border:0; background:transparent;}
+    QTabBar::tab {background:%(surface_alt)s; border:1px solid %(border)s; border-radius:11px; padding:11px 17px; margin:0 3px 0 0; color:%(muted)s;}
+    QTabBar::tab:selected {background:%(surface)s; color:%(accent)s; border-bottom:2px solid %(accent)s;}
+    QScrollArea, QScrollArea QWidget#qt_scrollarea_viewport {background:transparent; border:0;}
+    QScrollBar:vertical {background:transparent; width:10px;}
+    QScrollBar::handle:vertical {background:%(border)s; border-radius:5px; min-height:25px;}
+    QSlider::groove:horizontal {height:7px; background:%(border)s; border-radius:3px;}
+    QSlider::handle:horizontal {background:%(accent)s; width:17px; margin:-5px 0; border-radius:8px;}
+    QCheckBox {spacing:9px; padding:5px;}
+    QCheckBox::indicator {width:18px; height:18px;}
+    '''
+    return style % {
+        "base":p.base,"top":p.top,"surface":p.surface,"surface_alt":p.surface_alt,
+        "border":p.border,"accent":p.accent,"second":p.second,"text":p.text,
+        "muted":p.muted,"header":p.header,"header_text":p.header_text,
+        "card":p.card,"card_hover":p.card_hover,"on_accent":p.on_accent,
+        "font":family.replace('"','')
+    }
