@@ -160,8 +160,10 @@ class BodyAtlas3D(QWidget):
         self.title.setText(self.t('title'))
         self.description.setText(self.t('subtitle'))
         self.label.setText(self.t('choose'))
+        self.selector.setAccessibleName(self.t('choose'))
         self.load_button.setText(self.t('reload'))
         self.reset_button.setText(self.t('reset'))
+        self.reset_button.setAccessibleName(self.t('reset'))
         self.source_button.setText(self.t('source'))
         if self.fallback_2d is not None:
             self.fallback_2d.set_locale(self.locale)
@@ -298,7 +300,9 @@ class BodyAtlas3D(QWidget):
                 self.viewer = QtInteractor(self)
                 # Real viewer-scoped camera transforms; preserve native mouse.
                 from .render3d.camera_controls import install_camera_shortcuts
+                from .render3d.region_keyboard import install_region_keyboard
                 install_camera_shortcuts(self.viewer)
+                install_region_keyboard(self.viewer, self.selector)
                 self.viewer.setMinimumHeight(340)
                 self.content.addWidget(self.viewer, 1)
                 self.empty.hide()
