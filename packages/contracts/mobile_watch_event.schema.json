@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/contracts/v1/mobile_watch_event.schema.json",
+  "title": "AETHERION Mobile/Watch Event Contract (Q-0028)",
+  "description": "Specifies device IDs, server acknowledgement, and server authority for separately packaged mobile and watch clients.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "device_id",
+    "device_type",
+    "subject_id",
+    "scope",
+    "event_kind",
+    "idempotency_key",
+    "ack_status",
+    "authoritative_source",
+    "client_is_authoritative",
+    "captured_at"
+  ],
+  "properties": {
+    "event_id": { "type": "string", "minLength": 1 },
+    "device_id": { "type": "string", "minLength": 1 },
+    "device_type": { "type": "string", "enum": ["MOBILE", "WATCH"] },
+    "subject_id": { "type": "string", "minLength": 1 },
+    "scope": { "type": "string", "enum": ["CREW", "CABIN", "VEHICLE"] },
+    "event_kind": {
+      "type": "string",
+      "enum": ["CREW_CHECKIN", "ALERT_ACK", "WEARABLE_SAMPLE", "HEARTBEAT"]
+    },
+    "idempotency_key": { "type": "string", "minLength": 1 },
+    "ack_status": {
+      "type": "string",
+      "enum": ["PENDING", "ACCEPTED", "REJECTED", "REPLAYED"]
+    },
+    "ack_at": { "type": ["string", "null"], "format": "date-time" },
+    "server_observation_id": { "type": ["integer", "null"], "minimum": 1 },
+    "authoritative_source": { "type": "string", "const": "server" },
+    "client_is_authoritative": { "type": "boolean", "const": false },
+    "captured_at": { "type": "string", "format": "date-time" }
+  }
+}
