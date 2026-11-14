@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "hazard_id": "isolation_and_confinement",
+  "title": "Isolation and Confinement",
+  "quest_id": "Q-0113",
+  "retrieved_at_utc": "2026-11-14T03:57:40Z",
+  "is_live_telemetry": false,
+  "primary_sources": [
+    {
+      "source_id": "nasa-hrp",
+      "publisher": "NASA Human Research Program (HRP)",
+      "url": "https://www.nasa.gov/hrp/"
+    },
+    {
+      "source_id": "nasa-space-apps-2026",
+      "publisher": "NASA Space Apps Challenge 2026",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/"
+    },
+    {
+      "source_id": "nasa-nlsp",
+      "publisher": "NASA Life Sciences Portal (NLSP)",
+      "url": "https://www.nasa.gov/hrp/nlsp/",
+      "note": "Spaceflight and ground-analog behavioral/physiological studies since 1961"
+    }
+  ],
+  "affected_organ_systems": [
+    {
+      "system_id": "behavioral_neurocognitive",
+      "label": "Behavioral Health, Sleep & Circadian Rhythm",
+      "evidence_summary": "Long-duration confinement and altered light-dark cycles can contribute to sleep disruption, fatigue, and mood changes.",
+      "source_ids": ["nasa-hrp", "nasa-space-apps-2026", "nasa-nlsp"]
+    }
+  ],
+  "behavioral_indicators_without_clinical_overclaim": [
+    {
+      "metric": "daily_sleep_hours",
+      "unit": "hours",
+      "interpretation_boundary": "Self-reported or tracked sleep duration is a wellness indicator only, not a psychiatric diagnosis."
+    },
+    {
+      "metric": "mood_self_report",
+      "unit": "self-report",
+      "interpretation_boundary": "Voluntary crew check-in; missing check-ins indicate NO_DATA, never unconsciousness or pathology."
+    }
+  ],
+  "limitations": [
+    "Behavioral indicators support self-awareness and crew check-ins; they do not diagnose depression, anxiety, or clinical disorders."
+  ]
+}
