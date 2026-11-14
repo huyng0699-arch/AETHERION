@@ -29,7 +29,7 @@ MAX_ASSET_BYTES = 40 * 1024 * 1024
 UI = {
  'vi': {'title':'Bản đồ giải phẫu 3D','subtitle':'Mô hình hình học thật, có nguồn và giấy phép. Xoay, phóng to, di chuyển và chọn vùng trên mesh.',
         'choose':'Chọn cấu trúc','reload':'Tải danh mục từ Server','reset':'Đặt lại góc nhìn',
-        'source':'Mở nguồn gốc','empty':'Chưa có mô hình hợp lệ được duyệt hoặc không truy cập được Server. Không dựng hình giải phẫu giả.',
+        'source':'Mở nguồn gốc','inspect':'Chi tiết nguồn','empty':'Chưa có mô hình hợp lệ được duyệt hoặc không truy cập được Server. Không dựng hình giải phẫu giả.',
         'install':'Cài gói aetherion-desktop[atlas] để bật PyVistaQt / VTK trên Windows.',
         'loading':'Đang kiểm tra mô hình, giấy phép và SHA-256…','invalid':'Tệp 3D không khớp SHA-256 hoặc vượt kích thước cho phép.',
         'ready':'Đang hiển thị {name} • {n} điểm, {cells} mặt. Kéo để xoay, cuộn để phóng to, chuột phải để di chuyển.',
@@ -38,7 +38,7 @@ UI = {
         'network':'Server không trả danh mục 3D hợp lệ; tiếp tục dùng những mô hình đã kiểm chứng trên máy.'},
  'en': {'title':'3D Anatomy Atlas','subtitle':'Genuine licensed geometry. Rotate, zoom, pan, and select the mesh; source evidence stays visible.',
         'choose':'Anatomical structure','reload':'Refresh from Server','reset':'Reset camera',
-        'source':'Open original source','empty':'No approved, verified anatomical geometry is available locally or from Server. No fake anatomical meshes.',
+        'source':'Open original source','inspect':'Source details','empty':'No approved, verified anatomical geometry is available locally or from Server. No fake anatomical meshes.',
         'install':'Install aetherion-desktop[atlas] to enable native PyVistaQt / VTK on Windows.',
         'loading':'Checking model, rights and SHA-256…','invalid':'Geometry hash mismatch or excessive asset size. Model rejected.',
         'ready':'Displaying {name} • {n} points, {cells} cells. Drag to orbit, scroll to zoom, right-drag to pan.',
@@ -124,6 +124,9 @@ class BodyAtlas3D(QWidget):
         self.source_button = QPushButton()
         self.source_button.clicked.connect(self.open_source)
         controls.addWidget(self.source_button)
+        self.inspect_button = QPushButton()
+        self.inspect_button.clicked.connect(self.show_source_inspector)
+        controls.addWidget(self.inspect_button)
         layout.addWidget(toolbar)
 
         self.content = QVBoxLayout()
@@ -165,6 +168,8 @@ class BodyAtlas3D(QWidget):
         self.reset_button.setText(self.t('reset'))
         self.reset_button.setAccessibleName(self.t('reset'))
         self.source_button.setText(self.t('source'))
+        self.inspect_button.setText(self.t('inspect'))
+        self.inspect_button.setAccessibleName(self.t('inspect'))
         if self.fallback_2d is not None:
             self.fallback_2d.set_locale(self.locale)
         if not self._active_id:
@@ -186,6 +191,7 @@ class BodyAtlas3D(QWidget):
         ix = self.selector.findData(active)
         self.selector.setCurrentIndex(ix if ix >= 0 else (0 if self.models else -1))
         self.source_button.setEnabled(bool(self.models))
+        self.inspect_button.setEnabled(bool(self.models))
         self.reset_button.setEnabled(self.viewer is not None)
 
     def refresh_catalog(self):
@@ -363,6 +369,18 @@ class BodyAtlas3D(QWidget):
     def on_pick(self, mesh):
         if mesh is not None and self._active_id:
             self.status.setText(self.t('selected', name=self.selector.currentText()))
+
+    def show_source_inspector(self):
+        from .render3d.source_inspector import (
+            build_source_inspector_dialog, source_evidence,
+        )
+        try:
+            evidence = source_evidence(self.models.get(self._active_id))
+        except ValueError:
+            self.status.setText(self.t('invalid'))
+            return
+        dialog = build_source_inspector_dialog(evidence, self, locale=self.locale)
+        dialog.exec()
 
     def open_source(self):
         meta = self.models.get(self._active_id, {})
