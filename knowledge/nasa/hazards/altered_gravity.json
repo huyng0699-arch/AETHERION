@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "hazard_id": "gravity_fields",
+  "title": "Altered Gravity Fields",
+  "quest_id": "Q-0115",
+  "retrieved_at_utc": "2026-11-14T03:58:55Z",
+  "is_live_telemetry": false,
+  "primary_sources": [
+    {
+      "source_id": "nasa-hrp",
+      "publisher": "NASA Human Research Program (HRP)",
+      "url": "https://www.nasa.gov/hrp/"
+    },
+    {
+      "source_id": "nasa-space-apps-2026",
+      "publisher": "NASA Space Apps Challenge 2026",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/"
+    },
+    {
+      "source_id": "OSD-599",
+      "publisher": "NASA OSDR",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-599",
+      "note": "Cardiac transcriptomics after 30-day ISS spaceflight"
+    },
+    {
+      "source_id": "OSD-635",
+      "publisher": "NASA OSDR",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-635",
+      "note": "Human aortic smooth muscle cells (HASMCs) vascular remodeling in microgravity"
+    },
+    {
+      "source_id": "OSD-919",
+      "publisher": "NASA OSDR",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-919",
+      "note": "Bone tissue extracellular matrix and immune remodeling in spaceflight"
+    }
+  ],
+  "consequences": [
+    {
+      "system_id": "musculoskeletal",
+      "label": "Musculoskeletal Deconditioning & Bone Density Loss",
+      "evidence_summary": "Reduced mechanical loading in microgravity drives bone mineral density loss and skeletal muscle atrophy.",
+      "source_ids": ["nasa-hrp", "nasa-space-apps-2026", "OSD-919"]
+    },
+    {
+      "system_id": "cardiovascular",
+      "label": "Cardiovascular Deconditioning & Fluid Shifts",
+      "evidence_summary": "Altered gravity alters vascular smooth muscle signaling, cardiac workload, and orthostatic tolerance.",
+      "source_ids": ["nasa-hrp", "nasa-space-apps-2026", "OSD-599", "OSD-635"]
+    }
+  ],
+  "limitations": [
+    "OSDR model-organism and cellular studies inform physiological mechanisms only; they are not live astronaut vital signs or clinical thresholds."
+  ]
+}
