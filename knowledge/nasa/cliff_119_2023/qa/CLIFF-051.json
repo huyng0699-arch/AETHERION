@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-051",
+  "slot": 51,
+  "quest_id": "Q-0351",
+  "checked_at_utc": "2026-11-14T06:16:20.505303+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-back-pain-cliff-2023.pdf?emrc=9bce87",
+  "http_status": 200,
+  "pdf_sha256": "c03193ad46503cd283aaa2b198d0c7b2ccb667477feae8348751d045f205cb12",
+  "pdf_bytes": 290972,
+  "pages_extracted": 12,
+  "sections_count": 12,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-051-IMG-01": "6d622b1168a70111a6f23c675da6af8833cc108d019e6cc337a32dc3d1f542c6",
+    "CLIFF-051-IMG-02": "ad43c705fae186adb57ff366612b74c5c2269e37ca64e136387019a0bccef4b3",
+    "CLIFF-051-IMG-03": "1787d3af1365b69ef6fce54208e1e049231ce12f127566d3fce61866c48aec9f"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
