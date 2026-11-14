@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0.0",
+  "retrieved_at_utc": "2026-11-14T03:48:00Z",
+  "purpose": "Authentic NASA data resource registry with provenance, access model, and telemetry-separation boundaries for AETHERION (Q-0107).",
+  "safety_notice": "All resources listed here are historical, experimental, or reference research archives. None provide live astronaut telemetry or clinical diagnosis.",
+  "resources": [
+    {
+      "resource_id": "nasa-osdr",
+      "name": "NASA Open Science Data Repository (OSDR)",
+      "publisher": "NASA Biological and Physical Sciences (BPS)",
+      "source_url": "https://osdr.nasa.gov/",
+      "supporting_urls": [
+        "https://science.nasa.gov/reference/osdr-faq/",
+        "https://techport.nasa.gov/projects/145034",
+        "https://api.nasa.gov/",
+        "https://ntrs.nasa.gov/citations/20230014168"
+      ],
+      "retrieved_at_utc": "2026-11-14T03:48:00Z",
+      "access_model": "PUBLIC_OPEN_ACCESS",
+      "license_or_terms": "Public NASA open-science data; attribution and DOI citation required per dataset",
+      "verification_status": "VERIFIED_OFFICIAL_SOURCE",
+      "not_live_crew_telemetry": true,
+      "sub_components": [
+        "GeneLab (spaceflight & analog omics)",
+        "Ames Life Sciences Data Archive (ALSDA: physiological, phenotypic, bioimaging, behavioral, hardware, environmental telemetry)",
+        "NASA Biological Institutional Scientific Collection (NBISC)",
+        "Environmental Data Application & RadLab radiation database"
+      ],
+      "example_verified_studies": [
+        {
+          "study_id": "OSD-599",
+          "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-599",
+          "focus": "Mouse heart transcriptomics after 30-day ISS spaceflight"
+        },
+        {
+          "study_id": "OSD-635",
+          "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-635",
+          "focus": "Human aortic smooth muscle cells (HASMCs) 3-day ISS RNA-Seq"
+        },
+        {
+          "study_id": "OSD-431",
+          "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-431",
+          "focus": "Human microvascular endothelial cells (HMEC-1) microgravity vs space radiation"
+        },
+        {
+          "study_id": "OSD-919",
+          "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-919",
+          "focus": "Mouse bone single-cell RNA-seq across age groups in spaceflight"
+        }
+      ],
+      "limitations": [
+        "Most datasets are from model organisms (rodents, Drosophila, cell cultures) or historical studies, not live astronaut vitals.",
+        "Detailed dataset selection, species, assay type, and units are tracked in Q-0109."
+      ]
+    },
+    {
+      "resource_id": "nasa-nlsp",
+      "name": "NASA Life Sciences Portal (NLSP)",
+      "publisher": "NASA Human Research Program (HRP)",
+      "source_url": "https://www.nasa.gov/hrp/nlsp/",
+      "supporting_urls": [
+        "https://www.nasa.gov/hrp/"
+      ],
+      "retrieved_at_utc": "2026-11-14T03:48:00Z",
+      "access_model": "PARTIAL_RESTRICTED_LSAH",
+      "license_or_terms": "NASA HRP portal; de-identified human research data (LSDA) and restricted astronaut surveillance (LSAH) for authorized NASA affiliates",
+      "verification_status": "VERIFIED_OFFICIAL_SOURCE",
+      "not_live_crew_telemetry": true,
+      "sub_components": [
+        "Life Sciences Data Archive (LSDA: spaceflight & ground-analog studies since 1961)",
+        "Lifetime Surveillance of Astronaut Health (LSAH: medical monitoring surveillance, restricted access)"
+      ],
+      "limitations": [
+        "LSAH astronaut medical monitoring data is restricted to NASA employees/affiliates and is not publicly downloadable.",
+        "De-identified historical LSDA records must never be presented as live crew telemetry."
+      ]
+    },
+    {
+      "resource_id": "nasa-hrp-hazards",
+      "name": "NASA Human Research Program (HRP) — Five Hazards of Human Spaceflight",
+      "publisher": "NASA Human Research Program",
+      "source_url": "https://www.nasa.gov/hrp/",
+      "supporting_urls": [
+        "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/"
+      ],
+      "retrieved_at_utc": "2026-11-14T03:48:00Z",
+      "access_model": "PUBLIC_OPEN_ACCESS",
+      "license_or_terms": "NASA public domain / official educational & research documentation",
+      "verification_status": "VERIFIED_OFFICIAL_SOURCE",
+      "not_live_crew_telemetry": true,
+      "sub_components": [
+        "Space radiation",
+        "Isolation and confinement",
+        "Distance from Earth",
+        "Gravity fields",
+        "Hostile closed environments"
+      ],
+      "limitations": [
+        "Provides hazard taxonomy and physiological risk framing, not patient-level measurements."
+      ]
+    },
+    {
+      "resource_id": "nasa-imm-cliff-119",
+      "name": "NASA Integrated Medical Model (IMM) — CliFF 119 (2023)",
+      "publisher": "NASA",
+      "source_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+      "supporting_urls": [],
+      "retrieved_at_utc": "2026-11-14T03:48:00Z",
+      "access_model": "LINKED_NOT_IMPORTED",
+      "license_or_terms": "Original NASA documents; not automatically relicensed under Apache-2.0",
+      "verification_status": "LINKED_ONLY_UNIMPORTED",
+      "not_live_crew_telemetry": true,
+      "sub_components": [
+        "100-condition baseline vs 119-condition Clinical Findings & Facts (CliFF 119, 2023) collection"
+      ],
+      "limitations": [
+        "No PDFs are imported or SHA-256 verified in this repository yet (see knowledge/nasa/cliff_119_2023/README.md).",
+        "Risk-planning reference only, not a clinically validated treatment protocol."
+      ]
+    }
+  ]
+}
