@@ -33,23 +33,60 @@ BY_ID = {q["id"]: q for q in QUESTIONS}
 CRITICAL = {"witnessed_unresponsive", "breathing_at_rest", "active_heavy_bleeding", "new_one_sided_weakness"}
 
 
-def _recognized(symptoms: list[str]) -> tuple[list[str], set[str]]:
-    data = symptom_source()
-    by_id = {}
-    by_name = {}
-    for entry in data["entries"]:
-        for item_id in entry.get("ids", []):
-            by_id[str(item_id).casefold()] = entry
-        by_name[normalized(entry.get("name", ""))] = entry
+def _recognized(symptoms: list[str]) -> tuple[list[str], set[str], list[dict], list[str]]:
+    """Prefer exact accented medical terms; never silently collapse aliases.
+
+    For ambiguous unaccented or duplicate labels return ALL candidates. They
+    must be resolved by the person, not arbitrarily selected by dictionary order.
+    """
+    import unicodedata
+
+    def exact(value: str) -> str:
+        return " ".join(unicodedata.normalize("NFC", str(value)).casefold().split())
+
+    by_id: dict[str, list[dict]] = {}
+    by_name: dict[str, list[dict]] = {}
+    by_alias: dict[str, list[dict]] = {}
+    by_loose: dict[str, list[dict]] = {}
+
+    def add(target: dict[str, list[dict]], key: str, entry: dict) -> None:
+        matches = target.setdefault(key, [])
+        if entry not in matches:
+            matches.append(entry)
+
+    for entry in symptom_source()["entries"]:
+        for ident in entry.get("ids", []):
+            add(by_id, exact(ident), entry)
+        add(by_name, exact(entry.get("name", "")), entry)
         for alias in entry.get("aliases", []):
-            by_name[normalized(alias)] = entry
-    names, routes = [], set()
+            add(by_alias, exact(alias), entry)
+        for text in [entry.get("name", ""), *entry.get("aliases", [])]:
+            add(by_loose, normalized(text), entry)
+
+    names: list[str] = []
+    routes: set[str] = set()
+    ambiguous: list[dict] = []
+    unrecognized: list[str] = []
     for raw in symptoms[:20]:
-        item = by_id.get(str(raw).casefold()) or by_name.get(normalized(raw))
-        if item and item["name"] not in names:
-            names.append(item["name"])
-            routes.update(item.get("routes", []))
-    return names, routes
+        key = exact(raw)
+        # An exact canonical label outranks a colliding alias; an unaccented
+        # approximation never outranks an exact accented medical expression.
+        found = by_id.get(key) or by_name.get(key) or by_alias.get(key)
+        if found is None:
+            found = by_loose.get(normalized(raw), [])
+        if not found:
+            unrecognized.append(str(raw)[:120])
+        elif len(found) != 1:
+            ambiguous.append({
+                "input": str(raw)[:120],
+                "candidates": sorted({str(entry["name"]) for entry in found}),
+            })
+        else:
+            entry = found[0]
+            if entry["name"] not in names:
+                names.append(entry["name"])
+                routes.update(entry.get("routes", []))
+    return names, routes, ambiguous, unrecognized
 
 
 def ai_status() -> dict:
@@ -158,56 +195,75 @@ def build_session_history_summary(accepted: dict[str, str]) -> list[dict[str, An
 
 def next_question(symptom_ids: list[str], answers: dict[str, str], *,
                   use_ai: bool = False, allow_cloud: bool = False) -> dict[str, Any]:
-    names, routes = _recognized(symptom_ids)
-    if not names:
-        return {"state": "UNKNOWN_SYMPTOM", "recognized": [], "next_question": None,
-                "model_status": "NOT_CALLED", "cloud_used": False,
-                "session_history": [], "unknown_answers_count": 0,
-                "stored_by_server": False, "persistence_requires_consent": True,
-                "warning": "Select a recognized symptom first."}
-    accepted = {str(k): str(v).upper() for k, v in answers.items() if k in BY_ID and
-                isinstance(v, str) and str(v).upper() in BY_ID[k]["answers"]}
-    session_history = build_session_history_summary(accepted)
-    unknown_count = sum(1 for item in session_history if item["is_unknown"])
-    candidates = [q for q in QUESTIONS if q["id"] not in accepted and
-                  (not q["routes"] or bool(set(q["routes"]) & routes))]
-    # Place explicit critical clarifications first. No final classification
-    # is derived from the unreviewed ASTRA legacy tier.
-    candidates.sort(key=lambda q: (0 if q["id"] in CRITICAL else 1))
-    chosen = candidates[0] if candidates else None
-    model_state = "NOT_REQUESTED"
-    if use_ai and candidates:
-        selected, model_state = _pick_with_ai(names, accepted, candidates, allow_cloud)
-        if selected:
-            chosen = BY_ID[selected]
-    status_info = ai_status()
-    cloud_used = bool(
-        use_ai and allow_cloud and status_info["provider"] == "openai" and model_state == "MODEL_SELECTED"
-    )
-    emergency_yes = [k for k in CRITICAL if accepted.get(k) == "YES"]
-    state = "WITNESSED_RED_FLAG_REPORTED" if emergency_yes else (
-        "MORE_INFORMATION_REQUIRED" if chosen else "INTAKE_COMPLETED_UNVALIDATED"
-    )
-    return {
-        "state": state,
+    """Return one contextual question, preserving uncertainty and safety exits."""
+    names, routes, ambiguous, unrecognized = _recognized(symptom_ids)
+    base = {
         "recognized": names,
-        "answered": len(accepted),
-        "remaining": len(candidates),
-        "session_history": session_history,
-        "unknown_answers_count": unknown_count,
-        "next_question": (
-            {key: chosen[key] for key in ("id", "text", "answers")} if chosen else None
-        ),
-        "model_status": model_state,
-        "model_provider": status_info["provider"] if use_ai else "disabled",
-        "cloud_used": cloud_used,
-        "red_flags_reported": emergency_yes,
-        "recommendation": (
-            "A serious symptom has been explicitly reported. Seek immediate qualified human assistance."
-            if emergency_yes else
-            "These are unreviewed symptom descriptions, not a diagnosis or a validated safety clearance."
-        ),
         "clinical_validation": False,
         "stored_by_server": False,
-        "persistence_requires_consent": True,
+        "triage_decision": "NOT_CLINICALLY_VALIDATED",
+        "model_provider": "disabled",
+    }
+    if ambiguous:
+        return {**base, "state": "AMBIGUOUS_SYMPTOM",
+                "ambiguous": ambiguous, "unrecognized": unrecognized,
+                "next_question": None, "model_status": "NOT_CALLED",
+                "red_flags_reported": [],
+                "recommendation": "Clarify the ambiguous symptom before continuing."}
+    if unrecognized or not names:
+        return {**base, "state": "UNKNOWN_SYMPTOM",
+                "unrecognized": unrecognized, "next_question": None,
+                "model_status": "NOT_CALLED", "red_flags_reported": [],
+                "recommendation": "Select a recognized symptom; absence of a match is not reassurance."}
+
+    invalid = [str(key)[:80] for key, val in answers.items()
+               if key not in BY_ID or not isinstance(val, str)
+               or val.upper() not in BY_ID[key]["answers"]]
+    if invalid:
+        return {**base, "state": "INVALID_ANSWER",
+                "invalid_question_ids": invalid, "next_question": None,
+                "model_status": "NOT_CALLED", "red_flags_reported": [],
+                "recommendation": "Correct or remove unsupported answers before continuing."}
+
+    accepted = {key: val.upper() for key, val in answers.items()}
+    urgent_answers = sorted(key for key in CRITICAL if accepted.get(key) == "YES")
+    if urgent_answers:
+        # Independent of AI availability, and never continue routine prompts
+        # after an explicit directly reported red-flag answer.
+        return {**base, "state": "WITNESSED_RED_FLAG_REPORTED",
+                "answered": len(accepted), "remaining": 0,
+                "next_question": None, "model_status": "SAFETY_STOP",
+                "red_flags_reported": urgent_answers,
+                "needs_human_help": True,
+                "recommendation": (
+                    "A serious warning sign was explicitly reported. Seek immediate "
+                    "qualified human assistance. This is not a medical diagnosis."
+                )}
+
+    candidates = [q for q in QUESTIONS if q["id"] not in accepted
+                  and (not q["routes"] or bool(set(q["routes"]) & routes))]
+    critical_questions = [q for q in candidates if q["id"] in CRITICAL]
+    allowed = critical_questions if critical_questions else candidates
+    chosen = allowed[0] if allowed else None
+    model_state = "NOT_REQUESTED"
+    if use_ai and allowed:
+        selected, model_state = _pick_with_ai(names, accepted, allowed, allow_cloud)
+        if selected is not None:
+            chosen = BY_ID[selected]
+    return {
+        **base,
+        "state": "MORE_INFORMATION_REQUIRED" if chosen else "INTAKE_COMPLETED_UNVALIDATED",
+        "answered": len(accepted), "remaining": len(candidates),
+        "next_question": (
+            {key: chosen[key] for key in ("id", "text", "answers")}
+            if chosen else None
+        ),
+        "model_status": model_state,
+        "model_provider": ai_status()["provider"] if use_ai else "disabled",
+        "red_flags_reported": [],
+        "needs_human_help": False,
+        "recommendation": (
+            "An unreviewed structured intake, not a diagnosis or proof of safety. "
+            "For a health concern, consult a qualified professional."
+        ),
     }
