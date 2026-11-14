@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-116",
+  "slot": 116,
+  "quest_id": "Q-0416",
+  "checked_at_utc": "2026-11-14T06:39:39.659613+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/vaginal-yeast-infection-cliff-2023.pdf?emrc=8d5e36",
+  "http_status": 200,
+  "pdf_sha256": "4f8659e12f83079c9a72a0a7deeda9c8f5b924e2315da0f1f07706f4691cb15a",
+  "pdf_bytes": 317083,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-116-IMG-01": "a1fe0d8fd63f85dcd038296470a7df5e575ce37f5c54677190c7d53bc6c6f18e",
+    "CLIFF-116-IMG-02": "425e7587ba83dee952b6936317a40221ad0037fc10c553cedee1662fb38f17ed",
+    "CLIFF-116-IMG-03": "90b4798f31e6e5930ff039855d47bde80ee5dad6e8123b02620a23bd8f6b8d89"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
