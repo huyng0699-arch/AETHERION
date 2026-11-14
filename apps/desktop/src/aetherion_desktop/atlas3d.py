@@ -229,7 +229,19 @@ class BodyAtlas3D(QWidget):
                 size = item.get('size_bytes')
                 if not isinstance(size, int) or not (84 <= size <= MAX_ASSET_BYTES):
                     continue
-                self.models.setdefault(ident, dict(item))
+                # Never import a server-chosen local path into the native
+                # viewer. Only approved_models() may create resolved_path.
+                # Server models are downloaded to an app-owned cache and
+                # their SHA-256 must match before VTK sees the file.
+                allowed = (
+                    'anatomical_id', 'sha256', 'content_type', 'size_bytes',
+                    'rights_status', 'source_url', 'author', 'license',
+                    'derivative_license', 'citation', 'version',
+                    'original_git_blob', 'title_vi', 'title_en', 'filename',
+                )
+                self.models.setdefault(
+                    ident, {key: item[key] for key in allowed if key in item}
+                )
             self._populate()
             if not self._active_id and self.models:
                 self._select()
@@ -248,8 +260,13 @@ class BodyAtlas3D(QWidget):
         meta = self.models[identity]
         self.credit.setText(self.t('license', author=meta.get('author',''), license=meta.get('license','')))
         path = meta.get('resolved_path')
-        if path and Path(path).is_file():
-            self._render(Path(path), identity)
+        if path:
+            from .render3d.source_inspector import verified_local_model_file
+            verified_file = verified_local_model_file(meta, ASSETS)
+            if verified_file is None:
+                self.status.setText(self.t('invalid'))
+                return
+            self._render(verified_file, identity)
             return
         ext = {'model/stl': '.stl', 'model/obj': '.obj', 'application/x-ply': '.ply'}.get(
             meta.get('content_type', 'model/stl'), '.stl')
@@ -375,7 +392,9 @@ class BodyAtlas3D(QWidget):
             build_source_inspector_dialog, source_evidence,
         )
         try:
-            evidence = source_evidence(self.models.get(self._active_id))
+            evidence = source_evidence(
+                self.models.get(self._active_id), approved_root=ASSETS
+            )
         except ValueError:
             self.status.setText(self.t('invalid'))
             return
