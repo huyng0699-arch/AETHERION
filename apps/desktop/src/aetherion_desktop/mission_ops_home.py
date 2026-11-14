@@ -581,6 +581,10 @@ class MissionOperationsHome(QWidget):
         utc_layout.addWidget(self.utc_table, 1)
         self.utc_chart = ReportedBars()
         utc_layout.addWidget(self.utc_chart)
+        self.utc_chart_note = QLabel()
+        self.utc_chart_note.setObjectName("pageHint")
+        self.utc_chart_note.setWordWrap(True)
+        utc_layout.addWidget(self.utc_chart_note)
         self.utc_empty = QLabel()
         self.utc_empty.setObjectName("pageHint")
         self.utc_empty.setWordWrap(True)
@@ -945,15 +949,56 @@ class MissionOperationsHome(QWidget):
             valid.append(accepted)
         valid.sort(key=lambda row: row["_epoch"])
         self._utc_rows = tuple(valid)
+        self._rebuild_utc_filters()
         self._refresh_utc()
 
-    def _refresh_utc(self):
+    def _rebuild_utc_filters(self):
+        """Keep filtering choices synchronized with the exact supplied sources."""
+        if not hasattr(self, "utc_metric_selector"):
+            return
+        metric_choice = self.utc_metric_selector.currentData()
+        source_choice = self.utc_source_selector.currentData()
+        metric_keys = sorted({(row["metric"], row["unit"])
+                              for row in self._utc_rows})
+        source_keys = sorted({row["source_id"] for row in self._utc_rows})
+        self.utc_metric_selector.blockSignals(True)
+        self.utc_source_selector.blockSignals(True)
+        self.utc_metric_selector.clear()
+        self.utc_source_selector.clear()
+        self.utc_metric_selector.addItem(self._t("utcAllMetrics"), None)
+        self.utc_source_selector.addItem(self._t("utcAllSources"), None)
+        for metric, unit in metric_keys:
+            self.utc_metric_selector.addItem(f"{metric} · {unit}", (metric, unit))
+        for source in source_keys:
+            self.utc_source_selector.addItem(source, source)
+        metric_index = self.utc_metric_selector.findData(metric_choice)
+        source_index = self.utc_source_selector.findData(source_choice)
+        # Auto-select one actual family when initially connected: never plot
+        # heterogeneous units or sources on one graph.
+        if metric_choice is None and metric_keys:
+            metric_index = 1
+        if source_choice is None and source_keys:
+            source_index = 1
+        self.utc_metric_selector.setCurrentIndex(
+            metric_index if metric_index >= 0 else 0)
+        self.utc_source_selector.setCurrentIndex(
+            source_index if source_index >= 0 else 0)
+        self.utc_metric_selector.blockSignals(False)
+        self.utc_source_selector.blockSignals(False)
+
+    def _refresh_utc(self, *_):
         start = getattr(self, "_start_epoch", None)
         end = getattr(self, "_end_epoch", None)
         if start is None or end is None:
             return
+        metric_filter = self.utc_metric_selector.currentData()
+        source_filter = self.utc_source_selector.currentData()
         self._filtered_utc = tuple(
-            row for row in self._utc_rows if start <= row["_epoch"] <= end
+            row for row in self._utc_rows
+            if start <= row["_epoch"] <= end
+            and (metric_filter is None or
+                 (row["metric"], row["unit"]) == metric_filter)
+            and (source_filter is None or row["source_id"] == source_filter)
         )
         self.utc_table.blockSignals(True)
         self.utc_table.setRowCount(0)
@@ -973,19 +1018,26 @@ class MissionOperationsHome(QWidget):
         self.utc_empty.setText(
             self._t("utcEmpty") if not self._filtered_utc else ""
         )
+        # One plot never combines unlike metrics, units or sources. The table
+        # can show all filtered records, but the chart needs an explicit family.
+        series = self._filtered_utc
+        if metric_filter is None or source_filter is None:
+            series = ()
+        else:
+            series = series[-32:]
         self.utc_chart.set_series(
-            [float(x["value"]) for x in self._filtered_utc[:32]],
-            self.theme, self.mode,
-        )
-        if self._filtered_utc:
+            [float(row["value"]) for row in series], self.theme, self.mode)
+        self.utc_chart_note.setText(self._t("utcChartSeries"))
+        self._active_utc_row = None
+        if self._filtered_utc and self._selection[0] == "utc":
             self.utc_table.selectRow(0)
             self._select_utc_row()
-        else:
-            self._active_utc_row = None
-            if self._selection[0] == "utc":
-                self._inspect(self._t("utcEmpty"), [])
+        elif not self._filtered_utc and self._selection[0] == "utc":
+            self._inspect(self._t("utcEmpty"), [])
 
     def _select_utc_row(self):
+        if self._selection[0] != "utc":
+            return
         row = self.utc_table.currentRow()
         if not 0 <= row < len(self._filtered_utc):
             return
@@ -1044,6 +1096,7 @@ class MissionOperationsHome(QWidget):
         self.utc_heading.setText(t("utcTitle"))
         self.utc_note.setText(t("utcNote"))
         self.utc_empty.setText(t("utcEmpty") if not self._filtered_utc else "")
+        self.utc_chart_note.setText(t("utcChartSeries"))
         self.open_monitor.setText(t("utcAsk"))
         self.source_link.setText(t("openOriginal"))
         self.source_link.setEnabled(self.source_data is not None)
