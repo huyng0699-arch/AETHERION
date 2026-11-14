@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-103",
+  "slot": 103,
+  "quest_id": "Q-0403",
+  "checked_at_utc": "2026-11-14T06:36:51.182986+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/dislocation-finger-cliff-2023.pdf?emrc=9fb3d0",
+  "http_status": 200,
+  "pdf_sha256": "01d361db212864dd4eeffa5f232ddd30092221d208afd780d0cc4e74ae1492b4",
+  "pdf_bytes": 305700,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-103-IMG-01": "8d3df80c7e96f7d8cba2689873d104f58929f3daf08633ae480b19c86a832050",
+    "CLIFF-103-IMG-02": "cbf7db6572202d29b64aebba395490f4fbd9522af12167fdb16a28d0a94613fe",
+    "CLIFF-103-IMG-03": "8d645b84f3c19e51c89d75cda5866f86c7b0dff0ff3fe9052e4e3c0955d87f43"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}

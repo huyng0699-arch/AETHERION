@@ -1,0 +1,490 @@
+{
+  "article_id": "CLIFF-103",
+  "slot": 103,
+  "display_title": "Finger Dislocation",
+  "category": "Musculoskeletal",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-103",
+    "publisher": "NASA",
+    "title": "Finger Dislocation \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/dislocation-finger-cliff-2023.pdf?emrc=9fb3d0",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/dislocation-finger-cliff-2023.pdf?emrc=9fb3d0",
+    "retrieved_at_utc": "2026-11-14T06:36:51.182986+00:00",
+    "content_sha256": "01d361db212864dd4eeffa5f232ddd30092221d208afd780d0cc4e74ae1492b4",
+    "original_mime": "application/pdf",
+    "original_bytes": 305700,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-103-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch      Baseline\n\n\n\n ICL33_Dislocation - Finger\n\n Dislocation of a joint occurs when traumatic forces cause complete loss of continuity between the joint\u2019s 2 articulating surfaces. Dislocations of the\n finger joints involve either the interphalangeal (IP) joint or the metacarpo-phalangeal (MCP) joint. Causes for dislocation may include hyper-extension\n (most-common), hyper-flexion, ulnar or radial stress, axial load, or injury caused by direct pressure or crushing. (Harvard Health, 2021)\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  There is anecdotal evidence of one finger dislocation having occurred in spaceflight, during Skylab (Collins, 1988). This is captured as a non-\n  specific dislocation in Scheuring, 2009 and as a finger dislocation on NASA's Human Research Program's \"Human Research Wiki\" page for \"Finger\n  Dislocation\" (Human Research Program, NASA, 2014). Notably, it is not included in the official Skylab list of events (Hordinsky, 1977).\n\n  ANALOG LITERATURE\n\n  No relevant studies describing the incidence of finger dislocation in spaceflight analog environments were found through a search according to the\n  protocols outlines in the evidence library methods.\n\n  TERRESTRIAL LITERATURE\n\n  Terrestrial incidence is between 4.6-29.9/100,000/yr depending on the population being studied. The difference in incidence is thought to be due to\n  differences in activities (such as American football). Hindle et al, 2013 found that 8% of finger dislocations required general anesthesia for\n  reduction.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   Mean: 0.01676\n   SD: 0.01667\n\n\n  INCIDENCE SUMMARY\n\n  There has been one reported case of dislocated finger in spaceflight, during a Skylab mission. Therefor this occurrence was used to calculate a\n  true incidence of finger dislocation in the U.S. Space Program by calculating person-years of flight for NASA astronauts through April 26, 2021\n  (flights landed by April 26, 2021). Gamma (shape=1.011, rate=60.31) mean: 0.01676 SD: 0.01667. This reflects the Bayesian posterior distribution\n  for the incidence rate given the inflight data using an uninformative prior.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n\n\n\n\n8/23/2023 5:45:36 PM                                                  ICL33_Dislocation - Finger Cliff                                                     page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-103-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     0.0167634\n     SD\n     0.0166719\n\n\n     Gamma\n     (Shape): 1.011\n     (Rate): 60.31\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                                Source                       LOC Value\n\n   Hindle et al, 2013                                                                      Terrestrial                  3\n\n   Golan et al, 2016                                                                       Terrestrial                  3\n\n   Yang et al, 2011                                                                        Terrestrial                  3\n\n   Scheuring, 2009                                                                         Spaceflight                  4\n\n   Collins, 1988                                                                           Spaceflight                  3\n\n   Human Research Program, NASA, 2014                                                      Spaceflight                  4\n\n\n  Collins, 1988 provides anecdotal evidence of a finger dislocation having occurred during Skylab (which is reported elsewhere in Scheuring, 2009\n  and Human Research Program, NASA, 2014). All of the terrestrial studies included patients of all ages and health status, making them less\n  applicable to the astronaut corps. Golan et al encompassed only ER presentations.\n\n\n\n\n8/23/2023 5:45:36 PM                                                ICL33_Dislocation - Finger Cliff                                                page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-103-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  There are no required preventive measures for finger dislocation.\n\n  BEST CASE SCENARIO DEFINITION\n\n  A finger dislocation that is easily reduced and has full range of motion after a period of splinting and physical therapy.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  A finger dislocation that cannot be reduced (requires surgery), or has persistent decreased ROM after reduction, splinting, and PT.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  None\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  Based on Hindle et al, 2013 there is an 8% worst-case probability. This refers to the percentage of patient's with dislocated fingers requiring\n  general anesthesia for reduction. This is per the WC definition of \"A finger dislocation that cannot be reduced (requires surgery), or has persistent\n  decreased ROM after reduction, splinting, and PT.\" Rates of persistent decreased ROM after reduction were not found in literature, but general\n  anesthesia is used here as a proxy for \"requires surgery.\"\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                          Source                                    LOC Value\n\n   Hindle et al, 2013                                                Terrestrial                               3\n\n\n  Hindle et al provide a retrospective 1 year review from patients age birth to death in Edinburgh and 2 surrounding communities in Scotland from\n  2008-2009. Of the finger dislocations that occurred during this time, 8% required general anesthesia for reduction.\n\n\n\n\n8/23/2023 5:45:36 PM                                                   ICL33_Dislocation - Finger Cliff                                                   page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-103-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                             CP1: Diagnosis       CP2: Treatment              CP3: Condition End State\n\n                                                             TI%       Duration   TI%         Duration        TI%         RTDC             LOCL\n                       Composite           Condition\n   Case Scenario       Incidence           Probability %     Preset    Preset     Preset      Min     Max     Preset      Min%    Max%     Min%     Max%\n\n   Treated Best        Mean: 0.01676       92 - 92           100       1.25       13.3803     336     672     0           0       0        0        0\n   Case (TBC)          SD: 0.01667\n\n   Treated Worst                           8-8               100       1.25       13.3803     672     1344    0           0       0        0        0\n   Case (TWC)\n\n   Untreated Best      N/A                 N/A               N/A       1.25       20.9009     336     672     9.11507     0       0        0        0\n   Case (UTBC)\n\n   Untreated Worst     N/A                 N/A               N/A       1.25       20.9009     1008    1344    9.11507     0       0        0        0\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n8/23/2023 5:45:36 PM                                                   ICL33_Dislocation - Finger Cliff                                                       page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-103-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  RTDC was pre-determined by ExMC Clinical and Science Team to be 0% for all scenarios. Thus there was no RTDC surrogate used and no RTDC\n  literature searches were performed. See specific scenario comments below.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Best case scenario treatment was viewed as including manual reduction, splinting, and any necessary PT. Papers discussing more invasive\n  treatments were not included as they are out of scope for this case. Duration was informed recommended treatment and healing time presented in\n  Miller et al, 2020 for a variety of interphalangeal and metacarpophalangeal dislocations. Miller et al provided longer durations for \"return to play\" for\n  athlete populations, but these were not considered applicable to the astronaut population. RTDC was pre determined as 0% by the ExMC Clinical &\n  Science Team since this condition is not likely to exceed the capabilities of the spacecraft care system, so no RTDC literature search was\n  performed. The LOCL literature search revealed no articles indicating a risk of loss of life due to finger dislocation. Additionally, finger dislocation is\n  not associated with LOCL as functional fingers are not a vital organ system.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  Duration was informed recommended treatment and healing time presented in Miller et al, 2020 for complex dislocations or dislocations requiring\n  surgical reduction. Miller et al again provided longer durations for \"return to play\" for athlete populations, but these were not considered applicable\n  to the astronaut population. RTDC was pre determined as 0% by the ExMC Clinical & Science Team since this condition is not likely to exceed the\n  capabilities of the spacecraft care system, so no RTDC literature search was performed. The LOCL literature search revealed three articles, (Leggit\n  et al, 2006; Miller et al, 2020; and Saitta et al 2018). The probability of LOCL was 0% in all articles.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  There is a paucity of data regarding completely untreated finger dislocations. It is suspected that resources could be improvised to treat a best-\n  case dislocation, even in the absence of dedicated resources for this task. Thus, the assumption was made that the duration to maximum\n  improvement would be similar between best-case treated and untreated scenarios (i.e. the untreated scenario uses the same duration values as\n  the treated scenario). RTDC was pre determined as 0% by the ExMC Clinical & Science Team since this condition is not likely to exceed the\n  capabilities of the spacecraft care system, so no RTDC literature search was performed. The LOCL literature search revealed no articles indicating\n  LOCL. Thus, the probability of LOCL was assumed to be 0%.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  Miller et al, 2020 and Saitta et al, 2018 informed the duration values for the worst-case untreated scenario. The articles provided prolonging\n  healing durations secondary to delayed treatment. This often resulted in permanent loss of motion and/or chronic pain. While worst-case finger\n  dislocations may require surgical intervention, the estimated time to maximal recovery based on these articles was determined to be 6-8 weeks.\n  RTDC was pre determined as 0% by the ExMC Clinical & Science Team since this condition is not likely to exceed the capabilities of the spacecraft\n  care system, so no RTDC literature search was performed. Based o the lack of evidence for LOCL > 0% in prior scenario searches, the LOCL was\n  assumed to be 0% for the worst-case untreated scenario and no searches were performed.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                          Source                                     LOC Value\n\n   Miller et al, 2020                                                Terrestrial\n                                                                                                                                     3\n   Saitta et al, 2018                                                Terrestrial\n\n  Duration data is based on treatment guidelines presented by Miller et al, 2020 and Saitta et al, 2018. The untreated best-case was assumed to be\n  the same duration as the treated best case duration. The worst-case untreated duration is based off healing times presented in these papers for\n  finger dislocation with delayed treatment.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n8/23/2023 5:45:36 PM                                                    ICL33_Dislocation - Finger Cliff                                                        page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-103-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                       Source                                       LOC Value\n\n   N/A                                            N/A                                                                       3\n\n  RTDC was pre-determined as 0% by the ExMC Clinical & Science Team since this condition is not likely to exceed the capabilities of the spacecraft\n  care system, so no RTDC literature searches were performed. Thus, there are no references. This is likely an appropriate assumption but was not\n  substantiated in the literature. Note, the IMM CLiFF did have values above 0% for evacuation.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                                          Source                                     LOC Value\n\n   Leggit et al 2006                                                 Terrestrial\n\n   Miller et al, 2020                                                Terrestrial                                                     3\n\n   Saitta et al, 2018                                                Terrestrial\n\n  The treated worst-case scenario is the only literature search that resulted in relevant articles (and they presented LOCL probabilities of 0%). Note\n  that no literature search was performed for the untreated worst-case scenario. It was assumed to be 0% based on prior searches.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope\n\n  Overview\n\n  The condition Dislocation \u2013 Finger includes distal interphalangeal, proximal interphalangeal, and metacarpophalangeal joint dislocations of any\n  finger (including the thumb) in any direction (volar, dorsal, or lateral). Note, this does not include fractures secondary to dislocation.\n\n  CNES: N/A\n\n  Diagnostic Scope and Resourcing\n\n  In both best- and worst-case scenarios, diagnosis is based on history, physical examination (musculoskeletal and neurologic), and imaging. Plain\n  film (X-Ray), CT, and MRI will be unavailable inflight. Musculoskeletal ultrasound was included in the CRT as it may serve as a useful adjunct in\n  diagnosis for some cases, but it was not considered a necessary capability to diagnose a dislocated finger. A digital finger block was also included\n  as a capability that may assist the diagnosis (by allowing for a better physical exam) in the setting of no X-Ray capabilities. For the best-case\n  scenario, the digital block was included but not considered a necessity, whereas it was considered a necessity in the worst-case scenario. This\n  diagnostic framework is consistent with the terrestrial workup for finger dislocation with the exception of the inability to perform plain film X-Ray (and\n  if warranted CT or MRI), and thereby using musculoskeletal ultrasound, with or without, a digital block as a possible surrogate.\n\n  Clinical Phase 1 Duration and Rationale\n  This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\n  consensus duration is as follows:\n\n  CP1 BC (Treated or Untreated): 1.25 hours\n  CP1 WC (Treated or Untreated: 1.25 hours\n\n  This CRT includes a scope of practice code of 5 (which correlates to an \u201cExperienced procedure trained generalist attending (ED attending)\u201d and\n  was included for musculoskeletal ultrasound and interpretation.\n\n  Treatment Scope and Resourcing\n\n  Depending on the direction and joint involved in the dislocation, terrestrial management includes reduction, followed by a period of immobilization\n  with a period of splinting followed by a period of buddy taping, or buddy taping only. Finger splints, buddy taping, and a customized thumb spica\n  splint were included as resources in this CRT. Although 3D printing offers potential for splinting of musculoskeletal injuries, it remains a largely\n  experimental process and it is not within the scope of this CRT. After immobilization, physical therapy is warranted. Exercise modification may also\n  be needed but is not built into the CRT as this does not represent a clinical resource. Pain is variable. NSAIDs and acetaminophen were included in\n  the best-case scenario. A short course of narcotics was added in the worst-case scenario.\n\n  Communications and Support Needs\n\n  While real-time video and audio loop communications are desired for diagnosis and treatment, they were not considered a necessity, in the best-\n  case scenario. For the WC, consultation with ground specialists to facilitate treatment and healing was considered necessary given the limited\n  diagnostic and treatment capabilities in-flight.\n\n\n\n\n8/23/2023 5:45:36 PM                                                    ICL33_Dislocation - Finger Cliff                                                       page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-103-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  IMM CLIFF RECONCILATION COMMENTS\n\n\n  The best and worst-case scenario definitions are very similar between the IMM CLiFF and this CLiFF. The duration for best-case scenarios is the\n  same between the IMM CLiFF and this CLiFF. The duration for the worst-case scenarios, however, is substantially longer in this CLiFF, which is felt\n  to be appropriate based on literature review. IMM assigned RTDC values for this condition, but it was assumed to be 0% by the Clinical and Science\n  Team and no literature searches were run regarding RTDC. LOCL probability for both the IMM CLiFF and this CLiFF was 0% for all scenarios.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  RTDC was assumed to be 0% by Clinical & Science team and no RTDC literature searches were performed. The untreated worst-case scenario\n  LOCL was assumed to be 0% based on prior searches, but this was no substantiated by a literature search.\n\n\n\n\n8/23/2023 5:45:36 PM                                                ICL33_Dislocation - Finger Cliff                                                    page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-103-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                             Clinical Phase 2: Treatment\n                                                                                            Affected HSTCs\n                                                               Inter-\n              Cognitive -    Cognitive -                                                                   Cardio-\n                                           Communications    personal         Vision         Hearing                   Dentition          GI          GU\n               Simple        Complex                                                                     pulmonary\n                                                              Skills\n   Treated\n     Best\n                            664\n    Case\n    (TBC)\n  Untreated\n    Best\n            223             664\n    Case\n   (UTBC)\n   Treated\n    Worst\n                            664\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223             664\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                              TI Calculation                  TI Score\n                                                                                                                                                      Total\n                                                                                                                                                    Human\n                                                                                           Translation &                            Total Tasks\n                Hand                                           Lower         Ambul &                       Don/Doff    Pressure                     System\n                            Hand (Any)     Upper Extremity                                 Stabilization                           Impaired By                   TI Decimal      TI %\n               (Dom)                                         Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                          (microgravity)                            Condition\n                                                                                                                                                   Tasks Full\n                                                                                                                                                    Mission\n   Treated\n     Best\n           132                                                                                                        211          1007           3763          0.267606      26.7606\n    Case\n    (TBC)\n  Untreated\n    Best\n            132                                                                                                       211          1230           3763          0.326867      32.6867\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                                                                                                        211          1007           3763          0.267606      26.7606\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132                                                                                                       211          1230           3763          0.326867      32.6867\n    Case\n   (UTWC)\n\n                                                                         Clinical Phase 3: Condition End State\n                                                                                            Affected HSTCs\n                                                               Inter-\n              Cognitive -    Cognitive -                                                                   Cardio-\n                                           Communications    personal         Vision         Hearing                   Dentition          GI          GU\n               Simple        Complex                                                                     pulmonary\n                                                              Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n    Case\n   (UTBC)\n   Treated\n    Worst\n     Case\n    (TWC)\n  Untreated\n    Worst\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                              TI Calculation                  TI Score\n\n\n\n\n8/23/2023 5:45:36 PM                                                 ICL33_Dislocation - Finger Cliff                                                                            page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-103-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                Translation &                           Total Tasks\n               Hand                                     Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal       TI %\n              (Dom)                                   Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                               (microgravity)                           Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n   Treated\n     Best\n                                                                                                                       0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n            132                                                                                            211         343            3763          0.0911507 9.11507\n    Case\n   (UTBC)\n   Treated\n    Worst\n                                                                                                                       0              3763          0                0\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132                                                                                            211         343            3763          0.0911507 9.11507\n    Case\n   (UTWC)\n\n\n\n\n8/23/2023 5:45:36 PM                                          ICL33_Dislocation - Finger Cliff                                                                           page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-103-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  No comments.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n8/23/2023 5:45:36 PM                                                  ICL33_Dislocation - Finger Cliff                                                     page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-103-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. Health H. Finger Dislocation [cited 2021 4/28/2021]. Available from: https://www.health.harvard.edu/a_to_z/finger-dislocation-a-to-z.\n\n   2. Scheuring RA, Mathers CH, Jones J, Wear ML. Musculoskeletal injuries and minor trauma in space: incidence and injury mechanisms in U.S.\n   astronauts. Aviat Space Environ Med. 2009;80(2):117-24.\n\n   3. Collins M. Liftoff: The Story of America's Adventure in Space: Grove Press; 1988.\n\n   4. Human Research Program, NASA. Finger dislocation.\n   https://humanresearchroadmap.nasa.gov/Evidence/medicalConditions/Finger_Dislocation.pdf. Last updated 12 Aug 2014. Accessed April 28,\n   2021.\n\n   5. Hordinsky J. Skylab Crew Health Crew Surgeons' Reports. In: Johnston RS, Dietlein LF, editors. Biomedical results from Skylab.Washington\n\n   D.C.: Library of Congress Cataloging in Publication Data. 1977.\n\n   6. Hindle P, Davidson EK, Biant LC, Court-Brown CM. Appendicular joint dislocations. Injury. 2013;44(8):1022-7.\n\n   7. Golan E, Kang KK, Culbertson M, Choueka J. The epidemiology of finger dislocations presenting for emergency care within the United States.\n   Hand. 201;11(2):192-6.\n\n   8. Yang NP, Chen HC, Phan DV, Yu IL, Lee YH, Chan CL, et al. Epidemiological survey of orthopedic joint dislocations based on nationwide\n   insurance data in Taiwan, 2000-2005. BMC Musculoskelet Disord. 2011;12:253. Epub 2011/11/08. doi: 10.1186/1471-2474-12-253. PubMed\n   PMID: 22053727; PubMed Central PMCID: PMCPMC3228707.\n\n   9. Miller EA, Friedrich JB. Management of Finger Joint Dislocation and Fracture-Dislocations in Athletes. Clinics in sports medicine.\n   2020;39(2):423-42.\n\n   10. Saitta BH, Wolf JM. Treating proximal interphalangeal joint dislocations. Hand clinics. 2018;34(2):139-48.\n\n   11. Leggit J, Meko CJ. Acute finger injuries: part II. Fractures, dislocations, and thumb injuries. American family physician. 2006;73(5):827-12.\n   Borchers JR, Best TM. Common Finger Fractures and Dislocations. AFP 2012; 85:805\u201310.\n\n   13. Digit dislocation reduction - UpToDate. Retrieved 19 December 2020 from https://www-uptodate-com.libux.utmb.edu/contents/digit-\n   dislocation-reduction?search=finger%20dislocation&source=search_result&selectedTitle=1~2&usage_type=default&display_rank=1\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                       PHRASE\n\n   AAOMS                         American Association of Oral and Maxillofacial Surgeons\n\n   AMA                           American Medical Association\n\n   ARCL                          All Remaining Conditions List\n\n   ARS                           Acute Radiation Sickness\n\n   BHP                           Behavioral Health and Performance\n\n   CAC                           Coronary Artery Calcium\n\n   CHS                           Crew Health and Safety\n\n   CL                            Condition List\n\n   CliFF                         Clinical Finding Form\n\n   CMO                           Crew Medical Officer\n\n   COMFORT                       Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                           Clinical Phase 1\n\n   CP2                           Clinical Phase 2\n\n   CP3                           Clinical Phase 3\n\n   CRL                           Clinical Resource Level\n\n\n\n\n8/23/2023 5:45:36 PM                                                  ICL33_Dislocation - Finger Cliff                                                 page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-103-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   CRT                 Capability Resource Table\n\n   CST                 Clinical Science Team\n\n   DCS                 Decompression Syndrome\n\n   DRM                 Design Reference Mission\n\n   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n\n\n\n8/23/2023 5:45:36 PM                                        ICL33_Dislocation - Finger Cliff   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-103-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n8/23/2023 5:45:36 PM                                         ICL33_Dislocation - Finger Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-103-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ]
+      ],
+      "page_number": 1,
+      "source_anchor": "page:1#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-103-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                                Source                       LOC Value"
+        ],
+        [
+          "Hindle et al, 2013                                                                      Terrestrial                  3"
+        ],
+        [
+          "Golan et al, 2016                                                                       Terrestrial                  3"
+        ],
+        [
+          "Yang et al, 2011                                                                        Terrestrial                  3"
+        ],
+        [
+          "Scheuring, 2009                                                                         Spaceflight                  4"
+        ],
+        [
+          "Collins, 1988                                                                           Spaceflight                  3"
+        ],
+        [
+          "Human Research Program, NASA, 2014                                                      Spaceflight                  4"
+        ],
+        [
+          "Collins, 1988 provides anecdotal evidence of a finger dislocation having occurred during Skylab (which is reported elsewhere in Scheuring, 2009"
+        ],
+        [
+          "and Human Research Program, NASA, 2014). All of the terrestrial studies included patients of all ages and health status, making them less"
+        ],
+        [
+          "applicable to the astronaut corps. Golan et al encompassed only ER presentations."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-103-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                          Source                                    LOC Value"
+        ],
+        [
+          "Hindle et al, 2013                                                Terrestrial                               3"
+        ],
+        [
+          "Hindle et al provide a retrospective 1 year review from patients age birth to death in Edinburgh and 2 surrounding communities in Scotland from"
+        ],
+        [
+          "2008-2009. Of the finger dislocations that occurred during this time, 8% required general anesthesia for reduction."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-103-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment              CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration   TI%         Duration        TI%         RTDC             LOCL"
+        ],
+        [
+          "Composite           Condition"
+        ],
+        [
+          "Case Scenario       Incidence           Probability %     Preset    Preset     Preset      Min     Max     Preset      Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best        Mean: 0.01676       92 - 92           100       1.25       13.3803     336     672     0           0       0        0        0"
+        ],
+        [
+          "Case (TBC)          SD: 0.01667"
+        ],
+        [
+          "Treated Worst                           8-8               100       1.25       13.3803     672     1344    0           0       0        0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best      N/A                 N/A               N/A       1.25       20.9009     336     672     9.11507     0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst     N/A                 N/A               N/A       1.25       20.9009     1008    1344    9.11507     0       0        0        0"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-103-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                          Source                                     LOC Value"
+        ],
+        [
+          "Miller et al, 2020                                                Terrestrial"
+        ],
+        [
+          "3"
+        ],
+        [
+          "Saitta et al, 2018                                                Terrestrial"
+        ],
+        [
+          "Duration data is based on treatment guidelines presented by Miller et al, 2020 and Saitta et al, 2018. The untreated best-case was assumed to be"
+        ],
+        [
+          "the same duration as the treated best case duration. The worst-case untreated duration is based off healing times presented in these papers for"
+        ],
+        [
+          "finger dislocation with delayed treatment."
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-103-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "8/23/2023 5:45:36 PM                                                    ICL33_Dislocation - Finger Cliff                                                        page: 5"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-103-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                          Source                                     LOC Value"
+        ],
+        [
+          "Leggit et al 2006                                                 Terrestrial"
+        ],
+        [
+          "Miller et al, 2020                                                Terrestrial                                                     3"
+        ],
+        [
+          "Saitta et al, 2018                                                Terrestrial"
+        ],
+        [
+          "The treated worst-case scenario is the only literature search that resulted in relevant articles (and they presented LOCL probabilities of 0%). Note"
+        ],
+        [
+          "that no literature search was performed for the untreated worst-case scenario. It was assumed to be 0% based on prior searches."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-103-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                   Cardio-"
+        ],
+        [
+          "Communications    personal         Vision         Hearing                   Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                     pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "223             664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223             664"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-103-IMG-01",
+      "ordinal": 0,
+      "media_kind": "RADIOLOGY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-103/finger_dislocation_radiograph.png",
+      "mime_type": "image/png",
+      "width": 780,
+      "height": 882,
+      "sha256": "8d3df80c7e96f7d8cba2689873d104f58929f3daf08633ae480b19c86a832050",
+      "creator": "Mdumont01",
+      "license_identifier": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ADislocated_Finger_XRay.png",
+      "attribution": "Mdumont01, via Wikimedia Commons (CC BY-SA 3.0)",
+      "caption": "Radiograph demonstrating acute interphalangeal dislocation of the fifth digit.",
+      "alt_text": "X-ray of a dislocated finger.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Dislocated Finger XRay.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-103-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-103/hand_bones_numbered.png",
+      "mime_type": "image/png",
+      "width": 670,
+      "height": 830,
+      "sha256": "cbf7db6572202d29b64aebba395490f4fbd9522af12167fdb16a28d0a94613fe",
+      "creator": "Sad Edgar",
+      "license_identifier": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AHand_bones_numbered.png",
+      "attribution": "Sad Edgar, via Wikimedia Commons (CC BY-SA 3.0)",
+      "caption": "Anatomical reference diagram of the phalanges and interphalangeal joints.",
+      "alt_text": "Numbered diagram of hand bones.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Hand bones numbered.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-103-IMG-03",
+      "ordinal": 2,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-103/hand_dorsal_osteology.png",
+      "mime_type": "image/png",
+      "width": 2602,
+      "height": 3147,
+      "sha256": "8d645b84f3c19e51c89d75cda5866f86c7b0dff0ff3fe9052e4e3c0955d87f43",
+      "creator": "w:en:Werner Spalteholz (1861 \u2013 1940)",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ASpalteholz%27s_Hand-Atlas_of_Human_Anatomy_%281906%29_-_Vol_1_-_Fig_151.png",
+      "attribution": "w:en:Werner Spalteholz (1861 \u2013 1940), via Wikimedia Commons (Public domain)",
+      "caption": "Dorsal osteology of the metacarpals and phalanges.",
+      "alt_text": "Anatomical plate of dorsal hand bones.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Spalteholz's Hand-Atlas of Human Anatomy (1906) - Vol 1 - Fig 151.png)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-103-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Finger Dislocation",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/dislocation-finger-cliff-2023.pdf?emrc=9fb3d0",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}
