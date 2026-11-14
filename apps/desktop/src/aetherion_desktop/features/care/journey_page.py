@@ -12,8 +12,8 @@ from urllib.parse import quote
 from PySide6.QtCore import Qt, QUrl
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import (
-    QComboBox, QFormLayout, QHBoxLayout, QLabel, QLineEdit, QListWidget,
-    QListWidgetItem, QMessageBox, QPushButton, QVBoxLayout, QWidget,
+    QCheckBox, QComboBox, QFormLayout, QFrame, QHBoxLayout, QLabel, QLineEdit, QListWidget,
+    QListWidgetItem, QMessageBox, QPushButton, QScrollArea, QVBoxLayout, QWidget,
 )
 
 from ...localization import normalize_locale, tr
@@ -33,9 +33,17 @@ class CareJourneyPage(QWidget):
         self.token = ""
         self.episode_id = ""
         self.phase = ""
-        root = QVBoxLayout(self)
-        root.setContentsMargins(26, 22, 26, 22)
-        root.setSpacing(12)
+        shell = QVBoxLayout(self)
+        shell.setContentsMargins(0, 0, 0, 0)
+        scroller = QScrollArea(self)
+        scroller.setFrameShape(QFrame.Shape.NoFrame)
+        scroller.setWidgetResizable(True)
+        shell.addWidget(scroller)
+        content = QWidget()
+        scroller.setWidget(content)
+        root = QVBoxLayout(content)
+        root.setContentsMargins(27, 22, 27, 28)
+        root.setSpacing(15)
 
         self.title = QLabel()
         self.title.setObjectName("heading")
@@ -67,6 +75,38 @@ class CareJourneyPage(QWidget):
         self.notice = QLabel()
         self.notice.setWordWrap(True)
         root.addWidget(self.notice)
+        # Full-width, source-backed care stage progression; no side rail.
+        self.stage_bar = QFrame()
+        self.stage_bar.setObjectName('surface')
+        stages = QHBoxLayout(self.stage_bar)
+        stages.setSpacing(11)
+        self.stage_badges = []
+        for _ in range(4):
+            badge = QLabel()
+            badge.setObjectName('eyebrow')
+            badge.setWordWrap(True)
+            stages.addWidget(badge, 1)
+            self.stage_badges.append(badge)
+        root.addWidget(self.stage_bar)
+        # A healthy user can start an explicitly consented follow-up without
+        # being forced through a symptom questionnaire or an automatic diagnosis.
+        self.new_panel = QFrame()
+        self.new_panel.setObjectName('surface')
+        new_box = QVBoxLayout(self.new_panel)
+        self.new_heading = QLabel()
+        self.new_heading.setObjectName('heading')
+        new_box.addWidget(self.new_heading)
+        self.new_concern = QLineEdit()
+        self.new_concern.setMaxLength(500)
+        new_box.addWidget(self.new_concern)
+        self.new_consent = QCheckBox()
+        self.new_consent.setChecked(False)
+        new_box.addWidget(self.new_consent)
+        self.create_button = QPushButton()
+        self.create_button.setObjectName('primaryAction')
+        self.create_button.clicked.connect(self.create_episode)
+        new_box.addWidget(self.create_button)
+        root.addWidget(self.new_panel)
 
         form = QFormLayout()
         self.summary_label = QLabel()
@@ -107,6 +147,7 @@ class CareJourneyPage(QWidget):
         self.events_label = QLabel()
         root.addWidget(self.events_label)
         self.events = QListWidget()
+        self.events.setMinimumHeight(180)
         root.addWidget(self.events, 1)
         self.status = QLabel()
         self.status.setWordWrap(True)
@@ -128,6 +169,10 @@ class CareJourneyPage(QWidget):
         self.action_label.setText(self._s("journey.action"))
         self.outcome_label.setText(self._s("journey.outcome"))
         self.events_label.setText(self._s("journey.events"))
+        self.new_heading.setText(self._s("journey.new_heading"))
+        self.new_concern.setPlaceholderText(self._s("journey.new_concern"))
+        self.new_consent.setText(self._s("journey.new_consent"))
+        self.create_button.setText(self._s("journey.create"))
         self.reassess_button.setText(self._s("journey.reassess"))
         self.close_button.setText(self._s("journey.close"))
         for i, key in enumerate(("select", "done", "not_done", "cannot")):
@@ -154,6 +199,8 @@ class CareJourneyPage(QWidget):
         self.episodes.clear()
         self.events.clear()
         self.summary.clear()
+        self.new_concern.clear()
+        self.new_consent.setChecked(False)
         self.action.setCurrentIndex(0)
         self.outcome.setCurrentIndex(0)
         self.status.setText(self._s("journey.unknown"))
@@ -168,6 +215,13 @@ class CareJourneyPage(QWidget):
             if authenticated else self._s("journey.no_subject"))
         self.phase_label.setText(
             self._s("journey.phase", phase=self.phase or "-"))
+        stages = ("GATHER","EVALUATE","ACT","RECHECK")
+        if hasattr(self, 'stage_badges'):
+            for index, stage in enumerate(stages):
+                label = self._s("journey.stage_" + stage.lower())
+                selected = self.phase == stage
+                self.stage_badges[index].setText(("●  " if selected else "○  ") + label)
+                self.stage_badges[index].setStyleSheet("font-weight:800;" if selected else "font-weight:500;")
         next_phase = {"GATHER": "EVALUATE", "EVALUATE": "ACT",
                       "ACT": "RECHECK"}.get(self.phase)
         self.advance_button.setText(
@@ -176,6 +230,9 @@ class CareJourneyPage(QWidget):
         self.reassess_button.setEnabled(authenticated and self.phase == "RECHECK")
         self.close_button.setEnabled(authenticated and self.phase == "RECHECK")
         self.refresh_button.setEnabled(authenticated)
+        self.new_concern.setEnabled(authenticated)
+        self.new_consent.setEnabled(authenticated)
+        self.create_button.setEnabled(authenticated)
         self.action.setEnabled(self.phase == "EVALUATE")
         self.outcome.setEnabled(self.phase == "ACT")
 
@@ -205,6 +262,38 @@ class CareJourneyPage(QWidget):
                 self._reset()
             callback(body, err or (str(body.get("detail", "")) if (code or 0) >= 400 else ""))
         reply.finished.connect(finished)
+
+    def create_episode(self) -> None:
+        if not self.token or not self.subject_id:
+            self.status.setText(self._s("journey.no_subject"))
+            return
+        concern = self.new_concern.text().strip()
+        if not concern or not self.new_consent.isChecked():
+            self.status.setText(self._s("journey.create_required"))
+            return
+        decision = QMessageBox.question(
+            self, self._s("journey.new_heading"),
+            self._s("journey.create_confirm"),
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+        )
+        if decision != QMessageBox.StandardButton.Yes:
+            return
+        self.status.setText(self._s("journey.loading"))
+        payload = {"subject_id": self.subject_id, "chief_concern": concern,
+                   "symptom_terms": [], "interview_answers": {},
+                   "explicit_consent": True}
+        self._request("POST", "/api/v1/care/episodes", payload, self._created)
+
+    def _created(self, data: dict, error: str) -> None:
+        episode = data.get("episode")
+        if error or not isinstance(episode, dict) or episode.get("subject_id") != self.subject_id:
+            self.status.setText(self._s("journey.error") + " " + error)
+            return
+        self.new_concern.clear()
+        self.new_consent.setChecked(False)
+        self._got_episode(data, "")
+        self.status.setText(self._s("journey.created"))
+        self.refresh()
 
     def refresh(self) -> None:
         if not (self.subject_id and self.token):
