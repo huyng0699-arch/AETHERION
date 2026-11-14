@@ -27,8 +27,8 @@ from urllib.parse import urlsplit
 from PySide6.QtCore import Qt, QDateTime, QRectF, Signal, QUrl
 from PySide6.QtGui import QColor, QDesktopServices, QPainter, QPen
 from PySide6.QtWidgets import (
-    QAbstractItemView, QComboBox, QDateTimeEdit, QFrame, QHBoxLayout, QLabel,
-    QLineEdit, QListWidget, QPushButton, QSplitter, QStackedWidget, QTableWidget,
+    QAbstractItemView, QComboBox, QDateTimeEdit, QFrame, QHBoxLayout, QHeaderView,
+    QLabel, QLineEdit, QListWidget, QPushButton, QSplitter, QStackedWidget, QTableWidget,
     QTableWidgetItem, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget,
 )
 
@@ -75,25 +75,29 @@ TEXT = {
         "atlas": "Body Atlas",
         "settings": "Settings",
         "home": "Mission Workspace",
-        "archive": "NASA MA-7 · source records",
+        "archive": "NASA MA-7 · records",
         "utc": "UTC observations",
-        "demo": "DEMO FOR HACKATHON",
+        "demo": "DEMO",
         "sim": "SIMULATED",
         "real": "NASA MA-7 · 1962",
         "realBadge": "HISTORICAL · NASA SOURCE",
         "simulationHint": "Fictional five-patient scenario, stored separately from actual health records",
         "archiveHint": "83 published measurements across 19 archived report timepoints",
         "runDemo": "Explore SIMULATED Demo",
-        "runArchive": "Open NASA archive",
+        "runArchive": "Open NASA data",
         "sourceGuide": "Open NASA original report",
         "launch": "Open feature",
-        "welcome": "Select a source or work area in Browse.",
-        "welcomeLead": "The workspace shows authentic historical NASA measurements and honest empty states for unconnected UTC observations. No fabricated live telemetry.",
+        "welcome": "Your mission starts with a person.",
+        "welcomeLead": "Explore the SIMULATED Demo, original NASA records and authorized UTC observations.",
+        "demoCardBadge": "SIMULATED  ·  FICTIONAL DATA",
+        "demoCardTitle": "Explore the Demo",
+        "demoCardBody": "Five fictional profiles · 540 days of history · separate from real records.",
+        "demoCardAction": "Start Demo",
         "welcomeSource": "Source inventory",
-        "welcomeCount": "{records} original MA-7 report timepoints · {values} recorded values",
+        "welcomeCount": "{records} MA-7 timepoints · {values} values",
         "welcomeNoSource": "The NASA source package is unavailable or invalid. Open the archive for details.",
-        "welcomeReal": "Read the NASA MA-7 records",
-        "welcomeUtc": "Inspect UTC records",
+        "welcomeReal": "NASA source records",
+        "welcomeUtc": "UTC observations",
         "homeNotice": "The mission workspace does not read authenticated patients until a permitted source supplies them.",
         "time": "TIME CONDUCTOR",
         "timeHelp": "UTC window shared by UTC plot, table, and Inspect",
@@ -164,7 +168,7 @@ TEXT = {
         "archiveUnavailable": "Historical source file could not be loaded; no replacement values generated.",
     },
     "vi": {
-        "brand": "AETHERION  /  MISSION OPERATIONS",
+        "brand": "AETHERION  /  ĐIỀU HÀNH SỨC KHỎE",
         "connection": "Chưa xác minh kết nối",
         "browse": "DUYỆT ĐỐI TƯỢNG",
         "browseSearch": "Tìm đối tượng và chức năng…",
@@ -177,7 +181,7 @@ TEXT = {
         "inspect": "THUỘC TÍNH  /  NGUỒN",
         "workspace": "KHÔNG GIAN DỮ LIỆU",
         "science": "KHOA HỌC & NGUỒN",
-        "clinical": "SỨC KHỎE & CHĂM SÓC",
+        "clinical": "SỨC KHỎE",
         "systems": "HỆ THỐNG",
         "mission": "Nhiệm vụ",
         "crew": "Phi hành đoàn",
@@ -193,27 +197,31 @@ TEXT = {
         "atlas": "Cơ thể 3D",
         "settings": "Cài đặt",
         "home": "Không gian điều hành",
-        "archive": "NASA MA-7 · bản ghi gốc",
+        "archive": "NASA MA-7 · dữ liệu",
         "utc": "Quan sát UTC",
-        "demo": "DEMO FOR HACKATHON",
+        "demo": "DEMO",
         "sim": "SIMULATED",
         "real": "NASA MA-7 · 1962",
         "realBadge": "LỊCH SỬ THẬT · NGUỒN NASA",
         "simulationHint": "Năm hồ sơ giả lập tách khỏi bệnh án thực",
         "archiveHint": "83 giá trị đã công bố trong 19 mốc báo cáo NASA",
         "runDemo": "Khám phá Demo giả lập",
-        "runArchive": "Mở kho NASA",
+        "runArchive": "Mở dữ liệu NASA",
         "sourceGuide": "Xem báo cáo NASA gốc",
         "launch": "Mở chức năng",
-        "welcome": "Chọn một nguồn hoặc chức năng từ cây bên trái.",
-        "welcomeLead": "Không gian hiển thị các số đo lịch sử thật từ NASA và trạng thái thiếu dữ liệu UTC trung thực. Không tạo sinh hiệu trực tiếp giả.",
+        "welcome": "Bắt đầu hành trình từ sức khỏe của từng người.",
+        "welcomeLead": "Khám phá Demo giả lập, dữ liệu NASA gốc và quan sát UTC đã được cấp quyền.",
+        "demoCardBadge": "GIẢ LẬP  ·  DỮ LIỆU HƯ CẤU",
+        "demoCardTitle": "Khám phá Demo",
+        "demoCardBody": "Năm hồ sơ hư cấu · 540 ngày lịch sử · tách khỏi bệnh án thật.",
+        "demoCardAction": "Bắt đầu Demo",
         "welcomeSource": "Danh mục nguồn",
-        "welcomeCount": "{records} mốc báo cáo MA-7 · {values} giá trị ghi nhận",
+        "welcomeCount": "{records} mốc MA-7 · {values} giá trị",
         "welcomeNoSource": "Bộ nguồn NASA thiếu hoặc không hợp lệ. Có thể mở kho để xem lỗi.",
-        "welcomeReal": "Xem các bản ghi NASA MA-7",
-        "welcomeUtc": "Xem dữ liệu UTC",
+        "welcomeReal": "Bản ghi NASA",
+        "welcomeUtc": "Quan sát UTC",
         "homeNotice": "Không đọc hồ sơ người bệnh khi chưa có nguồn được cấp quyền.",
-        "time": "TIME CONDUCTOR",
+        "time": "ĐIỀU KHIỂN THỜI GIAN UTC",
         "timeHelp": "Khoảng UTC dùng chung cho biểu đồ, bảng và Inspect",
         "from": "Từ",
         "to": "Đến",
@@ -277,7 +285,7 @@ TEXT = {
         "inspectVerification": "Trạng thái xác minh",
         "inspectQuality": "Chất lượng",
         "inspectNoUTC": "Nguồn không cung cấp thời điểm UTC chính xác",
-        "footer": "CÓ NGUỒN · KHÔNG ĐƯA DỮ LIỆU GIẢ LẬP VÀO TRANG CHÍNH",
+        "footer": "DỮ LIỆU CÓ NGUỒN · KHÔNG ĐƯA DỮ LIỆU GIẢ LẬP VÀO TRANG CHÍNH",
         "openOriginal": "Báo cáo NASA gốc",
         "archiveUnavailable": "Không thể đọc nguồn NASA; không tạo số liệu thay thế.",
     },
@@ -500,6 +508,7 @@ class MissionOperationsHome(QWidget):
         shell.setSpacing(7)
 
         command = QFrame()
+        self.command_frame = command
         command.setObjectName("surface")
         command_row = QHBoxLayout(command)
         command_row.setContentsMargins(12, 6, 12, 6)
@@ -577,8 +586,8 @@ class MissionOperationsHome(QWidget):
         left = QFrame()
         left.setObjectName("contentPanel")
         nav_layout = QVBoxLayout(left)
-        left.setMinimumWidth(177)
-        left.setMaximumWidth(255)
+        left.setMinimumWidth(190)
+        left.setMaximumWidth(285)
         nav_layout.setContentsMargins(8, 9, 8, 9)
         self.browse_heading = QLabel()
         self.browse_heading.setObjectName("eyebrow")
@@ -591,7 +600,7 @@ class MissionOperationsHome(QWidget):
         self.navigator = QTreeWidget()
         self.navigator.setHeaderHidden(True)
         self.navigator.setUniformRowHeights(True)
-        self.navigator.setMinimumWidth(172)
+        self.navigator.setMinimumWidth(184)
         self.navigator.itemSelectionChanged.connect(self._browse_selected)
         self.navigator.itemDoubleClicked.connect(self._browse_open)
         nav_layout.addWidget(self.navigator, 1)
@@ -625,6 +634,32 @@ class MissionOperationsHome(QWidget):
         self.welcome_lead.setObjectName("pageHint")
         self.welcome_lead.setWordWrap(True)
         ov.addWidget(self.welcome_lead)
+        self.demo_card = QFrame()
+        self.demo_card.setObjectName("portalCard")
+        demo_card_row = QHBoxLayout(self.demo_card)
+        demo_card_row.setContentsMargins(16, 11, 16, 11)
+        demo_card_row.setSpacing(12)
+        demo_card_copy = QVBoxLayout()
+        demo_card_copy.setSpacing(3)
+        self.demo_card_badge = QLabel()
+        self.demo_card_badge.setObjectName("eyebrow")
+        demo_card_copy.addWidget(self.demo_card_badge)
+        self.demo_card_title = QLabel()
+        self.demo_card_title.setObjectName("heading")
+        self.demo_card_title.setWordWrap(True)
+        demo_card_copy.addWidget(self.demo_card_title)
+        self.demo_card_body = QLabel()
+        self.demo_card_body.setObjectName("pageHint")
+        self.demo_card_body.setWordWrap(True)
+        demo_card_copy.addWidget(self.demo_card_body)
+        demo_card_row.addLayout(demo_card_copy, 1)
+        self.demo_card_action = QPushButton()
+        self.demo_card_action.setObjectName("primaryAction")
+        self.demo_card_action.setMinimumWidth(132)
+        self.demo_card_action.setMinimumHeight(40)
+        self.demo_card_action.clicked.connect(self.simulated_demo_requested.emit)
+        demo_card_row.addWidget(self.demo_card_action)
+        ov.addWidget(self.demo_card)
         self.source_count = QLabel()
         self.source_count.setObjectName("heading")
         self.source_count.setWordWrap(True)
@@ -783,8 +818,9 @@ class MissionOperationsHome(QWidget):
         right.setObjectName("contentPanel")
         # INSPECT must remain visible and horizontally scrollable at 1040px.
         # Do not auto-hide it based on window width.
-        right.setMinimumWidth(205)
-        right.setMaximumWidth(325)
+        right.setMinimumWidth(280)
+        right.setMaximumWidth(360)
+        self.inspect_panel = right
         right_layout = QVBoxLayout(right)
         right_layout.setContentsMargins(8, 9, 8, 9)
         self.inspect_heading = QLabel()
@@ -799,9 +835,13 @@ class MissionOperationsHome(QWidget):
         self.inspector.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection)
         self.inspector.setHorizontalScrollMode(QAbstractItemView.ScrollMode.ScrollPerPixel)
         self.inspector.setWordWrap(True)
+        self.inspector.setTextElideMode(Qt.TextElideMode.ElideNone)
+        self.inspector.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.inspector.verticalHeader().hide()
+        self.inspector.verticalHeader().setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
         self.inspector.horizontalHeader().hide()
-        self.inspector.horizontalHeader().setStretchLastSection(True)
+        self.inspector.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Fixed)
+        self.inspector.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
         right_layout.addWidget(self.inspector, 1)
         self.source_link = QPushButton()
         self.source_link.setObjectName("navButton")
@@ -811,11 +851,18 @@ class MissionOperationsHome(QWidget):
         horizontal.setStretchFactor(0, 0)
         horizontal.setStretchFactor(1, 1)
         horizontal.setStretchFactor(2, 0)
-        horizontal.setSizes([198, 600, 224])
+        horizontal.setSizes([205, 1000, 360])
 
-        # Open MCT-style conductor is a persistent strip BELOW data views,
-        # not a full-width header that reduces the available workspace.
-        shell.addWidget(conductor)
+        # Open MCT-style conductor slot stays below data views. Monitoring can
+        # place its own independent UTC controls here without syncing bounds.
+        self.conductor_host = QFrame()
+        self.conductor_host.setObjectName("conductorHost")
+        self.conductor_layout = QVBoxLayout(self.conductor_host)
+        self.conductor_layout.setContentsMargins(0, 0, 0, 0)
+        self.conductor_layout.setSpacing(0)
+        self.conductor_layout.addWidget(conductor)
+        self._active_conductor_widget = conductor
+        shell.addWidget(self.conductor_host)
 
         self.footer = QLabel()
         self.footer.setObjectName("pageHint")
@@ -953,6 +1000,21 @@ class MissionOperationsHome(QWidget):
         if self.workspace_stack.indexOf(widget) < 0:
             self.workspace_stack.addWidget(widget)
         self._hosted_features[route] = widget
+
+    def set_time_conductor_widget(self, widget=None):
+        """Show a route-owned conductor in the persistent bottom slot.
+
+        This moves controls only; it does not share or synchronize UTC bounds.
+        """
+        target = widget or self.time_conductor
+        if target is self._active_conductor_widget:
+            return
+        current = self._active_conductor_widget
+        if current is not None:
+            self.conductor_layout.removeWidget(current)
+            current.setParent(None)
+        self.conductor_layout.addWidget(target)
+        self._active_conductor_widget = target
 
     def show_hosted(self, route: str):
         """Show an existing feature without dropping Browse/Inspect/Conductor."""
@@ -1165,9 +1227,20 @@ class MissionOperationsHome(QWidget):
         for field, value in properties:
             row = self.inspector.rowCount()
             self.inspector.insertRow(row)
-            self.inspector.setItem(row, 0, QTableWidgetItem(self._t(field)))
-            self.inspector.setItem(row, 1, QTableWidgetItem(str(value)))
+            label_item = QTableWidgetItem(self._t(field))
+            label_item.setToolTip(label_item.text())
+            value_item = QTableWidgetItem(str(value))
+            value_item.setToolTip(str(value))
+            self.inspector.setItem(row, 0, label_item)
+            self.inspector.setItem(row, 1, value_item)
         self.inspector.resizeColumnToContents(0)
+        self.inspector.setColumnWidth(0, min(92, max(72, self.inspector.columnWidth(0))))
+        self.inspector.resizeRowsToContents()
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        if hasattr(self, "inspect_panel"):
+            self.inspect_panel.setMaximumWidth(300 if self.width() <= 1120 else 360)
 
     def set_recent_days(self, days: int):
         """One UTC conductor applies the same time window to table/chart/inspect."""
@@ -1351,6 +1424,10 @@ class MissionOperationsHome(QWidget):
         self.brand.setText(t("brand"))
         self.status.setText(getattr(self, "_connection_text", t("connection")))
         self.demo.setText(t("demo"))
+        self.demo_card_badge.setText(t("demoCardBadge"))
+        self.demo_card_title.setText(t("demoCardTitle"))
+        self.demo_card_body.setText(t("demoCardBody"))
+        self.demo_card_action.setText(t("demoCardAction"))
         self.demo.setAccessibleName(t("demo") + " · " + t("sim"))
         self.conductor_heading.setText(t("time"))
         self.from_label.setText(t("from"))
@@ -1415,7 +1492,10 @@ class MissionOperationsHome(QWidget):
         self.reduce_motion = bool(reduce_motion)
         self.theme = theme or "daybreak"
         self.mode = mode or "light"
-        self.utc_chart.set_series(self.utc_chart._series, self.theme, self.mode)
+        self.utc_chart.set_points(
+            self.utc_chart._points, self.theme, self.mode,
+            index_offset=self.utc_chart._index_offset,
+        )
 
     def set_connection_state(self, state):
         # The host only supplies actual /health results. Preserve verbatim.
