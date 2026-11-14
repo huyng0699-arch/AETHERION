@@ -233,7 +233,7 @@
   "reader.imageWithheld": "Ảnh chưa hiển thị: {warning}",
   "reader.imageCaption": "{caption}\nMô tả ảnh: {alt}\n{page} | Ghi công: {attribution}\nGiấy phép: {license} | Nguồn: {source}",
   "reader.refLine": "{label} | {page}\n{url}",
-  "reader.sourceUnchanged": "Nguồn NASA nguyên bản — tiếng Anh; nội dung bài không được tự động dịch.",
+  "reader.sourceUnchanged": "Nội dung nguồn tiếng Anh được giữ nguyên như đã nhập; không tự động dịch hoặc chứng nhận tính xác thực.",
   "observatory.eyebrow": "AETHERION  /  ĐÀI QUAN SÁT TRI THỨC",
   "observatory.hero": "Khám phá khoa học",
   "observatory.lead": "Một không gian dành cho tri thức có nguồn. Khám phá các bản ghi CliFF và tra cứu thuật ngữ mà không tạo nội dung giả.",
