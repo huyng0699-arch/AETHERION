@@ -16,6 +16,7 @@ from PySide6.QtWidgets import (
 )
 
 from .identity import checked_personal_handoff
+from .latest_metrics import latest_metric_cards
 from .today_dashboard import (
     build_personal_today_snapshot,
     personal_observations_url,
@@ -128,9 +129,15 @@ class AuthorizedPersonalTodayPage(QWidget):
                 payload = {}
             snapshot = build_personal_today_snapshot(payload, subject_id)
 
+        try:
+            displayed = latest_metric_cards(snapshot.cards)
+        except ValueError:
+            self.table.setRowCount(0)
+            self.status_label.setText("ERROR — latest metric provenance is invalid")
+            return
         self.status_label.setText(f"{snapshot.state} — {snapshot.status_note}")
-        self.table.setRowCount(len(snapshot.cards))
-        for row, card in enumerate(snapshot.cards):
+        self.table.setRowCount(len(displayed))
+        for row, card in enumerate(displayed):
             values = (
                 card.metric, card.reading, card.observed_at,
                 card.source_id, card.quality, card.verification_state
@@ -139,6 +146,11 @@ class AuthorizedPersonalTodayPage(QWidget):
                 self.table.setItem(row, column, QTableWidgetItem(value))
         if snapshot.has_more:
             self.note.setText(
-                "More records exist on the server. Showing the latest 50, "
-                "with source and verification labels."
+                "Showing the newest record per metric, scope and unit from the "
+                "latest 50 server observations. More history is available."
+            )
+        else:
+            self.note.setText(
+                "Newest recorded value per metric, scope and unit. Older records "
+                "remain on the server; missing readings are not normal readings."
             )
