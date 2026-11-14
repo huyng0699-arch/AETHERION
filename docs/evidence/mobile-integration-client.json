@@ -1,0 +1,44 @@
+{
+  "scope": "Actual frontend TypeScript HTTP adapters and session code executed against the live API with in-memory web-storage adapters. No browser layout/device assertion.",
+  "checks": [
+    {
+      "name": "Frontend readiness adapter reads real SQLite state",
+      "status": "PASS"
+    },
+    {
+      "name": "Frontend auth adapter signs in and scopes persisted session",
+      "status": "PASS"
+    },
+    {
+      "name": "Frontend subject adapter resolves wildcard to registered profiles",
+      "status": "PASS"
+    },
+    {
+      "name": "Frontend Health and Monitor read actual no-data responses",
+      "status": "PASS"
+    },
+    {
+      "name": "Frontend Library search and detail preserve original content",
+      "status": "PASS"
+    },
+    {
+      "name": "Frontend AI adapter reads availability without inventing output",
+      "status": "PASS"
+    },
+    {
+      "name": "Frontend Care adapters persist and reload an explicit test record",
+      "status": "PASS"
+    },
+    {
+      "name": "Changing server origin blocks stale bearer before transmission",
+      "status": "PASS"
+    },
+    {
+      "name": "Frontend sign out clears storage and revokes the captured bearer",
+      "status": "PASS"
+    }
+  ],
+  "total": 9,
+  "passed": 9,
+  "pass_percent": 100
+}

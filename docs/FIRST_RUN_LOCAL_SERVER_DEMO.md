@@ -1,5 +1,7 @@
 # AETHERION first-run: default local Server and pre-seeded fictional crew
 
+> Current Login entry: **Demo** opens the real NASA source briefing and archive, as specified for the mobile/desktop login flow. The existing **SIMULATED** route and its isolated preparation remain reachable through the native workspace; they do not replace the historical NASA source or populate the authoritative health store. See `MOBILE_DELIVERY_20261115.md` for scoped observed results.
+
 **Scope:** Native Windows/PySide6 desktop first launch. This does not turn the Windows app into a browser wrapper or merge its independent Server binary with the GUI.
 
 ## First launch from the installed Python environment
@@ -34,3 +36,4 @@ The existing `scripts/start_server.ps1` remains valid for manual operation. Ther
 This change was committed through GitHub's contents API and inspected at the source level. **No new Windows/Qt process or real local SQLite database was created by this ChatGPT runtime**, which has no PySide6 package or connection to the owner's desktop. Do not mark the startup end-to-end behavior DONE until a fresh Windows session proves: one local listener; nonblocking Login; HTTP /health eventually online or truthful offline; 5 fictional subjects; 540-day timeline with deliberate missing days; source and SQLite physical separation; VI/EN and all five Q-0484 tabs; no access to authenticated health records without login.
 
 The first-run user experience and default demo generation can be verified using the normal `scripts/start_desktop.ps1` command; `scripts/start_server.ps1` need not run first when all server dependencies are installed.
+

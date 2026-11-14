@@ -1,0 +1,28 @@
+{
+  "scope": "Actual frontend TypeScript HTTP adapters and session code executed against the live API with in-memory web-storage adapters. No browser layout/device assertion.",
+  "checks": [
+    {
+      "name": "Frontend readiness adapter reads real SQLite state",
+      "status": "PASS"
+    },
+    {
+      "name": "Frontend auth adapter signs in and scopes persisted session",
+      "status": "PASS"
+    },
+    {
+      "name": "Normal origin change rejects stale bearer before a network call",
+      "status": "PASS"
+    },
+    {
+      "name": "Login uses captured origin even while another URL is stored",
+      "status": "PASS"
+    },
+    {
+      "name": "Logout revokes captured server token without touching another origin",
+      "status": "PASS"
+    }
+  ],
+  "total": 5,
+  "passed": 5,
+  "pass_percent": 100
+}

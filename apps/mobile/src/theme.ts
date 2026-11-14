@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const colors = {
   background: '#F8F6FF', backgroundRaised: '#F1EDFF', card: '#FFFFFF', cardSoft: '#F4F0FF',
   border: '#EAE5F5', text: '#19152D', muted: '#66617C', faint: '#8D88A2', cyan: '#6539F5',
-  blue: '#347DEB', green: '#159A61', amber: '#B97913', red: '#D83F58',
+  blue: '#347DEB', green: '#159A61', amber: '#B97913', red: '#D83F58', onAccent: '#FFFFFF',
 };
 export type ThemeColors = typeof colors;
 export type ThemePreset = 'amethyst' | 'ocean' | 'rose' | 'midnight';
@@ -42,7 +42,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const isDark = appearance.mode === 'dark' || (appearance.mode === 'system' && system === 'dark');
   const value = useMemo(() => {
     const preset = presets[appearance.preset];
-    const palette = isDark ? { ...colors, background: '#12121F', backgroundRaised: '#1A192C', card: '#211F35', cardSoft: '#29253E', border: '#39334F', text: '#F3F0FF', muted: '#BDB6D3', faint: '#9C94B2', cyan: preset.darkAccent, green: '#5CD8A0', red: '#FF839A', amber: '#EAC279' }
+    const palette = isDark ? { ...colors, background: '#12121F', backgroundRaised: '#1A192C', card: '#211F35', cardSoft: '#29253E', border: '#39334F', text: '#F3F0FF', muted: '#BDB6D3', faint: '#9C94B2', cyan: preset.darkAccent, green: '#5CD8A0', red: '#FF839A', amber: '#EAC279', onAccent: '#171326' }
       : { ...colors, cyan: preset.accent, cardSoft: preset.tint, backgroundRaised: preset.tint };
     return { colors: palette, appearance, isDark, gradient: preset.gradient, updateAppearance };
   }, [appearance, isDark]);

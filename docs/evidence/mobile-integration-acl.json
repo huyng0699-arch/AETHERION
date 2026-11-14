@@ -1,0 +1,32 @@
+{
+  "scope": "Live HTTP ACL/idempotency/pagination on separate verification DB; fixtures never enter normal monitoring.",
+  "checks": [
+    {
+      "name": "Crew list exposes only authorized subject",
+      "status": "PASS"
+    },
+    {
+      "name": "Crew cannot read another subject summary",
+      "status": "PASS"
+    },
+    {
+      "name": "Crew cannot register another subject",
+      "status": "PASS"
+    },
+    {
+      "name": "Crew cannot create care records for another subject",
+      "status": "PASS"
+    },
+    {
+      "name": "Test fixtures are idempotent and excluded from normal monitoring",
+      "status": "PASS"
+    },
+    {
+      "name": "Observation cursor advances without duplicating records",
+      "status": "PASS"
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "pass_percent": 100
+}

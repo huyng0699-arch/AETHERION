@@ -2,14 +2,16 @@ import { AuthSession, SessionIdentity } from '../types';
 import { readServerUrl, request } from './client';
 import { deleteSession, readSession } from '../storage/session';
 
-export async function signIn(username: string, password: string): Promise<AuthSession> {
+export async function signIn(username: string, password: string, capturedServerUrl?: string): Promise<AuthSession> {
+  const serverUrl = capturedServerUrl || await readServerUrl();
   const response = await request<AuthSession>('/api/v1/auth/login', {
     method: 'POST',
     body: { username: username.trim(), password },
     timeoutMs: 15000,
+    baseUrl: serverUrl,
   });
   if (!response?.access_token || !response.user?.username) throw new Error('INVALID_LOGIN_RESPONSE');
-  return { ...response, server_url: await readServerUrl() };
+  return { ...response, server_url: serverUrl };
 }
 
 export async function validateSession(token: string): Promise<SessionIdentity> {

@@ -9,7 +9,7 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'apps/desktop/src'))
 os.environ.setdefault('QT_QPA_PLATFORM', 'offscreen')
-os.environ['AETHERION_API_URL'] = 'http://127.0.0.1:8765'
+os.environ['AETHERION_API_URL'] = json.loads((ROOT / '.runtime/verification-access.json').read_text(encoding='utf8'))['url']
 from PySide6.QtCore import QSettings
 from PySide6.QtGui import QFontDatabase
 from PySide6.QtWidgets import QApplication

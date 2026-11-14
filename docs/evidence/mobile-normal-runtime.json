@@ -1,0 +1,13 @@
+{
+  "url": "http://127.0.0.1:8765",
+  "readiness": "PASS",
+  "web_export": "PASS",
+  "owner_admin_login": "PASS",
+  "admin_overview": "PASS",
+  "ai_settings_default_off": "PASS",
+  "test_profiles_in_normal_database": false,
+  "registered_normal_profiles": 0,
+  "knowledge_records": 118,
+  "unknown_api_json_404": "PASS",
+  "private_credentials_not_served": "PASS"
+}

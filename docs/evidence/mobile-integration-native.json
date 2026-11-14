@@ -1,0 +1,41 @@
+{
+  "scope": "Actual native Qt shell offscreen on Windows; real local HTTP login. Not a packaged EXE or physical-device claim.",
+  "qt_platform": "offscreen",
+  "checks": [
+    {
+      "name": "Native cold start selects Login",
+      "status": "PASS"
+    },
+    {
+      "name": "Native Demo visible without credentials",
+      "status": "PASS"
+    },
+    {
+      "name": "Native login shell renders with actual product stylesheet",
+      "status": "PASS"
+    },
+    {
+      "name": "Native Demo fits the 1040x650 minimum window",
+      "status": "PASS"
+    },
+    {
+      "name": "Native Demo opens NASA introduction first",
+      "status": "PASS"
+    },
+    {
+      "name": "Native introduction loads actual source data",
+      "status": "PASS"
+    },
+    {
+      "name": "Native sign-in uses real HTTP bearer session",
+      "status": "PASS"
+    },
+    {
+      "name": "Native sign-out returns to Login and clears identity",
+      "status": "PASS"
+    }
+  ],
+  "passed": 8,
+  "total": 8,
+  "pass_percent": 100
+}

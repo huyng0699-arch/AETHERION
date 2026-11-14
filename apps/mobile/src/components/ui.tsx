@@ -43,7 +43,7 @@ export function ActionButton({ title, onPress, disabled, loading, secondary }: {
   return (
     <Pressable accessibilityRole="button" onPress={onPress} disabled={disabled || loading}
       style={({ pressed }) => [styles.action, secondary && styles.actionSecondary, (disabled || loading) && styles.actionDisabled, pressed && !disabled && styles.actionPressed]}>
-      {loading ? <ActivityIndicator color={secondary ? colors.cyan : '#FFFFFF'} /> : <Text style={[styles.actionText, secondary && styles.actionTextSecondary]}>{title}</Text>}
+      {loading ? <ActivityIndicator color={secondary ? colors.cyan : colors.onAccent} /> : <Text style={[styles.actionText, secondary && styles.actionTextSecondary]}>{title}</Text>}
     </Pressable>
   );
 }
@@ -126,7 +126,7 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   actionSecondary: { backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border },
   actionDisabled: { opacity: 0.56 },
   actionPressed: { transform: [{ scale: 0.985 }], opacity: 0.86 },
-  actionText: { color: '#FFFFFF', fontWeight: '800', fontSize: 15 },
+  actionText: { color: colors.onAccent, fontWeight: '800', fontSize: 15 },
   actionTextSecondary: { color: colors.text },
   fieldWrap: { gap: 7 },
   fieldLabel: { color: colors.muted, fontSize: 12, fontWeight: '700', letterSpacing: 0.2 },

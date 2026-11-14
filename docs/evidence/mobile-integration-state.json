@@ -1,0 +1,65 @@
+{
+  "scope": "Executed navigation and URL-policy modules. This is not a browser rendering or device interaction test.",
+  "recorded_at_utc": "2026-11-14T19:35:03.352Z",
+  "checks": [
+    {
+      "name": "Cold start remains Login",
+      "status": "PASS"
+    },
+    {
+      "name": "Demo back stack returns Data to Intro to Login",
+      "status": "PASS"
+    },
+    {
+      "name": "Protected route waits for explicit sign in",
+      "status": "PASS"
+    },
+    {
+      "name": "Sign out resets navigation and cannot back into health",
+      "status": "PASS"
+    },
+    {
+      "name": "Bottom tabs reset history and Back returns to Home",
+      "status": "PASS"
+    },
+    {
+      "name": "HTTPS production resolves current web origin",
+      "status": "PASS"
+    },
+    {
+      "name": "Production rejects remote cleartext HTTP",
+      "status": "PASS"
+    },
+    {
+      "name": "Local loopback HTTP remains usable",
+      "status": "PASS"
+    },
+    {
+      "name": "URL credentials/query/fragment are rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Saved server URL normalizes trailing slashes",
+      "status": "PASS"
+    },
+    {
+      "name": "Local Expo development targets loopback API",
+      "status": "PASS"
+    },
+    {
+      "name": "Android development selects the emulator host",
+      "status": "PASS"
+    },
+    {
+      "name": "Unconfigured native release fails closed",
+      "status": "PASS"
+    },
+    {
+      "name": "Bearer without a matching stored server scope never leaves client",
+      "status": "PASS"
+    }
+  ],
+  "total": 14,
+  "passed": 14,
+  "pass_percent": 100
+}

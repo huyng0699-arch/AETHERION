@@ -1,0 +1,83 @@
+{
+  "recorded_at_utc": "2026-11-14T19:08:52.444Z",
+  "scope": "Local API integration, static export delivery and source integrity. No browser interaction, native Android, clinical validation, or AI-model completion asserted.",
+  "browser": "NOT_RUN",
+  "checks": [
+    {
+      "name": "API readiness includes SQLite",
+      "status": "PASS"
+    },
+    {
+      "name": "Protected data rejects anonymous access",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid credentials rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Real sign-in and bearer identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Permission wildcard cannot be registered as a patient ID",
+      "status": "PASS"
+    },
+    {
+      "name": "Wildcard permission resolves concrete profiles",
+      "status": "PASS"
+    },
+    {
+      "name": "Empty profile remains NO_DATA",
+      "status": "PASS"
+    },
+    {
+      "name": "Current server exposes authenticated AI status",
+      "status": "PASS"
+    },
+    {
+      "name": "Cloud request requires explicit consent",
+      "status": "PASS"
+    },
+    {
+      "name": "Consent required before a care record is written",
+      "status": "PASS"
+    },
+    {
+      "name": "Care record persists human confirmed transitions",
+      "status": "PASS"
+    },
+    {
+      "name": "Logged-out bearer is revoked",
+      "status": "PASS"
+    },
+    {
+      "name": "Knowledge search indexes the actual repository records",
+      "status": "PASS"
+    },
+    {
+      "name": "Library article preserves sections and source provenance",
+      "status": "PASS"
+    },
+    {
+      "name": "NASA demo retains 19 timepoints and 83 reported values",
+      "status": "PASS"
+    },
+    {
+      "name": "Expo HTML and icon font are served by this API process",
+      "status": "PASS"
+    },
+    {
+      "name": "Private runtime account file is not web-accessible",
+      "status": "PASS"
+    },
+    {
+      "name": "Server route contract covers all mobile data endpoints",
+      "status": "PASS"
+    }
+  ],
+  "total": 18,
+  "passed": 18,
+  "failed": 0,
+  "pass_percent": 100
+}

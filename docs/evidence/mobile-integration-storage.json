@@ -1,0 +1,24 @@
+{
+  "scope": "Actual TypeScript session module with delayed/failing in-memory native SecureStore adapter. No physical Android assertion.",
+  "checks": [
+    {
+      "name": "Overlapping sign-ins keep the latest session",
+      "status": "PASS"
+    },
+    {
+      "name": "Pending logout cannot erase a newer sign-in",
+      "status": "PASS"
+    },
+    {
+      "name": "A read waits for the pending session write",
+      "status": "PASS"
+    },
+    {
+      "name": "A failed write does not block later session operations",
+      "status": "PASS"
+    }
+  ],
+  "passed": 4,
+  "total": 4,
+  "pass_percent": 100
+}
