@@ -83,7 +83,7 @@ def main() -> int:
         )
         try:
             _wait_ready(base_url, proc)
-            unauth_status, _ = _http_json("GET", f"{base_url}/api/v1/observations?subject_id=SMOKE-1")
+            unauth_status, _ = _http_json("GET", f"{base_url}/api/v1/observations?subject_id=SMOKE-1&include_non_live=true")
             assert unauth_status == 401, f"Expected 401 unauthenticated, got {unauth_status}"
 
             login_status, login_body = _http_json(
