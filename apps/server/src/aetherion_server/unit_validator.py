@@ -1,4 +1,4 @@
-"""Measurement unit compatibility validation for canonical AETHERION metrics (Q-0033)."""
+"""Measurement unit compatibility and physical range validation (Q-0033, Q-0048)."""
 
 from __future__ import annotations
 
@@ -17,6 +17,18 @@ METRIC_ALLOWED_UNITS: dict[str, frozenset[str]] = {
     "fatigue_score": frozenset({"scale_1_10", "score"}),
 }
 
+# Physical/engineering plausibility bounds (not clinical thresholds).
+METRIC_UNIT_BOUNDS: dict[tuple[str, str], tuple[float, float]] = {
+    ("heart_rate", "beats/min"): (0.0, 350.0),
+    ("heart_rate", "bpm"): (0.0, 350.0),
+    ("spo2", "%"): (0.0, 100.0),
+    ("cabin_humidity", "%"): (0.0, 100.0),
+    ("body_mass", "kg"): (1.0, 500.0),
+    ("cabin_co2", "ppm"): (0.0, 100000.0),
+    ("sleep_duration", "h"): (0.0, 48.0),
+    ("fatigue_score", "scale_1_10"): (1.0, 10.0),
+}
+
 
 def validate_metric_unit(metric: str, unit: str) -> None:
     clean_unit = unit.strip()
@@ -26,4 +38,15 @@ def validate_metric_unit(metric: str, unit: str) -> None:
     if allowed is not None and clean_unit not in allowed:
         raise ValueError(
             f"Incompatible unit '{clean_unit}' for metric '{metric}'; expected one of {sorted(allowed)}"
+        )
+
+
+def validate_metric_range(metric: str, value: float, unit: str) -> None:
+    bounds = METRIC_UNIT_BOUNDS.get((metric.strip().lower(), unit.strip()))
+    if bounds is None:
+        return
+    low, high = bounds
+    if value < low or value > high:
+        raise ValueError(
+            f"Out-of-range value {value} {unit} for metric '{metric}'; allowed range is [{low}, {high}]"
         )

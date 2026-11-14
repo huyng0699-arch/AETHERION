@@ -16,7 +16,7 @@ from pydantic import BaseModel, Field, field_validator, model_validator
 from .bootstrap import bootstrap_from_env, default_database_path
 from .scope_guard import validate_metric_scope
 from .security import DEFAULT_SESSION_TTL_SECONDS, is_subject_authorized, verify_password
-from .unit_validator import validate_metric_unit
+from .unit_validator import validate_metric_range, validate_metric_unit
 from .store import (
     check_readiness,
     create_session,
@@ -84,6 +84,7 @@ class ObservationIn(BaseModel):
         self.source = (self.source or resolved).strip()
         validate_metric_scope(self.metric, self.scope)
         validate_metric_unit(self.metric, self.unit)
+        validate_metric_range(self.metric, self.value, self.unit)
         return self
 
 
