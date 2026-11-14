@@ -4,7 +4,7 @@
 
 ## Mandatory startup (read narrowly)
 1. Read this file, then `QUEST_LOG.md`, and only the relevant sections of `docs/DESIGN_2026_11_14.md`.
-2. Run `python scripts/quest_board.py check` and `python scripts/quest_board.py ready`. Do not read all 300 Quest files into a prompt.
+2. Run `python scripts/quest_board.py check` and `python scripts/quest_board.py ready`. Do not read all 435 Quest files into a prompt.
 3. Open a **single eligible READY Quest**; check its dependencies, current code, existing changes, and any RUNNING claims affecting exact files. The task is not authorization to modify unrelated parts of the repository.
 4. Before editing, claim the Quest via its **current GitHub blob SHA** (compare-and-swap). Fill `owner`, unique `run_id`, `lease_until_utc`, the execution record's **exact owned paths**, and change `status` to `RUNNING`. Never assign yourself a task merely by describing work in chat. If a conflict occurs, refetch and reconcile.
 5. Implement **only** the claimed outcome; test actual behavior; record command, exit status, commit SHA, screenshots/video for actual Windows UI, and blockers.
@@ -38,8 +38,14 @@
 ## Narrow source reading
 - **Official challenge:** https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/
 - **Current product spec:** `docs/PRODUCT_SPEC.md`; **architecture:** `docs/ARCHITECTURE.md`.
-- **Legacy owner UX review dated 2026-11-14:** https://github.com/huyng0699-arch/NASA-Space-Apps/blob/main/docs/ux/ASTRA_UX_REACCEPTANCE_OPEN_SOURCE_20261114.md . This informs UX acceptance but does not restore the old web architecture or product name.
 - Scientific source registry: `knowledge/nasa/SOURCES.md`, and actual verified files under `knowledge/nasa/`.
 - README and install instructions: `README.md`, `docs/INSTALL_WINDOWS.md`.
 
 **Rule of completion:** A Quest is not DONE because an agent says it is. Code, observed test evidence, relevant hardware proof and accepted requirements must agree.
+
+## Mandatory new medical-library Quest directive (2026-11-14)
+- **Only AETHERION is allowed as the code/content repository.** The owner's older GitHub projects and old authored clinical content are explicitly OFF-LIMITS: do not read, import, copy, summarize or derive medical text, code, assets, or condition mapping from them. Public NASA original CliFF 119 and independent correctly licensed sources only.
+- **119 individual ingestion Quests:** `Q-0301`–`Q-0419` (see `quests/CLIFF_119_INDEX.md`); 16 native PySide6 medical-library Quests: `Q-0420`–`Q-0435`. Claim by exact path and lease per standard procedure. The rendered NASA table shows 118 named sources and one unresolved item; never fabricate the 119th or invent source URLs.
+- **Medical imagery quality:** Each article should contain condition-relevant images from verified licensable sources beyond NASA's own embedded figures where feasible. Prefer at least three meaningful clinical/anatomical/diagnostic illustrations, more when justified. Every binary image must have license, author, direct file URL, attribution, clinical caption, alt text, SHA-256 and local BLOB representation. Missing lawful images must be documented, not fabricated/padded. Treat medical image accuracy as a review gate.
+- **Single offline library:** `knowledge/nasa/cliff_119_2023/AETHERION_NASA_CLIFF_119.sqlite`; preserve ordered text, headings, tables, figures, citations, original PDF page locations and source versions. Native Qt desktop Medical Library App View with top menu; no web-wrapper and no fake data when library empty.
+- **Never mark DONE from a plan or index-only test.** Real source bytes/page content and authentic image/media evidence, a populated SQLite record, actual tests and offline Windows reader proof are required. Until they exist, status remains READY/BLOCKED.
