@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-041",
+  "title": "Dural Venous Sinuses of the Brain (OpenStax)",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/1315_Brain_Sinuses.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:1315_Brain_Sinuses.jpg",
+  "license": "CC-BY-4.0",
+  "author": "OpenStax",
+  "caption": "Dural venous sinuses of the brain (superior sagittal, transverse, sigmoid, and cavernous sinuses), showing cranial venous drainage pathways affected by microgravity cephalic fluid shift.",
+  "alt_text": "Anatomical illustration of the dural venous sinuses of the human brain.",
+  "clinical_relevance": "Microgravity-induced cephalad fluid shift impairs cerebral venous outflow and increases dural venous sinus pressure, contributing to space adaptation headache.",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 1090,
+  "height": 826,
+  "size_bytes": 549544,
+  "sha256": "5b5d7b8ec12ba5c3373355e697446f2cc994557a5f0ede70f9dd63e7be661065",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/1315_Brain_Sinuses.jpg",
+  "retrieved_at_utc": "2026-11-14T06:02:30.322722+00:00",
+  "asset_path": "5b5d7b8ec12ba5c3373355e697446f2cc994557a5f0ede70f9dd63e7be661065.jpg",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "ANATOMY",
+  "topic_region": "Intracranial / Dural Venous Sinuses"
+}

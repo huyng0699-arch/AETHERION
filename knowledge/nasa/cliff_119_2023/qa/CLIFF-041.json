@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-041",
+  "slot": 41,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+  "http_status": 200,
+  "pdf_bytes": 311235,
+  "pdf_sha256": "339400f046a91e2927bf76ccf938b3503bca7dbfe8a5fcd584678b72c26c4c1a",
+  "pdf_pages": 13,
+  "sections_count": 13,
+  "tables_count": 3,
+  "references_count": 13,
+  "media_count": 3,
+  "media_sha256s": [
+    "377fb11280a0a59d987ccb19455035082047b21ad0094244e66ccbe731bf49d4",
+    "5b5d7b8ec12ba5c3373355e697446f2cc994557a5f0ede70f9dd63e7be661065",
+    "e44a9dc042ff6f3da87ec32993b04377f15e26b4776f0715882592b1cf68a4f3"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons Public Domain / CC-BY-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}

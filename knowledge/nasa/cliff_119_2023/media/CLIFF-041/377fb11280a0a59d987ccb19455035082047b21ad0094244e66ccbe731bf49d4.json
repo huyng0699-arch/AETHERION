@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-041",
+  "title": "NASA STS-41 Intraocular Pressure (IOP) Assessment in Microgravity",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/STS-41_IOP_Test.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:STS-41_IOP_Test.jpg",
+  "license": "PUBLIC-DOMAIN",
+  "author": "NASA",
+  "caption": "NASA STS-41 crewmember performing intraocular pressure (IOP) testing in microgravity, illustrating spaceflight cephalic fluid shift assessment relevant to Space Adaptation Syndrome headaches.",
+  "alt_text": "Astronaut in microgravity undergoing intraocular pressure measurement during STS-41.",
+  "clinical_relevance": "Cephalad fluid shift in microgravity is the primary hypothesized mechanism for Space Adaptation Headache and Spaceflight-Associated Neuro-ocular Syndrome (SANS) (CLIFF-041, p.1, p.5).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 640,
+  "height": 480,
+  "size_bytes": 56363,
+  "sha256": "377fb11280a0a59d987ccb19455035082047b21ad0094244e66ccbe731bf49d4",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/STS-41_IOP_Test.jpg",
+  "retrieved_at_utc": "2026-11-14T06:02:30.097494+00:00",
+  "asset_path": "377fb11280a0a59d987ccb19455035082047b21ad0094244e66ccbe731bf49d4.jpg",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "CLINICAL",
+  "topic_region": "Head / Ocular & Intracranial Fluid Shift"
+}
