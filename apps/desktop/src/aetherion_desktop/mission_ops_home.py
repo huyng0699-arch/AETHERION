@@ -116,6 +116,12 @@ TEXT = {
         "qualifier": "Qualifier / range",
         "missing": "NOT REPORTED",
         "chart": "SOURCE-DERIVED VALUES  /  NO INTERPOLATION",
+        "categoricalComparison": "ORIGINAL REPORT PHASE COMPARISON · NOT UTC",
+        "hostedScenario": "SIMULATED patient exploration",
+        "hostedBriefing": "SIMULATED scenario briefing",
+        "hostedArchive": "NASA MA-7 historical archive",
+        "hostedScope": "This module preserves its original data/API permissions and source provenance",
+        "hostedTimeScope": "Home UTC bounds are not linked to this module; use its own time controls",
         "chartEmpty": "No original numeric values for this variable.",
         "selectMetric": "Bar series",
         "seriesDesc": "One bar per originally reported timepoint. Aggregated means remain reported means.",
@@ -228,6 +234,12 @@ TEXT = {
         "qualifier": "Ghi chú / khoảng",
         "missing": "KHÔNG CÔNG BỐ",
         "chart": "GIÁ TRỊ NGUỒN  /  KHÔNG NỘI SUY",
+        "categoricalComparison": "ĐỐI CHIẾU GIAI ĐOẠN GỐC · KHÔNG PHẢI UTC",
+        "hostedScenario": "Khám phá bệnh nhân SIMULATED",
+        "hostedBriefing": "Giới thiệu kịch bản SIMULATED",
+        "hostedArchive": "Kho lưu trữ NASA MA-7 thật",
+        "hostedScope": "Mô-đun giữ nguyên quyền truy cập API, dữ liệu và nguồn gốc",
+        "hostedTimeScope": "Khoảng UTC ở Home chưa nối với mô-đun này; dùng bộ lọc riêng của mô-đun",
         "chartEmpty": "Không có số đo gốc dạng số cho biến này.",
         "selectMetric": "Biến của biểu đồ",
         "seriesDesc": "Mỗi cột là một mốc gốc; các giá trị trung bình giữ đúng nghĩa trung bình.",
@@ -367,6 +379,8 @@ class MissionOperationsHome(QWidget):
         self._selected_nasa_metric: str | None = None
         self._active_utc_row: dict | None = None
         self._objects: dict[str, QTreeWidgetItem] = {}
+        # Persistent central feature pages; original widgets keep their auth/API.
+        self._hosted_features: dict[str, QWidget] = {}
         self.setObjectName("missionOperationsHome")
         self._load_historical_source()
 
@@ -560,8 +574,24 @@ class MissionOperationsHome(QWidget):
         self.metric_selector = QComboBox()
         self.metric_selector.currentIndexChanged.connect(self._update_report_chart)
         archive_layout.addWidget(self.metric_selector)
-        self.report_chart = ReportedBars()
-        archive_layout.addWidget(self.report_chart)
+        # The primary source comparison uses original categorical report labels.
+        # No unlabeled bars or invented absolute UTC positions.
+        self.report_comparison_heading = QLabel()
+        self.report_comparison_heading.setObjectName("eyebrow")
+        archive_layout.addWidget(self.report_comparison_heading)
+        self.report_comparison = QTableWidget(0, 4)
+        self.report_comparison.setObjectName("opsReportPhaseComparison")
+        self.report_comparison.setEditTriggers(
+            QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.report_comparison.setSelectionBehavior(
+            QAbstractItemView.SelectionBehavior.SelectRows)
+        self.report_comparison.verticalHeader().hide()
+        self.report_comparison.setAlternatingRowColors(True)
+        self.report_comparison.horizontalHeader().setStretchLastSection(True)
+        self.report_comparison.setMinimumHeight(96)
+        self.report_comparison.itemSelectionChanged.connect(
+            self._select_comparison_phase)
+        archive_layout.addWidget(self.report_comparison, 1)
         self.archive_note = QLabel()
         self.archive_note.setObjectName("pageHint")
         self.archive_note.setWordWrap(True)
@@ -759,8 +789,13 @@ class MissionOperationsHome(QWidget):
             return
         route = item.data(0, Qt.ItemDataRole.UserRole)
         if isinstance(route, str):
-            self._selection = (route, "")
-            self._select_workspace(route)
+            if route in ROUTE_IDS:
+                # Main preserves each module's refresh, authorization and data
+                # contracts; its handler will show the page in this central stack.
+                self.route_requested.emit(route)
+            else:
+                self._selection = (route, "")
+                self._select_workspace(route)
 
     def _browse_open(self, item, _column):
         route = item.data(0, Qt.ItemDataRole.UserRole)
@@ -780,9 +815,50 @@ class MissionOperationsHome(QWidget):
         elif route in ROUTE_IDS:
             self.route_requested.emit(route)
 
+    def attach_feature(self, route: str, widget: QWidget):
+        """Mount a real native QWidget inside this persistent operations shell.
+
+        The host must first remove it from any previous QStackedWidget.
+        No PatientDemo/Monitor API is patched or bypassed.
+        """
+        if route not in ROUTE_IDS and route not in (
+                "simulated_briefing", "synthetic_patient", "nasa_archive"):
+            raise ValueError(f"Unsupported operations route: {route}")
+        if not isinstance(widget, QWidget):
+            raise TypeError("A native QWidget is required")
+        if self.workspace_stack.indexOf(widget) < 0:
+            self.workspace_stack.addWidget(widget)
+        self._hosted_features[route] = widget
+
+    def show_hosted(self, route: str):
+        """Show an existing feature without dropping Browse/Inspect/Conductor."""
+        if route not in self._hosted_features:
+            return False
+        self._selection = (route, "")
+        if route in self._objects:
+            self.navigator.blockSignals(True)
+            self.navigator.setCurrentItem(self._objects[route])
+            self.navigator.blockSignals(False)
+        self._select_workspace(route)
+        return True
+
+    def show_overview(self):
+        self._choose("home")
+
     def _select_workspace(self, route):
         self._active_utc_row = None
-        if route == "home":
+        if route in self._hosted_features:
+            self.workspace_stack.setCurrentWidget(self._hosted_features[route])
+            label = (self._t(route) if route in TEXT[self.language]
+                     else self._t("hostedScenario") if route == "synthetic_patient"
+                     else self._t("hostedBriefing") if route == "simulated_briefing"
+                     else self._t("hostedArchive"))
+            self._inspect(label, [
+                ("inspectCurrent", label),
+                ("inspectAccess", self._t("hostedScope")),
+                ("inspectTimeScope", self._t("hostedTimeScope")),
+            ])
+        elif route == "home":
             self.workspace_stack.setCurrentIndex(0)
             self._inspect(self._t("homeInspectTitle"), [
                 ("inspectCurrent", self._t("homeInspectNoSelection")),
@@ -901,19 +977,34 @@ class MissionOperationsHome(QWidget):
         ])
 
     def _update_report_chart(self, *_):
+        """Comparison table uses categorical source phases, never artificial UTC."""
         group = self._selected_group()
         metric_id = self.metric_selector.currentData()
-        if not group or not isinstance(metric_id, str):
-            self.report_chart.set_series(())
-            return
-        values = []
-        for record in group["records"]:
-            data = record["measures"].get(metric_id, {})
-            value = data.get("value")
-            values.append(float(value) if isinstance(value, (int, float))
-                          and not isinstance(value, bool) and math.isfinite(value)
-                          else None)
-        self.report_chart.set_series(values, self.theme, self.mode)
+        self.report_comparison.blockSignals(True)
+        self.report_comparison.setRowCount(0)
+        if group and isinstance(metric_id, str):
+            for record in group["records"]:
+                observation = record["measures"].get(metric_id)
+                value = observation.get("value") if observation else None
+                row = self.report_comparison.rowCount()
+                self.report_comparison.insertRow(row)
+                cells = (
+                    record["title"][self.language],
+                    str(value) if value is not None else self._t("missing"),
+                    str(observation.get("unit") or "—") if observation else "—",
+                    str(observation.get("qualifier") or "—") if observation else "—",
+                )
+                for column, cell in enumerate(cells):
+                    self.report_comparison.setItem(
+                        row, column, QTableWidgetItem(cell))
+        self.report_comparison.blockSignals(False)
+
+    def _select_comparison_phase(self):
+        """Selecting an original phase synchronizes its raw measurement table."""
+        row = self.report_comparison.currentRow()
+        group = self._selected_group()
+        if group is not None and 0 <= row < len(group["records"]):
+            self.records.setCurrentRow(row)
 
     def _inspect(self, title, properties):
         self.inspect_title.setText(title)
@@ -1126,6 +1217,9 @@ class MissionOperationsHome(QWidget):
         self.archive_title.setText(t("sourceTitle"))
         self.archive_caveat.setText(t("timeSource"))
         self.archive_note.setText(t("seriesDesc"))
+        self.report_comparison_heading.setText(t("categoricalComparison"))
+        self.report_comparison.setHorizontalHeaderLabels(
+            [t(k) for k in ("record", "value", "unit", "qualifier")])
         self.utc_heading.setText(t("utcTitle"))
         self.utc_note.setText(t("utcNote"))
         self.utc_empty.setText(t("utcEmpty") if not self._filtered_utc else "")
@@ -1158,7 +1252,6 @@ class MissionOperationsHome(QWidget):
         self.reduce_motion = bool(reduce_motion)
         self.theme = theme or "daybreak"
         self.mode = mode or "light"
-        self.report_chart.set_series(self.report_chart._series, self.theme, self.mode)
         self.utc_chart.set_series(self.utc_chart._series, self.theme, self.mode)
 
     def set_connection_state(self, state):
