@@ -21,6 +21,7 @@ from .portal import PORTAL_ROUTES, build_portal_page
 from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
 from .visual_theme import THEMES, VisualPreferences, AmbientBackdrop
 from .settings_page import SettingsPage
+from .atlas3d import BodyAtlas3D
 from .native_workspaces import MonitoringWorkspace, InterviewWorkspace, CareWorkspace
 from .localize import tr as settings_tr
 from .medical_library import build_medical_library_page
@@ -189,12 +190,7 @@ class AetherionWindow(QMainWindow):
         self._open_intake_button.setObjectName("primaryAction")
         self._open_intake_button.clicked.connect(self.show_symptom_interview)
         self.assistant_page.body.insertWidget(3, self._open_intake_button)
-        self.atlas_page = FeatureLanding(
-            "04 / DISCOVERY", "Khám phá cơ thể",
-            "Mô hình giải phẫu 3D chỉ được mở khi có mesh thật, camera và chọn vùng cơ thể. "
-            "Hình động nền không phải Atlas 3D.",
-            (("Tìm hiểu tài liệu", self.show_medical_library),),
-        )
+        self.atlas_page = BodyAtlas3D(api_url=self.api_url, network=self.network, locale=self.ui_language)
         self.pages.addWidget(self.atlas_page)
         self.care_page = CareWorkspace(self.ui_language)
         self.care_page.open_personal.connect(self.show_personal)
@@ -377,9 +373,10 @@ class AetherionWindow(QMainWindow):
         for action in self.observatory_menu_actions:
             action.setText(tr(self.ui_language, "observatory.hero"))
         for section in (
-            self.top_bar, self.atlas_page, self.footer_bar,
+            self.top_bar, self.footer_bar,
         ):
             translate_shell_widgets(section, self.ui_language)
+        self.atlas_page.set_locale(self.ui_language)
         self.monitor_page.set_locale(self.ui_language)
         self.assistant_page.set_locale(self.ui_language)
         self.care_page.set_locale(self.ui_language)
