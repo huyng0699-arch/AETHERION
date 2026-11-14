@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "apps" / "desktop" / "src"))
 
 from PySide6.QtCore import QPoint, QPointF, Qt
-from PySide6.QtGui import QColor, QImage, QWheelEvent
+from PySide6.QtGui import QColor, QFont, QImage, QWheelEvent
 from PySide6.QtTest import QTest
 from PySide6.QtWidgets import (
     QAbstractItemView, QApplication, QFrame, QHeaderView, QLabel, QListWidget,
@@ -87,6 +87,9 @@ def main() -> int:
 
     app = QApplication.instance() or QApplication([])
     app.setApplicationName("AETHERION Q-0486 offscreen preview")
+    if os.name == "nt":
+        # Offscreen Qt may not select a Windows system font automatically.
+        app.setFont(QFont("Arial", 9))
     records, start = make_preview()
 
     # A caller-supplied visual gap rule joins nearby points only; no segment
