@@ -116,15 +116,38 @@ def _pick_with_ai(names: list[str], answers: dict[str, str], choices: list[dict]
         return None, "MODEL_UNAVAILABLE"
 
 
+def build_session_history_summary(accepted: dict[str, str]) -> list[dict[str, Any]]:
+    """Build an ephemeral per-session structured history without writing to disk."""
+    history: list[dict[str, Any]] = []
+    for q in QUESTIONS:
+        qid = q["id"]
+        if qid in accepted:
+            ans = accepted[qid]
+            history.append(
+                {
+                    "question_id": qid,
+                    "question_text": q["text"],
+                    "answer": ans,
+                    "is_unknown": ans == "UNKNOWN",
+                    "is_critical": qid in CRITICAL,
+                }
+            )
+    return history
+
+
 def next_question(symptom_ids: list[str], answers: dict[str, str], *,
                   use_ai: bool = False, allow_cloud: bool = False) -> dict[str, Any]:
     names, routes = _recognized(symptom_ids)
     if not names:
         return {"state": "UNKNOWN_SYMPTOM", "recognized": [], "next_question": None,
                 "model_status": "NOT_CALLED", "cloud_used": False,
+                "session_history": [], "unknown_answers_count": 0,
+                "stored_by_server": False, "persistence_requires_consent": True,
                 "warning": "Select a recognized symptom first."}
     accepted = {str(k): str(v).upper() for k, v in answers.items() if k in BY_ID and
                 isinstance(v, str) and str(v).upper() in BY_ID[k]["answers"]}
+    session_history = build_session_history_summary(accepted)
+    unknown_count = sum(1 for item in session_history if item["is_unknown"])
     candidates = [q for q in QUESTIONS if q["id"] not in accepted and
                   (not q["routes"] or bool(set(q["routes"]) & routes))]
     # Place explicit critical clarifications first. No final classification
@@ -149,6 +172,8 @@ def next_question(symptom_ids: list[str], answers: dict[str, str], *,
         "recognized": names,
         "answered": len(accepted),
         "remaining": len(candidates),
+        "session_history": session_history,
+        "unknown_answers_count": unknown_count,
         "next_question": (
             {key: chosen[key] for key in ("id", "text", "answers")} if chosen else None
         ),
@@ -163,4 +188,5 @@ def next_question(symptom_ids: list[str], answers: dict[str, str], *,
         ),
         "clinical_validation": False,
         "stored_by_server": False,
+        "persistence_requires_consent": True,
     }
