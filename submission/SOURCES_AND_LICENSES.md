@@ -8,7 +8,7 @@ This document compiles the verified license, `NOTICE`, third-party dependency, a
 | --- | --- | --- |
 | `LICENSE` | Apache License, Version 2.0 (covers AETHERION original software only) | `c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4` |
 | `NOTICE` | Copyright 2026 Nguyen Gia Huy and AETHERION contributors; Team TRUY TINH; non-endorsement disclaimer | `1dbcf1a31ef7de12b02f14f26232ba499f2e9ba5db75332ccfdedde37857f533` |
-| `THIRD_PARTY_NOTICES.md` | Third-party runtime/library license inventory (Python PSF, FastAPI MIT, Uvicorn BSD-3-Clause, Pydantic MIT, PySide6 LGPLv3/GPLv3/commercial) | `51340c054a6b870580cbe0521ce8481b208b9826177be5947874ab088c516c30` |
+| `THIRD_PARTY_NOTICES.md` | Third-party runtime/library license inventory (Python PSF, FastAPI MIT, Uvicorn BSD-3-Clause, Pydantic MIT, PySide6 LGPLv3/GPLv3/commercial) | `ff0866bf46313f9831275cae83919c52b14dc500f01f034219e4bdf6a1a9e96a` |
 
 **Non-endorsement & non-relicensing notice:**
 - NASA is **not** a sponsor, partner, certifier, or endorser of AETHERION.
