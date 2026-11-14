@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "quest_id": "Q-0321",
+  "source_slot": 21,
+  "article_id": "CLIFF-021",
+  "display_title": "Dental Exposed Pulp",
+  "source_category": "Dental Injury",
+  "source_family": "CliFF 119 (2023)",
+  "status": "BLOCKED_ORIGINAL_DOCUMENT_LINK_UNVERIFIED",
+  "audit_utc": "2026-11-14T05:56:45Z",
+  "index": {
+    "url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+    "evidence_location": "All Documentation Per Condition > Dental Injury > CliFF 119 > Dental Exposed Pulp CliFF (2023)",
+    "evidence_text": "Dental Exposed Pulp CliFF (2023)",
+    "index_page_access": "PUBLIC_PAGE_RENDERED",
+    "indicated_source_family": "CliFF 119",
+    "dental_2023_item_is_clickable_in_rendered_page": false,
+    "source_pdf_link_verified": false,
+    "original_document_url": null,
+    "pdf_http_status": "NOT_ATTEMPTED_NO_VERIFIED_DIRECT_URL",
+    "note": "The official NASA IMM index visibly lists this condition in the 2023 CliFF 119 column, but the public rendered item has no exposed PDF hyperlink. This is not proof that NASA lacks the document."
+  },
+  "independent_context": [
+    {
+      "source": "NASA Human Research Roadmap (2016)",
+      "url": "https://humanresearchroadmap.nasa.gov/Evidence/medicalConditions/Dental_-_Exposed_Pulp_Pulpitis.pdf",
+      "relation": "Separate Dental - Exposed Pulp/Pulpitis document dated 2016. It is not verified as the 2023 CliFF 119 original.",
+      "considered_for_ingestion": false
+    }
+  ],
+  "extraction": {
+    "original_bytes_downloaded": false,
+    "original_pdf_sha256": null,
+    "original_pdf_bytes": null,
+    "source_pages_verified": 0,
+    "sections_imported": 0,
+    "tables_imported": 0,
+    "figures_imported": 0,
+    "licensed_medical_image_blobs": 0,
+    "full_source_text_provided": false,
+    "imported_to_library_sqlite": false,
+    "native_windows_reader_proven": false,
+    "clinical_content_accepted": false,
+    "independent_review": "PENDING"
+  },
+  "blocking_requirements": [
+    "Verify the actual 2023 Dental Exposed Pulp CliFF 119 original PDF URL and obtain its bytes and SHA-256",
+    "Verify PDF title/version/page count and page-anchored sections, tables, figures and references",
+    "Obtain condition-relevant images with file-level verifiable redistribution rights and full attribution",
+    "Run real SQLite ingest and native offline Windows rendering test and secure independent reviewer approval"
+  ],
+  "next_action": "Obtain the exact NASA 2023 CliFF 119 Dental Exposed Pulp original from the NASA IMM documentation administrator or an authoritative NASA archive; retry original PDF retrieval, then build source-anchored article, rights-cleared media, import and Windows acceptance proof.",
+  "evidence_qualification": "Evidence establishes an unlinked entry in the currently rendered NASA public index, not nonexistence of an underlying original PDF.",
+  "safety_note": "The 2016 alternative must not be renamed into 2023 evidence; no invented clinical data, images, provenance or diagnostic claims were imported."
+}
