@@ -143,6 +143,7 @@ def build_personal_visual(page) -> None:
     section.setObjectName("eyebrow")
     identity_column.addWidget(section)
     page.subject_label = QLabel("Chưa chọn hồ sơ — vào Phi hành đoàn để đăng nhập")
+    page.subject_label.setTextFormat(Qt.TextFormat.PlainText)
     page.subject_label.setObjectName("pageHint")
     page.subject_label.setAccessibleName("Exact selected crew subject")
     page.subject_label.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
@@ -156,6 +157,7 @@ def build_personal_visual(page) -> None:
     root.addWidget(identity)
 
     page.status_label = QLabel("NO_DATA — chưa yêu cầu bản ghi cá nhân")
+    page.status_label.setTextFormat(Qt.TextFormat.PlainText)
     page.status_label.setObjectName("pageHint")
     page.status_label.setWordWrap(True)
     page.status_label.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
@@ -198,6 +200,7 @@ def build_personal_visual(page) -> None:
         value.setWordWrap(True)
         v.addWidget(value)
         provenance = QLabel("Chưa có bản ghi hợp lệ trong hồ sơ này")
+        provenance.setTextFormat(Qt.TextFormat.PlainText)
         provenance.setObjectName("cardDescription")
         provenance.setWordWrap(True)
         provenance.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
