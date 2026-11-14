@@ -37,7 +37,7 @@ export function MonitorScreen({ locale, token, subjectId, onBack, onUnauthorized
     <AppPage>
       <AppHeader title={t(locale, 'monitorTitle')} onBack={onBack} backLabel={t(locale, 'back')} trailing={<Pressable accessibilityRole="button" onPress={() => setRefresh((v) => v + 1)}><Text style={styles.refresh}>{t(locale, 'refresh')}</Text></Pressable>} />
       <View style={styles.heading}><Title>{t(locale, 'monitorTitle')}</Title><Body>{t(locale, 'subject')}: {subjectId || '—'}</Body></View>
-      <Panel style={styles.sensorNotice}><StatusPill label={t(locale, 'noSensorTitle')} tone="neutral" /></Panel>
+      <Panel style={styles.sensorNotice}><StatusPill label={copy(locale, 'sensorUnknown')} tone="neutral" /></Panel>
       {!subjectId ? <Panel><Body>{t(locale, 'noSubject')}</Body></Panel> : busy && items.length === 0 ? <View style={styles.loading}><ActivityIndicator color={colors.cyan} /><Body>{t(locale, 'loading')}</Body></View> : error ? <Panel><Text style={styles.error}>{error}</Text></Panel> : items.length === 0 ? <Panel><Text style={styles.panelTitle}>{t(locale, 'noData')}</Text><Body>{t(locale, 'noObservation')}</Body></Panel> : (
         <View style={styles.list}>
           {items.map((item) => <ObservationCard key={String(item.id)} item={item} locale={locale} />)}

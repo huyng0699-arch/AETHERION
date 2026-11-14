@@ -84,6 +84,7 @@ def main() -> None:
     os.environ['AETHERION_HOST'] = '127.0.0.1'
     os.environ['AETHERION_PORT'] = str(args.port)
     os.environ['AETHERION_PROFILE'] = 'development'
+    os.environ['AETHERION_ENABLE_DEV_CORS'] = '1'
     os.environ['AETHERION_MOBILE_WEB_DIR'] = str(root / 'apps/mobile/dist')
     os.environ['AETHERION_RUNTIME_FINGERPRINT'] = fingerprint
     os.environ['AETHERION_RUNTIME_SCOPE'] = scope

@@ -20,6 +20,7 @@ import { LoginScreen } from './src/screens/LoginScreen';
 import { PersonalHealthScreen } from './src/screens/PersonalHealthScreen';
 import { MonitorScreen } from './src/screens/MonitorScreen';
 import { AiScreen } from './src/screens/AiScreen';
+import { AiServerSettingsScreen } from './src/screens/AiServerSettingsScreen';
 import { ScienceScreen } from './src/screens/ScienceScreen';
 import { MissionScreen } from './src/screens/MissionScreen';
 import { SettingsScreen } from './src/screens/SettingsScreen';
@@ -107,7 +108,8 @@ function AppShell() {
       {route === 'notifications' && <NotificationScreen locale={locale} onBack={goBack} />}
       {route === 'help' && <HelpScreen locale={locale} onBack={goBack} onOpen={openRoute} />}
       {route === 'privacy' && <PrivacyScreen locale={locale} onBack={goBack} />}
-      {route === 'settings' && <SettingsScreen locale={locale} onBack={goBack} onOpen={section => openRoute(section === 'account' ? 'settingAccount' : section === 'connection' ? 'settingConnection' : section === 'language' ? 'settingLanguage' : section)} />}
+      {route === 'settings' && <SettingsScreen locale={locale} role={identity?.role} onBack={goBack} onOpen={section => openRoute(section === 'account' ? 'settingAccount' : section === 'connection' ? 'settingConnection' : section === 'language' ? 'settingLanguage' : section)} />}
+      {route === 'aiSettings' && unlocked && identity?.role === 'admin' && <AiServerSettingsScreen locale={locale} token={session?.access_token || ''} onBack={goBack} onUnauthorized={handleUnauthorized} />}
       {['settingAccount', 'settingConnection', 'settingLanguage'].includes(route) && <SettingsDetailScreen section={route === 'settingAccount' ? 'account' : route === 'settingConnection' ? 'connection' : 'language'} locale={locale} onChangeLocale={changeLocale} onBack={goBack} serverUrl={serverUrl} onChangeServerUrl={setServerUrl} onSaveServerUrl={async () => { await saveUrl(serverUrl); }} onSignOut={handleSignOut} onSignIn={() => openRoute('login')} username={identity?.username || ''} role={identity?.role || ''} />}
     </Animated.View>
     {showNav && <BottomNav active={activeTab} onSelect={navSelect} labels={{ portal: t(locale, 'home'), health: t(locale, 'personal'), monitor: t(locale, 'monitor'), ai: 'AI', more: t(locale, 'moreTitle') }} />}

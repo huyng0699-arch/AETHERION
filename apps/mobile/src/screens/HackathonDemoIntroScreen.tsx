@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
@@ -6,7 +6,7 @@ import { Locale } from '../types';
 import { MessageKey, t } from '../i18n';
 import { ThemeColors, useThemedStyles } from '../theme';
 import { ActionButton, AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../components/ui';
-import { loadNasaMa7Demo } from '../api/demo';
+import { loadNasaMa7Demo, syncNasaMa7Demo } from '../api/demo';
 import { copy } from '../uiCopy';
 
 const UNAVAILABLE_LABELS: Record<string, MessageKey> = {
@@ -23,9 +23,14 @@ const UNAVAILABLE_LABELS: Record<string, MessageKey> = {
 export function HackathonDemoIntroScreen({ locale, onBack, onLoad }: { locale: Locale; onBack: () => void; onLoad: () => void }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const [details, setDetails] = useState(false);
-  let source: ReturnType<typeof loadNasaMa7Demo> | null = null;
-  let sourceError = false;
-  try { source = loadNasaMa7Demo(); } catch { sourceError = true; }
+  const [source, setSource] = useState<ReturnType<typeof loadNasaMa7Demo> | null>(() => {
+    try { return loadNasaMa7Demo(); } catch { return null; }
+  });
+  useEffect(() => {
+    let active = true;
+    void syncNasaMa7Demo().then(value => { if (active) setSource(value); }).catch(() => {});
+    return () => { active = false; };
+  }, []);
 
   return (
     <AppPage>
@@ -34,7 +39,7 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad }: { locale: L
         <View style={styles.heroIcon}><Ionicons name="planet-outline" size={24} color="#FFFFFF" /></View>
         <Text style={styles.heroKicker}>{t(locale, 'demoKicker')}</Text>
         <Text style={{ color: '#FFFFFF', fontSize: 24, fontWeight: '800' }}>{t(locale, 'demoIntroTitle')}</Text>
-        <StatusPill label={t(locale, 'demoHistorical')} tone="neutral" />
+        <View style={styles.badges}><StatusPill label={t(locale, 'demoHistorical')} tone="neutral" />{source && <StatusPill label={copy(locale, source.origin === 'server' ? 'serverArchive' : 'bundledArchive')} tone="neutral" />}</View>
       </LinearGradient>
 
       {source ? (
@@ -98,6 +103,7 @@ function MetaRow({ label, value }: { label: string; value: string }) {
 const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   hero: { borderRadius: 27, padding: 18, gap: 9, shadowColor: '#4D2CCB', shadowOpacity: 0.16, shadowRadius: 14, shadowOffset: { width: 0, height: 8 }, elevation: 5 },
   heroIcon: { width: 46, height: 46, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.2)' },
+  badges: { flexDirection: 'row', flexWrap: 'wrap', gap: 7 },
   heroKicker: { color: 'rgba(255,255,255,0.86)', fontWeight: '900', fontSize: 10, letterSpacing: 1.2 },
   sourcePanel: { gap: 12 },
   reportTitle: { color: colors.text, fontSize: 15, fontWeight: '900', lineHeight: 21 },

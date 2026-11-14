@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { ActivityIndicator, Image, Pressable, ScrollView, StyleProp, StyleSheet, Text, TextInput, TextInputProps, TextStyle, View, ViewStyle } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ThemeColors, useThemedStyles, radius, spacing } from '../theme';
+import { ThemeColors, useThemedStyles, radius } from '../theme';
 
 const AI_ORB = require('../../assets/aetherion-ai-orb.png');
 
@@ -83,8 +83,8 @@ export function BottomNav({ active, onSelect, labels }: { active: string; onSele
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const insets = useSafeAreaInsets();
   const items: Array<{ id: NavKey; icon: keyof typeof Ionicons.glyphMap }> = [
-    { id: 'portal', icon: 'home' },
-    { id: 'health', icon: 'person-outline' },
+    { id: 'portal', icon: 'planet-outline' },
+    { id: 'health', icon: 'body-outline' },
     { id: 'monitor', icon: 'pulse-outline' },
     { id: 'more', icon: 'grid-outline' },
   ];
@@ -116,13 +116,13 @@ function NavItem({ id, icon, active, label, onPress }: { id: NavKey; icon: keyof
 const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   root: { flex: 1, backgroundColor: 'transparent' },
   safe: { flex: 1 },
-  pageContent: { flexGrow: 1, paddingHorizontal: 18, paddingTop: 8, paddingBottom: 110, gap: 14 },
+  pageContent: { flexGrow: 1, paddingHorizontal: 16, paddingTop: 8, paddingBottom: 120, gap: 12 },
   mobileContent: { width: '100%', maxWidth: 470, alignSelf: 'center' },
   eyebrow: { color: colors.cyan, fontWeight: '800', letterSpacing: 1.2, fontSize: 10, marginBottom: 7 },
   title: { color: colors.text, fontWeight: '800', letterSpacing: -0.4, lineHeight: 34 },
   body: { color: colors.muted, fontSize: 14, lineHeight: 21 },
-  panel: { backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border, borderRadius: radius.panel, padding: spacing.md, shadowColor: '#392073', shadowOpacity: 0.05, shadowRadius: 12, shadowOffset: { width: 0, height: 7 }, elevation: 2 },
-  action: { minHeight: 50, borderRadius: radius.control, backgroundColor: colors.cyan, paddingHorizontal: 18, alignItems: 'center', justifyContent: 'center' },
+  panel: { backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border, borderRadius: 14, padding: 14, shadowColor: '#392073', shadowOpacity: 0.05, shadowRadius: 12, shadowOffset: { width: 0, height: 7 }, elevation: 2 },
+  action: { minHeight: 50, borderRadius: 12, backgroundColor: colors.cyan, paddingHorizontal: 16, alignItems: 'center', justifyContent: 'center' },
   actionSecondary: { backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border },
   actionDisabled: { opacity: 0.56 },
   actionPressed: { transform: [{ scale: 0.985 }], opacity: 0.86 },
@@ -139,12 +139,12 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   headerSpacer: { width: 38 },
   headerTitle: { flex: 1, color: colors.text, fontSize: 16, fontWeight: '800' },
   back: { width: 38, height: 38, borderRadius: 14, backgroundColor: colors.card, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: colors.border },
-  navSafe: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: 12, paddingTop: 10, alignItems: 'center', backgroundColor: 'transparent' },
-  nav: { width: '100%', maxWidth: 470, height: 70, borderRadius: 26, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, paddingHorizontal: 4, flexDirection: 'row', alignItems: 'center', shadowColor: '#311C6F', shadowOpacity: 0.12, shadowRadius: 18, shadowOffset: { width: 0, height: 6 }, elevation: 9 },
+  navSafe: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: 16, paddingTop: 10, alignItems: 'center', backgroundColor: 'transparent' },
+  nav: { width: '100%', maxWidth: 470, height: 80, borderRadius: 28, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, paddingHorizontal: 4, flexDirection: 'row', alignItems: 'center', shadowColor: '#311C6F', shadowOpacity: 0.12, shadowRadius: 18, shadowOffset: { width: 0, height: 6 }, elevation: 9 },
   navItem: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 3, minHeight: 54 },
-  navLabel: { color: colors.muted, fontSize: 9, fontWeight: '700' },
+  navLabel: { color: colors.muted, fontSize: 11, fontWeight: '700' },
   navSelected: { color: colors.cyan },
-  aiNavButton: { width: 60, height: 60, borderRadius: 30, alignItems: 'center', justifyContent: 'center', marginTop: -23, backgroundColor: colors.card, borderWidth: 5, borderColor: '#E9E1FF', shadowColor: '#5528E9', shadowOpacity: 0.35, shadowRadius: 15, shadowOffset: { width: 0, height: 5 }, elevation: 10 },
+  aiNavButton: { width: 62, height: 62, borderRadius: 31, alignItems: 'center', justifyContent: 'center', marginTop: -24, backgroundColor: colors.card, borderWidth: 5, borderColor: '#E9E1FF', shadowColor: '#5528E9', shadowOpacity: 0.35, shadowRadius: 15, shadowOffset: { width: 0, height: 5 }, elevation: 10 },
   aiNavOrb: { width: 51, height: 51 },
 });
 

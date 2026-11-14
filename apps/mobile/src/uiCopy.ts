@@ -7,8 +7,8 @@ const en = {
   registerProfile: 'Create profile', profileName: 'Display name', profileId: 'Profile ID', serverSaved: 'Server saved',
   demoStart: 'Explore data', demoCaption: 'NASA MA-7 · 1962', demoSummary: '19 timepoints · 18 metrics · 83 reported values',
   sourceDetails: 'Source details', archive: 'Flight archive', phases: 'Flight phases', clinical: 'Clinical exams', blood: 'Blood count', pressure: 'Blood pressure',
-  noLive: 'Historical archive', records: 'Records', details: 'Details', backToLogin: 'Back to sign in', page: 'Page', next: 'Next', previous: 'Previous',
-  loadMore: 'Load more', signOut: 'Sign out', noMatch: 'No matching records', selected: 'Selected',
+  noLive: 'Historical archive', serverArchive: 'Server archive', bundledArchive: 'On-device archive', records: 'Records', details: 'Details', backToLogin: 'Back to sign in', page: 'Page', next: 'Next', previous: 'Previous',
+  loadMore: 'Load more', signOut: 'Sign out', noMatch: 'No matching records', selected: 'Selected', sensorUnknown: 'Sensor status unavailable', aiServerSettings: 'AI provider',
 };
 const vi: Record<keyof typeof en, string> = {
   demo: 'Demo', demoHint: 'Khám phá dữ liệu chuyến bay NASA', welcome: 'Chào mừng trở lại', tagline: 'Sức khỏe của bạn. Một không gian kết nối.',
@@ -18,7 +18,7 @@ const vi: Record<keyof typeof en, string> = {
   registerProfile: 'Tạo hồ sơ', profileName: 'Tên hiển thị', profileId: 'Mã hồ sơ', serverSaved: 'Đã lưu máy chủ',
   demoStart: 'Khám phá dữ liệu', demoCaption: 'NASA MA-7 · 1962', demoSummary: '19 mốc · 18 chỉ số · 83 giá trị được ghi nhận',
   sourceDetails: 'Chi tiết nguồn', archive: 'Kho chuyến bay', phases: 'Giai đoạn bay', clinical: 'Khám lâm sàng', blood: 'Công thức máu', pressure: 'Huyết áp',
-  noLive: 'Dữ liệu lịch sử', records: 'Bản ghi', details: 'Chi tiết', backToLogin: 'Về đăng nhập', page: 'Trang', next: 'Tiếp', previous: 'Trước',
-  loadMore: 'Tải thêm', signOut: 'Đăng xuất', noMatch: 'Không có bản ghi phù hợp', selected: 'Đã chọn',
+  noLive: 'Dữ liệu lịch sử', serverArchive: 'Dữ liệu máy chủ', bundledArchive: 'Dữ liệu trên máy', records: 'Bản ghi', details: 'Chi tiết', backToLogin: 'Về đăng nhập', page: 'Trang', next: 'Tiếp', previous: 'Trước',
+  loadMore: 'Tải thêm', signOut: 'Đăng xuất', noMatch: 'Không có bản ghi phù hợp', selected: 'Đã chọn', sensorUnknown: 'Chưa xác định trạng thái cảm biến', aiServerSettings: 'Nhà cung cấp AI',
 };
 export function copy(locale: Locale, key: keyof typeof en) { return (locale === 'vi' ? vi : en)[key]; }

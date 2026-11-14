@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { AppHeader, AppPage, Body, Panel, StatusPill } from '../components/ui';
-import { loadNasaMa7Demo, NasaMeasure } from '../api/demo';
+import { loadNasaMa7Demo, syncNasaMa7Demo, NasaMeasure } from '../api/demo';
 import { Locale } from '../types';
 import { MessageKey, t } from '../i18n';
 import { copy } from '../uiCopy';
@@ -12,12 +12,18 @@ const qualifiers: Record<string, MessageKey> = { reported: 'demoQualifierReporte
 export function HackathonDemoDataScreen({ locale, onBack }: { locale: Locale; onBack: () => void }) {
   const { colors, styles } = useThemedStyles(buildStyles);
   const [groupIndex, setGroupIndex] = useState(0), [recordIndex, setRecordIndex] = useState(0), [details, setDetails] = useState(false);
-  let loaded: ReturnType<typeof loadNasaMa7Demo> | null = null;
-  try { loaded = loadNasaMa7Demo(); } catch { /* Invalid source remains unavailable. */ }
+  const [loaded, setLoaded] = useState<ReturnType<typeof loadNasaMa7Demo> | null>(() => {
+    try { return loadNasaMa7Demo(); } catch { return null; }
+  });
+  useEffect(() => {
+    let active = true;
+    void syncNasaMa7Demo().then(value => { if (active) setLoaded(value); }).catch(() => {});
+    return () => { active = false; };
+  }, []);
   const group = loaded?.data.groups[groupIndex], record = group?.records[recordIndex];
   return <AppPage><AppHeader title={copy(locale, 'archive')} onBack={onBack} backLabel={t(locale, 'back')} />
     {loaded && group && record ? <>
-      <View style={styles.summary}><View><Text style={styles.heading}>{copy(locale, 'demoCaption')}</Text><Text style={styles.meta}>{copy(locale, 'demoSummary')}</Text></View><StatusPill label={copy(locale, 'noLive')} tone="neutral" /></View>
+      <View style={styles.summary}><View><Text style={styles.heading}>{copy(locale, 'demoCaption')}</Text><Text style={styles.meta}>{copy(locale, 'demoSummary')}</Text></View><View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 7 }}><StatusPill label={copy(locale, 'noLive')} tone="neutral" /><StatusPill label={copy(locale, loaded.origin === 'server' ? 'serverArchive' : 'bundledArchive')} tone="neutral" /></View></View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.tabs}>{loaded.data.groups.map((entry, index) => <Pressable key={entry.id} accessibilityRole="tab" accessibilityLabel={copy(locale, tabs[index])} accessibilityState={{ selected: index === groupIndex }} onPress={() => { setGroupIndex(index); setRecordIndex(0); }} style={[styles.tab, index === groupIndex && styles.active]}><Text style={[styles.tabText, index === groupIndex && styles.activeText]}>{copy(locale, tabs[index])}</Text></Pressable>)}</ScrollView>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.records}>{group.records.map((entry, index) => <Pressable key={entry.id} accessibilityRole="button" accessibilityState={{ selected: index === recordIndex }} onPress={() => setRecordIndex(index)} style={[styles.recordChip, index === recordIndex && styles.active]}><Text style={[styles.chipText, index === recordIndex && styles.activeText]}>{entry.title[locale]}</Text></Pressable>)}</ScrollView>
       <View style={styles.recordHeader}><View style={{ flex: 1 }}><Text style={styles.heading}>{record.title[locale]}</Text><Text style={styles.meta}>{recordIndex + 1} / {group.records.length}</Text></View><Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'previous')} disabled={recordIndex === 0} style={[styles.step, recordIndex === 0 && styles.disabled]} onPress={() => setRecordIndex(value => value - 1)}><Ionicons name="chevron-back" color={colors.cyan} size={22} /></Pressable><Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'next')} disabled={recordIndex >= group.records.length - 1} style={[styles.step, recordIndex >= group.records.length - 1 && styles.disabled]} onPress={() => setRecordIndex(value => value + 1)}><Ionicons name="chevron-forward" color={colors.cyan} size={22} /></Pressable></View>

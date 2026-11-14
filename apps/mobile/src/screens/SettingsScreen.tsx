@@ -7,12 +7,13 @@ import { copy } from '../uiCopy';
 import { ThemeColors, useThemedStyles } from '../theme';
 import { AppHeader, AppPage, Panel } from '../components/ui';
 
-export type SettingsSection = 'account' | 'connection' | 'language' | 'notifications' | 'privacy' | 'appearance';
+export type SettingsSection = 'account' | 'connection' | 'language' | 'notifications' | 'privacy' | 'appearance' | 'aiSettings';
 
-export function SettingsScreen({ locale, onBack, onOpen }: {
+export function SettingsScreen({ locale, onBack, onOpen, role }: {
   locale: Locale;
   onBack: () => void;
   onOpen: (section: SettingsSection) => void;
+  role?: string;
 }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return (
@@ -24,6 +25,7 @@ export function SettingsScreen({ locale, onBack, onOpen }: {
         <SettingsRow icon="language-outline" title={t(locale, 'language')} value={locale.toUpperCase()} onPress={() => onOpen('language')} />
         <SettingsRow icon="color-palette-outline" title={copy(locale, 'appearance')} onPress={() => onOpen('appearance')} />
         <SettingsRow icon="notifications-outline" title={t(locale, 'notifications')} onPress={() => onOpen('notifications')} />
+        {role === 'admin' && <SettingsRow icon="sparkles-outline" title={copy(locale, 'aiServerSettings')} onPress={() => onOpen('aiSettings')} />}
         <SettingsRow icon="shield-checkmark-outline" title={t(locale, 'privacyTitle')} onPress={() => onOpen('privacy')} last />
       </Panel>
     </AppPage>

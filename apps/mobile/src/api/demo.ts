@@ -1,3 +1,5 @@
+import { request } from './client';
+
 export type LocalizedSourceLabel = { vi: string; en: string };
 
 export type NasaMeasure = {
@@ -91,10 +93,21 @@ function inspectSource(dataset: NasaMa7Dataset): NasaMa7Summary {
   return result;
 }
 
-let cached: { data: NasaMa7Dataset; summary: NasaMa7Summary } | null = null;
+type LoadedDemo = { data: NasaMa7Dataset; summary: NasaMa7Summary; origin: 'server' | 'bundled' };
+let cached: LoadedDemo | null = null;
 
-export function loadNasaMa7Demo(): { data: NasaMa7Dataset; summary: NasaMa7Summary } {
+export function loadNasaMa7Demo(): LoadedDemo {
   if (cached) return cached;
-  cached = { data: SOURCE, summary: inspectSource(SOURCE) };
+  cached = { data: SOURCE, summary: inspectSource(SOURCE), origin: 'bundled' };
   return cached;
 }
+
+// The historical bundle remains usable offline. When the server responds,
+// validate its source and use the authoritative server copy.
+export async function syncNasaMa7Demo(): Promise<LoadedDemo> {
+  const data = await request<NasaMa7Dataset>('/api/v1/demo/nasa-ma7', { timeoutMs: 5000 });
+  const validated: LoadedDemo = { data, summary: inspectSource(data), origin: 'server' };
+  cached = validated;
+  return validated;
+}
+

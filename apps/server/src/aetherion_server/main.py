@@ -166,9 +166,13 @@ def create_app(
     if os.environ.get("AETHERION_ENABLE_DEV_CORS", "").strip() == "1":
         application.add_middleware(
             CORSMiddleware,
-            allow_origins=["http://localhost:8081", "http://127.0.0.1:8081"],
+            allow_origins=[
+                f"http://{host}:{port}"
+                for host in ("localhost", "127.0.0.1")
+                for port in (8081, 8082, 8083)
+            ],
             allow_credentials=False,
-            allow_methods=["GET", "POST", "OPTIONS"],
+            allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
             allow_headers=["Authorization", "Content-Type", "X-Request-Id"],
             expose_headers=["X-Request-Id"],
             max_age=600,
@@ -505,6 +509,8 @@ def create_app(
     application.include_router(build_assistant_router(get_db_path, require_session))
     from .client_routes import build_client_router
     application.include_router(build_client_router(get_db_path, require_session))
+    from .demo_archive import router as demo_archive_router
+    application.include_router(demo_archive_router)
     @application.api_route("/api/{unmatched_path:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"], include_in_schema=False)
     def unknown_api_route(unmatched_path: str):
         raise HTTPException(status_code=404, detail="Unknown API route")
