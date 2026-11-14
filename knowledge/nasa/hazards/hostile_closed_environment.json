@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "hazard_id": "hostile_closed_environments",
+  "title": "Hostile Closed Environments",
+  "quest_id": "Q-0116",
+  "retrieved_at_utc": "2026-11-14T03:59:40Z",
+  "is_live_telemetry": false,
+  "primary_sources": [
+    {
+      "source_id": "nasa-hrp",
+      "publisher": "NASA Human Research Program (HRP)",
+      "url": "https://www.nasa.gov/hrp/"
+    },
+    {
+      "source_id": "nasa-space-apps-2026",
+      "publisher": "NASA Space Apps Challenge 2026",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/"
+    },
+    {
+      "source_id": "nasa-osdr-eda",
+      "publisher": "NASA OSDR Environmental Data Application",
+      "url": "https://ntrs.nasa.gov/citations/20230014168",
+      "note": "OSDR Environmental Data Application compares CO2, relative humidity, temperature, and radiation across missions"
+    }
+  ],
+  "scope_separation": {
+    "cabin_environmental_scope": {
+      "scope": "HABITAT",
+      "metrics": [
+        { "metric": "cabin_co2_ppm", "unit": "ppm" },
+        { "metric": "cabin_o2_kpa", "unit": "kPa" },
+        { "metric": "cabin_temperature_c", "unit": "degC" },
+        { "metric": "cabin_relative_humidity_pct", "unit": "%" }
+      ],
+      "rule": "Environmental telemetry belongs to HABITAT/SPACECRAFT scope and must never be stored as personal astronaut vital signs."
+    },
+    "personal_medical_scope": {
+      "scope": "PERSONAL",
+      "metrics": [
+        { "metric": "blood_pressure_mmhg", "unit": "mmHg" },
+        { "metric": "heart_rate_bpm", "unit": "bpm" },
+        { "metric": "blood_sugar_mg_dl", "unit": "mg/dL" },
+        { "metric": "body_temperature_c", "unit": "degC" },
+        { "metric": "daily_sleep_hours", "unit": "hours" }
+      ],
+      "rule": "Personal health indicators require subject_id and source_id; cabin temperature is distinct from body temperature."
+    }
+  },
+  "limitations": [
+    "No live spacecraft ECLSS or cabin sensor bus is connected; missing habitat telemetry must be shown as NO_DATA or OFFLINE."
+  ]
+}
