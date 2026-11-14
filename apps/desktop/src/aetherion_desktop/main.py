@@ -693,6 +693,10 @@ class AetherionWindow(QMainWindow):
 
     def _finish_simulated_demo_start(self, ready: bool):
         self.simulated_briefing_page.start.setEnabled(True)
+        # A user may go Back while the asynchronous fixture writer finishes.
+        # Do not unexpectedly replace their current screen with a late Demo.
+        if self.operations_home_page.workspace_stack.currentWidget() is not self.simulated_briefing_page:
+            return
         # Even on preseed failure, Q-0484's own widget exposes its normal
         # retry/error handling. Never substitute fake NASA or real crew data.
         self._show_workspace_feature("synthetic_patient")
