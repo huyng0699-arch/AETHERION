@@ -32,16 +32,29 @@ def load_real_nasa_data(path: str | Path | None = None) -> dict:
         raise ValueError("Missing official primary NASA source")
     groups = doc.get("groups")
     metric_names = doc.get("metric_names")
-    if not isinstance(groups, list) or [g.get("id") for g in groups] != list(EXPECTED_GROUPS):
+    if (not isinstance(groups, list) or len(groups) != 4 or
+            any(not isinstance(g, dict) for g in groups) or
+            [g["id"] for g in groups] != list(EXPECTED_GROUPS)):
         raise ValueError("Four original NASA source groups required")
-    if not isinstance(metric_names, dict) or len(metric_names) < 12:
+    if (not isinstance(metric_names, dict) or len(metric_names) < 12 or
+            any(not isinstance(v, dict) or
+                not all(isinstance(v.get(loc), str) and v[loc] for loc in ("vi", "en"))
+                for v in metric_names.values())):
         raise ValueError("No metric dictionary")
     for group in groups:
+        if (not isinstance(group.get("title"), dict) or
+                not isinstance(group.get("note"), dict) or
+                any(not isinstance(group[field].get(loc), str) or
+                        not group[field][loc]
+                        for field in ("title", "note") for loc in ("vi", "en"))):
+            raise ValueError("Missing bilingual NASA provenance description")
         records = group.get("records")
         if not group.get("table") or not isinstance(records, list) or not records:
             raise ValueError("Unprovenanced or empty NASA data section")
         seen = set()
         for row in records:
+            if not isinstance(row, dict):
+                raise ValueError("Invalid NASA historical record")
             rid = row.get("id")
             if not isinstance(rid, str) or rid in seen:
                 raise ValueError("Missing or duplicate timepoint")
