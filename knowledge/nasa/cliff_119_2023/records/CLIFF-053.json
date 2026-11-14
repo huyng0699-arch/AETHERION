@@ -1,0 +1,496 @@
+{
+  "article_id": "CLIFF-053",
+  "slot": 53,
+  "display_title": "Cervical Spine Fracture",
+  "category": "Musculoskeletal",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-053",
+    "publisher": "NASA",
+    "title": "Cervical Spine Fracture \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-cervical-spine-cliff-2023.pdf?emrc=156eda",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-cervical-spine-cliff-2023.pdf?emrc=156eda",
+    "retrieved_at_utc": "2026-11-14T06:17:19.895956+00:00",
+    "content_sha256": "63c573184cc7c0d72eab552d76c27a198b4df1bf1bcc334e44c509d85658a615",
+    "original_mime": "application/pdf",
+    "original_bytes": 300796,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-053-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n   Branch     Baseline\n\n\n\n ICL52_Fracture - Cervical Spine\n\n There is no IMM Cervical Spine Fracture CliFF. No cervical spine fractures have occurred in spaceflight. Ideally, the likelihood and outcomes for this\n condition would be determined based on a biomechanical mathematical model. This was done for several fracture conditions in IMM. However, since\n there is no biomechanical mathematical model for cervical spine fracture, terrestrial data must be used. This is not a very good analog population for\n this condition and will likely result in an overestimation of the incidence and associated outcomes for cervical spine fracture. For best case/worst case\n percentages, 24% of cervical spine fractures required surgery in 2017. (Ponkilainen, 2020).\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  No cervical spine fractures have occurred during spaceflight.\n\n  ANALOG LITERATURE\n\n  This study focuses on young divers with cervical injuries and the probability of a cervical fracture in divers with cervical injuries. Mean age was 26\n  years old (Chan-Seng et al., 2013). The other article cites the incidence of cervical fractures in the US Military from years 2000-2009 and a total of\n  13,813,333 US Military service personnel (Schoenfeld et al., 2012).\n\n  TERRESTRIAL LITERATURE\n\n  The terrestrial articles highlights incidence of cervical fractures among adults ages 18-49 in a region of Minnesota over three years (Farr et al.,\n  2017).\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   mean 1.71E-7 and SD 4.345E-9\n\n\n  INCIDENCE SUMMARY\n\n  Relevant reference is Ponkilainen 2019 \u2013Incidence of Spine Fracture Hospitalization and Surgery in Finland in 1998-2017. IR for hospitalization\n  17.1 per 100kpy and IR for surgery 4.1 per 100kpy in 2017. The population of Finland over age 20 in 2017 was estimated from:\n  https://www.statista.com/statistics/521152/population-of-finland-by-age/ There were 4326651 persons. If we considered that the total number of\n  person-years, the expected case counts is 740. IR 1.71E-4 (95%CI: 1.59E-4, 1.84E-4). The Bayesian posterior distribution for the probability of\n  having an event during a 6-hour surface-ops EVA is Beta(shape1=725.4, shape2=6200206112) with mean 1.17E-7 and SD 4.344E-9 given the\n  terrestrial reference data under an uninformative prior.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n\n\n\n\n11/17/2022 3:55:21 PM                                              ICL52_Fracture - Cervical Spine Cliff                                                     page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-053-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "     Incidence Type\n     EVA\n     Segment\n     EVA Surface\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Binomial\n     Incidence Dist.\n     Beta\n     Mean\n     1.16996E-07\n     SD\n     4.34393E-09\n\n\n     Beta\n     (Alpha): 725.4\n     (Beta): 6.20021E+09\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                    Source                     LOC Value\n\n   Farr, Joshua N. et al., 2017                                                Terrestrial                1\n\n   Ponkilainen, V. et al., 2020                                                Terrestrial                1\n\n   Schoenfeld, A. et al., 2012                                                 Terrestrial                1\n\n   Chan-Seng, E. et al., 2013                                                  Terrestrial                1\n\n  All terrestrial data related to incidence is LOC 1 (somewhat unconfident).\n\n\n\n\n11/17/2022 3:55:21 PM                                             ICL52_Fracture - Cervical Spine Cliff               page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-053-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  No preflight preventive medical measures regarding cervical spine fractures. Preventive measures based on vehicle and equipment design, and\n  safety training.\n\n  BEST CASE SCENARIO DEFINITION\n\n  A non-displaced fracture with no dislocation, and mild to moderate pain that responds to analgesics and conservative treatment.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  A displaced fracture or dislocation resulting in spinal instability, severe pain, or requiring surgery. (Spinal cord injury covered by \"spinal cord\n  injury.\")\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  None\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  Best case based on (Ponkilainen, 2020). Worst case - 24% of cervical spine fractures required surgery in 2017. (Ponkilainen, 2020).\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                         Source                              LOC Value\n\n   Ponkilainen, V. et al., 2020                                                     Terrestrial                         1\n\n  Large epidemiologic cohorts available; however, the populations do not represent the Astronaut Corps. Generally easy to separate date between\n  those younger or older than 50. Low risk of bias and fair consistency.\n\n\n\n\n11/17/2022 3:55:21 PM                                               ICL52_Fracture - Cervical Spine Cliff                                               page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-053-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                             CP1: Diagnosis       CP2: Treatment              CP3: Condition End State\n\n                                                             TI%       Duration   TI%         Duration        TI%         RTDC             LOCL\n                       Composite           Condition\n   Case Scenario       Incidence           Probability %     Preset    Preset     Preset      Min     Max     Preset      Min%    Max%     Min%     Max%\n\n   Treated Best        mean 1.17E-7        76 - 76           100       1.5        13.8719     1544    2016    0           0       0        0        0\n   Case (TBC)          SD 4.344E-9\n\n   Treated Worst                           24 - 24           100       2          57.5073     2016    2016    24.8738     100     100      0        0\n   Case (TWC)\n\n   Untreated Best      N/A                 N/A               N/A       1.5        33.8825     1544    2016    0           0       0        0        0\n   Case (UTBC)\n\n   Untreated Worst     N/A                 N/A               N/A       2          72.4953     2016    2016    72.4953     100     100      0        0\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n11/17/2022 3:55:21 PM                                              ICL52_Fracture - Cervical Spine Cliff                                                      page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-053-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  Excellent, accessible data from the European spine registries as well as non-surgical outcomes, which may be used as a surrogate for UT. Bias\n  towards high cervical fractures (C1/C2). Much incidence risk is likely overstated in the microgravity environment, where high mass risks are\n  engineered out. More unpredictable for launch/landing and surface ops. T&O outcomes are more translatable.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Searches needed to go beyond Dynamed for duration and RTDC. Nevertheless, excellent data from the neurosurgical literature was obtained:\n  Cochrane review for duration; Cooper et al and Passias et al for RTDC; and Fredo for LOCL.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  Excellent data from the Neurosurgical literature on the three parameters. Some confounding with comorbidities and other injuries; the Norwegian\n  National Registry provides excellent data for RTDC.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  Decent reporting of non-operative management from spine registries, particularly from the European health systems. Some bias here on the\n  anatomy (C1 & C2) which confounds dta on other trauma to lower cervical.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  Untreated cases of significant cervical neck fracture is uncommon, for purposes of this CLiFF, the primary focus will be on delay of care vs timely\n  treatment, and minimal treatment/ extremely conservative treatment.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                Source                                LOC Value\n\n   Shears E, et al. 2008                                                   Terrestrial\n\n   Croce, et al. 2001                                                      Terrestrial\n                                                                                                                                   3\n   Fiedler, et al. 2020                                                    Terrestrial\n\n   Kim, et al. 2019                                                        Terrestrial\n\n  Wide degree in variability for cervical fractures, mainly dependent on whether the fracture is \"stable\" or \"unstable.\" Even recent Cochrane Review\n  was unable to identify studies comparing surgery versus conservative management of specific cervical spine injury (odontoid). Not representative of\n  Astronaut Corps and overall difficult to apply data to expectations and management in long-duration spaceflight\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                             Source                                  LOC Value\n\n   Cooper, et al. 1979                                                  Terrestrial\n\n   Passias, et al. 2018                                                 Terrestrial\n\n   Fredo, et al. 2014                                                   Terrestrial\n\n\n\n\n11/17/2022 3:55:21 PM                                             ICL52_Fracture - Cervical Spine Cliff                                                 page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-053-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                               Source                                   LOC Value\n                                                                                                                                      4\n   Dvorak, et al. 2010                                                    Terrestrial\n\n   Butler, et al. 2010                                                    Terrestrial\n\n   Koivikko, et al. 2004                                                  Terrestrial\n\n   Wang, et al. 2018                                                      Terrestrial\n\n\n  There is a wide variability in the patient populations, the hospital systems they were treated in, and the specific subsets of cervical injuries.\n  Ultimately, there is a consistent and significant risk that a cervical fracture will result in RTDC for our astronauts.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                                                         Source                              LOC Value\n\n   Fredo, et al. 2014                                                               Terrestrial\n\n   Fiedler, et al. 2020                                                             Terrestrial\n\n   Pull ter Gunne, et al. 2010                                                      Terrestrial                                           0\n\n   Koivikko, et al. 2004                                                            Terrestrial\n\n   Pull ter Gunne, et al. 2010                                                      Terrestrial\n\n  Primary issues related to treatment in different healthcare systems and with populations not analogous to astronauts. Data somewhat consistent\n  with mortality expected between 2-18%, but this really hinges on the sub-type of cervical spine fracture.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope\n\n  Overview\n\n  Cervical spine fracture encompasses any spinal fracture in the cervical region, with the best-case scenario representing uncomplicated fractures\n  and the worst-case scenario representing complicated fractures. Note that this CRT was not scoped for open spinal fractures. Any fracture, if left\n  untreated, could result in further complications such as malunion, loss-of function, and/or chronic pain. A worst-case scenario, left untreated, could\n  result in additional significant complications. Note that spinal cord injury is a separate condition, and resources for this are not covered in this CRT.\n\n  CNES: N/A\n\n  Diagnostic Scope and Resourcing\n\n  In both best and worst-case scenarios, diagnosis is based on history, physical examination (musculoskeletal, neurologic, and vital signs), and\n  imaging. Plain film (X-Ray), CT, and MRI will be unavailable inflight. Musculoskeletal ultrasound was included in the CRT as it may serve as a useful\n  adjunct in diagnosis for some cases, but it was not considered a necessary capability to diagnose a cervical spine fracture. This diagnostic\n  framework is consistent with the terrestrial workup for cervical spine fracture with the exception of the inability to perform plain film X-Ray (and if\n  warranted CT or MRI), and thereby using Musculoskeletal Ultrasound as a possible surrogate. Note that nerve blocks are not included in the scope\n  of this CRT.\n\n  Clinical Phase 1 Duration and Rationale\n  This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\n  consensus duration is as follows:\n\n  CP1 BC (Treated or Untreated): 1.5 hours\n  CP1 WC (Treated or Untreated: 2 hours\n\n  This CRT includes a scope of practice code of 5 (which correlates to an \u201cExperienced procedure trained generalist attending (ED attending)\u201d and\n  was included for musculoskeletal ultrasound and interpretation.\n\n  Treatment Scope and Resourcing\n\n  Terrestrially, best-case cervical spine fractures are managed with immobilization, followed by physical therapy. Soft and rigid cervical spine bracing\n  was included in this CRT. Worst-case scenario fractures would require orthopedic surgery, which is not a capability included in this CRT. Therefore,\n  they would be splinted in the same fashion as cervical spine fractures. Although 3D printing offers potential for splinting of musculoskeletal injuries,\n  it remains a largely experimental process and it is not within the scope of this CRT. Note, treatment for open spinal fractures is outside the scope of\n  this CRT. Physical therapy is included post-immobilization. Exercise modification is also recommended, but not built into the CRT as this does not\n  represent a clinical resource. Pain is variable. NSAIDs and acetaminophen were included in the best-case treatment scenario, narcotics were\n  additionally included in the worst-case scenario.\n\n\n\n\n11/17/2022 3:55:21 PM                                               ICL52_Fracture - Cervical Spine Cliff                                                     page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-053-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  Communications and Support Needs\n\n  While real-time video and audio loop communications are desired for diagnosis and treatment, they were not considered a necessity in the best-\n  case scenario. For the worst-case scenario, consultation with ground specialists to facilitate treatment and healing was considered necessary given\n  the limited diagnostic and treatment capabilities in-flight.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  NO IMM CLIFF FOR THIS CONDITION\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  There is limited data to inform untreated scenarios. Non-operative treatment is not the same as untreated. The incidence from the most relevant\n  terrestrial article was applied to surface EVA only. This will most likely be an overestimate given the lower gravitational field during lunar and Martian\n  EVA's and absence of major terrestrial risk factors for cervical spine fractures. Because of the large sample size, the study used to compute the\n  composite incidence most likely overestimates the confidence we have in the assigned value. Ideally, the likelihood and outcomes for this condition\n  would be based on a biomechanical mathematical model. This was done for several fracture conditions in IMM as well as for IMPACT. However,\n  since there is no biomechanical mathematical model for cervical spine fracture, terrestrial data must be used. This CLIFF will need to be updated\n  for IMPACT 2.0 when non-EVA surface operations are considered.\n\n\n\n\n11/17/2022 3:55:21 PM                                               ICL52_Fracture - Cervical Spine Cliff                                                      page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-053-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                               Clinical Phase 2: Treatment\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision           Hearing                 Dentition          GI          GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n                                                                                                           145\n     Case\n     (TBC)\n   Untreated\n     Best\n                             664                              89                                           145\n     Case\n    (UTBC)\n    Treated\n     Worst\n                             664                                                                           145\n      Case\n     (TWC)\n   Untreated\n     Worst\n             223             664                              89                                           145\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                        Total\n                                                                                                                                                      Human\n                                                                                             Translation &                            Total Tasks\n                 Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                             Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n                (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                            (microgravity)                            Condition\n                                                                                                                                                     Tasks Full\n                                                                                                                                                      Mission\n    Treated\n      Best\n            132                                                                                            34           211          522            3763          0.138719      13.8719\n     Case\n     (TBC)\n   Untreated\n     Best\n             132                                                                                           34           211          1275           3763          0.338825      33.8825\n     Case\n    (UTBC)\n    Treated\n     Worst\n            132              564            414                                                            34           211          2164           3763          0.575073      57.5073\n      Case\n     (TWC)\n   Untreated\n     Worst\n             132             564            414               22             196            34             34           211          2728           3763          0.724953      72.4953\n     Case\n    (UTWC)\n\n                                                                           Clinical Phase 3: Condition End State\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision           Hearing                 Dentition          GI          GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n     Case\n     (TBC)\n   Untreated\n     Best\n     Case\n    (UTBC)\n    Treated\n     Worst\n                                                                                                           145\n      Case\n     (TWC)\n   Untreated\n     Worst\n             223             664                              89                                           145\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n11/17/2022 3:55:21 PM                                               ICL52_Fracture - Cervical Spine Cliff                                                                          page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-053-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                            Total\n                                                                                                                                          Human\n                                                                                  Translation &                           Total Tasks\n                Hand                                      Lower       Ambul &                     Don/Doff    Pressure                    System\n                        Hand (Any)   Upper Extremity                              Stabilization                          Impaired By                      TI Decimal       TI %\n               (Dom)                                    Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                                 (microgravity)                           Condition\n                                                                                                                                         Tasks Full\n                                                                                                                                          Mission\n    Treated\n      Best\n                                                                                                                         0              3763          0                0\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                                                         0              3763          0                0\n     Case\n    (UTBC)\n    Treated\n     Worst\n            132                      414                                                       34            211         936            3763          0.248738         24.8738\n      Case\n     (TWC)\n   Untreated\n     Worst\n             132        564          414               22           196         34             34            211         2728           3763          0.724953         72.4953\n     Case\n    (UTWC)\n\n\n\n\n11/17/2022 3:55:21 PM                                        ICL52_Fracture - Cervical Spine Cliff                                                                         page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-053-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n11/17/2022 3:55:21 PM                                             ICL52_Fracture - Cervical Spine Cliff                                                    page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-053-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   Ponkilainen, Ville T. et al. \u201cIncidence of Spine Fracture Hospitalization and Surgery in Finland in 1998-2017.\u201d Spine 45.7 (2020): 459\u2013464. Print.\n   (Ponkilainen, 2020). Gautam Zaveri and Gurdip Das. Management of Sub-axial Cervical Spine Injuries. Indian J Orthop. 2017 Nov-Dec; 51(6):\n   633\u2013652. (Zaveri, 2017).\n\n   1. Hawkins SC, Williams J, Bennett BL, Islas A, Kayser DW, Quinn R. Wilderness Medical Society Clinical Practice Guidelines for Spinal Cord\n   Protection. Wilderness & Environmental Medicine 2019; 30:S87\u201399.\n\n   2. Schleicher P, Pingel A, Kandziora F. Safe management of acute cervical spine injuries. EFORT Open Rev 2018; 3:347\u201357.\n\n   3. Cervical spine injury medical treatment guidelines. Clinical Practice Guidelines. Guideline Central. Retrieved 19 December 2020 from\n   https://www.guidelinecentral.com/summaries/cervical-spine-injury-medical-treatment-guidelines/#section-society\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                      PHRASE\n\n   AAOMS                        American Association of Oral and Maxillofacial Surgeons\n\n   AMA                          American Medical Association\n\n   ARCL                         All Remaining Conditions List\n\n   ARS                          Acute Radiation Sickness\n\n   BHP                          Behavioral Health and Performance\n\n   CAC                          Coronary Artery Calcium\n\n   CHS                          Crew Health and Safety\n\n   CL                           Condition List\n\n   CliFF                        Clinical Finding Form\n\n   CMO                          Crew Medical Officer\n\n   COMFORT                      Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                          Clinical Phase 1\n\n   CP2                          Clinical Phase 2\n\n   CP3                          Clinical Phase 3\n\n   CRL                          Clinical Resource Level\n\n   CRT                          Capability Resource Table\n\n   CST                          Clinical Science Team\n\n   DCS                          Decompression Syndrome\n\n   DRM                          Design Reference Mission\n\n   ED                           Emergency Medicine Doctor\n\n   EL                           Evidence Library\n\n   EMCL                         Exploration Medical Condition List\n\n   EMT                          Emergency Medical Technician\n\n   EVA                          Extravehicular Activity\n\n   EXMC                         Exploration Medical Capability\n\n   HRP                          Human Research Program\n\n   ICD                          International Classification of Disease\n\n\n\n\n11/17/2022 3:55:21 PM                                             ICL52_Fracture - Cervical Spine Cliff                                                 page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-053-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   ICL 1.0              IMPACT 1.0 Medical Conditions List\n\n   ICU                  Intensive Care Unit\n\n   IMCL                 iMED Condition List\n\n   iMED                 Integrated Medical Evidence Database\n\n   IMM                  Integrated Medical Model\n\n   IMPACT-MD            Impact Medical Database\n\n   IP                   Incidence Proportion\n\n   IR                   Incidence Rate\n\n   ISS                  International Space Station\n\n   IV                   Intravenous\n\n   JSC                  Johnson Space Center\n\n   LEO                  Low-Earth orbit\n\n   LEVA                 Lunar Extravehicular Activity\n\n   LOCL                 Loss of Crew Life\n\n   LOM                  Loss of Mission\n\n   LSAH                 Lifetime Surveillance of Astronaut Health\n\n   LSO                  Lunar Surface Operations\n\n   MCL                  Master Condition List\n\n   MEVA                 Medical Extravehicular Activity\n\n   NASA                 National Aeronautics and Space Administration\n\n   N/A                  Not Applicable\n\n   NP                   Nurse Practitioner\n\n   OBGYN                Obstetrics and Gynecology\n\n   OR                   Occurrence Rate\n\n   PA                   Physician Assistant\n\n   PDQ                  Pain Disability Questionnaire\n\n   PFCL                 Proposed Future Conditions List\n\n   PPE                  Personal Protective Equipment\n\n   PTRS                 Project Technical Requirements Specification\n\n   PRL                  Pharmaceutical Resource Level\n\n   QTL                  Quality Time Lost\n\n   RCL                  Removed Conditions List\n\n   REP                  Rochester Epidemiology Study\n\n   RTDC                 Removal to Definitive Care\n\n   SANS                 Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                  Space Adaptation Syndrome\n\n   SEVA                 Spaceflight Extravehicular Activity\n\n   SME                  Subject Matter Expert\n\n   SoP                  Standard Operating Procedure\n\n   SPE                  Solar Particle Event\n\n   TBD                  To Be Determined\n\n   TI                   Task Impairment\n\n\n\n\n11/17/2022 3:55:21 PM                                     ICL52_Fracture - Cervical Spine Cliff   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-053-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "11/17/2022 3:55:21 PM   ICL52_Fracture - Cervical Spine Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-053-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ]
+      ],
+      "page_number": 1,
+      "source_anchor": "page:1#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-053-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                    Source                     LOC Value"
+        ],
+        [
+          "Farr, Joshua N. et al., 2017                                                Terrestrial                1"
+        ],
+        [
+          "Ponkilainen, V. et al., 2020                                                Terrestrial                1"
+        ],
+        [
+          "Schoenfeld, A. et al., 2012                                                 Terrestrial                1"
+        ],
+        [
+          "Chan-Seng, E. et al., 2013                                                  Terrestrial                1"
+        ],
+        [
+          "All terrestrial data related to incidence is LOC 1 (somewhat unconfident)."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-053-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                         Source                              LOC Value"
+        ],
+        [
+          "Ponkilainen, V. et al., 2020                                                     Terrestrial                         1"
+        ],
+        [
+          "Large epidemiologic cohorts available; however, the populations do not represent the Astronaut Corps. Generally easy to separate date between"
+        ],
+        [
+          "those younger or older than 50. Low risk of bias and fair consistency."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-053-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment              CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration   TI%         Duration        TI%         RTDC             LOCL"
+        ],
+        [
+          "Composite           Condition"
+        ],
+        [
+          "Case Scenario       Incidence           Probability %     Preset    Preset     Preset      Min     Max     Preset      Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best        mean 1.17E-7        76 - 76           100       1.5        13.8719     1544    2016    0           0       0        0        0"
+        ],
+        [
+          "Case (TBC)          SD 4.344E-9"
+        ],
+        [
+          "Treated Worst                           24 - 24           100       2          57.5073     2016    2016    24.8738     100     100      0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best      N/A                 N/A               N/A       1.5        33.8825     1544    2016    0           0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst     N/A                 N/A               N/A       2          72.4953     2016    2016    72.4953     100     100      0        0"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-053-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                Source                                LOC Value"
+        ],
+        [
+          "Shears E, et al. 2008                                                   Terrestrial"
+        ],
+        [
+          "Croce, et al. 2001                                                      Terrestrial"
+        ],
+        [
+          "3"
+        ],
+        [
+          "Fiedler, et al. 2020                                                    Terrestrial"
+        ],
+        [
+          "Kim, et al. 2019                                                        Terrestrial"
+        ],
+        [
+          "Wide degree in variability for cervical fractures, mainly dependent on whether the fracture is \"stable\" or \"unstable.\" Even recent Cochrane Review"
+        ],
+        [
+          "was unable to identify studies comparing surgery versus conservative management of specific cervical spine injury (odontoid). Not representative of"
+        ],
+        [
+          "Astronaut Corps and overall difficult to apply data to expectations and management in long-duration spaceflight"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-053-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                             Source                                  LOC Value"
+        ],
+        [
+          "Cooper, et al. 1979                                                  Terrestrial"
+        ],
+        [
+          "Passias, et al. 2018                                                 Terrestrial"
+        ],
+        [
+          "Fredo, et al. 2014                                                   Terrestrial"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-053-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                         Source                              LOC Value"
+        ],
+        [
+          "Fredo, et al. 2014                                                               Terrestrial"
+        ],
+        [
+          "Fiedler, et al. 2020                                                             Terrestrial"
+        ],
+        [
+          "Pull ter Gunne, et al. 2010                                                      Terrestrial                                           0"
+        ],
+        [
+          "Koivikko, et al. 2004                                                            Terrestrial"
+        ],
+        [
+          "Pull ter Gunne, et al. 2010                                                      Terrestrial"
+        ],
+        [
+          "Primary issues related to treatment in different healthcare systems and with populations not analogous to astronauts. Data somewhat consistent"
+        ],
+        [
+          "with mortality expected between 2-18%, but this really hinges on the sub-type of cervical spine fracture."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-053-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision           Hearing                 Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664                              89                                           145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664                                                                           145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223             664                              89                                           145"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-053-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-053/cervical_vertebrae_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1083,
+      "height": 1240,
+      "sha256": "ea9c341453384008ef594aed994d2daf2f81a2982184030bbba1d31e292e2d19",
+      "creator": "OpenStax College",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3A723_Cervical_Vertebrae.jpg",
+      "attribution": "OpenStax College, via Wikimedia Commons (CC BY 3.0)",
+      "caption": "OpenStax anatomical illustration of the cervical vertebrae (C1 atlas, C2 axis, and C3\u2013C7).",
+      "alt_text": "Labeled anatomical diagram of the human cervical vertebrae.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:723 Cervical Vertebrae.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-053-IMG-02",
+      "ordinal": 1,
+      "media_kind": "RADIOLOGY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-053/jefferson_fracture_c1_ct.jpg",
+      "mime_type": "image/jpeg",
+      "width": 955,
+      "height": 405,
+      "sha256": "96bbc8d3eb1b5767f5f98cb0abd47397cac573990ee37eebfa9a7e5be46a3d80",
+      "creator": "Michael Utz, Shadab Khan, Daniel O\u2019Connor & Stephen Meyers",
+      "license_identifier": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ACT_of_Jefferson_fracture.jpg",
+      "attribution": "Michael Utz, Shadab Khan, Daniel O\u2019Connor & Stephen Meyers, via Wikimedia Commons (CC BY 4.0)",
+      "caption": "Computed tomography (CT) scan demonstrating a C1 burst (Jefferson) cervical spine fracture.",
+      "alt_text": "CT scan showing a C1 Jefferson fracture.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:CT of Jefferson fracture.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-053-IMG-03",
+      "ordinal": 2,
+      "media_kind": "RADIOLOGY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-053/odontoid_fracture_c2_ct.png",
+      "mime_type": "image/png",
+      "width": 682,
+      "height": 809,
+      "sha256": "bff2a192c2030df37dd266ac243e615489f08e475ebb44160c3478846d7b0812",
+      "creator": "James Heilman, MD",
+      "license_identifier": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3APdensfracCT.png",
+      "attribution": "James Heilman, MD, via Wikimedia Commons (CC BY-SA 3.0)",
+      "caption": "Sagittal cervical spine CT showing a fracture at the base of the C2 odontoid process (dens).",
+      "alt_text": "Sagittal CT scan of a C2 odontoid fracture.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:PdensfracCT.png)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-053-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Cervical Spine Fracture",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-cervical-spine-cliff-2023.pdf?emrc=156eda",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External cervical vertebrae anatomy and CT radiology images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

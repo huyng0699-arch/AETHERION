@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-053",
+  "slot": 53,
+  "quest_id": "Q-0353",
+  "checked_at_utc": "2026-11-14T06:17:19.895956+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-cervical-spine-cliff-2023.pdf?emrc=156eda",
+  "http_status": 200,
+  "pdf_sha256": "63c573184cc7c0d72eab552d76c27a198b4df1bf1bcc334e44c509d85658a615",
+  "pdf_bytes": 300796,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-053-IMG-01": "ea9c341453384008ef594aed994d2daf2f81a2982184030bbba1d31e292e2d19",
+    "CLIFF-053-IMG-02": "96bbc8d3eb1b5767f5f98cb0abd47397cac573990ee37eebfa9a7e5be46a3d80",
+    "CLIFF-053-IMG-03": "bff2a192c2030df37dd266ac243e615489f08e475ebb44160c3478846d7b0812"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
