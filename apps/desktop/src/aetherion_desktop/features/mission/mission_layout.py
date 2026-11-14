@@ -216,7 +216,9 @@ def install_mission_layout(page, api_url: str) -> None:
 def update_summary(page, *, subject: str = "", count: int | None = None,
                    latest: str = "", sources: int | None = None):
     """Update presentation from validated, authorized API output only."""
-    page.focus.setText(subject or "Chưa chọn")
-    page.record_count.setText(str(count) if count is not None else "Chưa có")
-    page.latest.setText(latest or "Chưa có")
-    page.source_count.setText(str(sources) if sources is not None else "Chưa có")
+    from ...localization import tr
+    language = getattr(page, "ui_language", "vi")
+    page.focus.setText(subject or tr(language, "mission.noneSelected"))
+    page.record_count.setText(str(count) if count is not None else tr(language, "mission.none"))
+    page.latest.setText(latest or tr(language, "mission.none"))
+    page.source_count.setText(str(sources) if sources is not None else tr(language, "mission.none"))
