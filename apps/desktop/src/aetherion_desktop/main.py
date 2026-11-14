@@ -132,17 +132,16 @@ class AetherionWindow(QMainWindow):
         top.setObjectName("topBar")
         self.top_bar = top
         bar = QHBoxLayout(top)
-        bar.setContentsMargins(25, 10, 25, 10)
-        bar.setSpacing(9)
-        brand = QPushButton("◈  AETHERION")
+        bar.setContentsMargins(16, 5, 16, 5)
+        bar.setSpacing(8)
+        brand = QPushButton("AETHERION")
         brand.setObjectName("brandButton")
         brand.setAccessibleName("AETHERION — về Trang đầu")
         brand.clicked.connect(self.show_portal)
         bar.addWidget(brand)
-        # Operations already owns the visible AETHERION identity and navigation.
-        # The global bar contains appearance/language/settings/help only.
+        # One Open MCT-style Status Area holds brand, server state and Demo.
+        # Browse remains the sole route navigator in the workspace below.
         self.brand_button = brand
-        brand.hide()
 
         self.pages = QStackedWidget()
         self.pages.setObjectName("pageStack")
@@ -308,17 +307,20 @@ class AetherionWindow(QMainWindow):
                     self.nav_ai, self.nav_science, self.nav_crew, self.nav_more):
             nav.hide()
         bar.addStretch(1)
+        self.operations_home_page.command_frame.hide()
+        bar.addWidget(self.operations_home_page.status)
+        bar.addWidget(self.operations_home_page.demo)
 
         self._server_state = "checking"
         self.status = QLabel("○  Đang kiểm tra")
         self.status.setObjectName("connectionPill")
         self.status.setToolTip("Trạng thái HTTP Server tại địa chỉ cấu hình")
         bar.addWidget(self.status)
-        # The sole visible connection indicator is inside Mission Operations.
-        # This hidden label remains the localized source of truth for /health.
+        # This hidden localized label supplies the actual Server health state
+        # to the visible Status Area label owned by Mission Operations.
         self.status.hide()
         self.theme_button = QToolButton()
-        self.theme_button.setText("◐  Giao diện")
+        self.theme_button.setText("Giao diện")
         self.theme_button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextOnly)
         self.theme_button.setAccessibleName("Thay đổi chủ đề, cỡ chữ và giảm chuyển động")
         self.theme_button.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
@@ -333,12 +335,13 @@ class AetherionWindow(QMainWindow):
         self.language_button.setToolTip(tr(self.ui_language, "main.locale.tooltip"))
         self.language_button.clicked.connect(self._change_language)
         bar.addWidget(self.language_button)
-        self.settings_button = QPushButton("⚙  "+settings_tr("settings",self.ui_language))
+        self.settings_button = QPushButton(settings_tr("settings", self.ui_language))
         self.settings_button.setObjectName("navButton")
         self.settings_button.setAccessibleName("AETHERION Settings")
         self.settings_button.clicked.connect(self.show_settings)
         bar.addWidget(self.settings_button)
         help_button = QToolButton()
+        self.help_button = help_button
         help_button.setText("?  Trợ giúp")
         help_button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextOnly)
         help_button.clicked.connect(self.show_help)
@@ -478,13 +481,14 @@ class AetherionWindow(QMainWindow):
             if len(actions) == len(keys):
                 for action, key in zip(actions, keys):
                     action.setText(tr(self.ui_language, key))
-        self.theme_button.setText(tr(self.ui_language, "main.theme.button"))
+        self.theme_button.setText(tr(self.ui_language, "main.theme.button").replace("◐  ", ""))
         self._render_server_status()
         self.language_button.setText(f"VI / EN · {self.ui_language.upper()}")
         self.language_button.setToolTip(tr(self.ui_language, "main.locale.tooltip"))
         self.language_button.setAccessibleName(tr(self.ui_language, "main.locale.tooltip"))
         self._build_theme_menu()
-        self.settings_button.setText("⚙  "+settings_tr("settings",self.ui_language))
+        self.settings_button.setText(settings_tr("settings", self.ui_language).replace("⚙  ", ""))
+        self.help_button.setText("?  " + ("Help" if self.ui_language == "en" else "Trợ giúp"))
         self.nav_more.setText(settings_tr("more",self.ui_language)+" ▾")
 
     def _change_language(self):
@@ -546,8 +550,19 @@ class AetherionWindow(QMainWindow):
     def open_theme_menu(self):
         self.show_settings()
 
+    def _restore_monitor_conductor(self):
+        if (hasattr(self, "monitor_page")
+                and self.monitor_page._conductor_detached):
+            self.operations_home_page.set_time_conductor_widget()
+            self.monitor_page.restore_time_conductor()
+
     def _show_workspace_feature(self, route: str):
         """Keep Browse, Inspect and the bottom UTC conductor visible on routes."""
+        if route == "monitor":
+            conductor = self.monitor_page.detach_time_conductor()
+            self.operations_home_page.set_time_conductor_widget(conductor)
+        else:
+            self._restore_monitor_conductor()
         if not self.operations_home_page.show_hosted(route):
             raise ValueError(f"Unregistered native workspace: {route}")
         self.pages.setCurrentWidget(self.operations_home_page)
@@ -565,11 +580,13 @@ class AetherionWindow(QMainWindow):
 
     def show_portal(self):
         """Home means the persistent native Mission Operations overview."""
+        self._restore_monitor_conductor()
         self.pages.setCurrentWidget(self.operations_home_page)
         self.operations_home_page.show_overview()
 
     def show_legacy_portal(self):
         """Compatibility-only access; never the native app cold-start view."""
+        self._restore_monitor_conductor()
         self.pages.setCurrentWidget(self.portal_page)
 
     def open_operations_route(self, route: str):
