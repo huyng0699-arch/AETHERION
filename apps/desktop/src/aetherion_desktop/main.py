@@ -218,7 +218,6 @@ class AetherionWindow(QMainWindow):
         self.setCentralWidget(root)
         self._retranslate_shell()
         self.pages.setCurrentWidget(self.portal_page)
-        self.check_server()
         self.heartbeat = QTimer(self)
         self.heartbeat.setInterval(30000)
         self.heartbeat.timeout.connect(self.check_server)
