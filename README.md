@@ -15,7 +15,7 @@ Long-duration missions combine altered gravity, radiation, isolation, distance f
 
 ## Updated AETHERION owner design
 
-**[Read the complete screen-by-screen AETHERION V3 design](docs/DESIGN_2026_11_14.md)**. The first native Windows and Mobile view is intended to be a **five-card Portal** (personal health, monitoring/ECG, AI, science, mission/journey), not direct Mission Control. Windows has a top horizontal menu and no dual permanent sidebars. A distinct Server Control GUI configures Local/Cloud AI (including admin-pasted API key), users, devices, NASA originals versus AI clinical knowledge versus human-readable encyclopedia, LAN and an optional Telegram *Earth test* relay. Animated ambient galaxy/planet/rain/water themes remain blended into the deepest background and can change fonts, colors and motion. This is an owner-directed **target design**; code may still implement earlier startup behavior and must be tested separately.
+**[Read the complete screen-by-screen AETHERION V3 design](docs/DESIGN_2026_11_14.md)**. The first native Windows and Mobile view is intended to be a **five-card Portal** (personal health, monitoring/ECG, AI, science, mission/journey), not direct Mission Control. Windows has a top horizontal menu and no dual permanent sidebars. A distinct Server Control GUI configures Local/Cloud AI (including admin-pasted API key), users, devices, NASA originals versus AI clinical knowledge versus human-readable encyclopedia, LAN and an optional Telegram *Earth test* relay. Animated ambient galaxy/planet/rain/water themes remain blended into the deepest background and can change fonts, colors and motion. **Desktop source now implements the Portal-first visual shell** (Q-0437); actual Windows interactive verification remains pending. Other features named above are still target design, not completed functionality.
 
 ## The proposed approach: GATHER → EVALUATE → ACT → RECHECK
 
@@ -73,7 +73,7 @@ Then open **two PowerShell windows**, both inside the repository:
 .\scripts\start_desktop.ps1
 ```
 
-The local API runs at `http://127.0.0.1:8765`; interactive API documentation is at `http://127.0.0.1:8765/docs`. The desktop is a native Qt window, **not a browser wrapper**. **Current code still opens Mission Control**; the **new target** starts at the five-card Portal, as specified in [DESIGN V3](docs/DESIGN_2026_11_14.md).
+The local API runs at `http://127.0.0.1:8765`; interactive API documentation is at `http://127.0.0.1:8765/docs`. The desktop is a native Qt window, **not a browser wrapper**. **Current Desktop source now starts with five-card Portal**, top horizontal grouped navigation and selectable native ambient themes. See [Q-0437](quests/v1/Q-0437.md) and [DESIGN V3](docs/DESIGN_2026_11_14.md). Actual Windows interactive and independent review are pending.
 
 See **[full Windows installation and troubleshooting](docs/INSTALL_WINDOWS.md)**, [complete V3 owner design](docs/DESIGN_2026_11_14.md), [architecture](docs/ARCHITECTURE.md), [product definition](docs/PRODUCT_SPEC.md), [scientific and safety boundaries](docs/SCIENCE_AND_SAFETY.md), [roadmap](docs/ROADMAP_2050.md) and [2026 submission plan](submission/README.md).
 
