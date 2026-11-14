@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "recorded_at_utc": "2026-11-14T04:00:00Z",
+  "policy": {
+    "aetherion_code_license": "Apache-2.0",
+    "scientific_sources_relicensed": false,
+    "rules": [
+      "Record reuse rights separately for abstracts, full text, figures, and modifications.",
+      "Unimported or unverified sources must default to full_text_display_allowed=false and figure_display_allowed=false.",
+      "U.S. Government works (17 U.S.C. 105) may still contain third-party copyrighted figures requiring separate clearance."
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "nasa-imm-cliff-119-2023",
+      "title": "NASA Integrated Medical Model (IMM) Clinical Findings / CliFF 119 (2023)",
+      "publisher": "NASA",
+      "source_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+      "license_or_terms": "U.S. Government work (17 U.S.C. 105) with potential third-party medical citations/figures; per-PDF verification pending import",
+      "relicensed_under_apache_2_0": false,
+      "import_status": "NOT_IMPORTED",
+      "imported_file_count": 0,
+      "expected_file_count": 119,
+      "abstract_rights": "UNVERIFIED_PENDING_LICENSE_CHECK",
+      "full_text_rights": "UNVERIFIED_PENDING_LICENSE_CHECK",
+      "figure_rights": "UNVERIFIED_PENDING_LICENSE_CHECK",
+      "modification_rights": "UNVERIFIED_PENDING_LICENSE_CHECK",
+      "full_text_display_allowed": false,
+      "figure_display_allowed": false,
+      "notes": "0/119 PDFs imported locally. No full text or figures may be displayed or synthesized until original NASA PDFs are downloaded, SHA-256 verified, and audited for third-party figure carve-outs."
+    },
+    {
+      "source_id": "nasa-osdr-open-metadata",
+      "title": "NASA Open Science Data Repository (OSDR) Study Metadata (OSD-575, OSD-569, OSD-530, OSD-258, OSD-374)",
+      "publisher": "NASA OSDR",
+      "source_url": "https://osdr.nasa.gov/bio/repo/",
+      "license_or_terms": "CC0-1.0 / NASA Open Science terms for open study metadata; controlled human raw files restricted by OSDR DAR / IRB",
+      "relicensed_under_apache_2_0": false,
+      "import_status": "VERIFIED_METADATA_ONLY",
+      "abstract_rights": "ALLOWED_WITH_ATTRIBUTION",
+      "full_text_rights": "LINK_OUT_ONLY",
+      "figure_rights": "UNVERIFIED_PENDING_LICENSE_CHECK",
+      "modification_rights": "ALLOWED_WITH_ATTRIBUTION",
+      "full_text_display_allowed": false,
+      "figure_display_allowed": false,
+      "notes": "Open metadata summaries may be displayed with DOI/version attribution and is_live_telemetry=false. Controlled human raw files are prohibited."
+    },
+    {
+      "source_id": "nasa-hrp-evidence-reports",
+      "title": "NASA Human Research Program (HRP) Evidence Reports & Five Hazards Framework",
+      "publisher": "NASA Human Research Program",
+      "source_url": "https://humanresearchroadmap.nasa.gov/",
+      "license_or_terms": "U.S. Government work (17 U.S.C. 105); embedded journal figures remain subject to original publisher copyright",
+      "relicensed_under_apache_2_0": false,
+      "import_status": "LINKED_REFERENCE_ONLY",
+      "abstract_rights": "ALLOWED_WITH_ATTRIBUTION",
+      "full_text_rights": "LINK_OUT_ONLY",
+      "figure_rights": "RESTRICTED_BY_THIRD_PARTY_COPYRIGHT",
+      "modification_rights": "NO_DERIVATIVES",
+      "full_text_display_allowed": false,
+      "figure_display_allowed": false,
+      "notes": "Cite official HRP URL and hazard domain. Do not mirror full PDFs or third-party figures without per-figure clearance."
+    },
+    {
+      "source_id": "third-party-clinical-journals",
+      "title": "Third-party peer-reviewed clinical & aerospace medicine articles (external references)",
+      "publisher": "External Journal Publishers",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/",
+      "license_or_terms": "Publisher copyright / open-access license per-article (e.g. CC-BY vs All Rights Reserved)",
+      "relicensed_under_apache_2_0": false,
+      "import_status": "POLICY_TEMPLATE",
+      "abstract_rights": "UNVERIFIED_PENDING_LICENSE_CHECK",
+      "full_text_rights": "LINK_OUT_ONLY",
+      "figure_rights": "PROHIBITED",
+      "modification_rights": "PROHIBITED",
+      "full_text_display_allowed": false,
+      "figure_display_allowed": false,
+      "notes": "Default posture for non-CC-BY journal articles is link-out citation only; never bundle paywalled full text or figures."
+    }
+  ]
+}
