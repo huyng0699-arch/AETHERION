@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import sqlite3
+from aetherion_server.sqlite_compat import connect_closing
 
 
 def reset_development_test_data(db_path: Path | str, *, confirm: bool = False) -> int:
@@ -13,7 +14,7 @@ def reset_development_test_data(db_path: Path | str, *, confirm: bool = False) -
     if not path.is_file():
         raise FileNotFoundError(f"Database not found: {path}")
 
-    with sqlite3.connect(path) as conn:
+    with connect_closing(path) as conn:
         cur = conn.execute(
             """
             DELETE FROM observations
