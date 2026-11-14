@@ -19,6 +19,44 @@ def normalize_symptom_term(term: str) -> str:
     return SYMPTOM_ALIASES.get(cleaned, cleaned)
 
 
+def build_reviewed_differential_link(
+    *,
+    condition_id: str,
+    canonical_title: str,
+    symptoms: list[str],
+    evidence_citations: list[dict[str, str]],
+    author: str,
+    reviewed_at_utc: str,
+    uncertainties: list[str],
+    differential: list[str] | None = None,
+    is_nasa_cliff_equivalent: bool = False,
+) -> dict[str, Any]:
+    """Construct a typed, clinically reviewed symptom-to-topic entry without assuming ASTRA=CliFF equivalence."""
+    if not condition_id.strip() or not canonical_title.strip():
+        raise ValueError("condition_id and canonical_title are required")
+    if not symptoms:
+        raise ValueError("At least one symptom is required")
+    if not evidence_citations:
+        raise ValueError("Cited evidence is required for reviewed differential topics")
+    if not author.strip() or not reviewed_at_utc.strip():
+        raise ValueError("author and reviewed_at_utc are required")
+    if not uncertainties:
+        raise ValueError("Explicit uncertainty notes are required")
+    return {
+        "condition_id": condition_id.strip(),
+        "canonical_title": canonical_title.strip(),
+        "symptoms": [s.strip() for s in symptoms if s.strip()],
+        "evidence_citations": list(evidence_citations),
+        "author": author.strip(),
+        "reviewed_at_utc": reviewed_at_utc.strip(),
+        "uncertainties": list(uncertainties),
+        "differential": list(differential or []),
+        "is_nasa_cliff_equivalent": bool(is_nasa_cliff_equivalent),
+        "verification_state": "READY",
+        "review_state": "APPROVED",
+    }
+
+
 def crosswalk_symptoms_to_topics(
     symptom_terms: list[str],
     entries: list[dict[str, Any]],
@@ -30,6 +68,7 @@ def crosswalk_symptoms_to_topics(
             "status": "NO_DATA",
             "is_diagnosis": False,
             "auto_diagnosed": False,
+            "astra_cliff_equivalence_assumed": False,
             "clinical_disclaimer": "Reference topic crosswalk only — not an automatic medical diagnosis.",
             "normalized_terms": normalized_terms,
             "possible_topics": [],
@@ -45,13 +84,21 @@ def crosswalk_symptoms_to_topics(
             if any(term in sym or sym in term for sym in entry_symptoms)
         ]
         if matched:
+            citations = list(entry.get("evidence_citations", []))
+            uncertainties = list(entry.get("uncertainties", []))
             topics.append(
                 {
                     "condition_id": entry["condition_id"],
                     "canonical_title": entry["canonical_title"],
                     "matched_terms": matched,
                     "differential": entry.get("differential", []),
-                    "uncertainties": entry.get("uncertainties", []),
+                    "uncertainties": uncertainties,
+                    "uncertainty_recorded": bool(uncertainties),
+                    "evidence_citations": citations,
+                    "evidence_status": "CITED" if citations else "UNVERIFIED_CITATIONS",
+                    "author": entry.get("author", ""),
+                    "reviewed_at_utc": entry.get("reviewed_at_utc", ""),
+                    "is_nasa_cliff_equivalent": bool(entry.get("is_nasa_cliff_equivalent", False)),
                     "is_diagnosis": False,
                 }
             )
@@ -61,6 +108,7 @@ def crosswalk_symptoms_to_topics(
         "status": "READY" if topics else "NO_DATA",
         "is_diagnosis": False,
         "auto_diagnosed": False,
+        "astra_cliff_equivalence_assumed": False,
         "clinical_disclaimer": "Reference topic crosswalk only — not an automatic medical diagnosis.",
         "normalized_terms": normalized_terms,
         "possible_topics": topics,
