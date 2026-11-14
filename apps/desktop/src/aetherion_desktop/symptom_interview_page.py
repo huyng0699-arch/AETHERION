@@ -36,6 +36,7 @@ class SymptomInterviewPage(QWidget):
         self.active_symptoms: list[str] = []
         self.question_id: str | None = None
         self.last_state = ""
+        self._saving = False
         self._request_generation = 0
 
         root = QVBoxLayout(self)
@@ -157,6 +158,8 @@ class SymptomInterviewPage(QWidget):
         self._update_buttons()
         if self.question_id:
             self.question.setText(self._s("question." + self.question_id))
+        if self.last_state:
+            self._render_state()
 
     def _identity_label(self):
         self.identity.setText(
@@ -182,12 +185,12 @@ class SymptomInterviewPage(QWidget):
         if not enabled:
             self.allow_cloud.setChecked(False)
 
-    def _update_buttons(self):
+    def _update_buttons(self, *_):
         if not hasattr(self, "save_button"):
             return
         self.save_button.setEnabled(bool(
             self.token and self.subject_id and self.active_symptoms
-            and self.consent.isChecked()
+            and self.consent.isChecked() and not self._saving
         ))
         self.next_button.setEnabled(bool(
             self.active_symptoms and self.question_id
@@ -200,6 +203,7 @@ class SymptomInterviewPage(QWidget):
         self.answers = {}
         self.question_id = None
         self.last_state = ""
+        self._saving = False
         self.hits.clear()
         self.search.clear()
         self.answers_box.clear()
@@ -308,6 +312,13 @@ class SymptomInterviewPage(QWidget):
                 self.answers_box.addItem(self._s("answer." + option.lower()), option)
         else:
             self.question.setText(self._s("intake.finished"))
+        self._render_state(data)
+        self._update_buttons()
+        if self.last_state == "WITNESSED_RED_FLAG_REPORTED":
+            self.show_safety()
+
+    def _render_state(self, data=None):
+        data = data or {}
         message_key = {
             "WITNESSED_RED_FLAG_REPORTED": "intake.redflag",
             "AMBIGUOUS_SYMPTOM": "intake.ambiguous",
@@ -317,12 +328,10 @@ class SymptomInterviewPage(QWidget):
         }.get(self.last_state, "intake.unvalidated")
         self.state.setText(self._s(message_key))
         if self.last_state == "AMBIGUOUS_SYMPTOM":
-            lines = [", ".join(item.get("candidates", []))
-                     for item in data.get("ambiguous", [])]
-            self.state.setText(self._s(message_key) + " " + "; ".join(lines))
-        self._update_buttons()
-        if self.last_state == "WITNESSED_RED_FLAG_REPORTED":
-            self.show_safety()
+            choices = [", ".join(item.get("candidates", []))
+                       for item in data.get("ambiguous", [])]
+            if choices:
+                self.state.setText(self._s(message_key) + " " + "; ".join(choices))
 
     def show_summary(self):
         rows = self.active_symptoms[:]
@@ -335,6 +344,10 @@ class SymptomInterviewPage(QWidget):
                 and self.active_symptoms):
             self.state.setText(self._s("intake.no_subject"))
             return
+        if self._saving:
+            return
+        self._saving = True
+        self._update_buttons()
         payload = {
             "subject_id": self.subject_id,
             "chief_concern": ", ".join(self.active_symptoms)[:500],
@@ -346,6 +359,8 @@ class SymptomInterviewPage(QWidget):
                       authorized=True)
 
     def _created(self, data, error):
+        self._saving = False
+        self._update_buttons()
         episode = data.get("episode") if isinstance(data, dict) else None
         if error or not isinstance(episode, dict) or episode.get("subject_id") != self.subject_id:
             self.state.setText(self._s("intake.error") + " " + error)
