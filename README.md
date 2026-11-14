@@ -47,7 +47,7 @@ The server is the single authority for observation data. Clients are separate ap
 | SQLite observation storage and API routes | Initial local-only implementation; not clinically validated |
 | Native Windows desktop (PySide6) | Initial interface shell with navigation and API connectivity check |
 | Medical response engine, actionable clinical guidance | Planned; **not implemented** |
-| NASA datasets and 119-condition medical encyclopedia | Source registry started; **no verified complete dataset is bundled** |
+| NASA datasets and 119-condition medical encyclopedia | 116/119 structured CliFF JSON records and media exist in `knowledge/nasa/cliff_119_2023/records/` (`CLIFF-019`, `CLIFF-021`, `CLIFF-119` missing); **0 verified original PDF archives are stored locally** |
 | Mobile application, Wear OS, physical sensors, true 3D anatomy, local/cloud AI | Planned; **not implemented** |
 | Windows installer or packaged EXE | Planned; **not available yet** |
 

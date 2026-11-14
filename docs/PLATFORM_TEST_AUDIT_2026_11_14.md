@@ -77,6 +77,10 @@
 - **Root-cause distinction:** These 1–3s failures are **GitHub Actions platform / runner-provisioning failures** (no `ubuntu-latest` runner was ever allocated, and no workflow step or test command ran), **not** Python lint or test assertion failures.
 - **Policy impact:** Do **not** force all development or Quest progress through broken GitHub Actions runner provisioning; verify locally with focused commands (`lint_python.py`, `unittest`/`pytest`, `smoke_server.py`) as specified in `AGENTS.md`.
 
+### 2.8 Scientific Library JSON vs. Original PDF Archive State (`Q-0476`)
+- **Structured JSON records:** `116` of `119` CliFF records exist in `knowledge/nasa/cliff_119_2023/records/` (`CLIFF-019`, `CLIFF-021`, and `CLIFF-119` remain missing and are never fabricated).
+- **Original PDF archives:** `0` verified original PDF binaries are stored in `knowledge/nasa/cliff_119_2023/original/` (PDFs were parsed into structured JSON + SHA-256 provenance metadata during ingestion rather than archived as raw PDFs in git).
+
 ---
 
 ## 3. Recommended Fix Order for Contributors
