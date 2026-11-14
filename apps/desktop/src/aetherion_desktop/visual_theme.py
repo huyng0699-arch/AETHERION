@@ -126,7 +126,9 @@ class AmbientBackdrop(QWidget):
         self.stars = [(rng.random(), rng.random(), rng.uniform(0.4, 2.0)) for _ in range(115)]
         self.drops = [(rng.random(), rng.random(), rng.uniform(6, 19)) for _ in range(78)]
         self.timer = QTimer(self)
-        self.timer.setInterval(70)
+        # Ambient motion is decorative: cap repaints to 10 FPS, and halve
+        # that rate for subdued backgrounds to reduce idle CPU/GPU work.
+        self.timer.setInterval(100)
         self.timer.timeout.connect(self._next_frame)
         self._update_timer()
 
@@ -139,11 +141,19 @@ class AmbientBackdrop(QWidget):
         self.update()
 
     def _update_timer(self):
-        if self.isVisible() and not self.reduce_motion and self.intensity > 0 and THEMES[self.theme_name].scene != "minimal":
-            if not self.timer.isActive():
-                self.timer.start()
-        else:
+        # Stop all animation when hidden, minimized, reduced-motion or static.
+        # QTimer remains local to the widget; no background worker is spawned.
+        active = (self.isVisible() and not self.window().isMinimized()
+                  and not self.reduce_motion and self.intensity > 0
+                  and THEMES[self.theme_name].scene != "minimal")
+        if not active:
             self.timer.stop()
+            return
+        interval = 200 if self.intensity <= 35 else 100
+        if self.timer.interval() != interval:
+            self.timer.setInterval(interval)
+        if not self.timer.isActive():
+            self.timer.start()
 
     def showEvent(self, event):
         super().showEvent(event)
