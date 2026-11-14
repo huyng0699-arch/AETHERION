@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/contracts/v1/health_summary_state_machine.schema.json",
+  "title": "AETHERION Health Summary State Machine Contract (Q-0027)",
+  "description": "Defines READY, NO_DATA, STALE, OFFLINE, and ERROR states with unambiguous deterministic evaluation rules and transitions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "subject_id",
+    "scope",
+    "state",
+    "previous_state",
+    "transport_connected",
+    "backend_error",
+    "observation_count",
+    "missing_data_means_unconsciousness",
+    "evaluated_at"
+  ],
+  "properties": {
+    "subject_id": { "type": "string", "minLength": 1 },
+    "scope": { "type": "string", "enum": ["CREW", "CABIN", "VEHICLE"] },
+    "state": {
+      "type": "string",
+      "enum": ["READY", "NO_DATA", "STALE", "OFFLINE", "ERROR"]
+    },
+    "previous_state": {
+      "type": ["string", "null"],
+      "enum": [null, "READY", "NO_DATA", "STALE", "OFFLINE", "ERROR"]
+    },
+    "transport_connected": { "type": "boolean" },
+    "backend_error": { "type": "boolean" },
+    "observation_count": { "type": "integer", "minimum": 0 },
+    "age_seconds": { "type": ["number", "null"], "minimum": 0 },
+    "max_age_seconds": { "type": "number", "exclusiveMinimum": 0 },
+    "missing_data_means_unconsciousness": { "type": "boolean", "const": false },
+    "evaluated_at": { "type": "string", "format": "date-time" }
+  },
+  "x-state-precedence": ["OFFLINE", "ERROR", "NO_DATA", "STALE", "READY"],
+  "x-transitions": {
+    "OFFLINE": ["READY", "NO_DATA", "STALE", "ERROR", "OFFLINE"],
+    "ERROR": ["READY", "NO_DATA", "STALE", "OFFLINE", "ERROR"],
+    "NO_DATA": ["READY", "OFFLINE", "ERROR", "NO_DATA"],
+    "STALE": ["READY", "OFFLINE", "ERROR", "STALE"],
+    "READY": ["STALE", "OFFLINE", "ERROR", "READY"]
+  }
+}
