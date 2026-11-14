@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-059",
+  "title": "Axial Brain CT of Middle Cerebral Artery Infarction",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/CT_Brain_MCA_Infarct.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:CT_Brain_MCA_Infarct.jpg",
+  "license": "CC-BY-SA-4.0",
+  "author": "Lucien Monfils",
+  "caption": "Non-contrast axial head CT demonstrating a hypodense middle cerebral artery (MCA) territory ischemic stroke with mass effect.",
+  "alt_text": "Axial CT scan of the brain showing a large hypodense infarct in the middle cerebral artery distribution.",
+  "clinical_relevance": "Demonstrates acute ischemic stroke neuroimaging used on Earth vs. spaceflight diagnostic limitations where head CT is unavailable (CLIFF-059, p.5-7).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 2000,
+  "height": 2502,
+  "size_bytes": 454782,
+  "sha256": "17ef6929e54a71adace8308be63dfcc1eee87ff19caded7894ec13a9877b967e",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/CT_Brain_MCA_Infarct.jpg",
+  "retrieved_at_utc": "2026-11-14T06:13:41.729902+00:00",
+  "asset_path": "17ef6929e54a71adace8308be63dfcc1eee87ff19caded7894ec13a9877b967e.jpg",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}
