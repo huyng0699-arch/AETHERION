@@ -2,6 +2,14 @@
 
 **Scope:** 437 Quest specifications on `main`, **Q-0001 through Q-0437**. Q-0436 updates the owner design; Q-0437 implements a native desktop visual shell. Both remain subject to independent review. Each task's live metadata is stored **only in its own `quests/v1/Q-XXXX.md`**. This root file is navigational and does not claim task completion.
 
+## Owner language directive — VI / EN, mandatory for every agent (14/11/2026)
+
+**AETHERION là app song ngữ tiếng Việt + tiếng Anh.** Không agent nào được ép ứng dụng thành "thuần Việt" hay chỉ có tiếng Anh. Mọi Quest chỉnh giao diện phải bổ sung cả `vi` và `en`, theo [AGENTS.md](AGENTS.md) và [docs/LANGUAGE_POLICY.md](docs/LANGUAGE_POLICY.md). Bản thiết kế viết tiếng Việt là mô tả, **không phải lệnh chỉ hiển thị tiếng Việt**.
+
+- Bộ chọn ngôn ngữ của Portal và khung Desktop chính được thêm dưới `apps/desktop/src/aetherion_desktop/...`; dùng `i18n/vi.json` và `i18n/en.json`, lưu `ui/language`. **Đây chỉ là bước đầu;** các màn Mission, Personal, Medical Library, NASA Explore và reader/Server Admin chưa được chứng nhận song ngữ toàn diện. Agent sửa từng màn phải nối vào cùng cơ chế, không tạo bộ ngôn ngữ riêng.
+- Kho CliFF JSON lưu **nội dung tiếng Anh nguyên bản** và phải giữ nguyên; `knowledge/symptoms/ASTRA_819_REFERENCE.json` có tên và nhận định tiếng Việt cần lớp dịch tiếng Anh có thẩm định. **Không dịch đè JSON nguồn, không đổi key/ID/tier/enum**, không tự nhận bản dịch là phác đồ y khoa đã duyệt.
+- Tiêu chí nghiệm thu: nhãn/nút/trạng thái an toàn của phạm vi màn được sửa phải hoạt động khi chuyển sang cả hai ngôn ngữ, và không làm đổi dữ liệu nguồn. Không lấy sự có mặt của tệp JSON làm bằng chứng đã dịch xong.
+
 ## Chính sách triển khai mới nhất — ít test, làm trực tiếp (14/11/2026)
 
 **Lệnh của chủ dự án:** Đa số Quest chỉ cần **làm trực tiếp → kiểm tra nhanh kết quả đã làm → commit → chuyển Quest tiếp**. **Không bắt buộc tạo unit test, chạy toàn bộ CI, chụp ảnh, hay E2E cho từng Quest thường.** Các mô tả Quest cũ yêu cầu test chung áp dụng theo chính sách mới trong [AGENTS.md](AGENTS.md), không thay đổi mục tiêu hay tiêu chí tính năng.
