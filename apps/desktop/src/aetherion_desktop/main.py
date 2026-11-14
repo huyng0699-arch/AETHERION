@@ -11,6 +11,7 @@ from PySide6.QtWidgets import (
 )
 
 from .medical_library import build_medical_library_page
+from .mission_control import build_mission_control_page
 
 SECTIONS = [
     ("Mission Control", "Mission Control", "Crew overview and health monitoring will appear here once trustworthy observations are available."),
@@ -55,6 +56,10 @@ class AetherionWindow(QMainWindow):
             button = QPushButton(button_name)
             button.clicked.connect(lambda checked=False, i=index: self.pages.setCurrentIndex(i))
             nav.addWidget(button)
+            if index == 0:
+                # Mission Control loads live data only after explicit local authentication.
+                self.pages.addWidget(build_mission_control_page(self.api_url, self.network))
+                continue
             page = QWidget()
             layout = QVBoxLayout(page)
             layout.setContentsMargins(20, 30, 20, 30)
