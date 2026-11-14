@@ -1,0 +1,263 @@
+{
+  "name": "pyvistaqt",
+  "repository": "pyvista/pyvistaqt",
+  "revision": "ad706903962a533032218e92f39e1a315eaf949f",
+  "tracked_files": 51,
+  "files": [
+    {
+      "path": ".git_archival.txt",
+      "sha": "7c5100942aae489ca04d07d2c69a4d8f6f8470fe",
+      "mode": "100644"
+    },
+    {
+      "path": ".gitattributes",
+      "sha": "00a7b00c94e08b86c765d47689b6523148c46eec",
+      "mode": "100644"
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "sha": "edb7cdefdee8708ab521d13a268ee74fb64520b8",
+      "mode": "100644"
+    },
+    {
+      "path": ".github/release.yml",
+      "sha": "f896f7042f536f0080baa8f0e1ae417f6114bee2",
+      "mode": "100644"
+    },
+    {
+      "path": ".github/workflows/autofix.yml",
+      "sha": "fb968fe37b79bc541a49b2eb9b246e40c5db45e4",
+      "mode": "100644"
+    },
+    {
+      "path": ".github/workflows/automerge.yml",
+      "sha": "802486f5414025061f44204e246571d5c70ca31d",
+      "mode": "100644"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha": "09edea438e2d06b6e7f01a0439f206f34447c90e",
+      "mode": "100644"
+    },
+    {
+      "path": ".github/workflows/docbuild.yml",
+      "sha": "5e98b4a37b231e22d5ee33d915dab732ba8ce784",
+      "mode": "100644"
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "sha": "99d2f56297bd2bec8701aba575f9b6db6850eecb",
+      "mode": "100644"
+    },
+    {
+      "path": ".github/workflows/update-pr-branch.yml",
+      "sha": "d0b273095d8a8dd55f2ea2ad11607eb25fa7d29c",
+      "mode": "100644"
+    },
+    {
+      "path": ".gitignore",
+      "sha": "b5784195c7d2da03f838bbee59d4327881d0ac1a",
+      "mode": "100644"
+    },
+    {
+      "path": ".mailmap",
+      "sha": "062837c000033ce4335323fc9b3750c957695018",
+      "mode": "100644"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "sha": "4a93ada7a4002dca8b18b660be098f3c08f45ea9",
+      "mode": "100644"
+    },
+    {
+      "path": "AUTHORS.rst",
+      "sha": "b28749a5cd516dcbaa6806f94ee2e89864f023de",
+      "mode": "100644"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "sha": "2254272ce80797f449ea7830f1c54ec2b70ad960",
+      "mode": "100644"
+    },
+    {
+      "path": "codecov.yml",
+      "sha": "47ce5b4f742d963991aa4fdd91d62ea7b5b865ef",
+      "mode": "100644"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha": "3d769cdddc23e4c8a65f5bbbf33e14c52c01a1aa",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/_static/copybutton.css",
+      "sha": "3c832e749610ad087393ec699d39dc5366030beb",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/_static/pyvista_logo_square.png",
+      "sha": "4978301b6276544aa2f4f2aeb28f849b3bea1e0e",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/_static/pyvista_logo.png",
+      "sha": "acea4b014fbcfd9f20274504b06c9c7d013d8a98",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/_static/style.css",
+      "sha": "176d622a6ffd9fa978998710f83bf993339e1587",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/_templates/layout.html",
+      "sha": "04ee29806371bfe537415767612d63e14bd90c55",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/api_reference.rst",
+      "sha": "323249684d5ca33f33a9874e291786a0fab0e248",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/conf.py",
+      "sha": "c06dc936a83cae0030a2fe678836ee29cdd69e52",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/images/user-generated/qt_multiplot.png",
+      "sha": "40c47f24c3de0ad4176f17f8f65974e548e180ea",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/images/user-generated/qt_plotting_sphere.png",
+      "sha": "b56abfa35b0670498b95aab1524568e243495234",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/index.rst",
+      "sha": "218ed629de283419fbae6fc6a5a329b0777736c4",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/Makefile",
+      "sha": "3d66d4da136bdd38f35f8f95f28450d0caf1fd5f",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/usage.rst",
+      "sha": "c9ba4ab591296e29718448d144b2a02dc1bf2a87",
+      "mode": "100644"
+    },
+    {
+      "path": "environment.yml",
+      "sha": "aec224936533cadf6c89b2dd62c4b95eade4faf5",
+      "mode": "100644"
+    },
+    {
+      "path": "LICENSE",
+      "sha": "9133bef22164de5a6ec24510d3fe883b7c36e978",
+      "mode": "100644"
+    },
+    {
+      "path": "Makefile",
+      "sha": "6013e48aad19411763bf24b0411026d835378f6b",
+      "mode": "100644"
+    },
+    {
+      "path": "MANIFEST.in",
+      "sha": "0a0014480ef1d58fd843530fa9dcbc9fd6d546f1",
+      "mode": "100644"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha": "0b1d338797465cde81c3ced4e693519f3ff08405",
+      "mode": "100644"
+    },
+    {
+      "path": "pyvistaqt/__init__.py",
+      "sha": "268112cb1ef7b3f0b423efbf842d1419eb924196",
+      "mode": "100755"
+    },
+    {
+      "path": "pyvistaqt/_vtk.py",
+      "sha": "d4fbe716be66d055e1ff1582befd880b1e7ef4bf",
+      "mode": "100644"
+    },
+    {
+      "path": "pyvistaqt/counter.py",
+      "sha": "304f481678847a201c6025812e37838e820c19ce",
+      "mode": "100644"
+    },
+    {
+      "path": "pyvistaqt/data/pyvista_logo_square.png",
+      "sha": "4978301b6276544aa2f4f2aeb28f849b3bea1e0e",
+      "mode": "100644"
+    },
+    {
+      "path": "pyvistaqt/dialog.py",
+      "sha": "0396f20bfaeab8efccb3ac07958495c9088700d0",
+      "mode": "100644"
+    },
+    {
+      "path": "pyvistaqt/editor.py",
+      "sha": "596741d3a82de06bdfd23f8a57dfb838dd1f01f2",
+      "mode": "100644"
+    },
+    {
+      "path": "pyvistaqt/plotting.py",
+      "sha": "c650fc8934e528175da9e62b767c62814b51cce3",
+      "mode": "100644"
+    },
+    {
+      "path": "pyvistaqt/py.typed",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644"
+    },
+    {
+      "path": "pyvistaqt/rwi.py",
+      "sha": "f4df34f69b238b6a189e52f32457776b3202efa5",
+      "mode": "100644"
+    },
+    {
+      "path": "pyvistaqt/utils.py",
+      "sha": "0dc7446749d8f4f021fee8cc60de6f7a4590440e",
+      "mode": "100644"
+    },
+    {
+      "path": "pyvistaqt/window.py",
+      "sha": "d83af5d606561ba62b4007670c2fad7787a11946",
+      "mode": "100644"
+    },
+    {
+      "path": "README.rst",
+      "sha": "90219d33ac79bd77d7f69aaf9595819f16c1e799",
+      "mode": "100644"
+    },
+    {
+      "path": "SECURITY.md",
+      "sha": "e6c02e289608f9a4644d88b99514f3d8ba0bffbb",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha": "6e031999e7b6c6198f0533fc0a1c273c230fc484",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/conftest.py",
+      "sha": "1b2779a44c4f5285f8ceb805bb44ef7d9d883aa8",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_plotting.py",
+      "sha": "5ee3ed77a74f58ca311d11d9d6bd1f8dc91c2522",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_vtk_backend.py",
+      "sha": "607680c5178711694afbe858aa7411d4cac9afa5",
+      "mode": "100644"
+    }
+  ]
+}
