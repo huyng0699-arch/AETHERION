@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-006",
+  "slot": 6,
+  "quest_id": "Q-0306",
+  "checked_at_utc": "2026-11-14T05:41:00.727827+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/bhp-anxiety-cliff-2023.pdf?emrc=c1bad0",
+  "http_status": 200,
+  "pdf_sha256": "cfeada652f0e56dc5c6caeae5628171811ffd64cc1a1e5e61e797896a5bc31f4",
+  "pdf_bytes": 345512,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 3,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-006-IMG-01": "50c95310b7979a9dfc81e0381065b33205c27a629667897ced8a458069d66e2e",
+    "CLIFF-006-IMG-02": "9deb0713a917b02a138479c48a0e463a61d2218073a3f3822399e0fabcb295eb",
+    "CLIFF-006-IMG-03": "6d8809db7d63a682172e4c1b559c02d961235ef5704ae7dfe885040d84b0752b"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
