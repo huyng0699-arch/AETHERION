@@ -129,6 +129,7 @@ class AdminWindow(QMainWindow):
         self.locale_combo.addItem("Tiếng Việt", "vi")
         self.locale_combo.addItem("English", "en")
         self.locale_combo.setCurrentIndex(0 if self.locale == "vi" else 1)
+        self.locale_combo.setAccessibleName("Language / Ngôn ngữ")
         self.locale_combo.currentIndexChanged.connect(self.change_locale)
         header.addWidget(self.locale_combo)
         main.addLayout(header)
@@ -299,9 +300,31 @@ class AdminWindow(QMainWindow):
                             + "\n" + self.t("bootstrap"))
 
     def change_locale(self):
+        """Update administrator text without network calls or clearing auth."""
+        previous_locale = self.locale
+        previous_status = self.status.text()
         self.locale = str(self.locale_combo.currentData())
+        if self.locale not in STRINGS:
+            self.locale = "vi"
         self.settings.setValue("ui/language", self.locale)
         self._translate()
+        # The status may include a real username or an HTTP error. Translate
+        # only the known UI prefix; leave user/server-supplied details untouched.
+        state_keys = (
+            "not_ready", "server_offline", "server_online", "signed_in",
+            "forbidden", "bad_target", "failed", "saved", "backup_ok",
+            "model_offline", "missing_model",
+        )
+        for key in state_keys:
+            original = STRINGS[previous_locale][key]
+            for suffix in ("", ": ", " (HTTP "):
+                if (previous_status == original and suffix == "") or (
+                    suffix and previous_status.startswith(original + suffix)
+                ):
+                    self.status.setText(
+                        STRINGS[self.locale][key] + previous_status[len(original):]
+                    )
+                    return
 
     def _status(self, message: str):
         self.status.setText(message)
