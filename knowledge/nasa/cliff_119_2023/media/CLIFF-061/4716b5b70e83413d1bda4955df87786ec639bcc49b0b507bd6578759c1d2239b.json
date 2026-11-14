@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-061",
+  "title": "EEG Absence seizure.png",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/EEG_Absence_seizure.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:EEG_Absence_seizure.png",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Bromfield EB, Cavazos JE, Sirven JI, editors.",
+  "caption": "Electroencephalogram (EEG) recording demonstrating generalized 3 Hz spike-and-wave discharges characteristic of an absence seizure.",
+  "alt_text": "Multi-channel EEG tracing showing rhythmic 3 Hz spike-and-wave discharges across cortical leads during an absence seizure.",
+  "clinical_relevance": "Illustrates generalized ictal electrographic activity; NASA CliFF-061 notes EEG is not available in flight but is standard in terrestrial evaluation.",
+  "media_kind": "DIAGRAM",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 889,
+  "height": 689,
+  "size_bytes": 448694,
+  "sha256": "4716b5b70e83413d1bda4955df87786ec639bcc49b0b507bd6578759c1d2239b",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/EEG_Absence_seizure.png",
+  "retrieved_at_utc": "2026-11-14T06:16:39.073572+00:00",
+  "asset_path": "4716b5b70e83413d1bda4955df87786ec639bcc49b0b507bd6578759c1d2239b.png",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}

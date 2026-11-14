@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-061",
+  "title": "MRI Brain ADC Axial (1).jpg",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/MRI_Brain_ADC_Axial_%281%29.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:MRI_Brain_ADC_Axial_(1).jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "511KeV",
+  "caption": "Axial brain MRI apparent diffusion coefficient (ADC) slice illustrating cerebral parenchyma neuroimaging.",
+  "alt_text": "Axial MRI scan of the human brain showing normal parenchymal and ventricular anatomy.",
+  "clinical_relevance": "Represents terrestrial neuroimaging (CT/MRI) used to exclude structural lesions, hemorrhage, or CVA after a first-time seizure; unavailable in flight per NASA CliFF-061.",
+  "media_kind": "RADIOLOGY",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 1080,
+  "height": 1080,
+  "size_bytes": 270651,
+  "sha256": "603dd98a68e29a467dc9d5f83f0fbea2bc6285a2ebbd1c45b2d437e8bf58dfcb",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/MRI_Brain_ADC_Axial_%281%29.jpg",
+  "retrieved_at_utc": "2026-11-14T06:16:40.757950+00:00",
+  "asset_path": "603dd98a68e29a467dc9d5f83f0fbea2bc6285a2ebbd1c45b2d437e8bf58dfcb.jpg",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}

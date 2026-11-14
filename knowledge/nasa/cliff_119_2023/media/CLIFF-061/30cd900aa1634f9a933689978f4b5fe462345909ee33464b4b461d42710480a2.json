@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-061",
+  "title": "Brain lobes and regions with labels.png",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Brain_lobes_and_regions_with_labels.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Brain_lobes_and_regions_with_labels.png",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "ErMED14",
+  "caption": "Anatomical diagram of the human cerebral lobes (frontal, parietal, temporal, occipital) and major cortical regions.",
+  "alt_text": "Labeled lateral anatomical illustration of the human brain showing the frontal, parietal, temporal, and occipital lobes.",
+  "clinical_relevance": "Provides neuroanatomical context for focal and generalized seizure origin and neurological examination in spaceflight.",
+  "media_kind": "ANATOMY",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 750,
+  "height": 389,
+  "size_bytes": 412744,
+  "sha256": "30cd900aa1634f9a933689978f4b5fe462345909ee33464b4b461d42710480a2",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Brain_lobes_and_regions_with_labels.png",
+  "retrieved_at_utc": "2026-11-14T06:16:39.506570+00:00",
+  "asset_path": "30cd900aa1634f9a933689978f4b5fe462345909ee33464b4b461d42710480a2.png",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}

@@ -1,0 +1,24 @@
+{
+  "article_id": "CLIFF-061",
+  "slot": 61,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/seizures-cliff-2023.pdf?emrc=3f09f8",
+  "http_status": 200,
+  "pdf_bytes": 369527,
+  "pdf_sha256": "44dbbbe0ec6e3d30c2117d18bcc11afa91b40dd754e5702290dc6aff844fd641",
+  "pdf_pages": 15,
+  "sections_count": 15,
+  "tables_count": 8,
+  "references_count": 23,
+  "media_count": 4,
+  "media_sha256s": [
+    "30cd900aa1634f9a933689978f4b5fe462345909ee33464b4b461d42710480a2",
+    "4716b5b70e83413d1bda4955df87786ec639bcc49b0b507bd6578759c1d2239b",
+    "603dd98a68e29a467dc9d5f83f0fbea2bc6285a2ebbd1c45b2d437e8bf58dfcb",
+    "66584aa39ca6b29b30387fa76cf514653677ca81a07f822de105ad619fbf2b04"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-SA-4.0 / CC-BY-SA-2.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "offline_render_note": "SQLite ingestion and offline BLOB/section/table/citation verification passed on Linux; native Windows Qt GUI rendering deferred to Windows desktop gate.",
+  "missing_items": []
+}

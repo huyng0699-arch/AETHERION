@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-061",
+  "title": "Spike-waves.png",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Spike-waves.png",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Spike-waves.png",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "author": "Wikimedia Commons contributor",
+  "caption": "EEG spike-and-wave epileptiform discharge pattern across scalp electrodes.",
+  "alt_text": "Clinical EEG trace highlighting paroxysmal spike-and-wave complexes associated with epileptic seizure activity.",
+  "clinical_relevance": "Demonstrates diagnostic electrophysiological seizure activity used terrestrially to differentiate seizure from syncope or other mimics.",
+  "media_kind": "DIAGRAM",
+  "rights_verified": true,
+  "mime_type": "image/png",
+  "width": 478,
+  "height": 500,
+  "size_bytes": 132487,
+  "sha256": "66584aa39ca6b29b30387fa76cf514653677ca81a07f822de105ad619fbf2b04",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Spike-waves.png",
+  "retrieved_at_utc": "2026-11-14T06:16:39.295006+00:00",
+  "asset_path": "66584aa39ca6b29b30387fa76cf514653677ca81a07f822de105ad619fbf2b04.png",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}
