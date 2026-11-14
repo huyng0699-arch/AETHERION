@@ -13,6 +13,8 @@ from pathlib import Path
 import sqlite3
 from typing import Any
 
+from .localization import normalize_locale, tr, translate_existing
+
 DEFAULT_LIBRARY = (
     Path(__file__).resolve().parents[4]
     / "knowledge/nasa/cliff_119_2023/AETHERION_NASA_CLIFF_119.sqlite"
@@ -230,17 +232,19 @@ def build_medical_article_reader(db_path: str | Path = DEFAULT_LIBRARY, parent=N
 
         def __init__(self, parent_widget=None):
             super().__init__(parent_widget)
+            self.ui_language = "vi"
             self.database_path = Path(db_path)
             self.current_article: OfflineArticle | None = None
             outer = QVBoxLayout(self)
             toolbar = QHBoxLayout()
-            back = QPushButton("Back to library")
+            back = QPushButton(tr(self.ui_language, "reader.back"))
+            self.back_button = back
             back.clicked.connect(lambda checked=False: self.back_requested.emit())
             toolbar.addWidget(back)
-            self.previous = QPushButton("Previous article")
+            self.previous = QPushButton(tr(self.ui_language, "reader.previous"))
             self.previous.clicked.connect(lambda: self._navigate(-1))
             toolbar.addWidget(self.previous)
-            self.next = QPushButton("Next article")
+            self.next = QPushButton(tr(self.ui_language, "reader.next"))
             self.next.clicked.connect(lambda: self._navigate(1))
             toolbar.addWidget(self.next)
             outer.addLayout(toolbar)
@@ -251,9 +255,22 @@ def build_medical_article_reader(db_path: str | Path = DEFAULT_LIBRARY, parent=N
             self.scroll.setWidget(self.container)
             outer.addWidget(self.scroll, 1)
             self._clear()
-            self.content.addWidget(label("Select a locally imported article to read."))
+            self.content.addWidget(label(tr(self.ui_language, "reader.select")))
             self.previous.setEnabled(False)
             self.next.setEnabled(False)
+
+        def set_locale(self, locale: str) -> None:
+            self.ui_language = normalize_locale(locale)
+            self.back_button.setText(tr(self.ui_language, "reader.back"))
+            self.previous.setText(tr(self.ui_language, "reader.previous"))
+            self.next.setText(tr(self.ui_language, "reader.next"))
+            if self.current_article is not None:
+                # Re-read only the same local SQLite record; the original source is
+                # never altered, translated or fetched from an external service.
+                self.open_article(self.current_article.article_id)
+            else:
+                self._clear()
+                self.content.addWidget(label(tr(self.ui_language, "reader.select")))
 
         def _clear(self) -> None:
             while self.content.count():
@@ -278,32 +295,30 @@ def build_medical_article_reader(db_path: str | Path = DEFAULT_LIBRARY, parent=N
                 self.current_article = None
                 self.previous.setEnabled(False)
                 self.next.setEnabled(False)
-                self.content.addWidget(label(f"Article unavailable: {exc}"))
+                self.content.addWidget(label(tr(self.ui_language, "reader.notAvailable", reason=str(exc))))
                 return False
             self.current_article = document
             self.previous.setEnabled(bool(document.previous_id))
             self.next.setEnabled(bool(document.next_id))
             self.content.addWidget(label(document.title, heading=True))
-            self.content.addWidget(label(
-                f"Category: {document.category} | Content: {document.completeness}"
-                f" | NASA/source verification: {document.source_state}"
-            ))
-            self.content.addWidget(label(
-                "Scientific reference only; not clinically validated treatment guidance. "
-                "Labels in an imported file are not independent NASA verification."
-            ))
-            self.content.addWidget(label(
-                f"Original source: {document.source_url}\n"
-                f"Attribution: {document.source_attribution}\n"
-                f"License: {document.source_license}\n"
-                f"Original SHA-256: {document.source_sha256}"
-            ))
+            self.content.addWidget(label(tr(self.ui_language, "reader.sourceUnchanged")))
+            self.content.addWidget(label(tr(
+                self.ui_language, "reader.summary", category=document.category,
+                completeness=document.completeness, state=document.source_state,
+            )))
+            self.content.addWidget(label(tr(self.ui_language, "reader.warning")))
+            self.content.addWidget(label(tr(
+                self.ui_language, "reader.original", url=document.source_url,
+                attribution=document.source_attribution, license=document.source_license,
+                sha=document.source_sha256,
+            )))
             if not document.blocks:
-                self.content.addWidget(label("No original source text or tables were imported."))
+                self.content.addWidget(label(tr(self.ui_language, "reader.noText")))
             for block in document.blocks:
                 self.content.addWidget(label(block.heading, heading=True))
                 self.content.addWidget(label(
-                    f"{block.page} | Source anchor: {block.anchor or 'not provided'}"
+                    tr(self.ui_language, "reader.sourceAnchor", page=block.page,
+                       anchor=block.anchor or "not provided")
                 ))
                 if block.kind == "section":
                     self.content.addWidget(label(block.text))
@@ -320,16 +335,14 @@ def build_medical_article_reader(db_path: str | Path = DEFAULT_LIBRARY, parent=N
                         table.setAccessibleName(block.heading)
                         self.content.addWidget(table)
                     else:
-                        self.content.addWidget(label("No rows in imported source table."))
-            self.content.addWidget(label("Rights-reviewed source illustrations", heading=True))
+                        self.content.addWidget(label(tr(self.ui_language, "reader.noRows")))
+            self.content.addWidget(label(tr(self.ui_language, "reader.images"), heading=True))
             if not document.images:
-                self.content.addWidget(label("No rights-approved offline images available."))
+                self.content.addWidget(label(tr(self.ui_language, "reader.noImages")))
             for illustration in document.images:
                 pixmap = QPixmap()
                 if not pixmap.loadFromData(illustration.content):
-                    self.content.addWidget(label(
-                        f"{illustration.media_id}: invalid image bytes; display withheld."
-                    ))
+                    self.content.addWidget(label(tr(self.ui_language, "reader.imageInvalid", media_id=illustration.media_id)))
                     continue
                 picture = QLabel()
                 picture.setPixmap(pixmap.scaledToWidth(
@@ -338,16 +351,17 @@ def build_medical_article_reader(db_path: str | Path = DEFAULT_LIBRARY, parent=N
                 ))
                 picture.setAccessibleName(illustration.alt_text)
                 self.content.addWidget(picture)
-                self.content.addWidget(label(
-                    f"{illustration.caption}\nAlt: {illustration.alt_text}\n"
-                    f"{illustration.page} | Attribution: {illustration.attribution}\n"
-                    f"License: {illustration.license_name} | Source: {illustration.source_url}"
-                ))
+                self.content.addWidget(label(tr(
+                    self.ui_language, "reader.imageCaption", caption=illustration.caption,
+                    alt=illustration.alt_text, page=illustration.page,
+                    attribution=illustration.attribution, license=illustration.license_name,
+                    source=illustration.source_url,
+                )))
             for warning in document.image_warnings:
-                self.content.addWidget(label(f"Image withheld: {warning}"))
-            self.content.addWidget(label("Citations", heading=True))
+                self.content.addWidget(label(tr(self.ui_language, "reader.imageWithheld", warning=warning)))
+            self.content.addWidget(label(tr(self.ui_language, "reader.citations"), heading=True))
             if not document.references:
-                self.content.addWidget(label("No source citations were imported."))
+                self.content.addWidget(label(tr(self.ui_language, "reader.noCitations")))
             for ref in document.references:
                 self.content.addWidget(label(f"{ref.label} | {ref.page}\n{ref.url}"))
             self.content.addStretch()
