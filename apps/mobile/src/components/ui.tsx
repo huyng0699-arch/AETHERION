@@ -8,10 +8,10 @@ const AI_ORB = require('../../assets/aetherion-ai-orb.png');
 
 export function AppPage({ children, scroll = true, contentStyle }: { children: ReactNode; scroll?: boolean; contentStyle?: StyleProp<ViewStyle> }) {
   const content = scroll ? (
-    <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled" contentContainerStyle={[styles.pageContent, contentStyle]}>
+    <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled" contentContainerStyle={[styles.pageContent, styles.mobileContent, contentStyle]}>
       {children}
     </ScrollView>
-  ) : <View style={[styles.pageContent, contentStyle]}>{children}</View>;
+  ) : <View style={[styles.pageContent, styles.mobileContent, contentStyle]}>{children}</View>;
   return <View style={styles.root}><SafeAreaView style={styles.safe} edges={['top', 'left', 'right']}>{content}</SafeAreaView></View>;
 }
 
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: 'transparent' },
   safe: { flex: 1 },
   pageContent: { flexGrow: 1, paddingHorizontal: 18, paddingTop: 8, paddingBottom: 110, gap: 14 },
+  mobileContent: { width: '100%', maxWidth: 470, alignSelf: 'center' },
   eyebrow: { color: colors.cyan, fontWeight: '800', letterSpacing: 1.2, fontSize: 10, marginBottom: 7 },
   title: { color: colors.text, fontWeight: '800', letterSpacing: -0.4, lineHeight: 34 },
   body: { color: colors.muted, fontSize: 14, lineHeight: 21 },
@@ -127,8 +128,8 @@ const styles = StyleSheet.create({
   headerSpacer: { width: 38 },
   headerTitle: { flex: 1, color: colors.text, fontSize: 16, fontWeight: '800' },
   back: { width: 38, height: 38, borderRadius: 14, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: colors.border },
-  navSafe: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: 12, paddingTop: 10, backgroundColor: 'transparent' },
-  nav: { height: 70, borderRadius: 26, borderWidth: 1, borderColor: colors.border, backgroundColor: 'rgba(255,255,255,0.97)', paddingHorizontal: 4, flexDirection: 'row', alignItems: 'center', shadowColor: '#311C6F', shadowOpacity: 0.12, shadowRadius: 18, shadowOffset: { width: 0, height: 6 }, elevation: 9 },
+  navSafe: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: 12, paddingTop: 10, alignItems: 'center', backgroundColor: 'transparent' },
+  nav: { width: '100%', maxWidth: 470, height: 70, borderRadius: 26, borderWidth: 1, borderColor: colors.border, backgroundColor: 'rgba(255,255,255,0.97)', paddingHorizontal: 4, flexDirection: 'row', alignItems: 'center', shadowColor: '#311C6F', shadowOpacity: 0.12, shadowRadius: 18, shadowOffset: { width: 0, height: 6 }, elevation: 9 },
   navItem: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 3, minHeight: 54 },
   navLabel: { color: colors.muted, fontSize: 9, fontWeight: '700' },
   navSelected: { color: colors.cyan },
