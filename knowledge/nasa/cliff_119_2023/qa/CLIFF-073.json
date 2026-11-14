@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-073",
+  "slot": 73,
+  "quest_id": "Q-0373",
+  "checked_at_utc": "2026-11-14T06:28:37.401452+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-nasal-congestion-cliff-2023.pdf?emrc=36ac04",
+  "http_status": 200,
+  "pdf_sha256": "d60ae90ce2d4e931618518d869988c8fe14fa03e77e639bb6942af376e9617dc",
+  "pdf_bytes": 303012,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-073-IMG-01": "03d89bb16f18e92f772823714368f9ccaa1eccdb9403508708e4435cc3bdc5ed",
+    "CLIFF-073-IMG-02": "9325f53a6887634d5a88449e468adb6ad7bdc9b4fb0c70d823fe388d63896211",
+    "CLIFF-073-IMG-03": "baa69d49fb40f220d7e0a2113d87d19c8f20377de6a475634ac4e9c21dbbf625"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
