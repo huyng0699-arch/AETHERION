@@ -602,5 +602,16 @@
   "ecg.uploading": "Uploading original voltage samples to the authorized Server…",
   "ecg.upload_error": "Recording was not saved. Check Server authorization and source metadata.",
   "ecg.uploaded": "Stored in the authorized SQLite journal with an integrity hash (unverified clinical state).",
-  "ecg.offline": "OFFLINE / ERROR · ECG API or recording is unavailable."
+  "ecg.offline": "OFFLINE / ERROR · ECG API or recording is unavailable.",
+  "care.journey.new_heading": "Start a care episode",
+  "care.journey.new_concern": "Reported concern for follow-up",
+  "care.journey.new_consent": "I consent to saving this self-reported concern to my authorized Server record.",
+  "care.journey.create": "Create episode",
+  "care.journey.create_required": "Enter a concern and explicitly consent before creating.",
+  "care.journey.create_confirm": "Save a care episode to the authorized record? This report has not been clinically validated.",
+  "care.journey.created": "Source-attributed care episode saved on Server.",
+  "care.journey.stage_gather": "Gather",
+  "care.journey.stage_evaluate": "Evaluate",
+  "care.journey.stage_act": "Act",
+  "care.journey.stage_recheck": "Recheck"
 }
