@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-071",
+  "slot": 71,
+  "quest_id": "Q-0371",
+  "checked_at_utc": "2026-11-14T06:28:10.667550+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/hearing-loss-cliff-2023.pdf?emrc=5cf088",
+  "http_status": 200,
+  "pdf_sha256": "16f1249a111e4116a433db202aa11511ff26799311ee01722d4ceec2fbd849e3",
+  "pdf_bytes": 299748,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-071-IMG-01": "8b2dde75accae4d3bddcfdeb4b80d32fd0b25d73b373cef55ec5da7fa39f2c3b",
+    "CLIFF-071-IMG-02": "d6f89ee72516fc47b719c3c3ef67c0800fb814b1e5fa0a56522386c03cc37827",
+    "CLIFF-071-IMG-03": "2fe5c3ee10c8f291cb9765d202198944d9e1c2da186926c964a86a3b4b046458"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
