@@ -1,0 +1,24 @@
+{
+  "article_id": "CLIFF-062",
+  "slot": 62,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/gravity-well-entry-motion-sickness-cliff-2023.pdf?emrc=82f68c",
+  "http_status": 200,
+  "pdf_bytes": 283360,
+  "pdf_sha256": "5c00505629da6ab1eae5c0ea893e08f405f262d55adc45c46edb9c2967b667ee",
+  "pdf_pages": 12,
+  "sections_count": 12,
+  "tables_count": 7,
+  "references_count": 6,
+  "media_count": 4,
+  "media_sha256s": [
+    "18d415d3aed7d718c0b594e3fca81ba083bb484bf97e2a8a7b5db259252e36b3",
+    "75baf6b09833e619f4d727840a1847f58e5727fa86929212057b682576fc0fce",
+    "9454f21716e4195fcbf278979f7fa8c1b222c09d4d8371fc0b322690833e7645",
+    "99c4095d15520a3355d28e59a91a5c926f3d81c89d0acaa9d2e7d1730c9e66f8"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-3.0 / Public Domain images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "offline_render_note": "SQLite ingestion and offline BLOB/section/table/citation verification passed on Linux; native Windows Qt GUI rendering deferred to Windows desktop gate.",
+  "missing_items": []
+}
