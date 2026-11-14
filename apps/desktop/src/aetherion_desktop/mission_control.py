@@ -1,7 +1,7 @@
 """Qt Mission Control backed exclusively by authenticated AETHERION observations.
 
-A subject is shown only when the operator explicitly requests it and the API
-allows it. This prototype does not discover crew, invent telemetry, or diagnose.
+A subject is shown only after authorization. Explicit per-account roster IDs may
+be loaded from a real server login; no telemetry or diagnosis is invented.
 """
 from __future__ import annotations
 
@@ -303,7 +303,11 @@ def build_mission_control_page(api_url: str, network, parent=None):
                 self._say("mission.invalidSubject")
                 return
             self._append_subject(subject_id)
-            self.subjects.setCurrentRow(self._subjects.index(subject_id))
+            row = self._subjects.index(subject_id)
+            if self.subjects.currentRow() == row:
+                self.refresh_subject()
+            else:
+                self.subjects.setCurrentRow(row)
 
         def open_selected_personal(self):
             """Never route to a guessed subject or silently reuse a logged-out session."""
