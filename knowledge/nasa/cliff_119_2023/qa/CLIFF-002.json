@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-002",
+  "slot": 2,
+  "quest_id": "Q-0302",
+  "checked_at_utc": "2026-11-14T05:35:29.054645+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/trauma-abdominal-injury-blunt-cliff-2023.pdf?emrc=38045d",
+  "http_status": 200,
+  "pdf_sha256": "0377ac08b25d13e0e4beacacdd486531801a1813fc4a05d348253870f177bd4f",
+  "pdf_bytes": 336720,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 2,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-002-IMG-01": "0d92965e2f615cf99b5c7a473756c23ebfe4420c5793ba37a17bf8bad820281c",
+    "CLIFF-002-IMG-02": "a2574789ec555ccdfbfca5890abb137786ee4183e82c056492d4ab53f1924fd8",
+    "CLIFF-002-IMG-03": "d326c82db7f7856209b0ab9477ce4727ed9aab00bbf1420cf8901d1ed56efaf4"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
