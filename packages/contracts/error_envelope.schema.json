@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/contracts/v1/error_envelope.schema.json",
+  "title": "AETHERION Stable Error Response Envelope (Q-0021)",
+  "description": "Consistent error codes and user-actionable detail for 4xx/5xx responses while preserving FastAPI detail compatibility.",
+  "type": "object",
+  "required": ["error", "detail"],
+  "properties": {
+    "error": {
+      "type": "object",
+      "required": ["code", "status", "message", "action"],
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": [
+            "UNAUTHORIZED",
+            "FORBIDDEN",
+            "NOT_FOUND",
+            "VALIDATION_ERROR",
+            "SERVICE_UNAVAILABLE",
+            "INTERNAL_ERROR",
+            "HTTP_ERROR"
+          ]
+        },
+        "status": {
+          "type": "integer",
+          "minimum": 400,
+          "maximum": 599
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "detail": {}
+  }
+}

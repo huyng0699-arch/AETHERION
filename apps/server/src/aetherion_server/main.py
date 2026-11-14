@@ -9,7 +9,9 @@ import os
 from pathlib import Path
 from typing import Literal
 
-from fastapi import Depends, FastAPI, Header, HTTPException, Query, Response, status
+from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Response, status
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel, Field, field_validator, model_validator
 
@@ -145,6 +147,65 @@ def create_app(
         version="0.2.0",
         lifespan=lifespan,
     )
+
+    _status_codes = {
+        401: ("UNAUTHORIZED", "Authenticate via POST /api/v1/auth/login and provide a valid Bearer token."),
+        403: ("FORBIDDEN", "Use an account authorized for the requested subject_id."),
+        404: ("NOT_FOUND", "Verify the requested resource identifier exists."),
+        422: ("VALIDATION_ERROR", "Fix the invalid request fields shown in detail and retry."),
+        503: ("SERVICE_UNAVAILABLE", "Check database readiness via GET /ready and retry."),
+    }
+
+    @application.exception_handler(HTTPException)
+    async def http_exception_handler(_request: Request, exc: HTTPException) -> JSONResponse:
+        code, action = _status_codes.get(
+            exc.status_code,
+            ("HTTP_ERROR", "Check request parameters and server status."),
+        )
+        return JSONResponse(
+            status_code=exc.status_code,
+            headers=exc.headers,
+            content={
+                "error": {
+                    "code": code,
+                    "status": exc.status_code,
+                    "message": str(exc.detail),
+                    "action": action,
+                },
+                "detail": exc.detail,
+            },
+        )
+
+    @application.exception_handler(RequestValidationError)
+    async def validation_exception_handler(_request: Request, exc: RequestValidationError) -> JSONResponse:
+        errors = exc.errors()
+        return JSONResponse(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            content={
+                "error": {
+                    "code": "VALIDATION_ERROR",
+                    "status": 422,
+                    "message": "Request validation failed",
+                    "action": "Fix the invalid request fields shown in detail and retry.",
+                },
+                "detail": errors,
+            },
+        )
+
+    @application.exception_handler(Exception)
+    async def unhandled_exception_handler(_request: Request, _exc: Exception) -> JSONResponse:
+        return JSONResponse(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            content={
+                "error": {
+                    "code": "INTERNAL_ERROR",
+                    "status": 500,
+                    "message": "Internal server error",
+                    "action": "Retry the request or inspect local server logs.",
+                },
+                "detail": "Internal server error",
+            },
+        )
 
     def require_session(
         credentials: HTTPAuthorizationCredentials | None = Depends(_bearer_scheme),
