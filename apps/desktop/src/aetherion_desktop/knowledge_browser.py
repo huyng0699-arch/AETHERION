@@ -24,6 +24,21 @@ class KnowledgeBrowser(QWidget):
     def __init__(self, parent=None, api_url: str | None = None):
         super().__init__(parent)
         self.setObjectName("aetherionKnowledgeBrowser")
+        self.setStyleSheet("""
+            QWidget#aetherionKnowledgeBrowser { background: #081627; color: #e8f1ff; }
+            QLabel#heading { color: #e8f5ff; font-size: 23px; font-weight: 700; }
+            QLabel { color: #a7bcd4; }
+            QLineEdit, QComboBox { background: #10263d; color: #e8f1ff; padding: 12px;
+                border: 1px solid #32516b; border-radius: 10px; }
+            QLineEdit:focus, QComboBox:focus { border-color: #62bed4; }
+            QListWidget, QTextBrowser { background: #0e2137; color: #e8f1ff;
+                border: 1px solid #29435d; border-radius: 12px; padding: 12px; }
+            QListWidget::item { min-height: 34px; padding: 7px; }
+            QListWidget::item:selected { background: #194668; color: #ffffff; border-radius: 6px; }
+            QPushButton { background: #17658a; color: #ffffff; padding: 11px 18px;
+                border: none; border-radius: 9px; font-weight: 600; }
+            QPushButton:hover { background: #227da5; }
+        """)
         self.api_url = (api_url or os.environ.get(
             "AETHERION_API_URL", "http://127.0.0.1:8765")).rstrip("/")
         self.network = QNetworkAccessManager(self)

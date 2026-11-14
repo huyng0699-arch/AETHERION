@@ -19,6 +19,19 @@ from PySide6.QtWidgets import (
 class SymptomInterviewPage(QWidget):
     def __init__(self, parent=None, api_url: str | None = None):
         super().__init__(parent)
+        self.setObjectName("aetherionSymptomInterview")
+        self.setStyleSheet("""
+            QWidget#aetherionSymptomInterview { background: #081627; color: #e9f2ff; }
+            QLabel#heading { color: #e9f5ff; font-size: 23px; font-weight: 700; }
+            QLabel, QCheckBox { color: #b9cde2; }
+            QLineEdit, QComboBox, QListWidget { background: #10263d; color: #f1f7ff;
+                border: 1px solid #31516b; border-radius: 10px; padding: 10px; }
+            QListWidget::item { padding: 8px; }
+            QListWidget::item:selected { background: #205374; }
+            QPushButton { background: #17658a; color: #ffffff; border: none;
+                padding: 11px 18px; border-radius: 9px; font-weight: 600; }
+            QPushButton:hover { background: #227da5; }
+        """)
         self.api_url = (api_url or os.environ.get(
             "AETHERION_API_URL", "http://127.0.0.1:8765")).rstrip("/")
         self.net = QNetworkAccessManager(self)
