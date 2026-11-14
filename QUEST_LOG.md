@@ -67,6 +67,13 @@ Owner override: the rejected five oversized Portal cards / horizontal-menu-only 
 
 ---
 
+
+## Scoped integrity fixes — attribution SHA-256 and Quest YAML (2026-11-14)
+
+- **Submission metadata corrected on main:** [commit 311c59e](https://github.com/huyng0699-arch/AETHERION/commit/311c59e26447518b08c5974c1e2457405f23a48e) replaces the stale SHA-256 of `THIRD_PARTY_NOTICES.md` in `submission/SOURCES_AND_LICENSES.md`; exact SHA-256 was recomputed from current source bytes, and all four current published digests were checked by GitHub read-back. Original Q-0264 approval was not altered; a pinned Python submission check and independent reviewer are still required.
+- **Quest Board duplicate-key regression corrected on main:** [Q-0065 metadata fix](https://github.com/huyng0699-arch/AETHERION/commit/daf3aae2526f558874cd304e2d42efc605153be2) and [Q-0072 metadata fix](https://github.com/huyng0699-arch/AETHERION/commit/c619c4625604aed2a69d6a5bc98601b83405a544) remove only the shadowing null `run_id` and `lease_until_utc` lines; original owner, evidence, review and BLOCKED integration gates remain unchanged. GitHub readback shows exactly one key of each type, **not** proof of a complete `quest_board.py check` PASS.
+- **Concurrency correction:** Q-0486 is already owned by [open PR #9](https://github.com/huyng0699-arch/AETHERION/pull/9) and not yet on main. Two temporary Q-0487/Q-0488 remediation Quest files were **archived in full before deletion** to avoid introducing missing Q-0486 in the contiguous live Quest ledger. [Full archived original claims and code evidence](docs/qa/QUEST_LEDGER_METADATA_REMEDIATIONS_20261114.md). The latest GitHub directory scan after this correction confirmed **485/485 contiguous Quest IDs (Q-0001–Q-0485)**; as always, this count is a snapshot, not a permanent counter. No PR #9 file, other agent's approval or clinical evidence was changed.
+
 ## Engineering and source-of-truth references
 
 - [AGENTS.md](AGENTS.md): active owner overrides, scoped Quest leases, review rules. **START ≠ COMPONENT READY ≠ DONE**. Work only in `huyng0699-arch/AETHERION`, no branch or import from older project repositories.
