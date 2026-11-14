@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-077",
+  "slot": 77,
+  "quest_id": "Q-0377",
+  "checked_at_utc": "2026-11-14T06:29:51.877129+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/respiratory-tract-infection-lower-cliff-2023.pdf?emrc=96faa1",
+  "http_status": 200,
+  "pdf_sha256": "b2793981d49b2285737c926a3ab0f9d8e549a488a6fa3e970b21ea47289102a1",
+  "pdf_bytes": 312109,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-077-IMG-01": "67a7b18d0ec991f5295d1295a40080b2a356989af995fbd43d985137c1023985",
+    "CLIFF-077-IMG-02": "d80ec055d305577c28c731b3dc780e9f261ee09da5ba6e2ca18a6b9ac583975d",
+    "CLIFF-077-IMG-03": "527c0992969937360d1f2bca29d60787ea317af1f098e8c1063e4b90fb51846f"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
