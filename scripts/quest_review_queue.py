@@ -71,7 +71,7 @@ def scan() -> tuple[list[dict[str, str]], collections.Counter]:
             owner = m.get("owner", "")
             if review != "APPROVED":
                 reason = "DONE without review: APPROVED"
-            elif reviewer and reviewer.strip("'\\"") == owner.strip("'\\""):
+            elif reviewer and reviewer == owner:
                 reason = "Self-approved by implementer; independent review required"
             elif not reviewer:
                 reason = "DONE lacks identifiable independent reviewer"
