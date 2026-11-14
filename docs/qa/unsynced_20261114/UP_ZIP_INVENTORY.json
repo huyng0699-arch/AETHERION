@@ -1,0 +1,716 @@
+{
+  "generated_at_utc": "2026-11-14T18:28:00Z",
+  "head_commit": "5873f95b0bdfd9d891db1234b19a6710f111ec5c",
+  "up_zip_sha256": "3fb9e6c37672424dfb1d64caa55a1225fe26d4b7eedc57ac3f28de67497432be",
+  "total_up_zip_entries": 83,
+  "summary_counts": {
+    "DIFF": 71,
+    "NEW": 11,
+    "SAME": 1
+  },
+  "entries": [
+    {
+      "path": "apps/desktop/src/aetherion_desktop/atlas3d.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 22274,
+      "up_zip_sha256": "c1a8d684dca772c045b04abadf8542c7470502155599655ef07295354c989cf0",
+      "head_5873f95_sha256": "ce13eefdd5f1ac1f2a034120d0a33c6e375af85397741551a2ce4df53d978c4a"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/ecg_page.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 17899,
+      "up_zip_sha256": "c2bb6c9405cc9ea7bd84a6cfb83cc9b563c863f99249206e6e442795a077f428",
+      "head_5873f95_sha256": "40400f63a53584feeb43551cd65fb89f1a9a59b4d01f542b8e41168882dbd59b"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/features/demo/nasa_ma7.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 40402,
+      "up_zip_sha256": "639860d5d74952f6c24b51cac932c368e84a03fc902c47bd0327855dff185e77",
+      "head_5873f95_sha256": "6f6173246dbc5d0c217b67ee752457e712f166203e2679c2af8767525ee9aad7"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/features/demo/synthetic_patients.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 14277,
+      "up_zip_sha256": "ff5ffd6dc84c70ee4fcc40d58619cb63ca9e7e66d1b1b74d8ec51ae07d55b11c",
+      "head_5873f95_sha256": "23158d76923065e755a5cce807afbe75c23cabebf14cd12816e92f2d312ec0e1"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/features/personal/anatomy_handoff.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 5547,
+      "up_zip_sha256": "bb6313894ac3ddc2337ae8cd3cdc92448cb209c9417069eeb8f143b1845c493c",
+      "head_5873f95_sha256": "36db13243dabe78ba99f6bb59c5827890a50ceededd2f80192c55e4813828fa0"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/features/personal/personal_visual.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 12753,
+      "up_zip_sha256": "a440907e687ed0b3e6435d5681a7e5e07ce79e087c02d34fcc748bbc3fe2c9bd",
+      "head_5873f95_sha256": "345970532fb089da571ab3fb5b885e415a17c2981402248873fac4e64efebb14"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/i18n/en.json",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 52901,
+      "up_zip_sha256": "756ecb3e7efe7684af194da6f3b250b21941b5f5d1454460eb4df83c8bcf46a1",
+      "head_5873f95_sha256": "b32920000daecae8c05f44dee3ec03998066496611cdbdbd3d0152208f5b8c1a"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/i18n/vi.json",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 61838,
+      "up_zip_sha256": "6c772041bf83f28d8809c4deadfa1e04103187b7408777bffd67abcab9865768",
+      "head_5873f95_sha256": "166eb474f344f24a70d8910cd1133a0c147736edc7b0d225c1422de9f0147048"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/main.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "THREE_WAY_MERGE_OR_REGENERATE",
+      "bytes": 36796,
+      "up_zip_sha256": "249468b1995d8332f609d785e7a45fb331d376c528344cccd5827c78670ce1a8",
+      "head_5873f95_sha256": "983c3105f9b04cb8a38daf78cb73b866fc3c458b04061a188ab502375fe0a784"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/medical_article_reader.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 17112,
+      "up_zip_sha256": "fa013830f5975ad97fd8fb9ee63187c06f827d00e901f5e69f18083e9efa24c6",
+      "head_5873f95_sha256": "9cebb76ee6a4616b134ae21b3ad28213f84434f7d628a4d9185b170e12cd5492"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/medical_library.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 11755,
+      "up_zip_sha256": "e6b519e2c8d83df12658d6116a19efd2699275d01cfbb32580e93f883d99fd8d",
+      "head_5873f95_sha256": "3d4d54defa2337ae37b99faa9b6ef5345e877285fe2d2c11279260c41394494b"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/mission_ops_home.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "THREE_WAY_MERGE_OR_REGENERATE",
+      "bytes": 61484,
+      "up_zip_sha256": "ebf73a4622a30b575bd5f623c2fb19ef42e0750cb137fbb58f9d1f54797f1227",
+      "head_5873f95_sha256": "c517e16adaeea9818c9b825ca8e627040a36bd123a8e3190305c273bb3fc44ce"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/native_workspaces.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 53451,
+      "up_zip_sha256": "fc59061fff0e83def308fad37d74c885b0e9db69274e1c53e4aa4450914bfbfa",
+      "head_5873f95_sha256": "c1c98f8285d343f4ad90b8323f07e762239e92ce66c561f7cfee1e57b9f90a0a"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/visual_theme.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 22693,
+      "up_zip_sha256": "c65422262cf74792e13bd7d2b17215a229e94fe3b705143d2822f5f70626c540",
+      "head_5873f95_sha256": "37e14121910fbb698e80b6f76c5892510966557179a928d5a9c1bbc949ff7012"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/admin_control.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 13736,
+      "up_zip_sha256": "5a0219322b724f1c6d65d83fe44746053dd9f2ceed4221f408a8a54ee0681434",
+      "head_5873f95_sha256": "50108500ff7b8c6f2555b0106b7fa7ba7f498399d0998675c93c25859e14947e"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/audit_log.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 3491,
+      "up_zip_sha256": "ed98512af78c34b3c21cd026dce45cfd437bd2e3d7fdc6e5ff07ead0d769b3a4",
+      "head_5873f95_sha256": "bdd57bb16af7b44f3bd3718d8d4f2da71605a43dcc1a1ba14c94794d0e5931c8"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/care/episode.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 9610,
+      "up_zip_sha256": "7dd14bff1b2382b245979ac3efbf0e332c7018c5388ed68ed57a43478b91204a",
+      "head_5873f95_sha256": "d23c4b08677cf13ee8c2035bb4220fd6c59f313bc0f9fff24f54ca1f5515fcda"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/care/event_history.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 3801,
+      "up_zip_sha256": "84594ca90bd5b488897db550682617aaec16c04cd50b3f566e57fdb604569372",
+      "head_5873f95_sha256": "4fe68d5047f00097a94a0a313b96d4120e2a95a205e623e2dc375b744f2b77bd"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/care/http_api.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 7674,
+      "up_zip_sha256": "14922eae11394457c876dbb33e7eb8be9485d609917ba6fb868c606067cda126",
+      "head_5873f95_sha256": "77030b9fd3f45b34e8126736c659011bfd13f786b06a5a23f8eedc125196154e"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/care/interview_persistence.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 7810,
+      "up_zip_sha256": "f0df2b739789dec6a3eb00d180015680bc1b515b90049f27f3d91f8bbc8bf84f",
+      "head_5873f95_sha256": "fd77aa29428c118fffc1fa081edfdf4f838f2a717b37c35633893e877244bd93"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/dev_reset.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 875,
+      "up_zip_sha256": "4c44af2f2068cd61b5a0a346d5825d6f3b2f57382acaa1b68d0050a8e99d2683",
+      "head_5873f95_sha256": "6e21426fe7a03db2f64696ab70338885613507172d5d16543c01e46b0b5eb7ff"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/ecg/http_api.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 9888,
+      "up_zip_sha256": "fed01fa74aa1f80bd62dc3ab1a0758d064ff402e294e60fb0b86a82eb59334ad",
+      "head_5873f95_sha256": "8599336336f4fe72e051c6f2cb5aec680af0bc5fcd4048cf3402a4a65ad6cb6b"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/environment_store.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 3844,
+      "up_zip_sha256": "afa526d89e4158af7c21958a46db0bf1508458e18b80956160ecf1793a3aac49",
+      "head_5873f95_sha256": "0d5a31043a827c0c2531c27886dabcc70c5f10743841580e0e28dccc8bd4e7de"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/replay_guard.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 3682,
+      "up_zip_sha256": "bc6ef46c7366a319fcd7984432ebcf2b7e09017a8d43f72de1e1adb0fa0a22d9",
+      "head_5873f95_sha256": "5b22d6191c509fa331425fee5ab77fc25efe3d7217a58d36b5a9838b032eb3b2"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/runtime_config.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 4200,
+      "up_zip_sha256": "ccb90e997e2fdce64792aaf0a03d2d697dc8869ea416fbcaf18af70b0cb6dd17",
+      "head_5873f95_sha256": "811834d33b1b50cc3d141660525257e770d490be38b2a71548f53f60d3444fde"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/safety/assistance.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 6114,
+      "up_zip_sha256": "47e4df41ba3e422277fbf2b131fb8c69c034703c763a529f47fae4fff3042c36",
+      "head_5873f95_sha256": "2d2a65e93c03a85c21e4e3256a07a3e1f0809c96a672fc5e27402e15067abc52"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/safety/witness_log.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 4944,
+      "up_zip_sha256": "b83197ded822ab81388bb7307fe52bc9a89f9020336131ff2462c8e877e93d70",
+      "head_5873f95_sha256": "3beb24fa278ceaa344d16a79e4c0a1308d2a4280e36785486f4bd025e6177db3"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/safety_api.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 24842,
+      "up_zip_sha256": "b4bc6b39a498ede0e3256ad5a28f125247e7248dd21722a46e9c32574aef184c",
+      "head_5873f95_sha256": "7a6c9b832a24574d693438c2324cdd0af12464e5277e9872fd21e0b4572a90bb"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/self_report.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 3793,
+      "up_zip_sha256": "8eccc78149faa8a4a1de37ba77914002c4d10f50474ed77eadbb73ef187c3b00",
+      "head_5873f95_sha256": "63f81bfe92dc5ff961fcc6252ee799bfb1467422ebef2ef9f34ec01552c4d0c4"
+    },
+    {
+      "path": "apps/server/src/aetherion_server/sqlite_compat.py",
+      "status_vs_5873f95": "NEW",
+      "disposition": "IMPORT_NEW",
+      "bytes": 1206,
+      "up_zip_sha256": "1ff14f2ad708c4bde66322c5893c3b5341a69d90e2ea82ab7ad60d11948c84cf",
+      "head_5873f95_sha256": null
+    },
+    {
+      "path": "apps/server/src/aetherion_server/store.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 19517,
+      "up_zip_sha256": "b106efdb86073f34b31a77c1b4c5fd3353f4180493f7cfb6ed9ff73d93c96a53",
+      "head_5873f95_sha256": "8cc73761962f158299b50bacd5fa00e61e62ec6dbefd9af59907c4c92ea9f853"
+    },
+    {
+      "path": "docs/SCREEN_STATUS.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 20857,
+      "up_zip_sha256": "1fff60c0c92df2b4a1a41e08aec07b353e8af92c888cb52cbc7e164a149ff91c",
+      "head_5873f95_sha256": "45ad4e96b829edb0a494a7ae31c88517b772c22f83ae4c4c6cfd58c3531051e6"
+    },
+    {
+      "path": "docs/qa/WINDOWS_COMPLETION_REPORT_20261114.md",
+      "status_vs_5873f95": "NEW",
+      "disposition": "IMPORT_NEW",
+      "bytes": 13924,
+      "up_zip_sha256": "ab00e101cffb19f9c9f612f30f0d5435b7d5eca287b609d883e37425f99ab4cf",
+      "head_5873f95_sha256": null
+    },
+    {
+      "path": "docs/qa/windows-cliff-evidence/q0430-20261114T174601Z.json",
+      "status_vs_5873f95": "NEW",
+      "disposition": "IMPORT_NEW",
+      "bytes": 3168,
+      "up_zip_sha256": "53e28da4db208774aa24dc14e11904abd7f903d4779fa06eba442c9d5755959a",
+      "head_5873f95_sha256": null
+    },
+    {
+      "path": "docs/qa/windows-cliff-evidence/q0430-20261114T174601Z.png",
+      "status_vs_5873f95": "NEW",
+      "disposition": "IMPORT_NEW",
+      "bytes": 15189,
+      "up_zip_sha256": "72c2f587c03830f74ca4a6adbe3975ffc06718e4f4f36e74652aac3751c22547",
+      "head_5873f95_sha256": null
+    },
+    {
+      "path": "docs/qa/windows-visual-qa/en_dark_1360_atlas.png",
+      "status_vs_5873f95": "NEW",
+      "disposition": "IMPORT_NEW",
+      "bytes": 153778,
+      "up_zip_sha256": "435941481feea3650dcf36edfa5c3f711892dd9de6deb3c1f831c6f1061de8cd",
+      "head_5873f95_sha256": null
+    },
+    {
+      "path": "docs/qa/windows-visual-qa/en_dark_1360_health.png",
+      "status_vs_5873f95": "NEW",
+      "disposition": "IMPORT_NEW",
+      "bytes": 222721,
+      "up_zip_sha256": "278ca477e18d96b009bba5399d9a8d20479d87b472aa0097d36c2a51e441f561",
+      "head_5873f95_sha256": null
+    },
+    {
+      "path": "docs/qa/windows-visual-qa/en_dark_1360_home.png",
+      "status_vs_5873f95": "NEW",
+      "disposition": "IMPORT_NEW",
+      "bytes": 145760,
+      "up_zip_sha256": "92c785d795c3f66689eccd99da0477c36bf2bf0b2776656e15c8717bdb1e5110",
+      "head_5873f95_sha256": null
+    },
+    {
+      "path": "docs/qa/windows-visual-qa/vi_light_1040_care_guide.png",
+      "status_vs_5873f95": "NEW",
+      "disposition": "IMPORT_NEW",
+      "bytes": 134977,
+      "up_zip_sha256": "6ae9f804ef52bc6de4d37afc6261d5bd3cf749116dbbc04868f4e9e91a85459b",
+      "head_5873f95_sha256": null
+    },
+    {
+      "path": "docs/qa/windows-visual-qa/vi_light_1040_health.png",
+      "status_vs_5873f95": "NEW",
+      "disposition": "IMPORT_NEW",
+      "bytes": 147875,
+      "up_zip_sha256": "b5e118584b3b712a5bbafd753a8a7ffed3f6ef3e2ae6c44c2bcdd3be87ea50db",
+      "head_5873f95_sha256": null
+    },
+    {
+      "path": "docs/qa/windows-visual-qa/vi_light_1040_home.png",
+      "status_vs_5873f95": "NEW",
+      "disposition": "IMPORT_NEW",
+      "bytes": 119026,
+      "up_zip_sha256": "95147f46f79ccf560316df6705c02bb9d0d3218158dcb0b13fb0faade8372c78",
+      "head_5873f95_sha256": null
+    },
+    {
+      "path": "docs/qa/windows-visual-qa/vi_light_1040_medical_library.png",
+      "status_vs_5873f95": "NEW",
+      "disposition": "IMPORT_NEW",
+      "bytes": 147459,
+      "up_zip_sha256": "27ba32bd4905e4f2c9d1669b5b6b8f063121748926465ec004a72acbf5100eda",
+      "head_5873f95_sha256": null
+    },
+    {
+      "path": "knowledge/nasa/cliff_119_2023/audit_status.json",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 1424,
+      "up_zip_sha256": "2a36a52134e6b210c375de1b7bad6ac0fac5ee5b6e4682d98e5d0774b6ef82ac",
+      "head_5873f95_sha256": "a48b988a2f9dd8e8f3f70eccdffbb5e90e02b1b451ff0abe1372f6452b584594"
+    },
+    {
+      "path": "knowledge/nasa/cliff_119_2023/audit_status.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 1490,
+      "up_zip_sha256": "85c6d9d6a4a3d265c2dbd5f21a3277ff910d694ea79455ba6ee80be577c702d8",
+      "head_5873f95_sha256": "21d72df510c19145b66a7d829b0a950395845bcbd5b90e176207ff219496702b"
+    },
+    {
+      "path": "knowledge/nasa/cliff_119_2023/library_schema.py",
+      "status_vs_5873f95": "SAME",
+      "disposition": "UNCHANGED",
+      "bytes": 9528,
+      "up_zip_sha256": "3ed2ba6e10214b2199875ad7cfc079fe49184b8c4d066a7d7cb2185b3e329e89",
+      "head_5873f95_sha256": "3ed2ba6e10214b2199875ad7cfc079fe49184b8c4d066a7d7cb2185b3e329e89"
+    },
+    {
+      "path": "packages/contracts/README.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "THREE_WAY_MERGE_OR_REGENERATE",
+      "bytes": 3279,
+      "up_zip_sha256": "c0d7d4ece18df6f43eeb8c5e1b1cecaa5e45267afe803564f6867c9f74ff3188",
+      "head_5873f95_sha256": "3a30a603b7cb78b59c8d10f2f49f80d95abbc3136e5c8e49b5ce200b1cda8565"
+    },
+    {
+      "path": "packages/contracts/openapi.json",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "THREE_WAY_MERGE_OR_REGENERATE",
+      "bytes": 76881,
+      "up_zip_sha256": "8086a31b63a1e675973a6afc99f003ef9bbc64aaa81e140322fd2950504353db",
+      "head_5873f95_sha256": "9d9fd52c9691be4c2fa402c36d5889a2ed0d88f3f2e9218c7ceb21c136fd1399"
+    },
+    {
+      "path": "packages/medical_library/atomic_refresh.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 2128,
+      "up_zip_sha256": "fe4efa4ed7a0e30f0652d446ff1b08ddc3f36abe6ee2afc12c218db0ae9f6a9c",
+      "head_5873f95_sha256": "2f4f3edd578855fdff394245a001fead3977df9600d757a47c747b944aff23f2"
+    },
+    {
+      "path": "packages/medical_library/offline_search.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 4349,
+      "up_zip_sha256": "ddcdd216a2a807b196b70479892dede1efbdb5961fcdeb63e23b677c88395970",
+      "head_5873f95_sha256": "c35562aaa55047ea97056fbefe9740296e770bc2d158f9d41cc9f5c391ea03a9"
+    },
+    {
+      "path": "quests/v1/Q-0016.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 4677,
+      "up_zip_sha256": "3ffc6f89524124cbecf7d61b34bbabca87ad53c1d50d325f826a16e9b40d08a6",
+      "head_5873f95_sha256": "8a54adfc0177d27b42679f59ec7c2c38bdd61cc0312438412ac04f0a83619e10"
+    },
+    {
+      "path": "quests/v1/Q-0082.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 5734,
+      "up_zip_sha256": "cc1cd338be4630ca00e65253b1518067eea482739dd90867c69ba5dba96560b5",
+      "head_5873f95_sha256": "91efabeaabc4c0a227b413b924cbb64c32377318b54df20ba01ec334c2b055b6"
+    },
+    {
+      "path": "quests/v1/Q-0087.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 5172,
+      "up_zip_sha256": "147e09e0f4a4b146dc87d974bfa33850f740862271d07823d575972a94c54c6d",
+      "head_5873f95_sha256": "3f07e4808552b52fbdc0d74fb096c7ea104aee66bf54746b07097c483ea79f33"
+    },
+    {
+      "path": "quests/v1/Q-0261.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "KEEP_HEAD_NEWER",
+      "bytes": 3674,
+      "up_zip_sha256": "011c41a65042ad2ec88369396bdbcf097c8946082a140e2199c05236cd59572e",
+      "head_5873f95_sha256": "110ab1ae6dcb3a521b46ccf69cbf43587e8dd0eefc6829bcbca15b4b57f91a2f"
+    },
+    {
+      "path": "quests/v1/Q-0430.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 5293,
+      "up_zip_sha256": "f4b7a557fedf6640f1189de250acfc33c2757c44ad0a5ca408be066c1ce43cb6",
+      "head_5873f95_sha256": "8dfa51665c5693b68c80655251b849b78131146dc9dfcbaf64904aa7d61e6fff"
+    },
+    {
+      "path": "quests/v1/Q-0458.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 4798,
+      "up_zip_sha256": "e17a9edf40bdac13ce4632fdfe7a487d360b571b5a94d42db132aba8678c9916",
+      "head_5873f95_sha256": "afcafecb64765b7cb16349ba6f70be4b0fab92d4d47785b68803863d20a228c7"
+    },
+    {
+      "path": "quests/v1/Q-0465.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 6008,
+      "up_zip_sha256": "5c6d4f286a2cf5895c271cdcd251a61ec52e614d0d4d991010bcad2191e951f6",
+      "head_5873f95_sha256": "735f29598636740e3072a74541c16ea9e7aa558e8aef2faf7ef4827a319f1259"
+    },
+    {
+      "path": "quests/v1/Q-0477.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 14944,
+      "up_zip_sha256": "0a054e31e31e08b0e94975355468d196ce887cee76439f99ee3eceba1779d927",
+      "head_5873f95_sha256": "602afe7db8dac0d9d78cd54f522b045b397994c8d31aa7bddfced9115927b88a"
+    },
+    {
+      "path": "quests/v1/Q-0478.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 13768,
+      "up_zip_sha256": "8201ab25359cf89221f09c3cd0ac01960203380a28c9e6a589b3a909e3be5e55",
+      "head_5873f95_sha256": "afa0dddef1b6616c2a904859c0b95c10b48f2eb80834180884f2e29e918135ba"
+    },
+    {
+      "path": "quests/v1/Q-0485.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 29309,
+      "up_zip_sha256": "fffaae544160bd8d8bde817a71399df5300c865b1da0e082611a5b54aaff2243",
+      "head_5873f95_sha256": "767f38982da3887cafc83bfa5919fca5bf19557182e4fea6e4f4678342a4310c"
+    },
+    {
+      "path": "scripts/build_windows.ps1",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 9962,
+      "up_zip_sha256": "2a2fc2aef84cf903c0e7415e7b1fcbacf945afd67950e762963a45d0f11f789d",
+      "head_5873f95_sha256": "a87a98aaa5c9bf79a1d78416a8f0ad66935fd0dc98027bb93f358eb0c668b0e1"
+    },
+    {
+      "path": "scripts/medical_image_rights.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 10856,
+      "up_zip_sha256": "94ed37a9e5efc727e51756d48bfab8eb80e720b92147702c2d6ddcc209274374",
+      "head_5873f95_sha256": "6e8775ef2c5fc5d5b2829dccaa108505f8c3135cc7ff34e1fc2c2d43180a8861"
+    },
+    {
+      "path": "scripts/smoke_cliff_windows_offline.ps1",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 16141,
+      "up_zip_sha256": "b6c0950559dce65f467b4fe25cfc4d94384ed7c46e69ee6d2303c42a05085c97",
+      "head_5873f95_sha256": "807212f96b37d4479e868680fbcd9b6c79de12b00d4b66368a151451c4facea1"
+    },
+    {
+      "path": "submission/ARCHITECTURE_DIAGRAM.md",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "KEEP_HEAD_NEWER",
+      "bytes": 2086,
+      "up_zip_sha256": "909999bb0c02ee0271a17242515d3f29161a506ab46c9a7afd9b3c9b3792c3ab",
+      "head_5873f95_sha256": "608e2f35d3a79d92d59ee154e903222755b33cd9e3007be4ef9b647b4112fbe1"
+    },
+    {
+      "path": "tests/test_anatomy_catalog_api.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 5263,
+      "up_zip_sha256": "6f392a51f83437147e6a81b8b957836479fb1a74092064bac850d5937fffa24e",
+      "head_5873f95_sha256": "1ca63745b706e019eefaf185b41f03cd24734a4c6f3a8b8231a04e842512961c"
+    },
+    {
+      "path": "tests/test_care_back_resume_episode_e2e.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "THREE_WAY_MERGE_FOR_Q0487_LOGIN",
+      "bytes": 6645,
+      "up_zip_sha256": "432d9014afa54452864f0798bae1cd5ac9b4fa8eefb968cf94f8a9cfe4db069f",
+      "head_5873f95_sha256": "15353e1db0bdbee4e1d9259aac892f9b463f01d0ceed22d42ce99a9df019ad69"
+    },
+    {
+      "path": "tests/test_cliff119_release_audit.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 7336,
+      "up_zip_sha256": "46f728f4d88a24dd6c3a4294135425fa8ae484cc9e6de61ce1ce88b0102b5acb",
+      "head_5873f95_sha256": "1231f99466cb233fab12389fcc0228ac1ba904e51dd0260cb261eaa2ae548b28"
+    },
+    {
+      "path": "tests/test_cliff119_sqlite_schema.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 4027,
+      "up_zip_sha256": "257333c694d3bc6991b13ca3bc61b74a28da139794139e34454e9a25098c48b8",
+      "head_5873f95_sha256": "ef3c57ec2331d1c44e0b5fe51f7574a47f578d10508f7ac805dd488ea274678c"
+    },
+    {
+      "path": "tests/test_cliff_021_source_audit.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 3877,
+      "up_zip_sha256": "adcddd6d8124df6dc5adc3e1857056d21ea7d48b7be0208ca135e92d2bdad3f1",
+      "head_5873f95_sha256": "e3185ab33b921004350f3fc3ddba3aefc19ec81099f484ca87517c86d6b4dc03"
+    },
+    {
+      "path": "tests/test_core_environment_scope.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 2538,
+      "up_zip_sha256": "c21ba8724598ef012c2582024dca023a4927e8247404367cad5e531886cb0401",
+      "head_5873f95_sha256": "7bbbfd4edfc89eb8f7f67a506eada21455a70a0c88bb52f7a3effc8d0aff74d4"
+    },
+    {
+      "path": "tests/test_core_migration.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 3379,
+      "up_zip_sha256": "df6061203d0f141792a3e98c8eec3f1f3223086a8719a0fc997ea5d23ec7da66",
+      "head_5873f95_sha256": "ec69c1536b09b30e33a6b3b6183a56170cb99e61cedfa56d62d6e141a372d53a"
+    },
+    {
+      "path": "tests/test_core_self_report.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 2757,
+      "up_zip_sha256": "a903d32ee7d23bc8cde73a5d99329f45d6a320df078eb10c40152989672e774d",
+      "head_5873f95_sha256": "5495ba6c4f0b80c57767f379c524a2de8949892931c1fa99134a716fc8551e21"
+    },
+    {
+      "path": "tests/test_core_timeseries_perf.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 2920,
+      "up_zip_sha256": "f6f7010e10b17d78ecd50bc53fea3d99eeda61f7dacd72594546c288132ea1f3",
+      "head_5873f95_sha256": "f6653b8ed393fc51cc46037ae6de9e72c7e65d10bede1cc06db9a87305ea6ea8"
+    },
+    {
+      "path": "tests/test_desktop_portal.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "THREE_WAY_MERGE_FOR_Q0487_LOGIN",
+      "bytes": 2917,
+      "up_zip_sha256": "a6e28e0c50f77ca60e1b26f177f04cd1e6fb5da07bb61d96b8601b6b7072f236",
+      "head_5873f95_sha256": "d7eec6e9fa75cce989e9405c16c2f94a0165da5d719220ac979373df1a5e4e6c"
+    },
+    {
+      "path": "tests/test_desktop_qt_startup_e2e.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "THREE_WAY_MERGE_FOR_Q0487_LOGIN",
+      "bytes": 4372,
+      "up_zip_sha256": "0f3ce64b8e819a8f1d50bcc16aef1b3ce4713b141d603b8e8f159e38a690a9f6",
+      "head_5873f95_sha256": "f718f1b0c30a577613835eaec3b26a850fe24aec5a385b9f87d6833f92e05546"
+    },
+    {
+      "path": "tests/test_main_menu_controls_audit.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "THREE_WAY_MERGE_FOR_Q0487_LOGIN",
+      "bytes": 2855,
+      "up_zip_sha256": "1948dd56c2f896372f06a13f42d03020087cc72c3863d8ab8145597bf9a52546",
+      "head_5873f95_sha256": "c038f5ce76fc7ab8846831b0e446411fb7bd833cace9caf6918da628e57ded6f"
+    },
+    {
+      "path": "tests/test_medical_library_atomic_refresh.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 2012,
+      "up_zip_sha256": "ab54a4078263efe646718653e4162f8d45a866497871017ffa5408ecb2b675f0",
+      "head_5873f95_sha256": "43ea0c0bf82f4f3b919b3c63b21c7f43fb1d2d61914c063e7712784338a86e13"
+    },
+    {
+      "path": "tests/test_mission_to_personal_identity_e2e.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "THREE_WAY_MERGE_FOR_Q0487_LOGIN",
+      "bytes": 6750,
+      "up_zip_sha256": "e4261c8e7210955ca782f8441533e73e39101fd224ebbeb09d31a062aa497490",
+      "head_5873f95_sha256": "4aab9fc044a77c3efa94e6c6c9a264517a5e2f64697164ba657b4708fe30a618"
+    },
+    {
+      "path": "tests/test_nasa_cliff_119_status.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 1806,
+      "up_zip_sha256": "2dc2f0a2fa6a56fda4a7bad96f633c965cd237c16ea582eb2a3b26d7b3c24067",
+      "head_5873f95_sha256": "e70cec87e29319ac8e883d4ee57f486e0506cf1a465810e3724e4a30501636b1"
+    },
+    {
+      "path": "tests/test_offline_cold_start_e2e.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "THREE_WAY_MERGE_FOR_Q0487_LOGIN",
+      "bytes": 5511,
+      "up_zip_sha256": "d1d3b98e22c69943e3d0c84bed23e8670d4ce2ee6d9e5ce7f23df326c33221a1",
+      "head_5873f95_sha256": "3a0a340644c703b3d05b80d4710de72edbe7212a7a52fbf936fe8228b32da20a"
+    },
+    {
+      "path": "tests/test_personal_anatomy_handoff.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 3641,
+      "up_zip_sha256": "69767d399fe841246d276d1e5d5a6c5ef07a04af0d007e4c9391a461c7670ad9",
+      "head_5873f95_sha256": "350341479a8f5de8c1969c4a6ee344801e0a20259af4e65e0fd7cc22df5e8b2d"
+    },
+    {
+      "path": "tests/test_personal_responsive_layout_e2e.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "THREE_WAY_MERGE_FOR_Q0487_LOGIN",
+      "bytes": 2854,
+      "up_zip_sha256": "7a92ce1f135ac522736cd68f8e3de1a8dcf460b53b780fb3e30dd4b534a7820e",
+      "head_5873f95_sha256": "3774487224fac370e099d6dede1b1ce30c7cb1fac2d34fb39bffae312805671f"
+    },
+    {
+      "path": "tests/test_store.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "SAFE_PORT",
+      "bytes": 5684,
+      "up_zip_sha256": "9327accbd94efd808cacda81f1fe968f5deb420759647f24c5306c7c8027b22f",
+      "head_5873f95_sha256": "f2959b72d5e107d5c797c222208300e6c5a0021abfd48880bff505dc281365d6"
+    },
+    {
+      "path": "tests/test_submission_architecture_diagram.py",
+      "status_vs_5873f95": "DIFF",
+      "disposition": "KEEP_HEAD_NEWER",
+      "bytes": 1236,
+      "up_zip_sha256": "23385c40c7584160efd2522740dfb4dfbe7d013c8c4b3230108f6ceb299685cf",
+      "head_5873f95_sha256": "1a3fc34472c1a13e47cd96fba8ed65d9d510553bf6c1a46f82883017c8338c21"
+    }
+  ],
+  "pr9_q0486_files": [
+    {
+      "path": "quests/v1/Q-0486.md",
+      "source": "PR #9 (codex/q0477_chart)",
+      "disposition": "IMPORT_AND_RELEASE_EXPIRED_LEASE"
+    },
+    {
+      "path": "apps/desktop/src/aetherion_desktop/telemetry_plot.py",
+      "source": "PR #9",
+      "disposition": "IMPORT_NEW"
+    },
+    {
+      "path": "scripts/smoke_telemetry_plot.py",
+      "source": "PR #9",
+      "disposition": "IMPORT_NEW"
+    },
+    {
+      "path": ".github/workflows/telemetry-plot-smoke.yml",
+      "source": "PR #9",
+      "disposition": "IMPORT_NEW"
+    }
+  ],
+  "pr11_q0485_files": [
+    {
+      "path": "apps/desktop/src/aetherion_desktop/mission_ops_home.py",
+      "source": "PR #11 (agent/q0485-openmct-visual-20261115)",
+      "disposition": "THREE_WAY_MERGE_WITH_UP_ZIP_AND_FIX_SET_SERIES_BUG"
+    },
+    {
+      "path": "scripts/render_q0485_ui.py",
+      "source": "PR #11",
+      "disposition": "IMPORT_AND_ADAPT_FOR_LOGIN_PAGE_Q0487"
+    },
+    {
+      "path": ".github/workflows/q0485-ui-preview.yml",
+      "source": "PR #11",
+      "disposition": "IMPORT_WITH_FONT_FIX"
+    }
+  ]
+}
