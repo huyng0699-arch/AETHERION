@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "recorded_at_utc": "2026-11-14T04:12:00Z",
+  "audit_passed": true,
+  "violation_count": 0,
+  "violations": [],
+  "cliff_119_imported_pdfs": 0,
+  "cliff_119_expected_pdfs": 119,
+  "accepted_condition_records": 0,
+  "rights_sources_audited": 4,
+  "notes": "Zero uncited medical assertions and zero restricted third-party/unimported assets are shipped. CliFF 119 remains 0/119 imported."
+}
