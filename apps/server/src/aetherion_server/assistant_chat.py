@@ -159,8 +159,10 @@ def ask_model(db: Path, request: FreeChatRequest) -> dict:
             except (KeyError, IndexError, TypeError, ValueError) as exc:
                 raise HTTPException(503, detail='Gemini provider returned no text') from exc
         else:
-            payload = {'model':model,'messages':messages,'temperature':0.25,
-                       'max_tokens':750,'store':False}
+            # Newer OpenAI chat models reject deprecated max_tokens and can
+            # reject custom temperature. Keep the broadly compatible fields.
+            payload = {'model':model,'messages':messages,
+                       'max_completion_tokens':750,'store':False}
             body = _invoke(
                 'https://api.openai.com/v1/chat/completions',payload,
                 {'Content-Type':'application/json',
