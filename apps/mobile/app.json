@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "AETHERION Mobile",
+    "slug": "aetherion-mobile",
+    "scheme": "aetherion",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/aetherion-app-icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/aetherion-app-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F8F6FF"
+    },
+    "newArchEnabled": true,
+    "android": {
+      "package": "io.truytinh.aetherion.mobile",
+      "softwareKeyboardLayoutMode": "pan",
+      "edgeToEdgeEnabled": true,
+      "usesCleartextTraffic": false
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "io.truytinh.aetherion.mobile"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": ["expo-secure-store"],
+    "experiments": {
+      "typedRoutes": false
+    }
+  }
+}
