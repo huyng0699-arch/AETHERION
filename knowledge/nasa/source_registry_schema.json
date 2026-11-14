@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aetherion.local/schemas/nasa-source-registry-v1.json",
+  "title": "AETHERION NASA Source Registry Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "updated_at_utc", "items"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0.0" },
+    "updated_at_utc": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$" },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "item_id",
+          "quest_id",
+          "publisher",
+          "source_uri",
+          "retrieved_at_utc",
+          "local_path",
+          "sha256",
+          "validation_state",
+          "is_live_telemetry"
+        ],
+        "properties": {
+          "item_id": { "type": "string", "minLength": 1 },
+          "quest_id": { "type": "string", "pattern": "^Q-[0-9]{4}$" },
+          "publisher": { "type": "string", "minLength": 1 },
+          "source_uri": { "type": "string", "pattern": "^https://" },
+          "retrieved_at_utc": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$" },
+          "local_path": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "validation_state": {
+            "type": "string",
+            "enum": [
+              "VERIFIED_OFFICIAL_SOURCE",
+              "VERIFIED_METADATA_FROM_OSDR",
+              "VERIFIED_POLICY_FROM_SOURCES",
+              "VERIFIED_NOT_IMPORTED",
+              "UNVERIFIED"
+            ]
+          },
+          "is_live_telemetry": { "type": "boolean", "const": false }
+        }
+      }
+    }
+  }
+}

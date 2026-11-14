@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at_utc": "2026-11-14T03:52:10Z",
+  "items": [
+    {
+      "item_id": "nasa-challenge-2026-json",
+      "quest_id": "Q-0106",
+      "publisher": "NASA Space Apps Challenge",
+      "source_uri": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/",
+      "retrieved_at_utc": "2026-11-14T03:46:00Z",
+      "local_path": "knowledge/nasa/challenge_2026.json",
+      "sha256": "d02a6642e08406dc51e0109093b99a66c881da6d1bc7d45a98b5f5d5754e3368",
+      "validation_state": "VERIFIED_OFFICIAL_SOURCE",
+      "is_live_telemetry": false
+    },
+    {
+      "item_id": "nasa-official-resources-json",
+      "quest_id": "Q-0107",
+      "publisher": "NASA BPS / HRP",
+      "source_uri": "https://osdr.nasa.gov/",
+      "retrieved_at_utc": "2026-11-14T03:48:00Z",
+      "local_path": "knowledge/nasa/official_resources.json",
+      "sha256": "f3590c5c16d4e248680bce12d4beb84591f6e08e90e914042ce7a4b496f0df0e",
+      "validation_state": "VERIFIED_OFFICIAL_SOURCE",
+      "is_live_telemetry": false
+    },
+    {
+      "item_id": "nasa-cliff-119-status-json",
+      "quest_id": "Q-0108",
+      "publisher": "NASA Integrated Medical Model (IMM)",
+      "source_uri": "https://www.nasa.gov/integrated-medical-model-documentation/",
+      "retrieved_at_utc": "2026-11-14T03:49:54Z",
+      "local_path": "knowledge/nasa/cliff_119_status.json",
+      "sha256": "0a012f1300dce7a6ef846f42c2d7ec9404684f79fdeb085802c88c95ec4309b2",
+      "validation_state": "VERIFIED_NOT_IMPORTED",
+      "is_live_telemetry": false
+    },
+    {
+      "item_id": "nasa-osdr-datasets-json",
+      "quest_id": "Q-0109",
+      "publisher": "NASA Open Science Data Repository (OSDR)",
+      "source_uri": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-575",
+      "retrieved_at_utc": "2026-11-14T03:48:00Z",
+      "local_path": "knowledge/nasa/osdr_datasets.json",
+      "sha256": "193329b86380f5a7204bdcd9370ea4d19e9061eed961ea6e3df9174302739b22",
+      "validation_state": "VERIFIED_METADATA_FROM_OSDR",
+      "is_live_telemetry": false
+    },
+    {
+      "item_id": "nasa-dataset-rights-and-transforms-json",
+      "quest_id": "Q-0110",
+      "publisher": "NASA Open Science Data Repository (OSDR) / IMM",
+      "source_uri": "https://osdr.nasa.gov/",
+      "retrieved_at_utc": "2026-11-14T03:51:00Z",
+      "local_path": "knowledge/nasa/dataset_rights_and_transforms.json",
+      "sha256": "fdbf14592cf9b0bc5a0d79cbed55cc7a514718649d13ba89f6c1538b2e83cc50",
+      "validation_state": "VERIFIED_POLICY_FROM_SOURCES",
+      "is_live_telemetry": false
+    }
+  ]
+}
