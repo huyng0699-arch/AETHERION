@@ -276,6 +276,21 @@ def build_hackathon_demo(parent=None, **kwargs):
             actions.addWidget(self.back_button)
             actions.addStretch(1)
             body.addLayout(actions)
+            # Genuine NASA OSDR challenge-relevant sources are offered separately.
+            # Their numerical data are NOT misattributed to this 1962 archive.
+            research = QHBoxLayout()
+            self.osdr569 = QPushButton()
+            self.osdr569.clicked.connect(lambda: self.open_osdr("569"))
+            research.addWidget(self.osdr569)
+            self.osdr575 = QPushButton()
+            self.osdr575.clicked.connect(lambda: self.open_osdr("575"))
+            research.addWidget(self.osdr575)
+            research.addStretch(1)
+            body.addLayout(research)
+            self.osdr_notice = QLabel()
+            self.osdr_notice.setObjectName("pageHint")
+            self.osdr_notice.setWordWrap(True)
+            body.addWidget(self.osdr_notice)
             body.addStretch(1)
             self.pages.addWidget(self.briefing)
 
@@ -530,6 +545,12 @@ def build_hackathon_demo(parent=None, **kwargs):
             QDesktopServices.openUrl(QUrl(
                 "https://www.nasa.gov/wp-content/uploads/2026/01/ma07-te2.pdf"))
 
+        def open_osdr(self, study_id: str):
+            if study_id not in ("569", "575"):
+                return
+            QDesktopServices.openUrl(QUrl(
+                "https://osdr.nasa.gov/bio/repo/data/studies/OSD-" + study_id))
+
         def set_locale(self, locale):
             self.language = normalize_locale(locale)
             self.brief_kicker.setText(self.t("hero.kicker"))
@@ -547,6 +568,9 @@ def build_hackathon_demo(parent=None, **kwargs):
             self.challenge_note.setText(self.t("intro.notchallenge"))
             self.start.setText(self.t("intro.start"))
             self.source_button.setText(self.t("intro.visit"))
+            self.osdr569.setText(self.t("intro.osdr569"))
+            self.osdr575.setText(self.t("intro.osdr575"))
+            self.osdr_notice.setText(self.t("intro.osdrWarning"))
             self.back_button.setText(self.t("intro.return"))
             self.play_kicker.setText(self.t("replay.kicker"))
             self.play_title.setText(self.t("replay.title"))
