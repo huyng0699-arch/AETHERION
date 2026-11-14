@@ -15,7 +15,7 @@ from PySide6.QtWidgets import QTableWidgetItem, QWidget
 from ...localization import normalize_locale, tr, translate_existing, translate_shell_widgets
 from .identity import checked_personal_handoff
 from .latest_metrics import latest_metric_cards
-from .personal_visual import build_personal_visual, update_personal_tiles, latest_tiles
+from .personal_visual import TILES, build_personal_visual, update_personal_tiles, latest_tiles
 from .source_classification import record_origin
 from .today_dashboard import (
     build_personal_today_snapshot,
@@ -58,6 +58,12 @@ class AuthorizedPersonalTodayPage(QWidget):
         if self._status_key:
             self._say(self._status_key, **self._status_values)
         update_personal_tiles(self, self._visible_cards)
+        for index, (tile_id, *_fields) in enumerate(
+            TILES
+        ):
+            self.metric_tile_headers[tile_id].setText(
+                f"{index + 1:02d}  /  {tr(self.ui_language, f'personal.tile.{tile_id}')}"
+            )
 
     @property
     def selected_subject_id(self) -> str:
