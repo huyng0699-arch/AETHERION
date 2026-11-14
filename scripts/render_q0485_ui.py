@@ -87,6 +87,12 @@ def main() -> int:
     QTest.qWait(250)
     if window.operations_home_page.time_conductor.isVisible():
         raise RuntimeError("Duplicate Home Time Conductor is visible on Monitoring")
+    if not window.monitor_page._conductor_detached:
+        raise RuntimeError("Monitoring Time Conductor was not detached into the shell")
+    if window.operations_home_page._active_conductor_widget is not window.monitor_page.conductor_panel:
+        raise RuntimeError("Monitoring Time Conductor is not in the persistent bottom slot")
+    if not window.monitor_page.conductor_panel.isVisible():
+        raise RuntimeError("Monitoring Time Conductor is not visible in the shell")
     capture(window, output, "monitoring-openmct-shell", 1040, 650)
 
     # Exercise the actual prominent Demo control and explicit Start action.
