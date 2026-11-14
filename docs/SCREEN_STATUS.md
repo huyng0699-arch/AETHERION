@@ -1,7 +1,27 @@
 # AETHERION — Native Windows Screen Status / Trạng thái màn hình
 
-**Latest authoring audit:** 2026-11-14, Q-0485 functional Open-MCT-style source workspace; no Qt screenshot.  
+**Latest authoring audit:** 2026-11-14, Q-0485 corrected true Home, bottom UTC conductor and always-readable Inspect; no Qt screenshot.  
 **Evidence class:** GitHub file SHA and source inspection only. PySide6 unavailable in this runtime; **no new Linux offscreen or Windows screenshot and no runtime acceptance**.
+
+## Latest corrected native Home layout (GitHub source only; 2026-11-14)
+
+**Commit:** [`b92e1a9daac3c8ba036774e6b27aeef7b32633ae`](https://github.com/huyng0699-arch/AETHERION/commit/b92e1a9daac3c8ba036774e6b27aeef7b32633ae) · `mission_ops_home.py` blob `d39354c4b7571847cf6ffc3eb79572573e9533d2`.
+
+The owner’s updated NASA Open MCT direction supersedes five-card Portal / horizontal-menu-only presentation **for the first native app screen**; no implication for Admin HTML, legacy routes or medical access rules.
+
+| Owner correction | Implemented source behavior | Runtime evidence |
+| --- | --- | --- |
+| Correct cold start | `_choose("home")`; Mission Workspace overview, NASA MA-7 remains separate Browse object | GitHub inspected; Qt/Windows visual **PENDING** |
+| Fixed bottom Time Conductor | Controls and UTC status placed *below* the three-pane splitter, above footer; explicit UTC bounds retained for table, discrete plot and Inspect | Source inspection only; no Q-0477 Monitoring filter sync |
+| Inspect at 1040 px | Non-collapsible three-pane splitter; left min 177 logical px, center min 405 px, right Inspect min 205 px; horizontal pixel scroll for long properties | Geometry source constraints present; real 1040px / 150% DPI render **PENDING** |
+| Correct Home Inspect | Mission properties show unselected subject/source, UTC scope and authorization requirement, not NASA MA-7 claimed as active source | GitHub inspected; interaction **PENDING** |
+| Route and data separation | 13 real feature routes intact; prominent Demo → SIMULATED briefing → Q-0484; authentic NASA MA-7 independent | Wiring unchanged; Windows clickthrough **PENDING** |
+
+**Focused structural checks: 15/15 passed** against current source and unchanged `main.py` blob `15274eef60ff1a69a920d10fd32d4763264ed67b`. These are source assertions, not a test of final appearance. PySide6/PyQt6 are not installed in this runtime and a temporary-venv PySide6 installation returned no matching distribution; **no valid Qt offscreen screenshot or Windows after-fix screenshot exists from this run**. The owner-supplied original Windows screenshot remains an explicitly rejected baseline.
+
+**Next acceptance:** fresh Windows GUI capture after fix, browse/Inspect selection, verify conductor does not obscure data at min 1040×650 and 150% DPI, full simulated 5-patient / 540-day SQLite test, source NASA archive and link, VI/EN/themes, actual permissions, independent reviewer. Q-0485 remains `RUNNING / IN_PROGRESS / review PENDING` — do not mark PASS.
+
+---
 
 ## Latest Q-0485 source-only workspace review — 2026-11-14
 
