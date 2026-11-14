@@ -1,0 +1,580 @@
+{
+  "article_id": "CLIFF-108",
+  "slot": 108,
+  "display_title": "Abnormal Uterine Bleeding",
+  "category": "Genitourinary / Gynecology",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-108",
+    "publisher": "NASA",
+    "title": "Abnormal Uterine Bleeding \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/abnormal-uterine-bleeding-cliff-2023.pdf?emrc=edf018",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/abnormal-uterine-bleeding-cliff-2023.pdf?emrc=edf018",
+    "retrieved_at_utc": "2026-11-14T06:38:11.429095+00:00",
+    "content_sha256": "9a63bc85d11402c8ef9443cf28435f501c542947a62875615897ef1790d904fd",
+    "original_mime": "application/pdf",
+    "original_bytes": 337295,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-108-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch      Baseline\n\n\n\n ICL2_Abnormal Uterine Bleeding\n\n Chronic, nongestational abnormal uterine bleeding (AUB) has been shown to affect 5-25% of reproductive-aged women in the United States and thus\n represents one of the most common gynecologic complications that may impact female crewmembers during spaceflight. The etiology may be\n structural (polyps, adenomyosis, leiomyomas, and malignancy/neoplasia) or nonstructural including coagulopathy, ovulatory dysfunction, endometrial\n disorders, or be iatrogenic. AUB can range from unpredictable intermenstrual spotting to catastrophic hemorrhage depending upon the etiology.\n While effort is placed to mitigate the risk of AUB via pre-flight assessment and consideration of hormonal contraceptive options, it can still occur with\n or without the use of exogenous hormones.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  There is no formal incidence of AUB during spaceflight. Steller et al (2020) cite the incidence of leiomyoma; iron deficiency anemia, ovarian cysts;\n  and [lack of data on] endometriosis. While both Steller 2020 and Jennings 2000 discuss rare occurrences (at least two episodes) of AUB in\n  spaceflight, true incidence values are unknown and likely suffer from underreporting. Even with this limitation, spaceflight AUB incidence is clearly\n  lower than the terrestrial population data of 5-25%. This also may be from hormonal suppression, however, the number of astronauts using cyclical,\n  continuous, or no hormonal contraception is also unknown.\n\n  ANALOG LITERATURE\n\n  Three analog studies were reviewed. The first followed a group of flight attendants (Lauria 2006) who frequent high altitudes and are more subject\n  to cosmic radiation; though not at the level of low earth orbit or deep space. The two other studies reported incidence for female soldiers deployed\n  in the Iraq war (Thomson 2006, Nielsen 2009). The studies were chosen for the high stress environment and for most soldier's high preference to\n  suppress menstruation during deployment which is most reflective historically of the astronaut population. With that said there are other studies that\n  show that daily compliance with oral contraceptive pills (which was most likely) was also difficult, and thus some rates of AUB may be iatrogenic in\n  nature from imperfect use of the hormonal modalities. Ultimately, these analog studies, whilst informative, were not used in the composite incidence\n  given their low numbers, the factor that they were survey data, and that some information was missing in order to full utilize it in the calculations.\n  Overall, these showed a possible incidence range of about 21-25% in line with terrestrial data.\n\n  TERRESTRIAL LITERATURE\n\n  An English cross sectional study (Shapley 2004) and a retrospective Dutch study (de Vries 2008) were chosen as terrestrial incidence studies for\n  AUB. These studies showed an incidence range of 5-25%.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   mean 0.05197 and SD 0.003205\n\n\n\n  INCIDENCE SUMMARY\n\n\n\n\n6/15/2023 1:29:39 PM                                               ICL2_Abnormal Uterine Bleeding Cliff                                                      page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-108-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  The Bayesian posterior distribution for the incidence rate given the terrestrial study (270 cases over 5192.308 person-years) under an\n  uninformative prior is Gamma(shape=262.94, rate=5059.37) with mean 0.05197 and SD 0.003205. This condition is for females only. Composite IR\n  0.052 (95%CI: 0.046, 0.058). Producing a formal composite incidence for AUB in spaceflight is extremely limited. Not only do spaceflight, analog,\n  and terrestrial data all suffer from reporting bias and not being robustly tracked, but the data is not separated out by whether one is using no\n  hormonal contraception, cyclical hormonal contraception, or continuous hormonal contraception. Further it may depend upon the type of hormones\n  whether progestogens alone or an estrogen and a progestogen in combination. Lastly, rates of AUB may depend upon a patient's history,\n  socioeconomic factors such as access to care, and compliance. The astronaut population has extensive work-up pre-flight to mitigate inflight AUB,\n  traditionally use continuous hormonal contraceptives, and are extremely compliant (Steller 2020). For all of these reasons, even our most\n  conservative estimate may be incorrect. As the de Vries 2008 study is our only non-survey-based level 3 evidence, this incidence was ultimately\n  chosen.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Female\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     0.0519709\n     SD\n     0.00320503\n\n\n     Gamma\n     (Shape): 262.94\n     (Rate): 5059.37\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                              Source                                 LOC Value\n\n   Lauria et al, 2006                                                    Analog                                 2\n\n   Thomson et al, 2006                                                   Analog                                 2\n\n   Nielsen et al, 2009                                                   Analog                                 2\n\n   Shapley et al, 2004                                                   Terrestrial                            2\n\n   de Vires et al, 2008                                                  Terrestrial                            3\n\n\n  As explained in Table 1 caption, available data is largely based off of survey data which leads to level of confidence scores of 2 given the inherent\n  limitations of these studies.\n\n\n\n\n6/15/2023 1:29:39 PM                                              ICL2_Abnormal Uterine Bleeding Cliff                                                    page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-108-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  It is recommend all astronauts undergo screening for a personal and family history of bruising/bleeding (inclusive of AUB), have a pre-flight\n  transvaginal ultrasound to evaluate for anatomical/structural causes, and undergo testing for anemia or iron-deficiency as these can all be\n  managed pre-flight. Consideration of testing for bleeding disorders can be conducted if indicated by the history.\n\n  BEST CASE SCENARIO DEFINITION\n\n  Irregular bleeding between menses, menses > 8 days in length, or heavy menses (requiring tampon/pad changes < Q2H, or passing clots larger\n  than the size of a quarter), that resolves spontaneously or with medications.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Irregular bleeding between menses, menses > 8 days in length, or heavy menses (requiring tampon/pad changes < Q2H, or passing clots larger\n  than the size of a quarter), that requires mechanical/surgical intervention.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  Irregular menses; Menorrhagia\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  Calculating a worst-case probability is also complicated by similar limitations as discussed above. Most studies, including Majoribanks et. al.'s\n  Cochrane reviews are evaluating patient satisfaction with control of their AUB after differing medical and surgical management. Dood et al, 2014\n  discusses a large Canadian study evaluating how many patients required endometrial ablation or hysterectomy in the setting of AUB which was 4%.\n  With that said, as our team was reviewing RTDC surrogates, AUB necessitating hospitalization and evacuation in the military is also a good\n  surrogate for the WC scenario in which AUB fails medical management and requires mechanical/surgical intervention. In the military,\n  hospitalization/evacuation for AUB ranges from 6-15% (Dorsey et al 2013, Stahlman et al 2017), whereas in terrestrial data, the incidence of\n  hospitalization for AUB is 10-fold less (1.3 per 1000; Whiteman et al 2010 ) and (4.78 per 1000; Louoto et al 1994). Again as the astronaut\n  population and spaceflight environment both differ from terrestrial and analog populations, a conservative maximum worst-case scenario estimate\n  of 5% is reasonable. Given the extensive screening for crewmembers pre-flight and that no worst-case scenario AUB has been seen in spaceflight\n  to date, the minimum worst-case scenario was assigned 0%. Thus, a worst-case scenario range of 0-5% was assigned.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                  Source                               LOC Value\n\n   Dood et al, 2014                                                          Terrestrial                          2\n\n   Majoribanks et al, 2016                                                   Terrestrial                          2\n\n   Dorsey et al, 2013                                                        Analog                               2\n\n   Stalhman et al, 2017                                                      Analog                               2\n\n   Whiteman et al, 2010                                                      Terrestrial                          2\n\n   Luoto et al, 1994                                                         Terrestrial                          2\n\n\n  Given the paucity and lack of understanding of the spaceflight environment on menses and AUB in addition to the various limitations discussed\n  throughout this CLiFF, it is difficult to have a higher level of confidence level than 2 (neutral) as BC/WC probability is being chosen by expert\n  opinion in the setting of this data.\n\n\n\n\n6/15/2023 1:29:39 PM                                              ICL2_Abnormal Uterine Bleeding Cliff                                                page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-108-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                             CP1: Diagnosis        CP2: Treatment             CP3: Condition End State\n\n                                                             TI%       Duration    TI%        Duration        TI%        RTDC              LOCL\n                      Composite             Condition\n   Case Scenario      Incidence             Probability %    Preset    Preset      Preset     Min     Max     Preset     Min%     Max%     Min%     Max%\n\n   Treated Best       mean 0.05197          95 - 100         100       1.33        2.80361    0.33    336     0          0.13     6        0        0\n   Case (TBC)         and SD 0.003205\n\n   Treated Worst                            0-5              100       2.17        50         336     8760    0          50       100      0.001    100\n   Case (TWC)\n\n   Untreated Best     N/A                   N/A              N/A       1.33        5.60723    0.33    336     5.60723    6        15       0        0\n   Case (UTBC)\n\n   Untreated Worst    N/A                   N/A              N/A       2.17        11.7327    672     8760    7.97236    100      100      90       100\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n6/15/2023 1:29:39 PM                                               ICL2_Abnormal Uterine Bleeding Cliff                                                       page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-108-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  As discussed below in the individual section and the limitations section, while AUB may be one of the most common reasons that women seek\n  medical care (occurring in 5-25% of all women), it can often be managed terrestrially either pharmacologically or surgically with high success.\n  Though AUB will try to be prevented through optimal pre-flight screening and consideration of hormonal modalities, if AUB occurs during\n  spaceflight, management options will be very limited.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  A best-case shortest duration may brief (0.33 hours) in that intermenstrual spotting is considered in the duration while the best-case longest\n  duration may be up to two weeks with AUB managed by hormonal modalities. There is robust analog data to evaluate RTDC with evacuations from\n  the operational theatre in the military or in using hospitalization as a surrogate for bleeding that is bad enough to warrant consideration of\n  evacuation (Dorsey et al 2013, Stahlman et al, 2017). With that said the hospitalization and evacuation rate in the military for AUB ranges from 6-\n  15% whereas in terrestrial data, the incidence of hospitalization for AUB is ~10-fold less than the incidence of having AUB (0.13%; Whiteman et al\n  2010; 0.48%; Louoto et al 1994). As diagnostics and management will be limited during spaceflight, adopting both data sets is reasonable for a\n  TBC min and max (0.13-6%), while UTBC may require the most conservative WC range (6-15%). LOCL with treatment in the best case scenario is\n  presumed to be 0%, as by definition, it resolves.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  The worst case definition specifically warrants mechanical or surgical intervention for excessive AUB that is refractory to expectant and medical\n  management (best-case definition). Terrestrially, such patients can be managed safely with surgical management and the risk of death from non-\n  obstetrical uterine bleeding is very low (GBD, 2017). In spaceflight, with exception of a few minor procedures such placement of a foley balloon and\n  vaginal packing for uterine tamponade, surgical management is not an option. This holds heavy implications for worst case scenarios meeting our\n  definition in that AUB that requires such intervention nearly obligates RTDC, and without RTDC would lead to eventual LOCL. It is possible that\n  pharmacologic management may temporize AUB to allow for RTDC and it is possible that the AUB can stop spontaneously, however, there is not\n  data that is capable of answering such questions under this definition (i.e. AUB significant enough to warrant surgery that is temporized by\n  pharmacologic management or resolves spontaneously). Thus the range for both RTDC and LOCL chance are based on Global Burden of Disease\n  Study authors for the minimum chance and true worst case scenario for the maximum chance. Further, the duration decisions are also severely\n  limited by definition constraints. AUB significant enough to warrant mechanical/surgical intervention likely is from a pathologic cause that will\n  continue cause AUB until treated. Again if not abiding by a completely rigid interpretation of the definition, it is possible that the AUB could abate\n  after temporary mechanical tamponade and resolve. Thus, a very broad duration range from 14 days to 1 year was chosen. Our authors note that\n  with a completely rigid definition, there would be almost no range of duration, RTDC, and LOCL as these would be 100%.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  A best-case shortest duration may brief (0.33 hours) in that intermenstrual spotting is considered in the duration while the best-case longest\n  duration may be up to two weeks as with TBC. This range has limited accuracy in that while this is an untreated scenario, the best-case definition\n  still is considering the best case that may resolve spontaneously. 14 days is a reasonable choice in that AUB can range from spotting between\n  menses or having menses >8 days for months, to one large bleed one time. There is robust analog data evaluating RTDC with evacuations from\n  the military operational theatre or in using hospitalization as a surrogate for bleeding that is bad enough to warrant consideration of evacuation\n  (Dorsey et al 2013, Stahlman et al, 2017). As we are considering an untreated scenario, utilizing the conservative hospitalization and evacuation\n  rates from the analog studies of 6-15% are reasonable. LOCL without treatment in a best-case scenario is still presumed to be 0%, especially if\n  RTDC is presumed to be occurring, however, would not be for worst case scenarios.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  As explained in the TWC section, AUB severe enough to warrant mechanical/surgical management is very rare and very serious. The complete lack\n  of treatment for bleeding this severe with no pharmacologic or procedural management is catastrophic. There is no data to guide duration, RTDC,\n  or LOCL in this setting. A duration of 1-12 months was chosen given the small chance that it could abate spontaneously. However, RTDC would\n  remain 100%, and LOCL must approach 100%. A range of 90-100% was chosen by expert clinical opinion. While the terrestrial literature supports\n  spontaneous resolution of AUB without treatment that may sound encouraging, this literature is for all patients with AUB, irrespective of severity.\n  This data does NOT review the resolution rates in patients presenting with bleeding at the severity level of this definition and then also receiving no\n  treatment.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n6/15/2023 1:29:39 PM                                               ICL2_Abnormal Uterine Bleeding Cliff                                                     page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-108-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                 Source                                      LOC Value\n\n   Munro, 2006                                              terrestrial\n\n   Lethaby, 2019                                            Terrestrial\n                                                                                                                             1\n   Yousefi, 2020                                            Terrestrial\n\n   Lukes, 2010                                              Terrestrial\n\n  Given the nuance associated with the best- and worst-case definitions as well as the paucity of understanding in how spaceflight may affect AUB,\n  there is low confidence in the duration range, RTDC chance, and the LOCL.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                                               Source                              LOC Value\n\n   Dorsey et al, 2013                                                     Analog\n\n   Stalhman et al, 2017                                                   Analog\n\n   Whiteman et al, 2010                                                   Terrestrial\n                                                                                                                                  1\n   Luoto et al, 1994                                                      Terrestrial\n\n   de Vries, 2008                                                         Terrestrial\n\n   Stang, 2012                                                            Terrestrial\n\n  Given the nuance associated with the best- and worst-case definitions as well as the paucity of understanding in how spaceflight may affect AUB,\n  there is low confidence in the duration range, RTDC chance, and the LOCL.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                    Source                                     LOC Value\n\n   GBD, 2017                                                   Terrestrial\n                                                                                                                              1\n   Wijeratne, 2018                                             Terrestrial\n\n  Given the nuance associated with the best- and worst-case definitions as well as the paucity of understanding in how spaceflight may affect AUB,\n  there is low confidence in the duration range, RTDC chance, and the LOCL.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Overview Abnormal uterine bleeding can range from spotting in between menses to catastrophic uterine bleeding leading to significant anemia and\n  its associated complications. While the optimal strategy is to try and decrease the risk of future AUB pre-flight, this common pathology may occur\n  despite pre-flight surveillance and with or without the use of hormonal contraceptives. CNES: none Diagnostic Scope and Resourcing In the best-\n  case scenario, a history and physical exam (inclusive of abdominal exam and pelvic exam), in addition to an ultrasound of the pelvis and a urine\n  pregnancy test would be recommended. In the worst case scenario, given the significant bleeding, vital signs and a CBC would also be necessary.\n  Clinical Phase 1 Duration and Rationale This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the\n  mission. The CRT working group SME consensus duration is as follows: CP1 BC (Treated or Untreated): 1.33 hours CP1 WC (Treated or\n  Untreated): 2.17 hours The highest scope of practice that would be necessary is SOP 5 (experienced procedure-trained generalist attending).\n  Treatment Scope and Resourcing Routine management of abnormal uterine bleeding may often depend upon the cause of the AUB, whether\n  anatomical (polyps, adenomyosis, leiomyomas, or malignancy) or non-structural. However, treatment is going to be largely limited to pharmacologic\n  management. This may include a burst taper of norethindrone/ethinyl estradiol or medroxyprogesterone, followed by initiation of a daily oral\n  contraceptive pill to follow the episode. Tylenol may also be used for discomfort, and NSAIDS like ibuprofen can not only be used for mild pain but\n  also should be used every 6 hours throughout menses, if heavy, and can help to decrease the amount of blood flow. In a worst case scenario\n  where AUB is leading to a significant bleed that is not responding to hormonal modalities and may even require mechanical/surgical intervention,\n  many additional treatment options may be implemented. In addition or hormonal options and NSAIDs, adding doxycycline and TXA should be\n  considered. Further, considering uterine tamponade via foley catheter in the uterus and packing. Oral hydration, IV hydration, or even a whole\n  blood transfusion from a crewmate could be considered in the absolute worst case. If transfusion were to be considered, then a bundle of treatment\n\n\n\n\n6/15/2023 1:29:39 PM                                             ICL2_Abnormal Uterine Bleeding Cliff                                                   page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-108-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  options for mild blood transfusion reactions should be included. Unfortunately, beyond potentially removing an IUD or subdermal implant that may\n  be contributing to AUB, other procedural options or surgical management are not currently available. Further, other forms of heterologous blood\n  transfusion, cell saver, or more advanced management of TRALI/TACO/AHTR are also not currently possible. Communications and Support Needs\n  Real-time video and audio loop communications may be necessary for the diagnosis and treatment of worst case scenarios where consultation with\n  ground specialists is possible.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  The old IMM CLiFF was reviewed which contained many informative analog and terrestrial studies for review and implementation into the current\n  effort. Unfortunately, because the definitions changed (which made the worst case of AUB for the current CLiFF more severe), it has dramatically\n  changed the duration, RTDC, and LOCL outcomes.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  This CLiFF is first limited by no formal tracking of AUB in spaceflight. While there have been a few occurrences of AUB, there are minimal published\n  details surrounding these events and an incidence cannot be calculated. It is possible that there may also be reporting bias and that the spaceflight\n  incidence of AUB may be higher than presumed. Another limitation is that the age, health, and pre-flight screening and mitigation decrease the risks\n  of AUB in comparison to outcomes in the terrestrial literature. A third limitation is the fact that terrestrial literature on AUB does not specifically\n  analyze their outcomes in the setting of no hormonal contraception, cyclical hormonal contraception, continuous hormonal contraception, or even\n  type of contraception (i.e.. progesterone alone vs. combination estrogen and progesterone). Lastly, while the best-case and worst-case definitions\n  are reasonable, especially terrestrially, another limitation of the CLiFF is being able to calculate and understand what the inability to perform\n  surgical management of this condition would have on duration, RTDC, and LOCL in worst case scenarios.\n\n\n\n\n6/15/2023 1:29:39 PM                                              ICL2_Abnormal Uterine Bleeding Cliff                                                      page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-108-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                              Clinical Phase 2: Treatment\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                    Dentition          GI             GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n    Case\n   (UTBC)\n   Treated\n    Worst\n           223              664            113               89             854            44             145          5               13             6\n     Case\n    (TWC)\n  Untreated\n    Worst\n                                                             89                                           145                                         6\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                                  TI Calculation                        TI Score\n                                                                                                                                                             Total\n                                                                                                                                                           Human\n                                                                                            Translation &                               Total Tasks\n                Hand                                            Lower         Ambul &                       Don/Doff       Pressure                        System\n                            Hand (Any)     Upper Extremity                                  Stabilization                              Impaired By                         TI Decimal         TI %\n               (Dom)                                          Extremity     Standing (g)                  Equipment         Ops                           Category\n                                                                                           (microgravity)                               Condition\n                                                                                                                                                          Tasks Full\n                                                                                                                                                           Mission\n   Treated\n     Best\n                                                                                                                       211             211            3763             0.0560723 5.60723\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                                                                       211             211            3763             0.0560723 5.60723\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132              564            414               22             196            34             34           211             3763           3763             1                100\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132                                                                                                        211             583            3763             0.15493          15.493\n    Case\n   (UTWC)\n\n                                                                          Clinical Phase 3: Condition End State\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                    Dentition          GI             GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n    Case\n   (UTBC)\n   Treated\n    Worst\n     Case\n    (TWC)\n  Untreated\n    Worst\n                                                             89\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                                  TI Calculation                        TI Score\n\n\n\n\n6/15/2023 1:29:39 PM                                               ICL2_Abnormal Uterine Bleeding Cliff                                                                                    page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-108-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                Translation &                           Total Tasks\n               Hand                                     Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal       TI %\n              (Dom)                                   Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                               (microgravity)                           Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n   Treated\n     Best\n                                                                                                                       0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                                                           211         211            3763          0.0560723 5.60723\n    Case\n   (UTBC)\n   Treated\n    Worst\n                                                                                                                       0              3763          0                0\n     Case\n    (TWC)\n  Untreated\n    Worst\n                                                                                                           211         300            3763          0.0797236 7.97236\n    Case\n   (UTWC)\n\n\n\n\n6/15/2023 1:29:39 PM                                       ICL2_Abnormal Uterine Bleeding Cliff                                                                          page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-108-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n6/15/2023 1:29:39 PM                                              ICL2_Abnormal Uterine Bleeding Cliff                                                     page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-108-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   Lauria L, Ballard TJ, Caldora M, Mazzanti C, Verdecchia A. Reproductive disorders and pregnancy outcomes among female flight attendants.\n   Aviat Space Environ Med. 2006 May;77(5):533-9. PMID: 16708534.\n\n   Thomson BA, Nielsen PE. Women's health care in Operation Iraqi Freedom: a survey of camps with echelon I or II facilities. Mil Med. 2006\n   Mar;171(3):216-9. doi: 10.7205/milmed.171.3.216. PMID: 16602519.\n\n   Nielsen PE, Murphy CS, Schulz J, Deering SH, Truong V, McCartin T, Clemons JL. Female soldiers' gynecologic healthcare in Operation Iraqi\n   Freedom: a survey of camps with echelon three facilities. Mil Med. 2009 Nov;174(11):1172-6. doi: 10.7205/milmed-d-04-2608. PMID: 19960825.\n\n   Shapley M, Jordan K, Croft PR. An epidemiological survey of symptoms of menstrual loss in the community. Br J Gen Pract. 2004\n   May;54(502):359-63. PMID: 15113519; PMCID: PMC1266170.\n\n   de Vries, C. J., Wieringa-de Waard, M., Vervoort, C. L., Ankum, W. M., & Bindels, P. J. (2008). Abnormal vaginal bleeding in women of\n   reproductive age: a descriptive study of initial management in general practice. BMC Womens Health, 8(1), 7. doi:10.1186/1472-6874-8-7\n\n   Dood RL, Gracia CR, Sammel MD, Haynes K, Senapati S, Strom BL. Endometrial cancer after endometrial ablation vs medical management of\n   abnormal uterine bleeding. J Minim Invasive Gynecol. 2014 Sep-Oct;21(5):744-52. doi: 10.1016/j.jmig.2014.02.012. Epub 2014 Feb 28. PMID:\n   24590007; PMCID: PMC4470903.\n\n   Majoribanks J, Lethaby A, Farquhar C. Surgery versus medical therapy for heavy menstrual bleeding. Cochrane Database Sys Rev 2016\n   2016(1):CD003855.\n\n   Devore GR. Management of Acute Abnormal Uterine Bleeding in nonpregnant reproductive aged women\n\n   Munro MG, Mainor N, Basu R, Brisinger M, Barreda L. Oral medroxyprogesterone acetate and combination oral contraceptives for acute uterine\n   bleeding: a randomized controlled trial. Obstet Gynecol. 2006 Oct;108(4):924-9. doi: 10.1097/01.AOG.0000238343.62063.22. PMID: 17012455.\n\n   Dorsey KA. Menorrhagia, active component service women, U.S. Armed Forces, 1998-2012. MSMR. 2013 Sep;20(9):20-4. PMID: 24093961.\n\n   Stahlman S, Williams VF, Taubman SB. Incidence and burden of gynecologic disorders, active component service women, U.S. Armed Forces,\n   2012-2016. MSMR. 2017 Nov;24(11):30-38. PMID: 29211492.\n\n   Whiteman MK, Kuklina E, Jamieson DJ, Hillis SD, Marchbanks PA. Inpatient hospitalization for gynecologic disorders in the United States. Am J\n   Obstet Gynecol. 2010 Jun;202(6):541.e1-6. doi: 10.1016/j.ajog.2009.12.013. Epub 2010 Feb 4. PMID: 20132921.\n\n   Luoto R, Rutanen EM, Kaprio J. Five gynecologic diagnoses associated with hysterectomy--trends in incidence of hospitalizations in Finland,\n   1971-1986. Maturitas. 1994 Aug;19(2):141-52. doi: 10.1016/0378-5122(94)90064-7. PMID: 7968647.\n\n   Kuppermann M, Varner RE, Summitt RL Jr, Learman LA, Ireland C, Vittinghoff E, Stewart AL, Lin F, Richter HE, Showstack J, Hulley SB,\n   Washington AE; Ms Research Group. Effect of hysterectomy vs medical treatment on health-related quality of life and sexual functioning: the\n   medicine or surgery (Ms) randomized trial. JAMA. 2004 Mar 24;291(12):1447-55. doi: 10.1001/jama.291.12.1447. PMID: 15039411.\n\n   Global Burden of Disease Collaborators. Global, regional, and national age-\n\n   sex speci c mortality for 264 causes of death, 1980-2016: a systematic\n\n   analysis for the Global Burden of Disease Study 2016. Lancet\n\n   2017;390:1151\u2013210\n\n   Global Burden of Disease Collaborators. Global, regional, and national age-\n\n   sex speci c mortality for 264 causes of death, 1980-2016: a systematic\n\n   analysis for the Global Burden of Disease Study 2016. Lancet\n\n   2017;390:1151\u2013210\n\n   Global Burden of Disease Collaborators. Global, regional, and national age-\n\n   sex speci c mortality for 264 causes of death, 1980-2016: a systematic\n\n   analysis for the Global Burden of Disease Study 2016. Lancet\n\n   2017;390:1151\u2013210\n\n   Global Burden of Disease Collaborators. Global, regional, and national age-sex specific mortality for 264 causes of death, 1980-2016: a\n   systematic analysis for the Global Burden of Disease Study 2016. Lancet 2107; 390:1151-210.\n\n   Stang A, Merrill RM, Kuss O. Prevalence-corrected hysterectomy rates by age and indication in Germany 2005-2006. Arch Gynecol Obstet. 2012\n   Nov;286(5):1193-200. doi: 10.1007/s00404-012-2415-2. Epub 2012 Jun 21. PMID: 22718096.\n\n   Wijeratne D, Fiander A. Gynaecological disase in the developing world: a silent pandemic. The Obstetrician & Gynaecologist. http://onlinetog.org.\n   2018; 20:237-44. DOI: 10.1111/tog.12515\n\n\n\n\n6/15/2023 1:29:39 PM                                              ICL2_Abnormal Uterine Bleeding Cliff                                                 page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-108-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Reference\n\n   Lethaby A, Wise MR, Weterings MA, Bofill Rodriguez M, Brown J. Combined hormonal contraceptives for heavy menstrual bleeding. Cochrane\n   Database Syst Rev. 2019 Feb 11;2(2):CD000154. doi: 10.1002/14651858.CD000154.pub3. PMID: 30742315; PMCID: PMC6369862.\n\n   Yousefi F, Kashanian M, Nazem I, Bioos S, Sadeghpour O, Aliasl J, Hashem-Dabaghian F. Comparison between Golnar product and placebo in\n   heavy menstrual bleeding: A double-blind randomized clinical trial. Avicenna J Phytomed. 2020 Sep-Oct;10(5):523-532. PMID: 32995330;\n   PMCID: PMC7508321.\n\n   Lukes AS, Moore KA, Muse KN, Gersten JK, Hecht BR, Edlund M, Richter HE, Eder SE, Attia GR, Patrick DL, Rubin A, Shangold GA. Tranexamic\n   acid treatment for heavy menstrual bleeding: a randomized controlled trial. Obstet Gynecol. 2010 Oct;116(4):865-875. doi:\n   10.1097/AOG.0b013e3181f20177. PMID: 20859150.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                    PHRASE\n\n   AAOMS                      American Association of Oral and Maxillofacial Surgeons\n\n   AMA                        American Medical Association\n\n   ARCL                       All Remaining Conditions List\n\n   ARS                        Acute Radiation Sickness\n\n   BHP                        Behavioral Health and Performance\n\n   CAC                        Coronary Artery Calcium\n\n   CHS                        Crew Health and Safety\n\n   CL                         Condition List\n\n   CliFF                      Clinical Finding Form\n\n   CMO                        Crew Medical Officer\n\n   COMFORT                    Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                        Clinical Phase 1\n\n   CP2                        Clinical Phase 2\n\n   CP3                        Clinical Phase 3\n\n   CRL                        Clinical Resource Level\n\n   CRT                        Capability Resource Table\n\n   CST                        Clinical Science Team\n\n   DCS                        Decompression Syndrome\n\n   DRM                        Design Reference Mission\n\n   ED                         Emergency Medicine Doctor\n\n   EL                         Evidence Library\n\n   EMCL                       Exploration Medical Condition List\n\n   EMT                        Emergency Medical Technician\n\n   EVA                        Extravehicular Activity\n\n   EXMC                       Exploration Medical Capability\n\n   HRP                        Human Research Program\n\n   ICD                        International Classification of Disease\n\n   ICL 1.0                    IMPACT 1.0 Medical Conditions List\n\n   ICU                        Intensive Care Unit\n\n   IMCL                       iMED Condition List\n\n\n\n\n6/15/2023 1:29:39 PM                                            ICL2_Abnormal Uterine Bleeding Cliff                                          page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-108-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n6/15/2023 1:29:39 PM                                     ICL2_Abnormal Uterine Bleeding Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-108-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "General"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Female"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Poisson"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Gamma"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.0519709"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.00320503"
+        ],
+        [
+          "Gamma"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-108-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                              Source                                 LOC Value"
+        ],
+        [
+          "Lauria et al, 2006                                                    Analog                                 2"
+        ],
+        [
+          "Thomson et al, 2006                                                   Analog                                 2"
+        ],
+        [
+          "Nielsen et al, 2009                                                   Analog                                 2"
+        ],
+        [
+          "Shapley et al, 2004                                                   Terrestrial                            2"
+        ],
+        [
+          "de Vires et al, 2008                                                  Terrestrial                            3"
+        ],
+        [
+          "As explained in Table 1 caption, available data is largely based off of survey data which leads to level of confidence scores of 2 given the inherent"
+        ],
+        [
+          "limitations of these studies."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-108-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                  Source                               LOC Value"
+        ],
+        [
+          "Dood et al, 2014                                                          Terrestrial                          2"
+        ],
+        [
+          "Majoribanks et al, 2016                                                   Terrestrial                          2"
+        ],
+        [
+          "Dorsey et al, 2013                                                        Analog                               2"
+        ],
+        [
+          "Stalhman et al, 2017                                                      Analog                               2"
+        ],
+        [
+          "Whiteman et al, 2010                                                      Terrestrial                          2"
+        ],
+        [
+          "Luoto et al, 1994                                                         Terrestrial                          2"
+        ],
+        [
+          "Given the paucity and lack of understanding of the spaceflight environment on menses and AUB in addition to the various limitations discussed"
+        ],
+        [
+          "throughout this CLiFF, it is difficult to have a higher level of confidence level than 2 (neutral) as BC/WC probability is being chosen by expert"
+        ],
+        [
+          "opinion in the setting of this data."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-108-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis        CP2: Treatment             CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration    TI%        Duration        TI%        RTDC              LOCL"
+        ],
+        [
+          "Composite             Condition"
+        ],
+        [
+          "Case Scenario      Incidence             Probability %    Preset    Preset      Preset     Min     Max     Preset     Min%     Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best       mean 0.05197          95 - 100         100       1.33        2.80361    0.33    336     0          0.13     6        0        0"
+        ],
+        [
+          "Case (TBC)         and SD 0.003205"
+        ],
+        [
+          "Treated Worst                            0-5              100       2.17        50         336     8760    0          50       100      0.001    100"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best     N/A                   N/A              N/A       1.33        5.60723    0.33    336     5.60723    6        15       0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst    N/A                   N/A              N/A       2.17        11.7327    672     8760    7.97236    100      100      90       100"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-108-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "6/15/2023 1:29:39 PM                                               ICL2_Abnormal Uterine Bleeding Cliff                                                     page: 5"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-108-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                               Source                              LOC Value"
+        ],
+        [
+          "Dorsey et al, 2013                                                     Analog"
+        ],
+        [
+          "Stalhman et al, 2017                                                   Analog"
+        ],
+        [
+          "Whiteman et al, 2010                                                   Terrestrial"
+        ],
+        [
+          "1"
+        ],
+        [
+          "Luoto et al, 1994                                                      Terrestrial"
+        ],
+        [
+          "de Vries, 2008                                                         Terrestrial"
+        ],
+        [
+          "Stang, 2012                                                            Terrestrial"
+        ],
+        [
+          "Given the nuance associated with the best- and worst-case definitions as well as the paucity of understanding in how spaceflight may affect AUB,"
+        ],
+        [
+          "there is low confidence in the duration range, RTDC chance, and the LOCL."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-108-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                    Source                                     LOC Value"
+        ],
+        [
+          "GBD, 2017                                                   Terrestrial"
+        ],
+        [
+          "1"
+        ],
+        [
+          "Wijeratne, 2018                                             Terrestrial"
+        ],
+        [
+          "Given the nuance associated with the best- and worst-case definitions as well as the paucity of understanding in how spaceflight may affect AUB,"
+        ],
+        [
+          "there is low confidence in the duration range, RTDC chance, and the LOCL."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-108-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision           Hearing                    Dentition          GI             GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223              664            113               89             854            44             145          5               13             6"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "89                                           145                                         6"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTWC)"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-108-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-108/female_reproductive_anatomy.png",
+      "mime_type": "image/png",
+      "width": 1199,
+      "height": 804,
+      "sha256": "a1fe0d8fd63f85dcd038296470a7df5e575ce37f5c54677190c7d53bc6c6f18e",
+      "creator": "R. Dewaele (Bioscope, Unige), J. Abdulcadir (HUG), C. Brockmann (Bioscope, Unige), O. Fillod, S. Valera-Kummer (DIP)",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AFemale_reproductive_system_%2801%29.png",
+      "attribution": "R. Dewaele (Bioscope, Unige), J. Abdulcadir (HUG), C. Brockmann (Bioscope, Unige), O. Fillod, S. Valera-Kummer (DIP), via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Anatomical diagram of the uterus, endometrium, ovaries, and adnexa.",
+      "alt_text": "Diagram of female reproductive system.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Female reproductive system (01).png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-108-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-108/female_pelvic_organs_schematic.png",
+      "mime_type": "image/png",
+      "width": 481,
+      "height": 447,
+      "sha256": "1ade114c26d3b1b61b94c3e35e347cf9583a89c7e62d5d49bf3847ee9e513ce0",
+      "creator": "CDC, Mysid; derivative work: MrArifnajafov",
+      "license_identifier": "CC0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AScheme_female_reproductive_system-az.png",
+      "attribution": "CDC, Mysid; derivative work: MrArifnajafov, via Wikimedia Commons (CC0)",
+      "caption": "Frontal schematic of the uterine cavity, cervix, and adnexal structures.",
+      "alt_text": "Schematic of female reproductive organs.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Scheme female reproductive system-az.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-108-IMG-03",
+      "ordinal": 2,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-108/female_pelvic_sagittal_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1586,
+      "height": 2700,
+      "sha256": "74dd618d6390d3dffc27897606b7a10f8291085be9f5b6c16e7703f4058c9621",
+      "creator": "Unknown Illustrator",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AUrinary_%28female%29.jpg",
+      "attribution": "Unknown Illustrator, via Wikimedia Commons (Public domain)",
+      "caption": "Line drawing of female pelvic organ relationships.",
+      "alt_text": "Diagram of female pelvic anatomy.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Urinary (female).jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-108-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Abnormal Uterine Bleeding",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/abnormal-uterine-bleeding-cliff-2023.pdf?emrc=edf018",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

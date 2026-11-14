@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-108",
+  "slot": 108,
+  "quest_id": "Q-0408",
+  "checked_at_utc": "2026-11-14T06:38:11.429095+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/abnormal-uterine-bleeding-cliff-2023.pdf?emrc=edf018",
+  "http_status": 200,
+  "pdf_sha256": "9a63bc85d11402c8ef9443cf28435f501c542947a62875615897ef1790d904fd",
+  "pdf_bytes": 337295,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-108-IMG-01": "a1fe0d8fd63f85dcd038296470a7df5e575ce37f5c54677190c7d53bc6c6f18e",
+    "CLIFF-108-IMG-02": "1ade114c26d3b1b61b94c3e35e347cf9583a89c7e62d5d49bf3847ee9e513ce0",
+    "CLIFF-108-IMG-03": "74dd618d6390d3dffc27897606b7a10f8291085be9f5b6c16e7703f4058c9621"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
