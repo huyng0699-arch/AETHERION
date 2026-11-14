@@ -39,6 +39,7 @@ class SymptomInterviewPage(QWidget):
         self._saving = False
         self._request_generation = 0
         self._search_seq = 0  # discard out-of-order matches from earlier queries
+        self._question_seq = 0  # discard out-of-order adaptive question replies
 
         root = QVBoxLayout(self)
         root.setContentsMargins(26, 20, 26, 20)
@@ -202,6 +203,7 @@ class SymptomInterviewPage(QWidget):
     def reset_interview(self):
         self._request_generation += 1
         self._search_seq += 1
+        self._question_seq += 1
         self.active_symptoms = []
         self.answers = {}
         self.question_id = None
@@ -325,8 +327,11 @@ class SymptomInterviewPage(QWidget):
                    "answers": self.answers,
                    "use_ai": self.use_ai.isChecked(),
                    "allow_cloud": self.allow_cloud.isChecked()}
+        self._question_seq += 1
+        seq = self._question_seq
         self._request("POST", "/api/v1/knowledge/interview/next",
-                      payload, self._show_question)
+                      payload, lambda data, error: self._show_question(
+                          data, error) if seq == self._question_seq else None)
 
     def _show_question(self, data, error):
         if error or not isinstance(data, dict):
@@ -335,11 +340,30 @@ class SymptomInterviewPage(QWidget):
         self.last_state = str(data.get("state", ""))
         self.answers_box.clear()
         question = data.get("next_question")
-        self.question_id = question.get("id") if isinstance(question, dict) else None
+        candidate = question.get("id") if isinstance(question, dict) else None
+        self.question_id = candidate if isinstance(candidate, str) and len(candidate) <= 80 else None
         if self.question_id:
-            self.question.setText(self._s("question." + self.question_id))
-            for option in question.get("answers", []):
-                self.answers_box.addItem(self._s("answer." + option.lower()), option)
+            options = question.get("answers")
+            try:
+                translated_question = self._s("question." + self.question_id)
+                if not isinstance(options, list) or len(options) > 12:
+                    raise KeyError("Invalid question option list")
+                translated_options = []
+                for option in options:
+                    if not isinstance(option, str) or len(option) > 40:
+                        raise KeyError("Unexpected answer code")
+                    translated_options.append((self._s("answer." + option.lower()), option))
+            except KeyError:
+                # The backend is authoritative for answer codes; unknown codes
+                # are NOT guessed, translated or offered as validated medicine.
+                self.question_id = None
+                self.question.setText(self._s("intake.unvalidated"))
+                self.state.setText(self._s("intake.invalid"))
+                self._update_buttons()
+                return
+            self.question.setText(translated_question)
+            for label, code in translated_options:
+                self.answers_box.addItem(label, code)
         else:
             self.question.setText(self._s("intake.finished"))
         self._render_state(data)
