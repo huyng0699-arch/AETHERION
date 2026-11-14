@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-054",
+  "slot": 54,
+  "quest_id": "Q-0354",
+  "checked_at_utc": "2026-11-14T06:18:14.061509+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-suit-contact-injury-cliff-2023.pdf?emrc=3d6a91",
+  "http_status": 200,
+  "pdf_sha256": "8baa54bf874198be684b971f38bed3ef28d5d0272a29df876f7532fbefa16a61",
+  "pdf_bytes": 307404,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-054-IMG-01": "72c835d9b436b0ef3b1b186565e2a3c1262a8589906ecf5a7e804ac1d6d66c8f",
+    "CLIFF-054-IMG-02": "5f42323bf34a118e6a7b46718e8d79e894cdb93ea97e7a8a0b31df7bfa556ec1",
+    "CLIFF-054-IMG-03": "62b021911f62de7521144dcdefab1afaabbadf8146b061e936c929afd5fe2567"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}

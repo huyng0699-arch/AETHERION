@@ -1,0 +1,544 @@
+{
+  "article_id": "CLIFF-054",
+  "slot": 54,
+  "display_title": "EVA-Related Suit Contact Injury",
+  "category": "Musculoskeletal",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-054",
+    "publisher": "NASA",
+    "title": "EVA-Related Suit Contact Injury \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-suit-contact-injury-cliff-2023.pdf?emrc=3d6a91",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-suit-contact-injury-cliff-2023.pdf?emrc=3d6a91",
+    "retrieved_at_utc": "2026-11-14T06:18:14.061509+00:00",
+    "content_sha256": "8baa54bf874198be684b971f38bed3ef28d5d0272a29df876f7532fbefa16a61",
+    "original_mime": "application/pdf",
+    "original_bytes": 307404,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-054-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n   Branch     Baseline\n\n\n\n ICL46_Eva Related Suit Contact Injury\n\n EVA related suit contact injuries refer to contusions, abrasions, or hard impacts with the spacesuit. Most contact injuries are minor (Strauss, 2004).\n Gravity shifting inside the suit during test-runs at the NBL can lead to contact injuries not seen in spaceflight (Chappell et al, 2017).\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Scheuring et al. (2009) was used to inform the incidence distribution for this condition. The study evaluated the incidence musculoskeletal in-flight\n  injuries among astronauts, as well as skin abrasions, contusions, and lacerations in a review spanning Mercury - Expedition 13 of the ISS Program.\n  44 contusions and abrasions were attributed to the EVA suit during that timeframe. Of note, these data are based on the Extravehicular Mobility\n  Unit (EMU) suit used on the ISS \u2013 not the planned xEMU suit for Lunar surface EVAs. The following data sources were utilized in this review: post-\n  flight medical debriefs, the LSAH medical record database, the Johnson Space Center (JSC) electronic medical record system, including ASCR\n  specialist assessment and treatment logs, and the JSC Flight Medicine Clinic vault records. Musculoskeletal injury data in the ISS program was\n  extracted from the private medical conferences held between the ISS crewmembers and their flight surgeon up to and including Expedition 13, as\n  well as from the ASCR specialists supervising the crewmember\u2019s in-flight training regimen. Lastly, several entries came directly from personal\n  communications with astronaut crewmembers or flight surgeons and the authors when not otherwise duplicated. Information collected on each injury\n  included location, type, and a detailed narrative on the mechanism of injury, the type of exercise the crewmember performed during the flight,\n  previous history of injury, treatment, and post-flight outcome. The term \u201c in-flight\u201d included lunar surface operations. This article notes small\n  lacerations and abrasions to the hands are among the most common injuries occurring throughout the U.S. space program.\n\n  ANALOG LITERATURE\n\n  Strauss, 2004 is a prospective observational study of EVA suit symptoms and injuries experienced by NASA astronauts during EVA training at the\n  NBL from July 2002 to January 2004. 770 test runs across 86 subjects were reviewed. Subjects filled out a comprehensive symptom questionnaire\n  after each test run. Suit contact symptoms were common, occurring in 45.7% of test runs. Excluding hand-related injuries (these are covered by\n  condition ICL42 \u2013 EVA Related Hand Injury) and only including contact injuries (i.e. excluding sprains/strains), 143 suit contact events reported (39\n  shoulder, 40 foot, 14 arms, 20 legs, 19 neck, 10 trunk, and 1 groin). This provides an incidence of 143 suit contact events per 770 test runs. This\n  study could be particularly advantageous in helping to predict risk of suit contact injuries in a partial gravity environment (like the Lunar surface).\n  For instance, the leg complaints were reported as primarily knee contact injuries that were worst with knee flexion and weight bearing. However,\n  unlike the Lunar surface, in the NBL crewmember orientation varies (i.e. it is not limited to ambulation) and gravity shifting inside the suit has been\n  shown to cause injuries that are not seen in the microgravity environment (Chappell et al, 2017). Also, of consideration is that these data are based\n  on the Extravehicular Mobility Unit (EMU) suit used on the ISS \u2013 not the planned xEMU suit for Lunar surface EVAs.\n\n  TERRESTRIAL LITERATURE\n\n  It was assumed that terrestrial data would be inadequate for providing input that drives the incidence of this spaceflight specific condition. No\n  terrestrial data searches were performed.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   Mean: 0.1807\n\n\n\n\n11/15/2022 2:59:07 PM                                          ICL46_Eva Related Suit Contact Injury Cliff                                                  page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-054-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   SD: 0.02439\n\n\n  INCIDENCE SUMMARY\n\n  The incidence for this condition is informed by Scheuring et al, 2009. It reports 44 contusions/abrasions specifically attributed to the EVA suit from\n  Mercury through ISS Expedition 13. Total EVAs Mercury through Expedition 13 was 247. IP: 0.1781 (95%CI: 0.1325, 0.2317). The Bayesian\n  posterior distribution for the incidence proportion given the spaceflight data (44 events over 247 person-EVAs) under an uninformative prior is\n  Beta(shape1=44.79, shape2=203.08) with mean 0.1807 and SD 0.02439.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     EVA\n     Segment\n     EVA All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Binomial\n     Incidence Dist.\n     Beta\n     Mean\n     0.1807\n     SD\n     0.0243901\n\n\n     Beta\n     (Alpha): 44.79\n     (Beta): 203.08\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                               Source                                   LOC Value\n\n   Scheuring et al, 2009                                                  Spaceflight                              4\n\n   Strauss, 2004                                                          Analog                                   3\n\n  Scheuring et al, 2009 reports 44 cases of inflight abrasions and contusions due to the EVA suit from Mercury - ISS Expedition 13. Straus, 2004 is\n  an analog prospective observational study conducted at the NBL in which there were 143 reported suit contact complaints in 770 test runs.\n\n\n\n\n11/15/2022 2:59:07 PM                                          ICL46_Eva Related Suit Contact Injury Cliff                                                 page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-054-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Prevention methods include optimizing suit fit, crew training including avoiding work outside of the normal work envelop, the application of suit\n  padding and pressure absorbing dressings to known affected body areas. (Strauss, 2004)\n\n  BEST CASE SCENARIO DEFINITION\n\n  Contusions, abrasions, friction injuries (blister, rash, chaffing) that resolve spontaneously. (Note this is exclusive of EVA Related Hand Injuries).\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Contusions, abrasions, friction injuries (blister, rash, chaffing) that require treatment. (Note this is exclusive of EVA Related Hand Injuries).\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  EVA related - Skin blister EVA related - Skin Chaffing EVA related - Contusions\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  The EIS (Exposure Incidence System) is a comprehensive questionnaire that crewmembers complete after EVA training. As of August 12, 2021\n  there were 2,970 training exposure events in the database. This dataset does not include in-flight EVA data. Of these 2970 events, 618 reported\n  they had \"pain, discomfort, or injuries to report\" after the exposure. Of those, 413 indicated that they used \"post-exposure therapies (non-\n  prescription medications, heat, ice, or topical analgesics\" to treat their symptoms. Therefore, the worst-case scenario (requiring treatment) was\n  assigned 413/618 = 66.82%. The best-case scenario (resolves spontaneously) was accordingly assigned a probability of 33.18%.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                    Source                           LOC Value\n\n   EIS Database, 2021                                                          Analog                           3\n\n\n  The EIS (Exposure Incidence System) is a comprehensive questionnaire that crewmembers complete after EVA training. As of August 12, 2021\n  there were 2,970 training exposure events in the databased (including NBL runs (2575), 1G NBL exposure events (175), 1G Suit Lab research and\n  Development exposure events (145), and 1G Suit Lab EVA Training Exposure events (75)). This dataset does not include in-flight EVA data. Of\n  these 2970 events, 618 reported they had \"pain, discomfort, or injuries to report\" after the exposure. Of those, 413 indicated that they used \"post-\n  exposure therapies (non-prescription medications, heat, ice, or topical analgesics\" to treat their symptoms.\n\n\n\n\n11/15/2022 2:59:07 PM                                           ICL46_Eva Related Suit Contact Injury Cliff                                               page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-054-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                                  CP1: Diagnosis       CP2: Treatment           CP3: Condition End State\n\n                                                                  TI%      Duration    TI%        Duration      TI%       RTDC             LOCL\n                         Composite            Condition\n   Case Scenario         Incidence            Probability %       Preset   Preset      Preset     Min    Max Preset       Min%    Max%     Min%     Max%\n\n   Treated Best Case     Mean: 0.1807         33 - 33             100      0.616       5.60723    72     384    0         0       0        0        0\n   (TBC)                 SD: 0.02439\n\n   Treated Worst                              67 - 67             100      0.616       12.304     72     384    0         0       0        0        0\n   Case (TWC)\n\n   Untreated Best        N/A                  N/A                 N/A      0.616       29.9495    72     384    0         0       0        0        0\n   Case (UTBC)\n\n   Untreated Worst       N/A                  N/A                 N/A      0.616       29.9495    72     384    0         0       0        0        0\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n11/15/2022 2:59:07 PM                                          ICL46_Eva Related Suit Contact Injury Cliff                                                    page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-054-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  RTDC was determined to be 0% for all scenarios by the ExMC Clinician creating the CLiFF (corroborated by MedOps physician). Thus no RTDC\n  surrogate was selected and no RTDC specific searches were performed. The duration is the same for all scenarios because treatment does not\n  affect the duration of this condition (it can alleviate discomfort associated with abrasions, contusions, blisters, etc. but does not speed\n  healing/resolution). The difference between the best and worst-case scenarios is treatment (best-case resolves spontaneously and worst-case\n  requires treatment). The RTDC and LOCL were assigned as 0% for all scenarios. Therefore, the explanations for each scenario below are\n  identical.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  All scenarios for this condition have the same duration, RTDC, and LOCL. The explanation that follows is identical for all scenarios. The duration\n  was assigned a range of 72-384 hours (3-16 days) for all scenarios because treatment does not affect the duration of this condition. The minimum\n  duration was informed by an informational website provided by the National Health System in the UK regarding the minimum duration of skin blisters\n  (NHS, 2020). The maximum duration was informed by healing times for abrasions (Andersen, 2014). RTDC or LOCL are not anticipated as an\n  outcome of this condition. This assumption was corroborated by Medical Operations at JSC (in particular a flight surgeon with extensive experience\n  with EVAs spanning both the Space Shuttle and ISS programs). Literature searches specific to RTDC and LOCL were not performed, but there was\n  no evidence of risk of RTDC or LOCL in any literature examined for any other sections of the CLiFF. RTDC probability was assigned 0%. LOCL\n  probability was assigned 0%.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  All scenarios for this condition have the same duration, RTDC, and LOCL. The explanation that follows is identical for all scenarios. The duration\n  was assigned a range of 72-384 hours (3-16 days) for all scenarios because treatment does not affect the duration of this condition. The minimum\n  duration was informed by an informational website provided by the National Health System in the UK regarding the minimum duration of skin blisters\n  (NHS, 2020). The maximum duration was informed by healing times for abrasions (Andersen, 2014). RTDC or LOCL are not anticipated as an\n  outcome of this condition. This assumption was corroborated by Medical Operations at JSC (in particular a flight surgeon with extensive experience\n  with EVAs spanning both the Space Shuttle and ISS programs). Literature searches specific to RTDC and LOCL were not performed, but there was\n  no evidence of risk of RTDC or LOCL in any literature examined for any other sections of the CLiFF. RTDC probability was assigned 0%. LOCL\n  probability was assigned 0%.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  All scenarios for this condition have the same duration, RTDC, and LOCL. The explanation that follows is identical for all scenarios. The duration\n  was assigned a range of 72-384 hours (3-16 days) for all scenarios because treatment does not affect the duration of this condition. The minimum\n  duration was informed by an informational website provided by the National Health System in the UK regarding the minimum duration of skin blisters\n  (NHS, 2020). The maximum duration was informed by healing times for abrasions (Andersen, 2014). RTDC or LOCL are not anticipated as an\n  outcome of this condition. This assumption was corroborated by Medical Operations at JSC (in particular a flight surgeon with extensive experience\n  with EVAs spanning both the Space Shuttle and ISS programs). Literature searches specific to RTDC and LOCL were not performed, but there was\n  no evidence of risk of RTDC or LOCL in any literature examined for any other sections of the CLiFF. RTDC probability was assigned 0%. LOCL\n  probability was assigned 0%.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  All scenarios for this condition have the same duration, RTDC, and LOCL. The explanation that follows is identical for all scenarios. The duration\n  was assigned a range of 72-384 hours (3-16 days) for all scenarios because treatment does not affect the duration of this condition. The minimum\n  duration was informed by an informational website provided by the National Health System in the UK regarding the minimum duration of skin blisters\n  (NHS, 2020). The maximum duration was informed by healing times for abrasions (Andersen, 2014). RTDC or LOCL are not anticipated as an\n  outcome of this condition. This assumption was corroborated by Medical Operations at JSC (in particular a flight surgeon with extensive experience\n  with EVAs spanning both the Space Shuttle and ISS programs). Literature searches specific to RTDC and LOCL were not performed, but there was\n  no evidence of risk of RTDC or LOCL in any literature examined for any other sections of the CLiFF. RTDC probability was assigned 0%. LOCL\n  probability was assigned 0%.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n11/15/2022 2:59:07 PM                                       ICL46_Eva Related Suit Contact Injury Cliff                                                page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-054-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                                   Source                               LOC Value\n\n   Abercromby et al, 2020                                                     Analog\n\n   King, 2017                                                                 Terrestrial\n\n   Eiland and Ridley, 2016                                                    Terrestrial                                            3\n\n   Andersen, 2014                                                             Terrestrial\n\n   NHS, 2020                                                                  Terrestrial\n\n  There is a paucity of data in the literature regarding the length of symptoms from EVA suit contact injuries. Even datasets like the Exposure\n  Incidence System lack consistent follow-up protocols to track the duration of suit-related issues (Abercromby et al, 2020). Thus, terrestrial data\n  regarding the average duration to resolution of contusions (King, 2017), Abrasions (Eiland and Ridley, 2016; Andersen, 2014) and blisters (NHS,\n  2020) was used to inform the duration. Note that the only difference between the best and worst-case scenarios is that the best-case scenario\n  resolves spontaneously and the worst-case scenario \"requires treatment.\" All variations of this condition are self-limiting, and literature indicates\n  that treatment does not hasten resolution. Thus, the durations are the same for all scenarios. No data could be found to support length of time that\n  discomfort would require treatment for the worst-case scenario.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                      Source                                      LOC Value\n\n   N/A                                           N/A                                                                      3\n\n  RTDC is not an anticipated outcome of this condition. This assumption was corroborated by Medical Operations at JSC (in particular a flight\n  surgeon with extensive experience with EVAs spanning both the Space Shuttle and ISS programs). No literature searches were performed specific\n  to RTDC, but prior searches for incidence, duration, BC/WC probability would not support the need for RTDC.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                      Source                                      LOC Value\n\n   N/A                                           N/A                                                                      3\n\n  LOCL is not an anticipated outcome of this condition. This assumption was corroborated by Medical Operations at JSC (in particular a flight\n  surgeon with extensive experience with EVAs spanning both the Space Shuttle and ISS programs). No literature searches were performed specific\n  to LOCL, but prior searches for incidence, duration, BC/WC probability would not indicate LOCL as a feasible outcome.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Overview\n  During EVAs, contusions, abrasions, and friction injuries can occur with in the suit. There is a separate condition for EVA-related hand injuries,\n  however, this condition covers injuries to other parts of the body.\n\n  CNES: None\n\n  Diagnostic Scope and Resourcing\n  Diagnostic resourcing starts with a history and physical exam. There are no labs, imaging, or other resourcing is needed for diagnosis.\n\n  Clinical Phase 1 Duration and Rationale\n  This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\n  consensus duration is as follows:\n\n  CP1 BC (Treated or Untreated): 0.616\n  CP1 WC (Treated or Untreated): 0.616\n\n  The highest scope of practice required for diagnosis includes the interpretation of the ultrasounds which is SOP 2 (paramedic/military medic).\n\n  Treatment Scope and Resourcing\n  In the best-case scenario, the injury is minor and resolves spontaneously. Though not part of the formal medical kit, moisturizer may be used given\n  blister, rashes, or chaffing. In the worst-case scenario, a wound dressing may be needed for any contusions or abrasions.\n\n  Communications and Support Needs\n\n\n\n\n11/15/2022 2:59:07 PM                                         ICL46_Eva Related Suit Contact Injury Cliff                                                 page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-054-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  Ground support with pictures or video can be considered for the worst-case scenario to help guide management.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  EVA related suit contact injury is a unique condition to IMPACT 1.0. Therefore, the incidence, duration, and outcomes (RTDC, LOCL) are\n  appropriately unique in this CLiFF.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  \u2022 Some overlap between the incidence of ICL 44- EVA Related Paresthesia and ICL 46 - EVA Related Suit Contact Injury may exist. The incidence\n  for this CLiFF was taken directly from Scheuring et al, 2009 and is based only on documented abrasions and contusions caused by the suit. The\n  incidence for ICL 44 \u2013 EVA Related Paresthesia was taken from the former IMM CLiFF and Antonsen et al, 2017 corroborates that the diagnosis of\n  interest was reported as \u201cparesthesia\u201d for at least the first half of the events included (NASA, Paresthesias Secondary to Extravehicular Activity\n  CLiFF, 2017; Antonsen et al, 2017).\n\n\n\n\n11/15/2022 2:59:07 PM                                        ICL46_Eva Related Suit Contact Injury Cliff                                               page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-054-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                               Clinical Phase 2: Treatment\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision         Hearing                   Dentition          GI          GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n     Case\n     (TBC)\n   Untreated\n     Best\n                             664\n     Case\n    (UTBC)\n    Treated\n     Worst\n      Case\n     (TWC)\n   Untreated\n     Worst\n                             664\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                        Total\n                                                                                                                                                      Human\n                                                                                             Translation &                            Total Tasks\n                 Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                             Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n                (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                            (microgravity)                            Condition\n                                                                                                                                                     Tasks Full\n                                                                                                                                                      Mission\n    Treated\n      Best\n                                                                                                                        211          211            3763          0.0560723 5.60723\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                              22             196                          34            211          1127           3763          0.299495      29.9495\n     Case\n    (UTBC)\n    Treated\n     Worst\n                                                              22             196                          34            211          463            3763          0.12304       12.304\n      Case\n     (TWC)\n   Untreated\n     Worst\n                                                              22             196                          34            211          1127           3763          0.299495      29.9495\n     Case\n    (UTWC)\n\n                                                                           Clinical Phase 3: Condition End State\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision         Hearing                   Dentition          GI          GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n     Case\n     (TBC)\n   Untreated\n     Best\n     Case\n    (UTBC)\n    Treated\n     Worst\n      Case\n     (TWC)\n   Untreated\n     Worst\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n11/15/2022 2:59:07 PM                                           ICL46_Eva Related Suit Contact Injury Cliff                                                                        page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-054-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                 Translation &                          Total Tasks\n                Hand                                     Lower       Ambul &                     Don/Doff   Pressure                    System\n                        Hand (Any)   Upper Extremity                             Stabilization                         Impaired By                      TI Decimal       TI %\n               (Dom)                                   Extremity   Standing (g)                Equipment     Ops                       Category\n                                                                                (microgravity)                          Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n    Treated\n      Best\n                                                                                                                       0              3763          0                0\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                                                       0              3763          0                0\n     Case\n    (UTBC)\n    Treated\n     Worst\n                                                                                                                       0              3763          0                0\n      Case\n     (TWC)\n   Untreated\n     Worst\n                                                                                                                       0              3763          0                0\n     Case\n    (UTWC)\n\n\n\n\n11/15/2022 2:59:07 PM                                   ICL46_Eva Related Suit Contact Injury Cliff                                                                      page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-054-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n11/15/2022 2:59:07 PM                                         ICL46_Eva Related Suit Contact Injury Cliff                                                  page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-054-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. Abercromby AF, Bekdash O, Cupples JS, Dunn JT, Dillon EL, Garbino A, et al. Crew Health and Performance Extravehicular Activity Roadmap:\n   2020. Johnson Space Center: NASA; 2020. No: TP-20205007604.\n\n   2. Antonsen E, Bayuse T, Blue R, Daniels V, Hailey M, Hussey S, et al. Evidence Report: Risk of Adverse Health Outcomes and Decrements in\n   Performance due to In-Flight Medical Conditions. Johnson Space Center: NASA; 2017. No: TR20170004604.\n\n   3. Chappell SP, Norcross JR, Abercromby AF, Bekdash O, Benson EA, Jarvis SL. Evidence Report: RISK OF INJURY AND COMPROMISED\n   PERFORMANCE DUE TO EVA OPERATIONS. Johnson Space Center: NASA; 2017. No: 20170002574.\n\n   4. Eiland G, Ridley D. Dermatological Problems in the Athlete. J Orthop Sports Phys Ther. 1996; 23(6):388\u2013402\n\n   5. King M. The Management of Bruising following Nonsurgical Cosmetic Treatment. J Clin Aesthetic Dermatol. 2017; 10(2):E1\u20134\n\n   6. NASA. Exposure Incidence System (EIS) Database. 2021\n\n   7. NHS. Blisters. NHS Natl. Health Serv. Inf. . 2020 Retrieved 12 August 2021 from https://www.nhsinform.scot/illnesses-and-\n   conditions/injuries/skin-injuries/blisters\n\n   8. Scheuring RA, Mathers CH, Jones JA, Wear ML. Musculoskeletal injuries and minor trauma in space: incidence and injury mechanisms in U.S.\n   astronauts. Aviat Space Environ Med. 2009; 80(2):117\u201324\n\n   9. Strauss S. Extravehicular Mobility Unit Training Suit Symptom Study Report. Johnson Space Center: NASA; 2004. No: TP\u20132004\u2013212075.\n\n   10. Andersen, D. B. (2014). Schwartz\u2019s Principles of Surgery. F. C. Brunicardi. United States, New York : McGraw-Hill Education. 1.\n\n   11. NASA. Paresthesias Secondary to Extravehicular Activity Clinical Information Findings Form. Integrated Medical Database of the Human\n   Health and Performance Contract Integrated Medical Model Project. 2017;v6.5.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                      PHRASE\n\n   AAOMS                        American Association of Oral and Maxillofacial Surgeons\n\n   AMA                          American Medical Association\n\n   ARCL                         All Remaining Conditions List\n\n   ARS                          Acute Radiation Sickness\n\n   BHP                          Behavioral Health and Performance\n\n   CAC                          Coronary Artery Calcium\n\n   CHS                          Crew Health and Safety\n\n   CL                           Condition List\n\n   CliFF                        Clinical Finding Form\n\n   CMO                          Crew Medical Officer\n\n   COMFORT                      Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                          Clinical Phase 1\n\n   CP2                          Clinical Phase 2\n\n   CP3                          Clinical Phase 3\n\n   CRL                          Clinical Resource Level\n\n   CRT                          Capability Resource Table\n\n   CST                          Clinical Science Team\n\n   DCS                          Decompression Syndrome\n\n   DRM                          Design Reference Mission\n\n\n\n\n11/15/2022 2:59:07 PM                                        ICL46_Eva Related Suit Contact Injury Cliff                                         page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-054-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   ED                   Emergency Medicine Doctor\n\n   EL                   Evidence Library\n\n   EMCL                 Exploration Medical Condition List\n\n   EMT                  Emergency Medical Technician\n\n   EVA                  Extravehicular Activity\n\n   EXMC                 Exploration Medical Capability\n\n   HRP                  Human Research Program\n\n   ICD                  International Classification of Disease\n\n   ICL 1.0              IMPACT 1.0 Medical Conditions List\n\n   ICU                  Intensive Care Unit\n\n   IMCL                 iMED Condition List\n\n   iMED                 Integrated Medical Evidence Database\n\n   IMM                  Integrated Medical Model\n\n   IMPACT-MD            Impact Medical Database\n\n   IP                   Incidence Proportion\n\n   IR                   Incidence Rate\n\n   ISS                  International Space Station\n\n   IV                   Intravenous\n\n   JSC                  Johnson Space Center\n\n   LEO                  Low-Earth orbit\n\n   LEVA                 Lunar Extravehicular Activity\n\n   LOCL                 Loss of Crew Life\n\n   LOM                  Loss of Mission\n\n   LSAH                 Lifetime Surveillance of Astronaut Health\n\n   LSO                  Lunar Surface Operations\n\n   MCL                  Master Condition List\n\n   MEVA                 Medical Extravehicular Activity\n\n   NASA                 National Aeronautics and Space Administration\n\n   N/A                  Not Applicable\n\n   NP                   Nurse Practitioner\n\n   OBGYN                Obstetrics and Gynecology\n\n   OR                   Occurrence Rate\n\n   PA                   Physician Assistant\n\n   PDQ                  Pain Disability Questionnaire\n\n   PFCL                 Proposed Future Conditions List\n\n   PPE                  Personal Protective Equipment\n\n   PTRS                 Project Technical Requirements Specification\n\n   PRL                  Pharmaceutical Resource Level\n\n   QTL                  Quality Time Lost\n\n   RCL                  Removed Conditions List\n\n   REP                  Rochester Epidemiology Study\n\n   RTDC                 Removal to Definitive Care\n\n   SANS                 Spaceflight-Associated Neuro-ocular Syndrome\n\n\n\n\n11/15/2022 2:59:07 PM                                   ICL46_Eva Related Suit Contact Injury Cliff   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-054-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   SAS                  Space Adaptation Syndrome\n\n   SEVA                 Spaceflight Extravehicular Activity\n\n   SME                  Subject Matter Expert\n\n   SoP                  Standard Operating Procedure\n\n   SPE                  Solar Particle Event\n\n   TBD                  To Be Determined\n\n   TI                   Task Impairment\n\n\n\n\n11/15/2022 2:59:07 PM                                ICL46_Eva Related Suit Contact Injury Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-054-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "EVA"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "EVA All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Binomial"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Beta"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.1807"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.0243901"
+        ],
+        [
+          "Beta"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-054-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                               Source                                   LOC Value"
+        ],
+        [
+          "Scheuring et al, 2009                                                  Spaceflight                              4"
+        ],
+        [
+          "Strauss, 2004                                                          Analog                                   3"
+        ],
+        [
+          "Scheuring et al, 2009 reports 44 cases of inflight abrasions and contusions due to the EVA suit from Mercury - ISS Expedition 13. Straus, 2004 is"
+        ],
+        [
+          "an analog prospective observational study conducted at the NBL in which there were 143 reported suit contact complaints in 770 test runs."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-054-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                    Source                           LOC Value"
+        ],
+        [
+          "EIS Database, 2021                                                          Analog                           3"
+        ],
+        [
+          "The EIS (Exposure Incidence System) is a comprehensive questionnaire that crewmembers complete after EVA training. As of August 12, 2021"
+        ],
+        [
+          "there were 2,970 training exposure events in the databased (including NBL runs (2575), 1G NBL exposure events (175), 1G Suit Lab research and"
+        ],
+        [
+          "Development exposure events (145), and 1G Suit Lab EVA Training Exposure events (75)). This dataset does not include in-flight EVA data. Of"
+        ],
+        [
+          "these 2970 events, 618 reported they had \"pain, discomfort, or injuries to report\" after the exposure. Of those, 413 indicated that they used \"post-"
+        ],
+        [
+          "exposure therapies (non-prescription medications, heat, ice, or topical analgesics\" to treat their symptoms."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-054-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment           CP3: Condition End State"
+        ],
+        [
+          "TI%      Duration    TI%        Duration      TI%       RTDC             LOCL"
+        ],
+        [
+          "Composite            Condition"
+        ],
+        [
+          "Case Scenario         Incidence            Probability %       Preset   Preset      Preset     Min    Max Preset       Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best Case     Mean: 0.1807         33 - 33             100      0.616       5.60723    72     384    0         0       0        0        0"
+        ],
+        [
+          "(TBC)                 SD: 0.02439"
+        ],
+        [
+          "Treated Worst                              67 - 67             100      0.616       12.304     72     384    0         0       0        0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best        N/A                  N/A                 N/A      0.616       29.9495    72     384    0         0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst       N/A                  N/A                 N/A      0.616       29.9495    72     384    0         0       0        0        0"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-054-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "11/15/2022 2:59:07 PM                                       ICL46_Eva Related Suit Contact Injury Cliff                                                page: 5"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-054-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                      Source                                      LOC Value"
+        ],
+        [
+          "N/A                                           N/A                                                                      3"
+        ],
+        [
+          "RTDC is not an anticipated outcome of this condition. This assumption was corroborated by Medical Operations at JSC (in particular a flight"
+        ],
+        [
+          "surgeon with extensive experience with EVAs spanning both the Space Shuttle and ISS programs). No literature searches were performed specific"
+        ],
+        [
+          "to RTDC, but prior searches for incidence, duration, BC/WC probability would not support the need for RTDC."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-054-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                      Source                                      LOC Value"
+        ],
+        [
+          "N/A                                           N/A                                                                      3"
+        ],
+        [
+          "LOCL is not an anticipated outcome of this condition. This assumption was corroborated by Medical Operations at JSC (in particular a flight"
+        ],
+        [
+          "surgeon with extensive experience with EVAs spanning both the Space Shuttle and ISS programs). No literature searches were performed specific"
+        ],
+        [
+          "to LOCL, but prior searches for incidence, duration, BC/WC probability would not indicate LOCL as a feasible outcome."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-054-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision         Hearing                   Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTWC)"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-054-IMG-01",
+      "ordinal": 0,
+      "media_kind": "OTHER",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-054/nasa_emu_suit_fit_check.jpg",
+      "mime_type": "image/jpeg",
+      "width": 3000,
+      "height": 1993,
+      "sha256": "72c835d9b436b0ef3b1b186565e2a3c1262a8589906ecf5a7e804ac1d6d66c8f",
+      "creator": "NASA",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ASTS-123_Behnken_EMU_fit_check_2.jpg",
+      "attribution": "NASA, via Wikimedia Commons (Public domain)",
+      "caption": "NASA Extravehicular Mobility Unit (EMU) suit fit check illustrating the hard upper torso, shoulder scye bearings, and glove interface.",
+      "alt_text": "NASA astronaut undergoing an EMU spacesuit fit check.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:STS-123 Behnken EMU fit check 2.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-054-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-054/shoulder_joint_anatomy.png",
+      "mime_type": "image/png",
+      "width": 2000,
+      "height": 2000,
+      "sha256": "5f42323bf34a118e6a7b46718e8d79e894cdb93ea97e7a8a0b31df7bfa556ec1",
+      "creator": "BruceBlaus. When using this image in external sources it can be cited as: Blausen.com staff (2014). \"Medical gallery of Blausen Medical 2014\". WikiJournal of Medicine 1 (2). DOI:10.15347/wjm/2014.010. ISSN 2002-4436.",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ABlausen_0797_ShoulderJoint.png",
+      "attribution": "BruceBlaus. When using this image in external sources it can be cited as: Blausen.com staff (2014). \"Medical gallery of Blausen Medical 2014\". WikiJournal of Medicine 1 (2). DOI:10.15347/wjm/2014.010., via Wikimedia Commons (CC BY 3.0)",
+      "caption": "Anatomical illustration of the glenohumeral shoulder joint and surrounding bursae/soft tissues vulnerable to EVA suit contact.",
+      "alt_text": "Medical illustration of the human shoulder joint.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Blausen 0797 ShoulderJoint.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-054-IMG-03",
+      "ordinal": 2,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-054/friction_blister_clinical.jpg",
+      "mime_type": "image/jpeg",
+      "width": 640,
+      "height": 480,
+      "sha256": "62b021911f62de7521144dcdefab1afaabbadf8146b061e936c929afd5fe2567",
+      "creator": "AndryFrench",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AFriction_Blisters_On_Human_Foot.jpg",
+      "attribution": "AndryFrench, via Wikimedia Commons (CC BY 3.0)",
+      "caption": "Clinical photograph of friction blisters resulting from repetitive mechanical contact and shear stress.",
+      "alt_text": "Clinical photograph of friction blisters on skin.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Friction Blisters On Human Foot.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-054-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 EVA-Related Suit Contact Injury",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-suit-contact-injury-cliff-2023.pdf?emrc=3d6a91",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External anatomy and clinical friction blister images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}
