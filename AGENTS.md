@@ -1,5 +1,16 @@
 # AETHERION — Single agent instruction source
 
+## OWNER OVERRIDE — AETHERION IS BILINGUAL VIETNAMESE + ENGLISH (2026-11-14)
+
+**Mandatory for ALL agents and quests.** The app is bilingual: `vi` (Tiếng Việt) AND `en` (English). No agent may turn the product into Vietnamese-only ("thuần Việt") or English-only. This rule overrides older screen/task/document language preferences. The language used in discussions with the owner does NOT limit the app's supported languages. Follow [docs/LANGUAGE_POLICY.md](docs/LANGUAGE_POLICY.md) for the implementation contract.
+
+- **Every user-facing feature** must support a user-selectable, persisted VI/EN language, including Desktop Portal, menu, pages, dialogs, errors, labels, accessibility text, server admin and eventual mobile/watch. New user-visible UI strings must have both translations; do not hard-code just Vietnamese or just English. Use semantic locale keys; do not use rendered text for IDs/business logic. A language switch must not mutate health records.
+- **Scientific source originals are NOT UI translations.** Preserve the NASA CliFF English source extraction, page text, tables, titles, URLs, source hashes, citations and rights in `knowledge/nasa/cliff_119_2023/records/*.json` verbatim. Preserve source-language image metadata and QA evidence. Add separately marked, reviewer-checked translated views only; never rewrite originals or suggest NASA approved a translation.
+- **Symptom reference is currently Vietnamese:** `knowledge/symptoms/ASTRA_819_REFERENCE.json` has Vietnamese `name`, `note` and `initialReason`. Preserve stable IDs, machine-coded tiers/routes and existing labels. English medical terms/aliases must be added as separate optional localized fields or a translation table with clinical review; never silently machine-translate 819 entries into supposedly validated conditions.
+- **JSON syntax and API contract keys are language-neutral.** Do not translate keys, enums, identifiers, values used in rules, NASA facts, technical units or provenance. Translate only human-facing presentation and separately reviewed derivatives. English content in original NASA JSON is correct, not a localization bug.
+- **Acceptance:** Each modified UI screen must work in both VI and EN; a partially localized legacy screen must be reported as unfinished, not PASS. Source preservation and medical terminology review remain mandatory. Focused checks only; no blanket test suite for each string change.
+
+
 **Product:** AETHERION, Team TRUY TINH, NASA Space Apps 2026. **Canonical owner-corrected design (SPEC V3):** [docs/DESIGN_2026_11_14.md](docs/DESIGN_2026_11_14.md). **Source of truth for live Quest status:** each `quests/v1/Q-XXXX.md` file. **`QUEST_LOG.md` is only the navigation/coordination guide**, not a competing mutable task ledger.
 
 ## Chỉ thị mới nhất của chủ dự án — lập trình trực tiếp, hạn chế test (14/11/2026)
