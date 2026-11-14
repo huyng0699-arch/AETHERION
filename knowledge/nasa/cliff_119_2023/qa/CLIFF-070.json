@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-070",
+  "slot": 70,
+  "quest_id": "Q-0370",
+  "checked_at_utc": "2026-11-14T06:27:36.277524+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/hearing-loss-noise-related.pdf?emrc=565fc6",
+  "http_status": 200,
+  "pdf_sha256": "af7549e73ba89dcd491e74936d4007fa5cc17a394136087c421a733b39ff5d77",
+  "pdf_bytes": 302285,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-070-IMG-01": "8b2dde75accae4d3bddcfdeb4b80d32fd0b25d73b373cef55ec5da7fa39f2c3b",
+    "CLIFF-070-IMG-02": "9ce05db088866e95e756e1af2448eb2ff83fb10549e37e1521049c1280b61863",
+    "CLIFF-070-IMG-03": "dfe8bc490687dd55724a114527aeeb612e1be712dfa347a3c1d097c081702b5e"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}

@@ -1,0 +1,550 @@
+{
+  "article_id": "CLIFF-070",
+  "slot": 70,
+  "display_title": "Hearing Loss (Noise Related)",
+  "category": "Otolaryngology",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-070",
+    "publisher": "NASA",
+    "title": "Hearing Loss (Noise Related) \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/hearing-loss-noise-related.pdf?emrc=565fc6",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/hearing-loss-noise-related.pdf?emrc=565fc6",
+    "retrieved_at_utc": "2026-11-14T06:27:36.277524+00:00",
+    "content_sha256": "af7549e73ba89dcd491e74936d4007fa5cc17a394136087c421a733b39ff5d77",
+    "original_mime": "application/pdf",
+    "original_bytes": 302285,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-070-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n   Branch     Baseline\n\n\n\n ICL66_Hearing Loss - Noise-Related\n\n The IMM LD68 CliFF is named Hearing Loss. However, it is based on noise-induced hearing loss. The data contained in the IMM CliFF Hearing Loss\n is relevant to this CliFF and should be used for the incidence for this CliFF. Only spaceflight incidence data is applicable to this condition due to\n uniqueness of the spaceflight environment. LOE value of 3 (somewhat confident) is chosen for the incidence since it is based on spaceflight data\n from ISS and STS. Since the exploration vehicles may have different standards for ambient noise and a different noise environment than ISS and\n STS, an LOE value of 4 (confident) was not chosen. Best case/worst case percentages are based on terrestrial data. The BC/WC percentages are\n estimated as 65%/35% (Mattox, 1997). BC/WC percentages are given an LOE value of 3 (somewhat confident) based on terrestrial data.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Previous CLiFF was seemingly updated in 2017 to include most up to date data of 4 events/33.48 person years that met the condition requirement\n  of M-STS. More up to date data was not found during the literature review.\n\n  ANALOG LITERATURE\n\n  Analog data for Hearing Loss- Noise related pertaining to an analogous population is abundant, but a minimal amount of data is currently available\n  that offers the granularity required to understand the incidence vs the prevalence. The most analogous data refers to sensorineural hearing loss\n  incidence of noise related hearing loss within a population of USAF aviators (14.7/1000 person years). Noise related hearing loss is one of the\n  largest subsets of sensorineural hearing loss, although it must be noted that another condition (ICL65 \"Hearing Loss\") includes sensorineural\n  hearing loss as part of its case definition.\n\n  TERRESTRIAL LITERATURE\n\n  Terrestrial data found in this search lacks granularity between noise related hearing loss and age related hearing loss. The best estimates of\n  incidence were found from a systematic review (Lie et al) although much of the primary source material utilized for the systematic review reported\n  burden of disease as a unit rather than individual events/person years or overall prevalence. The best estimate given is between 7 and 21%.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   mean: 0.1194 and SD: 0.0599\n\n\n\n  INCIDENCE SUMMARY\n\n  Spaceflight Data: 4 events over 33.48 person-years of flight. Incidence rate: 0.1195 (95%CI: 0.038, 0.288). The Bayesian posterior distribution for\n  the incidence rate given inflight data of 4 cases over 33.48 person-years under an uninformative prior is reflected by a Gamma(shape=3.973,\n  rate=33.28) which has mean: 0.1194 and SD: 0.0599. Based on spaceflight data. LOE = 3. Only spaceflight incidence data is applicable to this\n  condition due to uniqueness of the spaceflight environment. LOE value of 3 (somewhat confident) is chosen for the incidence since it is based on\n  spaceflight data from ISS and STS. Since the exploration vehicles may have different standards for ambient noise and a different noise environment\n\n\n\n\n11/15/2022 4:20:13 PM                                          ICL66_Hearing Loss - Noise-Related Cliff                                                    page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-070-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  than ISS and STS, an LOE value of 4 (confident) was not chosen.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     0.119381\n     SD\n     0.059893\n\n\n     Gamma\n     (Shape): 3.973\n     (Rate): 33.28\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                         Source                               LOC Value\n\n   Lie, et al. 2016                                                 Terrestrial                          2\n\n   Limardo, et al. 2015                                             Spaceflight                          0\n\n   Saile L, et al. 2017                                             Spaceflight                          3\n\n   Orsello, et al. 2013                                             Analog                               0\n\n   Helfer, etal. 2010                                               Terrestrial                          0\n\n   Clark, 2001                                                      Spaceflight                          1\n\n   Kadem, 2018                                                      Spaceflight                          0\n\n   Buckey, et al. 2001                                              Spaceflight                          1\n\n\n  Incidence and best case/worst case percentages are based on spaceflight data. LOE = 3 (somewhat confident)\n\n\n\n\n11/15/2022 4:20:13 PM                                       ICL66_Hearing Loss - Noise-Related Cliff                 page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-070-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Hearing tests are performed pre-flight.\n\n  BEST CASE SCENARIO DEFINITION\n\n  A Mission Significant Threshold Shift (M-STS) that resolves within 30 days and does not impair communication.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  A M-STS that lasts greater than 30 days or that impairs communication.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  None\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  Mattox, 197 Natural history of sudden sensorineural hearing loss. The Annals of otology,rhinology, and laryngology. Jul-Aug 1997;86. 65% of cases\n  recover completely to fucntional hearing levels spontaneously.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                    Source                                     LOC Value\n\n   Saile, et al. 2017                                          Spaceflight                                3\n\n\n  LOE value of 3 (somewhat confident) is chosen for the incidence since it is based on spaceflight data from ISS and STS. Since the exploration\n  vehicles may have different standards for ambient noise and a different noise environment than ISS and STS, an LOE value of 4 (confident) was\n  not chosen.\n\n\n\n\n11/15/2022 4:20:13 PM                                         ICL66_Hearing Loss - Noise-Related Cliff                                                page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-070-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                               CP1: Diagnosis        CP2: Treatment           CP3: Condition End State\n\n                                                               TI%       Duration    TI%        Duration      TI%         RTDC             LOCL\n                        Composite            Condition\n   Case Scenario        Incidence            Probability %     Preset    Preset      Preset     Min    Max Preset         Min%    Max%     Min%     Max%\n\n   Treated Best         mean: 0.1194         65 - 65           100       1.12        6.77651    0      720    0           0       0        0        0\n   Case (TBC)           and SD: 0.0599\n\n   Treated Worst                             35 - 35           100       1.45        6.77651    720    720    0           0       0        0        0\n   Case (TWC)\n\n   Untreated Best       N/A                  N/A               N/A       1.12        29.7901    0      720    0           0       0        0        0\n   Case (UTBC)\n\n   Untreated Worst      N/A                  N/A               N/A       1.45        29.7901    720    720    29.7901     0       0        0        0\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n11/15/2022 4:20:13 PM                                            ICL66_Hearing Loss - Noise-Related Cliff                                                     page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-070-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  Noise-related hearing loss in the acute setting tends to be transient in nature. Permanent hearing loss tends to originate from chronic, repetitive\n  high levels of noise exposure. Blast exposures tend to be the most common cause of acute, single-episode-based noise related hearing loss\n  (though this is potentially confounded by the presence of a significant pressure wave for this ICL, as this in addition to the audible noise from the\n  blast). The best space-related data we have does not show evidence of profound, permanent hearing loss in astronauts to date; however, RTDC\n  risk from terrestrial data is still worth noting. LOCL is also not expected in this ICL.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  The majority of studies that examine noise induced hearing loss are not centered around a single exposure event. Derivation of the durations\n  mandated inclusion of a smaller study that has pre and post exposure audiograms (Yassi et al 1993). RTDC and LOCL not expected.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  Noise-related hearing loss can come from chronic exposure or, in the acute setting, from a blast injury. Distinguishing \"treated\" versus \"untreated\"\n  in this ICL is difficult and arguably not applicable, as profound hearing loss requires detailed audiology evaluation, fitting for hearing aids, and in\n  some cases cochlear implants. Mrena (2004) discussed hyperbaric and normobaric oxygen treatment for soldiers; though they did not further\n  investigate the effects of treatment in this single study\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  Untreated best case is similar to treated best case as there was no efficacious treatment found in the literature search for this condition beyond\n  prevention or mitigation of further damage.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  Untreated worst case scenarios can range in duration from 30 days to permanent disability. The underlying cause may also help determine duration\n  (E.g. healing of a TM perforation versus true SNHL). Though LOCL is not expected, a wide and signficant range of patients may experience\n  signficant impairment from noise-related hearing loss\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                       Source                                      LOC Value\n\n   N/A                                            N/A                                                                      4\n\n\n  Based on best case and worst case definitions. LOE = 4 (confident).\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                       Source                                      LOC Value\n\n   N/A                                            N/A                                                                      4\n\n\n  RTDC surrogate in profound hearing loss. Profound hearing loss due to noise is not expected on spaceflight missions unless there is significant\n  failure of the noise-controls designed into the spaceflight vehicles.\n\n\n\n\n11/15/2022 4:20:13 PM                                            ICL66_Hearing Loss - Noise-Related Cliff                                                   page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-070-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                      Source                                      LOC Value\n\n   N/A                                           N/A                                                                      4\n\n  LOCL is not expected due to noise induced hearing loss.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Overview Loud sounds are inescapable in many terrestrial conditions but are particularly prevalent in spaceflight. Noise-induced hearing loss\n  occurs after exposure to sound in an environment that is loud enough to initiate ototoxic pathways. Noise-induced hearing loss can occur after a\n  single exposure (typically over 140 decibels (dB)) or over time with multiple loud exposures (largely above 85 dB).1, 2 Noise- induced hearing loss\n  may be both temporary, resolves after a few or days or weeks, or permanent. Loud sounds damage the sensory hair cells of the inner ear by\n  intense sound pressure which subsequently activates molecular pathways resulting in oxidative stress damage and localized hypercalcemia.3\n  These pathways ultimately lead to cell apoptosis resulting in sensorineural hearing loss. The severity of hearing loss is categorized by audiometry\n  and is described as either: mild-- a loss of 26-40 decibels (dB), moderate-- a loss of 41-60 dB, severe-- a loss of 61-80 dB, or profound-- a loss of\n  80 dB or greater.4 A \u2018sudden\u2019 sensorineural hearing loss must occur within 72 hours and consist of a decline in hearing of 30 dB affecting three or\n  more sequential frequencies.5-7 A sudden sensorineural hearing loss can be extremely debilitating as it is associated with tinnitus, vertigo, inability\n  to communicate and the incapacity to localize sound. The United States Department of Labor\u2019s Occupational Safety and Health Administration\n  (OSHA) defines a standard threshold shift, or STS as \u201ca change in hearing threshold, relative to the baseline audiogram for that employee, of an\n  average of 10 decibels (dB) or more at 2000, 3000, and 4000 hertz (Hz) in one or both ears.\u201d8 NASA has adopted this definition and made it\n  mission specific (M-STS) by using preflight audiometry (performed in a clinic) and comparing it to inflight and post flight hearing thresholds. The\n  best-case scenario is a mild temporary hearing loss while the worst-case scenario is a severe or profound permanent hearing loss. Although it may\n  be difficult to differentiate between a hearing loss that is reversible or non-reversible at the time of presentation, the worst-case condition would\n  result in almost immediate significant task-impairment. Of note, related conditions to hearing loss are all separate CRT conditions including hearing\n  loss (not noise-related), cerumen impaction, otitis externa, otitis media, barotrauma. CNES: None Diagnostic Scope and Resourcing In the best\n  case, diagnosis will be made by means of history, physical exam, and inflight audiometry assessment. Inflight audiometry not only serves to quantify\n  the severity of hearing loss but can also differentiate between the type of hearing loss by quantifying Air- and bone conduction thresholds.\n  Furthering the differential workup of unspecified hearing loss, the latest iteration of the inflight audiometric test (KUDUwaveTM) can even perform\n  tympanograms. Since crewmembers have immediate access to this technology, there is no need to resource a tuning fork to conduct Weber and\n  Rinne tests. Given the benign nature of this condition, ground communications are not resourced for the best case. Diagnostics in the worst case\n  do not change except for having access to ground communications as significant debility to the crewmember is expected in this scenario. Clinical\n  Phase 1 Duration and Rationale This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The\n  CRT working group SME consensus duration is as follows: CP1 BC (Treated or Untreated): 1.12 hours This is the longest reasonable time to\n  complete the task for an experienced clinician (adjusted for being in the spaceflight environment) 1) to remove a crewmember from duties 2) obtain\n  a history 3) examine the patient and 4) conduct and interpret an inflight audiometry test. CP1 WC (Treated or Untreated): 1.45 hours This is the\n  longest reasonable time to complete the task for an experienced clinician (adjusted for being in the spaceflight environment) This is the longest\n  reasonable time to complete the task for an experienced clinician (adjusted for being in the spaceflight environment) 1) to remove a crewmember\n  from duties 2) obtain a history 3) examine the patient 4) conduct and interpret an inflight audiometry test 5) set up for ground communications. The\n  highest scope of practice code used in this CRT which includes interpretation of diagnosis, performing diagnostic tests and performing treatment\n  would be a four: this is at intern/PA/NP level. Treatment Scope and Resourcing In the best-case scenario, treatment is limited to observation and\n  preventing reoccurrence of the offending event(s). Preflight, crewmembers are fitted by an audiometry team for silicone custom molded earplugs\n  and active noise reducing headphones that are part of their required spaceflight kit. Accordingly, CRT group consensus was to not require further\n  resources for noise prevention to treat this condition. Similar to other forms of sudden sensorineural hearing loss, treatment guidelines pertaining to\n  the worst-case scenario state that clinicians can consider initiating a 10-day course of corticosteroids as initial therapy with patients who experience\n  sudden onset sensorineural hearing loss within two weeks of symptom onset.5 Steroids are associated with several risks including suppression of\n  hypothalamic pituitary-adrenal axis, aseptic necrosis of the hip and hyperglycemia and thus would be avoided in the best-case scenario. The typical\n  recommend course for steroids is one daily dose for 10 days, followed by a taper over a similar period. Although treatment for sudden\n  sensorineural hearing loss in terrestrial conditions can include intratympanic steroid injections, inflight this is not feasible given lack of expertise\n  (requires otolaryngologic training) and an inflight otologic microscope. Communications and Support Needs In the best-case scenario, diagnosis\n  and course of treatment is uncomplicated and likely within the scope of care of onboard crew members. In the worst-case condition, ground\n  communications are necessary given the sudden impairment of the affected crewmember and the need to ensure an accurate diagnosis.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  The IMM LD68 CliFF is named Hearing Loss. However, it is based on noise-induced hearing loss. The data contained in the IMM CliFF Hearing\n  Loss is relevant to this CliFF and should be used for this CliFF.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n\n\n11/15/2022 4:20:13 PM                                           ICL66_Hearing Loss - Noise-Related Cliff                                                     page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-070-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  Spaceflight data is limited primarily to ISS and STS vehicles. The ambient noise levels in Artemis vehicles may differ. There is considerable overlap\n  with noise-related hearing loss that leads to sensorineural hearing loss (SNHL). Under-reporting for this condition could have been significant\n  during past space missions due to lack of testing and subtle noise-related hearing loss that may not have been apparent to the crew. This may\n  result in underestimation of the incidence.\n\n\n\n\n11/15/2022 4:20:13 PM                                           ICL66_Hearing Loss - Noise-Related Cliff                                                  page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-070-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                               Clinical Phase 2: Treatment\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision           Hearing                 Dentition          GI          GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n                                                                                            44\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                            44\n     Case\n    (UTBC)\n    Treated\n     Worst\n                             664            113               89                            44\n      Case\n     (TWC)\n   Untreated\n     Worst\n                             664            113               89                            44\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                        Total\n                                                                                                                                                      Human\n                                                                                             Translation &                            Total Tasks\n                 Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                             Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n                (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                            (microgravity)                            Condition\n                                                                                                                                                     Tasks Full\n                                                                                                                                                      Mission\n    Treated\n      Best\n                                                                                                                        211          255            3763          0.0677651 6.77651\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                                                        211          255            3763          0.0677651 6.77651\n     Case\n    (UTBC)\n    Treated\n     Worst\n                                                                                                                        211          1121           3763          0.297901      29.7901\n      Case\n     (TWC)\n   Untreated\n     Worst\n                                                                                                                        211          1121           3763          0.297901      29.7901\n     Case\n    (UTWC)\n\n                                                                           Clinical Phase 3: Condition End State\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision           Hearing                 Dentition          GI          GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n     Case\n     (TBC)\n   Untreated\n     Best\n     Case\n    (UTBC)\n    Treated\n     Worst\n      Case\n     (TWC)\n   Untreated\n     Worst\n                             664            113               89                            44\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n11/15/2022 4:20:13 PM                                              ICL66_Hearing Loss - Noise-Related Cliff                                                                        page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-070-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                           Total\n                                                                                                                                         Human\n                                                                                 Translation &                           Total Tasks\n                Hand                                     Lower       Ambul &                     Don/Doff    Pressure                    System\n                        Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal       TI %\n               (Dom)                                   Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                                (microgravity)                           Condition\n                                                                                                                                        Tasks Full\n                                                                                                                                         Mission\n    Treated\n      Best\n                                                                                                                        0              3763          0                0\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                                                        0              3763          0                0\n     Case\n    (UTBC)\n    Treated\n     Worst\n                                                                                                                        0              3763          0                0\n      Case\n     (TWC)\n   Untreated\n     Worst\n                                                                                                            211         1121           3763          0.297901         29.7901\n     Case\n    (UTWC)\n\n\n\n\n11/15/2022 4:20:13 PM                                    ICL66_Hearing Loss - Noise-Related Cliff                                                                         page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-070-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  No comments.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n11/15/2022 4:20:13 PM                                           ICL66_Hearing Loss - Noise-Related Cliff                                                   page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-070-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. Saile L, Boley L, Kerstman E. Integration RWS ISS STS Observed Incidence. 2017. 2. Mattox, 197 Natural history of sudden sensorineural\n   hearing loss. The Annals of otology, rhinology, and laryngology. Jul-Aug 1997;86.\n\n   3. Ding T, Yan A, Liu K. What is noise-induced hearing loss? Br J Hosp Med (Lond). 2019;80:525-529.\n\n   4. Daniel E. Noise and Hearing Loss: A Review. Journal of School Health. 2007;77:225-231.\n\n   5. Cunningham LL, Tucci DL. Hearing Loss in Adults. N Engl J Med. 2017;377:2465-2473.\n\n   6. Nieman CL, Oh ES. Hearing Loss. Ann Intern Med. 2020;173:Itc81-itc96.\n\n   7. Chandrasekhar SS, Tsai Do BS, Schwartz SR, et al. Clinical Practice Guideline: Sudden Hearing Loss (Update). Otolaryngol Head Neck Surg.\n   2019;161:S1-s45.\n\n   8. Michels TC, Duffy MT, Rogers DJ. Hearing Loss in Adults: Differential Diagnosis and Treatment. Am Fam Physician. 2019;100:98-108.\n\n   9. Nieman CL, Reed NS, Lin FR. Otolaryngology for the Internist: Hearing Loss. Med Clin North Am. 2018;102:977-992.\n\n   10. 1904.10 - Recording criteria for cases involving occupational hearing loss.: United States Department of Labor, Occupational Safety and\n   Health Administration; 2019.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                      PHRASE\n\n   AAOMS                        American Association of Oral and Maxillofacial Surgeons\n\n   AMA                          American Medical Association\n\n   ARCL                         All Remaining Conditions List\n\n   ARS                          Acute Radiation Sickness\n\n   BHP                          Behavioral Health and Performance\n\n   CAC                          Coronary Artery Calcium\n\n   CHS                          Crew Health and Safety\n\n   CL                           Condition List\n\n   CliFF                        Clinical Finding Form\n\n   CMO                          Crew Medical Officer\n\n   COMFORT                      Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                          Clinical Phase 1\n\n   CP2                          Clinical Phase 2\n\n   CP3                          Clinical Phase 3\n\n   CRL                          Clinical Resource Level\n\n   CRT                          Capability Resource Table\n\n   CST                          Clinical Science Team\n\n   DCS                          Decompression Syndrome\n\n   DRM                          Design Reference Mission\n\n   ED                           Emergency Medicine Doctor\n\n   EL                           Evidence Library\n\n   EMCL                         Exploration Medical Condition List\n\n\n\n\n11/15/2022 4:20:13 PM                                           ICL66_Hearing Loss - Noise-Related Cliff                                         page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-070-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   EMT                  Emergency Medical Technician\n\n   EVA                  Extravehicular Activity\n\n   EXMC                 Exploration Medical Capability\n\n   HRP                  Human Research Program\n\n   ICD                  International Classification of Disease\n\n   ICL 1.0              IMPACT 1.0 Medical Conditions List\n\n   ICU                  Intensive Care Unit\n\n   IMCL                 iMED Condition List\n\n   iMED                 Integrated Medical Evidence Database\n\n   IMM                  Integrated Medical Model\n\n   IMPACT-MD            Impact Medical Database\n\n   IP                   Incidence Proportion\n\n   IR                   Incidence Rate\n\n   ISS                  International Space Station\n\n   IV                   Intravenous\n\n   JSC                  Johnson Space Center\n\n   LEO                  Low-Earth orbit\n\n   LEVA                 Lunar Extravehicular Activity\n\n   LOCL                 Loss of Crew Life\n\n   LOM                  Loss of Mission\n\n   LSAH                 Lifetime Surveillance of Astronaut Health\n\n   LSO                  Lunar Surface Operations\n\n   MCL                  Master Condition List\n\n   MEVA                 Medical Extravehicular Activity\n\n   NASA                 National Aeronautics and Space Administration\n\n   N/A                  Not Applicable\n\n   NP                   Nurse Practitioner\n\n   OBGYN                Obstetrics and Gynecology\n\n   OR                   Occurrence Rate\n\n   PA                   Physician Assistant\n\n   PDQ                  Pain Disability Questionnaire\n\n   PFCL                 Proposed Future Conditions List\n\n   PPE                  Personal Protective Equipment\n\n   PTRS                 Project Technical Requirements Specification\n\n   PRL                  Pharmaceutical Resource Level\n\n   QTL                  Quality Time Lost\n\n   RCL                  Removed Conditions List\n\n   REP                  Rochester Epidemiology Study\n\n   RTDC                 Removal to Definitive Care\n\n   SANS                 Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                  Space Adaptation Syndrome\n\n   SEVA                 Spaceflight Extravehicular Activity\n\n   SME                  Subject Matter Expert\n\n\n\n\n11/15/2022 4:20:13 PM                                     ICL66_Hearing Loss - Noise-Related Cliff   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-070-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   SoP                  Standard Operating Procedure\n\n   SPE                  Solar Particle Event\n\n   TBD                  To Be Determined\n\n   TI                   Task Impairment\n\n\n\n\n11/15/2022 4:20:13 PM                              ICL66_Hearing Loss - Noise-Related Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-070-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "General"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Poisson"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Gamma"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.119381"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.059893"
+        ],
+        [
+          "Gamma"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-070-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                         Source                               LOC Value"
+        ],
+        [
+          "Lie, et al. 2016                                                 Terrestrial                          2"
+        ],
+        [
+          "Limardo, et al. 2015                                             Spaceflight                          0"
+        ],
+        [
+          "Saile L, et al. 2017                                             Spaceflight                          3"
+        ],
+        [
+          "Orsello, et al. 2013                                             Analog                               0"
+        ],
+        [
+          "Helfer, etal. 2010                                               Terrestrial                          0"
+        ],
+        [
+          "Clark, 2001                                                      Spaceflight                          1"
+        ],
+        [
+          "Kadem, 2018                                                      Spaceflight                          0"
+        ],
+        [
+          "Buckey, et al. 2001                                              Spaceflight                          1"
+        ],
+        [
+          "Incidence and best case/worst case percentages are based on spaceflight data. LOE = 3 (somewhat confident)"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-070-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                    Source                                     LOC Value"
+        ],
+        [
+          "Saile, et al. 2017                                          Spaceflight                                3"
+        ],
+        [
+          "LOE value of 3 (somewhat confident) is chosen for the incidence since it is based on spaceflight data from ISS and STS. Since the exploration"
+        ],
+        [
+          "vehicles may have different standards for ambient noise and a different noise environment than ISS and STS, an LOE value of 4 (confident) was"
+        ],
+        [
+          "not chosen."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-070-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis        CP2: Treatment           CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration    TI%        Duration      TI%         RTDC             LOCL"
+        ],
+        [
+          "Composite            Condition"
+        ],
+        [
+          "Case Scenario        Incidence            Probability %     Preset    Preset      Preset     Min    Max Preset         Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best         mean: 0.1194         65 - 65           100       1.12        6.77651    0      720    0           0       0        0        0"
+        ],
+        [
+          "Case (TBC)           and SD: 0.0599"
+        ],
+        [
+          "Treated Worst                             35 - 35           100       1.45        6.77651    720    720    0           0       0        0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best       N/A                  N/A               N/A       1.12        29.7901    0      720    0           0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst      N/A                  N/A               N/A       1.45        29.7901    720    720    29.7901     0       0        0        0"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-070-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                       Source                                      LOC Value"
+        ],
+        [
+          "N/A                                            N/A                                                                      4"
+        ],
+        [
+          "Based on best case and worst case definitions. LOE = 4 (confident)."
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-070-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                       Source                                      LOC Value"
+        ],
+        [
+          "N/A                                            N/A                                                                      4"
+        ],
+        [
+          "RTDC surrogate in profound hearing loss. Profound hearing loss due to noise is not expected on spaceflight missions unless there is significant"
+        ],
+        [
+          "failure of the noise-controls designed into the spaceflight vehicles."
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-070-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                      Source                                      LOC Value"
+        ],
+        [
+          "N/A                                           N/A                                                                      4"
+        ],
+        [
+          "LOCL is not expected due to noise induced hearing loss."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-070-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision           Hearing                 Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "44"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "44"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664            113               89                            44"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664            113               89                            44"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-070-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-070/cochlea_anatomy.png",
+      "mime_type": "image/png",
+      "width": 2135,
+      "height": 1600,
+      "sha256": "8b2dde75accae4d3bddcfdeb4b80d32fd0b25d73b373cef55ec5da7fa39f2c3b",
+      "creator": "Taniguchi M, Yamamoto N, Nakagawa T, Ogino E, Ito J",
+      "license_identifier": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AAnatomy_of_the_cochlea.png",
+      "attribution": "Taniguchi M, Yamamoto N, Nakagawa T, Ogino E, Ito J, via Wikimedia Commons (CC BY 4.0)",
+      "caption": "Anatomical illustration of the human cochlea and cochlear duct.",
+      "alt_text": "Diagram of cochlear anatomy.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Anatomy of the cochlea.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-070-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-070/cochlear_hair_cell.jpg",
+      "mime_type": "image/jpeg",
+      "width": 2188,
+      "height": 971,
+      "sha256": "9ce05db088866e95e756e1af2448eb2ff83fb10549e37e1521049c1280b61863",
+      "creator": "OpenStax",
+      "license_identifier": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3A1407_The_Hair_Cell.jpg",
+      "attribution": "OpenStax, via Wikimedia Commons (CC BY 4.0)",
+      "caption": "OpenStax anatomical diagram of auditory hair cells vulnerable to acoustic trauma.",
+      "alt_text": "Diagram of a cochlear sensory hair cell.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:1407 The Hair Cell.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-070-IMG-03",
+      "ordinal": 2,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-070/organ_of_corti.png",
+      "mime_type": "image/png",
+      "width": 6651,
+      "height": 4028,
+      "sha256": "dfe8bc490687dd55724a114527aeeb612e1be712dfa347a3c1d097c081702b5e",
+      "creator": "Bracteantha",
+      "license_identifier": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AOrgan_of_corti.png",
+      "attribution": "Bracteantha, via Wikimedia Commons (CC BY 4.0)",
+      "caption": "Line illustration of the Organ of Corti within the inner ear.",
+      "alt_text": "Illustration of the Organ of Corti.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Organ of corti.png)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-070-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Hearing Loss (Noise Related)",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/hearing-loss-noise-related.pdf?emrc=565fc6",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}
