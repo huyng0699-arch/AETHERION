@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-035",
+  "slot": 35,
+  "quest_id": "Q-0335",
+  "checked_at_utc": "2026-11-14T06:10:52.998672+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/gastritis-reflux-esophagitis-cliff-2023.pdf?emrc=f055de",
+  "http_status": 200,
+  "pdf_sha256": "602af8ca0c64e3e64d9cb34bfa102b787f7193d1f9dd34e26503cfd20982dd5a",
+  "pdf_bytes": 371568,
+  "pages_extracted": 16,
+  "sections_count": 16,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-035-IMG-01": "0285ac1397e1ee4435d03efd8ad042c6644cedecb41740a38b471a5cc9fff1eb",
+    "CLIFF-035-IMG-02": "f9f5cd6c8d5a806063c8871dbbdcfb722e6f7c2cbf0326561439fad5c710f4ae",
+    "CLIFF-035-IMG-03": "ed773f716a24ac1ad8099fe227159d0dd16d258875d0a0a00076ff703306b313"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
