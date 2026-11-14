@@ -95,12 +95,15 @@ def parse_observations(payload: object, subject_id: str, *, now: datetime | None
 
 def build_mission_control_page(api_url: str, network, parent=None):
     """Native Qt widget. Qt import is lazy so data contracts remain headlessly testable."""
-    from PySide6.QtCore import Qt, QUrl
+    from PySide6.QtCore import Qt, QUrl, Signal
     from PySide6.QtNetwork import QNetworkRequest
     from PySide6.QtWidgets import (QFormLayout, QHBoxLayout, QLabel, QLineEdit,
         QListWidget, QPushButton, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 
     class MissionControlPage(QWidget):
+        # The token is transferred in memory only, within the same Qt process.
+        subject_activated = Signal(str, str)
+
         def __init__(self):
             super().__init__(parent)
             self._token = ""  # ephemeral; never logged or saved to disk
@@ -134,6 +137,10 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self.refresh.clicked.connect(self.refresh_subject)
             subject_row.addWidget(self.refresh)
             lay.addLayout(subject_row)
+            self.open_personal_button = QPushButton("Open selected subject in Personal Health")
+            self.open_personal_button.setAccessibleName("Open selected subject in Personal Health")
+            self.open_personal_button.clicked.connect(self.open_selected_personal)
+            lay.addWidget(self.open_personal_button)
             self.subjects = QListWidget()
             self.subjects.setMaximumHeight(100)
             self.subjects.currentTextChanged.connect(self.refresh_subject)
@@ -189,6 +196,18 @@ def build_mission_control_page(api_url: str, network, parent=None):
                 self._subjects.append(subject_id)
                 self.subjects.addItem(subject_id)
             self.subjects.setCurrentRow(self._subjects.index(subject_id))
+
+        def open_selected_personal(self):
+            """Never route to a guessed subject or silently reuse a logged-out session."""
+            selected = self.subjects.currentItem()
+            if selected is None:
+                self.status.setText("NO_DATA — choose a subject before opening Personal Health")
+                return
+            if not self._token:
+                self.status.setText("DENIED — authenticate before opening Personal Health")
+                return
+            # Subject authorization remains enforced by the server on every request.
+            self.subject_activated.emit(selected.text(), self._token)
 
         def refresh_subject(self, *_):
             subject_id = self.subjects.currentItem().text() if self.subjects.currentItem() else ""

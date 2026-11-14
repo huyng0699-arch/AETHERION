@@ -12,6 +12,7 @@ from PySide6.QtWidgets import (
 
 from .medical_library import build_medical_library_page
 from .mission_control import build_mission_control_page
+from .features.personal.authorized_today import AuthorizedPersonalTodayPage
 
 SECTIONS = [
     ("Mission Control", "Mission Control", "Crew overview and health monitoring will appear here once trustworthy observations are available."),
@@ -58,7 +59,13 @@ class AetherionWindow(QMainWindow):
             nav.addWidget(button)
             if index == 0:
                 # Mission Control loads live data only after explicit local authentication.
-                self.pages.addWidget(build_mission_control_page(self.api_url, self.network))
+                self.mission_control_page = build_mission_control_page(self.api_url, self.network)
+                self.pages.addWidget(self.mission_control_page)
+                continue
+            if index == 1:
+                # Reuse the local authenticated session; never invent a profile.
+                self.personal_today_page = AuthorizedPersonalTodayPage(self.api_url, self.network)
+                self.pages.addWidget(self.personal_today_page)
                 continue
             page = QWidget()
             layout = QVBoxLayout(page)
@@ -77,6 +84,8 @@ class AetherionWindow(QMainWindow):
             layout.addWidget(card)
             layout.addStretch()
             self.pages.addWidget(page)
+        # One explicit Mission -> Personal handoff; preserve identity on Back.
+        self.mission_control_page.subject_activated.connect(self.open_personal_subject)
         # Native QWidget, not a browser or replacement landing page.
         self.medical_library_page = build_medical_library_page()
         self.pages.addWidget(self.medical_library_page)
@@ -99,6 +108,11 @@ class AetherionWindow(QMainWindow):
         outer.addWidget(foot)
         self.setCentralWidget(central)
         self.check_server()
+
+    def open_personal_subject(self, subject_id: str, access_token: str) -> None:
+        """Open the precise subject selected in Mission using the same session."""
+        self.personal_today_page.select_subject(subject_id, access_token)
+        self.pages.setCurrentWidget(self.personal_today_page)
 
     def show_medical_library(self) -> None:
         self.medical_library_page.reload()
