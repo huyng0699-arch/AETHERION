@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-012",
+  "slot": 12,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/shock-cardiogenic-cliff-2023.pdf?emrc=f0b748",
+  "http_status": 200,
+  "pdf_bytes": 355294,
+  "pdf_sha256": "33a6fbe9204be65fcc09793eeb20decf7b4c1fd74d92f354d84c483e2155590d",
+  "pdf_pages": 14,
+  "sections_count": 14,
+  "tables_count": 4,
+  "references_count": 43,
+  "media_count": 3,
+  "media_sha256s": [
+    "1d259362497e9a74cce70d141b13a845c0baa847c686d13f37119172793da840",
+    "a15d29b4e4caaf406129a1733cd2aa95461d265e56ba3d1518c0fa909b13a6f6",
+    "d05a7a4d3f895c5224a7e38c66e272182e70ecfe5d3cf6b7fc9eb45a9d4bcf01"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC0 / CC-BY-3.0 / CC-BY-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}
