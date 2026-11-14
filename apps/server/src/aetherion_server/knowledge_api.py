@@ -4,9 +4,10 @@ from __future__ import annotations
 import re
 
 from fastapi import APIRouter, HTTPException, Query
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, field_validator
 
-from . import knowledge_catalog
+from . import anatomy_catalog, knowledge_catalog
 from .symptom_interview import ai_status, next_question
 
 router = APIRouter(prefix="/api/v1/knowledge", tags=["Knowledge and Symptom Intake"])
@@ -79,3 +80,25 @@ def interview_next(req: IntakeRequest):
     # An actual model is invoked only when explicitly requested/configured.
     return next_question(req.symptoms, req.answers,
                          use_ai=req.use_ai, allow_cloud=req.allow_cloud)
+
+
+@router.get("/anatomy/models")
+def list_anatomy_models():
+    return anatomy_catalog.list_approved_models()
+
+
+@router.get("/anatomy/models/{anatomical_id}/file")
+def get_anatomy_model_file(anatomical_id: str):
+    resolved = anatomy_catalog.resolve_approved_model_file(anatomical_id)
+    if resolved is None:
+        raise HTTPException(404, "Approved anatomical model unavailable")
+    mesh_path, meta = resolved
+    return FileResponse(
+        path=mesh_path,
+        media_type=meta["content_type"],
+        filename=meta["filename"],
+        headers={
+            "ETag": f'"{meta["sha256"]}"',
+            "X-Content-Sha256": meta["sha256"],
+        },
+    )
