@@ -2,6 +2,16 @@
 
 **Scope (later GitHub directory scan, 2026-11-14):** 485 Quest specifications listed on `main`, **Q-0001 through Q-0485** (contiguous at the time of scan). **Dynamic backlog:** recheck `quests/v1/` for live counts; the attached Windows read-only audit examined only Q-0001–Q-0482. Individual Quest files remain the status source of truth. Q-0436–Q-0438 establish the owner design and native Portal/theme work; Q-0480–Q-0485 represent newer work, not automatically accepted releases.
 
+## Q-0484 → Q-0485: Owner visual override / documented ACK (2026-11-14)
+
+This is a redesign of the **native AETHERION application Home**, not a Server Admin HTML/Qt choice. The owner rejects the five oversized Portal cards and the Demo CTA below them. Target: compact mission-operations Home with **DEMO FOR HACKATHON** conspicuous at the top → short **SIMULATED** guide → fully navigable synthetic patient data (5 fictional patients × 540 days × 12 metrics). **NASA MA-7 remains a distinct source-labelled genuine 1962 archive (83 values)**; never merge it into synthetic records.
+
+**Q-0484 ACK to Q-0485:** [Issue #8 comment 6876297980](https://github.com/huyng0699-arch/AETHERION/issues/8#issuecomment-6876297980). Constructor `build_synthetic_patient_demo(parent=None, *, locale="en", theme="daybreak", mode="light")`; Qt `back_requested`, `start()`, `set_locale()`, `set_visuals(theme_name, display_mode)`. `synthetic_patients.py::demo_path()` returns `Path.home()/".aetherion"/"demo"/"synthetic_patients_v1.sqlite3"`; writer `build_demo_database()` and read helpers `demo_stats/subjects/series/day_values/latest`. Q-0485 has **routing permission only**; source ownership and existing Q-0484 metadata remain unchanged. Other owners' shared `main.py`, `portal.py`, and `i18n/{en,vi}.json` claims still require ACK and SHA/CAS before writes. [Issue #8](https://github.com/huyng0699-arch/AETHERION/issues/8) and [Q-0485](quests/v1/Q-0485.md) are the integration coordination records.
+
+**Proof boundary:** Issue comment successfully created and current component source read; **no** verified Windows post-fix Home, clickthrough, SQLite seeded-row count, fresh green CI, or independent review. The 31,610 synthetic rows are an **expected calculation**, not an observed SQLite seed. Q-0484 and Q-0485 remain `COMPONENT_READY / BLOCKED`, reviews `PENDING`. The older Windows five-card baseline remains rejected, not accepted.
+
+---
+
 ## Latest owner read-only Windows audit — newer 482-Quest checkout (2026-11-14)
 
 **Highest-priority coordination notice:** A subsequent **read-only** report from an actual Windows computer found serious regressions after the earlier 17:17 Windows retest. **Do not use the earlier 640 passed / 1 failed as the current quality gate.** The new report tested a downloaded checkout containing **482 Quests**, with Python **3.13.14**, FastAPI **0.162.7**, Pydantic **2.14.3**, Uvicorn **0.54.0**, PySide6 **6.12.0**, pytest **9.2.0**, httpx **0.28.1**. Its exact Git commit SHA, raw logs and native screenshot hashes were not supplied. The agent updating this file **read the report and inspected files on live GitHub; it did not rerun the Windows tests**. Findings below describe the tested checkout, while the rightmost columns describe later GitHub source **as separately inspected**.
