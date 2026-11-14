@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-045",
+  "title": "Distal Tibia and Fibula Fracture Radiograph",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Tibia_and_fibula_fracture.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Tibia_and_fibula_fracture.jpg",
+  "license": "PUBLIC-DOMAIN",
+  "author": "Jalo",
+  "caption": "Anteroposterior plain radiograph demonstrating displaced fractures of the distal tibia and fibula.",
+  "alt_text": "X-ray radiograph of the lower leg showing displaced fractures of the distal tibia and fibula.",
+  "clinical_relevance": "Illustrates radiographic appearance of combined distal tibia-fibula fracture requiring immobilization and potential surgical reduction (CLIFF-045, p.4-5).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 753,
+  "height": 2260,
+  "size_bytes": 121395,
+  "sha256": "3e60a990ca8ed3eabf5b62327f901be14565da1f2fbe1862f7f4f137181118ac",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Tibia_and_fibula_fracture.jpg",
+  "retrieved_at_utc": "2026-11-14T06:09:29.737637+00:00",
+  "asset_path": "3e60a990ca8ed3eabf5b62327f901be14565da1f2fbe1862f7f4f137181118ac.jpg",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "RADIOLOGY",
+  "topic_region": "Lower Extremity / Distal Leg Radiograph"
+}

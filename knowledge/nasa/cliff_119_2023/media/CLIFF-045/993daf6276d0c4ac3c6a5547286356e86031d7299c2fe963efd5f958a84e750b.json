@@ -1,0 +1,23 @@
+{
+  "article_id": "CLIFF-045",
+  "title": "Classification of Bone Fractures (OpenStax)",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/612_Types_of_Fractures.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:612_Types_of_Fractures.jpg",
+  "license": "CC-BY-4.0",
+  "author": "OpenStax College",
+  "caption": "Educational diagram comparing closed, open (compound), transverse, spiral, comminuted, impacted, greenstick, and oblique fracture patterns.",
+  "alt_text": "Medical illustration showing eight common types of bone fractures.",
+  "clinical_relevance": "Distinguishes uncomplicated closed fractures from open/comminuted fractures that drive Worst Case (TWC/UTWC) RTDC risk (CLIFF-045, p.3-5).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 686,
+  "height": 1300,
+  "size_bytes": 403285,
+  "sha256": "993daf6276d0c4ac3c6a5547286356e86031d7299c2fe963efd5f958a84e750b",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/612_Types_of_Fractures.jpg",
+  "retrieved_at_utc": "2026-11-14T06:09:29.946908+00:00",
+  "asset_path": "993daf6276d0c4ac3c6a5547286356e86031d7299c2fe963efd5f958a84e750b.jpg",
+  "rights_review_status": "verified_wikimedia_commons_api",
+  "media_kind": "DIAGRAM",
+  "topic_region": "Skeletal System / Fracture Classification"
+}

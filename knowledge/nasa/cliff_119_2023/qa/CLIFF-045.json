@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-045",
+  "slot": 45,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+  "http_status": 200,
+  "pdf_bytes": 346601,
+  "pdf_sha256": "3cde629e71a11f98cef113bfbecedbae62c64c6d8d16667530b39f6a86998a69",
+  "pdf_pages": 14,
+  "sections_count": 14,
+  "tables_count": 3,
+  "references_count": 20,
+  "media_count": 3,
+  "media_sha256s": [
+    "2ff21fcf61f6bb10c78b6c4c495cb81b1985fd22567bb7184c89c75e499a11b3",
+    "3e60a990ca8ed3eabf5b62327f901be14565da1f2fbe1862f7f4f137181118ac",
+    "993daf6276d0c4ac3c6a5547286356e86031d7299c2fe963efd5f958a84e750b"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons Public Domain / CC-BY-3.0 / CC-BY-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}
