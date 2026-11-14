@@ -124,6 +124,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
         def set_locale(self, locale: str):
             self.ui_language = normalize_locale(locale)
             translate_shell_widgets(self, self.ui_language)
+            self.events_widget.set_locale(self.ui_language)
             # Never clear the currently displayed, authorized subject/metrics.
             self.status.setText(translate_existing(self.status.text(), self.ui_language))
 
