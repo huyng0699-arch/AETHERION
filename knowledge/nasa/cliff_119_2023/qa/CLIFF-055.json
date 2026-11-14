@@ -1,0 +1,22 @@
+{
+  "article_id": "CLIFF-055",
+  "slot": 55,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-thoracic-lumbar-spine-cliff-2023.pdf?emrc=cf176a",
+  "http_status": 200,
+  "pdf_bytes": 293108,
+  "pdf_sha256": "e83afa903178b34ada709a0366eeebfdef6e91e92c30fd1b89d2e7b8864edac4",
+  "pdf_pages": 12,
+  "sections_count": 12,
+  "tables_count": 3,
+  "references_count": 3,
+  "media_count": 3,
+  "media_sha256s": [
+    "4e6a000743e1d3fa8afabaf2fe632a184652340d40611508828794461fad4f14",
+    "642e271f2fe2da467037a2c8f029b68eecc27fd71a288382e7bd269e2eefbefd",
+    "c0b803bc8961d8db564884104201baf0e5d0284a2e7bf8f83d7d8e85748eb855"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-3.0 / CC-BY-SA-4.0 images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "missing_items": []
+}
