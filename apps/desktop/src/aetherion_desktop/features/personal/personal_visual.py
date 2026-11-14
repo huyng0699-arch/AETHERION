@@ -227,9 +227,9 @@ def build_personal_visual(page) -> None:
     page.origin_filter.currentIndexChanged.connect(page._render_rows)
     filter_row.addWidget(page.origin_filter)
     records.addLayout(filter_row)
-    page.table = QTableWidget(0, 7)
+    page.table = QTableWidget(0, 8)
     page.table.setHorizontalHeaderLabels(
-        ["Chỉ số", "Giá trị", "Thời gian", "Nguồn", "Chất lượng", "Kiểm chứng", "Loại bản ghi"]
+        ["Chỉ số", "Giá trị", "Thời gian", "Nguồn", "Phạm vi", "Chất lượng", "Kiểm chứng", "Loại bản ghi"]
     )
     page.table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
     page.table.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
@@ -237,7 +237,7 @@ def build_personal_visual(page) -> None:
     page.table.setAccessibleName("Selected person's authenticated observations")
     page.table.verticalHeader().setVisible(False)
     page.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
-    for i, width in enumerate((150, 125, 220, 175, 120, 140, 155)):
+    for i, width in enumerate((150, 125, 220, 175, 110, 120, 140, 155)):
         page.table.setColumnWidth(i, width)
     page.table.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
     page.table.setMinimumHeight(230)
@@ -267,7 +267,7 @@ def update_personal_tiles(page, cards: tuple | list) -> None:
         # Exact original metric/source/time/quality must remain visible.
         value.setText(card.reading)
         provenance.setText(
-            f"{card.metric}  ·  {card.quality} / {card.verification_state}\n"
+            f"{card.metric}  ·  {card.scope}  ·  {card.quality} / {card.verification_state}\n"
             f"Nguồn: {card.source_id}  ·  {card.observed_at}"
         )
         button.setEnabled(True)
