@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-107",
+  "slot": 107,
+  "quest_id": "Q-0407",
+  "checked_at_utc": "2026-11-14T06:37:30.703915+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/tendinopathy-enthesopathy-bursitis-over-use-injuries-upper-extremity-cliff-2023.pdf?emrc=b19850",
+  "http_status": 200,
+  "pdf_sha256": "68ae32bbc86133ee2efadb94e832004d8672f85614be39f6d710e5d387bb5357",
+  "pdf_bytes": 318883,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-107-IMG-01": "6ca4b0c64884cf56124c841154b596ea24254ca10d411be2a105ec442cf4dda4",
+    "CLIFF-107-IMG-02": "cdd3320753f0e3f5811d6c513aa7caecf6a5d4ecf4df52f92451416e6f639565",
+    "CLIFF-107-IMG-03": "8e47aaaac7e23917840f8f2245f858ac6cd6f5fa3ec4fe0fab9968c8727e3469"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
