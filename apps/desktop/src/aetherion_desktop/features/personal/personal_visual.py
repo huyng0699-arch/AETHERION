@@ -65,6 +65,7 @@ def build_personal_visual(page) -> None:
     scroll.setFrameShape(QFrame.Shape.NoFrame)
     scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
     outer.addWidget(scroll)
+    page.workspace_scroll = scroll
     content = QWidget()
     content.setObjectName("personalWorkspace")
     content.setMinimumWidth(0)
