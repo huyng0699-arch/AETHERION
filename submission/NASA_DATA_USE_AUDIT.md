@@ -20,7 +20,7 @@ This is an **implementation evidence map**, not a claim that OSDR biomedical raw
 
 ## End-to-end trace: what works, what does not
 
-\`\`\`text
+```text
 NASA challenge + OSDR official research metadata
           │  [historical references; not live telemetry]
           ▼
@@ -36,7 +36,7 @@ hazard_to_body_link.py                   ▼
                                          └─ Explore top menu
                                       [IMPLEMENTED IN CODE;
                                        WINDOWS RUNTIME NOT TESTED]
-\`\`\`
+```
 
 The actual crew observation API (`apps/server/src/aetherion_server/main.py`) is **separate**: it receives source-aware engineering measurements via authenticated endpoints. Nothing in the above NASA research catalog is automatically ingested as a crew member's pulse, oxygen level, ECG, dosimetry, sleep observation or clinical measurement.
 
