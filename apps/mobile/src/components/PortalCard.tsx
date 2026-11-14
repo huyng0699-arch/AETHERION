@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from '../theme';
+import { ThemeColors, useThemedStyles } from '../theme';
 
 export type PortalDestination = 'health' | 'monitor' | 'ai' | 'science' | 'care';
 
@@ -18,10 +18,11 @@ const AI_ORB = require('../../assets/aetherion-ai-orb.png');
 export function PortalCard({ destination, title, onPress, wide = false }: {
   destination: PortalDestination; title: string; onPress: () => void; wide?: boolean;
 }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const tone = iconStyles[destination];
   return (
     <Pressable accessibilityRole="button" accessibilityLabel={title} onPress={onPress} style={({ pressed }) => [styles.wrap, wide && styles.wide, pressed && styles.pressed]}>
-      <LinearGradient colors={['#FFFFFF', '#FCFBFF']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[styles.card, wide && styles.cardWide]}>
+      <LinearGradient colors={[colors.card, colors.card]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[styles.card, wide && styles.cardWide]}>
         <View style={[styles.icon, { backgroundColor: tone.bg }]}>
           {destination === 'ai'
             ? <Image source={AI_ORB} resizeMode="contain" style={styles.orb} />
@@ -34,7 +35,7 @@ export function PortalCard({ destination, title, onPress, wide = false }: {
   );
 }
 
-const styles = StyleSheet.create({
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   wrap: { width: '48.5%', minHeight: 126 },
   wide: { width: '100%', minHeight: 78 },
   pressed: { opacity: 0.82, transform: [{ scale: 0.985 }] },
@@ -44,3 +45,4 @@ const styles = StyleSheet.create({
   orb: { width: 44, height: 44 },
   title: { color: colors.text, fontSize: 13, fontWeight: '800' },
 });
+

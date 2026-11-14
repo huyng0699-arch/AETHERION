@@ -1,14 +1,16 @@
+import { useRequestGate } from '../hooks/useRequestGate';
 import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Linking, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Locale } from '../types';
 import { MessageKey, t } from '../i18n';
-import { colors } from '../theme';
+import { ThemeColors, useThemedStyles } from '../theme';
 import { ApiError } from '../api/client';
 import { getKnowledgeStatus, getScienceArticle, searchScienceArticles, KnowledgeStatus, ScienceArticle, ScienceArticleSummary } from '../api/science';
 import { AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../components/ui';
 
 export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () => void }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const [query, setQuery] = useState('');
   const [items, setItems] = useState<ScienceArticleSummary[]>([]);
   const [indexed, setIndexed] = useState(0);
@@ -21,19 +23,24 @@ export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () =
   const [article, setArticle] = useState<ScienceArticle | null>(null);
   const [refreshKey, setRefreshKey] = useState(0);
 
+  const beginSearch = useRequestGate(), beginDetail = useRequestGate();
   const load = useCallback(async (term: string) => {
+    const current = beginSearch();
     setLoading(true);
     setErrorKey(null);
     try {
       const result = await searchScienceArticles(term, 30);
+      if (!current()) return;
       setItems(Array.isArray(result.items) ? result.items : []);
       setIndexed(Number.isFinite(result.indexed) ? result.indexed : 0);
     } catch (error) {
+      if (!current()) return;
       setItems([]);
       setIndexed(0);
       setErrorKey(errorMessageKey(error));
     }
     const [statusResult] = await Promise.allSettled([getKnowledgeStatus()]);
+    if (!current()) return;
     setStatus(statusResult.status === 'fulfilled' ? statusResult.value : null);
     setLoading(false);
   }, []);
@@ -41,20 +48,22 @@ export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () =
   useEffect(() => { void load(''); }, [load, refreshKey]);
 
   const openArticle = async (summary: ScienceArticleSummary) => {
+    const current = beginDetail();
     setSelected(summary);
     setArticle(null);
     setDetailErrorKey(null);
     setLoadingDetail(true);
     try {
-      setArticle(await getScienceArticle(summary.article_id));
+      const result = await getScienceArticle(summary.article_id);
+      if (current()) setArticle(result);
     } catch (error) {
-      setDetailErrorKey(errorMessageKey(error));
+      if (current()) setDetailErrorKey(errorMessageKey(error));
     } finally {
-      setLoadingDetail(false);
+      if (current()) setLoadingDetail(false);
     }
   };
 
-  const submitSearch = () => { setSelected(null); setArticle(null); void load(query); };
+  const submitSearch = () => { beginDetail(); setSelected(null); setArticle(null); void load(query); };
   const refresh = () => { if (selected) void openArticle(selected); else { setSelected(null); setArticle(null); setRefreshKey((value) => value + 1); } };
 
   return (
@@ -67,7 +76,7 @@ export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () =
 
       {selected ? (
         <>
-          <Pressable accessibilityRole="button" onPress={() => { setSelected(null); setArticle(null); setDetailErrorKey(null); }} style={styles.backToList}>
+          <Pressable accessibilityRole="button" onPress={() => { beginDetail(); setSelected(null); setArticle(null); setDetailErrorKey(null); }} style={styles.backToList}>
             <Ionicons name="chevron-back" size={17} color={colors.cyan} /><Text style={styles.backText}>{t(locale, 'scienceBack')}</Text>
           </Pressable>
           {loadingDetail ? <Loading label={t(locale, 'loading')} /> : detailErrorKey ? <Panel><Body>{t(locale, detailErrorKey)}</Body></Panel> : article ? (
@@ -107,6 +116,7 @@ export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () =
 }
 
 function ArticleCard({ item, onPress, locale }: { item: ScienceArticleSummary; onPress: () => void; locale: Locale }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const verification = item.source_claim;
   return <Pressable accessibilityRole="button" onPress={onPress} style={({ pressed }) => [styles.cardPressable, pressed && styles.pressed]}>
     <Panel style={styles.articleCard}>
@@ -119,6 +129,7 @@ function ArticleCard({ item, onPress, locale }: { item: ScienceArticleSummary; o
 }
 
 function ArticleDetail({ article, status, locale }: { article: ScienceArticle; status: KnowledgeStatus | null; locale: Locale }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const record = article.source || {};
   const publisher = record.publisher;
   const sourceTitle = record.title;
@@ -180,6 +191,7 @@ function ArticleDetail({ article, status, locale }: { article: ScienceArticle; s
 }
 
 function MediaRecord({ entry, locale }: { entry: Record<string, unknown>; locale: Locale }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const caption = stringValue(entry.caption) || stringValue(entry.alt_text) || stringValue(entry.media_id);
   const url = stringValue(entry.source_url) || stringValue(entry.rights_url);
   return <Panel style={styles.referencePanel}>
@@ -192,6 +204,7 @@ function MediaRecord({ entry, locale }: { entry: Record<string, unknown>; locale
 }
 
 function LinkRow({ label, url }: { label: string; url: string }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <View style={styles.metaRow}>
     <Text style={styles.metaLabel}>{label}</Text>
     <Pressable accessibilityRole="link" onPress={() => { void Linking.openURL(url); }} style={styles.linkArea}>
@@ -201,10 +214,12 @@ function LinkRow({ label, url }: { label: string; url: string }) {
 }
 
 function MetaRow({ label, value, selectable = false }: { label: string; value: string; selectable?: boolean }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <View style={styles.metaRow}><Text style={styles.metaLabel}>{label}</Text><Text selectable={selectable} style={styles.metaValue}>{value}</Text></View>;
 }
 
 function Loading({ label }: { label: string }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <View style={styles.loading}><ActivityIndicator color={colors.cyan} /><Text style={styles.loadingText}>{label}</Text></View>;
 }
 
@@ -220,12 +235,12 @@ function errorMessageKey(error: unknown): MessageKey {
 
 function stringValue(value: unknown) { return typeof value === 'string' ? value : ''; }
 
-const styles = StyleSheet.create({
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   refreshButton: { width: 38, height: 38, alignItems: 'center', justifyContent: 'center' },
   heading: { gap: 6, paddingTop: 8 },
   indexed: { color: colors.muted, fontSize: 12, fontWeight: '700' },
   searchPanel: { flexDirection: 'row', gap: 8, padding: 10 },
-  searchInput: { flex: 1, minWidth: 0, minHeight: 45, paddingHorizontal: 12, color: colors.text, fontSize: 14, borderWidth: 1, borderColor: colors.border, backgroundColor: '#FFFFFF', borderRadius: 13 },
+  searchInput: { flex: 1, minWidth: 0, minHeight: 45, paddingHorizontal: 12, color: colors.text, fontSize: 14, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, borderRadius: 13 },
   searchButton: { minHeight: 45, borderRadius: 13, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 5, backgroundColor: colors.cyan },
   searchButtonText: { color: '#FFFFFF', fontSize: 11, fontWeight: '900' },
   articleList: { gap: 9 },
@@ -261,3 +276,4 @@ const styles = StyleSheet.create({
   referenceText: { color: colors.text, fontSize: 12, lineHeight: 17 },
   pressed: { opacity: 0.82, transform: [{ scale: 0.99 }] },
 });
+

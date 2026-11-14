@@ -1,9 +1,10 @@
+import { useRequestGate } from '../hooks/useRequestGate';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Image, Linking, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Locale } from '../types';
 import { MessageKey, t } from '../i18n';
-import { colors } from '../theme';
+import { ThemeColors, useThemedStyles } from '../theme';
 import { ApiError } from '../api/client';
 import { AssistantChatRequest, AssistantProvider, AssistantStatus, ChatLine, getAssistantStatus, sendAssistantChat } from '../api/assistant';
 import { AppHeader, AppPage, Body, Panel, StatusPill } from '../components/ui';
@@ -23,6 +24,7 @@ type ChatBubble = {
 export function AiScreen({ locale, token, onBack, onUnauthorized }: {
   locale: Locale; token: string; onBack: () => void; onUnauthorized: () => void;
 }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const [status, setStatus] = useState<AssistantStatus | null>(null);
   const [checking, setChecking] = useState(true);
   const [statusError, setStatusError] = useState<MessageKey | null>(null);
@@ -34,18 +36,21 @@ export function AiScreen({ locale, token, onBack, onUnauthorized }: {
   const [chatError, setChatError] = useState<MessageKey | null>(null);
   const [refreshKey, setRefreshKey] = useState(0);
 
+  const beginStatus = useRequestGate(), beginChat = useRequestGate();
   const loadStatus = useCallback(async () => {
+    const current = beginStatus();
     setChecking(true);
     setStatusError(null);
     try {
       const result = await getAssistantStatus(token);
-      setStatus(result);
+      if (current()) setStatus(result);
     } catch (error) {
+      if (!current()) return;
       setStatus(null);
       if (error instanceof ApiError && error.status === 401) onUnauthorized();
       else setStatusError(errorMessageKey(error));
     } finally {
-      setChecking(false);
+      if (current()) setChecking(false);
     }
   }, [onUnauthorized, token]);
 
@@ -60,6 +65,7 @@ export function AiScreen({ locale, token, onBack, onUnauthorized }: {
   const send = async () => {
     const content = draft.trim();
     if (!content || content.length > 3000 || !canSend || !status) return;
+    const current = beginChat();
     setDraft('');
     setChatError(null);
     setSending(true);
@@ -74,17 +80,19 @@ export function AiScreen({ locale, token, onBack, onUnauthorized }: {
     };
     try {
       const result = await sendAssistantChat(token, requestBody);
+      if (!current()) return;
       setMessages((current) => [...current, {
         id: makeId(), role: 'assistant', content: result.reply,
         provider: result.provider, model: result.model,
         sources: Array.isArray(result.sources) ? result.sources : [], notice: result.notice,
       }]);
     } catch (error) {
+      if (!current()) return;
       if (error instanceof ApiError && error.status === 401) onUnauthorized();
       else setChatError(errorMessageKey(error));
       if (error instanceof ApiError && error.status === 503) setStatus(null);
     } finally {
-      setSending(false);
+      if (current()) setSending(false);
     }
   };
 
@@ -167,6 +175,7 @@ export function AiScreen({ locale, token, onBack, onUnauthorized }: {
 }
 
 function ProviderButton({ title, selected, available, onPress }: { title: string; selected: boolean; available: boolean; onPress: () => void }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <Pressable accessibilityRole="radio" accessibilityState={{ checked: selected, disabled: !available }} disabled={!available} onPress={onPress} style={[styles.providerButton, selected && styles.providerSelected, !available && styles.providerUnavailable]}>
     <Ionicons name={selected ? 'radio-button-on' : 'radio-button-off'} size={18} color={selected ? colors.cyan : colors.muted} />
     <Text numberOfLines={2} style={styles.providerText}>{title}</Text>
@@ -174,6 +183,7 @@ function ProviderButton({ title, selected, available, onPress }: { title: string
 }
 
 function MessageBubble({ message, locale }: { message: ChatBubble; locale: Locale }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <View style={[styles.messageBubble, message.role === 'user' ? styles.userBubble : styles.assistantBubble]}>
     {message.role === 'assistant' && message.provider ? <Text style={styles.messageMeta}>{providerLabel(message.provider === 'local' ? t(locale, 'aiLocal') : t(locale, 'aiCloud'), message.model)}</Text> : null}
     <Text selectable style={[styles.messageText, message.role === 'user' && styles.userMessageText]}>{message.content}</Text>
@@ -187,6 +197,7 @@ function MessageBubble({ message, locale }: { message: ChatBubble; locale: Local
 }
 
 function SourceLine({ value }: { value: unknown }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const row = value && typeof value === 'object' ? value as Record<string, unknown> : null;
   const title = typeof value === 'string' ? value : String(row?.title || row?.citation || row?.source_id || '');
   const url = typeof row?.url === 'string' ? row.url : typeof row?.source_url === 'string' ? row.source_url : '';
@@ -200,7 +211,7 @@ function providerLabel(label: string, model: string | null | undefined) {
 }
 
 function boundedHistory(prior: ChatBubble[], latest: string): ChatLine[] {
-  const lines: ChatLine[] = prior.map(({ role, content }) => ({ role, content }));
+  const lines: ChatLine[] = prior.map(({ role, content }) => ({ role, content: content.slice(0, 3000) }));
   lines.push({ role: 'user', content: latest });
   while (lines.length > 16 || lines.reduce((total, item) => total + item.content.length, 0) > 12000) lines.shift();
   return lines;
@@ -218,7 +229,7 @@ function errorMessageKey(error: unknown): MessageKey {
 
 function makeId() { return `${Date.now()}_${Math.random().toString(36).slice(2, 8)}`; }
 
-const styles = StyleSheet.create({
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   refreshButton: { width: 38, height: 38, alignItems: 'center', justifyContent: 'center' },
   hero: { alignItems: 'center', gap: 8, paddingTop: 8, paddingBottom: 3 },
   orb: { width: 76, height: 76 },
@@ -226,8 +237,8 @@ const styles = StyleSheet.create({
   statusText: { color: colors.muted, fontSize: 12, fontWeight: '700' },
   providerPanel: { gap: 12 },
   providerChoices: { flexDirection: 'row', gap: 8 },
-  providerButton: { flex: 1, minHeight: 50, flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 10, borderRadius: 14, borderWidth: 1, borderColor: colors.border, backgroundColor: '#FFFFFF' },
-  providerSelected: { borderColor: colors.cyan, backgroundColor: '#F4F0FF' },
+  providerButton: { flex: 1, minHeight: 50, flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 10, borderRadius: 14, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card },
+  providerSelected: { borderColor: colors.cyan, backgroundColor: colors.cardSoft },
   providerUnavailable: { opacity: 0.42 },
   providerText: { flex: 1, color: colors.text, fontSize: 12, fontWeight: '800' },
   consentGroup: { gap: 5, borderTopWidth: 1, borderTopColor: colors.border, paddingTop: 11 },
@@ -237,7 +248,7 @@ const styles = StyleSheet.create({
   transcript: { gap: 9 },
   messageBubble: { maxWidth: '92%', borderRadius: 19, padding: 13, gap: 8 },
   userBubble: { alignSelf: 'flex-end', backgroundColor: '#5D43E8', borderBottomRightRadius: 6 },
-  assistantBubble: { alignSelf: 'flex-start', backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: colors.border, borderBottomLeftRadius: 6 },
+  assistantBubble: { alignSelf: 'flex-start', backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border, borderBottomLeftRadius: 6 },
   messageText: { color: colors.text, fontSize: 14, lineHeight: 21 },
   userMessageText: { color: '#FFFFFF' },
   messageMeta: { color: colors.cyan, fontSize: 10, fontWeight: '900', textTransform: 'uppercase', letterSpacing: 0.4 },
@@ -248,10 +259,11 @@ const styles = StyleSheet.create({
   errorPanel: { borderColor: `${colors.red}44` },
   errorText: { color: colors.red, fontSize: 13, lineHeight: 19 },
   composer: { gap: 9 },
-  input: { minHeight: 48, maxHeight: 130, paddingHorizontal: 12, paddingVertical: 10, color: colors.text, fontSize: 14, lineHeight: 20, borderWidth: 1, borderColor: colors.border, backgroundColor: '#FFFFFF', borderRadius: 14, textAlignVertical: 'top' },
+  input: { minHeight: 48, maxHeight: 130, paddingHorizontal: 12, paddingVertical: 10, color: colors.text, fontSize: 14, lineHeight: 20, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, borderRadius: 14, textAlignVertical: 'top' },
   sendButton: { minHeight: 44, alignSelf: 'flex-end', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7, paddingHorizontal: 16, borderRadius: 14, backgroundColor: colors.cyan },
   disabled: { opacity: 0.45 },
   pressed: { opacity: 0.82, transform: [{ scale: 0.98 }] },
   sendText: { color: '#FFFFFF', fontSize: 13, fontWeight: '900' },
   sendingRow: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 9, padding: 4 },
 });
+

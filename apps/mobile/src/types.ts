@@ -7,6 +7,7 @@ export type AuthUser = {
 };
 
 export type AuthSession = {
+  server_url?: string;
   access_token: string;
   token_type: 'bearer' | string;
   expires_at: string;
@@ -52,3 +53,4 @@ export type ObservationPage = {
   next_cursor: string | null;
   note?: string;
 };
+

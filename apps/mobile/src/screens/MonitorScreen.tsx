@@ -1,8 +1,9 @@
+import { useRequestGate } from '../hooks/useRequestGate';
 import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Locale, Observation } from '../types';
 import { t } from '../i18n';
-import { colors } from '../theme';
+import { ThemeColors, useThemedStyles } from '../theme';
 import { ApiError } from '../api/client';
 import { getObservations } from '../api/health';
 import { AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../components/ui';
@@ -10,18 +11,22 @@ import { AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../component
 export function MonitorScreen({ locale, token, subjectId, onBack, onUnauthorized }: {
   locale: Locale; token: string; subjectId?: string; onBack: () => void; onUnauthorized: () => void;
 }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const [items, setItems] = useState<Observation[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [refresh, setRefresh] = useState(0);
+  const beginRequest = useRequestGate();
   const load = useCallback(async () => {
+    const current = beginRequest();
     if (!subjectId) return;
     setBusy(true); setError(null);
-    try { const page = await getObservations(subjectId, token); setItems(page.observations || []); }
+    try { const page = await getObservations(subjectId, token); if (current()) setItems(page.observations || []); }
     catch (cause) {
+      if (!current()) return;
       if (cause instanceof ApiError && cause.status === 401) onUnauthorized();
       else setError(cause instanceof ApiError && cause.status === 403 ? t(locale, 'forbidden') : cause instanceof ApiError && cause.status >= 500 ? t(locale, 'serverError') : t(locale, 'networkError'));
-    } finally { setBusy(false); }
+    } finally { if (current()) setBusy(false); }
   }, [locale, onUnauthorized, subjectId, token, refresh]);
   useEffect(() => { void load(); }, [load]);
 
@@ -40,6 +45,7 @@ export function MonitorScreen({ locale, token, subjectId, onBack, onUnauthorized
 }
 
 function ObservationCard({ item, locale }: { item: Observation; locale: Locale }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const tone = item.quality === 'READY' ? 'good' : item.quality === 'STALE' ? 'warn' : item.quality === 'ERROR' || item.quality === 'DENIED' ? 'bad' : 'neutral';
   return <Panel style={styles.observation}>
     <View style={styles.observationTop}>
@@ -57,7 +63,7 @@ function formatDate(value: string, locale: Locale) {
   return Number.isNaN(date.getTime()) ? value : date.toLocaleString(locale === 'vi' ? 'vi-VN' : 'en-US');
 }
 
-const styles = StyleSheet.create({
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   heading: { gap: 8, paddingTop: 8 },
   refresh: { color: colors.cyan, fontSize: 12, fontWeight: '800', padding: 8 },
   sensorNotice: { alignItems: 'flex-start' },
@@ -74,3 +80,4 @@ const styles = StyleSheet.create({
   loading: { flexDirection: 'row', gap: 10, alignItems: 'center', padding: 18 },
   error: { color: colors.red, lineHeight: 20 },
 });
+

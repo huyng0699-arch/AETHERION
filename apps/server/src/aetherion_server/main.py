@@ -491,6 +491,16 @@ def create_app(
     application.include_router(build_ecg_router(get_db_path, require_session))
     from .assistant_chat import build_assistant_router
     application.include_router(build_assistant_router(get_db_path, require_session))
+    from .client_routes import build_client_router
+    application.include_router(build_client_router(get_db_path, require_session))
+    # An explicit local export shares this API origin; no extra backend/store.
+    mobile_web_dir = os.environ.get("AETHERION_MOBILE_WEB_DIR", "").strip()
+    if mobile_web_dir:
+        from fastapi.staticfiles import StaticFiles
+        web_path = Path(mobile_web_dir).resolve()
+        if not (web_path / "index.html").is_file():
+            raise ValueError("AETHERION_MOBILE_WEB_DIR must contain the Expo index.html export")
+        application.mount("/", StaticFiles(directory=str(web_path), html=True), name="mobile-web")
     return application
 
 
@@ -502,3 +512,4 @@ def run() -> None:
 
     config = read_runtime_config()
     uvicorn.run(app, host=config.host, port=config.port)
+

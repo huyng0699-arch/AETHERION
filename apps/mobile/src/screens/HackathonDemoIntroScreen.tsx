@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { Locale } from '../types';
 import { MessageKey, t } from '../i18n';
-import { colors } from '../theme';
+import { ThemeColors, useThemedStyles } from '../theme';
 import { ActionButton, AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../components/ui';
 import { loadNasaMa7Demo } from '../api/demo';
+import { copy } from '../uiCopy';
 
 const UNAVAILABLE_LABELS: Record<string, MessageKey> = {
   ecg_waveform: 'demoUnavailableEcg',
@@ -20,6 +21,8 @@ const UNAVAILABLE_LABELS: Record<string, MessageKey> = {
 };
 
 export function HackathonDemoIntroScreen({ locale, onBack, onLoad }: { locale: Locale; onBack: () => void; onLoad: () => void }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
+  const [details, setDetails] = useState(false);
   let source: ReturnType<typeof loadNasaMa7Demo> | null = null;
   let sourceError = false;
   try { source = loadNasaMa7Demo(); } catch { sourceError = true; }
@@ -27,15 +30,19 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad }: { locale: L
   return (
     <AppPage>
       <AppHeader title={t(locale, 'demoTitle')} onBack={onBack} backLabel={t(locale, 'back')} />
-      <LinearGradient colors={['#5D43E8', '#8975F7', '#B6A9FF']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.hero}>
+      <LinearGradient colors={gradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.hero}>
         <View style={styles.heroIcon}><Ionicons name="planet-outline" size={24} color="#FFFFFF" /></View>
         <Text style={styles.heroKicker}>{t(locale, 'demoKicker')}</Text>
-        <Title size={23}>{t(locale, 'demoIntroTitle')}</Title>
+        <Text style={{ color: '#FFFFFF', fontSize: 24, fontWeight: '800' }}>{t(locale, 'demoIntroTitle')}</Text>
         <StatusPill label={t(locale, 'demoHistorical')} tone="neutral" />
       </LinearGradient>
 
       {source ? (
         <>
+          <Panel style={{ gap: 12 }}><Text style={styles.reportTitle}>{copy(locale, 'demoSummary')}</Text><Body>{t(locale, 'demoHistoricalLimit')}</Body></Panel>
+          <ActionButton title={copy(locale, 'demoStart')} onPress={onLoad} />
+          <Pressable accessibilityRole="button" accessibilityState={{ expanded: details }} onPress={() => setDetails(value => !value)} style={styles.sourceLink}><Text style={styles.sourceLinkText}>{copy(locale, 'sourceDetails')}</Text><Ionicons name={details ? 'chevron-up' : 'chevron-down'} size={18} color={colors.cyan} /></Pressable>
+          {details ? <>
           <Panel style={styles.sourcePanel}>
             <Text style={styles.reportTitle}>{source.data.source_title}</Text>
             <MetaRow label={t(locale, 'demoPublisher')} value={source.data.source_publisher} />
@@ -72,7 +79,7 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad }: { locale: L
             </View>
           </Panel>
 
-          <ActionButton title={t(locale, 'demoLoadData')} onPress={onLoad} />
+          </> : null}
         </>
       ) : (
         <Panel style={styles.errorPanel}>
@@ -84,10 +91,11 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad }: { locale: L
 }
 
 function MetaRow({ label, value }: { label: string; value: string }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <View style={styles.metaRow}><Text style={styles.metaLabel}>{label}</Text><Text style={styles.metaValue}>{value}</Text></View>;
 }
 
-const styles = StyleSheet.create({
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   hero: { borderRadius: 27, padding: 18, gap: 9, shadowColor: '#4D2CCB', shadowOpacity: 0.16, shadowRadius: 14, shadowOffset: { width: 0, height: 8 }, elevation: 5 },
   heroIcon: { width: 46, height: 46, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.2)' },
   heroKicker: { color: 'rgba(255,255,255,0.86)', fontWeight: '900', fontSize: 10, letterSpacing: 1.2 },
@@ -105,7 +113,8 @@ const styles = StyleSheet.create({
   sectionTitle: { color: colors.text, fontSize: 15, fontWeight: '900' },
   unavailableHeading: { color: colors.muted, fontSize: 12, fontWeight: '800' },
   unavailableList: { flexDirection: 'row', flexWrap: 'wrap', gap: 7 },
-  unavailableChip: { paddingHorizontal: 9, paddingVertical: 6, borderRadius: 12, backgroundColor: '#F4F0FF' },
+  unavailableChip: { paddingHorizontal: 9, paddingVertical: 6, borderRadius: 12, backgroundColor: colors.cardSoft },
   unavailableText: { color: colors.muted, fontSize: 11, fontWeight: '700' },
   errorPanel: { alignItems: 'flex-start' },
 });
+

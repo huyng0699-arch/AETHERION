@@ -6,6 +6,7 @@ sensor readings, AI answers, anatomy, or an emergency dispatch service.
 from __future__ import annotations
 
 import os
+import json
 import sys
 
 from PySide6.QtCore import Qt, QUrl, QTimer, QObject, QEvent
@@ -17,6 +18,7 @@ from PySide6.QtWidgets import (
     QVBoxLayout, QWidget,
 )
 
+from .login_page import LoginPage
 from .portal import PORTAL_ROUTES, build_portal_page
 from .mission_ops_home import build_mission_ops_home, ROUTE_IDS
 from .features.demo.synthetic_briefing import SimulatedDemoBriefing
@@ -116,8 +118,10 @@ class AetherionWindow(QMainWindow):
         self.setMinimumSize(1040, 650)
         self.api_url = os.environ.get("AETHERION_API_URL", "http://127.0.0.1:8765").rstrip("/")
         self.network = QNetworkAccessManager(self)
+        self.access_token = ""
+        self.session_identity = None
         self.preferences = VisualPreferences()
-        self.ui_language = normalize_locale(self.preferences.settings.value("ui/language", "vi"))
+        self.ui_language = normalize_locale(self.preferences.settings.value("ui/language", "en"))
         app = QApplication.instance()
         if app is not None:
             self.preferences.apply(app)
@@ -146,6 +150,10 @@ class AetherionWindow(QMainWindow):
 
         self.pages = QStackedWidget()
         self.pages.setObjectName("pageStack")
+        self.login_page = LoginPage(self, network=self.network, api_url=self.api_url, locale=self.ui_language)
+        self.login_page.authenticated.connect(self._login_complete)
+        self.login_page.demo_requested.connect(self.show_hackathon_demo)
+        self.pages.addWidget(self.login_page)
         # Q-0485: first native view is mission operations, not the five-card Portal.
         self.operations_home_page = build_mission_ops_home(
             self, locale=self.ui_language,
@@ -343,6 +351,11 @@ class AetherionWindow(QMainWindow):
         help_button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextOnly)
         help_button.clicked.connect(self.show_help)
         bar.addWidget(help_button)
+        self.logout_button = QPushButton("Sign out" if self.ui_language == "en" else "Đăng xuất")
+        self.logout_button.setObjectName("navButton")
+        self.logout_button.clicked.connect(self.sign_out)
+        self.logout_button.hide()
+        bar.addWidget(self.logout_button)
         outer.addWidget(top)
         outer.addWidget(self.pages, 1)
 
@@ -369,7 +382,7 @@ class AetherionWindow(QMainWindow):
         self.shortcut_legacy_portal = QShortcut(QKeySequence("Alt+Shift+Home"), self)
         self.shortcut_legacy_portal.activated.connect(self.show_legacy_portal)
         self._retranslate_shell()
-        self.pages.setCurrentWidget(self.operations_home_page)
+        self.pages.setCurrentWidget(self.login_page)
         self.check_server()
         self.heartbeat = QTimer(self)
         self.heartbeat.setInterval(30000)
@@ -431,6 +444,8 @@ class AetherionWindow(QMainWindow):
 
     def _retranslate_shell(self):
         """Retitle the localized shell without rewriting NASA/clinical content."""
+        self.login_page.set_locale(self.ui_language)
+        self.logout_button.setText("Sign out" if self.ui_language == "en" else "Đăng xuất")
         self.operations_home_page.set_locale(self.ui_language)
         self.simulated_briefing_page.set_locale(self.ui_language)
         self.synthetic_patient_page.set_locale(self.ui_language)
@@ -548,6 +563,9 @@ class AetherionWindow(QMainWindow):
 
     def _show_workspace_feature(self, route: str):
         """Keep Browse, Inspect and the bottom UTC conductor visible on routes."""
+        if route in {"health", "mission", "crew", "monitor", "ecg", "assistant", "interview", "care"} and not self.access_token:
+            self.pages.setCurrentWidget(self.login_page)
+            return
         if not self.operations_home_page.show_hosted(route):
             raise ValueError(f"Unregistered native workspace: {route}")
         self.pages.setCurrentWidget(self.operations_home_page)
@@ -563,13 +581,68 @@ class AetherionWindow(QMainWindow):
                         self.nav_ai, self.nav_science, self.nav_crew, self.nav_more):
                 nav.hide()
 
+
+    def _login_complete(self, payload: dict, base_url: str):
+        """Unlock existing feature widgets with the actual bearer session."""
+        self.api_url = base_url
+        self.access_token = payload["access_token"]
+        self.session_identity = payload["user"]
+        for page in self.findChildren(QWidget):
+            if hasattr(page, "api_url"):
+                page.api_url = base_url
+        self.logout_button.show()
+        self.show_portal()
+        self.check_server()
+        request = QNetworkRequest(QUrl(base_url + "/api/v1/subjects"))
+        request.setRawHeader(b"Authorization", ("Bearer " + self.access_token).encode("utf-8"))
+        reply = self.network.get(request)
+        expected_token = self.access_token
+        def subjects_loaded():
+            try:
+                if self.access_token != expected_token:
+                    return
+                if reply.error() == QNetworkReply.NetworkError.NoError:
+                    rows = json.loads(bytes(reply.readAll()).decode("utf-8")).get("subjects", [])
+                    if rows:
+                        self.open_personal_subject(rows[0]["subject_id"], expected_token)
+                        self.show_portal()
+            except (ValueError, KeyError, TypeError):
+                pass
+            finally:
+                reply.deleteLater()
+        reply.finished.connect(subjects_loaded)
+
+    def sign_out(self):
+        token = self.access_token
+        self.access_token = ""
+        self.session_identity = None
+        self.logout_button.hide()
+        self.pages.setCurrentWidget(self.login_page)
+        self.personal_today_page.select_subject("", "")
+        self.monitor_page.select_subject("", "")
+        self.ecg_page.select_subject("", "")
+        self.assistant_page.set_identity("", "")
+        self.symptom_page.set_identity("", "")
+        self.care_journal_page.set_identity("", "")
+        if token:
+            request = QNetworkRequest(QUrl(self.api_url + "/api/v1/auth/logout"))
+            request.setRawHeader(b"Authorization", ("Bearer " + token).encode("utf-8"))
+            reply = self.network.post(request, b"")
+            reply.finished.connect(reply.deleteLater)
+
     def show_portal(self):
         """Home means the persistent native Mission Operations overview."""
+        if not self.access_token:
+            self.pages.setCurrentWidget(self.login_page)
+            return
         self.pages.setCurrentWidget(self.operations_home_page)
         self.operations_home_page.show_overview()
 
     def show_legacy_portal(self):
         """Compatibility-only access; never the native app cold-start view."""
+        if not self.access_token:
+            self.pages.setCurrentWidget(self.login_page)
+            return
         self.pages.setCurrentWidget(self.portal_page)
 
     def open_operations_route(self, route: str):
@@ -741,3 +814,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

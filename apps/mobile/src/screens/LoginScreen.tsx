@@ -1,72 +1,31 @@
 import React, { useState } from 'react';
-import { Image, KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { Locale } from '../types';
 import { t } from '../i18n';
-import { colors } from '../theme';
-import { ActionButton, AppHeader, AppPage, Field, Panel, Title } from '../components/ui';
-
-const AI_ORB = require('../../assets/aetherion-ai-orb.png');
-
-export function LoginScreen({
-  locale, serverUrl, setServerUrl, onConnect, onSignIn, onOpenDemo, onBack, busy, error,
-}: {
-  locale: Locale;
-  serverUrl: string;
-  setServerUrl: (value: string) => void;
-  onConnect: (serverUrl: string) => void | Promise<void>;
-  onSignIn: (serverUrl: string, username: string, password: string) => void | Promise<void>;
-  onOpenDemo: () => void;
-  onBack?: () => void;
-  busy: boolean;
-  error?: string | null;
-}) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const canSubmit = serverUrl.trim().length > 0 && username.trim().length > 0 && password.length > 0;
-
-  return (
-    <AppPage contentStyle={styles.page}>
-      <AppHeader title={t(locale, 'signIn')} onBack={onBack} backLabel={t(locale, 'back')} />
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.wrap}>
-        <View style={styles.intro}>
-          <Image source={AI_ORB} resizeMode="contain" style={styles.orb} />
-          <Title size={27}>{t(locale, 'signInTitle')}</Title>
-        </View>
-        <Pressable accessibilityRole="button" onPress={onOpenDemo} style={({ pressed }) => [styles.demoButton, pressed && styles.dimmed]}>
-          <Image source={AI_ORB} resizeMode="contain" style={styles.demoIcon} />
-          <Text style={styles.demoText}>{t(locale, 'demoForHackathon')}</Text>
-          <Ionicons name="chevron-forward" size={20} color="#FFFFFF" />
-        </Pressable>
-        <Panel style={styles.panel}>
-          <Field label={t(locale, 'serverUrl')} value={serverUrl} onChangeText={setServerUrl} autoCapitalize="none" autoCorrect={false} keyboardType="url" placeholder="https://" />
-          <Pressable accessibilityRole="button" onPress={() => void onConnect(serverUrl)} disabled={!serverUrl.trim() || busy} style={({ pressed }) => [styles.connect, (pressed || busy) && styles.dimmed]}>
-            <Ionicons name="radio-outline" size={18} color={colors.cyan} />
-            <Text style={styles.connectText}>{t(locale, 'connect')}</Text>
-          </Pressable>
-          <View style={styles.separator} />
-          <Field label={t(locale, 'username')} value={username} onChangeText={setUsername} autoCapitalize="none" autoCorrect={false} textContentType="username" autoComplete="username" />
-          <Field label={t(locale, 'password')} value={password} onChangeText={setPassword} secureTextEntry textContentType="password" autoComplete="current-password" />
-          {error ? <Text accessibilityRole="alert" style={styles.error}>{error}</Text> : null}
-          <ActionButton title={busy ? t(locale, 'signingIn') : t(locale, 'signInAction')} onPress={() => void onSignIn(serverUrl, username, password)} disabled={!canSubmit || busy} loading={busy} />
-        </Panel>
-      </KeyboardAvoidingView>
-    </AppPage>
-  );
+import { copy } from '../uiCopy';
+import { ThemeColors, useThemedStyles } from '../theme';
+import { ActionButton, AppHeader, AppPage, Field, Panel, StatusPill } from '../components/ui';
+type Props = { locale: Locale; setLocale: (locale: Locale) => void; onAppearance: () => void; serverUrl: string; setServerUrl: (url: string) => void; onConnect: (url: string) => void; onSignIn: (url: string, username: string, password: string) => void; onOpenDemo: () => void; onContinue?: () => void; restoredUsername?: string; busy: boolean; error?: string; status: 'online' | 'offline' | 'unknown' };
+export function LoginScreen({ locale, setLocale, onAppearance, serverUrl, setServerUrl, onConnect, onSignIn, onOpenDemo, onContinue, restoredUsername, busy, error, status }: Props) {
+  const { colors, styles, gradient } = useThemedStyles(buildStyles);
+  const [username, setUsername] = useState(''), [password, setPassword] = useState(''), [connectionOpen, setConnectionOpen] = useState(false);
+  const submit = () => { if (!busy && username.trim() && password && serverUrl.trim()) onSignIn(serverUrl, username, password); };
+  return <AppPage contentStyle={styles.page}>
+    <AppHeader title="AETHERION" trailing={<View style={styles.tools}><Pressable accessibilityRole="button" accessibilityLabel={t(locale, 'language')} onPress={() => setLocale(locale === 'en' ? 'vi' : 'en')} style={styles.tool}><Text style={styles.language}>{locale === 'en' ? 'VI' : 'EN'}</Text></Pressable><Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'appearance')} onPress={onAppearance} style={styles.tool}><Ionicons name="color-palette-outline" color={colors.cyan} size={20} /></Pressable></View>} />
+    <View style={styles.intro}><Image source={require('../../assets/aetherion-ai-orb.png')} style={styles.orb} /><Text style={styles.title}>{copy(locale, 'welcome')}</Text><Text style={styles.tagline}>{copy(locale, 'tagline')}</Text></View>
+    <Panel style={styles.form}>
+      <Field label={t(locale, 'username')} value={username} onChangeText={setUsername} autoCapitalize="none" autoCorrect={false} autoComplete="username" textContentType="username" returnKeyType="next" />
+      <Field label={t(locale, 'password')} value={password} onChangeText={setPassword} secureTextEntry autoComplete="current-password" textContentType="password" returnKeyType="go" onSubmitEditing={submit} />
+      {error ? <Text accessibilityRole="alert" style={styles.error}>{error}</Text> : null}
+      <ActionButton title={t(locale, busy ? 'signingIn' : 'signInAction')} onPress={submit} loading={busy} disabled={!username.trim() || !password || !serverUrl.trim()} />
+      {restoredUsername && onContinue ? <ActionButton title={`${copy(locale, 'continueAs')} ${restoredUsername}`} onPress={onContinue} secondary disabled={busy} /> : null}
+    </Panel>
+    <Pressable accessibilityRole="button" accessibilityLabel="Demo" onPress={onOpenDemo} disabled={busy} style={({ pressed }) => [styles.demo, pressed && styles.pressed]}><LinearGradient colors={gradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.demoInner}><View style={styles.demoIcon}><Ionicons name="planet-outline" color="#FFFFFF" size={25} /></View><View style={styles.demoCopy}><Text style={styles.demoTitle}>Demo</Text><Text style={styles.demoHint}>{copy(locale, 'demoHint')}</Text></View><Ionicons name="arrow-forward" size={21} color="#FFFFFF" /></LinearGradient></Pressable>
+    <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'connection')} accessibilityState={{ expanded: connectionOpen }} onPress={() => setConnectionOpen(value => !value)} style={styles.connection}><Ionicons name="server-outline" color={colors.muted} size={16} /><Text style={styles.connectionText}>{copy(locale, 'connection')}</Text><Ionicons name={connectionOpen ? 'chevron-up' : 'chevron-down'} color={colors.muted} size={15} /></Pressable>
+    {connectionOpen ? <Panel style={styles.form}><Field label={t(locale, 'serverUrl')} value={serverUrl} onChangeText={setServerUrl} autoCapitalize="none" autoCorrect={false} keyboardType="url" /><StatusPill label={t(locale, status === 'online' ? 'serverOnline' : status === 'offline' ? 'serverOffline' : 'serverUnknown')} tone={status === 'online' ? 'good' : 'neutral'} /><ActionButton title={t(locale, 'connectionCheck')} onPress={() => onConnect(serverUrl)} disabled={busy || !serverUrl.trim()} secondary /></Panel> : null}
+    <Text style={styles.credit}>AETHERION · TRUY TINH</Text>
+  </AppPage>;
 }
-
-const styles = StyleSheet.create({
-  page: { paddingTop: 8 },
-  wrap: { flex: 1, gap: 18 },
-  intro: { alignItems: 'center', gap: 7, paddingTop: 25, paddingBottom: 8 },
-  orb: { width: 84, height: 84, marginBottom: 5 },
-  panel: { gap: 15, padding: 18 },
-  demoButton: { minHeight: 58, borderRadius: 18, backgroundColor: colors.cyan, flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, marginHorizontal: 2, shadowColor: '#5528E9', shadowOpacity: 0.2, shadowRadius: 12, shadowOffset: { width: 0, height: 6 }, elevation: 4 },
-  demoIcon: { width: 34, height: 34 },
-  demoText: { flex: 1, color: '#FFFFFF', fontSize: 15, fontWeight: '900' },
-  connect: { minHeight: 42, borderRadius: 13, borderWidth: 1, borderColor: colors.border, backgroundColor: '#F6F3FF', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
-  connectText: { color: colors.cyan, fontWeight: '800', fontSize: 13 },
-  dimmed: { opacity: 0.7 },
-  separator: { height: 1, backgroundColor: colors.border, marginVertical: 1 },
-  error: { color: colors.red, fontSize: 13, fontWeight: '700', lineHeight: 19 },
-});
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({ page: { paddingBottom: 28, gap: 16 }, tools: { flexDirection: 'row', gap: 8 }, tool: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border, borderRadius: 13 }, language: { color: colors.cyan, fontWeight: '800', fontSize: 11 }, intro: { alignItems: 'center', gap: 9, paddingTop: 11, paddingBottom: 4 }, orb: { width: 78, height: 78, marginBottom: 2 }, title: { color: colors.text, fontSize: 27, fontWeight: '800', letterSpacing: -0.8 }, tagline: { color: colors.muted, fontSize: 13, textAlign: 'center' }, form: { gap: 15, padding: 19, borderRadius: 24 }, error: { color: colors.red, fontSize: 12, lineHeight: 18 }, demo: { borderRadius: 21, overflow: 'hidden' }, demoInner: { minHeight: 82, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18, gap: 13 }, demoIcon: { width: 44, height: 44, borderRadius: 16, backgroundColor: 'rgba(255,255,255,0.15)', alignItems: 'center', justifyContent: 'center' }, demoCopy: { flex: 1, gap: 5 }, demoTitle: { color: '#FFFFFF', fontSize: 19, fontWeight: '800' }, demoHint: { color: '#FFFFFF', fontSize: 11, opacity: 0.88 }, connection: { minHeight: 39, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8 }, connectionText: { color: colors.muted, fontSize: 12, fontWeight: '600' }, credit: { color: colors.faint, fontSize: 10, textAlign: 'center', letterSpacing: 1 }, pressed: { opacity: 0.85 } });

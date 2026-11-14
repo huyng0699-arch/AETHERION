@@ -1,5 +1,5 @@
 import { AuthSession, SessionIdentity } from '../types';
-import { request } from './client';
+import { readServerUrl, request } from './client';
 import { deleteSession, readSession, writeSession } from '../storage/session';
 
 export async function signIn(username: string, password: string): Promise<AuthSession> {
@@ -9,8 +9,7 @@ export async function signIn(username: string, password: string): Promise<AuthSe
     timeoutMs: 15000,
   });
   if (!response?.access_token || !response.user?.username) throw new Error('INVALID_LOGIN_RESPONSE');
-  await writeSession(response);
-  return response;
+  return { ...response, server_url: await readServerUrl() };
 }
 
 export async function validateSession(token: string): Promise<SessionIdentity> {
@@ -24,3 +23,4 @@ export async function signOut(): Promise<void> {
   }
   await deleteSession();
 }
+

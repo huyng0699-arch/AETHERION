@@ -1,3 +1,4 @@
+import { useRequestGate } from '../hooks/useRequestGate';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { ApiError } from '../api/client';
@@ -13,7 +14,7 @@ import {
 } from '../api/care';
 import { AppHeader, AppPage, ActionButton, Body, Panel, StatusPill, Title } from '../components/ui';
 import { MessageKey, t } from '../i18n';
-import { colors } from '../theme';
+import { ThemeColors, useThemedStyles } from '../theme';
 import { Locale } from '../types';
 
 type PhaseTarget = 'GATHER' | 'CLOSED';
@@ -26,6 +27,7 @@ function copy(locale: Locale, key: CopyKey): string {
 export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }: {
   locale: Locale; token: string; subjectId?: string; onBack: () => void; onUnauthorized: () => void;
 }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const [episodes, setEpisodes] = useState<CareEpisode[]>([]);
   const [episode, setEpisode] = useState<CareEpisode | null>(null);
   const [loading, setLoading] = useState(false);
@@ -42,33 +44,39 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
   const [confirmed, setConfirmed] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
 
+  const beginList = useRequestGate(), beginAction = useRequestGate();
   const loadEpisodes = useCallback(async () => {
+    const isCurrent = beginList();
     if (!subjectId) { setEpisodes([]); return; }
     setLoading(true);
     setError(null);
     try {
       const result = await listCareEpisodes(subjectId, token);
-      setEpisodes(result.episodes);
+      if (isCurrent()) setEpisodes(result.episodes);
     } catch (cause) {
+      if (!isCurrent()) return;
       handleError(cause, locale, onUnauthorized, setError);
     } finally {
-      setLoading(false);
+      if (isCurrent()) setLoading(false);
     }
   }, [locale, onUnauthorized, subjectId, token, refreshKey]);
 
   useEffect(() => { void loadEpisodes(); }, [loadEpisodes]);
 
   const openEpisode = async (episodeId: string) => {
+    const isCurrent = beginAction();
     setSaving(true);
     setError(null);
     try {
-      setEpisode(await getCareEpisode(episodeId, token));
+      const result = await getCareEpisode(episodeId, token);
+      if (isCurrent()) setEpisode(result);
       setCreating(false);
       resetTransition();
     } catch (cause) {
+      if (!isCurrent()) return;
       handleError(cause, locale, onUnauthorized, setError);
     } finally {
-      setSaving(false);
+      if (isCurrent()) setSaving(false);
     }
   };
 
@@ -87,6 +95,7 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
       setError(copy(locale, 'careSymptomsInvalid'));
       return;
     }
+    const isCurrent = beginAction();
     setSaving(true);
     setError(null);
     try {
@@ -97,6 +106,7 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
         interview_answers: {},
         explicit_consent: true,
       }, token);
+      if (!isCurrent()) return;
       setEpisode(result.episode);
       setConcern('');
       setSymptoms('');
@@ -105,9 +115,10 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
       resetTransition();
       setRefreshKey((key) => key + 1);
     } catch (cause) {
+      if (!isCurrent()) return;
       handleError(cause, locale, onUnauthorized, setError);
     } finally {
-      setSaving(false);
+      if (isCurrent()) setSaving(false);
     }
   };
 
@@ -123,6 +134,7 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
     if (nextPhase === 'ACT' && !actionStatus) return;
     if (nextPhase === 'RECHECK' && !outcome) return;
 
+    const isCurrent = beginAction();
     setSaving(true);
     setError(null);
     try {
@@ -133,14 +145,16 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
         ...(nextPhase === 'RECHECK' && outcome ? { outcome } : {}),
         human_confirmed: true,
       }, token);
+      if (!isCurrent()) return;
       setEpisode(result.episode);
       resetTransition();
       setRefreshKey((key) => key + 1);
     } catch (cause) {
+      if (!isCurrent()) return;
       handleError(cause, locale, onUnauthorized, setError);
       if (cause instanceof ApiError && cause.status === 409) setRefreshKey((key) => key + 1);
     } finally {
-      setSaving(false);
+      if (isCurrent()) setSaving(false);
     }
   };
 
@@ -285,6 +299,7 @@ export function CareScreen({ locale, token, subjectId, onBack, onUnauthorized }:
 function ChoiceGroup<T extends string>({ label, value, options, onChange }: {
   label: string; value: T | null; options: Array<[T, string]>; onChange: (value: T) => void;
 }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <View style={styles.choiceGroup}>
     <Text style={styles.fieldLabel}>{label}</Text>
     <View style={styles.choices}>{options.map(([option, title]) => <Pressable
@@ -343,29 +358,30 @@ function handleError(cause: unknown, locale: Locale, onUnauthorized: () => void,
 }
 
 function Loading({ label }: { label: string }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <View style={styles.loading}><ActivityIndicator color={colors.cyan} /><Text style={styles.loadingText}>{label}</Text></View>;
 }
 
-const styles = StyleSheet.create({
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   heading: { gap: 7, paddingTop: 4 },
   headerAction: { padding: 8 },
   headerActionText: { color: colors.cyan, fontSize: 12, fontWeight: '800' },
   phaseLine: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  notice: { gap: 6, borderColor: '#D8CDFC', backgroundColor: 'rgba(255,255,255,0.97)' },
+  notice: { gap: 6, borderColor: '#D8CDFC', backgroundColor: colors.card },
   noticeTitle: { color: colors.text, fontSize: 14, fontWeight: '800' },
   form: { gap: 14 },
   sectionTitle: { color: colors.text, fontSize: 16, fontWeight: '800' },
   fieldLabel: { color: colors.muted, fontSize: 12, fontWeight: '700' },
-  input: { minHeight: 48, borderRadius: 14, borderWidth: 1, borderColor: colors.border, backgroundColor: '#FFFFFF', paddingHorizontal: 13, paddingVertical: 12, color: colors.text, fontSize: 15 },
+  input: { minHeight: 48, borderRadius: 14, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, paddingHorizontal: 13, paddingVertical: 12, color: colors.text, fontSize: 15 },
   multiline: { minHeight: 92, textAlignVertical: 'top' },
   choiceGroup: { gap: 8 },
   choices: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  choice: { minHeight: 38, borderRadius: 999, borderWidth: 1, borderColor: colors.border, backgroundColor: '#FFFFFF', paddingHorizontal: 12, justifyContent: 'center' },
+  choice: { minHeight: 38, borderRadius: 999, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, paddingHorizontal: 12, justifyContent: 'center' },
   choiceSelected: { backgroundColor: '#EEE9FF', borderColor: colors.cyan },
   choiceText: { color: colors.muted, fontSize: 12, fontWeight: '700' },
   choiceTextSelected: { color: colors.cyan },
   confirmRow: { flexDirection: 'row', alignItems: 'center', gap: 10, minHeight: 42 },
-  checkbox: { width: 22, height: 22, borderRadius: 7, borderWidth: 1.5, borderColor: colors.border, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF' },
+  checkbox: { width: 22, height: 22, borderRadius: 7, borderWidth: 1.5, borderColor: colors.border, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.card },
   checkboxSelected: { borderColor: colors.cyan, backgroundColor: colors.cyan },
   checkmark: { color: '#FFFFFF', fontSize: 14, lineHeight: 16, fontWeight: '900' },
   confirmText: { flex: 1, color: colors.muted, fontSize: 12, lineHeight: 17 },
@@ -385,3 +401,4 @@ const styles = StyleSheet.create({
   loadingText: { color: colors.muted },
   error: { color: colors.red, lineHeight: 20, fontSize: 13 },
 });
+

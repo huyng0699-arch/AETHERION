@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Locale } from '../types';
 import { MessageKey, t } from '../i18n';
-import { colors } from '../theme';
+import { ThemeColors, useThemedStyles } from '../theme';
 import { AppHeader, AppPage, Panel } from '../components/ui';
 import type { MobileScreen } from './PortalScreen';
 
@@ -21,6 +21,7 @@ const entries: MoreEntry[] = [
 ];
 
 export function MoreScreen({ locale, onBack, onOpen }: { locale: Locale; onBack: () => void; onOpen: (route: MobileScreen) => void }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return (
     <AppPage>
       <AppHeader title={t(locale, 'moreTitle')} onBack={onBack} backLabel={t(locale, 'back')} />
@@ -37,11 +38,12 @@ export function MoreScreen({ locale, onBack, onOpen }: { locale: Locale; onBack:
   );
 }
 
-const styles = StyleSheet.create({
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   list: { paddingHorizontal: 14, paddingVertical: 4 },
   row: { minHeight: 62, flexDirection: 'row', alignItems: 'center', gap: 12 },
   divider: { borderBottomWidth: 1, borderBottomColor: colors.border },
-  icon: { width: 40, height: 40, borderRadius: 14, backgroundColor: '#F0EAFF', alignItems: 'center', justifyContent: 'center' },
+  icon: { width: 40, height: 40, borderRadius: 14, backgroundColor: colors.cardSoft, alignItems: 'center', justifyContent: 'center' },
   label: { flex: 1, color: colors.text, fontSize: 14, fontWeight: '800' },
   pressed: { opacity: 0.72 },
 });
+

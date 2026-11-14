@@ -2,11 +2,12 @@ import React, { ReactNode } from 'react';
 import { ActivityIndicator, Image, Pressable, ScrollView, StyleProp, StyleSheet, Text, TextInput, TextInputProps, TextStyle, View, ViewStyle } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { colors, radius, spacing } from '../theme';
+import { ThemeColors, useThemedStyles, radius, spacing } from '../theme';
 
 const AI_ORB = require('../../assets/aetherion-ai-orb.png');
 
 export function AppPage({ children, scroll = true, contentStyle }: { children: ReactNode; scroll?: boolean; contentStyle?: StyleProp<ViewStyle> }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const content = scroll ? (
     <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled" contentContainerStyle={[styles.pageContent, styles.mobileContent, contentStyle]}>
       {children}
@@ -16,24 +17,29 @@ export function AppPage({ children, scroll = true, contentStyle }: { children: R
 }
 
 export function Eyebrow({ children }: { children: ReactNode }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <Text style={styles.eyebrow}>{children}</Text>;
 }
 
 export function Title({ children, size = 28 }: { children: ReactNode; size?: number }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <Text style={[styles.title, { fontSize: size }]}>{children}</Text>;
 }
 
 export function Body({ children, style }: { children: ReactNode; style?: StyleProp<TextStyle> }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <Text style={[styles.body, style]}>{children}</Text>;
 }
 
 export function Panel({ children, style }: { children: ReactNode; style?: StyleProp<ViewStyle> }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <View style={[styles.panel, style]}>{children}</View>;
 }
 
 export function ActionButton({ title, onPress, disabled, loading, secondary }: {
   title: string; onPress: () => void; disabled?: boolean; loading?: boolean; secondary?: boolean;
 }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return (
     <Pressable accessibilityRole="button" onPress={onPress} disabled={disabled || loading}
       style={({ pressed }) => [styles.action, secondary && styles.actionSecondary, (disabled || loading) && styles.actionDisabled, pressed && !disabled && styles.actionPressed]}>
@@ -43,20 +49,23 @@ export function ActionButton({ title, onPress, disabled, loading, secondary }: {
 }
 
 export function Field({ label, ...props }: TextInputProps & { label: string }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return (
     <View style={styles.fieldWrap}>
       <Text style={styles.fieldLabel}>{label}</Text>
-      <TextInput {...props} placeholderTextColor={colors.faint} selectionColor={colors.cyan} style={[styles.field, props.style]} />
+      <TextInput accessibilityLabel={label} {...props} placeholderTextColor={colors.faint} selectionColor={colors.cyan} style={[styles.field, props.style]} />
     </View>
   );
 }
 
 export function StatusPill({ label, tone = 'neutral' }: { label: string; tone?: 'good' | 'warn' | 'bad' | 'neutral' }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const tint = tone === 'good' ? colors.green : tone === 'warn' ? colors.amber : tone === 'bad' ? colors.red : colors.muted;
   return <View style={[styles.pill, { borderColor: `${tint}44`, backgroundColor: `${tint}12` }]}><View style={[styles.dot, { backgroundColor: tint }]} /><Text style={[styles.pillText, { color: tint }]}>{label}</Text></View>;
 }
 
 export function AppHeader({ title, onBack, trailing, backLabel = 'Back' }: { title: string; onBack?: () => void; trailing?: ReactNode; backLabel?: string }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return (
     <View style={styles.header}>
       {onBack
@@ -71,6 +80,7 @@ export function AppHeader({ title, onBack, trailing, backLabel = 'Back' }: { tit
 type NavKey = 'portal' | 'health' | 'monitor' | 'ai' | 'more';
 
 export function BottomNav({ active, onSelect, labels }: { active: string; onSelect: (id: string) => void; labels: Record<string, string> }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const insets = useSafeAreaInsets();
   const items: Array<{ id: NavKey; icon: keyof typeof Ionicons.glyphMap }> = [
     { id: 'portal', icon: 'home' },
@@ -94,6 +104,7 @@ export function BottomNav({ active, onSelect, labels }: { active: string; onSele
 }
 
 function NavItem({ id, icon, active, label, onPress }: { id: NavKey; icon: keyof typeof Ionicons.glyphMap; active: boolean; label: string; onPress: () => void }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return (
     <Pressable key={id} onPress={onPress} accessibilityRole="tab" accessibilityState={{ selected: active }} style={styles.navItem}>
       <Ionicons name={icon} size={20} color={active ? colors.cyan : colors.muted} />
@@ -102,7 +113,7 @@ function NavItem({ id, icon, active, label, onPress }: { id: NavKey; icon: keyof
   );
 }
 
-const styles = StyleSheet.create({
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   root: { flex: 1, backgroundColor: 'transparent' },
   safe: { flex: 1 },
   pageContent: { flexGrow: 1, paddingHorizontal: 18, paddingTop: 8, paddingBottom: 110, gap: 14 },
@@ -112,14 +123,14 @@ const styles = StyleSheet.create({
   body: { color: colors.muted, fontSize: 14, lineHeight: 21 },
   panel: { backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border, borderRadius: radius.panel, padding: spacing.md, shadowColor: '#392073', shadowOpacity: 0.05, shadowRadius: 12, shadowOffset: { width: 0, height: 7 }, elevation: 2 },
   action: { minHeight: 50, borderRadius: radius.control, backgroundColor: colors.cyan, paddingHorizontal: 18, alignItems: 'center', justifyContent: 'center' },
-  actionSecondary: { backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: colors.border },
+  actionSecondary: { backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border },
   actionDisabled: { opacity: 0.56 },
   actionPressed: { transform: [{ scale: 0.985 }], opacity: 0.86 },
   actionText: { color: '#FFFFFF', fontWeight: '800', fontSize: 15 },
   actionTextSecondary: { color: colors.text },
   fieldWrap: { gap: 7 },
   fieldLabel: { color: colors.muted, fontSize: 12, fontWeight: '700', letterSpacing: 0.2 },
-  field: { minHeight: 50, borderRadius: radius.control, borderWidth: 1, borderColor: colors.border, backgroundColor: '#FFFFFF', paddingHorizontal: 14, color: colors.text, fontSize: 15 },
+  field: { minHeight: 50, borderRadius: radius.control, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, paddingHorizontal: 14, color: colors.text, fontSize: 15 },
   pill: { alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 7, borderWidth: 1, borderRadius: radius.pill, paddingHorizontal: 11, paddingVertical: 7 },
   dot: { width: 6, height: 6, borderRadius: 3 },
   pillText: { fontSize: 11, fontWeight: '800' },
@@ -127,12 +138,13 @@ const styles = StyleSheet.create({
   brandMark: { width: 38, height: 38 },
   headerSpacer: { width: 38 },
   headerTitle: { flex: 1, color: colors.text, fontSize: 16, fontWeight: '800' },
-  back: { width: 38, height: 38, borderRadius: 14, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: colors.border },
+  back: { width: 38, height: 38, borderRadius: 14, backgroundColor: colors.card, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: colors.border },
   navSafe: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: 12, paddingTop: 10, alignItems: 'center', backgroundColor: 'transparent' },
-  nav: { width: '100%', maxWidth: 470, height: 70, borderRadius: 26, borderWidth: 1, borderColor: colors.border, backgroundColor: 'rgba(255,255,255,0.97)', paddingHorizontal: 4, flexDirection: 'row', alignItems: 'center', shadowColor: '#311C6F', shadowOpacity: 0.12, shadowRadius: 18, shadowOffset: { width: 0, height: 6 }, elevation: 9 },
+  nav: { width: '100%', maxWidth: 470, height: 70, borderRadius: 26, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, paddingHorizontal: 4, flexDirection: 'row', alignItems: 'center', shadowColor: '#311C6F', shadowOpacity: 0.12, shadowRadius: 18, shadowOffset: { width: 0, height: 6 }, elevation: 9 },
   navItem: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 3, minHeight: 54 },
   navLabel: { color: colors.muted, fontSize: 9, fontWeight: '700' },
   navSelected: { color: colors.cyan },
-  aiNavButton: { width: 60, height: 60, borderRadius: 30, alignItems: 'center', justifyContent: 'center', marginTop: -23, backgroundColor: '#FFFFFF', borderWidth: 5, borderColor: '#E9E1FF', shadowColor: '#5528E9', shadowOpacity: 0.35, shadowRadius: 15, shadowOffset: { width: 0, height: 5 }, elevation: 10 },
+  aiNavButton: { width: 60, height: 60, borderRadius: 30, alignItems: 'center', justifyContent: 'center', marginTop: -23, backgroundColor: colors.card, borderWidth: 5, borderColor: '#E9E1FF', shadowColor: '#5528E9', shadowOpacity: 0.35, shadowRadius: 15, shadowOffset: { width: 0, height: 5 }, elevation: 10 },
   aiNavOrb: { width: 51, height: 51 },
 });
+

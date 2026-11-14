@@ -1,173 +1,36 @@
-import React, { useMemo, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View, Pressable } from 'react-native';
+import React, { useState } from 'react';
+import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { AppHeader, AppPage, Body, Panel, StatusPill } from '../components/ui';
 import { loadNasaMa7Demo, NasaMeasure } from '../api/demo';
 import { Locale } from '../types';
 import { MessageKey, t } from '../i18n';
-import { colors } from '../theme';
-
-const UNAVAILABLE_LABELS: Record<string, MessageKey> = {
-  ecg_waveform: 'demoUnavailableEcg',
-  spo2: 'demoUnavailableSpo2',
-  sleep: 'demoUnavailableSleep',
-  mood: 'demoUnavailableMood',
-  serum_glucose: 'demoUnavailableGlucose',
-  radiation_person_dose: 'demoUnavailableRadiation',
-  continuous_ecg: 'demoUnavailableContinuousEcg',
-  longitudinal_sensor_stream: 'demoUnavailableLongitudinal',
-};
-
-const QUALIFIER_LABELS: Record<string, MessageKey> = {
-  reported: 'demoQualifierReported',
-  phase_mean: 'demoQualifierPhaseMean',
-  instrument_category_I_caveated: 'demoQualifierInstrumentCaveated',
-  source_tabulated: 'demoQualifierSourceTabulated',
-  reported_combined: 'demoQualifierReportedCombined',
-  reported_range: 'demoQualifierReportedRange',
-};
-
+import { copy } from '../uiCopy';
+import { ThemeColors, useThemedStyles } from '../theme';
+const tabs = ['phases', 'clinical', 'blood', 'pressure'] as const;
+const qualifiers: Record<string, MessageKey> = { reported: 'demoQualifierReported', phase_mean: 'demoQualifierPhaseMean', instrument_category_I_caveated: 'demoQualifierInstrumentCaveated', source_tabulated: 'demoQualifierSourceTabulated', reported_combined: 'demoQualifierReportedCombined', reported_range: 'demoQualifierReportedRange' };
 export function HackathonDemoDataScreen({ locale, onBack }: { locale: Locale; onBack: () => void }) {
+  const { colors, styles } = useThemedStyles(buildStyles);
+  const [groupIndex, setGroupIndex] = useState(0), [recordIndex, setRecordIndex] = useState(0), [details, setDetails] = useState(false);
   let loaded: ReturnType<typeof loadNasaMa7Demo> | null = null;
-  try { loaded = loadNasaMa7Demo(); } catch { /* Source validation fails closed below. */ }
-  const [selectedGroupId, setSelectedGroupId] = useState('flight');
-  const selectedGroup = useMemo(
-    () => loaded?.data.groups.find((group) => group.id === selectedGroupId) || loaded?.data.groups[0] || null,
-    [loaded, selectedGroupId],
-  );
-
-  return (
-    <AppPage>
-      <AppHeader title={t(locale, 'demoTitle')} onBack={onBack} backLabel={t(locale, 'back')} />
-      {loaded && selectedGroup ? (
-        <>
-          <View style={styles.statusRow}>
-            <StatusPill label={t(locale, 'demoHistorical')} tone="neutral" />
-            <Text style={styles.count}>{loaded.summary.timepoint_count} · {t(locale, 'demoTimepoints')}</Text>
-          </View>
-
-          <Panel style={styles.sourcePanel}>
-            <Text style={styles.sourceTitle}>{loaded.data.source_title}</Text>
-            <Text style={styles.sourceMeta}>{loaded.data.source_publisher} · {loaded.data.source_publication}</Text>
-            <Text style={styles.sourceMeta}>{t(locale, 'demoReportedValues')}: {loaded.summary.reported_value_count}</Text>
-          </Panel>
-
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.tabs}>
-            {loaded.data.groups.map((group) => {
-              const active = group.id === selectedGroup.id;
-              return (
-                <Pressable
-                  accessibilityRole="tab"
-                  accessibilityState={{ selected: active }}
-                  key={group.id}
-                  onPress={() => setSelectedGroupId(group.id)}
-                  style={[styles.tab, active && styles.tabActive]}
-                >
-                  <Text style={[styles.tabText, active && styles.tabTextActive]}>{group.title[locale]}</Text>
-                </Pressable>
-              );
-            })}
-          </ScrollView>
-
-          <Panel style={styles.groupPanel}>
-            <View style={styles.groupHeading}>
-              <Ionicons name="document-text-outline" size={18} color={colors.cyan} />
-              <Text style={styles.groupTitle}>{selectedGroup.title[locale]}</Text>
-            </View>
-            <Text style={styles.sourceRef}>{t(locale, 'demoSourceTable')}: {selectedGroup.table}</Text>
-            <Body style={styles.groupNote}>{selectedGroup.note[locale]}</Body>
-          </Panel>
-
-          {selectedGroup.records.map((record) => (
-            <Panel key={record.id} style={styles.recordPanel}>
-              <View style={styles.recordHeading}>
-                <View style={styles.recordIcon}><Ionicons name="time-outline" size={17} color={colors.cyan} /></View>
-                <Text style={styles.recordTitle}>{record.title[locale]}</Text>
-              </View>
-              {Object.entries(record.measures).map(([metricKey, measure]) => (
-                <MeasureRow key={metricKey} locale={locale} label={loaded!.data.metric_names[metricKey]?.[locale] || metricKey} measure={measure} />
-              ))}
-            </Panel>
-          ))}
-
-          <Panel style={styles.unavailablePanel}>
-            <Text style={styles.unavailableHeading}>{t(locale, 'demoUnavailableTitle')}</Text>
-            <View style={styles.unavailableList}>
-              {loaded.data.unavailable_metrics.map((metric) => (
-                <View key={metric} style={styles.unavailableItem}>
-                  <Ionicons name="remove-circle-outline" size={15} color={colors.muted} />
-                  <Text style={styles.unavailableText}>{t(locale, UNAVAILABLE_LABELS[metric] || 'demoUnavailableOther')}</Text>
-                </View>
-              ))}
-            </View>
-          </Panel>
-        </>
-      ) : (
-        <Panel style={styles.errorPanel}>
-          <StatusPill label={t(locale, 'demoSourceError')} tone="bad" />
-        </Panel>
-      )}
-    </AppPage>
-  );
+  try { loaded = loadNasaMa7Demo(); } catch { /* Invalid source remains unavailable. */ }
+  const group = loaded?.data.groups[groupIndex], record = group?.records[recordIndex];
+  return <AppPage><AppHeader title={copy(locale, 'archive')} onBack={onBack} backLabel={t(locale, 'back')} />
+    {loaded && group && record ? <>
+      <View style={styles.summary}><View><Text style={styles.heading}>{copy(locale, 'demoCaption')}</Text><Text style={styles.meta}>{copy(locale, 'demoSummary')}</Text></View><StatusPill label={copy(locale, 'noLive')} tone="neutral" /></View>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.tabs}>{loaded.data.groups.map((entry, index) => <Pressable key={entry.id} accessibilityRole="tab" accessibilityLabel={copy(locale, tabs[index])} accessibilityState={{ selected: index === groupIndex }} onPress={() => { setGroupIndex(index); setRecordIndex(0); }} style={[styles.tab, index === groupIndex && styles.active]}><Text style={[styles.tabText, index === groupIndex && styles.activeText]}>{copy(locale, tabs[index])}</Text></Pressable>)}</ScrollView>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.records}>{group.records.map((entry, index) => <Pressable key={entry.id} accessibilityRole="button" accessibilityState={{ selected: index === recordIndex }} onPress={() => setRecordIndex(index)} style={[styles.recordChip, index === recordIndex && styles.active]}><Text style={[styles.chipText, index === recordIndex && styles.activeText]}>{entry.title[locale]}</Text></Pressable>)}</ScrollView>
+      <View style={styles.recordHeader}><View style={{ flex: 1 }}><Text style={styles.heading}>{record.title[locale]}</Text><Text style={styles.meta}>{recordIndex + 1} / {group.records.length}</Text></View><Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'previous')} disabled={recordIndex === 0} style={[styles.step, recordIndex === 0 && styles.disabled]} onPress={() => setRecordIndex(value => value - 1)}><Ionicons name="chevron-back" color={colors.cyan} size={22} /></Pressable><Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'next')} disabled={recordIndex >= group.records.length - 1} style={[styles.step, recordIndex >= group.records.length - 1 && styles.disabled]} onPress={() => setRecordIndex(value => value + 1)}><Ionicons name="chevron-forward" color={colors.cyan} size={22} /></Pressable></View>
+      <View style={styles.grid}>{Object.entries(record.measures).map(([metric, measure]) => <Measure key={`${record.id}:${metric}`} label={loaded!.data.metric_names[metric]?.[locale] || metric} measure={measure} locale={locale} />)}</View>
+      <Panel style={styles.note}><Text style={styles.sourceLabel}>{t(locale, 'demoSourceTable')}</Text><Text selectable style={styles.sourceText}>{group.table}</Text><Body style={styles.sourceText}>{group.note[locale]}</Body></Panel>
+      <Pressable accessibilityRole="button" onPress={() => setDetails(value => !value)} style={styles.disclosure}><Text style={styles.activeText}>{copy(locale, 'sourceDetails')}</Text><Ionicons name={details ? 'chevron-up' : 'chevron-down'} color={colors.cyan} size={18} /></Pressable>
+      {details ? <Panel style={styles.note}><Text style={styles.sourceText}>{loaded.data.source_title}</Text><Text style={styles.meta}>{loaded.data.source_publisher} · {loaded.data.source_publication}</Text><Body>{t(locale, 'demoHistoricalLimit')}</Body><Text style={styles.sourceLabel}>{t(locale, 'demoUnavailableTitle')}</Text><Body>{loaded.data.unavailable_metrics.join(' · ')}</Body><Pressable accessibilityRole="link" onPress={() => { void Linking.openURL(loaded!.data.source_url); }}><Text style={styles.activeText}>{t(locale, 'demoOpenNasaSource')}</Text></Pressable></Panel> : null}
+    </> : <Panel><StatusPill label={t(locale, 'demoSourceError')} tone="bad" /></Panel>}
+  </AppPage>;
 }
-
-function MeasureRow({ locale, label, measure }: { locale: Locale; label: string; measure: NasaMeasure }) {
-  const missingKey: MessageKey = measure.missing === 'not_reported'
-    ? 'demoMissingNotReported'
-    : measure.missing === 'not_obtained'
-      ? 'demoMissingNotObtained'
-      : 'demoValueUnavailable';
-  const qualifierKey = QUALIFIER_LABELS[measure.qualifier] || 'demoQualifierOther';
-  const value = measure.value === null ? t(locale, missingKey) : String(measure.value);
-  const qualifier = t(locale, qualifierKey);
-
-  return (
-    <View style={styles.measureRow}>
-      <View style={styles.measureTop}>
-        <Text style={styles.metricName}>{label}</Text>
-        <Text style={[styles.value, measure.value === null && styles.missingValue]}>{value}{measure.unit ? ` ${measure.unit}` : ''}</Text>
-      </View>
-      <View style={styles.measureMeta}>
-        <Text style={styles.qualifier}>{qualifier}</Text>
-        {measure.range !== null && <Text style={styles.metaText}>{t(locale, 'demoRange')}: {measure.range}</Text>}
-        {measure.sample_count !== null && <Text style={styles.metaText}>{t(locale, 'demoSamples')}: {measure.sample_count}</Text>}
-      </View>
-    </View>
-  );
+function Measure({ label, measure, locale }: { label: string; measure: NasaMeasure; locale: Locale }) {
+  const { colors, styles } = useThemedStyles(buildStyles);
+  const missing = measure.missing === 'not_reported' ? 'demoMissingNotReported' : measure.missing === 'not_obtained' ? 'demoMissingNotObtained' : 'demoValueUnavailable';
+  return <Panel style={styles.measure}><Text style={styles.metric}>{label}</Text><Text selectable style={[styles.value, measure.value === null && styles.missing]}>{measure.value === null ? t(locale, missing) : String(measure.value)}</Text>{measure.value !== null && measure.unit ? <Text style={styles.unit}>{measure.unit}</Text> : null}<Text style={styles.qualifier}>{t(locale, qualifiers[measure.qualifier] || 'demoQualifierOther')}</Text>{measure.range !== null ? <Text style={styles.meta}>{t(locale, 'demoRange')}: {measure.range}</Text> : null}{measure.sample_count !== null ? <Text style={styles.meta}>{t(locale, 'demoSamples')}: {measure.sample_count}</Text> : null}</Panel>;
 }
-
-const styles = StyleSheet.create({
-  statusRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
-  count: { color: colors.muted, fontSize: 11, fontWeight: '700' },
-  sourcePanel: { gap: 6, paddingVertical: 13 },
-  sourceTitle: { color: colors.text, fontSize: 13, fontWeight: '900', lineHeight: 18 },
-  sourceMeta: { color: colors.muted, fontSize: 11, lineHeight: 15 },
-  tabs: { gap: 8, paddingVertical: 1 },
-  tab: { maxWidth: 210, minHeight: 38, paddingHorizontal: 12, paddingVertical: 8, justifyContent: 'center', borderRadius: 13, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: colors.border },
-  tabActive: { backgroundColor: '#EDE7FF', borderColor: '#CFC2FF' },
-  tabText: { color: colors.muted, fontSize: 10, fontWeight: '800' },
-  tabTextActive: { color: colors.cyan },
-  groupPanel: { gap: 6, paddingVertical: 13 },
-  groupHeading: { flexDirection: 'row', alignItems: 'center', gap: 7 },
-  groupTitle: { flex: 1, color: colors.text, fontSize: 13, fontWeight: '900' },
-  sourceRef: { color: colors.cyan, fontSize: 11, fontWeight: '800', lineHeight: 15 },
-  groupNote: { fontSize: 12, lineHeight: 17 },
-  recordPanel: { gap: 0, paddingVertical: 13 },
-  recordHeading: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4, paddingBottom: 8, borderBottomWidth: 1, borderBottomColor: colors.border },
-  recordIcon: { width: 28, height: 28, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F1EDFF' },
-  recordTitle: { flex: 1, color: colors.text, fontSize: 13, fontWeight: '900' },
-  measureRow: { paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#F0EDF6', gap: 4 },
-  measureTop: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10 },
-  metricName: { flex: 1, color: colors.text, fontSize: 12, fontWeight: '700', lineHeight: 16 },
-  value: { flex: 1, color: colors.text, fontSize: 12, fontWeight: '900', textAlign: 'right', lineHeight: 16 },
-  missingValue: { color: colors.muted, fontStyle: 'italic', fontWeight: '700' },
-  measureMeta: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 10, rowGap: 3 },
-  qualifier: { color: colors.cyan, fontSize: 10, fontWeight: '800' },
-  metaText: { color: colors.muted, fontSize: 10 },
-  unavailablePanel: { gap: 9 },
-  unavailableHeading: { color: colors.text, fontSize: 13, fontWeight: '900' },
-  unavailableList: { gap: 7 },
-  unavailableItem: { flexDirection: 'row', alignItems: 'center', gap: 7 },
-  unavailableText: { flex: 1, color: colors.muted, fontSize: 11, fontWeight: '700' },
-  errorPanel: { alignItems: 'flex-start' },
-});
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({ summary: { gap: 10 }, heading: { color: colors.text, fontSize: 20, lineHeight: 27, fontWeight: '800', letterSpacing: -0.4 }, meta: { color: colors.muted, fontSize: 11, lineHeight: 17 }, tabs: { gap: 7, paddingVertical: 2 }, tab: { minHeight: 42, borderRadius: 14, paddingHorizontal: 14, justifyContent: 'center', backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border }, active: { backgroundColor: colors.cardSoft, borderColor: colors.cyan }, tabText: { color: colors.muted, fontSize: 12, fontWeight: '700' }, activeText: { color: colors.cyan, fontSize: 12, fontWeight: '800' }, records: { gap: 7, paddingVertical: 2 }, recordChip: { minHeight: 38, justifyContent: 'center', borderRadius: 11, paddingHorizontal: 12, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card }, chipText: { color: colors.muted, fontSize: 11, fontWeight: '700' }, recordHeader: { flexDirection: 'row', alignItems: 'center', gap: 7 }, step: { width: 38, height: 38, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border }, disabled: { opacity: 0.3 }, grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 }, measure: { width: '48%', gap: 5, minHeight: 170, padding: 14, borderRadius: 22 }, metric: { color: colors.muted, fontSize: 12, fontWeight: '700', minHeight: 30 }, value: { color: colors.text, fontSize: 30, lineHeight: 37, fontWeight: '800', letterSpacing: -0.7 }, missing: { fontSize: 17, lineHeight: 24, color: colors.faint }, unit: { color: colors.cyan, fontSize: 12, fontWeight: '700' }, qualifier: { color: colors.faint, fontSize: 10, lineHeight: 15, marginTop: 3 }, note: { gap: 8 }, sourceLabel: { color: colors.text, fontSize: 12, fontWeight: '800' }, sourceText: { color: colors.muted, fontSize: 12, lineHeight: 18 }, disclosure: { minHeight: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 3 } });

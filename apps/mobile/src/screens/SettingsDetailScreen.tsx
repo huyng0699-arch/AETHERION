@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Locale } from '../types';
 import { t } from '../i18n';
-import { colors } from '../theme';
+import { ThemeColors, useThemedStyles } from '../theme';
 import { ActionButton, AppHeader, AppPage, Field, Panel, StatusPill } from '../components/ui';
 import type { SettingsSection } from './SettingsScreen';
 type SettingsDetailSection = Extract<SettingsSection, 'account' | 'connection' | 'language'>;
@@ -23,6 +23,7 @@ export function SettingsDetailScreen({
   username?: string;
   role?: string;
 }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const [saved, setSaved] = useState(false);
   useEffect(() => { setSaved(false); }, [serverUrl]);
   const title = section === 'account' ? t(locale, 'accountTitle') : section === 'connection' ? t(locale, 'connectionTitle') : t(locale, 'language');
@@ -58,10 +59,12 @@ export function SettingsDetailScreen({
 }
 
 function InfoRow({ label, value }: { label: string; value: string }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <View style={styles.infoRow}><Text style={styles.meta}>{label}</Text><Text numberOfLines={1} style={styles.value}>{value}</Text></View>;
 }
 
 function LocaleRow({ label, selected, onPress, last }: { label: string; selected: boolean; onPress: () => void; last?: boolean }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return (
     <Pressable accessibilityRole="radio" accessibilityState={{ selected }} onPress={onPress} style={[styles.localeRow, !last && styles.rowBorder]}>
       <View style={[styles.radio, selected && styles.radioSelected]}>{selected ? <View style={styles.radioDot} /> : null}</View>
@@ -71,7 +74,7 @@ function LocaleRow({ label, selected, onPress, last }: { label: string; selected
   );
 }
 
-const styles = StyleSheet.create({
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   panel: { gap: 18 },
   infoRow: { minHeight: 28, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 14 },
   meta: { color: colors.muted, fontSize: 13, fontWeight: '700' },
@@ -84,3 +87,4 @@ const styles = StyleSheet.create({
   radioDot: { width: 11, height: 11, borderRadius: 6, backgroundColor: colors.cyan },
   localeText: { flex: 1, color: colors.text, fontWeight: '800', fontSize: 14 },
 });
+

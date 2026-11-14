@@ -29,3 +29,9 @@ Thumbs.db
 .idea/
 node_modules/
 .gradle/
+
+# Local app accounts, databases and verification output
+.runtime/
+apps/mobile/install-logs/
+apps/mobile/.expo/
+apps/mobile/dist/

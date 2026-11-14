@@ -4,11 +4,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { Locale } from '../types';
 import { MessageKey, t } from '../i18n';
-import { colors } from '../theme';
+import { ThemeColors, useThemedStyles } from '../theme';
 import { AppHeader, AppPage, StatusPill } from '../components/ui';
 import { PortalCard, PortalDestination } from '../components/PortalCard';
 
-export type MobileScreen = 'health' | 'monitor' | 'ai' | 'science' | 'mission' | 'login' | 'settings' | 'demoIntro' | 'demoData' | 'more' | 'connection' | 'settingConnection' | 'settingAccount' | 'settingLanguage' | 'notifications' | 'help' | 'privacy' | 'care';
+export type MobileScreen = 'health' | 'monitor' | 'ai' | 'science' | 'mission' | 'login' | 'settings' | 'demoIntro' | 'demoData' | 'more' | 'connection' | 'settingConnection' | 'settingAccount' | 'settingLanguage' | 'notifications' | 'help' | 'privacy' | 'care' | 'appearance';
 const AI_ROBOT = require('../../assets/aetherion-ai-robot.png');
 
 export function PortalScreen({
@@ -20,6 +20,7 @@ export function PortalScreen({
   serverStatus: 'online' | 'offline' | 'unknown';
   onOpen: (screen: MobileScreen) => void;
 }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const statusLabel = serverStatus === 'online' ? t(locale, 'serverOnline') : serverStatus === 'offline' ? t(locale, 'serverOffline') : t(locale, 'serverUnknown');
   const statusTone = serverStatus === 'online' ? 'good' : serverStatus === 'offline' ? 'warn' : 'neutral';
   const cards: { id: PortalDestination; title: MessageKey; route: MobileScreen }[] = [
@@ -49,7 +50,7 @@ export function PortalScreen({
         </View>
       } />
 
-      <LinearGradient colors={['#5D43E8', '#8975F7', '#B6A9FF']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.hero}>
+      <LinearGradient colors={gradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.hero}>
         <View style={styles.heroCopy}>
           <Text style={styles.heroKicker}>{t(locale, 'demoKicker')}</Text>
           <Text style={styles.heroTitle}>{t(locale, 'demoBannerTitle')}</Text>
@@ -74,18 +75,19 @@ export function PortalScreen({
   );
 }
 
-const styles = StyleSheet.create({
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   headerActions: { flexDirection: 'row', alignItems: 'center', gap: 7 },
-  localeButton: { width: 38, height: 36, borderRadius: 12, borderWidth: 1, borderColor: colors.border, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' },
+  localeButton: { width: 38, height: 36, borderRadius: 12, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, alignItems: 'center', justifyContent: 'center' },
   localeText: { color: colors.cyan, fontSize: 11, fontWeight: '900' },
-  accountButton: { width: 38, height: 36, borderRadius: 12, borderWidth: 1, borderColor: colors.border, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' },
+  accountButton: { width: 38, height: 36, borderRadius: 12, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, alignItems: 'center', justifyContent: 'center' },
   hero: { minHeight: 154, borderRadius: 27, padding: 18, overflow: 'hidden', justifyContent: 'center', shadowColor: '#4D2CCB', shadowOpacity: 0.18, shadowRadius: 14, shadowOffset: { width: 0, height: 8 }, elevation: 5 },
   heroCopy: { width: '65%', gap: 8, zIndex: 1 },
   heroKicker: { color: 'rgba(255,255,255,0.84)', fontWeight: '800', letterSpacing: 1.4, fontSize: 10 },
   heroTitle: { color: '#FFFFFF', fontSize: 24, lineHeight: 29, fontWeight: '900', letterSpacing: -0.5 },
-  heroAction: { alignSelf: 'flex-start', minHeight: 34, paddingHorizontal: 12, borderRadius: 12, backgroundColor: '#FFFFFF', flexDirection: 'row', alignItems: 'center', gap: 5 },
+  heroAction: { alignSelf: 'flex-start', minHeight: 34, paddingHorizontal: 12, borderRadius: 12, backgroundColor: colors.card, flexDirection: 'row', alignItems: 'center', gap: 5 },
   heroActionText: { color: '#4F31D0', fontWeight: '800', fontSize: 12 },
   robot: { position: 'absolute', width: 158, height: 158, right: 2, bottom: -9 },
   statusRow: { flexDirection: 'row', alignItems: 'center', minHeight: 35 },
   grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 10 },
 });
+

@@ -1,52 +1,21 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Locale } from '../types';
 import { t } from '../i18n';
-import { colors } from '../theme';
-import { AppHeader, AppPage, Panel, Title } from '../components/ui';
-
-export function MissionScreen({ locale, role, allowedSubjects, onBack }: {
-  locale: Locale; role: string; allowedSubjects: string[]; onBack: () => void;
-}) {
-  return (
-    <AppPage>
-      <AppHeader title={t(locale, 'missionTitle')} onBack={onBack} backLabel={t(locale, 'back')} />
-      <View style={styles.hero}>
-        <View style={styles.icon}><Ionicons name="people-outline" size={26} color={colors.cyan} /></View>
-        <Title>{t(locale, 'missionTitle')}</Title>
-      </View>
-      <Panel style={styles.details}>
-        <InfoRow label={t(locale, 'role')} value={role || '—'} />
-        <InfoRow label={t(locale, 'allowedSubjects')} value={String(allowedSubjects.length)} />
-      </Panel>
-      {allowedSubjects.length === 0 ? <Panel><Text style={styles.empty}>{t(locale, 'noSubject')}</Text></Panel> : (
-        <View style={styles.list}>
-          {allowedSubjects.map((subject) => <Panel key={subject} style={styles.subject}>
-            <Ionicons name="person-outline" size={18} color={colors.cyan} />
-            <Text style={styles.subjectName}>{subject}</Text>
-            <Text style={styles.access}>{t(locale, 'authorized')}</Text>
-          </Panel>)}
-        </View>
-      )}
-    </AppPage>
-  );
+import { copy } from '../uiCopy';
+import { ThemeColors, useThemedStyles } from '../theme';
+import { AppHeader, AppPage, ActionButton, Body, Field, Panel } from '../components/ui';
+import { createSubject, Subject } from '../api/subjects';
+import { ApiError } from '../api/client';
+export function MissionScreen({ locale, role, subjects, token, onRefresh, onSelect, onBack }: { locale: Locale; role: string; subjects: Subject[]; token: string; onRefresh: () => Promise<void>; onSelect: (id: string) => void; onBack: () => void }) {
+  const { colors, styles } = useThemedStyles(buildStyles);
+  const [form, setForm] = useState(false), [id, setId] = useState(''), [name, setName] = useState(''), [busy, setBusy] = useState(false), [error, setError] = useState('');
+  const submit = async () => { if (busy || !id.trim() || !name.trim()) return; setBusy(true); setError(''); try { await createSubject(token, id.trim(), name.trim()); await onRefresh(); setForm(false); setId(''); setName(''); } catch (cause) { setError(t(locale, cause instanceof ApiError && cause.status === 403 ? 'forbidden' : 'serverError')); } finally { setBusy(false); } };
+  return <AppPage><AppHeader title={t(locale, 'missionTitle')} onBack={onBack} backLabel={t(locale, 'back')} /><Body>{t(locale, 'role')}: {role}</Body>
+    {subjects.length ? subjects.map(subject => <Pressable key={subject.subject_id} accessibilityRole="button" accessibilityLabel={subject.display_name} onPress={() => onSelect(subject.subject_id)}><Panel style={styles.profile}><View style={styles.icon}><Ionicons name="person-outline" color={colors.cyan} size={23} /></View><View style={styles.identity}><Text style={styles.name}>{subject.display_name}</Text><Text style={styles.meta}>{subject.subject_id} · {subject.scope}</Text></View><Ionicons name="chevron-forward" color={colors.muted} size={20} /></Panel></Pressable>) : <Panel><Body>{copy(locale, 'noProfiles')}</Body></Panel>}
+    <ActionButton title={copy(locale, 'registerProfile')} onPress={() => setForm(value => !value)} secondary />
+    {form ? <Panel style={styles.form}><Field label={copy(locale, 'profileId')} value={id} onChangeText={setId} autoCapitalize="none" autoCorrect={false} maxLength={80} /><Field label={copy(locale, 'profileName')} value={name} onChangeText={setName} maxLength={120} />{error ? <Text accessibilityRole="alert" style={styles.error}>{error}</Text> : null}<ActionButton title={copy(locale, 'registerProfile')} onPress={() => void submit()} loading={busy} disabled={!id.trim() || !name.trim()} /></Panel> : null}
+  </AppPage>;
 }
-
-function InfoRow({ label, value }: { label: string; value: string }) {
-  return <View style={styles.infoRow}><Text style={styles.label}>{label}</Text><Text style={styles.value}>{value}</Text></View>;
-}
-
-const styles = StyleSheet.create({
-  hero: { paddingTop: 18, gap: 10 },
-  icon: { width: 54, height: 54, borderRadius: 18, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F0EAFF', marginBottom: 4 },
-  details: { gap: 12 },
-  infoRow: { flexDirection: 'row', justifyContent: 'space-between', gap: 12 },
-  label: { color: colors.muted, fontSize: 12, fontWeight: '700' },
-  value: { color: colors.text, fontSize: 12, fontWeight: '800' },
-  list: { gap: 9 },
-  subject: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 13 },
-  subjectName: { flex: 1, color: colors.text, fontSize: 13, fontWeight: '800' },
-  access: { color: colors.green, fontSize: 10, fontWeight: '800' },
-  empty: { color: colors.muted, fontSize: 13, fontWeight: '700' },
-});
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({ profile: { flexDirection: 'row', alignItems: 'center', gap: 12 }, icon: { width: 46, height: 46, borderRadius: 16, backgroundColor: colors.cardSoft, alignItems: 'center', justifyContent: 'center' }, identity: { flex: 1, gap: 6 }, name: { color: colors.text, fontSize: 15, fontWeight: '800' }, meta: { color: colors.muted, fontSize: 11 }, form: { gap: 14 }, error: { color: colors.red, fontSize: 12, lineHeight: 18 } });

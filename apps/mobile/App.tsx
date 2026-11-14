@@ -1,16 +1,19 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { ActivityIndicator, Animated, BackHandler, ImageBackground, KeyboardAvoidingView, Modal, PanResponder, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
-import { ActivityIndicator, ImageBackground, KeyboardAvoidingView, Platform, StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { BottomNav } from './src/components/ui';
-import { checkServer, readServerUrl, saveServerUrl, ApiError } from './src/api/client';
+import { checkServer, normalizeBaseUrl, readServerUrl, saveServerUrl, ApiError } from './src/api/client';
 import { signIn, signOut, validateSession } from './src/api/auth';
-import { deleteSession, readSession } from './src/storage/session';
+import { listSubjects, Subject } from './src/api/subjects';
+import { deleteSession, readSession, writeSession } from './src/storage/session';
 import { loadLocale, saveLocale, t } from './src/i18n';
-import { colors } from './src/theme';
+import { copy } from './src/uiCopy';
+import { ThemeColors, ThemeProvider, useThemedStyles } from './src/theme';
 import { AuthSession, Locale, SessionIdentity } from './src/types';
+import { initialNavigation, navigate, protectedRoutes, Route } from './src/navigation';
 import { PortalScreen } from './src/screens/PortalScreen';
 import { LoginScreen } from './src/screens/LoginScreen';
 import { PersonalHealthScreen } from './src/screens/PersonalHealthScreen';
@@ -20,6 +23,7 @@ import { ScienceScreen } from './src/screens/ScienceScreen';
 import { MissionScreen } from './src/screens/MissionScreen';
 import { SettingsScreen } from './src/screens/SettingsScreen';
 import { SettingsDetailScreen } from './src/screens/SettingsDetailScreen';
+import { AppearanceSettingsScreen } from './src/screens/AppearanceSettingsScreen';
 import { MoreScreen } from './src/screens/MoreScreen';
 import { ServerConnectionScreen } from './src/screens/ServerConnectionScreen';
 import { NotificationScreen } from './src/screens/NotificationScreen';
@@ -29,201 +33,82 @@ import { CareScreen } from './src/screens/CareScreen';
 import { HackathonDemoIntroScreen } from './src/screens/HackathonDemoIntroScreen';
 import { HackathonDemoDataScreen } from './src/screens/HackathonDemoDataScreen';
 
-type Route = 'portal' | 'login' | 'health' | 'monitor' | 'ai' | 'science' | 'mission' | 'care' | 'settings' | 'more' | 'connection' | 'notifications' | 'help' | 'privacy' | 'demoIntro' | 'demoData' | 'settingAccount' | 'settingConnection' | 'settingLanguage';
+export default function App() { return <ThemeProvider><AppShell /></ThemeProvider>; }
 function messageFor(error: unknown, locale: Locale): string {
-  if (error instanceof ApiError) {
-    if (error.status === 401) return t(locale, 'loginFailed');
-    if (error.status === 403) return t(locale, 'forbidden');
-    if (error.status === 404) return t(locale, 'notFound');
-    if (error.status === 0 || error.status === 408) return t(locale, 'networkError');
-    return t(locale, 'serverError');
-  }
-  return t(locale, 'loginFailed');
+  if (error instanceof ApiError) return t(locale, error.status === 401 ? 'loginFailed' : error.status === 403 ? 'forbidden' : error.status === 404 ? 'notFound' : error.status === 0 || error.status === 408 ? 'networkError' : 'serverError');
+  return t(locale, error instanceof Error && ['INVALID_SERVER_URL', 'HTTPS_REQUIRED'].includes(error.message) ? 'urlInvalid' : 'loginFailed');
 }
-
-export default function App() {
-  const [iconFontLoaded] = useFonts(Ionicons.font);
-  const [route, setRoute] = useState<Route>('login');
-  const [history, setHistory] = useState<Route[]>([]);
-  const [pendingRoute, setPendingRoute] = useState<Route>('portal');
+function AppShell() {
+  const { styles, colors, isDark, appearance } = useThemedStyles(buildStyles);
+  const [fontLoaded, fontError] = useFonts(Ionicons.font);
+  const [navigation, dispatch] = useReducer(navigate, initialNavigation);
+  const { route, history } = navigation;
   const [locale, setLocale] = useState<Locale>('en');
   const [session, setSession] = useState<AuthSession | null>(null);
   const [identity, setIdentity] = useState<SessionIdentity | null>(null);
+  const [unlocked, setUnlocked] = useState(false);
   const [serverUrl, setServerUrl] = useState('');
   const [serverStatus, setServerStatus] = useState<'online' | 'offline' | 'unknown'>('unknown');
-  const [busy, setBusy] = useState(false);
-  const [loginError, setLoginError] = useState('');
-  const [ready, setReady] = useState(false);
-
+  const [busy, setBusy] = useState(false), [error, setError] = useState(''), [ready, setReady] = useState(false);
+  const [subjects, setSubjects] = useState<Subject[]>([]), [subjectId, setSubjectId] = useState<string>(), [chooseSubject, setChooseSubject] = useState(false);
+  const operation = useRef(0), mounted = useRef(true), localeWrites = useRef(Promise.resolve());
+  const fade = useRef(new Animated.Value(1)).current;
+  const clearIdentity = useCallback(() => { setSession(null); setIdentity(null); setUnlocked(false); setSubjects([]); setSubjectId(undefined); }, []);
+  useEffect(() => { mounted.current = true; let active = true; void (async () => {
+    const [saved, language, url] = await Promise.all([readSession(), loadLocale().catch(() => 'en' as Locale), readServerUrl().catch(() => '')]);
+    if (!active) return;
+    setLocale(language); setServerUrl(url); setReady(true);
+    if (saved && saved.server_url === url && Date.parse(saved.expires_at) > Date.now()) {
+      try { const me = await validateSession(saved.access_token); if (active) { setSession(saved); setIdentity(me); } }
+      catch (cause) { if (cause instanceof ApiError && cause.status === 401) await deleteSession(); }
+    } else if (saved) await deleteSession();
+  })().catch(() => { if (active) setReady(true); }); return () => { active = false; mounted.current = false; operation.current += 1; }; }, []);
   useEffect(() => {
-    if (Platform.OS === 'web' && typeof window !== 'undefined') window.scrollTo(0, 0);
-  }, [route]);
-
-  useEffect(() => {
-    let active = true;
-    void (async () => {
-      const [savedSession, savedLocale, savedUrl] = await Promise.all([
-        readSession(),
-        loadLocale(),
-        readServerUrl().catch(() => ''),
-      ]);
-      if (!active) return;
-      setLocale(savedLocale);
-      setServerUrl(savedUrl);
-      let hasRestoredSession = false;
-      if (savedSession) {
-        const expires = Date.parse(savedSession.expires_at);
-        if (Number.isFinite(expires) && expires <= Date.now()) {
-          void deleteSession();
-        } else {
-          hasRestoredSession = true;
-          setSession(savedSession);
-          setIdentity({ ...savedSession.user, expires_at: savedSession.expires_at });
-          void validateSession(savedSession.access_token).then((current) => {
-            if (active) setIdentity(current);
-          }).catch((error) => {
-            if (error instanceof ApiError && error.status === 401) {
-              void deleteSession();
-              if (active) { setSession(null); setIdentity(null); }
-            }
-          });
-        }
-      }
-      if (savedUrl) {
-        void checkServer().then(() => { if (active) setServerStatus('online'); })
-          .catch(() => { if (active) setServerStatus('offline'); });
-      }
-      if (active) { setRoute(hasRestoredSession ? 'portal' : 'login'); setReady(true); }
-    })();
-    return () => { active = false; };
-  }, []);
-
-  const changeLocale = async (next: Locale) => {
-    setLocale(next);
-    await saveLocale(next);
-  };
-
-  const openRoute = (next: Route) => {
-    if (next === route) return;
-    if (next === 'login') {
-      setPendingRoute(route);
-      setHistory((stack) => [...stack, route]);
-      setRoute('login');
-      return;
-    }
-    const requiresAuth = next === 'health' || next === 'monitor' || next === 'ai' || next === 'care' || next === 'mission';
-    if (requiresAuth && !session?.access_token) {
-      setPendingRoute(next);
-      setLoginError(t(locale, 'loginRequired'));
-      setHistory((stack) => [...stack, route]);
-      setRoute('login');
-      return;
-    }
-    setHistory((stack) => [...stack, route]);
-    setRoute(next);
-  };
-
-  const goBack = () => {
-    const previous = history[history.length - 1] || 'portal';
-    setHistory((stack) => stack.slice(0, -1));
-    setRoute(previous);
-  };
-
-  const saveUrl = async (value: string) => {
-    const normalized = await saveServerUrl(value);
-    setServerUrl(normalized);
-  };
-
-  const connect = async (value: string) => {
-    setBusy(true); setLoginError('');
-    try {
-      await saveUrl(value);
-      await checkServer();
-      setServerStatus('online');
-    } catch (error) {
-      setServerStatus('offline');
-      setLoginError(error instanceof Error && error.message === 'INVALID_SERVER_URL' ? t(locale, 'urlInvalid') : t(locale, 'networkError'));
-    } finally { setBusy(false); }
-  };
-
-  const submitLogin = async (value: string, username: string, password: string) => {
-    setBusy(true); setLoginError('');
-    try {
-      await saveUrl(value);
-      const next = await signIn(username, password);
-      setSession(next);
-      setIdentity({ ...next.user, expires_at: next.expires_at });
-      setServerStatus('online');
-      setRoute(pendingRoute);
-    } catch (error) {
-      setLoginError(messageFor(error, locale));
-    } finally { setBusy(false); }
-  };
-
-  const handleSignOut = async () => {
-    await signOut();
-    setSession(null); setIdentity(null); setHistory([]); setPendingRoute('portal'); setRoute('login');
-  };
-
-  const handleUnauthorized = useCallback(async () => {
-    await deleteSession();
-    setSession(null); setIdentity(null); setPendingRoute(route); setRoute('login');
-    setLoginError(t(locale, 'unauthorized'));
-  }, [locale, route]);
-
-  const navSelect = (id: string) => {
-    const next: Route = id === 'portal' ? 'portal' : id === 'health' ? 'health' : id === 'monitor' ? 'monitor' : id === 'more' ? 'more' : 'ai';
-    if ((next === 'health' || next === 'monitor' || next === 'ai') && !session?.access_token) {
-      setPendingRoute(next); setLoginError(t(locale, 'loginRequired')); setHistory((stack) => [...stack, route]); setRoute('login'); return;
-    }
-    setHistory([]); setRoute(next);
-  };
-  const showNav = route !== 'login';
-  const activeTab = route === 'health' ? 'health' : route === 'monitor' ? 'monitor' : route === 'ai' ? 'ai' : route === 'portal' || route === 'login' || route === 'demoIntro' || route === 'demoData' ? 'portal' : 'more';
-
-  if (!ready || !iconFontLoaded) {
-    return <SafeAreaProvider><View style={styles.loading}><ActivityIndicator color={colors.cyan} size="large" /></View></SafeAreaProvider>;
-  }
-
-  return (
-    <SafeAreaProvider>
-      <StatusBar style="dark" />
-      <KeyboardAvoidingView style={styles.fill} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ImageBackground source={require('./assets/aetherion-app-background.png')} resizeMode="cover" style={styles.fill}>
-          <View style={styles.mobileShell}>
-          {route === 'portal' && <PortalScreen locale={locale} setLocale={changeLocale} isAuthenticated={!!session} serverStatus={serverStatus} onOpen={openRoute} />}
-          {route === 'login' && <LoginScreen locale={locale} serverUrl={serverUrl} setServerUrl={setServerUrl} onConnect={connect} onSignIn={submitLogin} onOpenDemo={() => openRoute('demoIntro')} onBack={history.length ? goBack : undefined} busy={busy} error={loginError} />}
-          {route === 'health' && <PersonalHealthScreen locale={locale} token={session?.access_token || ''} subjectId={identity?.allowed_subjects?.[0]} onBack={goBack} onUnauthorized={handleUnauthorized} />}
-          {route === 'monitor' && <MonitorScreen locale={locale} token={session?.access_token || ''} subjectId={identity?.allowed_subjects?.[0]} onBack={goBack} onUnauthorized={handleUnauthorized} />}
-          {route === 'ai' && <AiScreen locale={locale} token={session?.access_token || ''} onBack={goBack} onUnauthorized={handleUnauthorized} />}
-          {route === 'science' && <ScienceScreen locale={locale} onBack={goBack} />}
-          {route === 'mission' && <MissionScreen locale={locale} role={identity?.role || ''} allowedSubjects={identity?.allowed_subjects || []} onBack={goBack} />}
-          {route === 'care' && <CareScreen locale={locale} token={session?.access_token || ''} subjectId={identity?.allowed_subjects?.[0]} onBack={goBack} onUnauthorized={handleUnauthorized} />}
-          {route === 'demoIntro' && <HackathonDemoIntroScreen locale={locale} onBack={goBack} onLoad={() => openRoute('demoData')} />}
-          {route === 'demoData' && <HackathonDemoDataScreen locale={locale} onBack={goBack} />}
-          {route === 'more' && <MoreScreen locale={locale} onBack={goBack} onOpen={openRoute} />}
-          {route === 'connection' && <ServerConnectionScreen locale={locale} serverUrl={serverUrl} setServerUrl={setServerUrl} status={serverStatus} busy={busy} error={loginError} onCheck={() => void connect(serverUrl)} onBack={goBack} />}
-          {route === 'notifications' && <NotificationScreen locale={locale} onBack={goBack} />}
-          {route === 'help' && <HelpScreen locale={locale} onBack={goBack} />}
-          {route === 'privacy' && <PrivacyScreen locale={locale} onBack={goBack} />}
-          {route === 'settings' && <SettingsScreen locale={locale} onBack={goBack} onOpen={(section) => {
-            if (section === 'account') openRoute('settingAccount');
-            else if (section === 'connection') openRoute('settingConnection');
-            else if (section === 'language') openRoute('settingLanguage');
-            else openRoute(section);
-          }} />}
-          {(route === 'settingAccount' || route === 'settingConnection' || route === 'settingLanguage') && <SettingsDetailScreen
-            section={route === 'settingAccount' ? 'account' : route === 'settingConnection' ? 'connection' : 'language'}
-            locale={locale} onChangeLocale={changeLocale} onBack={goBack} serverUrl={serverUrl} onChangeServerUrl={setServerUrl}
-            onSaveServerUrl={async () => { await saveUrl(serverUrl); }} onSignOut={handleSignOut} onSignIn={() => openRoute('login')}
-            username={identity?.username || ''} role={identity?.role || ''}
-          />}
-          {showNav && <BottomNav active={activeTab} onSelect={navSelect} labels={{ portal: t(locale, 'home'), health: t(locale, 'personal'), monitor: t(locale, 'monitor'), ai: 'AI', more: t(locale, 'moreTitle') }} />}
-          </View>
-        </ImageBackground>
-      </KeyboardAvoidingView>
-    </SafeAreaProvider>
-  );
+    if (appearance.reduceMotion) { fade.setValue(1); return; }
+    fade.setValue(0.3); const animation = Animated.timing(fade, { toValue: 1, duration: 160, useNativeDriver: Platform.OS !== 'web' }); animation.start(); return () => animation.stop();
+  }, [route, appearance.reduceMotion, fade]);
+  const handleUnauthorized = useCallback(() => { operation.current += 1; void deleteSession(); clearIdentity(); dispatch({ type: 'signedOut', pending: route }); setError(t(locale, 'unauthorized')); }, [clearIdentity, locale, route]);
+  const refreshSubjects = useCallback(async () => { if (!session?.access_token || !unlocked) return; const rows = await listSubjects(session.access_token); setSubjects(rows); setSubjectId(current => rows.some(row => row.subject_id === current) ? current : rows[0]?.subject_id); }, [session?.access_token, unlocked]);
+  useEffect(() => { let active = true; if (!session?.access_token || !unlocked) return; void listSubjects(session.access_token).then(rows => { if (active) { setSubjects(rows); setSubjectId(current => rows.some(row => row.subject_id === current) ? current : rows[0]?.subject_id); } }).catch(cause => { if (active && cause instanceof ApiError && cause.status === 401) handleUnauthorized(); }); return () => { active = false; }; }, [session?.access_token, unlocked]);
+  const changeLocale = (next: Locale) => { setLocale(next); localeWrites.current = localeWrites.current.catch(() => {}).then(() => saveLocale(next)); };
+  const openRoute = (next: Route, tab = false) => { operation.current += 1; setBusy(false); setError(''); dispatch({ type: 'open', route: next, unlocked, tab }); };
+  const goBack = useCallback(() => { operation.current += 1; setBusy(false); setError(''); dispatch({ type: 'back' }); }, []);
+  useEffect(() => { const event = BackHandler.addEventListener('hardwareBackPress', () => { if (!history.length) return false; goBack(); return true; }); return () => event.remove(); }, [history.length, goBack]);
+  const swipe = useMemo(() => PanResponder.create({ onMoveShouldSetPanResponder: (_, state) => history.length > 0 && state.x0 < 36 && state.dx > 55 && Math.abs(state.dy) < 24, onPanResponderRelease: (_, state) => { if (state.dx > 85) goBack(); } }), [history.length, goBack]);
+  const saveUrl = async (value: string) => { const normalized = normalizeBaseUrl(value); const old = await readServerUrl().catch(() => ''); if (old !== normalized) { await deleteSession(); clearIdentity(); } await saveServerUrl(normalized); setServerUrl(normalized); return normalized; };
+  const connect = async (value: string) => { if (busy) return; const id = ++operation.current; setBusy(true); setError(''); try { await saveUrl(value); await checkServer(); if (mounted.current && operation.current === id) setServerStatus('online'); } catch (cause) { if (mounted.current && operation.current === id) { setServerStatus('offline'); setError(messageFor(cause, locale)); } } finally { if (mounted.current && operation.current === id) setBusy(false); } };
+  const submitLogin = async (value: string, username: string, password: string) => { if (busy) return; const id = ++operation.current; setBusy(true); setError(''); try { await saveUrl(value); const next = await signIn(username, password); if (!mounted.current || operation.current !== id) return; await writeSession(next); if (operation.current !== id) return; setSession(next); setIdentity({ ...next.user, expires_at: next.expires_at }); setUnlocked(true); setServerStatus('online'); dispatch({ type: 'signedIn' }); } catch (cause) { if (mounted.current && operation.current === id) setError(messageFor(cause, locale)); } finally { if (mounted.current && operation.current === id) setBusy(false); } };
+  const continueSession = async () => { if (!session || busy) return; const id = ++operation.current; setBusy(true); try { const me = await validateSession(session.access_token); if (operation.current === id) { setIdentity(me); setUnlocked(true); dispatch({ type: 'signedIn' }); } } catch (cause) { if (operation.current === id) { if (cause instanceof ApiError && cause.status === 401) handleUnauthorized(); else setError(messageFor(cause, locale)); } } finally { if (operation.current === id) setBusy(false); } };
+  const handleSignOut = async () => { operation.current += 1; clearIdentity(); dispatch({ type: 'signedOut' }); await signOut(); };
+  const navSelect = (id: string) => openRoute(id === 'portal' ? 'portal' : id === 'health' ? 'health' : id === 'monitor' ? 'monitor' : id === 'more' ? 'more' : 'ai', true);
+  const showNav = unlocked && !['login', 'demoIntro', 'demoData', 'appearance'].includes(route);
+  const activeTab = ['health', 'monitor', 'ai', 'portal'].includes(route) ? route : 'more';
+  const profileRoute = ['health', 'monitor', 'care'].includes(route);
+  if (!ready || (!fontLoaded && !fontError)) return <SafeAreaProvider><View style={styles.loading}><ActivityIndicator color={colors.cyan} size="large" /></View></SafeAreaProvider>;
+  return <SafeAreaProvider><StatusBar style={isDark ? 'light' : 'dark'} /><KeyboardAvoidingView style={styles.fill} behavior={Platform.OS === 'ios' ? 'padding' : undefined}><ImageBackground source={require('./assets/aetherion-app-background.png')} imageStyle={{ opacity: isDark ? 0.05 : 0.5 }} resizeMode="cover" style={styles.fill}><View style={styles.mobileShell}>
+    {profileRoute && unlocked ? <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'chooseProfile')} onPress={() => setChooseSubject(true)} style={styles.profile}><Ionicons name="person-circle-outline" size={22} color={colors.cyan} /><Text style={styles.profileText}>{subjects.find(row => row.subject_id === subjectId)?.display_name || copy(locale, 'noProfiles')}</Text><Ionicons name="chevron-down" size={17} color={colors.muted} /></Pressable> : null}
+    <Animated.View key={`${route}:${subjectId || ''}`} style={[styles.fill, { backgroundColor: 'transparent', opacity: fade }]} {...swipe.panHandlers}>
+      {route === 'login' && <LoginScreen locale={locale} setLocale={changeLocale} onAppearance={() => openRoute('appearance')} serverUrl={serverUrl} setServerUrl={setServerUrl} onConnect={connect} onSignIn={submitLogin} onOpenDemo={() => openRoute('demoIntro')} onContinue={continueSession} restoredUsername={session?.user.username} busy={busy} error={error} status={serverStatus} />}
+      {route === 'portal' && unlocked && <PortalScreen locale={locale} setLocale={changeLocale} isAuthenticated={true} serverStatus={serverStatus} onOpen={openRoute} />}
+      {route === 'health' && unlocked && <PersonalHealthScreen locale={locale} token={session?.access_token || ''} subjectId={subjectId} onBack={goBack} onUnauthorized={handleUnauthorized} />}
+      {route === 'monitor' && unlocked && <MonitorScreen locale={locale} token={session?.access_token || ''} subjectId={subjectId} onBack={goBack} onUnauthorized={handleUnauthorized} />}
+      {route === 'care' && unlocked && <CareScreen locale={locale} token={session?.access_token || ''} subjectId={subjectId} onBack={goBack} onUnauthorized={handleUnauthorized} />}
+      {route === 'ai' && unlocked && <AiScreen locale={locale} token={session?.access_token || ''} onBack={goBack} onUnauthorized={handleUnauthorized} />}
+      {route === 'science' && <ScienceScreen locale={locale} onBack={goBack} />}
+      {route === 'mission' && unlocked && <MissionScreen locale={locale} role={identity?.role || ''} subjects={subjects} token={session?.access_token || ''} onRefresh={refreshSubjects} onSelect={id => { setSubjectId(id); openRoute('health'); }} onBack={goBack} />}
+      {route === 'demoIntro' && <HackathonDemoIntroScreen locale={locale} onBack={goBack} onLoad={() => openRoute('demoData')} />}
+      {route === 'demoData' && <HackathonDemoDataScreen locale={locale} onBack={goBack} />}
+      {route === 'more' && <MoreScreen locale={locale} onBack={goBack} onOpen={openRoute} />}
+      {route === 'appearance' && <AppearanceSettingsScreen locale={locale} onBack={goBack} />}
+      {route === 'connection' && <ServerConnectionScreen locale={locale} serverUrl={serverUrl} setServerUrl={setServerUrl} status={serverStatus} busy={busy} error={error} onCheck={() => void connect(serverUrl)} onBack={goBack} />}
+      {route === 'notifications' && <NotificationScreen locale={locale} onBack={goBack} />}
+      {route === 'help' && <HelpScreen locale={locale} onBack={goBack} />}
+      {route === 'privacy' && <PrivacyScreen locale={locale} onBack={goBack} />}
+      {route === 'settings' && <SettingsScreen locale={locale} onBack={goBack} onOpen={section => openRoute(section === 'account' ? 'settingAccount' : section === 'connection' ? 'settingConnection' : section === 'language' ? 'settingLanguage' : section)} />}
+      {['settingAccount', 'settingConnection', 'settingLanguage'].includes(route) && <SettingsDetailScreen section={route === 'settingAccount' ? 'account' : route === 'settingConnection' ? 'connection' : 'language'} locale={locale} onChangeLocale={changeLocale} onBack={goBack} serverUrl={serverUrl} onChangeServerUrl={setServerUrl} onSaveServerUrl={async () => { await connect(serverUrl); }} onSignOut={handleSignOut} onSignIn={() => openRoute('login')} username={identity?.username || ''} role={identity?.role || ''} />}
+    </Animated.View>
+    {showNav && <BottomNav active={activeTab} onSelect={navSelect} labels={{ portal: t(locale, 'home'), health: t(locale, 'personal'), monitor: t(locale, 'monitor'), ai: 'AI', more: t(locale, 'moreTitle') }} />}
+    <Modal transparent visible={chooseSubject} onRequestClose={() => setChooseSubject(false)} animationType={appearance.reduceMotion ? 'none' : 'fade'}><View style={styles.modal}><View style={styles.sheet}><View style={styles.sheetHeading}><Text style={styles.profileText}>{copy(locale, 'chooseProfile')}</Text><Pressable accessibilityRole="button" accessibilityLabel={t(locale, 'back')} onPress={() => setChooseSubject(false)}><Ionicons name="close" color={colors.text} size={24} /></Pressable></View><ScrollView>{subjects.map(row => <Pressable accessibilityRole="button" key={row.subject_id} style={styles.profile} onPress={() => { setSubjectId(row.subject_id); setChooseSubject(false); }}><Text style={styles.profileText}>{row.display_name}</Text>{subjectId === row.subject_id && <Ionicons name="checkmark" color={colors.cyan} size={20} />}</Pressable>)}</ScrollView><Pressable accessibilityRole="button" style={styles.profile} onPress={() => { setChooseSubject(false); openRoute('mission'); }}><Text style={styles.profileText}>{copy(locale, 'registerProfile')}</Text><Ionicons name="add" color={colors.cyan} size={22} /></Pressable></View></View></Modal>
+  </View></ImageBackground></KeyboardAvoidingView></SafeAreaProvider>;
 }
-
-const styles = StyleSheet.create({ fill: { flex: 1, backgroundColor: colors.background }, mobileShell: { flex: 1, width: '100%', maxWidth: 470, alignSelf: 'center' }, loading: { flex: 1, backgroundColor: colors.background, alignItems: 'center', justifyContent: 'center' } });
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({ fill: { flex: 1, backgroundColor: colors.background }, mobileShell: { flex: 1, width: '100%', maxWidth: 470, alignSelf: 'center' }, loading: { flex: 1, backgroundColor: colors.background, alignItems: 'center', justifyContent: 'center' }, profile: { minHeight: 48, flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 18, borderBottomWidth: 1, borderBottomColor: colors.border, backgroundColor: colors.card }, profileText: { flex: 1, color: colors.text, fontSize: 13, fontWeight: '700' }, modal: { flex: 1, justifyContent: 'flex-end', alignItems: 'center', backgroundColor: 'rgba(12,8,30,0.45)' }, sheet: { width: '100%', maxWidth: 470, maxHeight: '65%', padding: 18, paddingBottom: 30, borderTopLeftRadius: 28, borderTopRightRadius: 28, backgroundColor: colors.card }, sheetHeading: { flexDirection: 'row', alignItems: 'center', paddingBottom: 14 } });

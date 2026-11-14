@@ -19,15 +19,20 @@ export function normalizeBaseUrl(value: string): string {
     throw new Error('INVALID_SERVER_URL');
   }
   if (url.protocol !== 'https:' && url.protocol !== 'http:') throw new Error('INVALID_SERVER_URL');
-  if (!__DEV__ && url.protocol !== 'https:') throw new Error('HTTPS_REQUIRED');
+  const loopback = ['127.0.0.1', 'localhost', '[::1]'].includes(url.hostname);
+  if (!__DEV__ && url.protocol !== 'https:' && !loopback) throw new Error('HTTPS_REQUIRED');
   if (url.username || url.password || url.search || url.hash) throw new Error('INVALID_SERVER_URL');
   return normalized;
 }
 
 export async function readServerUrl(): Promise<string> {
   const value = await AsyncStorage.getItem(BASE_URL_KEY);
-  if (!value) throw new Error('SERVER_URL_MISSING');
-  return normalizeBaseUrl(value);
+  if (value) return normalizeBaseUrl(value);
+  const configured = process.env.EXPO_PUBLIC_AETHERION_SERVER_URL;
+  if (configured) return normalizeBaseUrl(configured);
+  if (Platform.OS === 'web' && typeof window !== 'undefined' && window.location.port === '8765') return normalizeBaseUrl(window.location.origin);
+  if (__DEV__ || Platform.OS === 'web') return 'http://127.0.0.1:8765';
+  throw new Error('SERVER_URL_MISSING');
 }
 
 export async function saveServerUrl(value: string): Promise<string> {
@@ -84,3 +89,4 @@ export async function checkServer(): Promise<ServerReadiness> {
   if (readiness.status !== 'ready' || readiness.database !== 'ok') throw new ApiError(503, 'SERVER_NOT_READY');
   return readiness;
 }
+

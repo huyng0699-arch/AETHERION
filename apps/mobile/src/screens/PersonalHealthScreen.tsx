@@ -1,9 +1,10 @@
+import { useRequestGate } from '../hooks/useRequestGate';
 import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Locale } from '../types';
 import { Availability } from '../types';
 import { t } from '../i18n';
-import { colors } from '../theme';
+import { ThemeColors, useThemedStyles } from '../theme';
 import { getAvailability } from '../api/health';
 import { ApiError } from '../api/client';
 import { AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../components/ui';
@@ -11,19 +12,23 @@ import { AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../component
 export function PersonalHealthScreen({ locale, token, subjectId, onBack, onUnauthorized }: {
   locale: Locale; token: string; subjectId?: string; onBack: () => void; onUnauthorized: () => void;
 }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const [data, setData] = useState<Availability | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [refresh, setRefresh] = useState(0);
 
+  const beginRequest = useRequestGate();
   const load = useCallback(async () => {
+    const current = beginRequest();
     if (!subjectId) return;
     setBusy(true); setError(null);
-    try { setData(await getAvailability(subjectId, token)); }
+    try { const result = await getAvailability(subjectId, token); if (current()) setData(result); }
     catch (cause) {
+      if (!current()) return;
       if (cause instanceof ApiError && cause.status === 401) onUnauthorized();
       else setError(errorText(locale, cause));
-    } finally { setBusy(false); }
+    } finally { if (current()) setBusy(false); }
   }, [locale, onUnauthorized, subjectId, token, refresh]);
 
   useEffect(() => { void load(); }, [load]);
@@ -71,9 +76,11 @@ export function PersonalHealthScreen({ locale, token, subjectId, onBack, onUnaut
 }
 
 function Metric({ label, value }: { label: string; value: string }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <Panel style={styles.metricCard}><Text style={styles.label}>{label}</Text><Text style={styles.bigValue}>{value}</Text></Panel>;
 }
-function Loading({ label }: { label: string }) { return <View style={styles.loading}><ActivityIndicator color={colors.cyan} /><Text style={styles.loadingText}>{label}</Text></View>; }
+function Loading({ label }: { label: string }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles); return <View style={styles.loading}><ActivityIndicator color={colors.cyan} /><Text style={styles.loadingText}>{label}</Text></View>; }
 function formatDate(value: string, locale: Locale) { const date = new Date(value); return Number.isNaN(date.getTime()) ? value : date.toLocaleString(locale === 'vi' ? 'vi-VN' : 'en-US'); }
 function errorText(locale: Locale, cause: unknown) {
   if (cause instanceof ApiError && cause.status === 403) return t(locale, 'forbidden');
@@ -82,7 +89,7 @@ function errorText(locale: Locale, cause: unknown) {
   return t(locale, 'networkError');
 }
 
-const styles = StyleSheet.create({
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   heading: { gap: 8, paddingTop: 8 },
   refresh: { color: colors.cyan, fontSize: 12, fontWeight: '800', padding: 8 },
   statusPanel: { gap: 12 },
@@ -97,3 +104,4 @@ const styles = StyleSheet.create({
   loadingText: { color: colors.muted },
   error: { color: colors.red, lineHeight: 20 },
 });
+

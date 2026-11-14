@@ -3,13 +3,14 @@ import { StyleSheet, Text } from 'react-native';
 import { Locale } from '../types';
 import { t } from '../i18n';
 import { ActionButton, AppHeader, AppPage, Field, Panel, StatusPill } from '../components/ui';
-import { colors } from '../theme';
+import { ThemeColors, useThemedStyles } from '../theme';
 
 export function ServerConnectionScreen({ locale, serverUrl, setServerUrl, status, busy, error, onCheck, onBack }: {
   locale: Locale; serverUrl: string; setServerUrl: (value: string) => void;
   status: 'online' | 'offline' | 'unknown'; busy: boolean; error?: string;
   onCheck: () => void; onBack: () => void;
 }) {
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const statusText = status === 'online' ? t(locale, 'serverOnline') : status === 'offline' ? t(locale, 'serverOffline') : t(locale, 'serverUnknown');
   return (
     <AppPage>
@@ -25,8 +26,9 @@ export function ServerConnectionScreen({ locale, serverUrl, setServerUrl, status
   );
 }
 
-const styles = StyleSheet.create({
+const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   panel: { gap: 16 },
   hint: { color: colors.muted, fontSize: 12, lineHeight: 18 },
   error: { color: colors.red, fontSize: 13, fontWeight: '700', lineHeight: 19 },
 });
+
