@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-027",
+  "slot": 27,
+  "quest_id": "Q-0327",
+  "checked_at_utc": "2026-11-14T06:06:03.436110+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eye-retinal-injury-cliff-2023.pdf?emrc=7da0f5",
+  "http_status": 200,
+  "pdf_sha256": "347fd4e09976485bf665fcd3f9215baddd58ee5c127e1ce27f2529dc7dd4e015",
+  "pdf_bytes": 326880,
+  "pages_extracted": 13,
+  "sections_count": 13,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-027-IMG-01": "7658457f6bd60987aeb577c9bb491f027bba4b3150ef9b96d0236499d886243c",
+    "CLIFF-027-IMG-02": "48a0a1c921796ef46e57d56d5e3bd4fa837108c12f3d8453a6f5da225ca2e17c",
+    "CLIFF-027-IMG-03": "36a55492fa97d33ddafc517f661e537c626fbfe05ad6d891e559c26753fc0d9a"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
