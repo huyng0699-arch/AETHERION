@@ -11,6 +11,7 @@ import json
 import re
 from pathlib import Path
 
+import shiboken6
 from PySide6.QtCore import QStandardPaths, Qt, QUrl
 from PySide6.QtGui import QDesktopServices
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
@@ -195,6 +196,8 @@ class BodyAtlas3D(QWidget):
         reply.finished.connect(lambda: self._got_catalog(reply, seq))
 
     def _got_catalog(self, reply, seq):
+        if not shiboken6.isValid(reply):
+            return
         code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
         data = bytes(reply.readAll())
         reply.deleteLater()
