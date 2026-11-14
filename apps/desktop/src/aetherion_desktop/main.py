@@ -23,6 +23,7 @@ from .portal import PORTAL_ROUTES, build_portal_page
 from .mission_ops_home import build_mission_ops_home, ROUTE_IDS
 from .features.demo.synthetic_briefing import SimulatedDemoBriefing
 from .features.demo.synthetic_patient_ui import build_synthetic_patient_demo
+from .startup_runtime import StartupRuntime
 from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
 from .visual_theme import THEMES, VisualPreferences, AmbientBackdrop
 from .settings_page import SettingsPage
@@ -152,7 +153,9 @@ class AetherionWindow(QMainWindow):
         self.pages.setObjectName("pageStack")
         self.login_page = LoginPage(self, network=self.network, api_url=self.api_url, locale=self.ui_language)
         self.login_page.authenticated.connect(self._login_complete)
-        self.login_page.demo_requested.connect(self.show_hackathon_demo)
+        # Login Demo is the fictional crew walkthrough; genuine NASA archive
+        # remains a separate, source-labelled route inside the briefing.
+        self.login_page.demo_requested.connect(self.show_simulated_briefing)
         self.pages.addWidget(self.login_page)
         # Q-0485: first native view is mission operations, not the five-card Portal.
         self.operations_home_page = build_mission_ops_home(
@@ -388,6 +391,16 @@ class AetherionWindow(QMainWindow):
         self.heartbeat.setInterval(30000)
         self.heartbeat.timeout.connect(self.check_server)
         self.heartbeat.start()
+        # Native cold-start: first reuse an existing AETHERION loopback server;
+        # only if refused, launch the installed local one. In parallel preseed
+        # Q-0484's separate fictional-crew SQLite on a background thread.
+        # This NEVER creates credentials or synthetic HTTP patient records.
+        self.first_run_runtime = StartupRuntime(self.api_url, self)
+        self.first_run_runtime.server_ready.connect(self.check_server)
+        application = QApplication.instance()
+        if application is not None:
+            application.aboutToQuit.connect(self.first_run_runtime.stop)
+        QTimer.singleShot(0, self.first_run_runtime.begin)
 
     @staticmethod
     def _nav_button(layout, text, handler):
@@ -672,7 +685,16 @@ class AetherionWindow(QMainWindow):
         self._show_workspace_feature("simulated_briefing")
 
     def start_simulated_demo(self):
-        """Start only on the explicit CTA; isolated SQLite remains Q-0484-owned."""
+        """Wait for startup's demo-only SQLite writer before opening Q-0484."""
+        self.simulated_briefing_page.start.setEnabled(False)
+        self.first_run_runtime.request_demo_ready(
+            self._finish_simulated_demo_start
+        )
+
+    def _finish_simulated_demo_start(self, ready: bool):
+        self.simulated_briefing_page.start.setEnabled(True)
+        # Even on preseed failure, Q-0484's own widget exposes its normal
+        # retry/error handling. Never substitute fake NASA or real crew data.
         self._show_workspace_feature("synthetic_patient")
         self.synthetic_patient_page.start()
 
