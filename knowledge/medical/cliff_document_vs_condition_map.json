@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "map_id": "aetherion-cliff-doc-vs-condition-map",
+  "updated_at_utc": "2026-11-14T03:57:30Z",
+  "source_documents": {
+    "collection": "NASA Integrated Medical Model (IMM) — CliFF 119 (2023)",
+    "publisher": "NASA",
+    "index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+    "expected_documents": 119,
+    "verified_local_documents": 0,
+    "verification_state": "NO_DATA",
+    "role": "Risk-planning and clinical flight findings (evidence reference, not patient-facing treatment protocol)."
+  },
+  "condition_catalog": {
+    "catalog_path": "knowledge/medical/",
+    "populated_conditions_count": 0,
+    "verification_state": "NO_DATA",
+    "role": "Structured AETHERION encyclopedia entries (only populated after source verification and rights audit)."
+  },
+  "mapping_rules": {
+    "one_to_one_assumed": false,
+    "require_verified_source_sha256_for_ready": true,
+    "legacy_astra_count_accepted": false,
+    "disallowed_states_for_display_as_verified": ["NO_DATA", "UNVERIFIED", "STALE", "OFFLINE", "DENIED", "ERROR"]
+  },
+  "entries": []
+}
