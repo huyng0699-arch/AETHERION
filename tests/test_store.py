@@ -1,6 +1,7 @@
 """Tests actual SQLite behavior; no synthetic data is shown in the app UI."""
 
 from pathlib import Path
+from contextlib import closing
 import sqlite3
 import tempfile
 import unittest
@@ -74,7 +75,7 @@ class StoreTests(unittest.TestCase):
     def test_legacy_starter_schema_migrates_cleanly(self):
         with tempfile.TemporaryDirectory() as directory:
             db = Path(directory) / "legacy.sqlite3"
-            with sqlite3.connect(db) as conn:
+            with closing(sqlite3.connect(db)) as conn:
                 conn.execute(
                     """
                     CREATE TABLE observations (
