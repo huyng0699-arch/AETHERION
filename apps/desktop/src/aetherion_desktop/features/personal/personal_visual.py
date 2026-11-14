@@ -176,6 +176,7 @@ def build_personal_visual(page) -> None:
     grid.setHorizontalSpacing(14)
     grid.setVerticalSpacing(14)
     page.metric_tiles = {}
+    page.metric_tile_headers = {}
     for i, (tile_id, label, title, _aliases) in enumerate(TILES):
         panel = HealthTileFrame(i)
         panel.setMinimumHeight(154)
@@ -184,7 +185,7 @@ def build_personal_visual(page) -> None:
         v.setSpacing(6)
         title_row = QHBoxLayout()
         num = QLabel(f"{i + 1:02d}  /  {tr(page.ui_language, f'personal.tile.{tile_id}')}")
-        page.metric_tiles.setdefault("_headers", {})[tile_id] = num
+        page.metric_tile_headers[tile_id] = num
         num.setObjectName("eyebrow")
         title_row.addWidget(num)
         title_row.addStretch(1)
