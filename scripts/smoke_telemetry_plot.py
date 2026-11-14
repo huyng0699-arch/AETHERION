@@ -14,6 +14,11 @@ from pathlib import Path
 import sys
 
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+if os.name == "nt":
+    os.environ.setdefault(
+        "QT_QPA_FONTDIR",
+        str(Path(os.environ.get("WINDIR", "C:/Windows")) / "Fonts"),
+    )
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "apps" / "desktop" / "src"))
 
@@ -315,6 +320,10 @@ def main() -> int:
     QTest.mouseMove(chart.canvas, position)
     app.processEvents()
     assert "ENGINEERING_FIXTURE_ALPHA" in chart.detail.text()
+    # Hovering can settle the offscreen layout after the initial projection; recompute
+    # in the current widget geometry before sending the click.
+    position = chart.canvas.point_position_for(target)
+    assert position is not None
     QTest.mouseClick(chart.canvas, Qt.MouseButton.LeftButton, pos=position)
     app.processEvents()
     assert chart.selected_record is target
