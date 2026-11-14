@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-081",
+  "slot": 81,
+  "quest_id": "Q-0381",
+  "checked_at_utc": "2026-11-14T06:31:05.991586+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/toxic-inhalation-exposure-cliff-2023.pdf?emrc=bee4a8",
+  "http_status": 200,
+  "pdf_sha256": "8b14d6a504cbfd4032a6b72bc9e7a43ed1da51aa2e035a39c2718cdaf47bb733",
+  "pdf_bytes": 347980,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-081-IMG-01": "41a22e2a4d4a1beae75a31c9d7d45ad386c5bfb993983adf5c6bbbd1dfbd81a7",
+    "CLIFF-081-IMG-02": "67a7b18d0ec991f5295d1295a40080b2a356989af995fbd43d985137c1023985",
+    "CLIFF-081-IMG-03": "784ca5f34f76cc1f900e97b1b50ecc750101bf09529b5f4c03839378c7c204a6"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
