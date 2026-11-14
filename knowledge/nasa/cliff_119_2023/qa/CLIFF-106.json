@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-106",
+  "slot": 106,
+  "quest_id": "Q-0406",
+  "checked_at_utc": "2026-11-14T06:37:13.095261+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/sprain-strain-upper-extremity-cliff-2023.pdf?emrc=799a3e",
+  "http_status": 200,
+  "pdf_sha256": "0eab660d757b238400ddeea1a7acbd0ffb7dad5c841cdd810728d1b0024d37b2",
+  "pdf_bytes": 345256,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-106-IMG-01": "6ca4b0c64884cf56124c841154b596ea24254ca10d411be2a105ec442cf4dda4",
+    "CLIFF-106-IMG-02": "0105fdcaba15bf9d8018541c47643c20281b8a4d46241180c8afccb99b8dfa85",
+    "CLIFF-106-IMG-03": "bb063b1ac9ffa0879dce6e4c22e6d344c41eb94651c4c9b853cd9ae573fa1d2f"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
