@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-016",
+  "title": "Intravenous Fluid Resuscitation Setup",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Intravenous_therapy_%286636952%29.jpg",
+  "rights_url": "https://commons.wikimedia.org/wiki/File:Intravenous_therapy_(6636952).jpg",
+  "license": "US-GOV-PUBLIC-DOMAIN",
+  "author": "U.S. Army photo by Spc. Enrique Moya",
+  "caption": "Intravenous fluid bag and infusion tubing prepared for crystalloid volume resuscitation in trauma care.",
+  "alt_text": "Close-up photograph of clear intravenous fluid infusion bag and drip chamber.",
+  "clinical_relevance": "Illustrates crystalloid IV fluid resuscitation, which NASA CliFF-016 notes is the primary spaceflight volume replacement modality when blood products are unavailable (CLIFF-016, p.1, p.10).",
+  "rights_verified": true,
+  "mime_type": "image/jpeg",
+  "width": 6720,
+  "height": 4480,
+  "size_bytes": 2651300,
+  "sha256": "9a1289159ffaa55b4f4cf98a949810da0ea622eaab2887b4e3131579569cbcfa",
+  "final_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Intravenous_therapy_%286636952%29.jpg",
+  "retrieved_at_utc": "2026-11-14T05:55:57.334919+00:00",
+  "asset_path": "9a1289159ffaa55b4f4cf98a949810da0ea622eaab2887b4e3131579569cbcfa.jpg",
+  "rights_review_status": "metadata_declared_manual_review_required"
+}

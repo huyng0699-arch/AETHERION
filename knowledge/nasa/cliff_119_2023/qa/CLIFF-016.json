@@ -1,0 +1,24 @@
+{
+  "article_id": "CLIFF-016",
+  "slot": 16,
+  "source_index_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+  "source_direct_url": "https://www.nasa.gov/wp-content/uploads/2026/08/traumatic-hypovolemic-shock-cliff-2023.pdf?emrc=aba92d",
+  "http_status": 200,
+  "pdf_bytes": 378079,
+  "pdf_sha256": "f021cb5c557c006844d5251329862509121565a260f15b823ba6bcee854ad8a4",
+  "pdf_pages": 16,
+  "sections_count": 16,
+  "tables_count": 8,
+  "references_count": 27,
+  "media_count": 4,
+  "media_sha256s": [
+    "22a3248bd3a863633cacc766e50cbc32cc25bfcf4c7e771d268b20b30427a35d",
+    "9cccd38fa7d3ac4b476b8d6b46beda5036e8d529ecd035f331528cd8931aa264",
+    "9a1289159ffaa55b4f4cf98a949810da0ea622eaab2887b4e3131579569cbcfa",
+    "5f3d8ec7cd3fd1d0889a0272e3122caf02e07adf89b7655a85d4b06f48ee5b85"
+  ],
+  "license_audit": "PASS (NASA US Gov Public Domain PDF; Wikimedia Commons CC-BY-SA-4.0 & Public Domain images)",
+  "content_safety": "PASS (Explicitly labeled as NASA IMM risk-planning evidence, not bedside protocol)",
+  "offline_render_note": "SQLite ingestion and offline BLOB/section/table/citation verification passed on Linux; native Windows Qt GUI rendering deferred to Windows desktop gate.",
+  "missing_items": []
+}
