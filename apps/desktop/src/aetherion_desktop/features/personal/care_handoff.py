@@ -95,14 +95,33 @@ def selected_observation_from_api(
                 source.lower().startswith(("research:", "nasa_osdr:")) or
                 verification == "TEST_FIXTURE" or scope == "engineering_test"):
             return None
+        # Personal Today intentionally downgrades raw READY records to
+        # UNVERIFIED when the source itself is not verified, or to STALE when
+        # the last accepted reading is old. Comparing raw==display quality
+        # wrongly rejects those exact, authenticated observations.
+        # Never upgrade an unverified source or allow ERROR/DENIED/NO_DATA
+        # availability rows to become a Care handoff.
+        raw_quality = quality.upper()
+        display_quality = card.quality.upper()
+        if raw_quality not in {"READY", "STALE", "UNVERIFIED"}:
+            return None
+        compatible = raw_quality == display_quality or (
+            raw_quality == "READY" and (
+                display_quality == "UNVERIFIED" or (
+                    display_quality == "STALE" and verification == "VERIFIED"
+                )
+            )
+        )
+        if observed > datetime.now(timezone.utc):
+            return None  # a future-dated row must not initiate a Care episode
         if (item.get("metric") == card.metric and source == card.source_id and
                 unit == card.unit and scope == card.scope and
-                quality == card.quality and verification == card.verification_state and
+                compatible and verification == card.verification_state and
                 observed == card_time and f"{number:g} {unit}" == card.reading):
             candidates.append(SelectedObservation(subject_id, record_id,
                                                     item["metric"], source,
                                                     observed.isoformat(),
-                                                    quality, verification))
+                                                    display_quality, verification))
     return candidates[0] if len(candidates) == 1 else None
 
 
