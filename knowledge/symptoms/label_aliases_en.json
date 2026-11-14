@@ -1,0 +1,406 @@
+{
+  "schema_version": "1.0.0",
+  "source_catalog": "knowledge/symptoms/ASTRA_819_REFERENCE.json",
+  "source_blob_sha": "f76580a14166499433cea7f93cbb89f7db62ec17",
+  "source_language": "vi",
+  "target_language": "en",
+  "translation_status": "UNREVIEWED_TERMINOLOGY",
+  "clinical_validation": false,
+  "notes": [
+    "Additive English lookup/display aliases for a limited subset of the original 819 Vietnamese symptom labels.",
+    "Human translation draft for terminology discovery only; clinical translation review has NOT been completed.",
+    "No legacy risk tier, diagnosis, medical guidance, source IDs, or original Vietnamese content has been changed.",
+    "Unlisted symptoms remain available by their original Vietnamese term and ID, not by invented translations."
+  ],
+  "labels": [
+    {
+      "symptom_id": "s0133",
+      "source_label_vi": "đau đầu",
+      "label_en": "Headache",
+      "aliases_en": [
+        "head pain"
+      ]
+    },
+    {
+      "symptom_id": "s0139",
+      "source_label_vi": "đau đầu dữ dội đột ngột",
+      "label_en": "Sudden severe headache",
+      "aliases_en": [
+        "sudden intense headache"
+      ]
+    },
+    {
+      "symptom_id": "s0144",
+      "source_label_vi": "đau đầu sau chấn thương",
+      "label_en": "Headache after injury",
+      "aliases_en": [
+        "headache following injury"
+      ]
+    },
+    {
+      "symptom_id": "s0148",
+      "source_label_vi": "chóng mặt",
+      "label_en": "Dizziness",
+      "aliases_en": [
+        "feeling dizzy"
+      ]
+    },
+    {
+      "symptom_id": "s0057",
+      "source_label_vi": "chóng mặt khi đứng dậy",
+      "label_en": "Dizziness on standing",
+      "aliases_en": [
+        "lightheaded on standing"
+      ]
+    },
+    {
+      "symptom_id": "s0159",
+      "source_label_vi": "buồn nôn",
+      "label_en": "Nausea",
+      "aliases_en": [
+        "feeling nauseous"
+      ]
+    },
+    {
+      "symptom_id": "s0160",
+      "source_label_vi": "nôn",
+      "label_en": "Vomiting",
+      "aliases_en": [
+        "throwing up"
+      ]
+    },
+    {
+      "symptom_id": "s0168",
+      "source_label_vi": "nôn có máu",
+      "label_en": "Vomiting blood",
+      "aliases_en": [
+        "hematemesis"
+      ]
+    },
+    {
+      "symptom_id": "s0575",
+      "source_label_vi": "sốt",
+      "label_en": "Fever",
+      "aliases_en": [
+        "feverish"
+      ]
+    },
+    {
+      "symptom_id": "s0576",
+      "source_label_vi": "sốt cao",
+      "label_en": "High fever",
+      "aliases_en": []
+    },
+    {
+      "symptom_id": "s0004",
+      "source_label_vi": "ho",
+      "label_en": "Cough",
+      "aliases_en": [
+        "coughing"
+      ]
+    },
+    {
+      "symptom_id": "s0008",
+      "source_label_vi": "ho khan",
+      "label_en": "Dry cough",
+      "aliases_en": [
+        "nonproductive cough"
+      ]
+    },
+    {
+      "symptom_id": "s0010",
+      "source_label_vi": "ho ra máu",
+      "label_en": "Coughing up blood",
+      "aliases_en": [
+        "hemoptysis"
+      ]
+    },
+    {
+      "symptom_id": "s0015",
+      "source_label_vi": "khó thở",
+      "label_en": "Shortness of breath",
+      "aliases_en": [
+        "breathlessness",
+        "dyspnea"
+      ]
+    },
+    {
+      "symptom_id": "s0002",
+      "source_label_vi": "khó thở dữ dội",
+      "label_en": "Severe shortness of breath",
+      "aliases_en": [
+        "severe breathlessness"
+      ]
+    },
+    {
+      "symptom_id": "s0036",
+      "source_label_vi": "đau ngực",
+      "label_en": "Chest pain",
+      "aliases_en": []
+    },
+    {
+      "symptom_id": "s0039",
+      "source_label_vi": "đau ngực khi gắng sức",
+      "label_en": "Chest pain on exertion",
+      "aliases_en": [
+        "exertional chest pain"
+      ]
+    },
+    {
+      "symptom_id": "s0691",
+      "source_label_vi": "đau ngực kiểu bóp nghẹt",
+      "label_en": "Squeezing chest pain",
+      "aliases_en": [
+        "crushing chest pain"
+      ]
+    },
+    {
+      "symptom_id": "s0052",
+      "source_label_vi": "đánh trống ngực",
+      "label_en": "Palpitations",
+      "aliases_en": [
+        "heart pounding"
+      ]
+    },
+    {
+      "symptom_id": "s0100",
+      "source_label_vi": "tê tay",
+      "label_en": "Hand numbness",
+      "aliases_en": [
+        "numb hands"
+      ]
+    },
+    {
+      "symptom_id": "s0799",
+      "source_label_vi": "tê môi",
+      "label_en": "Lip numbness",
+      "aliases_en": []
+    },
+    {
+      "symptom_id": "s0800",
+      "source_label_vi": "tê cằm",
+      "label_en": "Chin numbness",
+      "aliases_en": []
+    },
+    {
+      "symptom_id": "s0102",
+      "source_label_vi": "tê một bên người",
+      "label_en": "One-sided numbness",
+      "aliases_en": [
+        "numbness on one side"
+      ]
+    },
+    {
+      "symptom_id": "s0177",
+      "source_label_vi": "đau bụng",
+      "label_en": "Abdominal pain",
+      "aliases_en": [
+        "stomach pain"
+      ]
+    },
+    {
+      "symptom_id": "s0178",
+      "source_label_vi": "đau bụng dưới",
+      "label_en": "Lower abdominal pain",
+      "aliases_en": []
+    },
+    {
+      "symptom_id": "s0209",
+      "source_label_vi": "tiêu chảy",
+      "label_en": "Diarrhea",
+      "aliases_en": [
+        "loose stools"
+      ]
+    },
+    {
+      "symptom_id": "s0221",
+      "source_label_vi": "táo bón",
+      "label_en": "Constipation",
+      "aliases_en": []
+    },
+    {
+      "symptom_id": "s0616",
+      "source_label_vi": "mất ngủ",
+      "label_en": "Difficulty sleeping",
+      "aliases_en": [
+        "insomnia"
+      ]
+    },
+    {
+      "symptom_id": "s0652",
+      "source_label_vi": "mệt mỏi",
+      "label_en": "Fatigue",
+      "aliases_en": [
+        "tiredness"
+      ]
+    },
+    {
+      "symptom_id": "s0310",
+      "source_label_vi": "da ngứa",
+      "label_en": "Itchy skin",
+      "aliases_en": [
+        "skin itching"
+      ]
+    },
+    {
+      "symptom_id": "s0311",
+      "source_label_vi": "ngứa toàn thân",
+      "label_en": "Generalized itching",
+      "aliases_en": [
+        "itching all over"
+      ]
+    },
+    {
+      "symptom_id": "s0314",
+      "source_label_vi": "phát ban",
+      "label_en": "Skin rash",
+      "aliases_en": [
+        "rash"
+      ]
+    },
+    {
+      "symptom_id": "s0079",
+      "source_label_vi": "chảy máu không cầm",
+      "label_en": "Uncontrolled bleeding",
+      "aliases_en": [
+        "bleeding that will not stop"
+      ]
+    },
+    {
+      "symptom_id": "s0545",
+      "source_label_vi": "chảy máu nướu",
+      "label_en": "Bleeding gums",
+      "aliases_en": []
+    },
+    {
+      "symptom_id": "s0094",
+      "source_label_vi": "chảy máu mũi",
+      "label_en": "Nosebleed",
+      "aliases_en": [
+        "epistaxis"
+      ]
+    },
+    {
+      "symptom_id": "s0067",
+      "source_label_vi": "ngất",
+      "label_en": "Fainting",
+      "aliases_en": [
+        "syncope"
+      ]
+    },
+    {
+      "symptom_id": "s0533",
+      "source_label_vi": "đau răng",
+      "label_en": "Toothache",
+      "aliases_en": [
+        "tooth pain"
+      ]
+    },
+    {
+      "symptom_id": "s0521",
+      "source_label_vi": "đau họng",
+      "label_en": "Sore throat",
+      "aliases_en": [
+        "throat pain"
+      ]
+    },
+    {
+      "symptom_id": "s0661",
+      "source_label_vi": "khô miệng",
+      "label_en": "Dry mouth",
+      "aliases_en": [
+        "xerostomia"
+      ]
+    },
+    {
+      "symptom_id": "s0425",
+      "source_label_vi": "đau lưng",
+      "label_en": "Back pain",
+      "aliases_en": []
+    },
+    {
+      "symptom_id": "s0472",
+      "source_label_vi": "nhìn mờ",
+      "label_en": "Blurred vision",
+      "aliases_en": [
+        "blurry vision"
+      ]
+    },
+    {
+      "symptom_id": "s0463",
+      "source_label_vi": "đau mắt",
+      "label_en": "Eye pain",
+      "aliases_en": []
+    },
+    {
+      "symptom_id": "s0660",
+      "source_label_vi": "khát nước",
+      "label_en": "Thirst",
+      "aliases_en": [
+        "feeling thirsty"
+      ]
+    },
+    {
+      "symptom_id": "s0448",
+      "source_label_vi": "sưng mặt",
+      "label_en": "Facial swelling",
+      "aliases_en": [
+        "swollen face"
+      ]
+    },
+    {
+      "symptom_id": "s0552",
+      "source_label_vi": "sưng mặt do răng",
+      "label_en": "Tooth-related facial swelling",
+      "aliases_en": [
+        "dental facial swelling"
+      ]
+    },
+    {
+      "symptom_id": "s0357",
+      "source_label_vi": "sưng lưỡi",
+      "label_en": "Tongue swelling",
+      "aliases_en": [
+        "swollen tongue"
+      ]
+    },
+    {
+      "symptom_id": "s0405",
+      "source_label_vi": "đau khớp",
+      "label_en": "Joint pain",
+      "aliases_en": [
+        "arthralgia"
+      ]
+    },
+    {
+      "symptom_id": "s0421",
+      "source_label_vi": "đau cơ",
+      "label_en": "Muscle pain",
+      "aliases_en": [
+        "myalgia"
+      ]
+    },
+    {
+      "symptom_id": "s0073",
+      "source_label_vi": "mất ý thức tạm thời",
+      "label_en": "Temporary loss of consciousness",
+      "aliases_en": []
+    },
+    {
+      "symptom_id": "s0544",
+      "source_label_vi": "sưng nướu",
+      "label_en": "Gum swelling",
+      "aliases_en": [
+        "swollen gums"
+      ]
+    },
+    {
+      "symptom_id": "s0413",
+      "source_label_vi": "đau khớp hàm",
+      "label_en": "Jaw joint pain",
+      "aliases_en": [
+        "jaw joint soreness"
+      ]
+    }
+  ]
+}
