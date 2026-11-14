@@ -91,7 +91,7 @@ def measured_points(records: list[dict], metric_id: str) -> tuple[float | None, 
 
 def build_hackathon_demo(parent=None, **kwargs):
     """Create native QWidget lazily, keeping schema readable without Qt."""
-    from PySide6.QtCore import Qt, QTimer, Signal, QRectF
+    from PySide6.QtCore import Qt, QTimer, QThread, Signal, QRectF
     from PySide6.QtGui import QDesktopServices, QColor, QPainter, QPen
     from PySide6.QtWidgets import (
         QAbstractItemView, QFrame, QGridLayout, QHBoxLayout, QHeaderView,
@@ -101,6 +101,24 @@ def build_hackathon_demo(parent=None, **kwargs):
     from ...localization import tr, normalize_locale
     from ...visual_theme import palette_for
     from ...knowledge_browser import KnowledgeOrb
+    from .demo_catalog import load_demo_catalog
+    from .demo_library import DemoFullScienceLibrary
+    from .demo_hub import DemoDataHub
+
+    class CatalogLoadWorker(QThread):
+        """Loads real local NASA files off the Qt GUI thread."""
+        progress = Signal(int, int, str)
+        loaded = Signal(object)
+        failure = Signal(str)
+
+        def run(self):
+            try:
+                bundle = load_demo_catalog(
+                    progress=lambda count, total, source:
+                    self.progress.emit(count, total, source))
+                self.loaded.emit(bundle)
+            except (OSError, ValueError, TypeError, KeyError, RuntimeError) as exc:
+                self.failure.emit(type(exc).__name__)
 
     class HistoricalBars(QWidget):
         """Selectable source-derived bars. Deliberately no continuous fake line."""
@@ -171,6 +189,8 @@ def build_hackathon_demo(parent=None, **kwargs):
             self.reduce_motion = bool(kwargs.get("reduce_motion", False))
             self.intensity = int(kwargs.get("intensity", 48))
             self.doc = None
+            self.catalog = None
+            self.worker = None
             self.group_index = 0
             self.group = None
             self.record = None
@@ -181,6 +201,8 @@ def build_hackathon_demo(parent=None, **kwargs):
             self.root.addWidget(self.pages)
             self._build_briefing()
             self._build_replay()
+            self._build_loading()
+            self._build_catalog_pages()
             self.timer = QTimer(self)
             self.timer.setInterval(2400)
             self.timer.timeout.connect(self.next_stage)
@@ -473,20 +495,109 @@ def build_hackathon_demo(parent=None, **kwargs):
             self.source_again = QPushButton()
             self.source_again.clicked.connect(self.open_source)
             footer.addWidget(self.source_again)
+            self.hub_button = QPushButton()
+            self.hub_button.setObjectName("primaryAction")
+            self.hub_button.clicked.connect(self.show_hub)
+            footer.addWidget(self.hub_button)
             footer.addStretch()
             body.addLayout(footer)
             self.pages.addWidget(self.replay)
 
+        def _build_loading(self):
+            self.loading = QWidget()
+            layout = QVBoxLayout(self.loading)
+            layout.setContentsMargins(54, 45, 54, 45)
+            self.load_title = QLabel()
+            self.load_title.setObjectName("heroTitle")
+            layout.addWidget(self.load_title)
+            self.load_description = QLabel()
+            self.load_description.setObjectName("heroCopy")
+            self.load_description.setWordWrap(True)
+            layout.addWidget(self.load_description)
+            self.load_status = QLabel()
+            self.load_status.setObjectName("pageHint")
+            self.load_status.setWordWrap(True)
+            layout.addWidget(self.load_status)
+            self.load_bar = QProgressBar()
+            self.load_bar.setTextVisible(True)
+            self.load_bar.setRange(0, 125)
+            layout.addWidget(self.load_bar)
+            self.retry_button = QPushButton()
+            self.retry_button.setObjectName("primaryAction")
+            self.retry_button.clicked.connect(self.begin)
+            self.retry_button.hide()
+            layout.addWidget(self.retry_button)
+            layout.addStretch(1)
+            self.pages.addWidget(self.loading)
+
+        def _build_catalog_pages(self):
+            self.hub = DemoDataHub(self, locale=self.language)
+            self.hub.replay_requested.connect(self.open_replay)
+            self.hub.library_requested.connect(self.open_library)
+            self.hub.briefing_requested.connect(self.show_briefing)
+            self.pages.addWidget(self.hub)
+            self.science_library = DemoFullScienceLibrary(self, locale=self.language)
+            self.science_library.back_requested.connect(self.show_hub)
+            self.pages.addWidget(self.science_library)
+
         def begin(self):
-            try:
-                self.doc = load_real_nasa_data()
-            except (OSError, ValueError, TypeError, KeyError) as error:
-                from PySide6.QtWidgets import QMessageBox
-                QMessageBox.warning(self, self.t("intro.source"),
-                    self.t("replay.error", error=type(error).__name__))
+            # User has reviewed the source briefing and now authorizes loading.
+            if self.worker is not None and self.worker.isRunning():
+                return
+            self._stop_autoplay()
+            self.retry_button.hide()
+            self.start.setEnabled(False)
+            self.load_status.setText(self.t("load.description"))
+            self.load_bar.setValue(0)
+            self.pages.setCurrentWidget(self.loading)
+            self.worker = CatalogLoadWorker(self)
+            self.worker.progress.connect(self._load_progress)
+            self.worker.loaded.connect(self._load_complete)
+            self.worker.failure.connect(self._load_failed)
+            self.worker.finished.connect(self._load_finished)
+            self.worker.start()
+
+        def _load_progress(self, done, total, source):
+            self.load_bar.setRange(0, total)
+            self.load_bar.setValue(done)
+            self.load_status.setText(self.t("load.count", done=done, total=total,
+                                  source=self.t("load.source." + source)))
+
+        def _load_complete(self, bundle):
+            # All catalog files are validated before any row becomes visible.
+            self.catalog = bundle
+            self.doc = bundle["ma7"]
+            self.hub.set_bundle(bundle)
+            self.science_library.set_bundle(bundle)
+            self.select_group(0)
+            self.pages.setCurrentWidget(self.hub)
+
+        def _load_failed(self, error):
+            self.load_status.setText(self.t("load.error", error=error))
+            self.retry_button.show()
+
+        def _load_finished(self):
+            self.start.setEnabled(True)
+            self.worker = None
+
+        def show_hub(self):
+            self._stop_autoplay()
+            if self.catalog is not None:
+                self.pages.setCurrentWidget(self.hub)
+            else:
+                self.show_briefing()
+
+        def open_replay(self):
+            if self.catalog is None:
                 return
             self.select_group(0)
             self.pages.setCurrentWidget(self.replay)
+
+        def open_library(self, kind):
+            if self.catalog is None:
+                return
+            self.science_library.show_kind(kind)
+            self.pages.setCurrentWidget(self.science_library)
 
         def select_group(self, index):
             if not self.doc or not 0 <= index < len(self.doc["groups"]):
@@ -602,6 +713,12 @@ def build_hackathon_demo(parent=None, **kwargs):
 
         def set_locale(self, locale):
             self.language = normalize_locale(locale)
+            self.load_title.setText(self.t("load.title"))
+            self.load_description.setText(self.t("load.description"))
+            self.retry_button.setText(self.t("load.retry"))
+            self.hub_button.setText(self.t("replay.hub"))
+            self.hub.set_locale(self.language)
+            self.science_library.set_locale(self.language)
             self.brief_kicker.setText(self.t("hero.kicker"))
             self.brief_title.setText(self.t("hero.title"))
             self.brief_subtitle.setText(self.t("hero.subtitle"))
