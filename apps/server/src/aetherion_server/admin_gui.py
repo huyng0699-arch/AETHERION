@@ -665,6 +665,7 @@ class AdminWindow(QMainWindow):
             "provider": provider,
             "model": model,
             "key_configured": data.get("key_configured") is True,
+            "tested_with_real_inference": data.get("tested") is True,
             "secret_storage": data.get("secret_storage"),
         }, ensure_ascii=False, indent=2))
 
