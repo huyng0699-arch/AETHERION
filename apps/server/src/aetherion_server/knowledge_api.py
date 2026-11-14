@@ -3,12 +3,12 @@ from __future__ import annotations
 
 import re
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, field_validator
 
 from . import anatomy_catalog, knowledge_catalog
-from .symptom_interview import ai_status, next_question
+from .admin_ai_bridge import model_status, interview_next
 
 router = APIRouter(prefix="/api/v1/knowledge", tags=["Knowledge and Symptom Intake"])
 _ARTICLE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
@@ -69,17 +69,17 @@ def search_symptoms(query: str = Query("", max_length=200),
 
 
 @router.get("/interview/ai-status")
-def get_ai_status():
-    # Never return API keys or environment variable content.
-    return ai_status()
+def get_ai_status(request: Request):
+    # The same admin SQLite settings control the actual model used for intake.
+    return model_status(request.app.state.admin_database_path())
 
 
 @router.post("/interview/next")
-def interview_next(req: IntakeRequest):
-    # Stateless: does not persist symptoms or forward them to cloud by default.
-    # An actual model is invoked only when explicitly requested/configured.
-    return next_question(req.symptoms, req.answers,
-                         use_ai=req.use_ai, allow_cloud=req.allow_cloud)
+def interview_next_route(req: IntakeRequest, request: Request):
+    # Deterministic safety first; Admin's chosen local model may only choose
+    # an existing question ID. Cloud forwarding is disabled.
+    return interview_next(request.app.state.admin_database_path(), req.symptoms, req.answers,
+                          use_ai=req.use_ai, allow_cloud=req.allow_cloud)
 
 
 @router.get("/anatomy/models")
