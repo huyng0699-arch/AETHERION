@@ -130,6 +130,13 @@ TEXT = {
         "utcSource": "Source / quality",
         "utcPlot": "UTC-SCOPED NUMERIC VALUES  /  DISCRETE SAMPLES",
         "inspectNone": "Select a report timepoint, variable or UTC observation to inspect its original source and quality.",
+        "homeInspectTitle": "Mission Workspace properties",
+        "inspectCurrent": "Selected object",
+        "inspectTimeScope": "UTC scope",
+        "inspectAccess": "Data access",
+        "homeInspectNoSelection": "Operations overview · no active crew or source selected",
+        "homeInspectUTC": "UTC conductor applies to authorized timestamped observations only; NASA MA-7 is separately browsable",
+        "homeInspectACL": "Health records require real AETHERION Server authorization; no subject data loaded here",
         "inspectArchive": "Original NASA source (historical, non-live)",
         "inspectUTC": "Authorized timestamped observation (not automatically imported)",
         "inspectSource": "Source",
@@ -235,6 +242,13 @@ TEXT = {
         "utcSource": "Nguồn / chất lượng",
         "utcPlot": "GIÁ TRỊ UTC THỰC TẾ  /  KHÔNG NỐI ĐIỂM",
         "inspectNone": "Chọn mốc, biến hoặc quan sát UTC để xem nguồn và mức độ xác minh.",
+        "homeInspectTitle": "Thuộc tính không gian điều hành",
+        "inspectCurrent": "Đối tượng đang chọn",
+        "inspectTimeScope": "Phạm vi UTC",
+        "inspectAccess": "Quyền truy cập",
+        "homeInspectNoSelection": "Tổng quan điều hành · chưa chọn phi hành đoàn hoặc nguồn đo",
+        "homeInspectUTC": "Time Conductor chỉ lọc quan sát có timestamp được cấp quyền; NASA MA-7 là kho riêng",
+        "homeInspectACL": "Hồ sơ sức khỏe yêu cầu phân quyền từ AETHERION Server; chưa nạp dữ liệu cá nhân ở đây",
         "inspectArchive": "Nguồn NASA lịch sử thật, không trực tiếp",
         "inspectUTC": "Quan sát có dấu thời gian và quyền xác thực (không tự nhập)",
         "inspectSource": "Nguồn",
@@ -380,9 +394,12 @@ class MissionOperationsHome(QWidget):
         # One shared time control owns the UTC window. All UTC views use it.
         conductor = QFrame()
         conductor.setObjectName("contentPanel")
-        conductor_row = QHBoxLayout(conductor)
-        conductor_row.setContentsMargins(10, 5, 10, 5)
+        conductor_box = QVBoxLayout(conductor)
+        conductor_box.setContentsMargins(10, 5, 10, 5)
+        conductor_box.setSpacing(2)
+        conductor_row = QHBoxLayout()
         conductor_row.setSpacing(7)
+        conductor_box.addLayout(conductor_row)
         self.conductor_heading = QLabel()
         self.conductor_heading.setObjectName("eyebrow")
         conductor_row.addWidget(self.conductor_heading)
@@ -418,11 +435,10 @@ class MissionOperationsHome(QWidget):
         self.apply_button.setObjectName("navButton")
         self.apply_button.clicked.connect(self.apply_utc_window)
         conductor_row.addWidget(self.apply_button)
-        shell.addWidget(conductor)
-
         self.window_status = QLabel()
         self.window_status.setObjectName("pageHint")
-        shell.addWidget(self.window_status)
+        self.window_status.setWordWrap(True)
+        conductor_box.addWidget(self.window_status)
 
         horizontal = QSplitter(Qt.Orientation.Horizontal)
         horizontal.setHandleWidth(5)
@@ -435,6 +451,8 @@ class MissionOperationsHome(QWidget):
         left = QFrame()
         left.setObjectName("contentPanel")
         nav_layout = QVBoxLayout(left)
+        left.setMinimumWidth(177)
+        left.setMaximumWidth(255)
         nav_layout.setContentsMargins(8, 9, 8, 9)
         self.browse_heading = QLabel()
         self.browse_heading.setObjectName("eyebrow")
@@ -459,6 +477,7 @@ class MissionOperationsHome(QWidget):
 
         middle = QFrame()
         middle.setObjectName("contentPanel")
+        middle.setMinimumWidth(405)
         middle_layout = QVBoxLayout(middle)
         middle_layout.setContentsMargins(8, 9, 8, 9)
         self.workspace_heading = QLabel()
@@ -616,6 +635,10 @@ class MissionOperationsHome(QWidget):
         # Inspect: displays the *same* selected report row or UTC observation.
         right = QFrame()
         right.setObjectName("contentPanel")
+        # INSPECT must remain visible and horizontally scrollable at 1040px.
+        # Do not auto-hide it based on window width.
+        right.setMinimumWidth(205)
+        right.setMaximumWidth(325)
         right_layout = QVBoxLayout(right)
         right_layout.setContentsMargins(8, 9, 8, 9)
         self.inspect_heading = QLabel()
@@ -628,6 +651,8 @@ class MissionOperationsHome(QWidget):
         self.inspector = QTableWidget(0, 2)
         self.inspector.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.inspector.setSelectionMode(QAbstractItemView.SelectionMode.NoSelection)
+        self.inspector.setHorizontalScrollMode(QAbstractItemView.ScrollMode.ScrollPerPixel)
+        self.inspector.setWordWrap(True)
         self.inspector.verticalHeader().hide()
         self.inspector.horizontalHeader().hide()
         self.inspector.horizontalHeader().setStretchLastSection(True)
@@ -637,7 +662,14 @@ class MissionOperationsHome(QWidget):
         self.source_link.clicked.connect(self.open_nasa_original)
         right_layout.addWidget(self.source_link)
         horizontal.addWidget(right)
-        horizontal.setSizes([215, 770, 235])
+        horizontal.setStretchFactor(0, 0)
+        horizontal.setStretchFactor(1, 1)
+        horizontal.setStretchFactor(2, 0)
+        horizontal.setSizes([198, 600, 224])
+
+        # Open MCT-style conductor is a persistent strip BELOW data views,
+        # not a full-width header that reduces the available workspace.
+        shell.addWidget(conductor)
 
         self.footer = QLabel()
         self.footer.setObjectName("pageHint")
@@ -645,8 +677,9 @@ class MissionOperationsHome(QWidget):
 
         self.set_locale(self.language)
         self.set_visuals()
-        # The first view now displays genuine report values, not an ornament.
-        self._choose("archive" if self.source_data is not None else "utc")
+        # Home is the operational overview. Historical NASA is one source
+        # available from Browse, not a silently selected active mission.
+        self._choose("home")
         self.apply_utc_window()
 
     def _load_historical_source(self):
@@ -751,10 +784,10 @@ class MissionOperationsHome(QWidget):
         self._active_utc_row = None
         if route == "home":
             self.workspace_stack.setCurrentIndex(0)
-            self._inspect(self._t("welcomeSource"), [
-                ("inspectSource", "NASA Mercury-Atlas 7"),
-                ("inspectVerification", self._t("realBadge")),
-                ("inspectUTCValue", self._t("inspectNoUTC")),
+            self._inspect(self._t("homeInspectTitle"), [
+                ("inspectCurrent", self._t("homeInspectNoSelection")),
+                ("inspectTimeScope", self._t("homeInspectUTC")),
+                ("inspectAccess", self._t("homeInspectACL")),
             ])
         elif route == "archive":
             self.workspace_stack.setCurrentIndex(1)
