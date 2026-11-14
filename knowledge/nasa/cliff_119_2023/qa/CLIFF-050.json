@@ -1,0 +1,21 @@
+{
+  "article_id": "CLIFF-050",
+  "slot": 50,
+  "quest_id": "Q-0350",
+  "checked_at_utc": "2026-11-14T06:15:31.033272+00:00",
+  "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/arthritis-acute-cliff-2023.pdf?emrc=b9d60f",
+  "http_status": 200,
+  "pdf_sha256": "df75739a184c115282a6b55978eb7866d82d8dfaf4163ad57607a1544ecc622d",
+  "pdf_bytes": 334512,
+  "pages_extracted": 14,
+  "sections_count": 14,
+  "tables_count": 8,
+  "media_count": 3,
+  "media_hashes": {
+    "CLIFF-050-IMG-01": "fc78df8a7837a865d295126005af6d4e443ab39750cd765f7e236cb60908b2b8",
+    "CLIFF-050-IMG-02": "12a81eab4b1934fed7d706bc4f5da93e42b0f325504f731480192e0541808a8a",
+    "CLIFF-050-IMG-03": "e4cbec5d33e83bdfc674079adda547eeb5d4734064ca8903e0a63049d6013533"
+  },
+  "safety_disclaimer_present": true,
+  "missing_items": []
+}
