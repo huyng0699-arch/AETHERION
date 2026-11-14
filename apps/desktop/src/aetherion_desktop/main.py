@@ -1,172 +1,353 @@
-"""Native Windows/Qt starter. Deliberately does not invent health data."""
+"""AETHERION native Windows app — Portal-first premium Qt shell.
+
+AETHERION Server remains the single source of data. The client never invents
+sensor readings, AI answers, anatomy, or an emergency dispatch service.
+"""
+from __future__ import annotations
 
 import os
 import sys
 
-from PySide6.QtCore import QUrl
-from PySide6.QtNetwork import QNetworkAccessManager, QNetworkRequest
+from PySide6.QtCore import Qt, QUrl, QTimer
+from PySide6.QtGui import QAction
+from PySide6.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import (
-    QApplication, QFrame, QHBoxLayout, QLabel, QMainWindow,
-    QPushButton, QStackedWidget, QVBoxLayout, QWidget, QMessageBox,
+    QApplication, QFrame, QHBoxLayout, QLabel, QMainWindow, QMenu,
+    QMessageBox, QPushButton, QSizePolicy, QStackedWidget, QToolButton,
+    QVBoxLayout, QWidget,
 )
 
 from .portal import PORTAL_ROUTES, build_portal_page
+from .visual_theme import THEMES, VisualPreferences
 from .medical_library import build_medical_library_page
 from .mission_control import build_mission_control_page
 from .features.personal.authorized_today import AuthorizedPersonalTodayPage
 
-SECTIONS = [
-    ("Mission Control", "Mission Control", "Crew overview and health monitoring will appear here once trustworthy observations are available."),
-    ("Personal Health", "Personal Health", "No measurements are loaded. A healthy user does not have to enter symptoms to open the application."),
-    ("Body Atlas", "Body Atlas", "Interactive 3D anatomy is planned; no non-functional static image is presented as 3D."),
-    ("Explore", "Explore Space Health", "Explore NASA's five human-spaceflight hazards through sourced content in a future release."),
-    ("Care", "Care Journey", "GATHER → EVALUATE → ACT → RECHECK: the supported care workflow is not yet implemented."),
-    ("Guide", "Medical Guide", "A provenance-reviewed medical knowledge base and optional AI guidance are planned."),
-]
+
+class FeatureLanding(QWidget):
+    """Honest native entry for work that is not yet connected to a real source."""
+
+    def __init__(self, eyebrow: str, title: str, description: str, actions=(), parent=None):
+        super().__init__(parent)
+        root = QVBoxLayout(self)
+        root.setContentsMargins(55, 49, 55, 40)
+        root.setSpacing(14)
+        code = QLabel(eyebrow.upper())
+        code.setObjectName("eyebrow")
+        root.addWidget(code)
+        heading = QLabel(title)
+        heading.setObjectName("heading")
+        root.addWidget(heading)
+        explanation = QLabel(description)
+        explanation.setObjectName("heroCopy")
+        explanation.setWordWrap(True)
+        root.addWidget(explanation)
+        panel = QFrame()
+        panel.setObjectName("contentPanel")
+        block = QVBoxLayout(panel)
+        block.setContentsMargins(26, 25, 26, 26)
+        block.setSpacing(14)
+        status = QLabel("CHƯA CÓ DỮ LIỆU / CHƯA KẾT NỐI TÍNH NĂNG")
+        status.setObjectName("eyebrow")
+        block.addWidget(status)
+        hint = QLabel("Chỉ dữ liệu thật, có nguồn xác định và quyền truy cập hợp lệ mới được hiển thị.")
+        hint.setObjectName("pageHint")
+        hint.setWordWrap(True)
+        block.addWidget(hint)
+        buttons = QHBoxLayout()
+        buttons.setSpacing(10)
+        for index, (label, handler) in enumerate(actions):
+            btn = QPushButton(label)
+            btn.setObjectName("primaryAction" if index == 0 else "navButton")
+            btn.clicked.connect(handler)
+            buttons.addWidget(btn)
+        buttons.addStretch()
+        block.addLayout(buttons)
+        root.addWidget(panel)
+        root.addStretch()
 
 
 class AetherionWindow(QMainWindow):
+    """One top menu, a native five-card Home, and existing authenticated views."""
+
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle("AETHERION | Mission Health")
-        self.resize(1180, 740)
+        self.setWindowTitle("AETHERION  ·  TRUY TINH")
+        self.resize(1360, 850)
+        self.setMinimumSize(1040, 650)
         self.api_url = os.environ.get("AETHERION_API_URL", "http://127.0.0.1:8765").rstrip("/")
         self.network = QNetworkAccessManager(self)
-        self.setStyleSheet(
-            "QMainWindow, QWidget { background:#081422; color:#ecf4ff; font-family:'Segoe UI'; }"
-            "QLabel#heading { font-size:30px; font-weight:700; }"
-            "QLabel#detail { color:#a9bdd5; font-size:15px; }"
-            "QFrame#surface { background:#10243a; border:1px solid #29435e; border-radius:15px; }"
-            "QPushButton { background:#17314d; color:#f3f8ff; border:1px solid #2c5070; "
-            "border-radius:9px; padding:11px 14px; }"
-            "QPushButton:hover { background:#215176; }"
-        )
+        self.preferences = VisualPreferences()
+        app = QApplication.instance()
+        if app is not None:
+            self.preferences.apply(app)
 
-        central = QWidget()
-        outer = QVBoxLayout(central)
-        outer.setContentsMargins(28, 22, 28, 22)
-        outer.setSpacing(20)
+        root = QWidget()
+        root.setObjectName("appRoot")
+        outer = QVBoxLayout(root)
+        outer.setContentsMargins(0, 0, 0, 0)
+        outer.setSpacing(0)
 
-        brand = QPushButton("AETHERION  /  TRUY TINH")
+        top = QFrame()
+        top.setObjectName("topBar")
+        bar = QHBoxLayout(top)
+        bar.setContentsMargins(25, 10, 25, 10)
+        bar.setSpacing(9)
+        brand = QPushButton("◈  AETHERION")
+        brand.setObjectName("brandButton")
+        brand.setAccessibleName("AETHERION — về Trang đầu")
         brand.clicked.connect(self.show_portal)
-        brand.setStyleSheet("font-size:14px; font-weight:700; color:#74dce4; letter-spacing:2px;")
-        outer.addWidget(brand)
+        bar.addWidget(brand)
+        bar.addSpacing(14)
 
-        nav = QHBoxLayout()
-        nav.setSpacing(7)
         self.pages = QStackedWidget()
-        self.portal_page = build_portal_page()
+        self.pages.setObjectName("pageStack")
+        self.portal_page = build_portal_page(theme_name=self.preferences.theme_name,
+                                             reduce_motion=self.preferences.reduce_motion)
         self.portal_page.route_requested.connect(self.open_portal_route)
+        self.portal_page.theme_requested.connect(self.open_theme_menu)
         self.pages.addWidget(self.portal_page)
-        home_button = QPushButton("Trang đầu")
-        home_button.clicked.connect(self.show_portal)
-        nav.addWidget(home_button)
-        for index, (button_name, heading, message) in enumerate(SECTIONS):
-            button = QPushButton(button_name)
-            button.clicked.connect(lambda checked=False, i=index: self.pages.setCurrentIndex(i + 1))
-            nav.addWidget(button)
-            if index == 0:
-                # Mission Control loads live data only after explicit local authentication.
-                self.mission_control_page = build_mission_control_page(self.api_url, self.network)
-                self.pages.addWidget(self.mission_control_page)
-                continue
-            if index == 1:
-                # Reuse the local authenticated session; never invent a profile.
-                self.personal_today_page = AuthorizedPersonalTodayPage(self.api_url, self.network)
-                self.pages.addWidget(self.personal_today_page)
-                continue
-            page = QWidget()
-            layout = QVBoxLayout(page)
-            layout.setContentsMargins(20, 30, 20, 30)
-            title = QLabel(heading)
-            title.setObjectName("heading")
-            layout.addWidget(title)
-            card = QFrame()
-            card.setObjectName("surface")
-            card_layout = QVBoxLayout(card)
-            card_layout.setContentsMargins(25, 24, 25, 24)
-            content = QLabel(message)
-            content.setWordWrap(True)
-            content.setObjectName("detail")
-            card_layout.addWidget(content)
-            layout.addWidget(card)
-            layout.addStretch()
-            self.pages.addWidget(page)
-        # One explicit Mission -> Personal handoff; preserve identity on Back.
-        self.mission_control_page.subject_activated.connect(self.open_personal_subject)
-        # Native QWidget, not a browser or replacement landing page.
+
+        # Preserve real, already implemented features and their authenticated links.
+        self.mission_control_page = build_mission_control_page(self.api_url, self.network)
+        self.pages.addWidget(self.mission_control_page)
+        self.personal_today_page = AuthorizedPersonalTodayPage(self.api_url, self.network)
+        self.pages.addWidget(self.personal_today_page)
         self.medical_library_page = build_medical_library_page()
         self.pages.addWidget(self.medical_library_page)
-        library_button = QPushButton("Medical Library")
-        library_button.clicked.connect(self.show_medical_library)
-        nav.addWidget(library_button)
-        outer.addLayout(nav)
+        self.mission_control_page.subject_activated.connect(self.open_personal_subject)
+
+        self.monitor_page = FeatureLanding(
+            "02 / MEASUREMENTS", "Theo dõi & ECG",
+            "Hồ sơ đo lường cần một nguồn thật đã được ghép và cấp quyền. "
+            "ECG không có dạng sóng trước khi nhập bản ghi hợp lệ.",
+            (("Xem dữ liệu đang lưu", self.show_mission), ("Thư viện y khoa", self.show_medical_library)),
+        )
+        self.pages.addWidget(self.monitor_page)
+        self.assistant_page = FeatureLanding(
+            "03 / INTELLIGENCE", "Hỏi AI về sức khỏe",
+            "Trợ lý AI Local/Cloud chưa được xác nhận hoạt động trên Server. "
+            "Trong lúc này, bạn có thể đọc thư viện đã nhập và kiểm chứng nguồn.",
+            (("Mở thư viện khoa học", self.show_medical_library),),
+        )
+        self.pages.addWidget(self.assistant_page)
+        self.atlas_page = FeatureLanding(
+            "04 / DISCOVERY", "Khám phá cơ thể",
+            "Mô hình giải phẫu 3D chỉ được mở khi có mesh thật, camera và chọn vùng cơ thể. "
+            "Hình động nền không phải Atlas 3D.",
+            (("Tìm hiểu tài liệu", self.show_medical_library),),
+        )
+        self.pages.addWidget(self.atlas_page)
+        self.care_page = FeatureLanding(
+            "05 / CONTINUITY", "Hành trình chăm sóc",
+            "Quy trình Thu thập → Đánh giá → Hành động → Kiểm tra lại cần "
+            "lưu trên Server và tuân theo quy tắc chuyên môn được kiểm chứng.",
+            (("Mở Sức khỏe của tôi", self.show_personal),),
+        )
+        self.pages.addWidget(self.care_page)
+
+        # Main horizontal navigation; nested items use dropdown menus, never sidebars.
+        self._nav_button(bar, "Trang đầu", self.show_portal)
+        self._nav_menu(bar, "Sức khỏe ▾", (
+            ("Sức khỏe hôm nay", self.show_personal),
+            ("Hành trình chăm sóc", self.show_care),
+        ))
+        self._nav_menu(bar, "Theo dõi ▾", (
+            ("Tổng quan đo lường", self.show_monitor),
+            ("Điện tim (ECG)", self.show_monitor),
+            ("Bản ghi được cấp quyền", self.show_mission),
+        ))
+        self._nav_button(bar, "Hỏi AI", self.show_assistant)
+        self._nav_menu(bar, "Khám phá ▾", (
+            ("Thư viện NASA / y khoa", self.show_medical_library),
+            ("Cơ thể 3D", self.show_atlas),
+        ))
+        self._nav_button(bar, "Phi hành đoàn", self.show_mission)
+        bar.addStretch(1)
+
+        self.status = QLabel("○  Đang kiểm tra")
+        self.status.setObjectName("connectionPill")
+        self.status.setToolTip("Trạng thái HTTP Server tại địa chỉ cấu hình")
+        bar.addWidget(self.status)
+        self.theme_button = QToolButton()
+        self.theme_button.setText("◐  Giao diện")
+        self.theme_button.setAccessibleName("Thay đổi chủ đề, cỡ chữ và giảm chuyển động")
+        self.theme_button.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
+        self.theme_menu = QMenu(self.theme_button)
+        self.theme_button.setMenu(self.theme_menu)
+        self._build_theme_menu()
+        bar.addWidget(self.theme_button)
+        help_button = QToolButton()
+        help_button.setText("?  Trợ giúp")
+        help_button.clicked.connect(self.show_help)
+        bar.addWidget(help_button)
+        outer.addWidget(top)
         outer.addWidget(self.pages, 1)
 
-        status_row = QHBoxLayout()
-        self.status = QLabel("Local API: not checked")
-        status_row.addWidget(self.status, 1)
-        check = QPushButton("Check local server")
-        check.clicked.connect(self.check_server)
-        status_row.addWidget(check)
-        outer.addLayout(status_row)
+        footer = QFrame()
+        footer.setObjectName("topBar")
+        line = QHBoxLayout(footer)
+        line.setContentsMargins(28, 6, 28, 6)
+        left = QLabel("TRUY TINH  /  INDEPENDENT HEALTH INTELLIGENCE")
+        left.setObjectName("pageHint")
+        line.addWidget(left)
+        line.addStretch()
+        right = QLabel("Không phải thiết bị y tế · Chỉ hiện dữ liệu đã được xác minh nguồn")
+        right.setObjectName("pageHint")
+        line.addWidget(right)
+        outer.addWidget(footer)
 
-        foot = QLabel("Independent Team TRUY TINH prototype • Not a medical device • No live sensors connected")
-        foot.setStyleSheet("font-size:12px;color:#7892af;")
-        outer.addWidget(foot)
-        self.setCentralWidget(central)
+        self.setCentralWidget(root)
         self.pages.setCurrentWidget(self.portal_page)
         self.check_server()
+        self.heartbeat = QTimer(self)
+        self.heartbeat.setInterval(30000)
+        self.heartbeat.timeout.connect(self.check_server)
+        self.heartbeat.start()
 
-    def show_portal(self) -> None:
-        """Portal is always reachable, including while the server is offline."""
+    @staticmethod
+    def _nav_button(layout, text, handler):
+        button = QPushButton(text)
+        button.setObjectName("navButton")
+        button.setMinimumHeight(38)
+        button.clicked.connect(handler)
+        layout.addWidget(button)
+        return button
+
+    @staticmethod
+    def _nav_menu(layout, text, actions):
+        button = QToolButton()
+        button.setText(text)
+        button.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
+        menu = QMenu(button)
+        for label, handler in actions:
+            entry = QAction(label, menu)
+            entry.triggered.connect(handler)
+            menu.addAction(entry)
+        button.setMenu(menu)
+        layout.addWidget(button)
+        return button
+
+    def _build_theme_menu(self):
+        self.theme_menu.clear()
+        for code, theme in THEMES.items():
+            action = QAction(theme.title, self.theme_menu)
+            action.setCheckable(True)
+            action.setChecked(code == self.preferences.theme_name)
+            action.triggered.connect(lambda checked=False, key=code: self._change_theme(key))
+            self.theme_menu.addAction(action)
+        self.theme_menu.addSeparator()
+        motion = QAction("Giảm chuyển động nền", self.theme_menu)
+        motion.setCheckable(True)
+        motion.setChecked(self.preferences.reduce_motion)
+        motion.triggered.connect(self._change_motion)
+        self.theme_menu.addAction(motion)
+        self.theme_menu.addSeparator()
+        smaller = QAction("A−  Chữ nhỏ hơn", self.theme_menu)
+        smaller.triggered.connect(lambda: self._change_font(-1))
+        larger = QAction("A+  Chữ lớn hơn", self.theme_menu)
+        larger.triggered.connect(lambda: self._change_font(1))
+        self.theme_menu.addAction(smaller)
+        self.theme_menu.addAction(larger)
+
+    def _change_theme(self, theme_name: str):
+        self.preferences.set_theme(theme_name)
+        self._apply_preferences()
+
+    def _change_motion(self, checked: bool):
+        self.preferences.set_reduced_motion(checked)
+        self._apply_preferences()
+
+    def _change_font(self, delta: int):
+        self.preferences.set_font_size(self.preferences.font_size + delta)
+        self._apply_preferences()
+
+    def _apply_preferences(self):
+        app = QApplication.instance()
+        if app is not None:
+            self.preferences.apply(app)
+        self.portal_page.set_visuals(self.preferences.theme_name, self.preferences.reduce_motion)
+        self._build_theme_menu()
+
+    def open_theme_menu(self):
+        self.theme_button.showMenu()
+
+    def show_portal(self):
         self.pages.setCurrentWidget(self.portal_page)
 
-    def open_portal_route(self, route: str) -> None:
-        """Route only to implemented native views; do not fake unavailable AI/ECG."""
-        if route not in PORTAL_ROUTES:
-            return
-        if route == "health":
-            self.pages.setCurrentWidget(self.personal_today_page)
-        elif route in ("monitor", "crew"):
-            self.pages.setCurrentWidget(self.mission_control_page)
-            if route == "monitor":
-                self.mission_control_page.status.setText(
-                    "Recorded observations require authorization; ECG is not yet connected."
-                )
-        elif route == "science":
-            self.show_medical_library()
-        elif route == "assistant":
-            QMessageBox.information(self, "AI chưa khả dụng",
-                "Chưa có AI đã xác thực trong ứng dụng này. Không đưa ra chẩn đoán hoặc kết quả giả.")
-
-    def open_personal_subject(self, subject_id: str, access_token: str) -> None:
-        """Open the precise subject selected in Mission using the same session."""
-        self.personal_today_page.select_subject(subject_id, access_token)
+    def show_personal(self):
         self.pages.setCurrentWidget(self.personal_today_page)
 
-    def show_medical_library(self) -> None:
+    def show_mission(self):
+        self.pages.setCurrentWidget(self.mission_control_page)
+
+    def show_medical_library(self):
         self.medical_library_page.reload()
         self.pages.setCurrentWidget(self.medical_library_page)
 
-    def check_server(self) -> None:
-        self.status.setText("Local API: checking…")
+    def show_monitor(self):
+        self.pages.setCurrentWidget(self.monitor_page)
+
+    def show_assistant(self):
+        self.pages.setCurrentWidget(self.assistant_page)
+
+    def show_atlas(self):
+        self.pages.setCurrentWidget(self.atlas_page)
+
+    def show_care(self):
+        self.pages.setCurrentWidget(self.care_page)
+
+    def open_portal_route(self, route: str):
+        if route not in PORTAL_ROUTES:
+            return
+        {
+            "health": self.show_personal,
+            "monitor": self.show_monitor,
+            "assistant": self.show_assistant,
+            "science": self.show_medical_library,
+            "crew": self.show_mission,
+        }[route]()
+
+    def open_personal_subject(self, subject_id: str, access_token: str):
+        """Preserve the existing authorized Mission → Personal handoff."""
+        self.personal_today_page.select_subject(subject_id, access_token)
+        self.show_personal()
+
+    def show_help(self):
+        QMessageBox.information(
+            self, "Hỗ trợ AETHERION",
+            "Để xem dữ liệu, hãy khởi động AETHERION Server và đăng nhập vào hồ sơ "
+            "được cấp quyền. Truyền tin cấp cứu chưa được chứng nhận hoặc triển khai. "
+            "Đây là sản phẩm nghiên cứu độc lập, không phải thiết bị y tế.",
+        )
+
+    def check_server(self):
+        self.status.setText("○  Đang kiểm tra")
         request = QNetworkRequest(QUrl(self.api_url + "/health"))
         reply = self.network.get(request)
         reply.finished.connect(lambda: self.finish_check(reply))
 
-    def finish_check(self, reply) -> None:
+    def finish_check(self, reply):
+        code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
         error = reply.error()
         body = bytes(reply.readAll()).decode("utf-8", errors="replace")
-        if error or '"status":"ok"' not in body.replace(" ", ""):
-            self.status.setText("Local API: unavailable — start the server in another terminal")
+        if error != QNetworkReply.NetworkError.NoError or code != 200 or '"status":"ok"' not in body.replace(" ", ""):
+            self.status.setText("○  Server ngoại tuyến")
+            self.status.setToolTip(f"Không kết nối được tới {self.api_url}. Trang đầu vẫn dùng được.")
         else:
-            self.status.setText("Local API: connected — verified response from /health")
+            self.status.setText("●  Server đã kết nối")
+            self.status.setToolTip(f"Phản hồi HTTP hợp lệ từ {self.api_url}/health")
         reply.deleteLater()
 
 
 def main() -> int:
     app = QApplication(sys.argv)
+    app.setApplicationName("AETHERION")
+    app.setOrganizationName("TRUY TINH")
     window = AetherionWindow()
     window.show()
     return app.exec()
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
