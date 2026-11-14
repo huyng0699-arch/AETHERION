@@ -88,11 +88,11 @@ def read_index(s: requests.Session):
                 entries.append({"category": section, "title": title, "source_url": url})
         else:
             entries.append({"category": section, "title": name, "source_url": None})
-    urls = [item["source_url"] for item in entries]
-    if len(entries) != EXPECTED or any(not url for url in urls):
-        raise RuntimeError(f"NASA CliFF 119 table is not exactly {EXPECTED} linked originals: {len(entries)} rows; {sum(bool(u) for u in urls)} links. Refusing incomplete or inferred data.")
-    if len(set(urls)) != EXPECTED:
-        raise RuntimeError("NASA CliFF 119 source links are not unique; refusing to claim 119 distinct originals.")
+    # A partial or imperfect NASA source index must not prevent downloading and
+    # preserving the other genuinely sourced documents. Completeness is audited
+    # after download, never inferred from the name "CliFF 119".
+    if not entries:
+        raise RuntimeError("The official NASA page contains no readable CliFF 119 entries.")
     return entries
 
 
@@ -141,13 +141,17 @@ def main():
         results.append(result)
         print(f"{index:03d}/{len(entries):03d} {result['status']}: {item['title']}", flush=True)
     good = sum(item["status"] == "downloaded" for item in results)
-    complete = len(entries) == EXPECTED and good == EXPECTED
+    linked = [item["source_url"] for item in entries if item["source_url"]]
+    unique_links = len(linked) == len(set(linked))
+    complete = len(entries) == EXPECTED and good == EXPECTED and unique_links
     manifest = {
         "dataset": "NASA Integrated Medical Model - CliFF 119 (2023)",
         "source": SOURCE,
         "publisher": "NASA",
         "expected_documents": EXPECTED,
         "source_rows_found": len(entries),
+        "linked_documents": len(linked),
+        "unique_source_links": unique_links,
         "downloaded_documents": good,
         "complete": complete,
         "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -157,7 +161,7 @@ def main():
     (OUTPUT / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Downloaded {good}/{EXPECTED}; COMPLETE={complete}", flush=True)
     if not complete:
-        print("INCOMPLETE: check manifest.json. Do not represent this archive as 119/119 verified.", flush=True)
+        print("INCOMPLETE: preserved NASA-only originals and manifest for retry. Do not represent this archive as 119/119 verified.", flush=True)
         raise SystemExit(1)
 
 
