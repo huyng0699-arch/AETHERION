@@ -11,6 +11,8 @@ import json
 import math
 from urllib.parse import urlencode
 
+from .localization import normalize_locale, tr, translate_existing, translate_shell_widgets
+
 
 VALID_QUALITY = frozenset({"READY", "NO_DATA", "STALE", "OFFLINE", "DENIED", "ERROR", "UNVERIFIED"})
 
@@ -106,6 +108,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
 
         def __init__(self):
             super().__init__(parent)
+            self.ui_language = "vi"
             self._token = ""  # ephemeral; never logged or saved to disk
             self._subjects: list[str] = []
             self._request_seq = 0
@@ -118,9 +121,20 @@ def build_mission_control_page(api_url: str, network, parent=None):
             from .features.mission.mission_layout import update_summary
             update_summary(self, subject=subject, count=count, latest=latest, sources=sources)
 
+        def set_locale(self, locale: str):
+            self.ui_language = normalize_locale(locale)
+            translate_shell_widgets(self, self.ui_language)
+            # Status strings are translated in place; source IDs and observations are not.
+            self._update_summary(
+                subject=self.subjects.currentItem().text() if self.subjects.currentItem() else "",
+            )
+
+        def _say(self, key: str, **values):
+            self.status.setText(tr(self.ui_language, key, **values))
+
         def sign_in(self):
             if not self.username.text().strip() or not self.password.text():
-                self.status.setText("DENIED — enter configured local credentials")
+                self._say("mission.deniedCredentials")
                 return
             request = QNetworkRequest(QUrl(api_url.rstrip("/") + "/api/v1/auth/login"))
             request.setHeader(QNetworkRequest.KnownHeaders.ContentTypeHeader, "application/json")
@@ -139,12 +153,12 @@ def build_mission_control_page(api_url: str, network, parent=None):
             reply.deleteLater()
             if code != 200 or not isinstance(token, str) or not token:
                 self._token = ""
-                self.status.setText("DENIED / OFFLINE — login failed; no records shown")
+                self._say("mission.loginFailed")
                 self.table.setRowCount(0)
                 self._update_summary()
                 return
             self._token = token
-            self.status.setText("Authenticated local session — choose an authorized subject")
+            self._say("mission.authenticated")
             self.refresh_subject()
 
         def add_subject(self):
@@ -152,7 +166,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             try:
                 observation_url(api_url, subject_id)
             except ValueError:
-                self.status.setText("ERROR — subject ID must be 1–80 printable characters")
+                self._say("mission.invalidSubject")
                 return
             if subject_id not in self._subjects:
                 self._subjects.append(subject_id)
@@ -163,10 +177,10 @@ def build_mission_control_page(api_url: str, network, parent=None):
             """Never route to a guessed subject or silently reuse a logged-out session."""
             selected = self.subjects.currentItem()
             if selected is None:
-                self.status.setText("NO_DATA — choose a subject before opening Personal Health")
+                self._say("mission.selectBeforeOpen")
                 return
             if not self._token:
-                self.status.setText("DENIED — authenticate before opening Personal Health")
+                self._say("mission.deniedOpen")
                 return
             # Subject authorization remains enforced by the server on every request.
             self.subject_activated.emit(selected.text(), self._token)
@@ -178,15 +192,15 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self.table.setRowCount(0)
             self._update_summary(subject=subject_id)
             if not subject_id:
-                self.status.setText("NO_DATA — no authorized subject selected")
+                self._say("mission.noSubject")
                 return
             if not self._token:
-                self.status.setText("DENIED — sign in before requesting protected observations")
+                self._say("mission.loginRequired")
                 return
             url = observation_url(api_url, subject_id)
             request = QNetworkRequest(QUrl(url))
             request.setRawHeader(b"Authorization", ("Bearer " + self._token).encode())
-            self.status.setText(f"Loading recorded data for {subject_id}…")
+            self._say("mission.loading", subject=subject_id)
             reply = network.get(request)
             reply.finished.connect(lambda: self._loaded(reply, subject_id, seq))
 
@@ -198,18 +212,19 @@ def build_mission_control_page(api_url: str, network, parent=None):
                 return  # never show a superseded subject's response
             if code in (401, 403):
                 self._token = "" if code == 401 else self._token
-                self.status.setText("DENIED — session expired or subject access forbidden")
+                self._say("mission.expired")
                 self._update_summary(subject=subject_id)
                 return
             if code != 200:
-                self.status.setText("OFFLINE / ERROR — server unreachable or request rejected")
+                self._say("mission.offline")
                 self._update_summary(subject=subject_id)
                 return
             try:
                 snapshot = parse_observations(json.loads(raw.decode("utf-8")), subject_id)
             except (ValueError, UnicodeDecodeError):
                 snapshot = MissionSnapshot("ERROR", subject_id, (), "", "Malformed JSON response")
-            self.status.setText(f"{snapshot.state} — {snapshot.note}")
+            self._say("mission.snapshot", state=snapshot.state,
+                      note=translate_existing(snapshot.note, self.ui_language))
             self._update_summary(subject=subject_id, count=len(snapshot.rows),
                                  latest=snapshot.latest_at,
                                  sources=len({row.source_id for row in snapshot.rows}))
@@ -219,7 +234,6 @@ def build_mission_control_page(api_url: str, network, parent=None):
                                                 obs.scope, obs.quality, obs.verification_state)):
                     self.table.setItem(row_i, col_i, QTableWidgetItem(value))
             if snapshot.has_more:
-                self.technical.setText("More server records exist; showing the newest 100. "
-                                       "No health incident verdict is available from this endpoint.")
+                self.technical.setText(tr(self.ui_language, "mission.more"))
 
     return MissionControlPage()
