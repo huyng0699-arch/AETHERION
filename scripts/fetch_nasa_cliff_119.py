@@ -141,9 +141,10 @@ def main():
         results.append(result)
         print(f"{index:03d}/{len(entries):03d} {result['status']}: {item['title']}", flush=True)
     good = sum(item["status"] == "downloaded" for item in results)
+    pdf_good = sum(item["status"] == "downloaded" and item["path"].lower().endswith(".pdf") for item in results)
     linked = [item["source_url"] for item in entries if item["source_url"]]
     unique_links = len(linked) == len(set(linked))
-    complete = len(entries) == EXPECTED and good == EXPECTED and unique_links
+    complete = len(entries) == EXPECTED and good == EXPECTED and pdf_good == EXPECTED and unique_links
     manifest = {
         "dataset": "NASA Integrated Medical Model - CliFF 119 (2023)",
         "source": SOURCE,
@@ -153,13 +154,14 @@ def main():
         "linked_documents": len(linked),
         "unique_source_links": unique_links,
         "downloaded_documents": good,
+        "downloaded_pdf_count": pdf_good,
         "complete": complete,
         "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),
         "policy": "Original NASA documents only. No derived content and no legacy repository data.",
         "files": results,
     }
     (OUTPUT / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Downloaded {good}/{EXPECTED}; COMPLETE={complete}", flush=True)
+    print(f"Downloaded {good}/{EXPECTED} documents; original PDFs {pdf_good}/{EXPECTED}; COMPLETE={complete}", flush=True)
     if not complete:
         print("INCOMPLETE: preserved NASA-only originals and manifest for retry. Do not represent this archive as 119/119 verified.", flush=True)
         raise SystemExit(1)
