@@ -119,7 +119,8 @@ def build_personal_today_snapshot(
             status_note="Response subject mismatch or malformed payload (ERROR).",
         )
     observations = payload.get("observations")
-    if not isinstance(observations, list):
+    if (not isinstance(observations, list) or len(observations) > 500 or
+            not isinstance(payload.get("has_more", False), bool)):
         return PersonalTodaySnapshot(
             state="ERROR",
             subject_id=subject_id,
@@ -147,6 +148,7 @@ def build_personal_today_snapshot(
 
     cards: list[PersonalObservationCard] = []
     latest_dt: datetime | None = None
+    excluded_nonlive = 0
     for item in observations:
         if not isinstance(item, dict) or item.get("subject_id") != subject_id:
             return PersonalTodaySnapshot(
@@ -158,6 +160,17 @@ def build_personal_today_snapshot(
                 care_flow_stage="GATHER",
                 status_note="Observation identity mismatch (ERROR).",
             )
+        # Research cohorts, synthetic engineering records and test fixtures are
+        # never personal vital signs, even if their imported quality says READY.
+        # Validate subject identity ABOVE this filter to fail closed on mixed IDs.
+        source_name = str(item.get("source_id") or "").casefold()
+        scope_name = str(item.get("scope") or "").casefold()
+        verification_name = str(item.get("verification_state") or "").upper()
+        if (scope_name in {"engineering_test", "test_fixture"} or
+                verification_name == "TEST_FIXTURE" or
+                source_name.startswith(("nasa_osdr:", "research:"))):
+            excluded_nonlive += 1
+            continue
         required = ("metric", "value", "unit", "observed_at", "source_id", "scope", "quality", "verification_state")
         if any(item.get(k) is None or str(item[k]).strip() == "" for k in required):
             return PersonalTodaySnapshot(
@@ -170,12 +183,22 @@ def build_personal_today_snapshot(
                 status_note="Observation lacks required provenance fields (ERROR).",
             )
         try:
+            if isinstance(item["value"], bool) or not isinstance(item["value"], (int, float)):
+                raise ValueError("measurement must be numeric, not boolean or arbitrary text")
             val = float(item["value"])
             if not math.isfinite(val):
                 raise ValueError("nonfinite")
             obs_dt = datetime.fromisoformat(str(item["observed_at"]).replace("Z", "+00:00"))
             if obs_dt.tzinfo is None or obs_dt.utcoffset() is None:
                 raise ValueError("naive timestamp")
+            # The current API stores receipt provenance. Keep compatibility
+            # with older evidence fixtures without received_at, but reject
+            # fabricated or inconsistent receipt times when they are supplied.
+            if item.get("received_at") is not None:
+                received_dt = datetime.fromisoformat(str(item["received_at"]).replace("Z", "+00:00"))
+                if (received_dt.tzinfo is None or received_dt.utcoffset() is None or
+                        received_dt < obs_dt):
+                    raise ValueError("invalid received_at provenance")
         except (ValueError, TypeError, OverflowError):
             return PersonalTodaySnapshot(
                 state="ERROR",
@@ -188,6 +211,16 @@ def build_personal_today_snapshot(
             )
 
         quality = str(item["quality"]).upper()
+        if quality in {"ERROR", "DENIED", "OFFLINE"}:
+            # A server may report availability problems, but a numeric payload
+            # carrying DENIED/ERROR/OFFLINE must not expose a personal reading.
+            return PersonalTodaySnapshot(
+                state="ERROR", subject_id=subject_id, cards=(), latest_at="",
+                intake_required=False, care_flow_stage="GATHER",
+                status_note="Invalid availability state mixed with measurement (ERROR).",
+            )
+        if quality == "NO_DATA":
+            continue
         if quality not in VALID_QUALITY:
             quality = "UNVERIFIED"
         ver_state = str(item["verification_state"])
@@ -214,6 +247,15 @@ def build_personal_today_snapshot(
             )
         )
 
+    if not cards:
+        return PersonalTodaySnapshot(
+            state="NO_DATA", subject_id=subject_id, cards=(), latest_at="",
+            intake_required=False, care_flow_stage="GATHER",
+            status_note=("No live personal observations; research/test fixtures excluded (NO_DATA)."
+                         if excluded_nonlive else
+                         "No usable recorded personal observations (NO_DATA)."),
+            has_more=payload.get("has_more", False),
+        )
     overall_state = aggregate_observation_quality(cards)
     state_notes = {
         "READY": "Source-backed readings available; this is not a health assessment.",
