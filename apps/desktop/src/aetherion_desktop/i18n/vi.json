@@ -277,5 +277,21 @@
   "observatory.status.disconnected": "NGUỒN CHƯA KẾT NỐI",
   "observatory.status.connected": "KHO DỮ LIỆU CÓ NGUỒN",
   "observatory.source.unknown": "Chưa có liên kết nguồn",
-  "observatory.safety": "THAM KHẢO KHOA HỌC · KHÔNG PHẢI CHẨN ĐOÁN"
+  "observatory.safety": "THAM KHẢO KHOA HỌC · KHÔNG PHẢI CHẨN ĐOÁN",
+  "personal.status.offline": "Không kết nối được server (OFFLINE). Không tạo dữ liệu ngoại tuyến giả.",
+  "personal.status.denied": "Chính sách server từ chối quyền truy cập (DENIED).",
+  "personal.status.subjectMismatch": "Danh tính hồ sơ trong phản hồi không khớp hoặc dữ liệu sai định dạng (ERROR).",
+  "personal.status.missingArray": "Phản hồi thiếu danh sách quan sát (ERROR).",
+  "personal.status.noToday": "Chưa có quan sát cá nhân hôm nay (NO_DATA). Nhập triệu chứng là tùy chọn.",
+  "personal.status.identityMismatch": "Danh tính trong bản ghi quan sát không khớp (ERROR).",
+  "personal.status.noProvenance": "Bản ghi thiếu thông tin nguồn gốc bắt buộc (ERROR).",
+  "personal.status.badValue": "Giá trị quan sát hoặc thời điểm không hợp lệ (ERROR).",
+  "personal.status.ready": "Có số đo kèm nguồn; đây không phải đánh giá sức khỏe.",
+  "personal.status.stale": "Một số số đo đã cũ; cần đo lại trước khi diễn giải thay đổi.",
+  "personal.status.unverified": "Một số số đo chưa xác minh hoặc mâu thuẫn; không được suy luận sức khỏe.",
+  "personal.status.sourceOffline": "Nguồn dữ liệu ngoại tuyến; số đo cũ không chứng minh tình trạng hiện tại.",
+  "personal.status.sourceDenied": "Một phần dữ liệu bị từ chối truy cập; không suy đoán giá trị thiếu.",
+  "personal.status.sourceError": "Nguồn chứa dữ liệu không hợp lệ; không diễn giải số đo này.",
+  "personal.status.none": "Không có bản ghi dùng được; chưa biết không đồng nghĩa bình thường.",
+  "personal.metricSource": "Source: {source}  ·  {observed}"
 }
