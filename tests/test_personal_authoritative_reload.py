@@ -143,5 +143,50 @@ class AuthoritativeReloadTests(unittest.TestCase):
         self.assertEqual(row["observed_at"], "2026-11-14T09:00:00Z")
 
 
+    def test_denied_error_or_no_data_quality_cannot_expose_numeric_values(self):
+        for quality in ("DENIED", "ERROR", "OFFLINE", "NO_DATA"):
+            with self.subTest(quality=quality):
+                self.server.payload["observations"] = [
+                    {**observation(), "quality": quality}
+                ]
+                result = self.load()
+                self.assertEqual((result.status, result.observations), ("ERROR", ()))
+                self.assertFalse(result.source_is_server)
+
+    def test_cabin_vehicle_and_habitat_scopes_never_count_as_personal(self):
+        for scope in ("CABIN", "VEHICLE", "habitat", "engineering_test"):
+            with self.subTest(scope=scope):
+                self.server.payload["observations"] = [
+                    {**observation(), "scope": scope}
+                ]
+                result = self.load()
+                self.assertEqual((result.status, result.observations), ("ERROR", ()))
+
+    def test_valid_personal_scope_variants_preserve_original_source(self):
+        for scope in ("CREW", "crew", "personal"):
+            with self.subTest(scope=scope):
+                self.server.payload["observations"] = [
+                    {**observation(), "scope": scope}
+                ]
+                result = self.load()
+                self.assertEqual(result.status, "READY")
+                self.assertEqual(result.observations[0]["scope"], scope)
+
+    def test_received_at_provenance_is_timezone_aware_and_not_before_observation(self):
+        for timestamp in ("2026-11-14T08:59:00Z", "2026-11-14T09:01:00"):
+            with self.subTest(timestamp=timestamp):
+                self.server.payload["observations"] = [
+                    {**observation(), "received_at": timestamp}
+                ]
+                result = self.load()
+                self.assertEqual((result.status, result.observations), ("ERROR", ()))
+        self.server.payload["observations"] = [
+            {**observation(), "received_at": "2026-11-14T09:01:00+00:00"}
+        ]
+        result = self.load()
+        self.assertEqual(result.status, "READY")
+        self.assertEqual(result.observations[0]["received_at"], "2026-11-14T09:01:00+00:00")
+
+
 if __name__ == "__main__":
     unittest.main()
