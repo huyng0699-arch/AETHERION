@@ -33,7 +33,7 @@ from PySide6.QtWidgets import (
 )
 
 from .visual_theme import palette_for
-from .monitoring_time import MAX_SPAN
+from .monitoring_time import MAX_SPAN, MIN_SPAN
 from .features.demo.nasa_ma7 import load_real_nasa_data
 
 ROUTE_IDS = (
@@ -110,6 +110,7 @@ TEXT = {
         "recentMonth": "30 d",
         "apply": "Apply UTC range",
         "timeInvalid": "Invalid UTC interval: Start must be earlier than End.",
+        "timeRangeTooShort": "UTC range must be at least 1 minute.",
         "timeRangeTooLong": "UTC range cannot exceed 366 days.",
         "timeWindow": "UTC window: {start} — {end}",
         "timeSource": "NASA MA-7 original timepoints do not have verifiable absolute UTC timestamps. UTC bounds are not applied to this historical archive.",
@@ -234,6 +235,7 @@ TEXT = {
         "recentMonth": "30 ngày",
         "apply": "Áp dụng UTC",
         "timeInvalid": "Khoảng UTC không hợp lệ: thời điểm bắt đầu phải trước kết thúc.",
+        "timeRangeTooShort": "Khoảng UTC phải dài ít nhất 1 phút.",
         "timeRangeTooLong": "Khoảng UTC không được vượt quá 366 ngày.",
         "timeWindow": "Khoảng UTC: {start} — {end}",
         "timeSource": "Mốc báo cáo MA-7 không có thời điểm UTC tuyệt đối được xác minh. Bộ lọc UTC không tác động vào dữ liệu lịch sử này.",
@@ -1232,7 +1234,11 @@ class MissionOperationsHome(QWidget):
         if start >= end:
             self.window_status.setText(self._t("timeInvalid"))
             return
-        if start.msecsTo(end) > MAX_SPAN.total_seconds() * 1000:
+        span_msecs = start.msecsTo(end)
+        if span_msecs < MIN_SPAN.total_seconds() * 1000:
+            self.window_status.setText(self._t("timeRangeTooShort"))
+            return
+        if span_msecs > MAX_SPAN.total_seconds() * 1000:
             self.window_status.setText(self._t("timeRangeTooLong"))
             return
         self._start_epoch, self._end_epoch = start.toSecsSinceEpoch(), end.toSecsSinceEpoch()
