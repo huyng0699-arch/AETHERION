@@ -13,10 +13,16 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: aetherion-android-release
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
+    env:
+      NODE_ENV: production
     steps:
       - uses: actions/checkout@v4
 
@@ -33,27 +39,36 @@ jobs:
 
       - uses: android-actions/setup-android@v3
 
-      - name: Install Android SDK packages
-        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+      - name: Install Android SDK 36
+        run: sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
 
-      - name: Install locked mobile dependencies
-        run: npm ci --prefix apps/mobile --no-audit --no-fund
+      - name: Install mobile dependencies and required Expo Babel preset
+        working-directory: apps/mobile
+        run: |
+          npm install --no-audit --no-fund
+          npm install --save-dev babel-preset-expo@54.0.12 --no-audit --no-fund
 
-      - name: Generate the native Android project
+      - name: Generate native Android project
         working-directory: apps/mobile
         run: npx expo prebuild --platform android --no-install
 
-      - name: Build the installable APK
+      - name: Build release APK
         working-directory: apps/mobile/android
-        run: ./gradlew assembleDebug --no-daemon
+        run: ./gradlew --no-daemon --no-parallel --max-workers=2 -Pkotlin.compiler.execution.strategy=in-process assembleRelease
 
-      - name: Name and identify APK
+      - name: Verify, name and checksum APK
+        shell: bash
         run: |
+          set -euo pipefail
+          APK="apps/mobile/android/app/build/outputs/apk/release/app-release.apk"
+          test -s "$APK"
+          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -P 16 -v 4 "$APK"
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose "$APK"
           mkdir -p dist-apk
-          cp apps/mobile/android/app/build/outputs/apk/debug/app-debug.apk dist-apk/AETHERION-Android-Demo-v0.1.0.apk
-          sha256sum dist-apk/AETHERION-Android-Demo-v0.1.0.apk | tee dist-apk/SHA256SUMS.txt
+          cp "$APK" dist-apk/AETHERION-Android-Demo-v0.1.0.apk
+          (cd dist-apk && sha256sum AETHERION-Android-Demo-v0.1.0.apk > SHA256SUMS.txt)
 
-      - name: Upload APK workflow artifact
+      - name: Upload verified APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: AETHERION-Android-Demo-v0.1.0
@@ -61,19 +76,21 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Publish APK to GitHub Releases
+      - name: Publish public GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: aetherion-android-demo-${{ github.run_number }}-${{ github.run_attempt }}
-          name: AETHERION Android Demo v0.1.0 (build ${{ github.run_number }})
-          prerelease: true
+          tag_name: v0.1.0-android-${{ github.run_number }}
+          name: AETHERION Android Demo v0.1.0
+          prerelease: false
+          make_latest: true
           target_commitish: ${{ github.sha }}
           files: dist-apk/*
           body: |
-            Installable AETHERION Expo/React Native Android demo build.
+            Installable AETHERION Android demo by Team TRUY TINH for the NASA Space Apps Challenge 2026.
 
             - Package: `io.truytinh.aetherion.mobile`
-            - Signed with the Android debug key for sideloading; not a Google Play release.
-            - The public NASA MA-7 demo archive is bundled for offline viewing.
-            - Live server features require a reachable AETHERION Server.
-            - SHA-256 is included in `SHA256SUMS.txt`.
+            - Android SDK: 36
+            - APK alignment and APK Signature Scheme verification run before publication
+            - SHA-256 checksum included in `SHA256SUMS.txt`
+            - Offline NASA MA-7 historical archive included
+            - Connected health records, administration and AI use the AETHERION Server
