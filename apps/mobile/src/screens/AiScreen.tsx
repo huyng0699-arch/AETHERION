@@ -7,6 +7,7 @@ import { MessageKey, t } from '../i18n';
 import { ThemeColors, useThemedStyles } from '../theme';
 import { ApiError } from '../api/client';
 import { AssistantChatRequest, AssistantProvider, AssistantStatus, ChatLine, getAssistantStatus, sendAssistantChat } from '../api/assistant';
+import { DEMO_TOKEN } from '../api/demoHealth';
 import { AppHeader, AppPage, Body, Panel, StatusPill } from '../components/ui';
 
 const AI_ORB = require('../../assets/aetherion-ai-orb.png');
@@ -52,6 +53,12 @@ export function AiScreen({ locale, token, context, onClearContext, onBack, onUna
     const current = beginStatus();
     setChecking(true);
     setStatusError(null);
+    if (token === DEMO_TOKEN) {
+      setStatus(null);
+      setStatusError('aiUnavailable');
+      setChecking(false);
+      return;
+    }
     try {
       const result = await getAssistantStatus(token);
       if (current()) setStatus(result);
@@ -120,12 +127,12 @@ export function AiScreen({ locale, token, context, onClearContext, onBack, onUna
     <AppPage>
       <AppHeader title={t(locale, 'ai')} onBack={onBack} backLabel={t(locale, 'back')} trailing={
         <Pressable accessibilityRole="button" accessibilityLabel={t(locale, 'refresh')} onPress={() => setRefreshKey((value) => value + 1)} style={styles.refreshButton}>
-          <Ionicons name="refresh" size={18} color={colors.cyan} />
+          <Ionicons name="refresh" size={18} color={colors.primary} />
         </Pressable>
       } />
       <View style={styles.hero}>
         <Image source={AI_ORB} resizeMode="contain" style={styles.orb} />
-        {checking ? <View style={styles.statusRow}><ActivityIndicator color={colors.cyan} /><Text style={styles.statusText}>{t(locale, 'aiChecking')}</Text></View>
+        {checking ? <View style={styles.statusRow}><ActivityIndicator color={colors.primary} /><Text style={styles.statusText}>{t(locale, 'aiChecking')}</Text></View>
           : statusError ? <StatusPill label={t(locale, statusError)} tone="warn" />
             : available ? <StatusPill label={t(locale, 'serverOnline')} tone="good" />
               : <StatusPill label={t(locale, 'aiUnavailableTitle')} tone="warn" />}
@@ -148,7 +155,7 @@ export function AiScreen({ locale, token, context, onClearContext, onBack, onUna
           {provider === 'cloud' && cloudAvailable ? (
             <View style={styles.consentGroup}>
               <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: cloudConsent }} onPress={() => setCloudConsent((value) => !value)} style={styles.consentRow}>
-                <Ionicons name={cloudConsent ? 'checkbox' : 'square-outline'} size={20} color={cloudConsent ? colors.cyan : colors.muted} />
+                <Ionicons name={cloudConsent ? 'checkbox' : 'square-outline'} size={20} color={cloudConsent ? colors.primary : colors.muted} />
                 <Text style={styles.consentText}>{t(locale, 'aiCloudConsent')}</Text>
               </Pressable>
               {!cloudConsent ? <Text style={styles.consentHint}>{t(locale, 'aiCloudConsentRequired')}</Text> : null}
@@ -169,7 +176,9 @@ export function AiScreen({ locale, token, context, onClearContext, onBack, onUna
         </Pressable>
       </Panel> : null}
 
-      {!checking && !status && statusError ? <Panel><Body>{t(locale, statusError)}</Body></Panel> : null}
+      {!checking && !status && statusError ? <Panel><Body>{token === DEMO_TOKEN
+        ? (locale === 'vi' ? 'Chat AI chưa khả dụng trong phiên này. Đăng nhập khi đã kết nối máy chủ để dùng trợ lý.' : 'AI chat is unavailable in this session. Sign in with a connected server to use its assistant.')
+        : t(locale, statusError)}</Body></Panel> : null}
       {!checking && status && !available ? <Panel><Body>{t(locale, 'aiUnavailable')}</Body></Panel> : null}
 
       {messages.length > 0 ? <View style={styles.transcript}>
@@ -177,15 +186,17 @@ export function AiScreen({ locale, token, context, onClearContext, onBack, onUna
       </View> : null}
 
       {chatError ? <Panel style={styles.errorPanel}><Text style={styles.errorText}>{t(locale, chatError)}</Text></Panel> : null}
-      {status && available ? (
+      {((status && available) || token === DEMO_TOKEN) ? (
         <Panel style={styles.composer}>
           <TextInput
             accessibilityLabel={t(locale, 'aiPromptPlaceholder')}
             value={draft}
             onChangeText={setDraft}
-            placeholder={t(locale, 'aiPromptPlaceholder')}
+            placeholder={token === DEMO_TOKEN
+              ? (locale === 'vi' ? 'Cần đăng nhập với máy chủ đã kết nối để trò chuyện' : 'Sign in to a connected server to chat')
+              : t(locale, 'aiPromptPlaceholder')}
             placeholderTextColor={colors.faint}
-            selectionColor={colors.cyan}
+            selectionColor={colors.primary}
             multiline
             maxLength={3000}
             editable={!checking && !sending && (provider === 'local' ? localAvailable : cloudAvailable)}
@@ -197,7 +208,7 @@ export function AiScreen({ locale, token, context, onClearContext, onBack, onUna
           </Pressable>
         </Panel>
       ) : null}
-      {sending ? <View style={styles.sendingRow}><ActivityIndicator color={colors.cyan} /><Text style={styles.statusText}>{t(locale, 'aiSending')}</Text></View> : null}
+      {sending ? <View style={styles.sendingRow}><ActivityIndicator color={colors.primary} /><Text style={styles.statusText}>{t(locale, 'aiSending')}</Text></View> : null}
     </AppPage>
   );
 }
@@ -205,7 +216,7 @@ export function AiScreen({ locale, token, context, onClearContext, onBack, onUna
 function ProviderButton({ title, selected, available, onPress }: { title: string; selected: boolean; available: boolean; onPress: () => void }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <Pressable accessibilityRole="radio" accessibilityState={{ checked: selected, disabled: !available }} disabled={!available} onPress={onPress} style={[styles.providerButton, selected && styles.providerSelected, !available && styles.providerUnavailable]}>
-    <Ionicons name={selected ? 'radio-button-on' : 'radio-button-off'} size={18} color={selected ? colors.cyan : colors.muted} />
+    <Ionicons name={selected ? 'radio-button-on' : 'radio-button-off'} size={18} color={selected ? colors.primary : colors.muted} />
     <Text numberOfLines={2} style={styles.providerText}>{title}</Text>
   </Pressable>;
 }
@@ -272,7 +283,7 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   providerPanel: { gap: 12 },
   providerChoices: { flexDirection: 'row', gap: 8 },
   providerButton: { flex: 1, minHeight: 50, flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 10, borderRadius: 14, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card },
-  providerSelected: { borderColor: colors.cyan, backgroundColor: colors.cardSoft },
+  providerSelected: { borderColor: colors.primary, backgroundColor: colors.cardSoft },
   providerUnavailable: { opacity: 0.42 },
   providerText: { flex: 1, color: colors.text, fontSize: 12, fontWeight: '800' },
   consentGroup: { gap: 5, borderTopWidth: 1, borderTopColor: colors.border, paddingTop: 11 },
@@ -285,16 +296,16 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   assistantBubble: { alignSelf: 'flex-start', backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border, borderBottomLeftRadius: 6 },
   messageText: { color: colors.text, fontSize: 14, lineHeight: 21 },
   userMessageText: { color: '#FFFFFF' },
-  messageMeta: { color: colors.cyan, fontSize: 10, fontWeight: '900', textTransform: 'uppercase', letterSpacing: 0.4 },
+  messageMeta: { color: colors.primary, fontSize: 10, fontWeight: '900', textTransform: 'uppercase', letterSpacing: 0.4 },
   noticeText: { color: colors.muted, fontSize: 11, lineHeight: 16 },
   sources: { gap: 5, borderTopWidth: 1, borderTopColor: colors.border, paddingTop: 8 },
   sourceLine: { gap: 3 },
   sourceText: { color: colors.text, fontSize: 11, lineHeight: 16 },
-  sourceLink: { color: colors.cyan, fontSize: 11, lineHeight: 16, textDecorationLine: 'underline' },
+  sourceLink: { color: colors.primary, fontSize: 11, lineHeight: 16, textDecorationLine: 'underline' },
   sourceProvenance: { color: colors.muted, fontSize: 10, lineHeight: 14 },
   sourceContext: { flexDirection: 'row', alignItems: 'center', gap: 10, padding: 12 },
   sourceContextCopy: { flex: 1, gap: 3 },
-  sourceContextLabel: { color: colors.cyan, fontSize: 10, fontWeight: '900', textTransform: 'uppercase', letterSpacing: 0.5 },
+  sourceContextLabel: { color: colors.primary, fontSize: 10, fontWeight: '900', textTransform: 'uppercase', letterSpacing: 0.5 },
   sourceContextTitle: { color: colors.text, fontSize: 12, lineHeight: 16, fontWeight: '800' },
   sourceContextId: { color: colors.muted, fontSize: 10 },
   clearSource: { alignItems: 'center', gap: 2, padding: 4 },
@@ -303,10 +314,11 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   errorText: { color: colors.red, fontSize: 13, lineHeight: 19 },
   composer: { gap: 9 },
   input: { minHeight: 48, maxHeight: 130, paddingHorizontal: 12, paddingVertical: 10, color: colors.text, fontSize: 14, lineHeight: 20, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, borderRadius: 14, textAlignVertical: 'top' },
-  sendButton: { minHeight: 44, alignSelf: 'flex-end', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7, paddingHorizontal: 16, borderRadius: 14, backgroundColor: colors.cyan },
+  sendButton: { minHeight: 44, alignSelf: 'flex-end', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7, paddingHorizontal: 16, borderRadius: 14, backgroundColor: colors.primary },
   disabled: { opacity: 0.45 },
   pressed: { opacity: 0.82, transform: [{ scale: 0.98 }] },
   sendText: { color: '#FFFFFF', fontSize: 13, fontWeight: '900' },
   sendingRow: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 9, padding: 4 },
 });
+
 
