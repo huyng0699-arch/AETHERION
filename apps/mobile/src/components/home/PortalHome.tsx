@@ -1,44 +1,108 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, Image, Modal, PanResponder, Platform, Pressable, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ActivityIndicator, Animated, Image, Modal, PanResponder, Platform, Pressable, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
 import { AppPage, StatusPill } from '../ui';
 import { Locale } from '../../types';
 import { MessageKey, t } from '../../i18n';
 import { copy } from '../../uiCopy';
+import { getKnowledgeStatus, KnowledgeStatus } from '../../api/science';
+import { getAssistantStatus, AssistantStatus } from '../../api/assistant';
+import { ApiError } from '../../api/client';
 import { ThemeColors, useThemedStyles } from '../../theme';
-import { OrbitEarth } from './OrbitEarth';
 
-export type MobileScreen = 'health' | 'monitor' | 'ai' | 'science' | 'mission' | 'login' | 'settings' | 'demoIntro' | 'demoData' | 'more' | 'connection' | 'settingConnection' | 'settingAccount' | 'settingLanguage' | 'notifications' | 'help' | 'privacy' | 'care' | 'appearance';
+export type MobileScreen = 'health' | 'monitor' | 'ai' | 'science' | 'mission' | 'login' | 'settings' | 'demoIntro' | 'demoData' | 'more' | 'connection' | 'settingConnection' | 'settingAccount' | 'settingLanguage' | 'notifications' | 'help' | 'privacy' | 'care' | 'appearance' | 'healthGuide';
 type Icon = keyof typeof Ionicons.glyphMap;
 type Destination = { route: MobileScreen; icon: Icon; label: string };
 
-const TRUY_TINH_MARK = require('../../../assets/truy-tinh-logo.png');
+const AI_ROBOT = require('../../../assets/aetherion-ai-robot.png');
+const TEAM_LOGO = require('../../../assets/truy-tinh-cosmic-orbit.png');
+const HEALTH_TIP_KEY = 'aetherion.mobile.health-tip.shown.v1';
+let healthTipClaim: Promise<boolean> | null = null;
+let healthTipPresented = false;
 
-export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, onOpen }: {
+function claimHealthTip(): Promise<boolean> {
+  if (healthTipPresented) return Promise.resolve(false);
+  if (!healthTipClaim) {
+    healthTipClaim = (async () => {
+      if (await AsyncStorage.getItem(HEALTH_TIP_KEY)) return false;
+      await AsyncStorage.setItem(HEALTH_TIP_KEY, 'shown');
+      return true;
+    })().catch(() => true);
+  }
+  return healthTipClaim;
+}
+
+export function PortalHome({ locale, setLocale, isAuthenticated, token, serverStatus, onUnauthorized, onOpen }: {
   locale: Locale;
   setLocale: (locale: Locale) => void;
   isAuthenticated: boolean;
+  token: string;
   serverStatus: 'online' | 'offline' | 'unknown';
+  onUnauthorized: () => void;
   onOpen: (screen: MobileScreen) => void;
 }) {
-  const { colors, styles, appearance, gradient } = useThemedStyles(buildStyles);
+  const { colors, styles, appearance } = useThemedStyles(buildStyles);
   const { width: viewportWidth } = useWindowDimensions();
   const frameWidth = Math.min(viewportWidth, 470);
   const frameLeft = Math.max(0, (viewportWidth - frameWidth) / 2);
   const drawerWidth = Math.min(frameWidth * 0.86, 360);
+  const tipWidth = Math.min(frameWidth - 24, 420);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [healthTipVisible, setHealthTipVisible] = useState(false);
   const [query, setQuery] = useState('');
   const drawerPosition = useRef(new Animated.Value(-drawerWidth)).current;
+  const summarySequence = useRef(0);
+  const [knowledgeStatus, setKnowledgeStatus] = useState<KnowledgeStatus | null>(null);
+  const [assistantStatus, setAssistantStatus] = useState<AssistantStatus | null>(null);
+  const [summaryLoading, setSummaryLoading] = useState(false);
   const isVi = locale === 'vi';
   const statusKey: MessageKey = serverStatus === 'online' ? 'serverOnline' : serverStatus === 'offline' ? 'serverOffline' : 'serverUnknown';
   const statusTone = serverStatus === 'online' ? 'good' : serverStatus === 'offline' ? 'warn' : 'neutral';
+  useEffect(() => {
+    let active = true;
+    if (!isAuthenticated) return;
+    void claimHealthTip().then((shouldShow) => {
+      if (active && shouldShow && !healthTipPresented) {
+        healthTipPresented = true;
+        setHealthTipVisible(true);
+      }
+    });
+    return () => { active = false; };
+  }, [isAuthenticated]);
+  const loadServerSummary = useCallback(async () => {
+    const sequence = ++summarySequence.current;
+    if (!isAuthenticated || !token) {
+      setKnowledgeStatus(null);
+      setAssistantStatus(null);
+      setSummaryLoading(false);
+      return;
+    }
+    setSummaryLoading(true);
+    const [knowledge, assistant] = await Promise.allSettled([
+      getKnowledgeStatus(),
+      getAssistantStatus(token),
+    ]);
+    if (sequence !== summarySequence.current) return;
+    if (assistant.status === 'rejected' && assistant.reason instanceof ApiError && assistant.reason.status === 401) {
+      onUnauthorized();
+      return;
+    }
+    setKnowledgeStatus(knowledge.status === 'fulfilled' ? knowledge.value : null);
+    setAssistantStatus(assistant.status === 'fulfilled' ? assistant.value : null);
+    setSummaryLoading(false);
+  }, [isAuthenticated, onUnauthorized, token]);
+  useEffect(() => {
+    void loadServerSummary();
+    return () => { summarySequence.current += 1; };
+  }, [loadServerSummary]);
   const quick: Destination[] = [
     { route: 'health', icon: 'medkit-outline', label: t(locale, 'personal') },
     { route: 'monitor', icon: 'radio-outline', label: t(locale, 'monitor') },
     { route: 'ai', icon: 'sparkles-outline', label: t(locale, 'ai') },
     { route: 'science', icon: 'planet-outline', label: t(locale, 'science') },
     { route: 'care', icon: 'heart-outline', label: t(locale, 'careTitle') },
+    { route: 'healthGuide', icon: 'book-outline', label: copy(locale, 'healthGuide') },
     { route: 'mission', icon: 'people-outline', label: t(locale, 'missionTitle') },
   ];
   const tools: Destination[] = [
@@ -85,6 +149,15 @@ export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, o
       toValue: -drawerWidth, duration: 160, useNativeDriver: Platform.OS !== 'web',
     }).start(({ finished }) => { if (finished) setDrawerOpen(false); });
   }, [appearance.reduceMotion, drawerPosition, drawerWidth]);
+  const dismissHealthTip = useCallback(() => {
+    healthTipPresented = true;
+    setHealthTipVisible(false);
+    void AsyncStorage.setItem(HEALTH_TIP_KEY, 'shown').catch(() => undefined);
+  }, []);
+  const openHealthGuide = () => {
+    dismissHealthTip();
+    openDestination('healthGuide');
+  };
   const openDestination = (route: MobileScreen) => {
     setDrawerOpen(false);
     setQuery('');
@@ -110,7 +183,7 @@ export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, o
     <View style={styles.root} {...edgeSwipe.panHandlers}>
       <AppPage contentStyle={styles.content}>
         <View style={styles.header}>
-          <View style={styles.logo}><Image accessibilityLabel="Truy Tinh" source={TRUY_TINH_MARK} resizeMode="contain" style={styles.brandMark} /></View>
+          <Image accessibilityLabel={copy(locale, 'teamLogo')} source={TEAM_LOGO} resizeMode="cover" style={styles.logo} />
           <View style={styles.heading}>
             <Text numberOfLines={1} style={styles.brand}>{t(locale, 'brand')}</Text>
             <Text numberOfLines={1} style={styles.subtitle}>{isVi ? 'Sức khỏe phi hành đoàn' : 'Mission health'}</Text>
@@ -133,19 +206,6 @@ export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, o
           </Pressable>
         </View>
 
-        <LinearGradient colors={gradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.demoHero}>
-          <View style={styles.demoEarth}><OrbitEarth size={146} /></View>
-          <View style={styles.demoHeroContent}>
-            <View style={styles.demoKickerRow}><Ionicons name="planet-outline" size={14} color="#FFFFFF" /><Text style={styles.demoKicker}>{t(locale, 'demoKicker')}</Text></View>
-            <Text style={styles.heroTitle}>{t(locale, 'demoBannerTitle')}</Text>
-            <Text style={styles.heroCaption}>{t(locale, 'demoHistorical')}</Text>
-            <Pressable accessibilityRole="button" onPress={() => openDestination('demoIntro')} style={({ pressed }) => [styles.heroAction, pressed && styles.pressed]}>
-              <Text style={styles.heroActionText}>{t(locale, 'demoForHackathon')}</Text>
-              <Ionicons name="arrow-forward" size={16} color={colors.cyan} />
-            </Pressable>
-          </View>
-        </LinearGradient>
-
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>{isVi ? 'Tìm kiếm' : 'Search'}</Text>
           <View style={styles.search}>
@@ -160,6 +220,50 @@ export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, o
               <Ionicons name="chevron-forward" size={17} color={colors.faint} />
             </Pressable>) : <Text style={styles.emptySearch}>{isVi ? 'Không tìm thấy chức năng' : 'No matching tools'}</Text>}
           </View> : null}
+        </View>
+
+        <View style={styles.card}>
+          <View style={styles.heroTop}>
+            <View style={styles.heroCopy}>
+              <Text style={styles.sectionTitle}>{t(locale, 'demoKicker')}</Text>
+              <Text style={styles.heroTitle}>{t(locale, 'demoBannerTitle')}</Text>
+              <Text style={styles.heroCaption}>{t(locale, 'demoHistorical')}</Text>
+            </View>
+            <Image source={AI_ROBOT} resizeMode="contain" style={styles.robot} />
+          </View>
+          <Pressable accessibilityRole="button" onPress={() => openDestination('demoIntro')} style={({ pressed }) => [styles.heroAction, pressed && styles.pressed]}>
+            <Ionicons name="planet-outline" size={18} color={colors.onAccent} />
+            <Text style={styles.heroActionText}>{t(locale, 'demoForHackathon')}</Text>
+            <Ionicons name="arrow-forward" size={17} color={colors.onAccent} />
+          </Pressable>
+        </View>
+
+        <View style={styles.card}>
+          <View style={styles.summaryHeading}>
+            <Text style={[styles.sectionTitle, styles.summaryTitle]}>{copy(locale, 'serverData')}</Text>
+            <Pressable accessibilityRole="button" accessibilityLabel={t(locale, 'refresh')} onPress={() => { void loadServerSummary(); }} style={styles.summaryRefresh}>
+              {summaryLoading ? <ActivityIndicator size="small" color={colors.cyan} /> : <Ionicons name="refresh" size={17} color={colors.cyan} />}
+            </Pressable>
+          </View>
+          <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'nasaLibrary')} onPress={() => openDestination('science')} style={({ pressed }) => [styles.summaryRow, pressed && styles.pressed]}>
+            <View style={styles.summaryIcon}><Ionicons name="document-text-outline" size={19} color={colors.cyan} /></View>
+            <View style={styles.summaryCopy}>
+              <Text style={styles.summaryLabel}>{copy(locale, 'nasaLibrary')}</Text>
+              <Text numberOfLines={1} style={styles.summaryValue}>{knowledgeStatus ? knowledgeStatus.json_articles + ' / ' + knowledgeStatus.expected_slots : summaryLoading ? t(locale, 'loading') : copy(locale, 'notAvailable')}</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={17} color={colors.faint} />
+          </Pressable>
+          {knowledgeStatus?.missing_slots?.length ? <Text style={styles.summaryNote}>{copy(locale, 'missingSources')}: {knowledgeStatus.missing_slots.join(', ')}</Text> : null}
+          <Pressable accessibilityRole="button" accessibilityLabel={t(locale, 'ai')} onPress={() => openDestination('ai')} style={({ pressed }) => [styles.summaryRow, pressed && styles.pressed]}>
+            <View style={styles.summaryIcon}><Ionicons name="sparkles-outline" size={19} color={colors.cyan} /></View>
+            <View style={styles.summaryCopy}>
+              <Text style={styles.summaryLabel}>{t(locale, 'ai')}</Text>
+              <Text numberOfLines={2} style={styles.summaryValue}>{assistantStatus
+                ? t(locale, 'aiLocal') + ': ' + (assistantStatus.local_available ? (assistantStatus.local_model || copy(locale, 'localReady')) : copy(locale, 'localUnavailable')) + ' · ' + t(locale, 'aiCloud') + ': ' + (assistantStatus.cloud_available ? (assistantStatus.cloud_model || copy(locale, 'cloudReady')) : copy(locale, 'cloudUnavailable'))
+                : summaryLoading ? t(locale, 'loading') : copy(locale, 'notAvailable')}</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={17} color={colors.faint} />
+          </Pressable>
         </View>
 
         <View style={styles.card}>
@@ -190,7 +294,7 @@ export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, o
           <View pointerEvents="box-none" style={styles.modalCanvas}>
             <Animated.View {...closeSwipe.panHandlers} style={[styles.drawer, { width: drawerWidth, transform: [{ translateX: drawerPosition }] }]}>
               <View style={styles.drawerTop}>
-                <View style={styles.drawerMark}><Image accessibilityLabel="Truy Tinh" source={TRUY_TINH_MARK} resizeMode="contain" style={styles.drawerBrandMark} /></View>
+                <Image accessibilityLabel={copy(locale, 'teamLogo')} source={TEAM_LOGO} resizeMode="cover" style={styles.drawerMark} />
                 <View style={styles.heading}><Text style={styles.drawerTitle}>{isVi ? 'Menu nhanh' : 'Quick menu'}</Text><Text style={styles.subtitle}>AETHERION</Text></View>
                 <Pressable accessibilityRole="button" accessibilityLabel={isVi ? 'Đóng menu' : 'Close menu'} onPress={closeDrawer} style={styles.headerButton}><Ionicons name="close" size={21} color={colors.text} /></Pressable>
               </View>
@@ -204,7 +308,35 @@ export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, o
             </Animated.View>
           </View>
         </View>
+      <Modal transparent visible={healthTipVisible} animationType={appearance.reduceMotion ? 'none' : 'fade'} onRequestClose={dismissHealthTip}>
+        <View style={styles.tipModalRoot}>
+          <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'healthTipClose')} style={[StyleSheet.absoluteFill, styles.tipBackdrop]} onPress={dismissHealthTip} />
+          <View style={[styles.tipCard, { width: tipWidth }]}>
+            <View style={styles.tipHeader}>
+              <View style={styles.tipIcon}><Ionicons name="pulse-outline" size={19} color={colors.cyan} /></View>
+              <Text style={styles.tipTitle}>{copy(locale, 'healthTipTitle')}</Text>
+              <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'healthTipClose')} hitSlop={8} onPress={dismissHealthTip} style={styles.tipClose}>
+                <Ionicons name="close" size={20} color={colors.text} />
+              </Pressable>
+            </View>
+            <Text style={styles.tipBody}>{copy(locale, 'healthTipBody')}</Text>
+            <View style={styles.tipActions}>
+              <Pressable accessibilityRole="button" onPress={openHealthGuide} style={[styles.tipAction, styles.tipSecondary]}>
+                <Text style={styles.tipSecondaryText}>{copy(locale, 'healthTipOpen')}</Text>
+              </Pressable>
+              <Pressable accessibilityRole="button" onPress={dismissHealthTip} style={[styles.tipAction, styles.tipPrimary]}>
+                <Text style={styles.tipPrimaryText}>{copy(locale, 'healthTipDismiss')}</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
       </Modal>
+      </Modal>
+    </View>
+  );
+}
+
+const buildStyles      </Modal>
     </View>
   );
 }
@@ -213,8 +345,7 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   root: { flex: 1 },
   content: { gap: 12 },
   header: { flexDirection: 'row', alignItems: 'center', gap: 8, minHeight: 36 },
-  logo: { width: 36, height: 36, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cyan },
-  brandMark: { width: 31, height: 31 },
+  logo: { width: 38, height: 38, borderRadius: 10, overflow: 'hidden', borderWidth: 1, borderColor: colors.border },
   heading: { flex: 1, minWidth: 0 },
   brand: { color: colors.text, fontWeight: '700', fontSize: 15 },
   subtitle: { color: colors.muted, fontSize: 12, marginTop: 2 },
@@ -224,35 +355,56 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   greeting: { color: colors.text, fontSize: 24, fontWeight: '700' },
   card: { width: '100%', backgroundColor: colors.card, borderRadius: 14, padding: 14, borderWidth: 1, borderColor: colors.border },
   sectionTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 10 },
+  summaryHeading: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 },
+  summaryTitle: { marginBottom: 0 },
+  summaryRefresh: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
+  summaryRow: { minHeight: 54, flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 5, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: colors.border },
+  summaryIcon: { width: 34, height: 34, borderRadius: 11, backgroundColor: colors.cardSoft, alignItems: 'center', justifyContent: 'center' },
+  summaryCopy: { flex: 1, minWidth: 0, gap: 3 },
+  summaryLabel: { color: colors.text, fontSize: 13, fontWeight: '700' },
+  summaryValue: { color: colors.muted, fontSize: 11, lineHeight: 15 },
+  summaryNote: { color: colors.muted, fontSize: 11, lineHeight: 15, paddingBottom: 6 },
   search: { minHeight: 46, borderRadius: 12, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.cardSoft, flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 12 },
   searchInput: { color: colors.text, flex: 1, minWidth: 0, fontSize: 14, paddingVertical: 10 },
   searchResults: { marginTop: 8 },
   searchResult: { minHeight: 46, flexDirection: 'row', alignItems: 'center', gap: 10, borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: colors.border },
   searchResultText: { color: colors.text, flex: 1, fontSize: 13, fontWeight: '700' },
   emptySearch: { color: colors.muted, fontSize: 13, paddingVertical: 14 },
-  demoHero: { minHeight: 167, borderRadius: 21, padding: 16, overflow: 'hidden' },
-  demoEarth: { position: 'absolute', right: -19, top: 13, opacity: 0.9 },
-  demoHeroContent: { alignItems: 'flex-start', maxWidth: '74%' },
-  demoKickerRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 7 },
-  demoKicker: { color: '#FFFFFF', fontSize: 9, letterSpacing: 1.1, fontWeight: '900' },
-  heroTitle: { color: '#FFFFFF', fontSize: 19, lineHeight: 24, fontWeight: '800', marginBottom: 3, letterSpacing: -0.3 },
-  heroCaption: { color: '#F2EDFF', fontSize: 11 },
-  heroAction: { minHeight: 38, marginTop: 11, backgroundColor: '#FFFFFF', borderRadius: 11, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, paddingHorizontal: 12 },
-  heroActionText: { color: colors.cyan, fontWeight: '800', fontSize: 11 },
+  heroTop: { flexDirection: 'row', alignItems: 'center', minHeight: 76 },
+  heroCopy: { flex: 1, minWidth: 0 },
+  heroTitle: { color: colors.text, fontSize: 18, fontWeight: '700', marginBottom: 6 },
+  heroCaption: { color: colors.muted, fontSize: 13 },
+  robot: { width: 88, height: 88, marginLeft: 8 },
+  heroAction: { minHeight: 44, marginTop: 6, backgroundColor: colors.cyan, borderRadius: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, paddingHorizontal: 12 },
+  heroActionText: { color: colors.onAccent, fontWeight: '700', fontSize: 14 },
   actionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   action: { flexBasis: '48%', flexGrow: 1, minHeight: 42, borderRadius: 10, backgroundColor: colors.cardSoft, borderWidth: 1, borderColor: colors.border, paddingVertical: 9, paddingHorizontal: 8, flexDirection: 'row', gap: 7, alignItems: 'center', justifyContent: 'center' },
   actionLabel: { color: colors.text, fontSize: 13, fontWeight: '600', flexShrink: 1, textAlign: 'center' },
   pressed: { opacity: 0.72 },
+  tipModalRoot: { flex: 1, alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 20 },
+  tipBackdrop: { backgroundColor: 'rgba(3, 8, 22, 0.48)' },
+  tipCard: { padding: 16, borderRadius: 18, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, gap: 11 },
+  tipHeader: { flexDirection: 'row', alignItems: 'center', gap: 9 },
+  tipIcon: { width: 34, height: 34, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cardSoft },
+  tipTitle: { flex: 1, color: colors.text, fontSize: 15, fontWeight: '800' },
+  tipClose: { width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cardSoft },
+  tipBody: { color: colors.muted, fontSize: 13, lineHeight: 19 },
+  tipActions: { flexDirection: 'row', gap: 8, marginTop: 2 },
+  tipAction: { flex: 1, minHeight: 42, borderRadius: 12, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 9 },
+  tipSecondary: { backgroundColor: colors.cardSoft, borderWidth: 1, borderColor: colors.border },
+  tipPrimary: { backgroundColor: colors.cyan },
+  tipSecondaryText: { color: colors.text, fontSize: 12, fontWeight: '700', textAlign: 'center' },
+  tipPrimaryText: { color: colors.onAccent, fontSize: 12, fontWeight: '800', textAlign: 'center' },
   modalRoot: { flex: 1, alignItems: 'center' },
   backdrop: { backgroundColor: '#0C081E' },
   modalCanvas: { width: '100%', maxWidth: 470, flex: 1, alignSelf: 'center', alignItems: 'flex-start' },
   drawer: { height: '100%', backgroundColor: colors.card, borderRightWidth: 1, borderRightColor: colors.border, paddingTop: 28, paddingHorizontal: 16 },
   drawerTop: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 22 },
-  drawerMark: { width: 45, height: 45, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cardSoft },
-  drawerBrandMark: { width: 39, height: 39 },
+  drawerMark: { width: 45, height: 45, borderRadius: 16, overflow: 'hidden', borderWidth: 1, borderColor: colors.border },
   drawerTitle: { color: colors.text, fontWeight: '900', fontSize: 19 },
   drawerRows: { gap: 8 },
   drawerRow: { minHeight: 55, borderRadius: 17, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 10 },
   drawerIcon: { width: 37, height: 37, borderRadius: 13, backgroundColor: colors.cardSoft, alignItems: 'center', justifyContent: 'center' },
   drawerLabel: { flex: 1, color: colors.text, fontSize: 14, fontWeight: '700' },
 });
+

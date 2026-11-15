@@ -12,6 +12,7 @@ from .admin_ai_bridge import model_status, interview_next
 
 router = APIRouter(prefix="/api/v1/knowledge", tags=["Knowledge and Symptom Intake"])
 _ARTICLE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
+_MEDIA_ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,128}$")
 
 
 class IntakeRequest(BaseModel):
@@ -44,16 +45,12 @@ def get_status():
     return knowledge_catalog.status()
 
 
-@router.get("/conditions")
-def search_conditions(query: str = Query("", max_length=200)):
-    return knowledge_catalog.conditions(query)
-
-
 @router.get("/articles")
 def search_articles(query: str = Query("", max_length=200),
-                    limit: int = Query(30, ge=1, le=200),
-                    category: str = Query("", max_length=100)):
-    return knowledge_catalog.articles(query, limit, category)
+                    limit: int = Query(30, ge=1, le=100),
+                    category: str = Query("", max_length=100),
+                    offset: int = Query(0, ge=0, le=10000)):
+    return knowledge_catalog.articles(query, limit, category, offset)
 
 
 @router.get("/articles/{article_id}")
@@ -64,6 +61,26 @@ def get_article(article_id: str):
     if result is None:
         raise HTTPException(404, "Article unavailable or invalid ID")
     return result
+
+
+@router.get("/articles/{article_id}/media/{media_id}")
+def get_article_media(article_id: str, media_id: str):
+    if not _ARTICLE_ID_RE.fullmatch(article_id) or not _MEDIA_ID_RE.fullmatch(media_id):
+        raise HTTPException(404, "Article media unavailable")
+    resolved = knowledge_catalog.article_media(article_id, media_id)
+    if resolved is None:
+        raise HTTPException(404, "Article media unavailable")
+    path, meta = resolved
+    digest = meta["sha256"]
+    return FileResponse(
+        path=path,
+        media_type=meta["media_type"],
+        headers={
+            "ETag": f'"{digest}"',
+            "X-Content-Sha256": digest,
+            "Cache-Control": "public, max-age=3600",
+        },
+    )
 
 
 @router.get("/symptoms")

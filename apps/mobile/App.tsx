@@ -32,6 +32,7 @@ import { NotificationScreen } from './src/screens/NotificationScreen';
 import { HelpScreen } from './src/screens/HelpScreen';
 import { PrivacyScreen } from './src/screens/PrivacyScreen';
 import { CareScreen } from './src/screens/CareScreen';
+import { HealthGuideScreen } from './src/screens/HealthGuideScreen';
 import { HackathonDemoIntroScreen } from './src/screens/HackathonDemoIntroScreen';
 import { HackathonDemoDataScreen } from './src/screens/HackathonDemoDataScreen';
 
@@ -53,12 +54,11 @@ function AppShell() {
   const [serverStatus, setServerStatus] = useState<'online' | 'offline' | 'unknown'>('unknown');
   const [busy, setBusy] = useState(false), [error, setError] = useState(''), [ready, setReady] = useState(false);
   const [subjects, setSubjects] = useState<Subject[]>([]), [subjectId, setSubjectId] = useState<string>(), [chooseSubject, setChooseSubject] = useState(false);
-  const [assistantContext, setAssistantContext] = useState<{ articleId: string; title: string } | null>(null);
   const busyFlag = useRef(false);
   const operation = useRef(0), mounted = useRef(true), localeWrites = useRef(Promise.resolve());
   const fade = useRef(new Animated.Value(1)).current;
   const beginSubjects = useRequestGate();
-  const clearIdentity = useCallback(() => { beginSubjects(); setSession(null); setIdentity(null); setUnlocked(false); setSubjects([]); setSubjectId(undefined); setChooseSubject(false); setAssistantContext(null); }, [beginSubjects]);
+  const clearIdentity = useCallback(() => { beginSubjects(); setSession(null); setIdentity(null); setUnlocked(false); setSubjects([]); setSubjectId(undefined); setChooseSubject(false); }, [beginSubjects]);
   useEffect(() => { mounted.current = true; let active = true; const restoreOperation = operation.current; void (async () => {
     const [saved, language, url] = await Promise.all([readSession(), loadLocale().catch(() => 'en' as Locale), readServerUrl().catch(() => '')]);
     if (!active) return;
@@ -94,14 +94,15 @@ function AppShell() {
     {profileRoute && unlocked ? <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'chooseProfile')} onPress={() => setChooseSubject(true)} style={styles.profile}><Ionicons name="person-circle-outline" size={22} color={colors.cyan} /><Text style={styles.profileText}>{subjects.find(row => row.subject_id === subjectId)?.display_name || copy(locale, 'noProfiles')}</Text><Ionicons name="chevron-down" size={17} color={colors.muted} /></Pressable> : null}
     <Animated.View key={`${route}:${subjectId || ''}`} style={[styles.fill, { backgroundColor: 'transparent', opacity: fade }]} {...swipe.panHandlers}>
       {route === 'login' && <LoginScreen locale={locale} setLocale={changeLocale} onAppearance={() => openRoute('appearance')} serverUrl={serverUrl} setServerUrl={setServerUrl} onConnect={connect} onSignIn={submitLogin} onOpenDemo={() => openRoute('demoIntro')} onContinue={continueSession} restoredUsername={session?.user.username} busy={busy} error={error} status={serverStatus} />}
-      {route === 'portal' && unlocked && <PortalScreen locale={locale} setLocale={changeLocale} isAuthenticated={true} serverStatus={serverStatus} onOpen={openRoute} />}
+      {route === 'portal' && unlocked && <PortalScreen locale={locale} setLocale={changeLocale} isAuthenticated={true} token={session?.access_token || ''} serverStatus={serverStatus} onUnauthorized={handleUnauthorized} onOpen={openRoute} />}
       {route === 'health' && unlocked && <PersonalHealthScreen locale={locale} token={session?.access_token || ''} subjectId={subjectId} onBack={goBack} onUnauthorized={handleUnauthorized} />}
       {route === 'monitor' && unlocked && <MonitorScreen locale={locale} token={session?.access_token || ''} subjectId={subjectId} onBack={goBack} onUnauthorized={handleUnauthorized} />}
       {route === 'care' && unlocked && <CareScreen locale={locale} token={session?.access_token || ''} subjectId={subjectId} onBack={goBack} onUnauthorized={handleUnauthorized} />}
-      {route === 'ai' && unlocked && <AiScreen locale={locale} token={session?.access_token || ''} context={assistantContext} onClearContext={() => setAssistantContext(null)} onBack={goBack} onUnauthorized={handleUnauthorized} />}
-      {route === 'science' && <ScienceScreen locale={locale} onBack={goBack} onAskAi={article => { setAssistantContext({ articleId: article.article_id, title: article.title }); openRoute('ai'); }} />}
+      {route === 'healthGuide' && unlocked && <HealthGuideScreen locale={locale} onBack={goBack} />}
+      {route === 'ai' && unlocked && <AiScreen locale={locale} token={session?.access_token || ''} onBack={goBack} onUnauthorized={handleUnauthorized} />}
+      {route === 'science' && <ScienceScreen locale={locale} onBack={goBack} />}
       {route === 'mission' && unlocked && <MissionScreen locale={locale} role={identity?.role || ''} subjects={subjects} token={session?.access_token || ''} onRefresh={refreshSubjects} onSelect={id => { setSubjectId(id); openRoute('health'); }} onBack={goBack} />}
-      {route === 'demoIntro' && <HackathonDemoIntroScreen locale={locale} onBack={goBack} onLoad={() => openRoute('demoData')} onLibrary={() => openRoute('science')} />}
+      {route === 'demoIntro' && <HackathonDemoIntroScreen locale={locale} onBack={goBack} onLoad={() => openRoute('demoData')} />}
       {route === 'demoData' && <HackathonDemoDataScreen locale={locale} onBack={goBack} />}
       {route === 'more' && <MoreScreen locale={locale} onBack={goBack} onOpen={openRoute} />}
       {route === 'appearance' && <AppearanceSettingsScreen locale={locale} onBack={goBack} />}
@@ -118,3 +119,4 @@ function AppShell() {
   </View></ImageBackground></KeyboardAvoidingView></SafeAreaProvider>;
 }
 const buildStyles = (colors: ThemeColors) => StyleSheet.create({ fill: { flex: 1, backgroundColor: colors.background }, mobileShell: { flex: 1, width: '100%', maxWidth: 470, alignSelf: 'center' }, loading: { flex: 1, backgroundColor: colors.background, alignItems: 'center', justifyContent: 'center' }, profile: { minHeight: 48, flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 18, borderBottomWidth: 1, borderBottomColor: colors.border, backgroundColor: colors.card }, profileText: { flex: 1, color: colors.text, fontSize: 13, fontWeight: '700' }, modal: { flex: 1, justifyContent: 'flex-end', alignItems: 'center', backgroundColor: 'rgba(12,8,30,0.45)' }, sheet: { width: '100%', maxWidth: 470, maxHeight: '65%', padding: 18, paddingBottom: 30, borderTopLeftRadius: 28, borderTopRightRadius: 28, backgroundColor: colors.card }, sheetHeading: { flexDirection: 'row', alignItems: 'center', paddingBottom: 14 } });
+

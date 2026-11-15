@@ -9,6 +9,12 @@ const en = {
   sourceDetails: 'Source details', archive: 'Flight archive', phases: 'Flight phases', clinical: 'Clinical exams', blood: 'Blood count', pressure: 'Blood pressure',
   noLive: 'Historical archive', serverArchive: 'Server archive', bundledArchive: 'On-device archive', records: 'Records', details: 'Details', backToLogin: 'Back to sign in', page: 'Page', next: 'Next', previous: 'Previous',
   loadMore: 'Load more', signOut: 'Sign out', noMatch: 'No matching records', selected: 'Selected', sensorUnknown: 'Sensor status unavailable', aiServerSettings: 'AI provider',
+  teamLogo: 'Truy Tinh logo', serverData: 'Server data', nasaLibrary: 'NASA CliFF', missingSources: 'Missing source',
+  notAvailable: 'Unavailable', localReady: 'Local ready', localUnavailable: 'Local unavailable',
+  cloudReady: 'Cloud ready', cloudUnavailable: 'Cloud unavailable', sourceLimitations: 'Source limits',
+  healthGuide: 'Health guide', healthGuideIntro: 'Understand the measures you see.', healthGuideNote: 'These notes explain common measurements. They do not set mission limits or diagnose. Follow the flight medical protocol and tell the medical officer about symptoms or unexpected readings.',
+  healthTipTitle: 'A quick health tip', healthTipBody: 'A reading needs its time, unit, and context. One number alone cannot tell you what is wrong.', healthTipOpen: 'View guide', healthTipDismiss: 'Got it', healthTipClose: 'Close tip',
+  guideMeasures: 'What it measures', guidePurpose: 'Why it is tracked', guideTip: 'Use it well', guideSources: 'Sources', guideOpenSource: 'Open source',
 };
 const vi: Record<keyof typeof en, string> = {
   demo: 'Demo', demoHint: 'Khám phá dữ liệu chuyến bay NASA', welcome: 'Chào mừng trở lại', tagline: 'Sức khỏe của bạn. Một không gian kết nối.',
@@ -20,5 +26,12 @@ const vi: Record<keyof typeof en, string> = {
   sourceDetails: 'Chi tiết nguồn', archive: 'Kho chuyến bay', phases: 'Giai đoạn bay', clinical: 'Khám lâm sàng', blood: 'Công thức máu', pressure: 'Huyết áp',
   noLive: 'Dữ liệu lịch sử', serverArchive: 'Dữ liệu máy chủ', bundledArchive: 'Dữ liệu trên máy', records: 'Bản ghi', details: 'Chi tiết', backToLogin: 'Về đăng nhập', page: 'Trang', next: 'Tiếp', previous: 'Trước',
   loadMore: 'Tải thêm', signOut: 'Đăng xuất', noMatch: 'Không có bản ghi phù hợp', selected: 'Đã chọn', sensorUnknown: 'Chưa xác định trạng thái cảm biến', aiServerSettings: 'Nhà cung cấp AI',
+  teamLogo: 'Logo Truy Tinh', serverData: 'Dữ liệu máy chủ', nasaLibrary: 'NASA CliFF', missingSources: 'Nguồn còn thiếu',
+  notAvailable: 'Chưa có dữ liệu', localReady: 'AI cục bộ sẵn sàng', localUnavailable: 'AI cục bộ chưa sẵn sàng',
+  cloudReady: 'AI đám mây sẵn sàng', cloudUnavailable: 'AI đám mây chưa sẵn sàng', sourceLimitations: 'Giới hạn nguồn',
+  healthGuide: 'Cẩm nang chỉ số', healthGuideIntro: 'Hiểu các chỉ số bạn nhìn thấy.', healthGuideNote: 'Các ghi chú giải thích phép đo thường gặp; không đặt ngưỡng riêng cho nhiệm vụ và không chẩn đoán. Làm theo quy trình y tế chuyến bay, báo nhân viên y tế khi có triệu chứng hoặc kết quả bất thường.',
+  healthTipTitle: 'Mẹo sức khỏe', healthTipBody: 'Mỗi kết quả cần có thời điểm, đơn vị và bối cảnh. Một con số riêng lẻ không cho biết nguyên nhân.', healthTipOpen: 'Xem hướng dẫn', healthTipDismiss: 'Đã rõ', healthTipClose: 'Đóng mẹo',
+  guideMeasures: 'Chỉ số đo gì', guidePurpose: 'Theo dõi để làm gì', guideTip: 'Cách ghi nhận', guideSources: 'Nguồn', guideOpenSource: 'Mở nguồn',
 };
 export function copy(locale: Locale, key: keyof typeof en) { return (locale === 'vi' ? vi : en)[key]; }
+

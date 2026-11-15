@@ -5,12 +5,12 @@
     "scheme": "aetherion",
     "version": "0.1.0",
     "orientation": "portrait",
-    "icon": "./assets/truy-tinh-logo.png",
+    "icon": "./assets/truy-tinh-cosmic-orbit.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/truy-tinh-logo.png",
+      "image": "./assets/truy-tinh-cosmic-orbit.png",
       "resizeMode": "contain",
-      "backgroundColor": "#F8F6FF"
+      "backgroundColor": "#020718"
     },
     "newArchEnabled": true,
     "android": {
@@ -25,8 +25,7 @@
     },
     "web": {
       "bundler": "metro",
-      "output": "single",
-      "favicon": "./assets/truy-tinh-logo.png"
+      "output": "single"
     },
     "plugins": ["expo-secure-store"],
     "experiments": {
