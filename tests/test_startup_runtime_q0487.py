@@ -63,7 +63,7 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                     "AETHERION_API_URL": "http://127.0.0.1:1",
                 },
             ):
-                # 1. StartupRuntime asynchronously seeds only synthetic_patients_v1.sqlite3
+                # StartupRuntime asynchronously seeds only the isolated demo SQLite.
                 runtime = StartupRuntime("http://127.0.0.1:1")
                 results: list[bool] = []
                 runtime.request_demo_ready(results.append)
@@ -76,14 +76,15 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                 demo_db = tmp_home / ".aetherion" / "demo" / "synthetic_patients_v1.sqlite3"
                 self.assertTrue(demo_db.is_file())
 
-                # 2. AetherionWindow starts on LoginPage, blocks unauthenticated health routes,
-                # allows Demo walkthrough, and ignores late Demo callback after navigating away.
+                # The native public Operations shell is the first screen. Protected
+                # real-data routes still stop at Login until a session is verified.
                 win = AetherionWindow()
-                self.assertIs(win.pages.currentWidget(), win.login_page)
-                win.show_monitor()
+                self.assertIs(win.pages.currentWidget(), win.operations_home_page)
+                win.open_operations_route("monitor")
                 app.processEvents()
                 self.assertIs(win.pages.currentWidget(), win.login_page)
 
+                # The Login-page archive action is explicitly NASA MA-7, not Demo.
                 win.login_page.demo_button.click()
                 app.processEvents()
                 self.assertIs(win.pages.currentWidget(), win.operations_home_page)
@@ -92,6 +93,8 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                     win.hackathon_demo_page,
                 )
 
+                # The first-screen SIMULATED Demo opens its separate briefing.
+                win.show_portal()
                 win.operations_home_page.demo.click()
                 app.processEvents()
                 self.assertIs(
@@ -99,20 +102,60 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                     win.simulated_briefing_page,
                 )
 
-                # Navigate away before late callback arrives -> must NOT yank user back to Demo
-                win.show_care_guide()
+                # Navigating to the NASA archive before a late seed callback arrives
+                # must not replace the user's chosen public screen.
+                win.show_hackathon_demo()
                 app.processEvents()
                 self.assertIs(
                     win.operations_home_page.workspace_stack.currentWidget(),
-                    win.care_page,
+                    win.hackathon_demo_page,
                 )
                 win._finish_simulated_demo_start(True)
                 app.processEvents()
                 self.assertIs(
                     win.operations_home_page.workspace_stack.currentWidget(),
-                    win.care_page,
+                    win.hackathon_demo_page,
                 )
                 win.close()
+
+    def test_mission_control_reuses_verified_session_and_clears_it(self) -> None:
+        os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+        app = QApplication.instance() or QApplication([])
+        with patch.dict(
+            os.environ,
+            {
+                "AETHERION_AUTOSTART_LOCAL_SERVER": "0",
+                "AETHERION_API_URL": "http://127.0.0.1:1",
+            },
+        ):
+            win = AetherionWindow()
+            page = win.mission_control_page
+            with patch.object(page, "refresh_subject") as refresh_subject:
+                page.set_verified_session(
+                    "verified-bearer",
+                    {"username": "operator", "role": "crew", "allowed_subjects": ["CREW-01"]},
+                )
+                self.assertEqual(page._token, "verified-bearer")
+                self.assertEqual(page._subjects, ["CREW-01"])
+                self.assertEqual(page._selected_subject(), "CREW-01")
+                refresh_subject.assert_called_once()
+
+                for allowed in ([], ["CREW-01", "CREW-02"]):
+                    page.set_verified_session(
+                        "verified-bearer",
+                        {"username": "operator", "role": "crew", "allowed_subjects": allowed},
+                    )
+                    self.assertEqual(page._selected_subject(), "")
+                    self.assertFalse(page.open_personal_button.isEnabled())
+                self.assertEqual(page._subjects, ["CREW-01", "CREW-02"])
+
+                page.clear_session()
+                self.assertEqual(page._token, "")
+                self.assertEqual(page._subjects, [])
+                self.assertEqual(page._selected_subject(), "")
+                self.assertFalse(page.open_personal_button.isEnabled())
+                self.assertTrue(page.username.isEnabled())
+            win.close()
 
 
 if __name__ == "__main__":
