@@ -25,7 +25,7 @@ from PySide6.QtWidgets import (
 from .localization import normalize_locale, tr
 from .monitoring_time import (TimeConductor, TimeBounds, TimeContext, visible_points,
                               segment_telemetry, utc_ticks, series_channel,
-                              eligible_for_line, utc, parse_utc_iso, format_utc_iso)
+                              eligible_for_line, utc, format_utc_iso)
 
 
 @dataclass(frozen=True)
