@@ -336,11 +336,6 @@ export function PortalHome({ locale, setLocale, isAuthenticated, token, serverSt
   );
 }
 
-const buildStyles      </Modal>
-    </View>
-  );
-}
-
 const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   root: { flex: 1 },
   content: { gap: 12 },
