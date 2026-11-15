@@ -132,7 +132,7 @@ export function AiServerSettingsScreen({ locale, token, onBack, onUnauthorized }
   const statusLabel = status?.tested ? text.ready : status?.enabled ? text.configured : text.offline;
   return <AppPage>
     <AppHeader title={text.title} onBack={back} backLabel={text.back} />
-    {busy === 'load' && !status ? <View style={styles.loading}><ActivityIndicator color={colors.cyan} /><Text style={styles.hint}>{text.loading}</Text></View> : null}
+    {busy === 'load' && !status ? <View style={styles.loading}><ActivityIndicator color={colors.primary} /><Text style={styles.hint}>{text.loading}</Text></View> : null}
     {error ? <Text accessibilityRole="alert" style={styles.error}>{error}</Text> : null}
     {notice ? <Text accessibilityLiveRegion="polite" style={styles.notice}>{notice}</Text> : null}
     {!status && !busy ? <ActionButton title={text.retry} onPress={() => void load()} secondary /> : null}
@@ -146,7 +146,7 @@ export function AiServerSettingsScreen({ locale, token, onBack, onUnauthorized }
         <Text style={styles.label}>{text.provider}</Text>
         <View style={styles.providers}>
           {(['gemini', 'openai'] as const).map(item => <Pressable key={item} accessibilityRole="radio" accessibilityState={{ checked: provider === item, disabled: !!busy }} disabled={!!busy} onPress={() => selectProvider(item)} style={[styles.provider, provider === item && styles.selected]}>
-            <Ionicons name={provider === item ? 'radio-button-on' : 'radio-button-off'} size={18} color={provider === item ? colors.cyan : colors.muted} />
+            <Ionicons name={provider === item ? 'radio-button-on' : 'radio-button-off'} size={18} color={provider === item ? colors.primary : colors.muted} />
             <Text style={styles.providerText}>{item === 'gemini' ? 'Gemini' : 'OpenAI'}</Text>
           </Pressable>)}
         </View>
@@ -169,7 +169,7 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   loading: { flexDirection: 'row', alignItems: 'center', gap: 9, padding: 14 },
   providers: { flexDirection: 'row', gap: 8 },
   provider: { flex: 1, minHeight: 47, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7, borderWidth: 1, borderColor: colors.border, borderRadius: 13, backgroundColor: colors.card },
-  selected: { borderColor: colors.cyan, backgroundColor: colors.cardSoft },
+  selected: { borderColor: colors.primary, backgroundColor: colors.cardSoft },
   providerText: { color: colors.text, fontSize: 13, fontWeight: '800' },
   current: { color: colors.text, fontSize: 13, fontWeight: '700' },
   label: { color: colors.muted, fontSize: 12, fontWeight: '700' },
@@ -177,3 +177,4 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   error: { color: colors.red, fontSize: 13, lineHeight: 19, fontWeight: '700' },
   notice: { color: colors.green, fontSize: 13, lineHeight: 19, fontWeight: '700' },
 });
+
