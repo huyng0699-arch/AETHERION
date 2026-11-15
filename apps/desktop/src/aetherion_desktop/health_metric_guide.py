@@ -54,7 +54,7 @@ class HealthTipDialog(QDialog):
     """Small, non-blocking first-run tip with a simple close action."""
     def __init__(self,locale,open_guide:Callable[[],None],parent=None):
         super().__init__(parent,Qt.WindowType.Dialog|Qt.WindowType.WindowCloseButtonHint)
-        self.open_guide=open_guide; self.setModal(False); self.setFixedWidth(390); self.setMinimumHeight(180); self.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose,True)
+        self.open_guide=open_guide; self.setModal(False); self.setFixedWidth(390); self.setMinimumHeight(180); self.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose,False)
         layout=QVBoxLayout(self); layout.setContentsMargins(16,13,16,15); layout.setSpacing(10)
         self.title=QLabel(); self.title.setObjectName("sectionTitle"); layout.addWidget(self.title)
         self.body=QLabel(); self.body.setObjectName("pageHint"); self.body.setWordWrap(True); layout.addWidget(self.body)

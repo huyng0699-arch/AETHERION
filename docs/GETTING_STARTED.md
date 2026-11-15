@@ -63,7 +63,7 @@ For a first administrator, launch `python -m aetherion_server.admin_gui`, click 
 
 ## 3. Configure AI
 
-AI starts disabled. Configure it from the **Local / Cloud AI** tab in the native Server Control window, while signed in as an administrator. A button that says “configured” is not proof of inference; run the real model test and require a successful reply.
+AI starts disabled. Configure it from the **Local / Cloud AI** tab in the native Server Control window, while signed in as an administrator. A button that says "configured" is not proof of inference; run the real model test and require a successful reply.
 
 ### Local model with Ollama
 
@@ -74,7 +74,7 @@ ollama pull qwen2.5:3b
 ollama list
 ```
 
-In Server Control, choose **Local AI only**, leave the Ollama URL at `http://127.0.0.1:11434`, select the exact model name shown by `ollama list`, choose a timeout, click **Discover installed models**, **Save AI settings**, then **Test actual AI inference**. Use **Local** in the signed-in app’s AI screen after the test succeeds. If Ollama is not running or the named model is absent, AETHERION reports unavailable and generates no substitute answer.
+In Server Control, choose **Local AI only**, leave the Ollama URL at `http://127.0.0.1:11434`, select the exact model name shown by `ollama list`, choose a timeout, click **Discover installed models**, **Save AI settings**, then **Test actual AI inference**. Use **Local** in the signed-in app's AI screen after the test succeeds. If Ollama is not running or the named model is absent, AETHERION reports unavailable and generates no substitute answer.
 
 ### Gemini or OpenAI API key
 
@@ -83,7 +83,7 @@ Current Server Control supports **Gemini** and **OpenAI**. It does not have a NA
 1. Obtain a valid key from the provider account that owns it. Keep it private; do not put it in GitHub, the APK, or the mobile app.
 2. In Server Control, open **Local / Cloud AI**, select **Gemini** or **OpenAI**, enter a model ID supported by that provider account, and paste the key into **API key (memory only)**.
 3. Click **Configure API**, then **Run real AI request**. Confirm the returned status reports a real successful inference.
-4. In the signed-in AETHERION client, choose **Cloud**. Cloud messages are sent to the selected provider only after the user gives the app’s explicit consent.
+4. In the signed-in AETHERION client, choose **Cloud**. Cloud messages are sent to the selected provider only after the user gives the app's explicit consent.
 
 The API key entered in Admin exists only in the Server process memory. It is not stored in the SQLite database and is cleared when the Server restarts; re-enter it and repeat the model test after a restart. An environment-key path is documented in [AI integration](AI_ONEPAD_INTEGRATION.md), but the Admin memory-only flow is preferred for the demo.
 
@@ -91,8 +91,8 @@ The API key entered in Admin exists only in the Server process memory. It is not
 
 ### Download the APK from GitHub
 
-1. Open [AETHERION Releases](https://github.com/huyng0699-arch/AETHERION/releases).
-2. Download `AETHERION-Android-Demo-v0.1.0.apk` from the latest successful Android demo release.
+1. Download [`AETHERION-Android-Demo-v0.1.0.apk`](https://github.com/huyng0699-arch/AETHERION/raw/refs/heads/main/downloads/AETHERION-Android-Demo-v0.1.0.apk) from the repository's stable APK path. GitHub sign-in is required because this repository is private.
+2. Check [AETHERION Releases](https://github.com/huyng0699-arch/AETHERION/releases) for later versions.
 3. Transfer the APK to Android, allow installation from that file source when Android asks, then install and open **AETHERION Mobile**.
 4. Tap **Demo** on the first screen. The MA-7 historical NASA dataset is bundled in the app and can be viewed without a Server connection.
 
@@ -114,7 +114,7 @@ Pop-Location
 
 The installable APK is `apps/mobile/android/app/build/outputs/apk/debug/app-debug.apk`. On macOS/Linux use `./gradlew assembleDebug` instead of `gradlew.bat`. For a connected development emulator, `npm run android --prefix apps/mobile` starts Expo's native development flow and requires the Android SDK.
 
-The repository’s GitHub Actions workflow builds this same demo APK on an Ubuntu runner, attaches it to a GitHub prerelease, and keeps a downloadable workflow artifact. The release is created only after Gradle succeeds.
+The repository's GitHub Actions workflow is configured to build this demo APK on an Ubuntu runner, attach it to a GitHub prerelease, and keep a downloadable workflow artifact. A release appears only when a runner is available and Gradle succeeds; the stable APK path above remains available independently.
 
 ### Connect a physical Android phone to a Server
 
@@ -133,7 +133,7 @@ The bundled NASA Demo works offline. Live sign-in and server-backed health/libra
 
 | Target | Current state |
 | --- | --- |
-| Android phone/tablet | Expo app; demo APK distributed from GitHub Releases |
+| Android phone/tablet | Expo app; demo APK at the stable GitHub path above |
 | iOS/iPadOS | Expo source is a starting point; build/sign on macOS with Xcode; no iOS release verified yet |
 | Web | Expo Web in a browser |
 | Windows | Separate Python/Qt Desktop source; not the Expo APK |
@@ -145,3 +145,4 @@ Expo uses JavaScript/TypeScript and React Native to share app logic across Andro
 ## Data and safety
 
 AETHERION is an independent prototype, not affiliated with NASA and not clinically validated. Demo data is historical NASA material, not a current patient record. Do not use this version to make medical decisions or store real patient information. Preserve source attribution and third-party terms when redistributing project data.
+

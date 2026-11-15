@@ -20,7 +20,7 @@ npm ci --prefix apps/mobile
 
 Open **http://127.0.0.1:8765/**. The first screen is Sign in with a visible **Demo** button. Demo opens the bundled, historical NASA Mercury-Atlas 7 archive and works without an account or server connection. It is historical astronaut research, not a current patient record or live sensor feed. The local launcher creates an owner account only when its local database is empty; its private credentials are written to `.runtime/local-access.json` and are ignored by Git.
 
-See **[Getting started: Server, AI, Desktop and Android](docs/GETTING_STARTED.md)** for the local Admin setup, Ollama/Gemini/OpenAI configuration, desktop launch, APK installation, and build commands. Find APK builds under **[GitHub Releases](https://github.com/huyng0699-arch/AETHERION/releases)** after the Android build workflow succeeds.
+See **[Getting started: Server, AI, Desktop and Android](docs/GETTING_STARTED.md)** for the local Admin setup, Ollama/Gemini/OpenAI configuration, desktop launch, APK installation, and build commands. Download the current APK from [this stable GitHub file link](https://github.com/huyng0699-arch/AETHERION/raw/refs/heads/main/downloads/AETHERION-Android-Demo-v0.1.0.apk); future builds will also be listed under [GitHub Releases](https://github.com/huyng0699-arch/AETHERION/releases). This repository is private, so GitHub sign-in is required.
 
 ## What is in this first version
 
@@ -45,3 +45,4 @@ The long-term aim is to let phones, watches, habitat systems, and future lunar o
 - [Third-party notices](THIRD_PARTY_NOTICES.md)
 
 The project is not yet validated for clinical use or real patient data. NASA material remains subject to its source and reuse terms; see the notices and source metadata before redistribution.
+
