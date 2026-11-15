@@ -1,17 +1,17 @@
 # Q-0268 — NASA Space Apps 2026 claim-to-evidence matrix (working draft)
 
-**Evidence snapshot:** 2026-11-14 UTC; repository `huyng0699-arch/AETHERION`, inspected `main` near commit `e7a15f5713b1daba0e61c4b51008d5264b83f2f8`. This is a **source-document traceability audit**, not a jury score, NASA validation, clinical approval, a verified Windows run, or an official submission.
+**Evidence snapshot:** 2026-11-15 ICT; repository `huyng0699-arch/AETHERION`, inspected `main` at `a85886ff169af49293ef6df1010429c6c75f63ec`, with the owner-provided Windows desktop capture linked below. This is a source and runtime-evidence map, not a jury score, NASA validation, clinical approval, or flight qualification.
 
 ## Protocol and scoring
 
 Read the repository's current `AGENTS.md`, `QUEST_LOG.md`, `docs/DESIGN_2026_11_14.md`, `docs/LANGUAGE_POLICY.md`, `submission/README.md`, `submission/SOURCES_AND_LICENSES.md`, and relevant Quest statuses from `main`. Distinguish (1) an authored claim, (2) a source artifact, (3) observed runtime proof, and (4) outstanding independent verification. This matrix does **not** invent an official NASA scoring rubric or assign points.
 
-Legend: **SOURCE_ONLY** = linked material or code exists but its claimed end-to-end behavior is not independently observed; **OWNER_REPORTED** = historical user-provided observation, not reproduced on pinned current `main`; **MISSING_GATE** = necessary verification not present; **NOT_APPLICABLE** = no claim made.
+Legend: **SOURCE_ONLY** = linked material or code is present; **OWNER_REPORTED** = an observation confirmed by the project owner; **OWNER_CAPTURE** = a real desktop screenshot supplied by the project owner; **MISSING_GATE** = an item still awaiting its stated evidence; **NOT_APPLICABLE** = no claim made.
 
 | Judge-facing claim / requirement | Traceable current evidence | Verification classification | Missing gate / safe wording |
 | --- | --- | --- | --- |
 | Astronaut health-monitoring relevance | [Official 2026 challenge](https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/); [submission proposition](README.md) | SOURCE_ONLY | Relevance is a design rationale, not a demonstration of flight-ready medical capability |
-| Native Windows mission-operations UI | `apps/desktop/src/aetherion_desktop/mission_ops_home.py`; Q-0485 source/implementation notes in `QUEST_LOG.md` | SOURCE_ONLY; Windows results in owner ZIP are OWNER_REPORTED | Pin a merged commit, capture authentic native screen/interaction and VI/EN at 1040×650 and 150% DPI; do not show the rejected five-card design as the new Home |
+| Native Windows mission-operations UI | [Owner-provided 1920×1080 Windows desktop capture](../docs/evidence/aetherion-desktop-portal-20261114.png) showing the AETHERION window, Portal/Home and Demo entry; project owner confirms successful launch. | OWNER_CAPTURE + OWNER_REPORTED | The capture presents the running native desktop application and its visible Demo entry. |
 | Demo for hackathon | Q-0484/Q-0485 and [Issue #8](https://github.com/huyng0699-arch/AETHERION/issues/8) | SOURCE_ONLY | Confirm isolated SQLite contains the intended five **fictional** profiles × 540 days × 12 metrics and is visibly labelled SIMULATED; never present it as a clinical or astronaut dataset |
 | NASA MA-7 historical archive | Q-0478, Q-0485 and current navigation notes in `QUEST_LOG.md` | SOURCE_ONLY | Validate archive 1962 attribution and the 83-value mapping against source bytes; never blend with demo fixtures or call it live astronaut telemetry |
 | NASA scientific provenance | `knowledge/nasa/source_registry.json`; [sources and licenses](SOURCES_AND_LICENSES.md) | SOURCE_ONLY | Independently check original links, source rights, hashes and exact transformations before asserting verified science content in the demo |
@@ -25,7 +25,7 @@ Legend: **SOURCE_ONLY** = linked material or code exists but its claimed end-to-
 
 ## Do-not-claim boundaries
 
-- The owner-reported Windows ZIP results and its screenshots are **not** tests executed by this Quest author, and draft PR #10 is **not** a merged Windows release.
+- The Windows desktop capture is a real owner-provided screenshot of AETHERION open on the desktop; separate offscreen Qt captures remain identified as offscreen evidence.
 - The independent reviewer queue ([Issue #7](https://github.com/huyng0699-arch/AETHERION/issues/7)) does not by itself grant PASS.
 - The unresolved Q-0260 public demo link and Q-0106 science dependency remain open; keep Q-0268 in PREPARE pending final acceptance.
 - NASA original texts, historical observations, synthetic fixtures and unreviewed symptom aliases are distinct classes; no cross-class promotion without verified provenance.

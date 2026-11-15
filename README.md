@@ -30,6 +30,14 @@ See **[Getting started: Server, AI, Desktop and Android](docs/GETTING_STARTED.md
 - **NASA library:** the catalog lists 119 official condition names; 118 source JSON documents are currently archived. A catalog entry does not guarantee a full original PDF, clinical review, or treatment protocol.
 - **AI:** disabled until configured and successfully tested by an administrator. Local inference uses Ollama on the same host as the server. The current cloud choices are Gemini and OpenAI; keys are held in server-process memory when entered through Admin and are lost on restart. Chat does not silently invent a reply when no model is available.
 
+## Windows desktop evidence
+
+The project owner confirms that AETHERION launched successfully on the Windows desktop. This actual 1920×1080 capture shows the AETHERION application window on its Portal screen, with the Demo entry visible.
+
+![AETHERION running on the Windows desktop](docs/evidence/aetherion-desktop-portal-20261114.png)
+
+[Open the desktop runtime evidence](docs/evidence/aetherion-desktop-portal-20261114.png) · [Submission package](submission/README.md)
+
 ## Platform support, stated accurately
 
 Expo/React Native shares application code across **Android and iOS**, and Expo can export the web client. iOS packaging requires macOS/Xcode and Apple signing. This project has an Android APK build workflow; the APK is a demo build signed with the Android debug key, not a Play Store release. Windows has a separate Python/Qt desktop client. Expo does not export this app directly to Windows or Linux: those targets need their own client integration or packaging. A browser can run the web client on those operating systems.

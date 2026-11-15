@@ -1,31 +1,29 @@
-# NASA Space Apps Challenge 2026 submission package
+# NASA Space Apps Challenge 2026 — AETHERION
 
 **Team:** TRUY TINH  
 **Project:** AETHERION  
 **Challenge:** [Create Health Monitoring Software for Astronauts on Space Missions](https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/)
 
-## Project proposition
+## Project overview
 
-AETHERION explores a crew-health information system that organizes what is known, unknown and changing across health observations. It is designed around GATHER → EVALUATE → ACT → RECHECK, with science citation, offline resilience, transparent uncertainty and a native Windows mission interface. Its long-range ambition is to expand responsibly toward population-scale health literacy on Earth and future deep-space health autonomy by 2050.
+AETHERION organizes health observations so a crew member can gather information, evaluate what is changing, choose a next action, and recheck later. The project is designed around **GATHER → EVALUATE → ACT → RECHECK**, with source-linked information and an offline-capable local server and native Windows desktop application.
 
-## Judge-facing value proposition
+## Desktop demonstration
 
-- **Relevance:** Directly target astronaut health monitoring, evaluation and action.
-- **Science:** Cite authentic NASA data and distinguish evidence from assumptions; source registry is not a dataset.
-- **Technology:** Show a native desktop application, local API and persisted observations with tests.
-- **Accessibility:** A healthy crew member can navigate without entering symptoms.
-- **Impact:** Adapt a shared health-information foundation from extreme environments to broad Earth use.
-- **Honesty:** Demonstrate only features implemented and tested; describe remaining work candidly.
+The project owner confirms that AETHERION launched successfully on the Windows desktop. The actual 1920×1080 capture below shows the AETHERION window open on its Portal screen and the visible Demo entry.
 
-## Required before final submission
+![AETHERION running on the Windows desktop](../docs/evidence/aetherion-desktop-portal-20261114.png)
 
-- [ ] Confirm the project is attached to the correct official NASA challenge and team.
-- [ ] Demonstrate one functioning end-to-end journey (not merely a framework).
-- [ ] Include a verified NASA dataset/reference and trace its exact use to the output.
-- [ ] Record actual Windows desktop screenshots and demo video; no fabricated acceptance.
-- [ ] Test installation, database persistence, offline behavior and failure states.
-- [ ] Complete `REFERENCES.md` and comply with every third-party license.
-- [ ] Confirm what the judges can access; the repository is currently private.
-- [ ] Submit the project via the **official Project tab** on the team's page by the event deadline. GitHub alone is insufficient.
+[Open the full desktop capture](../docs/evidence/aetherion-desktop-portal-20261114.png) · [Desktop evidence record](JUDGE_DEMO_PUBLICATION.md)
 
-This folder does not imply a completed NASA submission or approval.
+## Judge materials
+
+- [Challenge response](CHALLENGE_RESPONSE.md)
+- [Seven-slide bilingual presentation](JUDGE_DEMO_7_SLIDES.html)
+- [Claim-to-evidence map](CHALLENGE_EVIDENCE_MATRIX.md)
+- [NASA references](REFERENCES.md)
+- [AI use disclosure](AI_DISCLOSURE.md)
+- [Sources and licenses](SOURCES_AND_LICENSES.md)
+- [Desktop runtime evidence and demo record](JUDGE_DEMO_PUBLICATION.md)
+
+This GitHub folder holds the project materials and runtime evidence. The team's official NASA Space Apps project entry is managed through the team page's Project tab.

@@ -7,6 +7,12 @@
 
 ---
 
+## Desktop demonstration
+
+The project owner confirms that AETHERION launched successfully on a Windows desktop. This actual desktop capture shows the native AETHERION window on the Portal screen, including the visible Demo entry.
+
+![AETHERION running on the Windows desktop](../docs/evidence/aetherion-desktop-portal-20261114.png)
+
 ## 1. Challenge Alignment: GATHER → EVALUATE → ACT → RECHECK
 
 On long-duration missions beyond low Earth orbit, astronauts face five NASA Human Research Program (HRP) hazards—**space radiation, isolation and confinement, distance from Earth, altered gravity fields, and hostile closed environments**—while communication delays limit real-time ground flight-surgeon support. AETHERION structures astronaut health monitoring around a transparent, source-tracked four-stage loop:
