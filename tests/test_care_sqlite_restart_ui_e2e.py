@@ -103,6 +103,8 @@ class CareSqliteRestartUIE2ETests(unittest.TestCase):
 
                 proc1 = _start_api()
                 proc2 = None
+                page1 = None
+                page2 = None
                 try:
                     token1 = _wait_ready(proc1)
                     _http_json(
@@ -125,13 +127,17 @@ class CareSqliteRestartUIE2ETests(unittest.TestCase):
                         page1.create_episode()
 
                     dl = time.monotonic() + 5.0
-                    while not page1.episode_id and time.monotonic() < dl:
+                    while (not page1.episode_id or page1._pending_replies) and time.monotonic() < dl:
                         app.processEvents()
                         time.sleep(0.05)
 
                     created_episode_id = page1.episode_id
                     self.assertTrue(created_episode_id, msg=f"status={page1.status.text()}")
                     page1.close()
+                    page1.deleteLater()
+                    page1 = None
+                    app.sendPostedEvents()
+                    app.processEvents()
                     _stop_api(proc1)
 
                     # Restart server + new UI instance against the same SQLite database
@@ -150,12 +156,17 @@ class CareSqliteRestartUIE2ETests(unittest.TestCase):
                     self.assertGreaterEqual(page2.episodes.count(), 1)
                     page2.episodes.setCurrentRow(0)
                     dl3 = time.monotonic() + 3.0
-                    while not page2.episode_id and time.monotonic() < dl3:
+                    while (not page2.episode_id or page2._pending_replies) and time.monotonic() < dl3:
                         app.processEvents()
                         time.sleep(0.05)
                     self.assertEqual(page2.episode_id, created_episode_id)
-                    page2.close()
                 finally:
+                    for pg in (page1, page2):
+                        if pg is not None:
+                            pg.close()
+                            pg.deleteLater()
+                    app.sendPostedEvents()
+                    app.processEvents()
                     if proc1.poll() is None:
                         _stop_api(proc1)
                     if proc2 is not None and proc2.poll() is None:

@@ -15,8 +15,13 @@ from PySide6.QtWidgets import (
     QCheckBox, QComboBox, QFormLayout, QFrame, QHBoxLayout, QLabel, QLineEdit, QListWidget,
     QListWidgetItem, QMessageBox, QPushButton, QScrollArea, QVBoxLayout, QWidget,
 )
+import shiboken6
 
 from ...localization import normalize_locale, tr
+
+
+def _is_qt_valid(obj: object | None) -> bool:
+    return obj is not None and shiboken6.isValid(obj)
 
 
 class CareJourneyPage(QWidget):
@@ -28,6 +33,8 @@ class CareJourneyPage(QWidget):
         self.api_url = (api_url or os.environ.get(
             "AETHERION_API_URL", "http://127.0.0.1:8765")).rstrip("/")
         self.net = QNetworkAccessManager(self)
+        self._pending_replies: set[QNetworkReply] = set()
+        self._closing = False
         self.locale = normalize_locale(locale)
         self.subject_id = ""
         self.token = ""
@@ -194,7 +201,27 @@ class CareJourneyPage(QWidget):
         self._update_controls()
         self.refresh()
 
+    def _abort_pending(self) -> None:
+        for reply in list(self._pending_replies):
+            self._pending_replies.discard(reply)
+            if _is_qt_valid(reply):
+                try:
+                    reply.finished.disconnect()
+                except (RuntimeError, TypeError):
+                    pass
+                try:
+                    reply.abort()
+                except RuntimeError:
+                    pass
+                reply.deleteLater()
+
+    def closeEvent(self, event) -> None:
+        self._closing = True
+        self._abort_pending()
+        super().closeEvent(event)
+
     def _reset(self) -> None:
+        self._abort_pending()
         self.episode_id, self.phase = "", ""
         self.episodes.clear()
         self.events.clear()
@@ -237,6 +264,8 @@ class CareJourneyPage(QWidget):
         self.outcome.setEnabled(self.phase == "ACT")
 
     def _request(self, method: str, route: str, payload: dict | None, callback) -> None:
+        if self._closing or not _is_qt_valid(self) or not _is_qt_valid(self.net):
+            return
         if not self.token or not self.subject_id:
             self.status.setText(self._s("journey.no_subject"))
             return
@@ -248,19 +277,29 @@ class CareJourneyPage(QWidget):
                 request, json.dumps(payload or {}, ensure_ascii=False).encode("utf-8"))
         else:
             reply = self.net.get(request)
+        self._pending_replies.add(reply)
 
         def finished():
+            self._pending_replies.discard(reply)
+            if not _is_qt_valid(reply):
+                return
+            if self._closing or not _is_qt_valid(self):
+                reply.deleteLater()
+                return
             code = reply.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
+            raw = bytes(reply.readAll())
+            err_val = reply.error()
+            err_str = reply.errorString()
+            reply.deleteLater()
             try:
-                body = json.loads(bytes(reply.readAll()).decode("utf-8"))
+                body = json.loads(raw.decode("utf-8"))
             except (ValueError, UnicodeError):
                 body = {}
             err = (
-                reply.errorString()
-                if reply.error() != QNetworkReply.NetworkError.NoError or not (200 <= (code or 0) < 300)
+                err_str
+                if err_val != QNetworkReply.NetworkError.NoError or not (200 <= (code or 0) < 300)
                 else ""
             )
-            reply.deleteLater()
             if code == 401:
                 self.token = ""
                 self._reset()
