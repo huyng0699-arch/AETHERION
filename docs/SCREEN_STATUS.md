@@ -1,5 +1,19 @@
 # AETHERION — Screen Status, Historical QA & Current Evidence / Trạng thái màn hình
 
+## Authoritative current review status — 2026-11-15 (PR #13)
+
+This dated block is the current evidence snapshot for this review. Older dated QA sections below are preserved as historical records from their stated branches, machines, files and commits; they do not prove the current PR screen was opened or visually accepted.
+
+- **GitHub references:** PR #13 is still draft at head [`69b9234`](https://github.com/huyng0699-arch/AETHERION/commit/69b9234fcc32b1a08bf929b908692dd6b61bb7d0); the live `main` is `c27e530edffbd2af7f51361de0cdb2c048cb3c56`. At this checkpoint the branch is 50 ahead / 4 behind, with merge base `bd5eefd67df5af8f42176c1b88cfd35e612634bd`.
+- **Runner evidence:** GitHub lint/render checks ended before a runner or workflow steps were assigned because of the repository account billing/spending restriction. There is no CI test/render result from those runs.
+- **Local review environment:** No AETHERION application window was open during this review. The available local AETHERION folder has a broken Git HEAD (`.git/HEAD` points to `refs/heads/.invalid`) and does not contain the current PR's `tests/test_startup_runtime_q0487.py` or `quests/v1/Q-0485.md`; it cannot provide a checkout-based run of this PR.
+- **Screenshot evidence:** The previously referenced baseline PNG `C:\Users\Admin\Documents\Codex\2026-11-09\m-repository-huyng0699-arch-nasa-v\AETHERION\outputs\ui-review\pending\portal-user-provided-20261114.png` is absent from the available local workspace. No fresh after-fix screenshot was inspected. No screen has been accepted or marked changed, and no screenshot has been moved to `outputs/ui-review/changed`.
+- **Range behavior:** PR commits `3fb0c38` and `b52d1d1` add shared 1-minute / 366-day bounds and an authored VI/EN regression test. Source readback is not a runtime test; the test is **authored, not run**.
+- **Protected-route gate:** Q-0485 still requires bearer `GET /api/v1/auth/me` verification with the flat `allowed_subjects` contract and auto-selection only when exactly one authorized ID exists. Current branch `main.py` blob `0f26a309b716e9acd252638a52a39730e3bf4ee3` instead requests `/api/v1/subjects` and lacks the required `/auth/me` verified-session handoff. This is a source mismatch, not an observed test failure. Q-0489 owns `main.py` and `quests/v1/Q-0489.md` through `2026-11-16T03:00:00Z`; wait for its narrow ACK/release before reconciliation. Preserve the acceptance test and leave this gate pending.
+- **Screen disposition:** Visual acceptance is pending for every screen in this review. Keep screenshots out of `changed` until a reviewer inspects a fresh render and accepts the exact screen.
+
+---
+
 ## Historical public-entry and auth handoff checkpoint — 2026-11-15 (superseded by the current status above)
 
 The current product direction is public Mission Operations Home → explicit SIMULATED Demo, with NASA MA-7 as a separate historical archive. Protected routes return to Login, then resume only after bearer-authenticated `GET /api/v1/auth/me`; subject context is derived only from its flat `allowed_subjects` list. Auto-select exactly one authorized ID; keep zero/multiple IDs visibly unselected. Sign-out must clear the outer and Mission Control sessions, and Ask AI must restore local `account:<username>` identity. Q-0487 is currently **STALE** with its implementation/evidence preserved; physical Windows/runtime proof belongs only to Q-0488.
