@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+from datetime import datetime, timezone
 import json
+import math
 from pathlib import Path
 import sqlite3
 from typing import Any
@@ -22,6 +24,54 @@ from .security import (
 DEFAULT_SCOPE = "crew"
 DEFAULT_QUALITY = "UNVERIFIED"
 DEFAULT_VERIFICATION_STATE = "UNVERIFIED"
+ALLOWED_INGEST_VERIFICATION_STATES = frozenset(
+    {"UNVERIFIED", "SELF_REPORTED", "DEVICE_UNVERIFIED", "TEST_FIXTURE"}
+)
+ALLOWED_QUALITY_STATES = frozenset(
+    {"READY", "NO_DATA", "STALE", "OFFLINE", "DENIED", "ERROR", "UNVERIFIED"}
+)
+REQUIRED_CORE_SCHEMA: dict[str, frozenset[str]] = {
+    "observations": frozenset({
+        "id",
+        "subject_id",
+        "scope",
+        "metric",
+        "value",
+        "unit",
+        "source_id",
+        "source",
+        "observed_at",
+        "received_at",
+        "quality",
+        "verification_state",
+        "idempotency_key",
+        "created_by",
+        "created_at",
+    }),
+    "users": frozenset({
+        "id",
+        "username",
+        "password_hash",
+        "role",
+        "allowed_subjects_json",
+        "active",
+        "created_at",
+    }),
+    "sessions": frozenset({
+        "token_hash",
+        "user_id",
+        "created_at",
+        "expires_at",
+        "revoked_at",
+    }),
+    "subjects": frozenset({
+        "subject_id",
+        "display_name",
+        "scope",
+        "role_label",
+        "created_at",
+    }),
+}
 
 
 def _connect(path: str | Path):
@@ -146,12 +196,45 @@ def initialize(path: str | Path) -> None:
         )
 
 
+def _validate_observed_at(raw_value: Any) -> str:
+    if isinstance(raw_value, datetime):
+        if raw_value.tzinfo is None or raw_value.utcoffset() is None:
+            raise ValueError("observed_at must include a time-zone offset")
+        return raw_value.isoformat()
+    if not isinstance(raw_value, str):
+        raise ValueError("observed_at must be an ISO-8601 timestamp string with a time-zone offset")
+    text = raw_value.strip()
+    if not text:
+        raise ValueError("observed_at must not be blank")
+    normalized = f"{text[:-1]}+00:00" if text.endswith(("Z", "z")) else text
+    try:
+        dt = datetime.fromisoformat(normalized)
+    except ValueError as exc:
+        raise ValueError(f"Invalid observed_at ISO-8601 timestamp: {text!r}") from exc
+    if dt.tzinfo is None or dt.utcoffset() is None:
+        raise ValueError("observed_at must include a time-zone offset")
+    return text
+
+
+def _verify_core_schema(conn: sqlite3.Connection) -> None:
+    for table_name, required_cols in REQUIRED_CORE_SCHEMA.items():
+        existing_cols = _table_columns(conn, table_name)
+        missing = sorted(required_cols - existing_cols)
+        if missing:
+            raise RuntimeError(
+                f"SQLite table '{table_name}' missing required columns: {', '.join(missing)}"
+            )
+        col_list = ", ".join(sorted(required_cols))
+        conn.execute(f"SELECT {col_list} FROM {table_name} LIMIT 1").fetchone()
+
+
 def check_readiness(path: str | Path) -> dict[str, str]:
     initialize(path)
     with _connect(path) as conn:
         row = conn.execute("SELECT 1 AS ok").fetchone()
         if not row or int(row["ok"]) != 1:
             raise RuntimeError("SQLite readiness check failed")
+        _verify_core_schema(conn)
     return {"database": "ok", "path": str(path)}
 
 
@@ -177,22 +260,57 @@ def ingest_observation(
 
     Returns (observation_id, created_new, stored_record).
     """
-    initialize(path)
-    subject_id = str(item["subject_id"])
-    scope = str(item.get("scope") or DEFAULT_SCOPE)
-    metric = str(item["metric"])
+    subject_id = str(item.get("subject_id") or "").strip()
+    if not subject_id:
+        raise ValueError("subject_id must not be blank")
+    scope = str(item.get("scope") or DEFAULT_SCOPE).strip() or DEFAULT_SCOPE
+    metric = str(item.get("metric") or "").strip()
+    if not metric:
+        raise ValueError("metric must not be blank")
     value = float(item["value"])
-    unit = str(item["unit"])
-    source_id = str(item.get("source_id") or item.get("source") or "")
-    source = str(item.get("source") or source_id)
-    observed_at = str(item["observed_at"])
-    received_at = str(item.get("received_at") or utc_now_iso())
-    quality = str(item.get("quality") or DEFAULT_QUALITY)
-    verification_state = str(item.get("verification_state") or DEFAULT_VERIFICATION_STATE)
+    if not math.isfinite(value):
+        raise ValueError("value must be a finite number")
+    unit = str(item.get("unit") or "").strip()
+    if not unit:
+        raise ValueError("unit must not be blank")
+    raw_source_id = str(item.get("source_id") or "").strip()
+    raw_source = str(item.get("source") or "").strip()
+    source_id = raw_source_id or raw_source
+    source = raw_source or raw_source_id
+    if not source_id:
+        raise ValueError("source_id or source is required")
+    if "observed_at" not in item:
+        raise ValueError("observed_at is required and must include a time-zone offset")
+    observed_at = _validate_observed_at(item.get("observed_at"))
+    raw_received_at = item.get("received_at")
+    received_at = (
+        _validate_observed_at(raw_received_at)
+        if raw_received_at is not None and str(raw_received_at).strip()
+        else utc_now_iso()
+    )
+    raw_quality = item.get("quality")
+    quality = str(raw_quality).strip() if raw_quality is not None else ""
+    if not quality:
+        quality = DEFAULT_QUALITY
+    elif quality not in ALLOWED_QUALITY_STATES:
+        raise ValueError(f"Unsupported quality state: {quality!r}")
+
+    # Verification state is NEVER inferred from caller-supplied source_id/source
+    # strings and cannot be self-elevated directly to VERIFIED during ingest.
+    raw_verification = item.get("verification_state")
+    verification_state = str(raw_verification).strip() if raw_verification is not None else ""
+    if not verification_state:
+        verification_state = DEFAULT_VERIFICATION_STATE
+    elif verification_state not in ALLOWED_INGEST_VERIFICATION_STATES:
+        raise ValueError(
+            f"Unsupported or disallowed ingest verification_state: {verification_state!r}"
+        )
+
     idempotency_key = item.get("idempotency_key")
     if idempotency_key is not None:
         idempotency_key = str(idempotency_key).strip() or None
 
+    initialize(path)
     with _connect(path) as conn:
         if idempotency_key is not None:
             existing = conn.execute(
@@ -254,9 +372,9 @@ def add_observation(path: str | Path, item: dict[str, Any]) -> int:
 
 
 def _parse_utc(iso_str: str) -> datetime:
-    from datetime import datetime, timezone
-
-    dt = datetime.fromisoformat(iso_str)
+    text = iso_str.strip()
+    normalized = f"{text[:-1]}+00:00" if text.endswith(("Z", "z")) else text
+    dt = datetime.fromisoformat(normalized)
     if dt.tzinfo is None:
         return dt.replace(tzinfo=timezone.utc)
     return dt.astimezone(timezone.utc)

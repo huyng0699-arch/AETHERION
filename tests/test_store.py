@@ -127,6 +127,68 @@ class StoreTests(unittest.TestCase):
             self.assertTrue(revoke_session(db, session_info["access_token"]))
             self.assertIsNone(get_active_session(db, session_info["access_token"]))
 
+    def test_ingest_rejects_missing_or_naive_observed_at_and_never_fabricates(self):
+        with tempfile.TemporaryDirectory() as directory:
+            db = Path(directory) / "time_guard.sqlite3"
+            for bad_ts in (None, "", "   ", "not-a-timestamp", "2026-11-14T04:00:00"):
+                payload = {
+                    "subject_id": "CREW-01",
+                    "metric": "heart_rate",
+                    "value": 70.0,
+                    "unit": "bpm",
+                    "source_id": "manual_entry",
+                }
+                if bad_ts is not None:
+                    payload["observed_at"] = bad_ts
+                with self.assertRaises(ValueError):
+                    ingest_observation(db, payload)
+            self.assertEqual(list_observations(db, "CREW-01"), [])
+
+    def test_ingest_refuses_caller_verified_elevation_or_source_id_spoofing(self):
+        with tempfile.TemporaryDirectory() as directory:
+            db = Path(directory) / "verify_guard.sqlite3"
+            with self.assertRaises(ValueError):
+                ingest_observation(
+                    db,
+                    {
+                        "subject_id": "CREW-01",
+                        "metric": "heart_rate",
+                        "value": 72.0,
+                        "unit": "bpm",
+                        "source_id": "verified_clinic_device",
+                        "observed_at": "2026-11-14T04:00:00+00:00",
+                        "verification_state": "VERIFIED",
+                    },
+                )
+            _, _, stored = ingest_observation(
+                db,
+                {
+                    "subject_id": "CREW-01",
+                    "metric": "heart_rate",
+                    "value": 72.0,
+                    "unit": "bpm",
+                    "source_id": "VERIFIED:spoofed_device",
+                    "observed_at": "2026-11-14T04:00:00+00:00",
+                },
+            )
+            self.assertEqual(stored["verification_state"], "UNVERIFIED")
+            self.assertEqual(stored["quality"], "UNVERIFIED")
+
+    def test_check_readiness_fails_on_partial_sqlite_table_columns(self):
+        with tempfile.TemporaryDirectory() as directory:
+            db = Path(directory) / "partial_users.sqlite3"
+            with connect_sqlite(db) as conn:
+                conn.execute(
+                    """
+                    CREATE TABLE users (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        username TEXT NOT NULL UNIQUE
+                    )
+                    """
+                )
+            with self.assertRaises(RuntimeError):
+                check_readiness(db)
+
 
 if __name__ == "__main__":
     unittest.main()

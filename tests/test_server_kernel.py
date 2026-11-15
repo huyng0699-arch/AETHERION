@@ -207,6 +207,55 @@ class ServerKernelTests(unittest.TestCase):
                 expired = client.get("/api/v1/auth/me", headers=headers)
                 self.assertEqual(expired.status_code, 401)
 
+    def test_ready_fails_503_on_partial_tables_and_post_blocks_verified_elevation(self):
+        import sqlite3
+
+        with tempfile.TemporaryDirectory() as directory:
+            broken_db = Path(directory) / "partial.sqlite3"
+            with sqlite3.connect(broken_db) as conn:
+                conn.execute(
+                    """
+                    CREATE TABLE subjects (
+                        subject_id TEXT PRIMARY KEY,
+                        display_name TEXT NOT NULL
+                    )
+                    """
+                )
+            app_broken = create_app(db_path=broken_db)
+            with TestClient(app_broken) as client_broken:
+                ready = client_broken.get("/ready")
+                self.assertEqual(ready.status_code, 503)
+
+            good_db = Path(directory) / "good.sqlite3"
+            ensure_bootstrap_user(
+                good_db,
+                username="crew_guard",
+                password="guard-password-123",
+                role="crew",
+                allowed_subjects=["CREW-G"],
+            )
+            app_good = create_app(db_path=good_db)
+            with TestClient(app_good) as client_good:
+                login = client_good.post(
+                    "/api/v1/auth/login",
+                    json={"username": "crew_guard", "password": "guard-password-123"},
+                )
+                headers = {"Authorization": f"Bearer {login.json()['access_token']}"}
+                elevated = client_good.post(
+                    "/api/v1/observations",
+                    headers=headers,
+                    json={
+                        "subject_id": "CREW-G",
+                        "metric": "heart_rate",
+                        "value": 70.0,
+                        "unit": "beats/min",
+                        "source_id": "verified_spoof",
+                        "observed_at": "2026-11-14T04:00:00+00:00",
+                        "verification_state": "VERIFIED",
+                    },
+                )
+                self.assertEqual(elevated.status_code, 422)
+
 
 if __name__ == "__main__":
     unittest.main()
