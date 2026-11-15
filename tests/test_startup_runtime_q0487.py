@@ -163,7 +163,9 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
             def do_POST(self) -> None:
                 if self.path == "/api/v1/auth/logout":
                     self.server.logout_requests += 1
-                    self._reply(204)
+                    self.send_response(204)
+                    self.send_header("Content-Length", "0")
+                    self.end_headers()
                 else:
                     self._reply(404, {"detail": "not found"})
 
@@ -220,6 +222,10 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                 self.assertFalse(getattr(win, "_session_verified", False))
                 self.assertEqual(win.mission_control_page._token, "")
                 self.assertEqual(win.mission_control_page._subjects, [])
+                deadline = time.monotonic() + 2.0
+                while server.logout_requests < 1 and time.monotonic() < deadline:
+                    app.processEvents()
+                    time.sleep(0.01)
                 self.assertEqual(server.logout_requests, 1)
 
                 # A rejected /auth/me response must revoke/clear the login token and
@@ -243,6 +249,10 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                 self.assertEqual(rejected.mission_control_page._token, "")
                 rejected.open_operations_route("monitor")
                 self.assertIs(rejected.pages.currentWidget(), rejected.login_page)
+                deadline = time.monotonic() + 2.0
+                while server.logout_requests < 2 and time.monotonic() < deadline:
+                    app.processEvents()
+                    time.sleep(0.01)
                 self.assertGreaterEqual(server.logout_requests, 2)
         finally:
             for win in windows:
