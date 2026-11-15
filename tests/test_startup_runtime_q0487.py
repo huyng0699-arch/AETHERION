@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+import json
 import os
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import tempfile
+import threading
 import time
 import unittest
 from unittest.mock import patch
@@ -117,6 +120,136 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                     win.hackathon_demo_page,
                 )
                 win.close()
+
+    def test_auth_me_resumes_route_and_rejected_session_is_cleared(self) -> None:
+        os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+        app = QApplication.instance() or QApplication([])
+
+        class AuthHandler(BaseHTTPRequestHandler):
+            def _reply(self, status: int, payload: dict | None = None) -> None:
+                body = json.dumps(payload or {}).encode("utf-8")
+                self.send_response(status)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+
+            def do_GET(self) -> None:
+                if self.path == "/api/v1/auth/me":
+                    self.server.auth_me_requests.append(self.headers.get("Authorization", ""))
+                    if self.headers.get("Authorization") != "Bearer verified-bearer":
+                        self._reply(401, {"detail": "unauthorized"})
+                    elif self.server.auth_status == 200:
+                        self._reply(200, {
+                            "username": "operator",
+                            "role": "crew",
+                            "allowed_subjects": ["CREW-01"],
+                            "expires_at": "2030-01-01T00:00:00Z",
+                        })
+                    else:
+                        self._reply(self.server.auth_status, {"detail": "unauthorized"})
+                elif self.path == "/health":
+                    self._reply(200, {"status": "ok"})
+                elif self.path.startswith("/api/v1/observations?"):
+                    subject = "CREW-01"
+                    self._reply(200, {"subject_id": subject, "observations": []})
+                elif self.path == "/api/v1/subjects/CREW-01":
+                    self._reply(200, {"subject": {
+                        "subject_id": "CREW-01", "display_name": "Crew One"
+                    }})
+                else:
+                    self._reply(404, {"detail": "not found"})
+
+            def do_POST(self) -> None:
+                if self.path == "/api/v1/auth/logout":
+                    self.server.logout_requests += 1
+                    self._reply(204)
+                else:
+                    self._reply(404, {"detail": "not found"})
+
+            def log_message(self, *_args) -> None:
+                return
+
+        server = ThreadingHTTPServer(("127.0.0.1", 0), AuthHandler)
+        server.auth_status = 200
+        server.auth_me_requests = []
+        server.logout_requests = 0
+        server_thread = threading.Thread(target=server.serve_forever, daemon=True)
+        server_thread.start()
+        base_url = f"http://127.0.0.1:{server.server_port}"
+        windows = []
+        try:
+            with patch.dict(
+                os.environ,
+                {
+                    "AETHERION_AUTOSTART_LOCAL_SERVER": "0",
+                    "AETHERION_API_URL": base_url,
+                },
+            ):
+                win = AetherionWindow()
+                windows.append(win)
+                win.monitor_page.refresh = lambda: None
+                win.open_operations_route("monitor")
+                self.assertIs(win.pages.currentWidget(), win.login_page)
+                win.login_page.authenticated.emit(
+                    {"access_token": "verified-bearer", "user": {"username": "operator"}},
+                    base_url,
+                )
+                deadline = time.monotonic() + 5.0
+                while not getattr(win, "_session_verified", False) and time.monotonic() < deadline:
+                    app.processEvents()
+                    time.sleep(0.01)
+                app.processEvents()
+                self.assertTrue(getattr(win, "_session_verified", False))
+                self.assertEqual(server.auth_me_requests, ["Bearer verified-bearer"])
+                self.assertEqual(win.access_token, "verified-bearer")
+                self.assertEqual(getattr(win, "allowed_subject_ids", ()), ("CREW-01",))
+                self.assertIs(win.pages.currentWidget(), win.operations_home_page)
+                self.assertIs(
+                    win.operations_home_page.workspace_stack.currentWidget(),
+                    win.monitor_page,
+                )
+                self.assertEqual(win.mission_control_page._token, "verified-bearer")
+                self.assertEqual(win.mission_control_page.api_url, base_url)
+
+                win.assistant_page.set_identity("CREW-01", "verified-bearer")
+                win.show_assistant()
+                self.assertEqual(win.assistant_page._identity, "account:operator")
+                win.sign_out()
+                self.assertEqual(win.access_token, "")
+                self.assertFalse(getattr(win, "_session_verified", False))
+                self.assertEqual(win.mission_control_page._token, "")
+                self.assertEqual(win.mission_control_page._subjects, [])
+                self.assertEqual(server.logout_requests, 1)
+
+                # A rejected /auth/me response must revoke/clear the login token and
+                # leave later selections gated at Login.
+                server.auth_status = 403
+                rejected = AetherionWindow()
+                windows.append(rejected)
+                rejected.monitor_page.refresh = lambda: None
+                rejected.open_operations_route("monitor")
+                rejected.login_page.authenticated.emit(
+                    {"access_token": "verified-bearer", "user": {"username": "operator"}},
+                    base_url,
+                )
+                deadline = time.monotonic() + 5.0
+                while rejected.access_token and time.monotonic() < deadline:
+                    app.processEvents()
+                    time.sleep(0.01)
+                app.processEvents()
+                self.assertEqual(rejected.access_token, "")
+                self.assertFalse(getattr(rejected, "_session_verified", False))
+                self.assertEqual(rejected.mission_control_page._token, "")
+                rejected.open_operations_route("monitor")
+                self.assertIs(rejected.pages.currentWidget(), rejected.login_page)
+                self.assertGreaterEqual(server.logout_requests, 2)
+        finally:
+            for win in windows:
+                win.close()
+            server.shutdown()
+            server.server_close()
+            server_thread.join(timeout=2.0)
 
     def test_mission_control_reuses_verified_session_and_clears_it(self) -> None:
         os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
