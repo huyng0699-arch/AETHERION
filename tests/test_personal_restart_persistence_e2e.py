@@ -12,14 +12,17 @@ import tempfile
 import time
 import unittest
 from unittest.mock import patch
+import urllib.error
 import urllib.request
 
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkProxy, QNetworkProxyFactory
 from PySide6.QtWidgets import QApplication
 
 from aetherion_desktop.features.personal.authorized_today import AuthorizedPersonalTodayPage
+from aetherion_server.store import upsert_user
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+TARGET_OBSERVED_AT = "2026-11-14T10:30:00+00:00"
 
 
 def _free_port() -> int:
@@ -39,6 +42,30 @@ def _http_json(opener, method: str, url: str, payload: dict | None = None, token
 
 
 class PersonalRestartPersistenceE2ETests(unittest.TestCase):
+    def _assert_expected_card_and_table(self, page: AuthorizedPersonalTodayPage) -> None:
+        self.assertEqual(page.selected_subject_id, "CREW-01")
+        self.assertEqual(page._subject_id, "CREW-01")
+        self.assertEqual(len(page._displayed_cards), 1)
+        card = page._displayed_cards[0]
+        self.assertEqual(card.metric, "heart_rate")
+        self.assertEqual(card.reading, "71 bpm")
+        self.assertEqual(card.unit, "bpm")
+        self.assertEqual(card.source_id, "wearable_1")
+        self.assertEqual(card.scope, "personal")
+        self.assertEqual(card.observed_at, TARGET_OBSERVED_AT)
+        self.assertEqual(card.verification_state, "DEVICE_UNVERIFIED")
+        # DEVICE_UNVERIFIED remains UNVERIFIED at UI safety boundary even when raw quality='READY'
+        self.assertEqual(card.quality, "UNVERIFIED")
+
+        self.assertEqual(page.table.rowCount(), 1)
+        self.assertEqual(page.table.item(0, 0).text(), "heart_rate")
+        self.assertEqual(page.table.item(0, 1).text(), "71 bpm")
+        self.assertEqual(page.table.item(0, 2).text(), TARGET_OBSERVED_AT)
+        self.assertEqual(page.table.item(0, 3).text(), "wearable_1")
+        self.assertEqual(page.table.item(0, 4).text(), "personal")
+        self.assertEqual(page.table.item(0, 5).text(), "UNVERIFIED")
+        self.assertEqual(page.table.item(0, 6).text(), "DEVICE_UNVERIFIED")
+
     def test_real_api_observation_appears_and_persists_across_restart(self) -> None:
         os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
         port = _free_port()
@@ -46,8 +73,9 @@ class PersonalRestartPersistenceE2ETests(unittest.TestCase):
         opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
 
         with tempfile.TemporaryDirectory() as tmp:
+            db_path = Path(tmp) / "personal_restart_e2e.sqlite3"
             env = os.environ.copy()
-            env["AETHERION_DB_PATH"] = str(Path(tmp) / "personal_restart_e2e.sqlite3")
+            env["AETHERION_DB_PATH"] = str(db_path)
             env["AETHERION_BOOTSTRAP_USER"] = "admin_pers"
             env["AETHERION_BOOTSTRAP_PASSWORD"] = "TestPass1234!"
             env["AETHERION_BOOTSTRAP_ROLE"] = "admin"
@@ -61,6 +89,15 @@ class PersonalRestartPersistenceE2ETests(unittest.TestCase):
                     stderr=subprocess.PIPE,
                 )
 
+            def _login(username: str, password: str) -> str:
+                _, body = _http_json(
+                    opener,
+                    "POST",
+                    f"{base_url}/api/v1/auth/login",
+                    {"username": username, "password": password},
+                )
+                return body["access_token"]
+
             def _wait_ready(proc: subprocess.Popen) -> str:
                 deadline = time.monotonic() + 10.0
                 while time.monotonic() < deadline:
@@ -72,13 +109,7 @@ class PersonalRestartPersistenceE2ETests(unittest.TestCase):
                         time.sleep(0.15)
                 else:
                     raise RuntimeError("Server did not start")
-                _, body = _http_json(
-                    opener,
-                    "POST",
-                    f"{base_url}/api/v1/auth/login",
-                    {"username": "admin_pers", "password": "TestPass1234!"},
-                )
-                return body["access_token"]
+                return _login("admin_pers", "TestPass1234!")
 
             def _stop_api(proc: subprocess.Popen) -> None:
                 proc.terminate()
@@ -111,7 +142,7 @@ class PersonalRestartPersistenceE2ETests(unittest.TestCase):
                         {"subject_id": "CREW-01", "display_name": "Crew One", "scope": "personal", "role_label": "crew"},
                         token=token1,
                     )
-                    _http_json(
+                    post_status, post_body = _http_json(
                         opener,
                         "POST",
                         f"{base_url}/api/v1/observations",
@@ -122,13 +153,15 @@ class PersonalRestartPersistenceE2ETests(unittest.TestCase):
                             "value": 71.0,
                             "unit": "bpm",
                             "source_id": "wearable_1",
-                            "observed_at": "2026-11-14T10:30:00+00:00",
+                            "observed_at": TARGET_OBSERVED_AT,
                             "quality": "READY",
                             "verification_state": "DEVICE_UNVERIFIED",
                             "idempotency_key": "q0090-e2e-001",
                         },
                         token=token1,
                     )
+                    self.assertEqual(post_status, 201)
+                    persisted_id = post_body["id"]
 
                     net1 = QNetworkAccessManager()
                     net1.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
@@ -140,14 +173,40 @@ class PersonalRestartPersistenceE2ETests(unittest.TestCase):
                         app.processEvents()
                         time.sleep(0.05)
 
-                    self.assertEqual(len(page1._displayed_cards), 1)
-                    self.assertEqual(page1.table.rowCount(), 1)
+                    self._assert_expected_card_and_table(page1)
                     page1.close()
                     _stop_api(proc1)
+
+                    # Add a restricted user for negative authorization check before restart
+                    upsert_user(
+                        db_path,
+                        username="crew_other",
+                        password="OtherUser1234!",
+                        role="crew",
+                        allowed_subjects=["CREW-02"],
+                    )
 
                     # Restart API + fresh Personal UI instance
                     proc2 = _start_api()
                     token2 = _wait_ready(proc2)
+
+                    get_status, get_body = _http_json(
+                        opener,
+                        "GET",
+                        f"{base_url}/api/v1/observations?subject_id=CREW-01&limit=10",
+                        token=token2,
+                    )
+                    self.assertEqual(get_status, 200)
+                    self.assertEqual(len(get_body["observations"]), 1)
+                    obs = get_body["observations"][0]
+                    self.assertEqual(obs["id"], persisted_id)
+                    self.assertEqual(obs["subject_id"], "CREW-01")
+                    self.assertEqual(obs["metric"], "heart_rate")
+                    self.assertEqual(obs["value"], 71.0)
+                    self.assertEqual(obs["unit"], "bpm")
+                    self.assertEqual(obs["source_id"], "wearable_1")
+                    self.assertEqual(obs["observed_at"], "2026-11-14T10:30:00Z")
+                    self.assertEqual(obs["verification_state"], "DEVICE_UNVERIFIED")
 
                     net2 = QNetworkAccessManager()
                     net2.setProxy(QNetworkProxy(QNetworkProxy.ProxyType.NoProxy))
@@ -159,8 +218,28 @@ class PersonalRestartPersistenceE2ETests(unittest.TestCase):
                         app.processEvents()
                         time.sleep(0.05)
 
-                    self.assertEqual(len(page2._displayed_cards), 1)
-                    self.assertEqual(page2.table.rowCount(), 1)
+                    self._assert_expected_card_and_table(page2)
+
+                    # Denied cross-subject access must return 403 and show no personal records
+                    denied_token = _login("crew_other", "OtherUser1234!")
+                    with self.assertRaises(urllib.error.HTTPError) as http_exc:
+                        _http_json(
+                            opener,
+                            "GET",
+                            f"{base_url}/api/v1/observations?subject_id=CREW-01&limit=10",
+                            token=denied_token,
+                        )
+                    self.assertEqual(http_exc.exception.code, 403)
+                    http_exc.exception.close()
+
+                    page2.select_subject("CREW-01", denied_token)
+                    dl3 = time.monotonic() + 5.0
+                    while page2._status_key != "personal.snapshot" and time.monotonic() < dl3:
+                        app.processEvents()
+                        time.sleep(0.05)
+                    self.assertEqual(page2._displayed_cards, ())
+                    self.assertEqual(page2.table.rowCount(), 0)
+                    self.assertEqual(page2._status_values.get("state"), "DENIED")
                     page2.close()
                 finally:
                     if proc1.poll() is None:
