@@ -193,8 +193,8 @@ def main(argv: list[str] | None = None) -> int:
     render_locale("vi", "vi", include_patient=True)
     render_locale("en", "en")
 
-    # Authenticated route resume is exercised by the focused startup test with a successful
-    # bearer-authenticated /subjects response; this offscreen preview never injects a token.
+    # Authenticated route resume is exercised by the focused startup test with a
+    # bearer-authenticated /api/v1/auth/me response; this preview injects no token.
     window.close()
     app.processEvents()
     print(f"PREVIEW_COUNT {len(tuple(output.glob('*.png')))}")
