@@ -114,3 +114,8 @@ Owner override: the rejected five oversized Portal cards / horizontal-menu-only 
 - An implementation with no genuine Windows/device/clinical validation remains `COMPONENT_READY` or `BLOCKED`; only an independent reviewer may approve a truly satisfied Quest. GitHub Actions failing with `runner_id=0` and zero steps does not constitute a Python test result.
 
 **Maintenance:** Record acceptance and owner coordination inside the relevant `quests/v1/Q-XXXX.md`; put lengthy test snapshots in dated `docs/qa/` documents. Keep this root index concise so it cannot become a growing, contradictory second ledger.
+
+## Active mobile SDK compatibility claim (2026-11-15)
+
+- Q-0490 is RUNNING in PREPARE under `Codex/AETHERION-mobile-sdk-upgrade` through `2026-11-15T09:19:03Z`. It owns only its Quest record, this navigation note, and the two Mobile dependency manifests.
+- Q-0197 remains an active upstream mobile implementation; Q-0490 does not edit its screens or config. See [Q-0490](quests/v1/Q-0490.md) for exact acceptance and honest runtime/public-tunnel limits.
