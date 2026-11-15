@@ -1,0 +1,382 @@
+{
+  "article_id": "CLIFF-045",
+  "slot": 45,
+  "display_title": "Fracture Distal Leg",
+  "category": "Lower Extremity Injury",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "NASA Integrated Medical Model (IMM) Clinical Finding Form (CliFF 2023) for mission risk-planning; NOT a validated bedside clinical protocol or NASA endorsement of AETHERION.",
+  "source": {
+    "source_id": "NASA-CLIFF-045",
+    "publisher": "NASA",
+    "title": "Fracture Distal Leg CliFF (2023)",
+    "source_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+    "retrieved_at_utc": "2026-11-14T06:08:52.555669+00:00",
+    "content_sha256": "3cde629e71a11f98cef113bfbecedbae62c64c6d8d16667530b39f6a86998a69",
+    "original_mime": "application/pdf",
+    "original_bytes": 346601,
+    "license_identifier": "NASA-US-GOV-PUBLIC-DOMAIN",
+    "attribution": "NASA Integrated Medical Model (IMM) Documentation (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "limitations": [
+    "NASA IMM CliFF is probabilistic spaceflight medical risk-planning evidence, not a validated bedside treatment protocol.",
+    "Covers multiple traumatic fracture types in the tibia, fibula, and patella; terrestrial trauma data are extrapolated to microgravity/EVA (p.7-8).",
+    "RTDC surrogate was hospitalization/need for surgery, which may not map directly to all spaceflight mission architectures (p.5)."
+  ],
+  "sections": [
+    {
+      "section_id": "CLIFF-045-sec-0",
+      "heading": "Branch Baseline & Clinical Overview",
+      "text_content": "Clinical Finding Form (CliFF)\nBranch\n\nBaseline\n\nICL53_Fracture - Distal Leg\nFracture - Distal leg encompasses any traumatic fracture of the patella, tibia, or fibula. However, fracture - ankle is a separate condition for\nconsideration in future iterations of IMPACT. It is somewhat unclear where a distal leg fracture stops and an ankle fractures starts based on their\ndefinitions. For the purposes of this CLiFF the mesh term \"ankle\" was excluded in literature searches.\n\nINCIDENCE DATA INCLUDED IN THE MODEL\n\nThe model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\nstatus, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\ntype of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\noccurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\nIncidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n(proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\nhistory characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\nare assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\noccurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\nincluded in the MEDPRAT Technical Description Document.\n\nINCIDENCE DATA\n\nSPACEFLIGHT LITERATURE\n\nThere have been no published accounts of a distal leg fracture (or any fracture) in spaceflight.\nANALOG LITERATURE\n\nMilitary analog population data focuses primarily on stress fractures. Stress fractures are not included in this Cliff.\nTERRESTRIAL LITERATURE\n\nWennergren et al, 2018 completed a 5 year retrospective review of tibial fracture incidence in Sweden in patients age 16-101 (stratified ages less\nthan 50 and 50 years and older). The overall incidence of tibial fracture in this population was 51.7/100,000 py, with an incidence of 24.12/100,000\nperson-years in patients age 16-49. The most common cause of fractures was falls, followed by traffic accidents. Beerekamp et al, 2017 conducted\na similar retrospective review of lower leg fractures in the Netherlands in a 9 year study inclusive of 12% of the emergency department patients in\nthe country. The overall incidence in this study was 44.8/100,000 person years.\n\nOVERALL INCIDENCE SUMMARY\n\nINCIDENCE\n\nSurface-Ops EVA: mean 3.183E-7 SD 2.758E-9.\n\nINCIDENCE SUMMARY\n\nThis cliff pertains only to traumatic fractures of the distal leg. The incidence of traumatic fractures outside of surface EVA was assumed to approach\n0. Thus, the incidence only applies to Surface-ops EVA exposure. It is an incidence proportion, utilizing terrestrial traumatic distal leg fracture data\n(Beerekamp et al, 2017; Wennergren et al, 2018). This incidence proportion distribution is a Beta(shape1=13319.4, shape2=41845411064) with\nmean 3.183E-7 and SD 2.758E-9. This is the result of Bayesian analysis generating the posterior of the incidence rate for a meta-analysis of 2\nterrestrial references (Beerekamp et al, 2017; Wennergren et al, 2018) (12271 events over 26686430py and 1371 events over 2650000py) and\nthen utilizing the posterior samples to generate a posterior distribution for the probability of observing at least one fracture over a 6-hour EVA.\nBeerekamp et al, 2017 included information on distal leg fractures, whereas Wennergren included data specific to tibial fractures. Beerekamp et al,\n2017 was not age adjusted because, although the female rates increase with age, the male rates decrease with age. If you assume the population\nis half male and half female, the rates become consistent across the age spans. Given this, the data were not sex or age-adjusted from Beerekamp\net al, 2017. Wennergren et al did not provide demographics to allow for sex or age-adjustment. These two data sources were entered into a\nBayesian model to get a posterior distribution for the incidence rate. That incidence rate was used to calculate the probability of experiencing at\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\npage: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "p.1"
+    },
+    {
+      "section_id": "CLIFF-045-sec-1",
+      "heading": "Incidence Model & Level of Confidence (LOC)",
+      "text_content": "least 1 fracture event over an EVA (assumed to be 6 hours).\n\nTABLE 1. INCIDENCE MODEL\n\nIncidence Details\nIncidence Type\nEVA\nSegment\nEVA Surface\nEnv. Exposure\nNA\nSex\nAny\nCrowns\nAny\nContacts\nAny\nPregnancy\nAny\nIncidence Distribution\nOccurrence Dist\nBinomial\nIncidence Dist.\nBeta\nMean\n3.183E-07\nSD\n2.758E-09\nBeta\n(Alpha): 13319.4\n(Beta): 4.18454E+10\n\nTABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nWennergren et al, 2018\n\nTerrestrial\n\n3\n\nStattin et al, 2018\n\nTerrestrial\n\n0\n\nBeerekamp et al, 2017\n\nTerrestrial\n\n3\n\nLarsen et al, 2016\n\nTerrestrial\n\n1\n\nWennergren et al, 2018 (Swedish) and Beerekamp et al, 2017 (Dutch) provide retrospective analysis over 5 and 9 years, respectively, of skeletally\nmature patients of ages 16 years and older. They use national databases to determine the incidence of tibial (Wennergren et al) and lower leg\n(Beerekamp et al) fractures. Stattin et al, 2018 provides a hazard ratio comparison of all fracture types, including lower leg fractures, in crosscountry skiing athletes compared to controls. This data is not well suited for incidence for this CLiFF. Larsen et al, 2016 provides the incidence of\nall patellar fractures in Denmark from 2005-2014. Patellar fractures are uncommon, thus this article is less applicable to the astronaut corps.\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\npage: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "p.2"
+    },
+    {
+      "section_id": "CLIFF-045-sec-2",
+      "heading": "Crewmember Selection, Prevention & Case Scenarios",
+      "text_content": "CREWMEMBER SELECTION/PREVENTION\n\nDISQUALIFYING CONDITIONS\n\nRefer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n(2016).\nPREFLIGHT PREVENTATIVE MEASURES\n\nPre-flight requirements include training on exercise devices to prepare for in-flight use. In-flight, on the International Space Station (and previously\non Mir), crewmembers are required to exercise for 2.5 hours per day (1 hour of aerobic conditioning and 1.5 hours or resistive exercise) (NASA,\nMedB 5.2).\nBEST CASE SCENARIO DEFINITION\n\nA closed, non-comminuted, non-segmented, non-displaced, or minimally displaced fracture resulting in no neurovascular compromise to the\naffected limb.\nWORSE CASE SCENARIO DEFINITION\n\nA fracture that is: open, comminuted, segmented, moderatlely to severely displaced, intra-articular, or results in neurovascular compromise to the\naffected limb, likely requiring surgical intervention.\nCONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\nFracture - Knee Fracture - Tibial Shaft Fracture - Proximal Fibular Fracture - Pilon\n\nBEST CASE/WORST CASE PROBABILITY COMMENTS\n\nThe definition of this condition is inclusive of multiple traumatic fractures of the lower leg. The best- and worst-case probabilities vary significantly\ndepending on the type of fracture involved. Best-case/worst case scenario probabilities are as follows based on literature from some of the fracture\ntypes included in the condition: Tibial Fracture: BC 57.8%, WC 42.20% (Wennergren et al, 2018), Composite \"Lower Leg Fracture:\" BC 49.5%, WC\n50.5% (Beerekamp et al, 2017), Patellar Fracture: BC 23.6%, WC 76.4% (Larsen et al, 2016). For the purposes of this Cliff the \"Lower Leg\nFracture\" best-case (49.5%) and worst-case (50.5%) probabilities will be used since it most closely meets the broad definition of the Cliff, but\nindividual values are included here should they be needed for future efforts.\nTABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nWennergren et al, 2018\n\nTerrestrial\n\n3\n\nStattin et al, 2018\n\nTerrestrial\n\n2\n\nBeerekamp et al, 2017\n\nTerrestrial\n\n3\n\nLarsen et al, 2016\n\nTerrestrial\n\n2\n\nThe applicability of these papers to the astronaut corps varies. Wennergren et al and Beerekamp et al included patients from 16 years of age and\nolder. Stattin et al looked at cross-country skiers vs. non-cross country skiers to compare rates of injuries. Larsen et al focuses specifically on\npatellar fractures. Notably, all of the studies were outside the United States (Swedish, Danish, and Dutch). Regardless, the values for best- and\nworst-case probability in these studies appear to be valid and coincide with the worst-case scenario definition for this condition based on\ncomplications such as open fractures, or need for surgery.\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\npage: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "p.3"
+    },
+    {
+      "section_id": "CLIFF-045-sec-3",
+      "heading": "Table 4. CliFF Treatment & Outcome Table by Clinical Phase",
+      "text_content": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\nCase\nScenario\n\nComposite\nIncidence\n\nTreated Best\nCase (TBC)\n\nSurface-Ops EVA:\nmean 3.183E-7 SD\n2.758E-9.\n\nTreated\nWorst Case\n(TWC)\n\nCP1: Diagnosis\n\nCP2: Treatment\n\nCondition\nProbability\n%\n\nCP3: Condition End State\n\nTI%\n\nDuration\n\nTI%\n\nDuration\n\nTI%\n\nRTDC\n\nPreset\n\nPreset\n\nPreset\n\nMin\n\nMax\n\nPreset\n\nMin%\n\nMax%\n\nMin%\n\nMax%\n\n49.5 - 49.5\n\n100\n\n1.22\n\n6.93596\n\n168\n\n1680\n\n0\n\n0\n\n1.1\n\n0\n\n0\n\n50.5 - 50.5\n\n100\n\n2.07\n\n28.1557\n\n1008\n\n12600\n\n7.0954\n\n0\n\n100\n\n0\n\n4.9\n\nLOCL\n\nUntreated\nBest Case\n(UTBC)\n\nN/A\n\nN/A\n\nN/A\n\n1.22\n\n33.5769\n\n1123\n\n12600\n\n0.58464\n\n0\n\n1.1\n\n0\n\n0\n\nUntreated\nWorst Case\n(UTWC)\n\nN/A\n\nN/A\n\nN/A\n\n2.07\n\n46.532\n\n1123\n\n17250\n\n20.5687\n\n0\n\n100\n\n28\n\n50\n\nTABLE 4 KEY\nComposite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\nFor space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\nCondition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\nClinical Phase General Comments:\nTI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\nto the medical condition.\nDurations are defined in hours.\nRemoval to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\nend state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\npotential for intractable pain.\nLoss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\nClinical Phase 1: Initial Assessment and Diagnosis:\nCovers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\ncrewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\nconsidered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\napplicable.\"\nClinical Phase 2: Stabilization, Treatment, and Convalescence:\nThe affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\nto recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\nrecurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\nmaximum hours.\nClinical Phase 3: Condition End State:\nReached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\nenvironment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\ncondition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\nbe noted in the condition end state results.\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\npage: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "p.4"
+    },
+    {
+      "section_id": "CLIFF-045-sec-4",
+      "heading": "Scenario Overview & Treatment Comments",
+      "text_content": "SCENARIO OVERVIEW COMMENTS\n\nThe RTDC surrogate was \"hospitalization,\" but the need for surgery was also considered an RTDC surrogate for RTDC probabilities. The definition\nfor this condition encompasses any traumatic fracture involving the distal leg . This broad definition made the literature search for duration, RTDC,\nand LOCL complicated given that different fracture types and locations have very different prognoses. Thus, data was found for individual fracture\ntypes and each scenario was analyzed on an individual level to arrive at the most appropriate values. See specific scenarios below for an\nexplanation of how duration, RTDC, and LOCL were derived.\n\nTREATED BEST CASE (TBC) SCENARIO COMMENTS\n\nThe definition of this condition inherently includes multiple fracture types in the distal leg. Thus, durations of treatment for distal leg fractures, tibial\nplateau and tibial shaft fractures, patellar fractures, and proximal fibular shaft fractures were obtained. The minimum value for duration of healing\n(168 hours for proximal fibular shaft fracture) and maximum value for duration of healing (1680 hours for patellar fracture) were used for the\nduration range (Boden et al, 1999; Melvin and Mehta, 2011). RTDC probabilities for tibial plateau fracture (0%) (Porter and Fenton, 2011), patellar\nfracture (0-1.1%) (Gwinner et al, 2016), and proximal fibular shaft fracture (0%) (Pallin, 2018) were obtained. The range (0-1.1%) was accordingly\nassigned for RTDC since it is dependent on the type of fracture. No evidence of mortality secondary to a best-case distal leg fracture could be\nfound from tibial plateau fracture (Porter, 2011), patellar fracture (Gwinner et al, 2016), tibial shaft fracture (Schmidt et al, 2003), or proximal fibular\nfracture (Pallin, 2018). Thus, LOCL probability was assigned as 0%.\n\nTREATED WORST CASE SCENARIO (TWC) COMMENTS\n\nThe definition of this condition inherently includes multiple fracture types in the distal leg. Reviewed studies indicate a healing time of 6-8 weeks with\nsurgical intervention for worst-case lower extremity distal leg fractures. The minimum duration was assigned 1,008 hours (6 weeks). This is based\non surgical intervention for worst-case tibial plateau fractures (Thomas et al, 2009) and Patellar Fractures (Melvin and Mehta, 2011). The maximum\nduration, 12600 hours (75 weeks), was re-used from the untreated best-case scenario. Since surgical intervention will be unavailable inflight, it was\nfelt that this was a better approximation for healing time than data based on surgical intervention of these fractures. The RTDC surrogate of need\nfor surgery was used to inform the RTDC probability. RTDC probabilities were obtained from the literature for tibial plateau fracture (100-100%)\n(Porter and Fenton, 2011), Patellar Fracture (100-100%) (Melvin and Mehta, 2011), Tibial Shaft Fracture (Schmidt et al, 2003) (100-100%) and\nProximal Fibular Shaft Fracture (0-87.5%) (Boden et al, 1999). The full range 0-100% was used for RTDC probability. LOCL probability estimates\nwere found in the literature for tibial plateau fracture (0-4.9%) (Elsoe and Larsen, 2020), patellar fracture (0-1.3%) (Larsen and Elsoe, 2018), tibial\nshaft fractures (0-3%) (Tampe et al, 2018), and proximal fibular fractures (0%) (Pallin, 2018). Accordingly, the LOCL probability range was set at 04.9%.\n\nUNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\nDue to the paucity of data available regarding untreated distal leg fractures, treated (casting) tibial shaft fracture data were used to estimate the\nUTBC scenario duration. The minimum duration was assigned 1123 hours (6.7 weeks) and the maximum was assigned 12,600 hours (75 weeks)\nbased on Schmidt et al, 2003. The RTDC probability for this condition is based on need for surgical intervention. By definition, best-case fractures\nare not anticipated to require surgical intervention. The RTDC probability from the TBC scenario was repeated for this scenario (0-1.1%). No data\ncould be located for RTDC probabilities of traumatic tibial fractures. The full range 0-100% was assigned for RTDC. No data were available to\ninform the LOCL probability. The LOCL probability was assigned 0% based on SME opinion.\n\nUNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\nThe duration for the UTBC was repeated for the minimum duration for this scenario. The maximum duration was informed by Pritchett, 1997. It is a\nsmall study of 18 patients with too many comorbidities to safely undergo surgery for widely displaced patellar fractures. A third of the patient's died,\nbut of the 12 living patients at 2 years of follow-up 9 reported good outcomes, although all patients had extensor lag of more than twenty degrees.\nDue to a paucity of data the 2-year follow-up period from this study was used as the upper limit for the duration for this scenario. No data was found\ninforming RTDC for this scenario, thus the RTDC from the TWC scenario was repeated (0-100%). The paucity of data for untreated fractures is\nmost apparent in relation to LOCL probability. The range of 28-50 was taken from the Fracture \u2013 Femur cliff data (LOCL of traumatic, displaced\nintracapsular femur fractures in a non-operative elderly comorbid population - Gregory et al, 2010). SME opinion is that the likelihood of LOCL from\na distal leg fracture would not exceed that of a femur fracture.\n\nTABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\npage: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "p.5"
+    },
+    {
+      "section_id": "CLIFF-045-sec-5",
+      "heading": "Outcome Level of Confidence (LOC) (Part 1)",
+      "text_content": "Citation\n\nSource\n\nThomas et al, 2009\n\nTerrestrial\n\nMelvin and Mehta, 2011\n\nTerrestrial\n\nSchmidt et al, 2003\n\nTerrestrial\n\nPallin, 2018\n\nTerrestrial\n\nRome et al, 2005\n\nTerrestrial\n\nAllen et al, 2004\n\nTerrestrial\n\nSlatyer, 1995\n\nTerrestrial\n\nSwenson et al, 1997\n\nTerrestrial\n\nUvaraj et al, 2007\n\nTerrestrial\n\nBoden et al, 1999\n\nTerrestrial\n\nPritchett, 1997\n\nTerrestrial\n\nLOC Value\n\n2\n\nThis condition covers multiple different traumatic fracture types in the tibia, fibula, and patella. This is a challenge for duration because the\ntreatment course varies widely between fracture types. The durations listed in Table 4 are the minimum and maximum duration times found in the\nliterature search based on different fracture types when literature was available (tibial shaft fracture, tibial plateau fracture, patellar fracture,\nproximal fibular fracture). Thus, the durations values have wide distributions. This is a limitation due to the multiple fracture types being combined\nin this condition.\n\nTABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nPorter and Fenton, 2011\n\nTerrestrial\n\nGwinner et al, 2016\n\nTerrestrial\n\nSchmidt et al, 2003\n\nTerrestrial\n\nPallin, 2018\n\nTerrestrial\n\nMelvin and Mehta, 2011\n\nTerrestrial\n\nBoden et al, 1999\n\nTerrestrial\n\nUvaraj et al, 2007\n\nTerrestrial\n\nLOC Value\n\n2\n\nThis condition covers multiple different traumatic fracture types in the tibia, fibula, and patella. This is a challenge for RTDC because the\nseverity/consequence of the fractures varies significantly depending on the location and type of fracture. Therefore, the RTDC probabilities have a\nwide spread for this condition. Having a lower bound of 0% for some of these scenarios may underestimate the true RTDC probability because it\nwas assigned based on less consequential fracture types/locations.\n\nTABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nPorter and Fenton, 2011\n\nTerrestrial\n\nGwinner et al, 2016\n\nTerrestrial\n\nSchmidt et al, 2003\n\nTerrestrial\n\nPallin, 2018\n\nTerrestrial\n\nElsoe and Larsen, 2020\n\nTerrestrial\n\nLarsen and Elsoe, 2018\n\nTerrestrial\n\nTampe et al, 2018\n\nTerrestrial\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\nLOC Value\n\nN/A\n\npage: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "p.6"
+    },
+    {
+      "section_id": "CLIFF-045-sec-6",
+      "heading": "Outcome Level of Confidence (LOC) (Part 2)",
+      "text_content": "Citation\n\nSource\n\nGregory et al, 2010\n\nTerrestrial\n\nLOC Value\n\nThis condition covers multiple different traumatic fracture types in the tibia, fibula, and patella. This is a challenge for LOCL because risk of loss of\ncrew life varies depending on the type and location of the fracture. There is also a paucity of data for untreated fractures.\n\nCAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\nCapabilities and Resourcing Scope\nOverview\nDistal leg fracture refers to a fracture of the tibia and/or fibula, with the best-case scenario representing uncomplicated fractures and the worstcase scenario representing complicated fractures. Any fracture, if left untreated, could result in further complications such as malunion, loss-of\nfunction, and/or chronic pain. A worst-case scenario fracture, left untreated, could result in additional significant complications such as\nneurovascular compromise.\nCNES: Fracture knee (tibial), tibial shaft fracture, proximal fibular fracture, pilon fracture\nDiagnostic Scope and Resourcing:\nIn the best-case scenario, diagnosis is based on history, physical examination (musculoskeletal and neurologic), and imaging. Plain film (X-Ray),\nCT, and MRI will be unavailable inflight. Musculoskeletal ultrasound was included in the CRT as it may serve as a useful adjunct in diagnosis for\nsome cases, but it was not considered a necessary capability to diagnose distal leg fracture.\nIn the worst-case scenario, diagnosis is based on history, physical examination (musculoskeletal, neurologic, and vital signs), and imaging. In some\ncases, musculoskeletal ultrasound may be contraindicated due to risk of contamination of an open fracture, or further displacement of the\nfracture(s). The utility of musculoskeletal ultrasound would be determined on a case-by-case basis. It was included as a non-necessary capability.\nThis diagnostic framework is consistent with the terrestrial workup for distal leg fracture with the exception of the inability to perform plain film X-Ray\n(and if warranted CT or MRI), and thereby using Musculoskeletal Ultrasound as a possible surrogate.\nClinical Phase 1 Duration and Rationale\nThis version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\nconsensus Clinical Phase 1 duration:\nBest Case CP1: 1.22 hours\nWorst Case CP1: 2.07 hours\nThis CRT includes a scope of practice code of 5 (which correlates to an \u201cExperienced procedure trained generalist attending (ED attending)\u201d and\nwas included for musculoskeletal ultrasound and interpretation.\nTreatment Scope and Resourcing:\nMost best-case distal leg fractures in terrestrial populations resolve with an initial period of splinting, followed by 4-6 weeks of casting. Splinting was\nconsidered a necessity, whereas casting was included as a capability but not considered a necessity in this CRT. Although 3D printing offers\npotential for splinting of musculoskeletal injuries, it remains a largely experimental process and it is not within the scope of this CRT. Depending on\nthe fracture location, non-weightbearing status may be used terrestrially. If the fracture were to occur in microgravity phases of flight, nonweightbearing status is already achieved. Should the fracture occur during surface operations, it was assumed that partial gravity combined with\nimprovised mobility assistance utilizing materials available during surface operations would sufficiently provide non-weightbearing status (i.e.\ncrutches were not included in this CRT). Physical therapy is recommended post-immobilization. Exercise modification is also recommended, but not\nbuilt into the CRT as this does not represent a clinical resource. Pain is variable depending on the patient. Acetaminophen and NSAIDs were\nincluded in the best-case treatment scenario (acetaminophen given a higher primacy due to evidence that NSAIDs may interfere with bone healing).\nTerrestrially, all worst-case fractures warrant surgical intervention. Thus, a worst-case distal leg fracture in-flight would present a significant\ntreatment challenge. These fractures would warrant an attempted reduction to achieve more physiologic alignment. Note that nerve blocks for\nfracture reduction are not included in the scope for IMPACT 1.0 but could be considered in the future. Open fractures inflight would be treated with\ncopious irrigation, wound closure, prophylactic antibiotics and splinting with possible casting after wound healing. Again, both splinting and casting\nwere included as capabilities, but only splinting was considered a necessary capability in this CRT. Both plaster and fiberglass (and their associated\nmeans of removal) were included for trade-space analysis. Pain from a worst-case fracture may require narcotic analgesia. Physical therapy would\nbe advised until the end of the mission.\nCommunications and Support Needs:\nWhile real-time video and audio loop communications are desired for diagnosis and treatment, they were not considered a necessity, particularly in\nthe best-case scenario. For the WC, consultation with ground specialists to facilitate treatment and healing was considered necessary given the\nlimited diagnostic and treatment capabilities in-flight.\nREFERENCES\n1. Boyd AS, Benjamin HJ, Asplund CA. Splints and Casts: Indications and Methods. AFP 2009; 80:491\u20139.\n2. Nanchahal J, British Association of Plastic R and AS. Standards for the management of open fractures of the lower limb. London: Royal Society\nof Medicine Press Ltd.; 2009.\n3. Clinical Practice Guidel : Distal tibia and-or fibula physeal fractures - Outpatient clinics. Retrieved 1 February 2021 from\nhttps://www.rch.org.au/clinicalguide/guideline_index/fractures/ankle_outpatients/\n\nIMM CLIFF RECONCILATION COMMENTS\n\nFracture \u2013 Distal Leg is a new condition, not previously accounted for in the IMM. The closest condition in IMM was \u201cLower Extremity Stress\nFracture.\u201d Because of this, the incidence, duration, and outcomes (RTDC, LOCL), and task impairment are appropriately unique in this CLiFF as\ncompared to the IMM \u201cLower Extremity Stress Fracture\u201d CLiFF.\n\nLIMITATIONS SUMMARY\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\npage: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "p.7"
+    },
+    {
+      "section_id": "CLIFF-045-sec-7",
+      "heading": "Limitations Summary & Clinical Resource Table",
+      "text_content": "This condition covers multiple different traumatic fracture types in the tibia, fibula, and patella. This is a challenge for incidence, duration, RTDC,\nand LOCL as these numbers vary by fracture type, which can have a protracted treatment course. The durations listed in Table 4 are the minimum\nand maximum duration times found in the literature search based on different fracture types when literature was available (tibial shaft fracture, tibial\nplateau fracture, patellar fracture, proximal fibular fracture). Thus, the durations values have wide distributions. Overall the confidence in the\nduration, RTDC, and LOCL is decreased by combining so many fracture types into one condition.\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\npage: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "p.8"
+    },
+    {
+      "section_id": "CLIFF-045-sec-8",
+      "heading": "Table 8. Task Impairment Calculation by Human Systems Task Categories",
+      "text_content": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\nClinical Phase 2: Treatment\nAffected HSTCs\nCognitive Simple\n\nCognitive Complex\n\nCommunications\n\nInterpersonal\nSkills\n\nVision\n\nHearing\n\nTreated\nBest\nCase\n(TBC)\n\nCardiopulmonary\n\nDentition\n\nGI\n\nGU\n\n145\n\nUntreated\nBest\nCase\n(UTBC)\n\n664\n\nTreated\nWorst\nCase\n(TWC)\n\n664\n\nUntreated\nWorst\n223\nCase\n(UTWC)\n\n664\n\n89\n\n145\n\n145\n\n89\n\n145\n\nAffected HSTCs (Continued)\n\nHand\n(Dom)\n\nHand (Any)\n\nUpper Extremity\n\nLower\nExtremity\n\nAmbul &\nStanding (g)\n\nTI Calculation\n\nTranslation &\nDon/Doff\nStabilization\nEquipment\n(microgravity)\n\nTreated\nBest\n132\nCase\n(TBC)\nUntreated\nBest\n132\nCase\n(UTBC)\n\n564\n\nTreated\nWorst\n132\nCase\n(TWC)\nUntreated\nWorst\n132\nCase\n(UTWC)\n\n564\n\nPressure\nOps\n\nTI Score\n\nTotal Tasks\nImpaired By\nCondition\n\nTotal\nHuman\nSystem\nCategory\nTasks Full\nMission\n\nTI Decimal\n\nTI %\n\n34\n\n211\n\n522\n\n3763\n\n0.138719\n\n13.8719\n\n414\n\n22\n\n196\n\n34\n\n34\n\n211\n\n2505\n\n3763\n\n0.665692\n\n66.5692\n\n414\n\n22\n\n196\n\n34\n\n34\n\n211\n\n1852\n\n3763\n\n0.492161\n\n49.2161\n\n414\n\n22\n\n196\n\n34\n\n34\n\n211\n\n2728\n\n3763\n\n0.724953\n\n72.4953\n\nClinical Phase 3: Condition End State\nAffected HSTCs\nCognitive Simple\n\nCognitive Complex\n\nCommunications\n\nInterpersonal\nSkills\n\nVision\n\nHearing\n\nCardiopulmonary\n\nDentition\n\nGI\n\nGU\n\nTreated\nBest\nCase\n(TBC)\nUntreated\nBest\nCase\n(UTBC)\nTreated\nWorst\nCase\n(TWC)\nUntreated\nWorst\nCase\n(UTWC)\n\n145\n\nAffected HSTCs (Continued)\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\nTI Calculation\n\nTI Score\n\npage: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "p.9"
+    },
+    {
+      "section_id": "CLIFF-045-sec-9",
+      "heading": "Table 8. Full Mission Task Impairment Totals",
+      "text_content": "Hand\n(Dom)\n\nHand (Any)\n\nUpper Extremity\n\nLower\nExtremity\n\nTranslation &\nAmbul &\nDon/Doff\nStabilization\nStanding (g)\nEquipment\n(microgravity)\n\nPressure\nOps\n\nTreated\nBest\nCase\n(TBC)\nUntreated\nBest\nCase\n(UTBC)\n\n22\n\nTreated\nWorst\nCase\n(TWC)\n\n22\n\nUntreated\nWorst\n132\nCase\n(UTWC)\n\n22\n\n6/15/2023 1:55:59 PM\n\n196\n\n34\n\nTotal Tasks\nImpaired By\nCondition\n\nTotal\nHuman\nSystem\nCategory\nTasks Full\nMission\n\n0\n\n3763\n\n0\n\n22\n\n3763\n\n0.0058464 0.58464\n\nTI Decimal\n\nTI %\n\n0\n\n34\n\n211\n\n267\n\n3763\n\n0.070954\n\n7.0954\n\n34\n\n211\n\n774\n\n3763\n\n0.205687\n\n20.5687\n\nICL53_Fracture - Distal Leg Cliff\n\npage: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "p.10"
+    },
+    {
+      "section_id": "CLIFF-045-sec-10",
+      "heading": "Table 8 Key. Human System Task Category (HSTC) Definitions",
+      "text_content": "TABLE 8 KEY\nHuman System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\nsimple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\ncomplex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\nwith inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\nrequiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\nwhich visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\nalarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\nactivities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\nsolids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n(Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n(Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\nTasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n(excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\nboth lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\nuse of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\nsetting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\nequipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\nCriteria for Assignment of Conditions to HSTCs (any of the following):\n1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n5) Does pain associated with the condition impair any further human system categories?\n\nTASK IMPAIRMENT COMMENTS\n\nCP2: No comment. CP3: No comment.\n\nEVIDENCE COLLECTION PROCESS\n\nMesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n(CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\nIncidence:\nDatabases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\nsearch, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\nNY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\nDuration, RTDC, LOCL:\nDatabases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\nLOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\napplicable, the article was included in the CLiFF.\n\nLEVEL OF CONFIDENCE (LOC) SCORING\n\nArticles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\nenvironment using the following grading scale:\n4 \u2013 Confident\n3 \u2013 Somewhat confident\n2 \u2013 Neutral\n1 \u2013 Somewhat unconfident\n0 \u2013 Not confident\nThe following considerations factor into the grading scale above:\n\u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n\u2022 How closely does the population included resemble the astronaut population?\n\u2022 Quality of the paper (number of subjects, methods, etc.)\n\u2022 How much does the editor trust the source of the evidence?\n\u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n\u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\npage: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "p.11"
+    },
+    {
+      "section_id": "CLIFF-045-sec-11",
+      "heading": "References",
+      "text_content": "REFERENCES\n\nReference\n1. Wennergren D, Bergdahl C, Ekelund J, Juto H, Sundfeldt M, M\u00f6ller M. Epidemiology and incidence of tibia fractures in the Swedish Fracture\nRegister. Injury. 2018;49(11):2068-74. Epub 2018/09/18. doi: 10.1016/j.injury.2018.09.008. PubMed PMID: 30220634.\n2. Stattin K, H\u00e5llmarker U, \u00c4rnl\u00f6v J, James S, Micha\u00eblsson K, Byberg L. Decreased Hip, Lower Leg, and Humeral Fractures but Increased\nForearm Fractures in Highly Active Individuals. J Bone Miner Res. 2018;33(10):1842-50. Epub 2018/06/23. doi: 10.1002/jbmr.3476. PubMed\nPMID: 29933501.\n3. Beerekamp MSH, de Muinck Keizer RJO, Schep NWL, Ubbink DT, Panneman MJM, Goslings JC. Epidemiology of extremity fractures in the\nNetherlands. Injury. 2017;48(7):1355-62. Epub 2017/05/11. doi: 10.1016/j.injury.2017.04.047. PubMed PMID: 28487101.\n4. Larsen P, Court-Brown CM, Vedel JO, Vistrup S, Elsoe R. Incidence and Epidemiology of Patellar Fractures. Orthopedics. 2016;39(6):e1154e8. Epub 2016/08/19. doi: 10.3928/01477447-20160811-01. PubMed PMID: 27536953.\n8. NASA. MEDB5.2 On-Orbit Strength & Conditioning. JSC28913. 2013 [cited 2021 5/4]. Available from:\nhttps://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MEDB_5_2_MR082L_1.28.2014_Project_02_26_2015_12_06_08.pdf.\n9. Thomas C, Athanasiov A, Wullschleger M, Schuetz M. Current concepts in tibial plateau fractures. Acta Chir Orthop Traumatol Cech.\n2009;76(5):363-73. Epub 2009/11/17. PubMed PMID: 19912699.\n10. Melvin JS, Mehta S. Patellar fractures in adults. J Am Acad Orthop Surg. 2011;19(4):198-207. Epub 2011/04/06. doi: 10.5435/00124635201104000-00004. PubMed PMID: 21464213.\n11. Schmidt AH, Finkemeier CG, Tornetta P, 3rd. Treatment of closed tibial fractures. Instr Course Lect. 2003;52:607-22. Epub 2003/04/15.\nPubMed PMID: 12690886.\n13. Pallin DJ. Rosen's emergency medicine : concepts and clinical practice. In: editor RMWeRSHeMG-H, editor. Knee and Lower Leg. 9th ed.\nPhiladelphia, PA: Elsevier; 2018. p. 614-33.\n16. Slatyer MA. Lower limb training injuries in an army recruit population: University of Newcastle; 1995.\n17. Swenson JR EJ, DeHaven KE, Sebastianelli WJ, Hanks G, Kalenak A, Lynch JM. The effect of a pneumatic leg brace on return to play in\nathletes with tibial stress fractures. The American journal of sports medicine. 1997;25(3):322-8.\n18. Uvaraj NR, Mayil Vahanan N, Sivaseelam A, Mohd Sameer M, Basha IM. Surgical management of neglected fractures of the patella. Injury.\n2007;38(8):979-83. Epub 2007/06/05. doi: 10.1016/j.injury.2007.02.025. PubMed PMID: 17543968.\n19. Boden BP, Lohnes JH, Nunley JA, Garrett WE, Jr. Tibia and fibula fractures in soccer players. Knee Surg Sports Traumatol Arthrosc.\n1999;7(4):262-6. Epub 1999/08/26. doi: 10.1007/s001670050160. PubMed PMID: 10462219.\n20. Porter K, Fenton P. Tibial plateau fractures: A review. Trauma. 2011;13:181-7. doi: 10.1177/1460408610396422.\n21. Gwinner C, M\u00e4rdian S, Schwabe P, Schaser KD, Krapohl BD, Jung TM. Current concepts review: Fractures of the patella. GMS Interdiscip\nPlast Reconstr Surg DGPW. 2016;5:Doc01. Epub 2016/01/28. doi: 10.3205/iprs000080. PubMed PMID: 26816667; PubMed Central PMCID:\nPMCPMC4717300.\n22. Elsoe R, Larsen P. Tibial plateau fractures are associated with a long-term increased risk of mortality: a matched cohort study of 7950\npatients. Arch Orthop Trauma Surg. 2020;140(11):1705-11. Epub 2020/03/17. doi: 10.1007/s00402-020-03408-4. PubMed PMID: 32172316.\n23. Larsen P, Elsoe R. Patella fractures are not associated with an increased risk of mortality in elderly patients. Injury. 2018;49(10):1901-4.\nEpub 2018/09/25. doi: 10.1016/j.injury.2018.07.003. PubMed PMID: 30244702.\n24. Tampe U, Widmer LW, Weiss RJ, Jansson K. Mortality, risk factors and causes of death in Swedish patients with open tibial fractures - a\nnationwide study of 3, 777 patients. Scand J Trauma Resusc Emerg Med. 2018;26(1):62. Epub 2018/07/27. doi: 10.1186/s13049-018-0531-0.\nPubMed PMID: 30045769; PubMed Central PMCID: PMCPMC6060521.\n25. Gregory J J, Kostakopoulou K, Cool W P, Ford D J. One-year outcome for elderly patients with displaced intracapsular fractures of the\nfemoral neck managed non-operatively. Injury. 2010;41(12):1273-1276. Epub 2010/07/13. doi: 10.1016/j.injury.2010.06.009. PubMed PMID:\n20630527\n26. Pritchett JW. Nonoperative treatment of widely displaced patella fractures. The American Journal of Knee Surgery. 1997; 10(3):154-7;\ndiscussion 147-8. PMID: 9280109\n\nACRONYMS\n\nACRONYM\n\nPHRASE\n\nAAOMS\n\nAmerican Association of Oral and Maxillofacial Surgeons\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\npage: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "p.12"
+    },
+    {
+      "section_id": "CLIFF-045-sec-12",
+      "heading": "Acronyms & Abbreviations (Part 1)",
+      "text_content": "AMA\n\nAmerican Medical Association\n\nARCL\n\nAll Remaining Conditions List\n\nARS\n\nAcute Radiation Sickness\n\nBHP\n\nBehavioral Health and Performance\n\nCAC\n\nCoronary Artery Calcium\n\nCHS\n\nCrew Health and Safety\n\nCL\n\nCondition List\n\nCliFF\n\nClinical Finding Form\n\nCMO\n\nCrew Medical Officer\n\nCOMFORT\n\nClinical Outcome Metrics for Optimization of Robust Training\n\nCP1\n\nClinical Phase 1\n\nCP2\n\nClinical Phase 2\n\nCP3\n\nClinical Phase 3\n\nCRL\n\nClinical Resource Level\n\nCRT\n\nCapability Resource Table\n\nCST\n\nClinical Science Team\n\nDCS\n\nDecompression Syndrome\n\nDRM\n\nDesign Reference Mission\n\nED\n\nEmergency Medicine Doctor\n\nEL\n\nEvidence Library\n\nEMCL\n\nExploration Medical Condition List\n\nEMT\n\nEmergency Medical Technician\n\nEVA\n\nExtravehicular Activity\n\nEXMC\n\nExploration Medical Capability\n\nHRP\n\nHuman Research Program\n\nICD\n\nInternational Classification of Disease\n\nICL 1.0\n\nIMPACT 1.0 Medical Conditions List\n\nICU\n\nIntensive Care Unit\n\nIMCL\n\niMED Condition List\n\niMED\n\nIntegrated Medical Evidence Database\n\nIMM\n\nIntegrated Medical Model\n\nIMPACT-MD\n\nImpact Medical Database\n\nIP\n\nIncidence Proportion\n\nIR\n\nIncidence Rate\n\nISS\n\nInternational Space Station\n\nIV\n\nIntravenous\n\nJSC\n\nJohnson Space Center\n\nLEO\n\nLow-Earth orbit\n\nLEVA\n\nLunar Extravehicular Activity\n\nLOCL\n\nLoss of Crew Life\n\nLOM\n\nLoss of Mission\n\nLSAH\n\nLifetime Surveillance of Astronaut Health\n\nLSO\n\nLunar Surface Operations\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\npage: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "p.13"
+    },
+    {
+      "section_id": "CLIFF-045-sec-13",
+      "heading": "Acronyms & Abbreviations (Part 2)",
+      "text_content": "MCL\n\nMaster Condition List\n\nMEVA\n\nMedical Extravehicular Activity\n\nNASA\n\nNational Aeronautics and Space Administration\n\nN/A\n\nNot Applicable\n\nNP\n\nNurse Practitioner\n\nOBGYN\n\nObstetrics and Gynecology\n\nOR\n\nOccurrence Rate\n\nPA\n\nPhysician Assistant\n\nPDQ\n\nPain Disability Questionnaire\n\nPFCL\n\nProposed Future Conditions List\n\nPPE\n\nPersonal Protective Equipment\n\nPTRS\n\nProject Technical Requirements Specification\n\nPRL\n\nPharmaceutical Resource Level\n\nQTL\n\nQuality Time Lost\n\nRCL\n\nRemoved Conditions List\n\nREP\n\nRochester Epidemiology Study\n\nRTDC\n\nRemoval to Definitive Care\n\nSANS\n\nSpaceflight-Associated Neuro-ocular Syndrome\n\nSAS\n\nSpace Adaptation Syndrome\n\nSEVA\n\nSpaceflight Extravehicular Activity\n\nSME\n\nSubject Matter Expert\n\nSoP\n\nStandard Operating Procedure\n\nSPE\n\nSolar Particle Event\n\nTBD\n\nTo Be Determined\n\nTI\n\nTask Impairment\n\n6/15/2023 1:55:59 PM\n\nICL53_Fracture - Distal Leg Cliff\n\npage: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "p.14"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-045-tbl-1",
+      "title": "Table 1. Incidence Model (ICL53_Fracture - Distal Leg)",
+      "rows": [
+        [
+          "Incidence Type",
+          "EVA / General"
+        ],
+        [
+          "Reference Page",
+          "p.1-2"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "p.2"
+    },
+    {
+      "table_id": "CLIFF-045-tbl-4",
+      "title": "Table 4. CliFF Treatment & Outcome Table by Clinical Phase",
+      "rows": [
+        [
+          "Scenario",
+          "Treated Best Case (TBC)",
+          "Treated Worst Case (TWC)",
+          "Untreated Best Case (UTBC)",
+          "Untreated Worst Case (UTWC)"
+        ],
+        [
+          "Details",
+          "See extracted page 4 full table text",
+          "See extracted page 4 full table text",
+          "See extracted page 4 full table text",
+          "See extracted page 4 full table text"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "p.4"
+    },
+    {
+      "table_id": "CLIFF-045-tbl-8",
+      "title": "Table 8. Task Impairment Calculation by Human Systems Task Categories",
+      "rows": [
+        [
+          "Phase / Scenario",
+          "Full Mission Task Impairment Summary"
+        ],
+        [
+          "Details",
+          "See pages 9-10 HSTC breakdown"
+        ]
+      ],
+      "page_number": 9,
+      "source_anchor": "p.9-10"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-045-ref-0",
+      "label": "Wennergren D, Bergdahl C, Ekelund J, Juto H, Sundfeldt M, M\u00f6ller M. Epidemiology and incidence of tibia fractures in the Swedish Fracture Register. Injury. 2018;49(11):2068-74. Epub 2018/09/18. doi: 10.1016/j.injury.2018.09.008. PubMed PMID: 30220634.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-1",
+      "label": "Stattin K, H\u00e5llmarker U, \u00c4rnl\u00f6v J, James S, Micha\u00eblsson K, Byberg L. Decreased Hip, Lower Leg, and Humeral Fractures but Increased Forearm Fractures in Highly Active Individuals. J Bone Miner Res. 2018;33(10):1842-50. Epub 2018/06/23. doi: 10.1002/jbmr.3476. PubMed PMID: 29933501.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-2",
+      "label": "Beerekamp MSH, de Muinck Keizer RJO, Schep NWL, Ubbink DT, Panneman MJM, Goslings JC. Epidemiology of extremity fractures in the Netherlands. Injury. 2017;48(7):1355-62. Epub 2017/05/11. doi: 10.1016/j.injury.2017.04.047. PubMed PMID: 28487101.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-3",
+      "label": "Larsen P, Court-Brown CM, Vedel JO, Vistrup S, Elsoe R. Incidence and Epidemiology of Patellar Fractures. Orthopedics. 2016;39(6):e1154e8. Epub 2016/08/19. doi: 10.3928/01477447-20160811-01. PubMed PMID: 27536953.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-4",
+      "label": "NASA. MEDB5.2 On-Orbit Strength & Conditioning. JSC28913. 2013 [cited 2021 5/4]. Available from: https://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MEDB_5_2_MR082L_1.28.2014_Project_02_26_2015_12_06_08.pdf.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-5",
+      "label": "Thomas C, Athanasiov A, Wullschleger M, Schuetz M. Current concepts in tibial plateau fractures. Acta Chir Orthop Traumatol Cech. 2009;76(5):363-73. Epub 2009/11/17. PubMed PMID: 19912699.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-6",
+      "label": "Melvin JS, Mehta S. Patellar fractures in adults. J Am Acad Orthop Surg. 2011;19(4):198-207. Epub 2011/04/06. doi: 10.5435/00124635201104000-00004. PubMed PMID: 21464213.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-7",
+      "label": "Schmidt AH, Finkemeier CG, Tornetta P, 3rd. Treatment of closed tibial fractures. Instr Course Lect. 2003;52:607-22. Epub 2003/04/15. PubMed PMID: 12690886.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-8",
+      "label": "Pallin DJ. Rosen's emergency medicine : concepts and clinical practice. In: editor RMWeRSHeMG-H, editor. Knee and Lower Leg. 9th ed. Philadelphia, PA: Elsevier; 2018. p. 614-33.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-9",
+      "label": "Slatyer MA. Lower limb training injuries in an army recruit population: University of Newcastle; 1995.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-10",
+      "label": "Swenson JR EJ, DeHaven KE, Sebastianelli WJ, Hanks G, Kalenak A, Lynch JM. The effect of a pneumatic leg brace on return to play in athletes with tibial stress fractures. The American journal of sports medicine. 1997;25(3):322-8.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-11",
+      "label": "Uvaraj NR, Mayil Vahanan N, Sivaseelam A, Mohd Sameer M, Basha IM. Surgical management of neglected fractures of the patella. Injury. 2007;38(8):979-83. Epub 2007/06/05. doi: 10.1016/j.injury.2007.02.025. PubMed PMID: 17543968.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-12",
+      "label": "Boden BP, Lohnes JH, Nunley JA, Garrett WE, Jr. Tibia and fibula fractures in soccer players. Knee Surg Sports Traumatol Arthrosc. 1999;7(4):262-6. Epub 1999/08/26. doi: 10.1007/s001670050160. PubMed PMID: 10462219.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-13",
+      "label": "Porter K, Fenton P. Tibial plateau fractures: A review. Trauma. 2011;13:181-7. doi: 10.1177/1460408610396422.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-14",
+      "label": "Gwinner C, M\u00e4rdian S, Schwabe P, Schaser KD, Krapohl BD, Jung TM. Current concepts review: Fractures of the patella. GMS Interdiscip Plast Reconstr Surg DGPW. 2016;5:Doc01. Epub 2016/01/28. doi: 10.3205/iprs000080. PubMed PMID: 26816667; PubMed Central PMCID: PMCPMC4717300.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-15",
+      "label": "Elsoe R, Larsen P. Tibial plateau fractures are associated with a long-term increased risk of mortality: a matched cohort study of 7950 patients. Arch Orthop Trauma Surg. 2020;140(11):1705-11. Epub 2020/03/17. doi: 10.1007/s00402-020-03408-4. PubMed PMID: 32172316.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-16",
+      "label": "Larsen P, Elsoe R. Patella fractures are not associated with an increased risk of mortality in elderly patients. Injury. 2018;49(10):1901-4. Epub 2018/09/25. doi: 10.1016/j.injury.2018.07.003. PubMed PMID: 30244702.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-17",
+      "label": "Tampe U, Widmer LW, Weiss RJ, Jansson K. Mortality, risk factors and causes of death in Swedish patients with open tibial fractures - a nationwide study of 3, 777 patients. Scand J Trauma Resusc Emerg Med. 2018;26(1):62. Epub 2018/07/27. doi: 10.1186/s13049-018-0531-0. PubMed PMID: 30045769; PubMed Central PMCID: PMCPMC6060521.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-18",
+      "label": "Gregory J J, Kostakopoulou K, Cool W P, Ford D J. One-year outcome for elderly patients with displaced intracapsular fractures of the femoral neck managed non-operatively. Injury. 2010;41(12):1273-1276. Epub 2010/07/13. doi: 10.1016/j.injury.2010.06.009. PubMed PMID: 20630527",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    },
+    {
+      "reference_id": "CLIFF-045-ref-19",
+      "label": "Pritchett JW. Nonoperative treatment of widely displaced patella fractures. The American Journal of Knee Surgery. 1997; 10(3):154-7; discussion 147-8. PMID: 9280109 ACRONYMS ACRONYM PHRASE AAOMS American Association of Oral and Maxillofacial Surgeons",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-distal-leg-cliff-2023.pdf?emrc=833062",
+      "page_number": 12
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-045-img-0",
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-045/2ff21fcf61f6bb10c78b6c4c495cb81b1985fd22567bb7184c89c75e499a11b3.jpg",
+      "mime_type": "image/jpeg",
+      "width": 849,
+      "height": 1046,
+      "sha256": "2ff21fcf61f6bb10c78b6c4c495cb81b1985fd22567bb7184c89c75e499a11b3",
+      "creator": "OpenStax College",
+      "license_identifier": "CC-BY-3.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/811_Tibia_and_fibula.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:811_Tibia_and_fibula.jpg",
+      "attribution": "OpenStax College (CC-BY-3.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:811_Tibia_and_fibula.jpg)",
+      "caption": "Anterior and posterior anatomical views of the right tibia and fibula, including the medial and lateral malleoli at the distal leg.",
+      "alt_text": "Anatomical illustration showing anterior and posterior views of the human tibia and fibula.",
+      "clinical_relevance": "Identifies key bony landmarks of the distal leg (tibia, fibula, malleoli) involved in ICL53 distal leg fractures (CLIFF-045, p.1, p.8).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 1",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-045-img-1",
+      "media_kind": "RADIOLOGY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-045/3e60a990ca8ed3eabf5b62327f901be14565da1f2fbe1862f7f4f137181118ac.jpg",
+      "mime_type": "image/jpeg",
+      "width": 753,
+      "height": 2260,
+      "sha256": "3e60a990ca8ed3eabf5b62327f901be14565da1f2fbe1862f7f4f137181118ac",
+      "creator": "Jalo",
+      "license_identifier": "PUBLIC-DOMAIN",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Tibia_and_fibula_fracture.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Tibia_and_fibula_fracture.jpg",
+      "attribution": "Jalo (PUBLIC-DOMAIN) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Tibia_and_fibula_fracture.jpg)",
+      "caption": "Anteroposterior plain radiograph demonstrating displaced fractures of the distal tibia and fibula.",
+      "alt_text": "X-ray radiograph of the lower leg showing displaced fractures of the distal tibia and fibula.",
+      "clinical_relevance": "Illustrates radiographic appearance of combined distal tibia-fibula fracture requiring immobilization and potential surgical reduction (CLIFF-045, p.4-5).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 2",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-045-img-2",
+      "media_kind": "DIAGRAM",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-045/993daf6276d0c4ac3c6a5547286356e86031d7299c2fe963efd5f958a84e750b.jpg",
+      "mime_type": "image/jpeg",
+      "width": 686,
+      "height": 1300,
+      "sha256": "993daf6276d0c4ac3c6a5547286356e86031d7299c2fe963efd5f958a84e750b",
+      "creator": "OpenStax College",
+      "license_identifier": "CC-BY-4.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/612_Types_of_Fractures.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:612_Types_of_Fractures.jpg",
+      "attribution": "OpenStax College (CC-BY-4.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:612_Types_of_Fractures.jpg)",
+      "caption": "Educational diagram comparing closed, open (compound), transverse, spiral, comminuted, impacted, greenstick, and oblique fracture patterns.",
+      "alt_text": "Medical illustration showing eight common types of bone fractures.",
+      "clinical_relevance": "Distinguishes uncomplicated closed fractures from open/comminuted fractures that drive Worst Case (TWC/UTWC) RTDC risk (CLIFF-045, p.3-5).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 3",
+      "usage_review": "APPROVED"
+    }
+  ]
+}

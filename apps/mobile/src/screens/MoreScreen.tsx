@@ -28,7 +28,7 @@ export function MoreScreen({ locale, onBack, onOpen }: { locale: Locale; onBack:
       <Panel style={styles.list}>
         {entries.map((entry, index) => (
           <Pressable key={entry.route} accessibilityRole="button" onPress={() => onOpen(entry.route)} style={({ pressed }) => [styles.row, index < entries.length - 1 && styles.divider, pressed && styles.pressed]}>
-            <View style={styles.icon}><Ionicons name={entry.icon} size={20} color={colors.cyan} /></View>
+            <View style={styles.icon}><Ionicons name={entry.icon} size={20} color={colors.primary} /></View>
             <Text style={styles.label}>{t(locale, entry.title)}</Text>
             <Ionicons name="chevron-forward" size={18} color={colors.faint} />
           </Pressable>
@@ -46,4 +46,5 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   label: { flex: 1, color: colors.text, fontSize: 14, fontWeight: '800' },
   pressed: { opacity: 0.72 },
 });
+
 

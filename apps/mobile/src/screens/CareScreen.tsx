@@ -369,13 +369,13 @@ function handleError(cause: unknown, locale: Locale, onUnauthorized: () => void,
 
 function Loading({ label }: { label: string }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
-  return <View style={styles.loading}><ActivityIndicator color={colors.cyan} /><Text style={styles.loadingText}>{label}</Text></View>;
+  return <View style={styles.loading}><ActivityIndicator color={colors.primary} /><Text style={styles.loadingText}>{label}</Text></View>;
 }
 
 const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   heading: { gap: 7, paddingTop: 4 },
   headerAction: { padding: 8 },
-  headerActionText: { color: colors.cyan, fontSize: 12, fontWeight: '800' },
+  headerActionText: { color: colors.primary, fontSize: 12, fontWeight: '800' },
   phaseLine: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   notice: { gap: 6, borderColor: '#D8CDFC', backgroundColor: colors.card },
   noticeTitle: { color: colors.text, fontSize: 14, fontWeight: '800' },
@@ -387,12 +387,12 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   choiceGroup: { gap: 8 },
   choices: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   choice: { minHeight: 38, borderRadius: 999, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, paddingHorizontal: 12, justifyContent: 'center' },
-  choiceSelected: { backgroundColor: '#EEE9FF', borderColor: colors.cyan },
+  choiceSelected: { backgroundColor: '#EEE9FF', borderColor: colors.primary },
   choiceText: { color: colors.muted, fontSize: 12, fontWeight: '700' },
-  choiceTextSelected: { color: colors.cyan },
+  choiceTextSelected: { color: colors.primary },
   confirmRow: { flexDirection: 'row', alignItems: 'center', gap: 10, minHeight: 42 },
   checkbox: { width: 22, height: 22, borderRadius: 7, borderWidth: 1.5, borderColor: colors.border, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.card },
-  checkboxSelected: { borderColor: colors.cyan, backgroundColor: colors.cyan },
+  checkboxSelected: { borderColor: colors.primary, backgroundColor: colors.primary },
   checkmark: { color: '#FFFFFF', fontSize: 14, lineHeight: 16, fontWeight: '900' },
   confirmText: { flex: 1, color: colors.muted, fontSize: 12, lineHeight: 17 },
   eventsHeading: { paddingTop: 4 },
@@ -411,4 +411,5 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   loadingText: { color: colors.muted },
   error: { color: colors.red, lineHeight: 20, fontSize: 13 },
 });
+
 

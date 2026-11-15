@@ -1,0 +1,637 @@
+{
+  "article_id": "CLIFF-038",
+  "slot": 38,
+  "display_title": "Minor Head Injury (Trauma)",
+  "category": "Head Injury",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-038",
+    "publisher": "NASA",
+    "title": "Minor Head Injury (Trauma) \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/trauma-minor-head.pdf?emrc=c4c760",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/trauma-minor-head.pdf?emrc=c4c760",
+    "retrieved_at_utc": "2026-11-14T06:13:01.456282+00:00",
+    "content_sha256": "9c87dc9d921bca282f78c0c02b9d428268df587d348d510f1467f6d22de60e25",
+    "original_mime": "application/pdf",
+    "original_bytes": 354444,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-038-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n   Branch     Baseline\n\n\n\n ICL114_Trauma - Minor Head\n\n This CLiFF includes concussion, post-concussion syndrome, and non-operative intracranial bleeds resulting in concussive or post-concussive\n symptoms. Most sources consider a concussion to be a mild, temporary, traumatic brain injury. Concussions are cause by impact with the head or\n body that causes the brain to move rapidly within the skull (CDC, 2021). Symptoms of concussion vary, but can include headache, nausea, vomiting,\n fatigue, changes in vision, confusion, amnesia, dizziness, changes in speech and response time, and forgetfulness (Mayo, 2021). Concussive\n symptoms typically resolve within 3 months. Post-concussive syndrome involves persistent concussive symptoms. (Mayo, 2021)\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Spaceflight data regarding minor head trauma as defined by this CLiFF are lacking. Scheuring et al, 2009 provides an incidence of head trauma of\n  34,026 events/100,000 person-years, but this is felt to be a gross overestimation as it includes all head injuries, not exclusively those resulting in\n  the aforementioned. Therefore, it was not used to inform the incidence for this CLiFF.\n\n  ANALOG LITERATURE\n\n  Levin, 2021 provides unpublished analog incidence compiled from University-National Oceanographic Laboratory System data. It provides an\n  incidence of 869 events/100,000 person-years. Although the crew characteristics from UNOLS data may be a closer approximation to the astronaut\n  corps (i.e. medical pre-screening), the ocean environment is inherently different from the spaceflight environment. Rough seas present more\n  opportunities for head injuries in general (and possibly TBI). Thus, these data were felt to be an overestimate of the risk in spaceflight and this\n  source did not inform the incidence for this condition. This was not used to inform the incidence for this CLiFF.\n\n  TERRESTRIAL LITERATURE\n\n  Data on the terrestrial incidence of minor head trauma is reported as 212 events / 100,000 person-years for the 2010 year [Marin, 2014]. These\n  authors conducted a population-based descriptive epidemiological study of TBI visits to EDs in the United States from 2006 through 2010, using the\n  Nationwide Emergency Department Sample (NEDS) database, a nationally representative data source including 25 million to 50 million visits from\n  more than 950 hospitals each year. US Census data was used to determine the number of person years for 2010. Because NEDS database\n  represented a 20% stratified sampling of emergency departments, the authors applied prescribed weighting procedures to account for the unequal\n  sampling probabilities, stratification, and clustering and to produce a national estimate of 212, with a 95% confidence interval of 195-230 events per\n  100,000 person-years.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   Mean: 0.001937\n   SD: 3.911E-6\n\n\n  INCIDENCE SUMMARY\n\n  The incidence of this condition in microgravity was assumed to be 0. Therefore, the incidence should be applied only to surface operations.\n\n\n\n\n11/22/2022 8:53:40 AM                                                ICL114_Trauma - Minor Head Cliff                                                      page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-038-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  Similarly, during an EVA, the helmet would protect against head injuries. Currently MEDPRAT does not have the capability to exclude surface EVA\n  time from surface operations, but in the future, this is recommended when the capability exists. The Marin et al, 2014 Research Letter \u2013 Trends in\n  Visits for Traumatic Brain Injury to Emergency Departments in the United States was used to inform the incidence for this condition. Using\n  Concussion numbers for 2006 and 2010, we see there were 108,993 and 142,376 events with incidence rates of 174 and 212 kpy, respectively.\n  This implies person-years of 62,639,655 and 67,158,491 respectively. 2006 IR: 1.74E-3 (95%CI: 1.73E-3, 1.75E-3) and 2010: 2.12E-3 (95%CI:\n  2.109E-3, 2.131E-3).The posterior distribution for the incidence rate given the terrestrial evidence, under an uninformative prior, is\n  Gamma(shape=245292.1, rate=126635068) with mean 0.001937 and SD 3.911E-6.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     UNK\n     Segment\n     Surface\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     0.001937\n     SD\n     3.911E-06\n\n\n     Gamma\n     (Shape): 245292\n     (Rate): 1.26635E+08\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                             Source                                 LOC Value\n\n   Levin, 2021                                                          Analog                                 2\n\n   Marin et al, 2014                                                    Terrestrial                            3\n\n   Scheuring et al, 2009                                                Spaceflight                            1\n\n\n  Levin, 2021 provides unpublished analog incidence compiled from University-National Oceanographic Laboratory System. Although this represents\n  ocean vessel crewmembers who received medical pre-screening, and occurs in confined ocean vessels, it is less applicable to exploration missions\n  because of a difference in environment. The UNOLS data is anticipated to overestimate incidence of head injuries, based on increased risk of head\n  injury during rough sea conditions. Marin et al, 2014 provides incidence of various head injuries (including concussion) between 2006-2010 from\n  data extracted from the Nationwide Emergency Department Sample (NEDS) database. This study included all age groups. Scheuring et al, 2009\n  evaluated the incidence musculoskeletal in-flight injuries among astronauts from Mercury - Expedition 13 of the ISS Program. Head injuries (\"minor\n  trauma\" to the head) were not categorized by type limiting the applicability to the best and worst-case scenarios in this CLiFF.\n\n\n\n\n11/22/2022 8:53:40 AM                                              ICL114_Trauma - Minor Head Cliff                                                    page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-038-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Engineering measures are taken to prevent injury to crewmembers, including head injury. Further, on EVA the helmet of the EMU provides\n  protection from head injury.\n\n  BEST CASE SCENARIO DEFINITION\n\n  Head trauma resulting in a concussion that impacts mission objectives for less than 2 weeks (this includes concussive symptoms caused by non-\n  surgical intracranial bleeds meeting the above criteria).\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Head trauma resulting in post-concussive syndrome interfering with mission objectives or requiring medications for longer than 2 weeks.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  Concussion Post-Concussive Syndrome Intracranial Bleed (Non-surgical)\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  The prevalence of post-concussive syndrome (PCS) in a well-designed prospective trial that observed 90 mild TBI patients compared to non-TBI\n  trauma controls was found to be 5.7% at three month follow up, as diagnosed by Impact Post-Concussion Symptom Inventory (Ponsford et al,\n  2011). In another prospective study, using the DSM-IV criteria, the rate of PCS was diagnosed in 19 of 161 patients (11.8%) at three-month follow\n  up (Boake et al, 2005). Finally, in a prospective cohort of 107 mild TBI patients, 24 (22%) met criteria for PCS at 3-months as determined by the\n  BIPQ questionnaire (Hou et al, 2012). These studies were pooled to reveal a rate of post-concussive syndrome after mild traumatic brain injury of\n  13%. It should be noted that the definition of \"traumatic brain injury\" varies in the literature and between the three aforementioned studies. Ponsford\n  et al, 2011 used the following inclusion criteria: (1) recent ( < 24 h) history of trauma or acceleration-deceleration movement applied to the head\n  resulting in loss of consciousness (LOC) < 30 min, post-traumatic amnesia (PTA) < 24 h, and a Glasgow Coma Scale (GCS) score of 13\u201315 on\n  presentation to the ED; (2) age 18 years or over; and (3) English-speaking. Participants were excluded if they: (1) were intubated or required\n  general anesthesia following injury; (2) had a breath alcohol reading > 0.05 mg/L at the time of recruitment; (3) were under the influence of illicit\n  substances at the time of injury; (4) had focal neurological signs, seizures, and/or intracerebral abnormalities on CT; (5) had a dominant upper limb\n  injury that precluded them from using a computer mouse; (6) were under spinal precautions and not able to sit upright; (7) had a history of previous\n  cognitive impairment, neurological illness, significant alcohol or drug abuse, or other psychiatric impairment currently affecting daily functioning; or\n  (8) were unavailable for follow-up. (Ponsford et al, 2011) Hou et al, 2012 had similar criteria, but notably the allowable time for PTA amnesia\n  differed: A traumatically induced physiological disruption of brain function, as manifested by at least one of the following: (1) any loss of\n  consciousness; (2) any loss of memory for events immediately before or after the accident; (3) any alteration in mental state at the time of the\n  accident (e.g., feeling dazed, disoriented or confused); and (4) lack of focal neurological deficit(s), but where the severity of the injury did not\n  exceed the following: (1) loss of consciousness not more than 15 min; (2) an initial Glasgow Coma Scale (GCS) score of 13-15; and (3) post-\n  traumatic amnesia not more than 60 min. (Hou et al, 2012) Boake et al, 2005 had the most liberal definition of TBI which included any GCS greater\n  than 8. Inclusion criteria included: nonpenetrating TBI; lowest post resuscitation Glasgow Coma Scale (GCS) score >8 ; computed tomography (CT)\n  scan of the brain performed within 24 hours of arrival; and if mild TBI, no surgery under general anesthesia during the admission. (Boake et al,\n  2005) The rate of PCS in the literature is highly variable, with some studies reporting rates as high as 58% using the Rivermead Post-Concussion\n  Questionnaire (Theadom, 2016), or 64% when using ICD-10 codes (Boake et al, 2005). These studies were excluded however, as there is a very\n  high rate of variability with ICD-10-derived estimates ranging from 6-64% (Polinder, 2018) and several studies suggesting the Rivermead\n  Questionnaire may have very low specificity for concussion related symptoms (Dean, 2012) (Voormolen, 2019).\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                              Source                                  LOC Value\n\n   Ponsford et al, 2011                                                  Terrestrial                             2\n\n   Hou et al, 2012                                                       Terrestrial                             2\n\n   Theadom, 2016                                                         Terrestrial                             0\n\n  Ponsford et al, 2011, Boake et al, 2005, and Hou et al, 2012 were all ranked as 2. These studies were well designed but are all in small terrestrial\n  populations, and have an earliest follow-up assessment at 3 months (rather than 2 weeks as defined in this CLiFF) which may underestimate the\n  worst-case scenario probability at 2 weeks. Theadom, 2016 utilized the Rivermead Post-Concussion Questionnaire, which was shown in other\n  studies to have a high rate of false-positives for post concussion syndrome (45% of a healthy cohort) (Voormolen, 2019) and poor specificity to\n  symptoms from head trauma (Dean, 2012).\n\n\n\n\n11/22/2022 8:53:40 AM                                                ICL114_Trauma - Minor Head Cliff                                                        page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-038-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                                CP1: Diagnosis       CP2: Treatment             CP3: Condition End State\n\n                                                                TI%       Duration   TI%         Duration       TI%       RTDC             LOCL\n                        Composite             Condition\n   Case Scenario        Incidence             Probability %     Preset    Preset     Preset      Min    Max     Preset    Min%    Max%     Min%     Max%\n\n   Treated Best         Mean: 0.001937        87 - 87           100       0.783      32.979      24     168     0         7.4     10.3     0        0.6\n   Case (TBC)           SD: 3.911E-6\n\n   Treated Worst                              13 - 13           100       0.783      55.6737     336    744     0         10.3    17.8     0        0.6\n   Case (TWC)\n\n   Untreated Best       N/A                   N/A               N/A       0.783      41.9081     24     336     0         7.4     10.3     0        0.6\n   Case (UTBC)\n\n   Untreated Worst      N/A                   N/A               N/A       0.783      64.6027     336    8760    0         10.3    17.8     0        0.6\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n11/22/2022 8:53:40 AM                                                 ICL114_Trauma - Minor Head Cliff                                                        page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-038-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  The RTDC surrogate for this condition is hospitalization. The literature doesn't elucidate a difference in need for hospitalization based on prior\n  treatment vs. no prior treatment. Thus, the RTDC probabilities for the treated and untreated best-case scenarios are the same. Likewise, the RTDC\n  probabilities for the treated and untreated worst-case scenarios are the same. The LOCL probability is the same for all scenarios because neither\n  treatment, nor development of post-concussive syndrome (the worst-case scenario), are expected to affect the probability of LOCL for this\n  condition. See detailed comments for each scenario below.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Minor head trauma with medical evaluation typically resolves in 7 days based on a retrospective study of NCAA collegiate football players (McCrea\n  et al, 2003) but symptoms can resolve as quickly as 24 hours (McCrea et al, 2003). Therefore, the duration for this scenario was assigned 24-336\n  hours (1-7 days). RTDC (surrogate measure of hospitalization) is required in a minority of cases. Babcock et al, 2013 report that 7.4% of mild\n  traumatic brain injury cases (as defined by the following inclusion criteria: Blow to the head or acceleration/deceleration movement of the head\n  resulting in 1 or more of the following: LOC < 30 min, amnesia < 24 hour or any alteration in mental state, and GSC of 13 or more 30 minutes or\n  more after injury) required hospitalization. Notably, this study was exclusive to children and adolescents, which limits it's generalizability to the\n  astronaut corps. Rhame et al, 2021 reported a hospitalization rate of 10.3% for mild TBI patients in a retrospective chart review from Jan 2016-Dec\n  2017 for patients admitted through the University of Cincinnati Emergency Department under their mild TBI observation protocol. Inclusion criteria\n  included: mild TBI with GCS of 14 or 15 within 24 hours of injury. Non-surgical intracranial bleeds were included unless they met exclusion criteria.\n  Exclusion criteria were: requirement for neurosurgery, focal neurologic deficits, coagulopathy, admission required for other injuries, abnormal vital\n  signs, other active comorbid conditions, and non-impact seizures. (Rhame et al, 2021) Thus, the RTDC range was assigned 7.4-10.3% for this\n  scenario. Mortality following minor head trauma is very rare. In a retrospective study of 2484 patients with mild head injury presenting to an\n  Emergency Department in Madrid, Spain between December 1991 and April 1993, there was an overall mortality rate of 0.6% (15 deaths). Inclusion\n  criteria included: age > 15 years, GCS of 13-15, experienced a blow to the head independently of whether there were or were not signs of brain\n  dysfunction, such as a transient loss of consciousness (LOC), posttraumatic amnesia (PTA) or associated injuries. Patients were excluded if they\n  had isolated facial trauma, those deteriorating to a GCS of less than 13 within 4h of injury and those showing a lucid interval who were referred from\n  local hospitals after they developed neurological deterioration. (Gomez et al, 1996). Therefore, the LOCL probability was assigned 0-0.6%. Note,\n  this is the same as the probability for all other scenarios in this CLiFF neither treatment, nor development of post-concussive syndrome are\n  expected to affect the probability of LOCL for this condition.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  Persistent symptoms after minor head trauma are defined as starting at 14-days duration, and measurable deficits in cognition and memory usually\n  resolve by one month (Barbosa et al, 2012). Thus the duration was assigned 336-744 hours (14-31 days). Rhame et al, 2021 reported a\n  hospitalization rate of 10.3% for mild TBI patients in a retrospective chart review from Jan 2016-Dec 2017 for patients admitted through the\n  University of Cincinnati Emergency Department under their mild TBI observation protocol. Inclusion criteria included: mild TBI with GCS of 14 or 15\n  within 24 hours of injury. Non-surgical intracranial bleeds were included unless they met exclusion criteria. Exclusion criteria were: requirement for\n  neurosurgery, focal neurologic deficits, coagulopathy, admission required for other injuries, abnormal vital signs, other active comorbid conditions,\n  and non-impact seizures. (Rhame et al, 2021) Babcock et al, 2013 report that 17.8% of mild traumatic brain injury cases (as defined by the\n  following inclusion criteria: Blow to the head or acceleration/deceleration movement of the head resulting in 1 or more of the following: LOC < 30\n  min, amnesia < 24 hour or any alteration in mental state, and GSC of 13 or more 30 minutes or more after injury) that went on to develop post-\n  concussive syndrome required hospitalization in a retrospective review. Notably, this study was exclusive to children and adolescents, which limits\n  it's generalizability to the astronaut corps. Thus the RTDC probability for this scenario was assigned 10.3-17.8%. Mortality following minor head\n  trauma is very rare. In a retrospective study of 2484 patients with mild head injury presenting to an Emergency Department in Madrid, Spain\n  between December 1991 and April 1993, there was an overall mortality rate of 0.6% (15 deaths). Inclusion criteria included: age > 15 years, GCS of\n  13-15, experienced a blow to the head independently of whether there were or were not signs of brain dysfunction, such as a transient loss of\n  consciousness (LOC), posttraumatic amnesia (PTA) or associated injuries. Patients were excluded if they had isolated facial trauma, those\n  deteriorating to a GCS of less than 13 within 4h of injury and those showing a lucid interval who were referred from local hospitals after they\n  developed neurological deterioration. (Gomez et al, 1996). Therefore, the LOCL probability was assigned 0-0.6%. Note, this is the same as the\n  probability for all other scenarios in this CLiFF neither treatment, nor development of post-concussive syndrome are expected to affect the\n  probability of LOCL for this condition.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  Minor head trauma symptoms can resolve as quickly as 24 hours (McCrea et al, 2003) or last longer than 14 days (McCrory et al, 2017). The\n  Consensus Statement on Concussion in Sport (5th International Conference in Berlin) reports that the expected timeframe for \"normal clinical\n  recovery\" in an adult is 10-14 days and anything longer than this is considered, \"Persistent symptoms\" which require a referral. Duration greater\n  than 14 days meets criteria for the worst-case condition, and therefore is not discussed here. Therefore, the duration for this scenario was\n  assigned 24-336 hours (1-14 days). RTDC and LOCL were assumed to be the same in this scenario as in the best-case treated scenario. (The\n  effect of treatment is reflected, rather, in the task impairment). Thus what follows is identical to the best-case treated scenario. RTDC (surrogate\n  measure of hospitalization) is required in a minority of cases. Babcock et al, 2013 report that 7.4% of mild traumatic brain injury cases (as defined\n  by the following inclusion criteria: Blow to the head or acceleration/deceleration movement of the head resulting in 1 or more of the following: LOC <\n  30 min, amnesia < 24 hour or any alteration in mental state, and GSC of 13 or more 30 minutes or more after injury) required hospitalization.\n  Notably, this study was exclusive to children and adolescents, which limits it's generalizability to the astronaut corps. Rhame et al, 2021 reported a\n  hospitalization rate of 10.3% for mild TBI patients in a retrospective chart review from Jan 2016-Dec 2017 for patients admitted through the\n  University of Cincinnati Emergency Department under their mild TBI observation protocol. Inclusion criteria included: mild TBI with GCS of 14 or 15\n\n\n\n\n11/22/2022 8:53:40 AM                                               ICL114_Trauma - Minor Head Cliff                                                       page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-038-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  within 24 hours of injury. Non-surgical intracranial bleeds were included unless they met exclusion criteria. Exclusion criteria were: requirement for\n  neurosurgery, focal neurologic deficits, coagulopathy, admission required for other injuries, abnormal vital signs, other active comorbid conditions,\n  and non-impact seizures. (Rhame et al, 2021) Thus, the RTDC range was assigned 7.4-10.3% for this scenario. Mortality following minor head\n  trauma is very rare. In a retrospective study of 2484 patients with mild head injury presenting to an Emergency Department in Madrid, Spain\n  between December 1991 and April 1993, there was an overall mortality rate of 0.6% (15 deaths). Inclusion criteria included: age > 15 years, GCS of\n  13-15, experienced a blow to the head independently of whether there were or were not signs of brain dysfunction, such as a transient loss of\n  consciousness (LOC), posttraumatic amnesia (PTA) or associated injuries. Patients were excluded if they had isolated facial trauma, those\n  deteriorating to a GCS of less than 13 within 4h of injury and those showing a lucid interval who were referred from local hospitals after they\n  developed neurological deterioration. (Gomez et al, 1996). Therefore, the LOCL probability was assigned 0-0.6%. Note, this is the same as the\n  probability for all other scenarios in this CLiFF neither treatment, nor development of post-concussive syndrome are expected to affect the\n  probability of LOCL for this condition.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  8Persistent symptoms after minor head trauma are defined as starting at 14-days duration. Although measurable deficits in cognition and memory\n  usually resolve by one month, they can last longer, with most patients exhibiting clinical recovering within 3-12 months (Barbosa et al, 2012). It is\n  assumed that without treatment, the clinical recovery would take longer. Thus the duration was assigned 336-8750 hours (14-365 days) for this\n  scenario. The literature doesn't elucidate a difference in need for hospitalization based on prior treatment vs. no prior treatment. Thus, the RTDC\n  for this scenario will be approximated using the same RTDC as the treated worst-case scenario. Rhame et al, 2021 reported a hospitalization rate\n  of 10.3% for mild TBI patients in a retrospective chart review from Jan 2016-Dec 2017 for patients admitted through the University of Cincinnati\n  Emergency Department under their mild TBI observation protocol. Inclusion criteria included: mild TBI with GCS of 14 or 15 within 24 hours of injury.\n  Non-surgical intracranial bleeds were included unless they met exclusion criteria. Exclusion criteria were: requirement for neurosurgery, focal\n  neurologic deficits, coagulopathy, admission required for other injuries, abnormal vital signs, other active comorbid conditions, and non-impact\n  seizures. (Rhame et al, 2021) Babcock et al, 2013 report that 17.8% of mild traumatic brain injury cases (as defined by the following inclusion\n  criteria: Blow to the head or acceleration/deceleration movement of the head resulting in 1 or more of the following: LOC < 30 min, amnesia < 24\n  hour or any alteration in mental state, and GSC of 13 or more 30 minutes or more after injury) that went on to develop post-concussive syndrome\n  required hospitalization in a retrospective review. Notably, this study was exclusive to children and adolescents, which limits it's generalizability to\n  the astronaut corps. Thus the RTDC probability for this scenario was assigned 10.3-17.8%. Mortality following minor head trauma is very rare. In a\n  retrospective study of 2484 patients with mild head injury presenting to an Emergency Department in Madrid, Spain between December 1991 and\n  April 1993, there was an overall mortality rate of 0.6% (15 deaths). Inclusion criteria included: age > 15 years, GCS of 13-15, experienced a blow to\n  the head independently of whether there were or were not signs of brain dysfunction, such as a transient loss of consciousness (LOC),\n  posttraumatic amnesia (PTA) or associated injuries. Patients were excluded if they had isolated facial trauma, those deteriorating to a GCS of less\n  than 13 within 4h of injury and those showing a lucid interval who were referred from local hospitals after they developed neurological deterioration.\n  (Gomez et al, 1996). Therefore, the LOCL probability was assigned 0-0.6%. Note, this is the same as the probability for all other scenarios in this\n  CLiFF neither treatment, nor development of post-concussive syndrome are expected to affect the probability of LOCL for this condition.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                             Source                                   LOC Value\n\n   McCrea et al, 2003                                                   Terrestrial\n\n   McCrory et al, 2017                                                  Terrestrial                                                 3\n\n   Barbosa et al, 2012                                                  Terrestrial\n\n\n  Terrestrial data regarding concussions in collegiate athletes (McCrea et al, 2003) and an international consensus statemetn on concussions in\n  sports (McCrory et al, 2017) were used to inform the best-case scenario durations. These sources provided a range for the duration of concussive\n  symptoms. The lower end of the range was assigned to the best-case treated scenario and the best-case untreated scenario duration was\n  extended to include the upper end of the range cited in this literature. Barbosa et al, 2012, a practice management guideline for mild traumatic\n  brain injuries developed from a review of 112 articles spanning 1998-2011, was used to inform the duration of the worst-case scenarios. Again, a\n  range was presented and the lower end of the range was assigned to the treated worst-case scenario and the untreated worst-case scenario was\n  extended based on these data.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                              Source                                  LOC Value\n\n   Rhame et al, 2021                                                     Terrestrial\n                                                                                                                                    2\n   Babcock et al, 2013                                                   Terrestrial\n\n  Two studies informed the RTDC probabilities for this condition. The literature doesn't elucidate a difference in need for hospitalization based on\n  prior treatment vs. no prior treatment. Thus, the RTDC probabilities for the best-case treated and untreated scenarios are the same and the worst-\n  case treated and untreated scenarios are the same. Rhame et al, 2021 reported a hospitalization rate of 10.3% for mild TBI patients in a\n  retrospective chart review from Jan 2016-Dec 2017 for patients admitted through the University of Cincinnati Emergency Department under their\n\n\n\n\n11/22/2022 8:53:40 AM                                                ICL114_Trauma - Minor Head Cliff                                                        page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-038-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  mild TBI observation protocol. Inclusion criteria included: mild TBI with GCS of 14 or 15 within 24 hours of injury. Non-surgical intracranial bleeds\n  were included unless they met exclusion criteria. Exclusion criteria were: requirement for neurosurgery, focal neurologic deficits, coagulopathy,\n  admission required for other injuries, abnormal vital signs, other active comorbid conditions, and non-impact seizures. (Rhame et al, 2021) This\n  case definition is consistent with the best-case scenario definition of this CLiFF. Babcock et al, 2013 was a prospective cohort study involving\n  patients with TBI who participated in a TBI registry funded by the National institues of Health. The cohort was recruited at pediatric and adult\n  Emergency Departements of the University of Rochester Medical Center from January 7, 2003 - September 6, 2004. However, the data presented\n  only pertain to children and adolescents, minimizing the generalizability of this study to the astronaut corps. This study stratified hospitalizations\n  according to our best and worst-case scenarios, reporting a different proportion of hospitalizations for mild traumatic TBI vs. post-concussive\n  syndrome. Mild traumatic brain injury cases were defined by the following inclusion criteria: Blow to the head or acceleration/deceleration movement\n  of the head resulting in 1 or more of the following: LOC < 30 min, amnesia < 24 hour or any alteration in mental state, and GSC of 13 or more 30\n  minutes or more after injury. Notably, studies that present information based on patients presenting to the emergency department may be skewed\n  towards more severe manifestations of minor head trauma (vs. those who present as outpatients or don't present at all).\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                            Source                                    LOC Value\n\n   Gomez et al, 1996                                                   Terrestrial                                                   2\n\n  Data regarding mortality secondary to minor head trauma were lacking. One retrospective study of 2484 patients with mild head injury presenting to\n  an Emergency Department in Madrid, Spain between December 1991 and April 1993, was found to inform the LOCL probability. Inclusion criteria\n  included: age > 15 years, GCS of 13-15, experienced a blow to the head independently of whether there were or were not signs of brain\n  dysfunction, such as a transient loss of consciousness (LOC), posttraumatic amnesia (PTA) or associated injuries. Patients were excluded if they\n  had isolated facial trauma, those deteriorating to a GCS of less than 13 within 4h of injury and those showing a lucid interval who were referred from\n  local hospitals after they developed neurological deterioration. (Gomez et al, 1996). This provided the maximum probability for all scenarios\n  because neither treatment, nor development of post-concussive syndrome are expected to affect the probability of LOCL for this condition. Notably,\n  studies that present information based on patients presenting to the emergency department may be skewed towards more severe manifestations of\n  minor head trauma (vs. those who present as outpatients or don't present at all), so this estimate would be the maximum probability of LOCL. The\n  generalizability of this study in Spain may be somewhat limited.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Overview\n  Minor head trauma under this definition refers to an injury severe enough to cause a concussion without risk of permanent anatomical injury. The\n  BC is a short duration concussion less than 2 weeks while the worst case lasts longer. Deficits in this case largely cognitive, irritability, and mental\n  endurance and are expected to improve with time. There are no specific disease modifying treatments for concussions or treatments that will\n  shorten duration but symptom control can help limit task impairments.\n\n  CNES: None\n\n  Diagnostic Scope and Resourcing\n  In both the best-case and worst-case scenario, diagnostics would include a history, primary assessment, and physical exam inclusive of vital signs,\n  and a thorough neurological exam\n\n  Clinical Phase 1 Duration and Rationale\n  This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\n  consensus duration is as follows:\n\n  CP1 BC (Treated or Untreated): 0.783 hours for history, physical exam, and a thorough\n  neurological exam\n  CP1 WC (Treated or Untreated): 0.783 hours. The initial evaluation is the same for BC and\n  WC since the difference in definitions is the duration.\n\n  The highest scope of practice required for performance of a full neurological exam and interpretation of the physical exam which was rated a 4.\n  Intern level training is also necessary for management decisions and determining fitness for duty.\n\n  Treatment Scope and Resourcing\n  Treatment is symptom focused since no disease or duration modifying treatments exist at present that are supported by robust clinical evidence.\n  Symptomatic care includes antiemetics, NSAIDs, medications to facilitate sleep, and ant vertiginous medications.\n\n  Communications and Support Needs\n  While a best-case scenario will require ground communication with video and audio to facilitate the recovery phase by assisting with schedule\n  planning, neurological reassessments, and fitness for duty assessment.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  IMM had a condition called, \u201cHead Injury.\u201d Head injury was defined in this CLiFF as, \u201cAn injury that is clinically evident on physical examination and\n  is recognized by the presence of ecchymoses, lacerations, deformities, or cerebrospinal fluid leakage. The CLiFF specifically states that traumatic\n\n\n\n\n11/22/2022 8:53:40 AM                                                 ICL114_Trauma - Minor Head Cliff                                                       page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-038-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  brain injury is a separate entity and defines TBI as, \u201cAn injury to the brain itself and is not always clinically evident; if unrecognized, it may result in\n  an adverse outcome.\u201d This CLiFF is unique from the prior IMM CLiFF as it includes concussion, post-concussive syndrome, and non-operative\n  intracranial bleeding, all of which are outside the scope of the definition of \u201chead injury\u201d used in the prior CLiFF. Therefore, this CLiFF has unique\n  incidence, RTDC, LOCL, and TI values as compared to the IMM CLiFF.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  \u2022 There are few data in the literature regarding non-operative intracranial bleed as it is described in the best-case scenario. Thus, the data\n  informing this CLiFF focus primarily on mild TBI (some of which includes intracranial bleed) and concussion for the best-case scenario. The worst-\n  case scenario is informed by literature regarding post-concussive syndrome. \u2022 The best-case treated and untreated RTDC probabilities are the\n  same, as are the worst-case treated and untreated RTDC probabilities due to a lack of data representing the need for hospitalization after head\n  injury dependent on initial treatment vs. lack of treatment. \u2022 Babcock et al, 2013 informed the worst-case scenario RTDC probabilities. This is a\n  pediatric study, limiting its generalizability to the astronaut corps. \u2022 The LOCL probabilities for all scenarios are the same based on the assumption\n  that the worst-case scenario (post-concussive syndrome) does not increase risk of mortality and the assumption that lack of treatment does not\n  increase mortality (rather, lack of treatment extends the duration, which is reflected by increased durations for the untreated scenarios). \u2022 Gomez et\n  al, 1996 informed all LOCL probabilities. This study was conducted in Spain, which may limit its generalizability to the astronaut corps.\n\n\n\n\n11/22/2022 8:53:40 AM                                                   ICL114_Trauma - Minor Head Cliff                                                         page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-038-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                               Clinical Phase 2: Treatment\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision         Hearing                   Dentition          GI          GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n                             664                              89                                          145\n     Case\n     (TBC)\n   Untreated\n     Best\n             223             664            113               89                                          145\n     Case\n    (UTBC)\n    Treated\n     Worst\n                             664                              89             854                          145\n      Case\n     (TWC)\n   Untreated\n     Worst\n             223             664            113               89             854                          145\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                        Total\n                                                                                                                                                      Human\n                                                                                             Translation &                            Total Tasks\n                 Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                             Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n                (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                            (microgravity)                            Condition\n                                                                                                                                                     Tasks Full\n                                                                                                                                                      Mission\n    Treated\n      Best\n            132                                                                                                         211          1241           3763          0.32979       32.979\n     Case\n     (TBC)\n   Untreated\n     Best\n             132                                                                                                        211          1577           3763          0.419081      41.9081\n     Case\n    (UTBC)\n    Treated\n     Worst\n            132                                                                                                         211          2095           3763          0.556737      55.6737\n      Case\n     (TWC)\n   Untreated\n     Worst\n             132                                                                                                        211          2431           3763          0.646027      64.6027\n     Case\n    (UTWC)\n\n                                                                           Clinical Phase 3: Condition End State\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision         Hearing                   Dentition          GI          GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n     Case\n     (TBC)\n   Untreated\n     Best\n     Case\n    (UTBC)\n    Treated\n     Worst\n      Case\n     (TWC)\n   Untreated\n     Worst\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n11/22/2022 8:53:40 AM                                                 ICL114_Trauma - Minor Head Cliff                                                                             page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-038-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                 Translation &                          Total Tasks\n                Hand                                     Lower       Ambul &                     Don/Doff   Pressure                    System\n                        Hand (Any)   Upper Extremity                             Stabilization                         Impaired By                      TI Decimal        TI %\n               (Dom)                                   Extremity   Standing (g)                Equipment     Ops                       Category\n                                                                                (microgravity)                          Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n    Treated\n      Best\n                                                                                                                       0              3763          0                0\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                                                       0              3763          0                0\n     Case\n    (UTBC)\n    Treated\n     Worst\n                                                                                                                       0              3763          0                0\n      Case\n     (TWC)\n   Untreated\n     Worst\n                                                                                                                       0              3763          0                0\n     Case\n    (UTWC)\n\n\n\n\n11/22/2022 8:53:40 AM                                         ICL114_Trauma - Minor Head Cliff                                                                           page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-038-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n11/22/2022 8:53:40 AM                                                 ICL114_Trauma - Minor Head Cliff                                                     page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-038-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. Babcock L, Byczkowski T, Wade SL, Ho M, Mookerjee S, Bazarian JJ. Predicting postconcussion syndrome after mild traumatic brain injury in\n   children and adolescents who present to the emergency department. JAMA Pediatr. 2013;167(2):156-61. Epub 2012/12/19. doi:\n   10.1001/jamapediatrics.2013.434. PubMed PMID: 23247384; PubMed Central PMCID: PMCPMC4461429.\n\n   2. Barbosa RR, Jawa R, Watters JM, Knight JC, Kerwin AJ, Winston ES, et al. Evaluation and management of mild traumatic brain injury: an\n   Eastern Association for the Surgery of Trauma practice management guideline. J Trauma Acute Care Surg. 2012;73(5 Suppl 4):S307-14. Epub\n   2012/12/27. doi: 10.1097/TA.0b013e3182701885. PubMed PMID: 23114486.\n\n   3. G\u00f3mez PA, Lobato RD, Ortega JM, De La Cruz J. Mild head injury: differences in prognosis among patients with a Glasgow Coma Scale score\n   of 13 to 15 and analysis of factors associated with abnormal CT findings. Br J Neurosurg. 1996;10(5):453-60. Epub 1996/10/01. doi:\n   10.1080/02688699647078. PubMed PMID: 8922703.\n\n   4. Hou R, Moss-Morris R, Peveler R, Mogg K, Bradley BP, Belli A. When a minor head injury results in enduring symptoms: a prospective\n   investigation of risk factors for postconcussional syndrome after mild traumatic brain injury. J Neurol Neurosurg Psychiatry. 2012;83(2):217-23.\n   Epub 2011/10/27. doi: 10.1136/jnnp-2011-300767. PubMed PMID: 22028384.\n\n   5. Levin DR. UNOLS Fleet Safety Data as an Analog for Deep Space (Unpublished Research). 2021.\n\n   6. Marin JR, Weaver MD, Yealy DM, Mannix RC. Trends in Visits for Traumatic Brain Injury to Emergency Departments in the United States.\n   JAMA. 2014;311(18):1917. doi: 10.1001/jama.2014.3979.\n\n   7. Concussion: Mayo Clinic; 2021 [cited 2021 December 7]. Available from: https://www.mayoclinic.org/diseases-\n   conditions/concussion/symptoms-causes/syc-20355594.\n\n   8. Persistent post-concussive symptoms (Post-concussion syndrome): Mayo Clinic; 2021 [cited 2021 December 7]. Available from:\n   https://www.mayoclinic.org/diseases-conditions/post-concussion-syndrome/symptoms-causes/syc-20353352.\n\n   9. McCrea M, Guskiewicz KM, Marshall SW, Barr W, Randolph C, Cantu RC, et al. Acute Effects and Recovery Time Following Concussion in\n   Collegiate Football Players The NCAA Concussion Study. JAMA. 2003;290(19):2556-63. doi: 10.1001/jama.290.19.2556.\n\n   10. McCrory P, Meeuwisse W, Dvo\u0159\u00e1k J, Aubry M, Bailes J, Broglio S, et al. Consensus statement on concussion in sport-the 5(the) international\n   conference on concussion in sport held in Berlin, October 2016. Br J Sports Med. 2017;51(11):838-47. Epub 2017/04/28. doi: 10.1136/bjsports-\n   2017-097699. PubMed PMID: 28446457.\n\n   11. Ponsford J, Cameron P, Fitzgerald M, Grant M, Mikocka-Walus A. Long-term outcomes after uncomplicated mild traumatic brain injury: a\n   comparison with trauma controls. J Neurotrauma. 2011;28(6):937-46. Epub 2011/03/18. doi: 10.1089/neu.2010.1516. PubMed PMID: 21410321.\n\n   12. Rhame K, Le D, Ventura A, Horner A, Andaluz N, Miller C, et al. Management of the mild traumatic brain injured patient using a\n   multidisciplinary observation unit protocol. Am J Emerg Med. 2021;46:176-82. Epub 2020/10/20. doi: 10.1016/j.ajem.2020.06.088. PubMed PMID:\n   33071105.\n\n   13. Scheuring RA, Mathers CH, Jones JA, Wear ML. Musculoskeletal injuries and minor trauma in space: incidence and injury mechanisms in U.S.\n   astronauts. Aviat Space Environ Med. 2009;80(2):117-24. Epub 2009/02/10. doi: 10.3357/asem.2270.2009. PubMed PMID: 19198198.\n\n   14. Theadom A, Parag V, Dowell T, McPherson K, Starkey N, Barker-Collo S, et al. Persistent problems 1 year after mild traumatic brain injury: a\n   longitudinal population study in New Zealand. Br J Gen Pract. 2016;66(642):e16-23. Epub 2016/01/01. doi: 10.3399/bjgp16X683161. PubMed\n   PMID: 26719482; PubMed Central PMCID: PMCPMC4684031.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                      PHRASE\n\n   AAOMS                        American Association of Oral and Maxillofacial Surgeons\n\n   AMA                          American Medical Association\n\n   ARCL                         All Remaining Conditions List\n\n   ARS                          Acute Radiation Sickness\n\n   BHP                          Behavioral Health and Performance\n\n   CAC                          Coronary Artery Calcium\n\n   CHS                          Crew Health and Safety\n\n   CL                           Condition List\n\n\n\n\n11/22/2022 8:53:40 AM                                               ICL114_Trauma - Minor Head Cliff                                                  page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-038-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   CliFF                Clinical Finding Form\n\n   CMO                  Crew Medical Officer\n\n   COMFORT              Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                  Clinical Phase 1\n\n   CP2                  Clinical Phase 2\n\n   CP3                  Clinical Phase 3\n\n   CRL                  Clinical Resource Level\n\n   CRT                  Capability Resource Table\n\n   CST                  Clinical Science Team\n\n   DCS                  Decompression Syndrome\n\n   DRM                  Design Reference Mission\n\n   ED                   Emergency Medicine Doctor\n\n   EL                   Evidence Library\n\n   EMCL                 Exploration Medical Condition List\n\n   EMT                  Emergency Medical Technician\n\n   EVA                  Extravehicular Activity\n\n   EXMC                 Exploration Medical Capability\n\n   HRP                  Human Research Program\n\n   ICD                  International Classification of Disease\n\n   ICL 1.0              IMPACT 1.0 Medical Conditions List\n\n   ICU                  Intensive Care Unit\n\n   IMCL                 iMED Condition List\n\n   iMED                 Integrated Medical Evidence Database\n\n   IMM                  Integrated Medical Model\n\n   IMPACT-MD            Impact Medical Database\n\n   IP                   Incidence Proportion\n\n   IR                   Incidence Rate\n\n   ISS                  International Space Station\n\n   IV                   Intravenous\n\n   JSC                  Johnson Space Center\n\n   LEO                  Low-Earth orbit\n\n   LEVA                 Lunar Extravehicular Activity\n\n   LOCL                 Loss of Crew Life\n\n   LOM                  Loss of Mission\n\n   LSAH                 Lifetime Surveillance of Astronaut Health\n\n   LSO                  Lunar Surface Operations\n\n   MCL                  Master Condition List\n\n   MEVA                 Medical Extravehicular Activity\n\n   NASA                 National Aeronautics and Space Administration\n\n   N/A                  Not Applicable\n\n   NP                   Nurse Practitioner\n\n   OBGYN                Obstetrics and Gynecology\n\n   OR                   Occurrence Rate\n\n\n\n\n11/22/2022 8:53:40 AM                                        ICL114_Trauma - Minor Head Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    },
+    {
+      "section_id": "CLIFF-038-P14",
+      "ordinal": 13,
+      "heading": "Page 14 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   PA                   Physician Assistant\n\n   PDQ                  Pain Disability Questionnaire\n\n   PFCL                 Proposed Future Conditions List\n\n   PPE                  Personal Protective Equipment\n\n   PTRS                 Project Technical Requirements Specification\n\n   PRL                  Pharmaceutical Resource Level\n\n   QTL                  Quality Time Lost\n\n   RCL                  Removed Conditions List\n\n   REP                  Rochester Epidemiology Study\n\n   RTDC                 Removal to Definitive Care\n\n   SANS                 Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                  Space Adaptation Syndrome\n\n   SEVA                 Spaceflight Extravehicular Activity\n\n   SME                  Subject Matter Expert\n\n   SoP                  Standard Operating Procedure\n\n   SPE                  Solar Particle Event\n\n   TBD                  To Be Determined\n\n   TI                   Task Impairment\n\n\n\n\n11/22/2022 8:53:40 AM                                         ICL114_Trauma - Minor Head Cliff   page: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "page:14"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-038-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "UNK"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "Surface"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Poisson"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Gamma"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.001937"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "3.911E-06"
+        ],
+        [
+          "Gamma"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-038-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                             Source                                 LOC Value"
+        ],
+        [
+          "Levin, 2021                                                          Analog                                 2"
+        ],
+        [
+          "Marin et al, 2014                                                    Terrestrial                            3"
+        ],
+        [
+          "Scheuring et al, 2009                                                Spaceflight                            1"
+        ],
+        [
+          "Levin, 2021 provides unpublished analog incidence compiled from University-National Oceanographic Laboratory System. Although this represents"
+        ],
+        [
+          "ocean vessel crewmembers who received medical pre-screening, and occurs in confined ocean vessels, it is less applicable to exploration missions"
+        ],
+        [
+          "because of a difference in environment. The UNOLS data is anticipated to overestimate incidence of head injuries, based on increased risk of head"
+        ],
+        [
+          "injury during rough sea conditions. Marin et al, 2014 provides incidence of various head injuries (including concussion) between 2006-2010 from"
+        ],
+        [
+          "data extracted from the Nationwide Emergency Department Sample (NEDS) database. This study included all age groups. Scheuring et al, 2009"
+        ],
+        [
+          "evaluated the incidence musculoskeletal in-flight injuries among astronauts from Mercury - Expedition 13 of the ISS Program. Head injuries (\"minor"
+        ],
+        [
+          "trauma\" to the head) were not categorized by type limiting the applicability to the best and worst-case scenarios in this CLiFF."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-038-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                              Source                                  LOC Value"
+        ],
+        [
+          "Ponsford et al, 2011                                                  Terrestrial                             2"
+        ],
+        [
+          "Hou et al, 2012                                                       Terrestrial                             2"
+        ],
+        [
+          "Theadom, 2016                                                         Terrestrial                             0"
+        ],
+        [
+          "Ponsford et al, 2011, Boake et al, 2005, and Hou et al, 2012 were all ranked as 2. These studies were well designed but are all in small terrestrial"
+        ],
+        [
+          "populations, and have an earliest follow-up assessment at 3 months (rather than 2 weeks as defined in this CLiFF) which may underestimate the"
+        ],
+        [
+          "worst-case scenario probability at 2 weeks. Theadom, 2016 utilized the Rivermead Post-Concussion Questionnaire, which was shown in other"
+        ],
+        [
+          "studies to have a high rate of false-positives for post concussion syndrome (45% of a healthy cohort) (Voormolen, 2019) and poor specificity to"
+        ],
+        [
+          "symptoms from head trauma (Dean, 2012)."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-038-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment             CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration   TI%         Duration       TI%       RTDC             LOCL"
+        ],
+        [
+          "Composite             Condition"
+        ],
+        [
+          "Case Scenario        Incidence             Probability %     Preset    Preset     Preset      Min    Max     Preset    Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best         Mean: 0.001937        87 - 87           100       0.783      32.979      24     168     0         7.4     10.3     0        0.6"
+        ],
+        [
+          "Case (TBC)           SD: 3.911E-6"
+        ],
+        [
+          "Treated Worst                              13 - 13           100       0.783      55.6737     336    744     0         10.3    17.8     0        0.6"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best       N/A                   N/A               N/A       0.783      41.9081     24     336     0         7.4     10.3     0        0.6"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst      N/A                   N/A               N/A       0.783      64.6027     336    8760    0         10.3    17.8     0        0.6"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-038-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                             Source                                   LOC Value"
+        ],
+        [
+          "McCrea et al, 2003                                                   Terrestrial"
+        ],
+        [
+          "McCrory et al, 2017                                                  Terrestrial                                                 3"
+        ],
+        [
+          "Barbosa et al, 2012                                                  Terrestrial"
+        ],
+        [
+          "Terrestrial data regarding concussions in collegiate athletes (McCrea et al, 2003) and an international consensus statemetn on concussions in"
+        ],
+        [
+          "sports (McCrory et al, 2017) were used to inform the best-case scenario durations. These sources provided a range for the duration of concussive"
+        ],
+        [
+          "symptoms. The lower end of the range was assigned to the best-case treated scenario and the best-case untreated scenario duration was"
+        ],
+        [
+          "extended to include the upper end of the range cited in this literature. Barbosa et al, 2012, a practice management guideline for mild traumatic"
+        ],
+        [
+          "brain injuries developed from a review of 112 articles spanning 1998-2011, was used to inform the duration of the worst-case scenarios. Again, a"
+        ],
+        [
+          "range was presented and the lower end of the range was assigned to the treated worst-case scenario and the untreated worst-case scenario was"
+        ],
+        [
+          "extended based on these data."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-038-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                              Source                                  LOC Value"
+        ],
+        [
+          "Rhame et al, 2021                                                     Terrestrial"
+        ],
+        [
+          "2"
+        ],
+        [
+          "Babcock et al, 2013                                                   Terrestrial"
+        ],
+        [
+          "Two studies informed the RTDC probabilities for this condition. The literature doesn't elucidate a difference in need for hospitalization based on"
+        ],
+        [
+          "prior treatment vs. no prior treatment. Thus, the RTDC probabilities for the best-case treated and untreated scenarios are the same and the worst-"
+        ],
+        [
+          "case treated and untreated scenarios are the same. Rhame et al, 2021 reported a hospitalization rate of 10.3% for mild TBI patients in a"
+        ],
+        [
+          "retrospective chart review from Jan 2016-Dec 2017 for patients admitted through the University of Cincinnati Emergency Department under their"
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-038-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                            Source                                    LOC Value"
+        ],
+        [
+          "Gomez et al, 1996                                                   Terrestrial                                                   2"
+        ],
+        [
+          "Data regarding mortality secondary to minor head trauma were lacking. One retrospective study of 2484 patients with mild head injury presenting to"
+        ],
+        [
+          "an Emergency Department in Madrid, Spain between December 1991 and April 1993, was found to inform the LOCL probability. Inclusion criteria"
+        ],
+        [
+          "included: age > 15 years, GCS of 13-15, experienced a blow to the head independently of whether there were or were not signs of brain"
+        ],
+        [
+          "dysfunction, such as a transient loss of consciousness (LOC), posttraumatic amnesia (PTA) or associated injuries. Patients were excluded if they"
+        ],
+        [
+          "had isolated facial trauma, those deteriorating to a GCS of less than 13 within 4h of injury and those showing a lucid interval who were referred from"
+        ],
+        [
+          "local hospitals after they developed neurological deterioration. (Gomez et al, 1996). This provided the maximum probability for all scenarios"
+        ],
+        [
+          "because neither treatment, nor development of post-concussive syndrome are expected to affect the probability of LOCL for this condition. Notably,"
+        ],
+        [
+          "studies that present information based on patients presenting to the emergency department may be skewed towards more severe manifestations of"
+        ],
+        [
+          "minor head trauma (vs. those who present as outpatients or don't present at all), so this estimate would be the maximum probability of LOCL. The"
+        ],
+        [
+          "generalizability of this study in Spain may be somewhat limited."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-038-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision         Hearing                   Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664                              89                                          145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "223             664            113               89                                          145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664                              89             854                          145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223             664            113               89             854                          145"
+        ]
+      ],
+      "page_number": 9,
+      "source_anchor": "page:9#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-038-IMG-01",
+      "ordinal": 0,
+      "media_kind": "DIAGRAM",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-038/concussion_mechanism_diagram.png",
+      "mime_type": "image/png",
+      "width": 960,
+      "height": 720,
+      "sha256": "297e90f2d26d5ca3c9ffb7f68b511f1e04ca0692ee6428a12b40c588c5120894",
+      "creator": "Max Andrews",
+      "license_identifier": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AConcussion_Anatomy.png",
+      "attribution": "Max Andrews, via Wikimedia Commons (CC BY-SA 3.0)",
+      "caption": "Medical illustration of concussion biomechanics showing coup-contrecoup brain movement within the cranial vault.",
+      "alt_text": "Diagram illustrating concussion and mild traumatic brain injury mechanism.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Concussion Anatomy.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-038-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-038/brain_lateral_anatomy.png",
+      "mime_type": "image/png",
+      "width": 1500,
+      "height": 1340,
+      "sha256": "3af2c58a00cf40c7b31850829c16d2c481edfd38dc19cb04863930f5762589b5",
+      "creator": "BruceBlaus",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ABlausen_0101_Brain_LateralView.png",
+      "attribution": "BruceBlaus, via Wikimedia Commons (CC BY 3.0)",
+      "caption": "Lateral anatomical view of the human brain highlighting frontal, parietal, temporal, and occipital lobes.",
+      "alt_text": "Medical illustration of the lateral human brain.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Blausen 0101 Brain LateralView.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-038-IMG-03",
+      "ordinal": 2,
+      "media_kind": "RADIOLOGY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-038/normal_head_ct_sagittal.png",
+      "mime_type": "image/png",
+      "width": 770,
+      "height": 430,
+      "sha256": "c521d4665ca6c8c1326925c73d1628d9a008a81ea03e6c2a50fc773a1dca0e50",
+      "creator": "Mikael H\u00e4ggstr\u00f6m, M.D. Author info - Reusing images- Conflicts of interest: None Mikael H\u00e4ggstr\u00f6m, M.D.Consent note: Written informed consent was obtained from the individual, including online publication.",
+      "license_identifier": "CC0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ACT_of_a_normal_brain%2C_sagittal_20.png",
+      "attribution": "Mikael H\u00e4ggstr\u00f6m, M.D. Author info - Reusing images- Conflicts of interest: None Mikael H\u00e4ggstr\u00f6m, M.D.Consent note: Written informed consent was obtained from the individual, including online publica, via Wikimedia Commons (CC0)",
+      "caption": "Normal non-contrast sagittal head CT slice demonstrating intact midline structures and absence of acute intracranial hemorrhage.",
+      "alt_text": "Normal sagittal CT scan of the human brain.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:CT of a normal brain, sagittal 20.png)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-038-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Minor Head Injury (Trauma)",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/trauma-minor-head.pdf?emrc=c4c760",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External concussion diagram, brain anatomy, and head CT images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

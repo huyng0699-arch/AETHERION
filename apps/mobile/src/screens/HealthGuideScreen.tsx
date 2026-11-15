@@ -117,7 +117,7 @@ export function HealthGuideScreen({ locale, onBack }: { locale: Locale; onBack: 
               onPress={() => setExpanded(open ? '' : guide.id)}
               style={styles.cardHeader}
             >
-              <View style={styles.icon}><Ionicons name={guide.icon} size={19} color={colors.cyan} /></View>
+              <View style={styles.icon}><Ionicons name={guide.icon} size={19} color={colors.primary} /></View>
               <Text style={styles.metricTitle}>{guide.name[locale]}</Text>
               <Ionicons name={open ? 'chevron-up' : 'chevron-down'} size={18} color={colors.muted} />
             </Pressable>
@@ -131,7 +131,7 @@ export function HealthGuideScreen({ locale, onBack }: { locale: Locale; onBack: 
                   {guide.sources.map((source) => (
                     <Pressable key={source.url} accessibilityRole="button" accessibilityLabel={source.label} onPress={() => { void Linking.openURL(source.url).catch(() => undefined); }} style={styles.sourceLink}>
                       <Text style={styles.sourceText}>{source.label}</Text>
-                      <Ionicons name="open-outline" size={15} color={colors.cyan} />
+                      <Ionicons name="open-outline" size={15} color={colors.primary} />
                     </Pressable>
                   ))}
                 </View>
@@ -158,9 +158,10 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   metricTitle: { flex: 1, color: colors.text, fontSize: 14, fontWeight: '800' },
   details: { gap: 12, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: colors.border, paddingTop: 12 },
   info: { gap: 4 },
-  label: { color: colors.cyan, fontSize: 11, fontWeight: '800', textTransform: 'uppercase' },
+  label: { color: colors.primary, fontSize: 11, fontWeight: '800', textTransform: 'uppercase' },
   body: { color: colors.text, fontSize: 13, lineHeight: 19 },
   sources: { gap: 6 },
   sourceLink: { minHeight: 34, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
   sourceText: { flex: 1, color: colors.muted, fontSize: 12, textDecorationLine: 'underline' },
 });
+

@@ -1,0 +1,610 @@
+{
+  "article_id": "CLIFF-034",
+  "slot": 34,
+  "display_title": "Gastroenteritis Acute Diarrhea",
+  "category": "Gastrointestinal",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-034",
+    "publisher": "NASA",
+    "title": "Gastroenteritis Acute Diarrhea \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/gastroenteritis-acute-diarrhea-cliff-2023.pdf?emrc=e771e5",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/gastroenteritis-acute-diarrhea-cliff-2023.pdf?emrc=e771e5",
+    "retrieved_at_utc": "2026-11-14T06:09:58.768784+00:00",
+    "content_sha256": "1b9bf1c740243ba18eff5900ac3f6e5bb760fbff842bee501e85fa650e4e3e7a",
+    "original_mime": "application/pdf",
+    "original_bytes": 325409,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-034-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch      Baseline\n\n\n\n ICL59_Gastroenteritis/Acute Diarrhea\n\n Gastroenteritis is a non-specific term for various pathologic states of the gastrointestinal tract. However, the primary manifestation is diarrhea. This is\n often accompanied by associated symptoms of nausea, vomiting, anorexia, abdominal pain/cramping, bloating, and bowel gas. It can be caused by a\n number of different etiologies ranging from reactions to medications or other chemicals/toxins or even radiation, however, gastroenteritis is typically\n caused by viruses (ex. rotavirus, norovirus), bacteria (ex. E. coli, Salmonella, Campylobacter, Shigella), or parasites (ex. Giardia, Cryptosporidium).\n These can be foodborne, waterborne, or spread from person-to-person, often through a fecal-oral route. However, the threat of many of these\n infections is likely low in the spaceflight environment with good hygiene and access to clean food and water. Workup of gastroenteritis in spaceflight\n will be limited as infectious work-up will likely not be feasible. Treatment, as explained below, will be centered around prevention and management of\n dehydration.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Antonsen et. al. in 2017 evaluated LSAH data for ISS missions through Expedition 40 and found two reported cases of diarrhea with a person year\n  incidence of 0.14. Furthermore, upon evaluating a LSAH data pull of missions inclusive of the Space Shuttle Program, Mir, and ISS (through\n  Expedition 13), an additional 33 cases of diarrhea and 4 cases of gastroenteritis (for a total of 39 cases) were reported. The two cases found within\n  Crucian et al 2013, evaluated in-flight infectious disease from missions STS-1 thru STS-108 from 1981-2003 are encompasses within these 39\n  cases. Upon evaluation of the primary LSAH data utilized during Antonsen 2017, our team was able to calculate a mean per person year incidence\n  of 0.918.\n\n  ANALOG LITERATURE\n\n  The most accurate analog to consider in this setting may be a population of pilots as military populations may often be located in locations with\n  higher susceptibility to viral or bacterial gastroenteritis. One such study determined an incidence among commercial pilots after a standardized\n  questionnaire was mailed to pilots employed by a Swedish airline company in 2012 (Lindgren, et al). Another important analog study included\n  military personnel in Iraqi Freedom and Enduring Freedom (Monteville, 2006). Incidence of gastroenteritis in the analog population was felt to be\n  less accurate than spaceflight data given it is including viral, bacterial, and protozoal sources from around the world that likely may occur in\n  contaminated food/water. These pathogens are unlikely to lead to gastroenteritis in space.\n\n  TERRESTRIAL LITERATURE\n\n  While numerous studies have evaluated gastroenteritis terrestrially, Jones et al 2007 evaluated four population based surveys that were conducted\n  from 1996-2003 to determine the burden of acute diarrheal illness in the US. The incidence was specifically evaluated for age-matched controls to\n  our astronauts.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   mean: 0.92 SD: 0.15\n\n\n\n\n6/15/2023 2:00:38 PM                                             ICL59_Gastroenteritis/Acute Diarrhea Cliff                                                    page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-034-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  INCIDENCE SUMMARY\n\n  For this condition, the best evidence references for incidence came from inflight experience. For ISS, the Antonsen 2017 report cites 2 cases in\n  Table 1 and 37 relevant events in Table 2. This makes for 39 total events for spaceflight throughout STS and Mir, and ISS through Expedition 40,\n  which is 42.46 total person-years. The Crucian and Sams 2013 report cites 2 events in STS missions through STS-108. Since this overlaps in time\n  with the Antonsen report, we will only use the Antonsen report to develop the incidence distribution. Under the Bayesian framework, this data (39\n  events over 42.46 person-years) leads to a posterior incidence distribution of Gamma (shape=39, rate=29.16). All other references were deemed\n  irrelevant to the spaceflight environment so no adjustments were made to provide coverage. Incidence distribution: Gamma (shape=35, rate=42.46)\n  mean: 0.918 per py, SD: 0.15 per py. Analog incidence was 0.497 per py and terrestrial incidence was 0.612 per py.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     0.918\n     SD\n     0.15\n\n\n     Gamma\n     (Shape): 35\n     (Rate): 42.46\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                               Source                                   LOC Value\n\n   Jones et al, 2007                                                      Terrestrial                              2\n\n   Antonsen et al, 2017                                                   Spaceflight                              4\n\n   Crucian et al, 2013                                                    Spaceflight                              3\n\n   Lindgren et al, 2012                                                   Analog                                   2\n\n   Rees et al, 2004                                                       Analog                                   2\n\n   Monteville et al, 2006                                                 Analog                                   2\n\n   Thomas et al, 2003                                                     Analog                                   2\n\n\n  Crucian and Antonsen both cite LSAH data pulls, however, the Antonsen reference contains 39 cases compared to Crucian's 2 viral gastroenteritis\n  cases. Furthermore, Antonsen's totals encompass Crucian's. Given that these numbers appear fairly robust and are specific to the space\n  environment and astronauts exposed to that food/water, there is much higher level of confidence than amongst terrestrial and analog studies in\n  locations that make them more susceptible to pathogens that are unlikely to be seen in the space environment. Furthermore, while the spaceflight\n  data may be erroneously low secondary to reporting bias, this is true for all populations as people are less likely to seek treatment for mild\n  gastroenteritis/diarrhea. The fact that the spaceflight incidence is higher than terrestrial and analog incidence is reassuring that this reporting bias\n  may not be significant.\n\n\n\n\n6/15/2023 2:00:38 PM                                            ICL59_Gastroenteritis/Acute Diarrhea Cliff                                                   page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-034-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Annual medical examination and nutritional assessments are performed. Preflight microbiological testing is limited to MRSA screening.\n\n  BEST CASE SCENARIO DEFINITION\n\n  An uncomplicated course of gastroenteritis/acute diarrhea which resolves spontaneously or causes minimal disturbance; with mild nausea/vomiting,\n  diarrhea, or abdominal pain requiring only symptomatic treatment.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  A severe course of gastroenteritis/acute diarrhea, requiring parenteral re-hydration, or refractory to treatment.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  None\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  The best case vs. worst case probability is difficult to calculate given the vast majority of best case scenarios are never reported as health care\n  attention is never sought. Further, any studies evaluating what percentage of patients require parenteral hydration or have refractory symptoms\n  are biased by the fact that these are all patients who are already more likely to present for treatment. Furthermore, in U.S. healthcare systems, if\n  patients are concerned enough regarding their symptomology to present to an emergency room for such symptoms, they may be more likely to\n  receive parenteral fluids even if they are not absolutely needed. One study of military and similar populations being treated for Traveler's diarrhea\n  found that 15% required parenteral fluids, however, this is also from largely bacterial gastroenteritis in the Middle East, Southeast Asia, Latin\n  America, and the Caribbean (Olson 2019). Most other studies evaluating the military populations estimate ~2% of these patients warrant\n  hospitalization (Monteville 2006, Schrader 2017). As another way to evaluate BC/WC, Rees et. al. 2004 reported that 7% of Californians surveyed\n  with infectious gastroenteritis had persistent protracted symptoms despite management. Lastly, the previous CLiFF for IM used a WC percent\n  chance of 17% however this was based on the fact that 5 cases had been reported in spaceflight at that time and if the next case happened to be a\n  worst case, it would bring the odds to 1/6 (or 17%). With all of this said in acknowledging the limitations, choosing a 7% WC probability as the\n  halfway point between this data seems reasonable.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                    Source                         LOC Value\n\n   Rees et al, 2004                                                            Analog                         2\n\n   Monteville et al, 2006                                                      Analog                         2\n\n   Olson et al, 2019                                                           Analog                         2\n\n   Thomas TL, 2003                                                             Analog                         2\n\n  Level of confidence is already diminished given our data does not come from spaceflight. Further, there are a number of limitations that are\n  explained in the best case/worst case prose that have less to do with these specific studies, and more to do with limitations understanding what\n  cases of gastroenteritis are going to meet the definitions of worst case in spaceflight.\n\n\n\n\n6/15/2023 2:00:38 PM                                           ICL59_Gastroenteritis/Acute Diarrhea Cliff                                                 page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-034-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                               CP1: Diagnosis       CP2: Treatment           CP3: Condition End State\n\n                                                               TI%      Duration    TI%         Duration     TI%       RTDC             LOCL\n                      Composite              Condition\n   Case Scenario      Incidence              Probability %     Preset   Preset      Preset      Min   Max Preset       Min%    Max%     Min%      Max%\n\n   Treated Best       mean: 0.92 per py,     93 - 93           100      0.666       6.657       9.7   57     0         0       0        0         0\n   Case (TBC)         SD: 0.15 per py\n\n   Treated Worst                             7-7               100      1.25        25.9633     21    108    0         2       3        0.0029    0.0032\n   Case (TWC)\n\n   Untreated Best     N/A                    N/A               N/A      0.666       15.4797     27    71     0         1       13       0         0\n   Case (UTBC)\n\n   Untreated Worst    N/A                    N/A               N/A      1.25        78.9265     36    108    100       2       13       0.0032    0.0618\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n6/15/2023 2:00:38 PM                                            ICL59_Gastroenteritis/Acute Diarrhea Cliff                                                    page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-034-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  As stated above, the best case scenario involves gastroenteritis that is uncomplicated and can either resolve spontaneously or cause minimal\n  disturbance. This is true for the vast majority of gastroenteritis cases terrestrially, and especially true for non-infectious etiologies. The\n  cornerstones of treatment will likely include symptomatic management of diarrhea and cramping with bulking agents and simethicone, nausea\n  management, and rehydration. Given a paucity of data regarding spaceflight or analog gastroenteritis leading to a return to definitive care,\n  gastroenteritis that was severe enough that it might warrant hospital admission was chosen as the surrogate for RTDC.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  The TBC scenario is a self-limited course of gastroenteritis that does not require hospitalization and responds to treatment. Thus, RTDC and LOCL\n  are both expected to be 0%. Duration was decided by terrestrial data treating gastroenteritis with loperamide or loperamide+simethicone.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  The chosen RTDC surrogate for the treated worst case scenario was hospitalization. Unfortunately, there is not robust data on hospitalization rates\n  or time of hospitalization rates, however, there was decent data evaluating symptoms. One complicating aspect when considering WC scenarios\n  terrestrially is that they include dysentery from shigella and other infections like ETEC, Salmonella, Giardia, etc. Infections like these are unlikely in\n  spaceflight, but tend to represent the \"worst case\" infections on Earth. Furthermore, when considering infectious gastroenteritis terrestrially,\n  treatment options may also include antibiotics in addition to bulking agents. However, as these infectious etiologies are unlikely to cause\n  gastroenteritis in spaceflight, antibiotics are not part of the treatment paradigm. Studies involving loperamide or loperamide + simethicone are likely\n  the closest representation of treatment for worst case scenarios. Reviews evaluating these considerations were utilized for TWC duration, RTDC,\n  and LOCL.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  UTBC duration values are taken from RCTs where a treatment was compared to placebo. In these cases, the placebo group outcomes are used to\n  inform our untreated groups. Most best case diarrhea/gastroenteritis cases are likely going to be non-infectious and self-limited. Given a paucity of\n  data looking at non-infectious causes and the severe limitation that most people in best case scenarios do not present to their physicians, most of\n  our data comes from the traveler's diarrhea literature. Hospitalization is the RTDC surrogate and this ranges from 1-13% depending upon study\n  and country. LOCL is not expected as this is a best case scenario that is self-limited.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  As with UTBC, UTWC scenarios involve utilizing the duration and hospitalization data from studies employing placebo arms. Furthermore, in worst\n  case scenarios we are often utilizing hospitalization or mortality data (RTDC and LOCL) from low-resource countries as a surrogate for a worst case\n  scenario without adequate treatment. These numbers are therefore likely more conservative than would be predicted in spaceflight in that they are\n  involving treatment of severe infectious etiologies without treatment. However, in acknowledging this limitation, they were still utilized for truly\n  planning for a worst case scenario.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                            Source                                    LOC Value\n\n   Kaplan et al 1999                                                   Terrestrial\n\n   Murphy et al 1993                                                   Terrestrial\n\n   CDC 2010                                                            Terrestrial                                                   2\n\n   Riddle et al 2008                                                   Terrestrial\n\n   Kabir et al 1986                                                    Terrestrial\n\n\n\n\n6/15/2023 2:00:38 PM                                             ICL59_Gastroenteritis/Acute Diarrhea Cliff                                                    page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-034-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  We do not have spaceflight or analog data robustly evaluating duration of gastroenteritis. Terrestrially data is severe limited by the fact that there\n  are numerous forms of infectious gastroenteritis, especially forms that may be found while traveling to foreign countries. Many of these etiologies\n  are much less likely to occur in spaceflight. Duration is also limited by reporting bias, especially for best case scenarios, in that most patients do not\n  report mild gastroenteritis that is conservatively management at home.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                           Source                             LOC Value\n\n   Monteville et al 2006                                                              Analog\n\n   Olson et al 2019                                                                   Analog\n\n   Schrader et al 2017                                                                Terrestrial                                        2\n\n   van Sonnengburg et al 2000                                                         Terrestrial\n\n   Kotloff et al 1999                                                                 Terrestrial\n\n\n  As with duration, while we do have an analog military population included for RTDC, our confidence is still lower given the severe limitations that\n  many of these cases may be viral, bacterial, or protozoal gastroenteritis caused while traveling abroad without proper sterilization of food our water.\n  Furthermore, hospitalization itself as a surrogate for RTDC is conservative in that many patients may get hospitalized mainly for rehydration\n  purposes. It is also possible that oral and parenteral rehydration can be performed in spaceflight without true RTDC being required. Given these\n  factors, we have neutral confidence.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                             Source                                   LOC Value\n\n   Troeger et al 2018                                                   Terrestrial                                                  3\n\n\n  This source provides quality data regarding mortality rates from around the world. This allows us to provide a range of BC and WC mortality rates,\n  however is gain biased by many of these deaths likely attributed to infectious etiologies that would be more rare in spaceflight. With that said, we\n  have some confidence that LOCL would likely fall within these range of mortality for gastroenteritis.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  ICL #59 - Gastroenteritis Capabilities and Resourcing Scope Overview Gastroenteritis refers to an acute GI viral or bacterial infection leading to\n  symptomology of nausea, vomiting, diarrhea, abdominal pain, anorexia, and occasionally fever. Acute diarrhea is defined as diarrhea <14 days in\n  duration. These symptoms, if uncontrolled, will lead to dehydration and electrolyte imbalance. The leading sources of such infections would be\n  organisms limited to those carried into space by humans. CNES: None Diagnostic Scope and Resourcing In mild disease, or in the best-case\n  condition, diagnostics are based on clinical symptoms and physical exam. In the worst-case, a history, physical exam, vital signs, and serum\n  chemistry to evaluate for electrolyte imbalance are necessary to guide management. This diagnostic framework is consistent with the terrestrial\n  workup for gastroenteritis. We will not include a microbiological workup with stool antigens or culture, or microscopy due to low sensitivity and low\n  likelihood of affecting management. Clinical Phase 1 Duration and Rationale This version of IMPACT presumes physician level knowledge, skill, and\n  ability will be present on the mission. The CRT working group SME consensus duration is as follows: CP1 BC (Treated or Untreated): 0.666 hours\n  CP1 WC (Treated or Untreated): 1.25 hours The highest scope of practice for diagnosis is 3 (experienced ED/ICU nurse). Treatment Scope and\n  Resourcing Most cases of mild gastroenteritis in terrestrial populations resolve without any treatment or with anti-emetic or bulking medications as\n  needed. Thus, we included anti-emetics, bulking agents, antipyretic/mild pain control, dietary modifications, and oral hydration. For the worst case,\n  vascular access and intravenous hydration and electrolyte replacement are added. Antibiotic treatment is not typically indicated in the treatment of\n  acute watery diarrhea in resource-limited settings, especially if we do not have the capabilities of identifying the organism so it is excluded from this\n  CRT. Hand washing with soap, appropriate disposal of human waste, and safe handling of food and water are also important. Communications and\n  Support Needs For the BC definition ground consultation is unlikely to change treatment decisions or outcomes. For this reason, ground\n  communication equipment is not considered necessary and are not included in the CRT. The WC definition carries the possibility of more complex\n  disease and more significant risk. For this reason, resources for consultation with the ground and on board clinical decision support are more likely\n  to be needed in ways that affect management and are included in the CRT. REFERENCES 1. World Health Organization. The treatment of\n  diarrhea, a manual for physicians and other senior health workers. -- 4th revision. Geneva, Switzerland: World Health Organization, 2005. 2. World\n  Gastroenterology Organization (WGO): Global guidelines on acute diarrhea in adults and children \u2013 A global perspective (2012) 3. Global Task\n  Force on Cholera Control (GTFCC): Acute diarrheal disease in complex emergencies \u2013 Critical steps (2010) Guerrant RL, Van Gilder T, Steiner\n  TS, et al. Practice guidelines for the management of infectious diarrhea. Clin Infect Dis 2001; 32:331. 4. Victora CG, Bryce J, Fontaine O, Monasch\n  R. Reducing deaths from diarrhea through oral rehydration therapy. Bull World Health Organ 2000; 78:1246. 5. Fewtrell L, Kaufmann RB, Kay D, et\n  al. Water, sanitation, and hygiene interventions to reduce diarrhea in less developed countries: a systematic review and meta-analysis. Lancet\n  Infect Dis 2005; 5:42.\n\n\n\n\n6/15/2023 2:00:38 PM                                             ICL59_Gastroenteritis/Acute Diarrhea Cliff                                                    page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-034-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  IMM CLIFF RECONCILATION COMMENTS\n\n\n  The previous CLiFF was informative, especially for multiple analog studies which were included in this current effort. Regarding incidence, at the\n  time of its creation there was only data on 5 reported spaceflight cases of gastroenteritis, however, we now have more robust spaceflight data\n  available. Multiple analog studies from this CLiFF were then added to our data collection. As discussed above, one limitation was also that the worst\n  case scenario was based around the possibility that the next case of gastroenteritis could be a worst case scenario leading to a WC scenario\n  percentage of 16.67% (or 1 out of 6). Our search provided some updated data to inform this system as well. Lastly, regarding scenario comments,\n  while we cannot use the functional impairment data given we have moved to task impairment, we also evaluated to sources chosen to inform these\n  comments and added them to our analysis.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  The limitations are extensively discussed above in their representative sections. The largest limitations regarding understanding the incidence,\n  diagnosis, and management of gastroenteritis in space are: 1) mild gastroenteritis is under reported as symptoms are self-limited and often do not\n  require treatment, and 2) the etiologies of gastroenteritis in spaceflight are very likely to be different from terrestrial causes. This distinction affects\n  the overall incidence, severity, duration, diagnosis, and management. Given this limitation, most of the reported values in this CLiFF regarding the\n  severity, duration, and RTDC/LOCL are likely conservative overestimations.\n\n\n\n\n6/15/2023 2:00:38 PM                                              ICL59_Gastroenteritis/Acute Diarrhea Cliff                                                     page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-034-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                                        Clinical Phase 2: Treatment\n                                                                                                       Affected HSTCs\n                                                                        Inter-\n                Cognitive -       Cognitive -                                                                       Cardio-\n                                                Communications        personal          Vision          Hearing                    Dentition          GI             GU\n                 Simple           Complex                                                                         pulmonary\n                                                                       Skills\n   Treated\n     Best\n           0                  0                 0                 0                 0              0              145          0               13             0\n    Case\n    (TBC)\n  Untreated\n    Best\n            0                 664               0                 0                 0              0              145          0               13             0\n    Case\n   (UTBC)\n   Treated\n    Worst\n           0                  664               0                 89                0              0              145          0               13             0\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223               664               0                 89                0              0              145          0               13             0\n    Case\n   (UTWC)\n                                                            Affected HSTCs (Continued)                                                                     TI Calculation                     TI Score\n                                                                                                                                                                     Total\n                                                                                                                                                                   Human\n                                                                                                    Translation &                               Total Tasks\n                  Hand                                                  Lower         Ambul &                       Don/Doff       Pressure                        System\n                              Hand (Any)        Upper Extremity                                     Stabilization                              Impaired By                      TI Decimal      TI %\n                 (Dom)                                                Extremity     Standing (g)                  Equipment         Ops                           Category\n                                                                                                   (microgravity)                               Condition\n                                                                                                                                                                  Tasks Full\n                                                                                                                                                                   Mission\n   Treated\n     Best\n           132                0                 0                 0                 0              0              0            211             501            3763             0.133139      13.3138\n    Case\n    (TBC)\n  Untreated\n    Best\n            132               0                 0                 0                 0              0              0            211             1165           3763             0.309593      30.9593\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                0                 414               22                196            34             34           211             1954           3763             0.519267      51.9267\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132               0                 414               22                196            34             34           211             2177           3763             0.578528      57.8528\n    Case\n   (UTWC)\n\n                                                                                  Clinical Phase 3: Condition End State\n                                                                                                       Affected HSTCs\n                                                                        Inter-\n                Cognitive -       Cognitive -                                                                       Cardio-\n                                                Communications        personal          Vision          Hearing                    Dentition          GI             GU\n                 Simple           Complex                                                                         pulmonary\n                                                                       Skills\n   Treated\n     Best\n           0                  0                 0                 0                 0              0              0            0               0              0\n    Case\n    (TBC)\n  Untreated\n    Best\n            0                 0                 0                 0                 0              0              0            0               0              0\n    Case\n   (UTBC)\n   Treated\n    Worst\n           0                  0                 0                 0                 0              0              0            0               0              0\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223               664               113               89                854            44             145          5               13             6\n    Case\n   (UTWC)\n                                                            Affected HSTCs (Continued)                                                                     TI Calculation                     TI Score\n\n\n\n\n6/15/2023 2:00:38 PM                                                    ICL59_Gastroenteritis/Acute Diarrhea Cliff                                                                              page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-034-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                                  Total\n                                                                                                                                                Human\n                                                                                     Translation &                              Total Tasks\n                 Hand                                        Lower       Ambul &                     Don/Doff       Pressure                    System\n                        Hand (Any)   Upper Extremity                                 Stabilization                             Impaired By                      TI Decimal         TI %\n                (Dom)                                      Extremity   Standing (g)                Equipment         Ops                       Category\n                                                                                    (microgravity)                              Condition\n                                                                                                                                               Tasks Full\n                                                                                                                                                Mission\n   Treated\n     Best\n           0            0            0                 0               0           0              0             0              0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n            0           0            0                 0               0           0              0             0              0              3763          0                0\n    Case\n   (UTBC)\n   Treated\n    Worst\n           0            0            0                 0               0           0              0             0              0              3763          0                0\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132         564          414               22              196         34             34            211            3763           3763          1                100\n    Case\n   (UTWC)\n\n\n\n\n6/15/2023 2:00:38 PM                                         ICL59_Gastroenteritis/Acute Diarrhea Cliff                                                                          page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-034-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: In the best case treated scenario, it was assumed that it would be recommended that the ill crewmember not exert themselves\n  (cardiopulmonary) while actively being treated. Worst case scenario would entail a higher degree of impairment due to marked dehydration\n  requiring IV fluid administration. CP3: the Worst-case untreated scenario was assumed to deteriorate in clinical phase 3, increasing the task\n  impairment. (Worsening dehydration. Note this scenario does not include hypovolemic shock as that is a separate condition).\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n6/15/2023 2:00:38 PM                                           ICL59_Gastroenteritis/Acute Diarrhea Cliff                                                  page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-034-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. Jones, T. F., et al. (2007). \"A population-based estimate of the substantial burden of diarrhoeal disease in the United States; FoodNet, 1996-\n   2003.\" Epidemiology and infection 135(2): 293-301.\n\n   2. Antonsen, E. (2017) \"Risk of Adverse Health Outcomes and Decrements in Performance due to In-Flight Medical Conditions.\" NTRS.\n\n   3. Crucian, B. and C. F. Sams (2013). Evidence Report: Risk of Crew Adverse Health Event Due to Altered Immune Response. NTRS.\n\n   4. Lindgren, T., et al. (2012). \"Digestive functional symptoms among commercial pilots in relation to diet, insomnia, and lifestyle factors.\" Aviat\n   Space Environ Med 83(9): 872-878.\n\n   5. Rees, J., Pannier, Mary Ann, McNees, Alexander (2004). \"Persistent Diarrhea, Arthritis, and Other Complications of Enteric Infections: A Pilot\n   Survey Based on California FoodNet Surveillance, 1998\u20131999.\" Clinical Infectious Diseases 38.\n\n   6. Monteville MR et al. Incidence, etiology, and impact of diarrhea among deployed US military personnel in support of Operation Iraqi Freedom\n   and Operation Enduring Freedom. Am J Trop Med Hyg. 2006.\n\n   7. Olson S et al. Travelers' diarrhea: update on the incidence, etiology and risk in military and similar populations - 1990-2005 vs. 2005-2015,\n   dose a decade make a difference? Trop Dis Travel Med Vaccines 2019.\n\n   8. Michael A. Kaplan, M. M. J. P., PhD, MPH; Rita R. Ash, MS; Kimberly I. McKonly, MS; Eileen C. Helzner, MD, MS; Edward B. Nelson, MD, PhD\n   (1999). \"Loperamide-Simethicone vs Loperamide Alone, Simethicone Alone, and Placebo in the Treatment of Acute Diarrhea With Gas-Related\n   Abdominal Discomfort.\" Arch Fam Med 8.\n\n   9. CDC (2010). \"Average Length of Stay for discharges from short-stay hospitals, by age and first-listed diagnosis.\" International Classification of\n   Diseases 9th revision.\n\n   10. Riddle MS, Arnold S, Tribble DR. Effect of adjunctive loperamide in combination with antibiotics on treatment outcomes in traveler's diarrhea:\n   a systematic review and meta-analysis. Clin Infect Dis. 2008 Oct 15; 47(8):1007-14.\n\n   11. Murphy GS, Bodhidatta L, Echeverria P, et al. Ciprofloxacin and loperamide in the treatment of bacillary dysentery. Ann Intern Med 1993;\n   118:582\u20136.\n\n   12. Schrader AJ. Strategies to improve management of acute watery diarrhea. Am J Trop Med Hyg. 2017 Dec;97(6):1857-1866\n\n   13. Troeger, C., et al. (2018). \"Estimates of the global, regional, and national morbidity, mortality, and aetiologies of diarrhoea in 195 countries: a\n   systematic analysis for the Global Burden of Disease Study 2016.\" The Lancet Infectious Diseases 18(11): 1211-1228.\n\n   14. von Sonnenburg, F., et al. (2000). \"Risk and aetiology of diarrhoea at various tourist destinations.\" The Lancet 356(9224): 133-134.\n\n   15. Kabir, I. B., Thomas Khanam, Asma (1986). \"Comparative Efficacies of Single Intravenous Doses of Ceftriaxone and Ampicillin for Shigellosis\n   in a Placebo-Controlled Trial.\" Antimicrob Agents Chemother: p. 645-648\n\n   16. World Health Organization. The treatment of diarrhoea, a manual for physicians and other senior health workers. -- 4th revision. Geneva,\n   Switzerland: World Health Organization, 2005.\n\n   17. World Gastroenterology Organisation (WGO): Global guidelines on acute diarrhea in adults and children \u2013 A global perspective (2012)\n\n   18. Thomas TL, Garland FC, Mole D, Cohen BA, Gudewicz TM, Spiro RT, et al. Health of U.S. Navy submarine crew during periods of isolation.\n\n   Aviat Space Environ Med 2003 Mar;74(3):260-5\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                       PHRASE\n\n   AAOMS                         American Association of Oral and Maxillofacial Surgeons\n\n   AMA                           American Medical Association\n\n   ARCL                          All Remaining Conditions List\n\n   ARS                           Acute Radiation Sickness\n\n   BHP                           Behavioral Health and Performance\n\n   CAC                           Coronary Artery Calcium\n\n   CHS                           Crew Health and Safety\n\n\n\n\n6/15/2023 2:00:38 PM                                             ICL59_Gastroenteritis/Acute Diarrhea Cliff                                                  page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-034-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   CL                  Condition List\n\n   CliFF               Clinical Finding Form\n\n   CMO                 Crew Medical Officer\n\n   COMFORT             Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                 Clinical Phase 1\n\n   CP2                 Clinical Phase 2\n\n   CP3                 Clinical Phase 3\n\n   CRL                 Clinical Resource Level\n\n   CRT                 Capability Resource Table\n\n   CST                 Clinical Science Team\n\n   DCS                 Decompression Syndrome\n\n   DRM                 Design Reference Mission\n\n   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n\n\n\n6/15/2023 2:00:38 PM                                   ICL59_Gastroenteritis/Acute Diarrhea Cliff   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-034-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n6/15/2023 2:00:38 PM                                   ICL59_Gastroenteritis/Acute Diarrhea Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-034-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "General"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Poisson"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Gamma"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.918"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.15"
+        ],
+        [
+          "Gamma"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-034-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                               Source                                   LOC Value"
+        ],
+        [
+          "Jones et al, 2007                                                      Terrestrial                              2"
+        ],
+        [
+          "Antonsen et al, 2017                                                   Spaceflight                              4"
+        ],
+        [
+          "Crucian et al, 2013                                                    Spaceflight                              3"
+        ],
+        [
+          "Lindgren et al, 2012                                                   Analog                                   2"
+        ],
+        [
+          "Rees et al, 2004                                                       Analog                                   2"
+        ],
+        [
+          "Monteville et al, 2006                                                 Analog                                   2"
+        ],
+        [
+          "Thomas et al, 2003                                                     Analog                                   2"
+        ],
+        [
+          "Crucian and Antonsen both cite LSAH data pulls, however, the Antonsen reference contains 39 cases compared to Crucian's 2 viral gastroenteritis"
+        ],
+        [
+          "cases. Furthermore, Antonsen's totals encompass Crucian's. Given that these numbers appear fairly robust and are specific to the space"
+        ],
+        [
+          "environment and astronauts exposed to that food/water, there is much higher level of confidence than amongst terrestrial and analog studies in"
+        ],
+        [
+          "locations that make them more susceptible to pathogens that are unlikely to be seen in the space environment. Furthermore, while the spaceflight"
+        ],
+        [
+          "data may be erroneously low secondary to reporting bias, this is true for all populations as people are less likely to seek treatment for mild"
+        ],
+        [
+          "gastroenteritis/diarrhea. The fact that the spaceflight incidence is higher than terrestrial and analog incidence is reassuring that this reporting bias"
+        ],
+        [
+          "may not be significant."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-034-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                    Source                         LOC Value"
+        ],
+        [
+          "Rees et al, 2004                                                            Analog                         2"
+        ],
+        [
+          "Monteville et al, 2006                                                      Analog                         2"
+        ],
+        [
+          "Olson et al, 2019                                                           Analog                         2"
+        ],
+        [
+          "Thomas TL, 2003                                                             Analog                         2"
+        ],
+        [
+          "Level of confidence is already diminished given our data does not come from spaceflight. Further, there are a number of limitations that are"
+        ],
+        [
+          "explained in the best case/worst case prose that have less to do with these specific studies, and more to do with limitations understanding what"
+        ],
+        [
+          "cases of gastroenteritis are going to meet the definitions of worst case in spaceflight."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-034-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment           CP3: Condition End State"
+        ],
+        [
+          "TI%      Duration    TI%         Duration     TI%       RTDC             LOCL"
+        ],
+        [
+          "Composite              Condition"
+        ],
+        [
+          "Case Scenario      Incidence              Probability %     Preset   Preset      Preset      Min   Max Preset       Min%    Max%     Min%      Max%"
+        ],
+        [
+          "Treated Best       mean: 0.92 per py,     93 - 93           100      0.666       6.657       9.7   57     0         0       0        0         0"
+        ],
+        [
+          "Case (TBC)         SD: 0.15 per py"
+        ],
+        [
+          "Treated Worst                             7-7               100      1.25        25.9633     21    108    0         2       3        0.0029    0.0032"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best     N/A                    N/A               N/A      0.666       15.4797     27    71     0         1       13       0         0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst    N/A                    N/A               N/A      1.25        78.9265     36    108    100       2       13       0.0032    0.0618"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-034-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                            Source                                    LOC Value"
+        ],
+        [
+          "Kaplan et al 1999                                                   Terrestrial"
+        ],
+        [
+          "Murphy et al 1993                                                   Terrestrial"
+        ],
+        [
+          "CDC 2010                                                            Terrestrial                                                   2"
+        ],
+        [
+          "Riddle et al 2008                                                   Terrestrial"
+        ],
+        [
+          "Kabir et al 1986                                                    Terrestrial"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-034-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                           Source                             LOC Value"
+        ],
+        [
+          "Monteville et al 2006                                                              Analog"
+        ],
+        [
+          "Olson et al 2019                                                                   Analog"
+        ],
+        [
+          "Schrader et al 2017                                                                Terrestrial                                        2"
+        ],
+        [
+          "van Sonnengburg et al 2000                                                         Terrestrial"
+        ],
+        [
+          "Kotloff et al 1999                                                                 Terrestrial"
+        ],
+        [
+          "As with duration, while we do have an analog military population included for RTDC, our confidence is still lower given the severe limitations that"
+        ],
+        [
+          "many of these cases may be viral, bacterial, or protozoal gastroenteritis caused while traveling abroad without proper sterilization of food our water."
+        ],
+        [
+          "Furthermore, hospitalization itself as a surrogate for RTDC is conservative in that many patients may get hospitalized mainly for rehydration"
+        ],
+        [
+          "purposes. It is also possible that oral and parenteral rehydration can be performed in spaceflight without true RTDC being required. Given these"
+        ],
+        [
+          "factors, we have neutral confidence."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-034-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                             Source                                   LOC Value"
+        ],
+        [
+          "Troeger et al 2018                                                   Terrestrial                                                  3"
+        ],
+        [
+          "This source provides quality data regarding mortality rates from around the world. This allows us to provide a range of BC and WC mortality rates,"
+        ],
+        [
+          "however is gain biased by many of these deaths likely attributed to infectious etiologies that would be more rare in spaceflight. With that said, we"
+        ],
+        [
+          "have some confidence that LOCL would likely fall within these range of mortality for gastroenteritis."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-034-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -       Cognitive -                                                                       Cardio-"
+        ],
+        [
+          "Communications        personal          Vision          Hearing                    Dentition          GI             GU"
+        ],
+        [
+          "Simple           Complex                                                                         pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "0                  0                 0                 0                 0              0              145          0               13             0"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "0                 664               0                 0                 0              0              145          0               13             0"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "0                  664               0                 89                0              0              145          0               13             0"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223               664               0                 89                0              0              145          0               13             0"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-034-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-034/small_intestine_anatomy.png",
+      "mime_type": "image/png",
+      "width": 1500,
+      "height": 1500,
+      "sha256": "a0284db63008d620fe7b15d90ea91b90849f2435f5fa69acd8279675ea6f6725",
+      "creator": "BruceBlaus. When using this image in external sources it can be cited as: Blausen.com staff (2014). \"Medical gallery of Blausen Medical 2014\". WikiJournal of Medicine 1 (2). DOI:10.15347/wjm/2014.010. ISSN 2002-4436.",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ABlausen_0817_SmallIntestine_Anatomy.png",
+      "attribution": "BruceBlaus. When using this image in external sources it can be cited as: Blausen.com staff (2014). \"Medical gallery of Blausen Medical 2014\". WikiJournal of Medicine 1 (2). DOI:10.15347/wjm/2014.010., via Wikimedia Commons (CC BY 3.0)",
+      "caption": "Anatomical illustration of the human small intestine (duodenum, jejunum, ileum) primary site of fluid absorption and acute gastroenteritis.",
+      "alt_text": "Medical illustration of the human small intestine.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Blausen 0817 SmallIntestine Anatomy.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-034-IMG-02",
+      "ordinal": 1,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-034/norovirus_electron_micrograph.jpg",
+      "mime_type": "image/jpeg",
+      "width": 700,
+      "height": 471,
+      "sha256": "71e7ea831bc3cadaa8bb680c9a370940a10526f135d1964454229a096627414f",
+      "creator": "CDC",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ANorovirus_EM_PHIL_2172_lores.jpg",
+      "attribution": "CDC, via Wikimedia Commons (Public domain)",
+      "caption": "CDC transmission electron micrograph of Norovirus particles, a leading viral cause of acute infectious gastroenteritis.",
+      "alt_text": "Electron micrograph of Norovirus viral particles.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Norovirus EM PHIL 2172 lores.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-034-IMG-03",
+      "ordinal": 2,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-034/rotavirus_electron_micrograph.jpg",
+      "mime_type": "image/jpeg",
+      "width": 3009,
+      "height": 2081,
+      "sha256": "7717d79da7ed2c25e0b8f820955db51c040541eea3415ac9c7165da37beea78a",
+      "creator": "Dr Graham Beards",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AMultiple_rotavirus_particles.jpg",
+      "attribution": "Dr Graham Beards, via Wikimedia Commons (CC BY 3.0)",
+      "caption": "Transmission electron micrograph of multiple rotavirus particles associated with acute secretory diarrhea.",
+      "alt_text": "Electron micrograph of rotavirus virions.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Multiple rotavirus particles.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-034-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Gastroenteritis Acute Diarrhea",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/gastroenteritis-acute-diarrhea-cliff-2023.pdf?emrc=e771e5",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External small intestine anatomy and viral pathogen micrographs are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

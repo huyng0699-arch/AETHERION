@@ -1,8 +1,10 @@
 import { Locale } from './types';
 const en = {
-  demo: 'Demo', demoHint: 'Explore the NASA flight archive', welcome: 'Welcome back', tagline: 'Your health. One connected space.',
+  demo: 'Demo', welcome: 'Welcome back', tagline: 'Your health. One connected space.',
   connection: 'Server connection', appearance: 'Appearance', theme: 'Theme', mode: 'Mode', system: 'System', light: 'Light', dark: 'Dark',
-  amethyst: 'Amethyst', ocean: 'Ocean', rose: 'Rose', midnight: 'Midnight', motion: 'Reduce motion',
+  amethyst: 'Amethyst', ocean: 'Ocean', sunset: 'Sunset', forest: 'Forest', midnight: 'Midnight', sand: 'Sand', rose: 'Rose', gold: 'Gold',
+  accentColor: 'Accent color', accentPurple: 'Purple', accentTeal: 'Teal', accentOrange: 'Orange', accentBlack: 'Charcoal', accentRose: 'Rose', accentBlue: 'Blue', accentGold: 'Gold',
+  textColor: 'Text color', textTheme: 'Match theme', textGraphite: 'Graphite', textNavy: 'Navy', textPlum: 'Plum', textWarm: 'Warm', motion: 'Reduce motion',
   profile: 'Profile', chooseProfile: 'Choose a profile', noProfiles: 'No profiles assigned', retry: 'Try again', continueAs: 'Continue as',
   registerProfile: 'Create profile', profileName: 'Display name', profileId: 'Profile ID', serverSaved: 'Server saved',
   demoStart: 'Explore data', demoCaption: 'NASA MA-7 · 1962', demoSummary: '19 timepoints · 18 metrics · 83 reported values',
@@ -17,9 +19,11 @@ const en = {
   guideMeasures: 'What it measures', guidePurpose: 'Why it is tracked', guideTip: 'Use it well', guideSources: 'Sources', guideOpenSource: 'Open source',
 };
 const vi: Record<keyof typeof en, string> = {
-  demo: 'Demo', demoHint: 'Khám phá dữ liệu chuyến bay NASA', welcome: 'Chào mừng trở lại', tagline: 'Sức khỏe của bạn. Một không gian kết nối.',
+  demo: 'Demo', welcome: 'Chào mừng trở lại', tagline: 'Sức khỏe của bạn. Một không gian kết nối.',
   connection: 'Kết nối máy chủ', appearance: 'Giao diện', theme: 'Chủ đề', mode: 'Chế độ', system: 'Hệ thống', light: 'Sáng', dark: 'Tối',
-  amethyst: 'Thạch anh tím', ocean: 'Đại dương', rose: 'Hoa hồng', midnight: 'Đêm sâu', motion: 'Giảm chuyển động',
+  amethyst: 'Thạch anh tím', ocean: 'Đại dương', sunset: 'Hoàng hôn', forest: 'Rừng xanh', midnight: 'Đêm sâu', sand: 'Cát ấm', rose: 'Hồng', gold: 'Vàng ấm',
+  accentColor: 'Màu nhấn', accentPurple: 'Tím', accentTeal: 'Xanh ngọc', accentOrange: 'Cam', accentBlack: 'Than chì', accentRose: 'Hồng', accentBlue: 'Xanh dương', accentGold: 'Vàng',
+  textColor: 'Màu chữ', textTheme: 'Theo giao diện', textGraphite: 'Than chì', textNavy: 'Xanh navy', textPlum: 'Tím mận', textWarm: 'Nâu ấm', motion: 'Giảm chuyển động',
   profile: 'Hồ sơ', chooseProfile: 'Chọn hồ sơ', noProfiles: 'Chưa được cấp hồ sơ', retry: 'Thử lại', continueAs: 'Tiếp tục với',
   registerProfile: 'Tạo hồ sơ', profileName: 'Tên hiển thị', profileId: 'Mã hồ sơ', serverSaved: 'Đã lưu máy chủ',
   demoStart: 'Khám phá dữ liệu', demoCaption: 'NASA MA-7 · 1962', demoSummary: '19 mốc · 18 chỉ số · 83 giá trị được ghi nhận',
@@ -34,4 +38,5 @@ const vi: Record<keyof typeof en, string> = {
   guideMeasures: 'Chỉ số đo gì', guidePurpose: 'Theo dõi để làm gì', guideTip: 'Cách ghi nhận', guideSources: 'Nguồn', guideOpenSource: 'Mở nguồn',
 };
 export function copy(locale: Locale, key: keyof typeof en) { return (locale === 'vi' ? vi : en)[key]; }
+
 

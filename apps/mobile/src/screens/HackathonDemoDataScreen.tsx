@@ -40,10 +40,10 @@ export function HackathonDemoDataScreen({ locale, onBack }: { locale: Locale; on
       </LinearGradient>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.tabs}>{loaded.data.groups.map((entry, index) => <Pressable key={entry.id} accessibilityRole="tab" accessibilityLabel={copy(locale, tabs[index])} accessibilityState={{ selected: index === groupIndex }} onPress={() => { setGroupIndex(index); setRecordIndex(0); }} style={[styles.tab, index === groupIndex && styles.active]}><Text style={[styles.tabText, index === groupIndex && styles.activeText]}>{copy(locale, tabs[index])}</Text></Pressable>)}</ScrollView>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.records}>{group.records.map((entry, index) => <Pressable key={entry.id} accessibilityRole="button" accessibilityState={{ selected: index === recordIndex }} onPress={() => setRecordIndex(index)} style={[styles.recordChip, index === recordIndex && styles.active]}><Text style={[styles.chipText, index === recordIndex && styles.activeText]}>{entry.title[locale]}</Text></Pressable>)}</ScrollView>
-      <View style={styles.recordHeader}><View style={{ flex: 1 }}><Text style={styles.heading}>{record.title[locale]}</Text><Text style={styles.meta}>{recordIndex + 1} / {group.records.length}</Text></View><Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'previous')} disabled={recordIndex === 0} style={[styles.step, recordIndex === 0 && styles.disabled]} onPress={() => setRecordIndex(value => value - 1)}><Ionicons name="chevron-back" color={colors.cyan} size={22} /></Pressable><Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'next')} disabled={recordIndex >= group.records.length - 1} style={[styles.step, recordIndex >= group.records.length - 1 && styles.disabled]} onPress={() => setRecordIndex(value => value + 1)}><Ionicons name="chevron-forward" color={colors.cyan} size={22} /></Pressable></View>
+      <View style={styles.recordHeader}><View style={{ flex: 1 }}><Text style={styles.heading}>{record.title[locale]}</Text><Text style={styles.meta}>{recordIndex + 1} / {group.records.length}</Text></View><Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'previous')} disabled={recordIndex === 0} style={[styles.step, recordIndex === 0 && styles.disabled]} onPress={() => setRecordIndex(value => value - 1)}><Ionicons name="chevron-back" color={colors.primary} size={22} /></Pressable><Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'next')} disabled={recordIndex >= group.records.length - 1} style={[styles.step, recordIndex >= group.records.length - 1 && styles.disabled]} onPress={() => setRecordIndex(value => value + 1)}><Ionicons name="chevron-forward" color={colors.primary} size={22} /></Pressable></View>
       <Animated.View style={[styles.grid, { opacity: recordFade }]}>{Object.entries(record.measures).map(([metric, measure]) => <Measure key={`${record.id}:${metric}`} label={loaded!.data.metric_names[metric]?.[locale] || metric} measure={measure} locale={locale} />)}</Animated.View>
       <Panel style={styles.note}><Text style={styles.sourceLabel}>{t(locale, 'demoSourceTable')}</Text><Text selectable style={styles.sourceText}>{group.table}</Text><Body style={styles.sourceText}>{group.note[locale]}</Body></Panel>
-      <Pressable accessibilityRole="button" onPress={() => setDetails(value => !value)} style={styles.disclosure}><Text style={styles.activeText}>{copy(locale, 'sourceDetails')}</Text><Ionicons name={details ? 'chevron-up' : 'chevron-down'} color={colors.cyan} size={18} /></Pressable>
+      <Pressable accessibilityRole="button" onPress={() => setDetails(value => !value)} style={styles.disclosure}><Text style={styles.activeText}>{copy(locale, 'sourceDetails')}</Text><Ionicons name={details ? 'chevron-up' : 'chevron-down'} color={colors.primary} size={18} /></Pressable>
       {details ? <Panel style={styles.note}><Text style={styles.sourceText}>{loaded.data.source_title}</Text><Text style={styles.meta}>{loaded.data.source_publisher} · {loaded.data.source_publication}</Text><Body>{t(locale, 'demoHistoricalLimit')}</Body><Text style={styles.sourceLabel}>{t(locale, 'demoUnavailableTitle')}</Text><Body>{loaded.data.unavailable_metrics.join(' · ')}</Body><Pressable accessibilityRole="link" onPress={() => { void Linking.openURL(loaded!.data.source_url); }}><Text style={styles.activeText}>{t(locale, 'demoOpenNasaSource')}</Text></Pressable></Panel> : null}
     </> : <Panel><StatusPill label={t(locale, 'demoSourceError')} tone="bad" /></Panel>}
   </AppPage>;
@@ -65,9 +65,9 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   meta: { color: colors.muted, fontSize: 11, lineHeight: 17 },
   tabs: { gap: 7, paddingVertical: 2 },
   tab: { minHeight: 42, borderRadius: 14, paddingHorizontal: 14, justifyContent: 'center', backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border },
-  active: { backgroundColor: colors.cardSoft, borderColor: colors.cyan },
+  active: { backgroundColor: colors.cardSoft, borderColor: colors.primary },
   tabText: { color: colors.muted, fontSize: 12, fontWeight: '700' },
-  activeText: { color: colors.cyan, fontSize: 12, fontWeight: '800' },
+  activeText: { color: colors.primary, fontSize: 12, fontWeight: '800' },
   records: { gap: 7, paddingVertical: 2 },
   recordChip: { minHeight: 38, justifyContent: 'center', borderRadius: 11, paddingHorizontal: 12, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card },
   chipText: { color: colors.muted, fontSize: 11, fontWeight: '700' },
@@ -79,10 +79,11 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   metric: { color: colors.muted, fontSize: 12, fontWeight: '700', minHeight: 30 },
   value: { color: colors.text, fontSize: 28, lineHeight: 35, fontWeight: '800', letterSpacing: -0.7 },
   missing: { fontSize: 17, lineHeight: 24, color: colors.faint },
-  unit: { color: colors.cyan, fontSize: 12, fontWeight: '700' },
+  unit: { color: colors.primary, fontSize: 12, fontWeight: '700' },
   qualifier: { color: colors.faint, fontSize: 10, lineHeight: 15, marginTop: 3 },
   note: { gap: 8 },
   sourceLabel: { color: colors.text, fontSize: 12, fontWeight: '800' },
   sourceText: { color: colors.muted, fontSize: 12, lineHeight: 18 },
   disclosure: { minHeight: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 3 },
 });
+

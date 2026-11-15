@@ -26,7 +26,7 @@ type Props = {
 };
 
 export function LoginScreen({ locale, setLocale, onAppearance, serverUrl, setServerUrl, onConnect, onSignIn, onOpenDemo, onContinue, restoredUsername, busy, error, status }: Props) {
-  const { colors, styles } = useThemedStyles(buildStyles);
+  const { colors, styles, gradient, isDark } = useThemedStyles(buildStyles);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [connectionOpen, setConnectionOpen] = useState(false);
@@ -35,9 +35,9 @@ export function LoginScreen({ locale, setLocale, onAppearance, serverUrl, setSer
   };
 
   return <AppPage contentStyle={styles.page}>
-    <LinearGradient colors={['#111733', '#18234E', '#344577']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.hero}>
+    <LinearGradient colors={(isDark ? [colors.card, colors.cardSoft, colors.backgroundRaised] : gradient) as [string, string, string]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.hero}>
       <View style={styles.heroHeader}>
-        <Image source={require('../../assets/truy-tinh-logo.png')} accessibilityLabel="Truy Tinh" resizeMode="contain" style={styles.mark} />
+        <Image source={require('../../assets/truy-tinh-cosmic-orbit.png')} accessibilityLabel="Truy Tinh" resizeMode="contain" style={styles.mark} />
         <View style={styles.brandBlock}><Text style={styles.brand}>AETHERION</Text><Text style={styles.brandCaption}>BY TRUY TINH</Text></View>
         <Pressable accessibilityRole="button" accessibilityLabel={t(locale, 'language')} onPress={() => setLocale(locale === 'en' ? 'vi' : 'en')} style={styles.heroTool}>
           <Text style={styles.heroToolText}>{locale === 'en' ? 'EN' : 'VI'}</Text>
@@ -65,8 +65,8 @@ export function LoginScreen({ locale, setLocale, onAppearance, serverUrl, setSer
 
     <Pressable accessibilityRole="button" accessibilityLabel="Demo" onPress={onOpenDemo} disabled={busy} style={({ pressed }) => [styles.demo, pressed && styles.pressed]}>
       <View style={styles.demoIcon}><Ionicons name="planet-outline" color="#FFFFFF" size={21} /></View>
-      <View style={styles.demoCopy}><Text style={styles.demoTitle}>Demo</Text><Text style={styles.demoHint}>{copy(locale, 'demoHint')}</Text></View>
-      <View style={styles.demoArrow}><Ionicons name="arrow-forward" size={19} color={colors.cyan} /></View>
+      <View style={styles.demoCopy}><Text style={styles.demoTitle}>Demo</Text></View>
+      <View style={styles.demoArrow}><Ionicons name="arrow-forward" size={19} color={colors.primary} /></View>
     </Pressable>
 
     <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'connection')} accessibilityState={{ expanded: connectionOpen }} onPress={() => setConnectionOpen(value => !value)} style={styles.connection}>
@@ -101,12 +101,12 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   form: { gap: 10, padding: 14, borderRadius: 20 },
   error: { color: colors.red, fontSize: 12, lineHeight: 18 },
   demo: { minHeight: 72, borderRadius: 19, paddingHorizontal: 13, flexDirection: 'row', alignItems: 'center', gap: 11, backgroundColor: colors.card, borderColor: colors.border, borderWidth: 1 },
-  demoIcon: { width: 42, height: 42, borderRadius: 14, backgroundColor: colors.cyan, alignItems: 'center', justifyContent: 'center' },
+  demoIcon: { width: 42, height: 42, borderRadius: 14, backgroundColor: colors.primary, alignItems: 'center', justifyContent: 'center' },
   demoCopy: { flex: 1, gap: 3 },
   demoTitle: { color: colors.text, fontSize: 15, fontWeight: '800' },
-  demoHint: { color: colors.muted, fontSize: 11, lineHeight: 15 },
   demoArrow: { width: 30, height: 30, alignItems: 'center', justifyContent: 'center', borderRadius: 15, backgroundColor: colors.cardSoft },
   connection: { minHeight: 32, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 7 },
   connectionText: { color: colors.muted, fontSize: 11, fontWeight: '600' },
   pressed: { opacity: 0.8, transform: [{ scale: 0.99 }] },
 });
+

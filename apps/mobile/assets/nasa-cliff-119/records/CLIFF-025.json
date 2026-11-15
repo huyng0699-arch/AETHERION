@@ -1,0 +1,595 @@
+{
+  "article_id": "CLIFF-025",
+  "slot": 25,
+  "display_title": "Eye Foreign Body",
+  "category": "Eye Injury",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-025",
+    "publisher": "NASA",
+    "title": "Eye Foreign Body \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eye-foreign-body-cliff-2023.pdf?emrc=7687ee",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eye-foreign-body-cliff-2023.pdf?emrc=7687ee",
+    "retrieved_at_utc": "2026-11-14T06:03:47.958680+00:00",
+    "content_sha256": "92bc058aba47c933e39693cb5e96bc943028ff29a439363d4dc52028440ded29",
+    "original_mime": "application/pdf",
+    "original_bytes": 396493,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-025-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch     Baseline\n\n\n\n ICL48_Eye Foreign Body\n\n The eye is comprised of three layers: the exterior fibrous layer (cornea and sclera), the middle vascular layer (choroid, ciliary body, and iris) and the\n internal layer (retina). The lens partitions the anterior structures (iris, anterior chamber, and cornea) from the posterior structures (vitreous, retina,\n choroid, and optic nerve). A foreign body can be associated with any of these layers. The depth of penetration, type of foreign body and size of\n foreign body can determine the ocular morbidity associated with its presence. Foreign bodies comprised of wood, copper, iron, and steel tend to have\n the highest ocular inflammatory responses while glass, lead, plastic, and porcelain are relatively inert (Tarf et al., 2017). Foreign bodies comprised of\n organic matter, such as vegetables, are at increased risk for infection. Corneal abrasions and ulcerations are often associated with ocular foreign\n bodies; however, these are considered under a different CLiFF condition. Similarly, ocular foreign bodies can lead to eye infections which are also\n detailed in another CLiFF. The risk of injury from a foreign body is higher in microgravity because particulates float freely in the cabin and follow\n prevailing air currents (Barratt et al., 2019). Traditionally, foreign bodies are described as being either extraocular (superficial, embedded in or above\n the conjunctiva, cornea, or sclera but not through these tissues) or intraocular (within the globe itself) (Loporchio et al., 2016). Treatment of\n intraocular foreign bodies require an emergent ophthalmology consult and often a surgical procedure (Romaniuk, 2013). Thus far in spaceflight, only\n extraocular foreign bodies have occurred.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Spaceflight literature were derived from two LSAH data gathering events (Walton, 2010; Saile et. al, 2017) and a NASA white paper (Antonsen et\n  al., 2017). Unfortunately, the authors of this CLiFF did not have direct access to the data from those LSAH events. Consequently, information was\n  taken detailing these events from previous IMM CLiFFs entitled \"Eye Penetration\u201d and \u201cEye irritation/Corneal Abrasion/Ulceration.\" Of importance,\n  for this effort, condition definitions had changed as there was no eye-foreign body condition. An eye penetration event has not yet occurred in\n  spaceflight. Per prior CliFF: \u201cforeign-bodies accounted for 88.5% 62/70 events and corneal abrasions account for 8/70 events\u2026 8 abrasion events\n  caused by more potentially damaging foreign bodies i.e. velcro, piece of metal (3), fiberglass, and drink bag.\u201d Consequently, it was author and\n  statistician consensus that there were a total of 70 foreign body events in spaceflight found in the first LSAH pull (Walton, 2010). An additional 4\n  events were found in the second LSAH pull of data (Saile et al., 2017). The statistician of this CLiFF was also able to contact the authors of\n  Antonsen et al. and verify the data (which was also based on the prior LSAH events). During her analysis it was observed that in the Antonsen et al.\n  paper Table 1 was mislabled as 'ISS through Exp 40' when it should read ' ISS expeditions 9 and 14 through 40'; this CLIFF corrects for that error.\n  At the time of this CLIFF completion, a repeat LSAH data gathering event was not possible and missions past 2017 are not represented.\n\n  ANALOG LITERATURE\n\n  Although analog studies included larger sample sizes, studies did not accurately reflect condition environments or spaceflight populations. As a\n  result, spaceflight data was rated much higher than analog data in the incidence calculation. In Psolka et al. (2007), a retrospective review was\n  conducted of 107 United States military personnel who were referred to the Walter Reed Army Medical Center ophthalmology service between\n  January 1, 2003 and September 30, 2005 with non-battle pathologies. During this time, there was one \u201ccorneal foreign body\u201d and one \u201cintraocular\n  foreign body\u201d found in the 33 months of this study. The total number of cases in this study may underestimate true incidence as patients were\n  initially evaluated by their \u201cprimary service\u201d and not every corneal foreign body likely warranted an ophthalmology referral. Another study (Tansey\n  et al., 1979) analyzed medical reports from 885 Fleet ballistic missile submarine patrols from 1963-1973 and compared them to illness rates found\n  in crewmembers on surface-level vessels. Within this timespan there were 11 reported events of \u201ccorneal foreign body\u201d out a total of 48 eye\n  medical cases in a total of 7,650,000 man-days. Eye penetration was not an event categorized. The authors do comment that they believed the\n  reporting of medical conditions on submarines was artificially low secondary to the lack of medical personnel and fear of retribution. Lastly, a study\n  analyzing medical visit data between 1996-2005 of active-duty personnel via the Defense Medical Surveillance System (Hilber et al., 2010)\n  described \u201cforeign body, external eye\u201d as one of the top-ten most frequent diagnoses of eye injuries (3.6% of all ocular injuries in 2005). The rate\n  of eye penetration during this time was not known. However, the study listed \u201cguns/explosives\u201d as the leading injury mechanism for eye injury\n  hospitalizations (16.9%). Currently in spaceflight, crewmembers are not expected to have similar mechanisms of injury.\n\n  TERRESTRIAL LITERATURE\n\n\n\n\n8/23/2023 5:47:45 PM                                                   ICL48_Eye Foreign Body Cliff                                                           page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-025-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  Terrestrial literature came from large retrospective studies with data gathered from nationally representative databases. These studies\n  encompassed populations with increased rates of comorbid conditions. There were no metanalysis incidence data available for this condition.\n  McGwin et al. (2005), analyzed the data from the Consumer Product Safety Commission\u2019s National Electronic Injury Surveillance System (NEISS) All\n  Injury Program in the year 2000 and found that the rate of emergency department treated eye injury in the United States was 3.15 per 1000\n  population (95% confidence interval, 2.66-3.63). \u201cForeign body\u201d accounted for 30.8% of these presentations. Similarly, in another study by the\n  same lead author (McGwin et al., 2005), data from three separate databases, the National Ambulatory Medical Care Survey, the National Hospital\n  Ambulatory Medical Care Survey, and the National Hospital Discharge Survey, were analyzed for ocular injuries occurring during the year 2001.\n  They found that 1990872 (6.98 per 1000 population) individuals experienced an eye injury that required medical treatment. Of these injuries,\n  \u201cforeign body on the external eye\u201d accounted for 1.95%. The rate of globe penetration is unknown. Chana et al. (2016) reviewed data from 2006-\n  2011 in the U.S Nationwide Emergency Department Sample (NEDS) for ocular problems. There were over 11,929,955 ED visits for ophthalmic\n  conditions during this timeframe; of these, \u201cforeign body on external eye\u201d accounted for 893,397 (7.5%) of these visits. \u201cPenetration of eyeball with\n  (nonmagnetic) foreign body\u201d accounted for only 0.1% of all visits. In their study, the authors of Chana et al. do recognize that their injury rates were\n  much lower than previous estimates, however they attributed this to decreasing rates of ED treatment of eye injuries over time.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   1.626 person-years SD: 0.1905\n\n\n\n  INCIDENCE SUMMARY\n\n  Bayesian posterior distribution for the incidence rate given the inflight experience ( events over person-years of flight) under an uninformative\n  gamma prior is represented by a Gamma(shape=72.85, rate=44.81)which has mean: 1.626 and SD: 0.1905. Walton stated 70 cases which matches\n  Table 2 from Antonsen, as expected. Further, in Table 1 from Antonsen there is an additional 4 cases listed under \u201cEye \u2013 Debris\u201d. This brings the\n  total to 74 cases over 45.49 person-years.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     1.62575\n     SD\n     0.190476\n\n\n     Gamma\n     (Shape): 72.85\n     (Rate): 44.81\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n8/23/2023 5:47:45 PM                                                    ICL48_Eye Foreign Body Cliff                                                         page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-025-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                             Source                                 LOC Value\n\n   Walton, 2010                                                         Spaceflight                            4\n\n   Saile et al., 2017                                                   Spaceflight                            4\n\n   Antonsen et al., 2017                                                Spaceflight                            4\n\n   Psolka et al., 2007                                                  Analog                                 2\n\n   Tansey et al., 1979                                                  Analog                                 2\n\n   McGwin et. al, 2005                                                  Terrestrial                            1\n\n   McGwin et. al, 2005                                                  Terrestrial                            1\n\n   Channa et al., 2016                                                  Terrestrial                            1\n\n\n  Spaceflight incidence data was rated the highest as analog and terrestrial studies did not accurately reflect the highly screened crewmembers or\n  the spaceflight environmental conditions. Further, there was concern that analog and terrestrial studies would exert an overwhelming influence on\n  the final incidence distribution given their large number of poorly representative subjects.\n\n\n\n\n8/23/2023 5:47:45 PM                                                 ICL48_Eye Foreign Body Cliff                                                     page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-025-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Crewmembers undergo several preflight ocular examinations. Firstly, at L-21/18 m an MRI (3T or better using specific ocular imaging protocols) is\n  obtained. Then at L-21/18 m and L-9/6 m an eye exam is conducted which is inclusive of the following testing: refraction (manifest and cycloplegic),\n  visual acuity (distance and near), Amsler grid, threshold visual fields, pupil reflexes, contrast sensitivity, biomicroscopy (slit lamp), extraocular\n  muscle balance, tonometry, optical biometry, retinal photography, dilated fundoscopic examination and optical coherence tomography (high\n  resolution) including spontaneous venous pulsations (SVP) videography. Also, at L-9/6 m, 2-D ultrasound imaging and contact lens or spectacle\n  fitting is performed. Lastly, at L-90/30 d the best corrected visual acuity, color vision, refraction (manifest), biomicroscopy (slit lamp), tonometry,\n  fundus exam (undilated) and OCT (if any baseline scans need to be repeated) tests are performed. Of note, crew-members are trained to conduct\n  vision testing, fundoscopy and 2-D ultrasound so that they can conduct in-flight eye examinations. All astronauts must undergo annual medical\n  examination that includes a medical history review and clinical laboratory testing.\n\n  BEST CASE SCENARIO DEFINITION\n\n  A foreign body that is easily removed and leaves no damage or minimal damage (e.g. rust ring), or a scleral laceration which has minimal effect on\n  vision.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  A penetrating or perforating foreign body resulting in ruptured globe, hyphema, corneal laceration, or other sequelae that effect vision.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  Eye - Ruptured Globe Eye - Hyphema Eye - Corneal Laceration Eye - Scleral Laceration\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  The worst-case scenario has never occurred in spaceflight, despite 74 other instances of the best-case scenario. Thus, the worst-case scenario\n  can be expected to be exceedingly rare. Should the worst-case occur in the next instance, it would only account for 1.33% (=1/75) of the total\n  instances. Further, 1.33% is likely an overestimation as there is no guarantee that next instance of this CLiFF condition would be the worst-case\n  scenario. Chae et al. (2014) reviewed 1899 ophthalmologic consultations from Jan 2011- Sept. 2013 in the ED of a major New York City hospital.\n  Ninety-nine patients presented with chief complaint of foreign body entering the eye. Of these, there was a single case of a perforating corneal\n  injury and one incident of an intraocular foreign body through a penetrating corneal wound in which removal in the OR was required (2/99 =\n  2.02%). This study too may overestimate the worst-case scenario as the authors noted that the majority of their cases occurred secondary to\n  foreign bodies sustained at construction work sites. In Chana et al. (2016), ocular perforation accounted for only 0.1% of all ocular ED visits (n=\n  11,929,955) while the best-case scenario accounted for 7.5% of the same visits. Using this relative ratio, we would expect the worst-case scenario\n  to occur 1.33% of the time compared to the best case (= (100X 0.1%)/ 7.5%), which is in good agreement the spaceflight estimation data. Via\n  subject matter expert consensus, 1.33% was chosen as the probability of the worst-case scenario given that it had the largest sample size for the\n  worst-case scenario and best fit with spaceflight data thus far.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                             Source                                  LOC Value\n\n   Chae et al., 2014                                                    Terrestrial                             1\n\n   Channa et al., 2016                                                  Terrestrial                             2\n\n\n  Only terrestrial data were obtainable to determine the worst-case probability, albeit the total number of instances of the best-case scenario in\n  spaceflight was used to determine an upper-bound for the expected worst-case probability. Of the available studies, one study (Chana et al., 2016)\n  fit within the expected upper-bound and was also powered adequately.\n\n\n\n\n8/23/2023 5:47:45 PM                                                   ICL48_Eye Foreign Body Cliff                                                         page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-025-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n\n                                                                   CP1: Diagnosis       CP2: Treatment          CP3: Condition End State\n\n                                                                   TI%       Duration   TI%       Duration      TI%       RTDC             LOCL\n                         Composite              Condition\n   Case Scenario         Incidence              Probability %      Preset    Preset     Preset    Min    Max Preset       Min%    Max%     Min%     Max%\n\n   Treated Best          1.626 person-          98.67 - 98.67      100       1          15.905    0.5    72     0         0       0        0        0\n   Case (TBC)            years SD: 0.1905\n\n   Treated Worst                                1.33 - 1.33        100       2.92       27.545    48     240    5.63      96      100      0        0\n   Case (TWC)\n\n   Untreated Best        N/A                    N/A                N/A       1          24.73     0.5    168    0         0       100      0        0\n   Case (UTBC)\n\n   Untreated Worst       N/A                    N/A                N/A       2.92       52.495    48     240    5.63      100     100      0        0\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n8/23/2023 5:47:45 PM                                                     ICL48_Eye Foreign Body Cliff                                                         page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-025-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  The best case is a superficial foreign body that is easily removed or causes minimal damage. In terrestrial conditions, subjects that experience the\n  best case may present to the emergency department, but the treatment is largely handled by the emergency medicine provider, either by ocular\n  flushing or removal by cotton swab or burr tip. Although a patient may be expected to follow up with an ophthalmologist in the next days-week, an\n  emergent consult is not typically necessary. In the worst case, a lack of treatment can result in significant visual impairment either secondary to\n  globe rupture or exogenous endophthalmitis. In terrestrial conditions, an emergent ophthalmology consult is expected along with the initiation of\n  antibiotics and possible surgical intervention. The RTDC surrogate for this CLiFF is operative management.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Determining the duration of the treated best-case scenario was difficult given the range of pathologies that can exist from the definition. Treatments\n  for superficial corneal or conjunctival foreign bodies are largely focused on removal. Foreign bodies should be removed as soon as possible. This\n  process can take as little as 30 minutes with the aid of an ocular flush, ophthalmic burr, or Alger brush (Ahmed et al., 2015; Wipperman et al.,\n  2014). If a corneal abrasion exists after removal, prophylactic topical antibiotics are recommended, however this is covered under a separate CLiFF\n  scenario. A scleral laceration secondary to a foreign body, like a corneal laceration (which is in the worst-case definition), is more serious as the\n  potential for progressing to an ulceration or endophthalmitis is increased. Terrestrial recommendations include that all corneal and scleral\n  lacerations should be discussed with an ophthalmologist. If the laceration is deemed to be partial-thickness and less than 1 cm (which is what is\n  assumed in the best-case scenario) conservative treatment is recommended (Bord et al., 2008). In such cases, antibiotic ointment may be\n  prescribed, and the patient should follow up with ophthalmology within 72 hours, Most ocular epithelial defects are expected to heal in this\n  timeframe. By definition, events that would lead to RTDC and LOCL are not expected for this condition.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  The absolute worst-case is an intraocular foreign body that results in globe penetration, perforation or rupture. Terrestrial treatment for these\n  conditions entails protection of the globe with a shield, updating tetanus immunization, broad-spectrum intravenous antibiotic prophylaxis, and\n  surgery. Many studies recommend removal of the foreign body as rapidly as possible (within 24 hours) to limit the possibility of ocular infection,\n  however, there have been reports of delayed removal of foreign bodies with early prophylaxis with systemic fluoroquinolone antibiotics (Ahmed et\n  al., 2012). Still, even with non-removal of the foreign bodies, washout and primary surgical repair was still performed on most patients by an\n  experienced ophthalmologist within hours of injury. Only four patients (5 eyes, 6.3%) out 70 United States military soldiers (79 eyes) deployed in\n  operations Iraqi Freedom and Enduring Freedom had initial (non-operative) conservative treatment with systemic antibiotics (Coyler et al., 2006).\n  Eventually, one patient (one eye) did require an eventual surgical intervention; consequently 96% (75/79) of eyes in this study still needed surgical\n  management. Even with operative management, intraocular foreign bodies remain at extremely high risk for complications. Such complications\n  include endophthalmitis, anterior segment injuries (such as traumatic cataract), retinal tears, proliferative vitreoretinopathy and optic neuropathy.\n  Given the extreme risk for profound morbidity, RTDC for the treated best-case ranges from 96-100%, as surgical therapeutics for this condition are\n  not available during spaceflight. After surgery, systemic antibiotics are recommended and have ranged from courses of 2-10 days (48-240 hours)\n  (Ahmed et al., 2012; Andreoli et al., 2009; ). LOCL is not expected for ocular injuries.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  Like the treated best case, duration for the untreated best case is difficult to determine given the range of pathologies. For a superficial foreign\n  body that is not removed, it is expected that eventually the foreign body would either be extruded by tears or rubbing of the eye or develop into a\n  corneal abrasion or ulceration (covered in a separate CLiFF). There are no studies available detailing the time necessary for either of these\n  outcomes and thus the minimal bound was set to be identical to the treated best-case condition. However, untreated rust-rings and partial-thickness\n  scleral lacerations can result in significant complications. Corneal rust rings induce inflammation and result in localized stromal necrosis; most\n  literature suggests that they should be removed as thoroughly as possible when encountered (Ahmed et al., 2015). In Jayamanne et al. (1994), the\n  records of 783 patients with non-penetrating superficial corneal foreign bodies were reviewed and it was concluded that a delay in rehabilitation was\n  linked to the size of the corneal abrasion after removal of the foreign body and inadequate removal of corneal rust. Patients with incomplete rust\n  removal remained symptomatic and presented for a second visit at 3 days for an additional removal of residual corneal rust. The authors comment\n  that given the need for an additional procedure, healing time was now one week (168 hours). This upper-bound in duration is likely an\n  underestimation of total time needed for rust-rings as these patients still received an intervention, however no other studies were available for\n  review. Without the initiation antibiotics, even partial thickness scleral lacerations are at high risk for becoming infected and developing into\n  endophthalmitis (Beatty et al. 1994). Given the extreme variation is possible outcomes secondary to varying pathologies included in the best-case\n  scenario, RTDC is estimated to range from 0-100%. LOCL is not expected for ocular conditions.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  Defining parameters for the untreated worst case is difficult as the terrestrial standard of care is to temporize the with antibiotics before a surgical\n  intervention by an ophthalmologist can be performed. Without treatment, the worst case is expected to progress to complete vision loss of the eye,\n  possibly secondary to extrusion of globe contents or infection. Infection can progress into facial cellulitis, meningitis and eventually septic shock;\n\n\n\n\n8/23/2023 5:47:45 PM                                                    ICL48_Eye Foreign Body Cliff                                                         page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-025-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  however, these pathologies are covered in other CLiFF conditions. However, there are individual cases of self-sealing wounds and intraocular\n  foreign bodies remaining in place for over 20 years (Zhang et al., 2011), however it is unknown whether these patients received antibiotics at the\n  time of injury, which is not expected in this scenario. Consequently, the minimum duration for the untreated worst case is estimated to be no less\n  than the treated worst case. Given the potential for significant permanent vision loss without an intervention, RTDC is estimated to be 100%. Again,\n  LOCL is not expected for eye injuries.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                    Source                              LOC Value\n\n   Ahmed et al., 2015                                                          Terrestrial\n\n   Wipperman et al., 2014                                                      Terrestrial\n\n   Bord et al., 2008                                                           Terrestrial\n\n   Ahmed et al., 2012                                                          Terrestrial                                             2\n\n   Andreoli et al., 2009                                                       Terrestrial\n\n   Jayamanne et al., 1994                                                      Terrestrial\n\n   Zhang et al., 2011                                                          Terrestrial\n\n\n  Available studies to determine durations for treated cases involved retrospective studies and review papers. There were no available consensus\n  guidelines for this condition. Due to the increasingly more rigourous Institutional Review Board guidelines of American institutions, literature for\n  untreated best and worst cases were limited and this information was often extropolated from single, low-powered studies.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                           Source                                   LOC Value\n\n   Bord et al., 2008                                                  Terrestrial\n                                                                                                                                   2\n   Coyler et al., 2006                                                Analog\n\n\n  RTDC for the treated best case is expected to be zero given the conditions' definition; as such articles were not reviewed for this condition. The\n  remaining scenarios used retrospective reviews to determine RTDC.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                    Source                              LOC Value\n\n   Al-Mezaine et al., 2010                                                     Terrestrial\n                                                                                                                                       0\n   Williams et al, 1988                                                        Terrestrial\n\n  Based on the definitions, loss of crew life is not expected for any of the scenariors associated with this CLiFF. However, to validate the assumption\n  that mortality was neglible a literature search was still conducted. Mortality was not mentioned in any of epidemiological reviews or in reviews\n  detaling prognostic factors of globe ruptures.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Overview For the Best Case definition the practice guideline for corneal abrasion was used as this covers all aspects\n  of the definition. , For the Worst Case, the standards for globe rupture and traumatic hyphemia were used. , , , , Diagnostic Scope and Resourcing\n  For the Best Case scenario evaluation largely focuses on history and physical exam. Guidelines describe the need for urgent ophthalmologic\n  consultation and follow up in all but the most minor cases so ground communications equipment is included. Since injuries to the cornea and sclera\n  are difficult to evaluate Fluorescein stain and UV light sources are used to assist in diagnosis. This is not likely necessary in the best of the best\n  cases but distinguishing best from worst case will require this capability so it is included in both. For the WC, CT scans are used terrestrially to\n\n\n\n\n8/23/2023 5:47:45 PM                                                   ICL48_Eye Foreign Body Cliff                                                        page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-025-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  diagnose intraocular foreign bodies. CT will not be available due to mass/volume constraints in flight. Since definitive ophthalmologic care will not be\n  available on board imaging will not likely change management so ultrasound was not included. As this is a mechanical injury, labs, and further\n  testing are not warranted. Clinical Phase 1 Duration and Rationale ability will be present on the mission. The CRT working group SME consensus\n  duration is as follows; - CP1 BC: 1 hour for history, physical exam, and vision testing - CP1 WC: 2.92 hours for history, physical exam, and ground\n  based diagnostic assistance given the likely severity of these injuries. Treatment Scope and Resourcing Treatment will be limited to supportive care\n  since surgical capabilities for management of a ruptured globe are extremely specialized and will not likely be available. Supportive care for the BC\n  include pain management, and ophthalmic antibiotics. Tetracaine will be used in the initial evaluation but not for further pain management due to\n  concerns over delayed healing time and corneal scaring. For the worst case, management of intraocular hypertension is included per guidelines for\n  traumatic hyphemia. Antiemetics are also included to prevent vomiting and further injuring a ruptured globe. Eye shielding is included but no\n  capability for surgery is scoped due to training, mass, and volume constraints. Communications and Support Needs Ground support will be\n  necessary in the follow up for the best case and in both the evaluation and follow up for the worst case scenario.\n\n  From Tom Mader MD, NASA Ophthalmology Consultant on 07/28/2022:\n\n\n  \"This is a very serious injury that, in a terrestrial setting, would require emergent surgical repair, possible vitrectomy, intravitreal antibiotic injection\n  and use of an operating microscope under general anesthesia. It is essential to obtain an accurate history of how the injury occurred. Was there an\n  explosion that may have resulted in a penetrating eye injury or a penetrating injury from another cause? Does the history suggest the presence of\n  an intraocular foreign body? As mentioned by Tyson, it is essential to avoid any pressure whatsoever on the globe if this injury is even suspected.\n  Even mild pressure, from an eye patch, could result in extrusion of intraocular contents. Place a rigid shield over the eye and tape it to the skin\n  covering the rigid periorbital bone so that there is no pressure on the globe. I would approach a suspected open globe in the following manner:\n  (These are only meant as suggestions.)9\n\n\n  Astronaut Open Globe Injury:\n\n\n\n     1. Try to get an idea of the visual acuity. Can the subject read letters on an eyechart? If not, can the subject count fingers or see light?\n\n     2. Examine the eye very gently. If possible, try to determine the entry point of the foreign body and document your findings with a drawing or a\n        photo. If possible, take a magnified photo of the eye and injured area that can be evaluated by an eye surgeon on the ground. How large is\n        the entry wound? Is it microscopic or is there an obvious laceration?\n\n     3. If onboard fundus camera and /or OCT are available, consider anterior and posterior segment imaging with remote guidance and SME\n        support on the ground. OCT anterior segment imaging (cornea, anterior chamber, Iris, lens) is currently available on the ISS.\n\n     4. Contact an eye surgeon who can follow your examination and provide input. I would recommend getting the eye surgeon\u2019s input prior to\n        starting any form of treatment, if this is possible.\n\n     5. If a Tonopen or similar IOP measuring device is available, consider very carefully measuring the IOP.\n\n     6. Examine the pupil: Does it react to light? Is it round or pulled to the side?\n\n     7. What is the condition of the anterior ocular surface? Is there an obvious laceration? Is there scleral damage or subconjunctival hemorrhage?\n\n     8. Can the anterior chamber (the space between the cornea and the iris) be visualized? If so, does it appear normal or collapsed? Is there\n        blood in the anterior chamber?\n\n     9. Consider tetanus toxoid.\n\n    10. Antibiotic recommendations: After consultation with an eye surgeon, begin topical and systemic antibiotics as summarized below:\n\n\n\n  Systemic broad-spectrum antibiotic therapy is a common approach to prophylaxis against endophthalmitis in the setting of open-globe injury.\n  Consider the following regimen.\n\n\n\n     1. Oral levofloxacin (500 mg once a day for 7\u201310 days). This medication has good intravitreal penetration and covers most common causative\n        organisms with the exception of Pseudomonas aeruginosa.\n\n     2. In high-risk cases, vancomycin (1 g) intravenous covers nearly all Gram-positive organisms including Bacillus cereus while ceftazidime (1 g)\n        intravenous covers most Gram-negative organisms, including P. aeruginosa. However, vitreous penetration remains questionable with these\n        intravenous medications.\n\n\n\n  Summary of treatment for post-traumatic endophthalmitis (Topical and Systemic)\n\n\n\n\n8/23/2023 5:47:45 PM                                                      ICL48_Eye Foreign Body Cliff                                                            page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-025-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  Route of delivery   Medication regimen\n\n\n\n  Topical medication Vancomycin 50 mg/ml every hour\n\n\n\n                      Ceftazidime 50 mg/ml every hour\n\n\n\n                      Topical cylcoplegics and steroids (as per Ophthalmology consultant).\n\n\n\n\n  Systemic antibioticsOral Levofloxacin 500 mg once a day (OR)\n\n\n\n                      Vancomycin 1 g IV every 12 h and Ceftazidime 1 g IV every 12 h\n\n\n\n                      Voriconazole or Fluconazole 200 mg PO every 12 h (for fungal endophthalmitis if this is suspected)\n\n\n\n\n  Final Thoughts: I know that immediate evacuation is not possible. However, while monitoring the patient in flight, I would arrange for evacuation as\n  soon as possible for a definitive evaluation and surgical repair if needed.\"\n\n\n  \"If evacuation and surgical intervention were impossible I would continue the drops and systemic antibiotics for 7-10 days, starting concurrently.\n  This schedule could be modified by the Ophthalmologist and Flight Surgeon as they feel is appropriate. \"\n\n\n  References\n\n   Wipperman JL, Dorsch JN. Evaluation and management of corneal abrasions. Am Fam Physician. 2013 Jan 15;87(2):114-20. PMID: 23317075.\n\n\n   Della Vecchia MA, Jaeger EA, Markovitz BJ. Corneal and conjunctival foreign bodies. In: The Wills Eye Manual: Office and Emergency Room\n  Treatment of Eye Disease, 5th edition, Ehlers JP, Shah CP (Eds), Wolters Kluwer | Lippincott, Williams & Wilkins, Philadelphia 2008. p.16.\n\n   Colby K. Management of open globe injuries. Int Ophthalmol Clin. 1999 Winter;39(1):59-69. doi: 10.1097/00004397-199903910-00008. PMID:\n  10083907.\n\n\n   Brandt MT, Haug RH. Traumatic hyphema: a comprehensive review. J Oral Maxillofac Surg. 2001 Dec;59(12):1462-70. doi:\n  10.1053/joms.2001.28284. PMID: 11732035.\n\n   Walton W, Von Hagen S, Grigorian R, Zarbin M. Management of traumatic hyphema. Surv Ophthalmol. 2002 Jul-Aug;47(4):297-334. doi:\n  10.1016/s0039-6257(02)00317-x. PMID: 12161209.\n\n\n    Ehlers JP, Kunimoto DY, Ittoop S, Maguire JI, Ho AC, Regillo CD. Metallic intraocular foreign bodies: characteristics, interventions, and prognostic\n  factors for visual outcome and globe survival. Am J Ophthalmol. 2008 Sep;146(3):427-433. doi: 10.1016/j.ajo.2008.05.021. Epub 2008 Jul 9. PMID:\n\n\n\n\n8/23/2023 5:47:45 PM                                                   ICL48_Eye Foreign Body Cliff                                                        page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-025-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  18614135\n\n\n   https://www.dynamed.com/management/ruptured-globe-emergency-management (accessed 3/16/2021)\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  This CLiFF is the successor to the previous IMM CLiFFs entitled \"Eye Irritation/Abrasion\" and \u201cEye Penetration,\u201d Of most importance, in this CLiFF\n  effort, condition definitions were changed. Previously, the \u201cEye Penetration\u201d best-case and worst-case scenario definitions were as follows: 1) is\n  defined as a scleral laceration which has minimal effect on vision. 2) is defined as a penetrating or perforating foreign body with serious effect on\n  vision. The former \u201cEye Irritation/Abrasion\u201d definitions is as follows: 1) is defined as dry, irritated eyes or a corneal abrasion/foreign body that\n  spontaneously resolves or can be easily treated and does not affect vision. 2) is defined as a corneal abrasion/foreign body that requires treatment\n  and affects vision or has the potential to result in a permanent impairment of vision. This CLiFF, Eye Foreign Body combines both previous CLiFF\u2019s\n  scenario definitions\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  \u2022 This CLiFF combined parts of two prior IMM CLIFF conditions, making it difficult to keep track of spaceflight data given that the authors did not\n  have direct access to the LSAH data pulls. \u2022 Unlike most CLiFFs, the best case definition for this condition contained pathologies ranging of varying\n  severity. \u2022 Literature regarding the untreated worst-case scenario was extremely limited and several parameters are based from subject matter\n  expert opinion. \u2022 The CNES conditions may occur with ocular foreign bodies, however they may also occur with traumatic/blunt eye injuries as well. \u2022\n  Under-reporting for this condition could have been significant during past space missions which may result in underestimation of the incidence.\n\n\n\n\n8/23/2023 5:47:45 PM                                                  ICL48_Eye Foreign Body Cliff                                                        page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-025-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                                        Clinical Phase 2: Treatment\n                                                                                                       Affected HSTCs\n                                                                        Inter-\n                Cognitive -       Cognitive -                                                                       Cardio-\n                                                Communications        personal          Vision          Hearing                    Dentition          GI             GU\n                 Simple           Complex                                                                         pulmonary\n                                                                       Skills\n   Treated\n     Best\n           0                  0                 0                 0                 854            0              0            0               0              0\n    Case\n    (TBC)\n  Untreated\n    Best\n            0                 664               0                 0                 854            0              0            0               0              0\n    Case\n   (UTBC)\n   Treated\n    Worst\n           0                  664               0                 0                 854            0              0            0               0              0\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223               664               113               89                854            44             145          0               0              0\n    Case\n   (UTWC)\n                                                            Affected HSTCs (Continued)                                                                     TI Calculation                     TI Score\n                                                                                                                                                                     Total\n                                                                                                                                                                   Human\n                                                                                                    Translation &                               Total Tasks\n                  Hand                                                  Lower         Ambul &                       Don/Doff       Pressure                        System\n                              Hand (Any)        Upper Extremity                                     Stabilization                              Impaired By                      TI Decimal      TI %\n                 (Dom)                                                Extremity     Standing (g)                  Equipment         Ops                           Category\n                                                                                                   (microgravity)                               Condition\n                                                                                                                                                                  Tasks Full\n                                                                                                                                                                   Mission\n   Treated\n     Best\n           132                0                 0                 0                 0              0              0            211             1197           3763             0.318097      31.8097\n    Case\n    (TBC)\n  Untreated\n    Best\n            132               0                 0                 0                 0              0              0            211             1861           3763             0.494552      49.4552\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                0                 0                 0                 0              0              0            211             1861           3763             0.494552      49.4552\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132               564               414               22                196            34             34           211             3739           3763             0.993622      99.3622\n    Case\n   (UTWC)\n\n                                                                                  Clinical Phase 3: Condition End State\n                                                                                                       Affected HSTCs\n                                                                        Inter-\n                Cognitive -       Cognitive -                                                                       Cardio-\n                                                Communications        personal          Vision          Hearing                    Dentition          GI             GU\n                 Simple           Complex                                                                         pulmonary\n                                                                       Skills\n   Treated\n     Best\n           0                  0                 0                 0                 0              0              0            0               0              0\n    Case\n    (TBC)\n  Untreated\n    Best\n            0                 0                 0                 0                 0              0              0            0               0              0\n    Case\n   (UTBC)\n   Treated\n    Worst\n           0                  0                 0                 0                 0              0              0            0               0              0\n     Case\n    (TWC)\n  Untreated\n    Worst\n            0                 0                 0                 0                 0              0              0            0               0              0\n    Case\n   (UTWC)\n                                                            Affected HSTCs (Continued)                                                                     TI Calculation                     TI Score\n\n\n\n\n8/23/2023 5:47:45 PM                                                              ICL48_Eye Foreign Body Cliff                                                                                 page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-025-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                                   Total\n                                                                                                                                                 Human\n                                                                                      Translation &                              Total Tasks\n                 Hand                                        Lower        Ambul &                     Don/Doff       Pressure                    System\n                        Hand (Any)   Upper Extremity                                  Stabilization                             Impaired By                      TI Decimal        TI %\n                (Dom)                                      Extremity    Standing (g)                Equipment         Ops                       Category\n                                                                                     (microgravity)                              Condition\n                                                                                                                                                Tasks Full\n                                                                                                                                                 Mission\n   Treated\n     Best\n           0            0            0                 0                0           0              0             0              0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n            0           0            0                 0                0           0              0             0              0              3763          0                0\n    Case\n   (UTBC)\n   Treated\n    Worst\n           0            0            0                 0                0           0              0             211            211            3763          0.0560723 5.60723\n     Case\n    (TWC)\n  Untreated\n    Worst\n            0           0            0                 0                0           0              0             211            211            3763          0.0560723 5.60723\n    Case\n   (UTWC)\n\n\n\n\n8/23/2023 5:47:45 PM                                                   ICL48_Eye Foreign Body Cliff                                                                               page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-025-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n8/23/2023 5:47:45 PM                                                   ICL48_Eye Foreign Body Cliff                                                        page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    },
+    {
+      "section_id": "CLIFF-025-P14",
+      "ordinal": 13,
+      "heading": "Page 14 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. Ahmed, F., R. J. House, and B. H. Feldman. 2015. 'Corneal Abrasions and Corneal Foreign Bodies', Prim Care, 42: 363-75.\n\n   2. Ahmed, Y., A. M. Schimel, A. Pathengay, M. H. Colyer, and H. W. Flynn, Jr. 2012. 'Endophthalmitis following open-globe injuries', Eye (London,\n   England), 26: 212-17.\n\n   3. Al-Mezaine, Hani S., Essam A. Osman, Dustan Kangave, and Ahmed M. Abu El-Asrar. 2010. 'Prognostic Factors After Repair of Open Globe\n   Injuries', Journal of Trauma and Acute Care Surgery, 69.\n\n   4. Andreoli, C. M., M. T. Andreoli, C. E. Kloek, A. E. Ahuero, D. Vavvas, and M. L. Durand. 2009. 'Low rate of endophthalmitis in a large series of\n   open globe injuries', Am J Ophthalmol, 147: 601-08.e2.\n\n   5. Antonsen, Erik, Tina Bayuse, Rebecca Blue, Vernie Daniels , Melinda Hailey, Sam Hussey, Eric Kerstman, Mike Krihak, Kara Latorella, Jennifer\n   Mindock, Jerry Myers, Robert Mulcahy, Rebekah Reed, Davis Reyes, Michelle Urbina, and Marlei Walton. 2017. \"Evidence Report: Risk of\n   Adverse Health Outcomes and Decrements in Performance due to In-Flight Medical Conditions.\" In.\n\n   6. Barratt, Michael R., Ellen S. Baker, Sam L. Pool, and SpringerLink (Online service). 2019. \"Principles of Clinical Medicine for Space Flight.\" In,\n   XVIII, 936 p. 362 illus., 268 illus. in color. New York, NY: Springer New York : Imprint: Springer,.\n\n   7. Beatty, R. F., and R. L. Beatty. 1994. 'The repair of corneal and scleral lacerations', Semin Ophthalmol, 9: 165-76.\n\n   8. Bord, S. P., and J. Linden. 2008. 'Trauma to the globe and orbit', Emerg Med Clin North Am, 26: 97-123, vi-vii.\n\n   9. Chae, Bora, Elisabeth J Cohen, Rachel M. Cymerman, and Lisa Park. 2014. 'Epidemiology, clinical characteristics and complications in ocular\n   foreign body injuries', Investigative Ophthalmology & Visual Science, 55: 4713-13.\n\n   10. Channa, R., S. N. Zafar, J. K. Canner, R. S. Haring, E. B. Schneider, and D. S. Friedman. 2016. 'Epidemiology of Eye-Related Emergency\n   Department Visits', JAMA Ophthalmol, 134: 312-9.\n\n   11. Colyer, M. H., E. D. Weber, E. D. Weichel, J. S. Dick, K. S. Bower, T. P. Ward, and J. A. Haller. 2007. 'Delayed intraocular foreign body\n   removal without endophthalmitis during Operations Iraqi Freedom and Enduring Freedom', Ophthalmology, 114: 1439-47.\n\n   12. Hilber, D., T. A. Mitchener, J. Stout, B. Hatch, and M. Canham-Chervak. 2010. 'Eye injury surveillance in the U.S. Department of Defense,\n   1996-2005', Am J Prev Med, 38: S78-85.\n\n   13. Jayamanne, D. G., and R. W. Bell. 1994. 'Non-penetrating corneal foreign body injuries: factors affecting delay in rehabilitation of patients',\n   Journal of accident & emergency medicine, 11: 195-97.\n\n   14. Loporchio, D., L. Mukkamala, K. Gorukanti, M. Zarbin, P. Langer, and N. Bhagat. 2016. 'Intraocular foreign bodies: A review', Surv\n   Ophthalmol, 61: 582-96.\n\n   15. McGwin, Gerald, Jr, and Cynthia Owsley. 2005. 'Incidence of Emergency Department\u2013Treated Eye Injury in the United States', Archives of\n   Ophthalmology, 123: 662-66.\n\n   16. McGwin, Gerald, Jr, Aiyuan Xie, and Cynthia Owsley. 2005. 'Rate of Eye Injury in the United States', Archives of Ophthalmology, 123: 970-76.\n\n   17. Psolka, M., K. S. Bower, D. B. Brooks, S. J. Donnelly, M. Iglesias, W. R. Rimm, and T. P. Ward. 2007. 'Ocular diseases and nonbattle injuries\n   seen at a tertiary care medical center during the Global War on Terrorism', Mil Med, 172: 491-7.\n\n   18. Romaniuk, V. M. 2013. 'Ocular trauma and other catastrophes', Emerg Med Clin North Am, 31: 399-411.\n\n   19. Saile L., Boley L., Kerstman E. 2017. 'Integration RWS ISS STS Observed Incidence V2.'.\n\n   20. Tansey, W. A., J. M. Wilson, and K. E. Schaefer. 1979. 'Analysis of health data from 10 years of Polaris submarine patrols', Undersea Biomed\n   Res, 6 Suppl: S217-46.\n\n   22. Tarff, A., and A. Behrens. 2017. 'Ocular Emergencies: Red Eye', Med Clin North Am, 101: 615-39.\n\n   23. Walton M, Kerstman E. 2010. ' IMM In-flight Compilation v20100414_Incidence_calculation'.\n\n   24. Williams, D. F., W. F. Mieler, G. W. Abrams, and H. Lewis. 1988. 'Results and prognostic factors in penetrating ocular injuries with retained\n   intraocular foreign bodies', Ophthalmology, 95: 911-6.\n\n   25. Wipperman, J. L., and J. N. Dorsch. 2013. 'Evaluation and management of corneal abrasions', Am Fam Physician, 87: 114-20.\n\n   26. Zhang, Y., M. Zhang, C. Jiang, and H. Y. Qiu. 2011. 'Intraocular foreign bodies in china: clinical characteristics, prognostic factors, and visual\n   outcomes in 1,421 eyes', Am J Ophthalmol, 152: 66-73.e1.\n\n   Wipperman JL, Dorsch JN. Evaluation and management of corneal abrasions. Am Fam Physician. 2013 Jan 15;87(2):114-20. PMID: 23317075.\n\n   27. Della Vecchia MA, Jaeger EA, Markovitz BJ. Corneal and conjunctival foreign bodies. In: The Wills Eye Manual: Office and Emergency Room\n   Treatment of Eye Disease, 5th edition, Ehlers JP, Shah CP (Eds), Wolters Kluwer | Lippincott, Williams & Wilkins, Philadelphia 2008. p.16.\n\n   28. Colby K. Management of open globe injuries. Int Ophthalmol Clin. 1999 Winter;39(1):59-69. doi: 10.1097/00004397-199903910-00008.\n   PMID: 10083907.\n\n\n\n\n8/23/2023 5:47:45 PM                                                    ICL48_Eye Foreign Body Cliff                                                        page: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "page:14"
+    },
+    {
+      "section_id": "CLIFF-025-P15",
+      "ordinal": 14,
+      "heading": "Page 15 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Reference\n\n   29. Brandt MT, Haug RH. Traumatic hyphema: a comprehensive review. J Oral Maxillofac Surg. 2001 Dec;59(12):1462-70. doi:\n   10.1053/joms.2001.28284. PMID: 11732035.\n\n   30. Walton W, Von Hagen S, Grigorian R, Zarbin M. Management of traumatic hyphema. Surv Ophthalmol. 2002 Jul-Aug;47(4):297-334. doi:\n   10.1016/s0039-6257(02)00317-x. PMID: 12161209.\n\n   31. Ehlers JP, Kunimoto DY, Ittoop S, Maguire JI, Ho AC, Regillo CD. Metallic intraocular foreign bodies: characteristics, interventions, and\n   prognostic factors for visual outcome and globe survival. Am J Ophthalmol. 2008 Sep;146(3):427-433. doi: 10.1016/j.ajo.2008.05.021. Epub\n   2008 Jul 9. PMID: 18614135.\n\n   32. https://www.dynamed.com/management/ruptured-globe-emergency-management (accessed 3/16/2021)\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                      PHRASE\n\n   AAOMS                        American Association of Oral and Maxillofacial Surgeons\n\n   AMA                          American Medical Association\n\n   ARCL                         All Remaining Conditions List\n\n   ARS                          Acute Radiation Sickness\n\n   BHP                          Behavioral Health and Performance\n\n   CAC                          Coronary Artery Calcium\n\n   CHS                          Crew Health and Safety\n\n   CL                           Condition List\n\n   CliFF                        Clinical Finding Form\n\n   CMO                          Crew Medical Officer\n\n   COMFORT                      Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                          Clinical Phase 1\n\n   CP2                          Clinical Phase 2\n\n   CP3                          Clinical Phase 3\n\n   CRL                          Clinical Resource Level\n\n   CRT                          Capability Resource Table\n\n   CST                          Clinical Science Team\n\n   DCS                          Decompression Syndrome\n\n   DRM                          Design Reference Mission\n\n   ED                           Emergency Medicine Doctor\n\n   EL                           Evidence Library\n\n   EMCL                         Exploration Medical Condition List\n\n   EMT                          Emergency Medical Technician\n\n   EVA                          Extravehicular Activity\n\n   EXMC                         Exploration Medical Capability\n\n   HRP                          Human Research Program\n\n   ICD                          International Classification of Disease\n\n   ICL 1.0                      IMPACT 1.0 Medical Conditions List\n\n   ICU                          Intensive Care Unit\n\n   IMCL                         iMED Condition List\n\n\n\n\n8/23/2023 5:47:45 PM                                                  ICL48_Eye Foreign Body Cliff                                                 page: 15",
+      "page_start": 15,
+      "page_end": 15,
+      "source_anchor": "page:15"
+    },
+    {
+      "section_id": "CLIFF-025-P16",
+      "ordinal": 15,
+      "heading": "Page 16 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n8/23/2023 5:47:45 PM                                         ICL48_Eye Foreign Body Cliff   page: 16",
+      "page_start": 16,
+      "page_end": 16,
+      "source_anchor": "page:16"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-025-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "General"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Poisson"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Gamma"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "1.62575"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.190476"
+        ],
+        [
+          "Gamma"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-025-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "8/23/2023 5:47:45 PM                                                    ICL48_Eye Foreign Body Cliff                                                         page: 2"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-025-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                             Source                                  LOC Value"
+        ],
+        [
+          "Chae et al., 2014                                                    Terrestrial                             1"
+        ],
+        [
+          "Channa et al., 2016                                                  Terrestrial                             2"
+        ],
+        [
+          "Only terrestrial data were obtainable to determine the worst-case probability, albeit the total number of instances of the best-case scenario in"
+        ],
+        [
+          "spaceflight was used to determine an upper-bound for the expected worst-case probability. Of the available studies, one study (Chana et al., 2016)"
+        ],
+        [
+          "fit within the expected upper-bound and was also powered adequately."
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-025-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment          CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration   TI%       Duration      TI%       RTDC             LOCL"
+        ],
+        [
+          "Composite              Condition"
+        ],
+        [
+          "Case Scenario         Incidence              Probability %      Preset    Preset     Preset    Min    Max Preset       Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best          1.626 person-          98.67 - 98.67      100       1          15.905    0.5    72     0         0       0        0        0"
+        ],
+        [
+          "Case (TBC)            years SD: 0.1905"
+        ],
+        [
+          "Treated Worst                                1.33 - 1.33        100       2.92       27.545    48     240    5.63      96      100      0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best        N/A                    N/A                N/A       1          24.73     0.5    168    0         0       100      0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst       N/A                    N/A                N/A       2.92       52.495    48     240    5.63      100     100      0        0"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-025-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                    Source                              LOC Value"
+        ],
+        [
+          "Ahmed et al., 2015                                                          Terrestrial"
+        ],
+        [
+          "Wipperman et al., 2014                                                      Terrestrial"
+        ],
+        [
+          "Bord et al., 2008                                                           Terrestrial"
+        ],
+        [
+          "Ahmed et al., 2012                                                          Terrestrial                                             2"
+        ],
+        [
+          "Andreoli et al., 2009                                                       Terrestrial"
+        ],
+        [
+          "Jayamanne et al., 1994                                                      Terrestrial"
+        ],
+        [
+          "Zhang et al., 2011                                                          Terrestrial"
+        ],
+        [
+          "Available studies to determine durations for treated cases involved retrospective studies and review papers. There were no available consensus"
+        ],
+        [
+          "guidelines for this condition. Due to the increasingly more rigourous Institutional Review Board guidelines of American institutions, literature for"
+        ],
+        [
+          "untreated best and worst cases were limited and this information was often extropolated from single, low-powered studies."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-025-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                           Source                                   LOC Value"
+        ],
+        [
+          "Bord et al., 2008                                                  Terrestrial"
+        ],
+        [
+          "2"
+        ],
+        [
+          "Coyler et al., 2006                                                Analog"
+        ],
+        [
+          "RTDC for the treated best case is expected to be zero given the conditions' definition; as such articles were not reviewed for this condition. The"
+        ],
+        [
+          "remaining scenarios used retrospective reviews to determine RTDC."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-025-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                    Source                              LOC Value"
+        ],
+        [
+          "Al-Mezaine et al., 2010                                                     Terrestrial"
+        ],
+        [
+          "0"
+        ],
+        [
+          "Williams et al, 1988                                                        Terrestrial"
+        ],
+        [
+          "Based on the definitions, loss of crew life is not expected for any of the scenariors associated with this CLiFF. However, to validate the assumption"
+        ],
+        [
+          "that mortality was neglible a literature search was still conducted. Mortality was not mentioned in any of epidemiological reviews or in reviews"
+        ],
+        [
+          "detaling prognostic factors of globe ruptures."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-025-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -       Cognitive -                                                                       Cardio-"
+        ],
+        [
+          "Communications        personal          Vision          Hearing                    Dentition          GI             GU"
+        ],
+        [
+          "Simple           Complex                                                                         pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "0                  0                 0                 0                 854            0              0            0               0              0"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "0                 664               0                 0                 854            0              0            0               0              0"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "0                  664               0                 0                 854            0              0            0               0              0"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223               664               113               89                854            44             145          0               0              0"
+        ]
+      ],
+      "page_number": 11,
+      "source_anchor": "page:11#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-025-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-025/eye_anatomy_sectional.png",
+      "mime_type": "image/png",
+      "width": 2000,
+      "height": 1500,
+      "sha256": "6cbccd186bb0d178d99a6b378e41cdd81297768fd7b1b0debb62cba98d46bce1",
+      "creator": "BruceBlaus. When using this image in external sources it can be cited as: Blausen.com staff (2014). \"Medical gallery of Blausen Medical 2014\". WikiJournal of Medicine 1 (2). DOI:10.15347/wjm/2014.010. ISSN 2002-4436.",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ABlausen_0390_EyeAnatomy_Sectional.png",
+      "attribution": "BruceBlaus. When using this image in external sources it can be cited as: Blausen.com staff (2014). \"Medical gallery of Blausen Medical 2014\". WikiJournal of Medicine 1 (2). DOI:10.15347/wjm/2014.010., via Wikimedia Commons (CC BY 3.0)",
+      "caption": "Sectional ocular anatomy illustrating the cornea, sclera, anterior chamber, iris, lens, and posterior structures referenced in NASA CliFF-025.",
+      "alt_text": "Sagittal cross-section medical illustration of the human eye.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Blausen 0390 EyeAnatomy Sectional.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-025-IMG-02",
+      "ordinal": 1,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-025/corneal_foreign_body_rust_ring.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1783,
+      "height": 1739,
+      "sha256": "e2fe9ba36651448f36bc4b0270c1877f531faa9b1df48268c6450a451f12cf0b",
+      "creator": "E van Herk",
+      "license_identifier": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AForeign_body_in_eye.jpg",
+      "attribution": "E van Herk, via Wikimedia Commons (CC BY-SA 3.0)",
+      "caption": "Clinical photograph of a metallic foreign body lodged near the corneal margin with early rust ring formation.",
+      "alt_text": "Close-up clinical photograph of a metallic foreign body on the cornea.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Foreign body in eye.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-025-IMG-03",
+      "ordinal": 2,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-025/corneal_foreign_body_surface.png",
+      "mime_type": "image/png",
+      "width": 929,
+      "height": 502,
+      "sha256": "3c2be5cd230d810d506cca0fcacffaea6ea33abb348f2b2164b8dbbad7fb3220",
+      "creator": "Soldier of Wasteland",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AForeign_body_on_cornea.png",
+      "attribution": "Soldier of Wasteland, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Clinical photograph of a superficial corneal foreign body overlying the iris margin.",
+      "alt_text": "Close-up photograph of a foreign body on the corneal surface.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Foreign body on cornea.png)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-025-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Eye Foreign Body",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eye-foreign-body-cliff-2023.pdf?emrc=7687ee",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External ocular anatomy/clinical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

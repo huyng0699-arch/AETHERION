@@ -7,6 +7,7 @@ import { MessageKey, t } from '../i18n';
 import { ThemeColors, useThemedStyles } from '../theme';
 import { ApiError, readServerUrl } from '../api/client';
 import { buildScienceMediaUrl, getKnowledgeStatus, getScienceArticle, searchScienceArticles, KnowledgeStatus, ScienceArticle, ScienceArticleSummary } from '../api/science';
+import { OFFLINE_CLIFF_COUNT, OFFLINE_CLIFF_STATUS, getOfflineCliffArticle, searchOfflineCliffArticles } from '../api/offlineCliff';
 import { AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../components/ui';
 import { copy } from '../uiCopy';
 
@@ -21,6 +22,8 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
   const [loadingMore, setLoadingMore] = useState(false);
   const [serverBaseUrl, setServerBaseUrl] = useState('');
   const [status, setStatus] = useState<KnowledgeStatus | null>(null);
+  const [offlineLibrary, setOfflineLibrary] = useState(false);
+  const offlineLibraryRef = React.useRef(false);
   const [loading, setLoading] = useState(true);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [errorKey, setErrorKey] = useState<MessageKey | null>(null);
@@ -42,8 +45,22 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
     }
     setErrorKey(null);
     try {
+      if (offlineLibraryRef.current && append) {
+        const local = searchOfflineCliffArticles(term, 100, offset);
+        if (!current()) return;
+        setItems(previous => [...previous, ...local.items]);
+        setIndexed(OFFLINE_CLIFF_COUNT);
+        setMatched(local.matched);
+        setNextOffset(local.next_offset ?? offset + local.items.length);
+        setHasMore(local.has_more ?? false);
+        return;
+      }
       const result = await searchScienceArticles(term, 100, offset);
       if (!current()) return;
+      const wasOffline = offlineLibraryRef.current;
+      offlineLibraryRef.current = false;
+      setOfflineLibrary(false);
+      if (wasOffline) void getKnowledgeStatus().then(value => { if (!offlineLibraryRef.current) setStatus(value); }).catch(() => { if (!offlineLibraryRef.current) setStatus(null); });
       const page = Array.isArray(result.items) ? result.items : [];
       const total = Number.isFinite(result.matched) ? result.matched : page.length;
       const next = typeof result.next_offset === 'number' && Number.isFinite(result.next_offset) ? result.next_offset : offset + page.length;
@@ -54,14 +71,31 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
       setHasMore(typeof result.has_more === 'boolean' ? result.has_more : next < total);
     } catch (error) {
       if (!current()) return;
-      if (!append) {
-        setItems([]);
-        setIndexed(0);
-        setMatched(0);
-        setHasMore(false);
-        setNextOffset(0);
+      if (canUseOfflineLibrary(error)) {
+        const appendLocal = append && offlineLibraryRef.current;
+        const localOffset = appendLocal ? offset : 0;
+        const local = searchOfflineCliffArticles(term, 100, localOffset);
+        offlineLibraryRef.current = true;
+        setOfflineLibrary(true);
+        setStatus(OFFLINE_CLIFF_STATUS);
+        setItems(previous => appendLocal ? [...previous, ...local.items] : local.items);
+        setIndexed(OFFLINE_CLIFF_COUNT);
+        setMatched(local.matched);
+        setNextOffset(local.next_offset ?? localOffset + local.items.length);
+        setHasMore(local.has_more ?? false);
+        setErrorKey(null);
+      } else {
+        offlineLibraryRef.current = false;
+        setOfflineLibrary(false);
+        if (!append) {
+          setItems([]);
+          setIndexed(0);
+          setMatched(0);
+          setHasMore(false);
+          setNextOffset(0);
+        }
+        setErrorKey(errorMessageKey(error));
       }
-      setErrorKey(errorMessageKey(error));
     } finally {
       if (current()) {
         if (append) setLoadingMore(false);
@@ -73,7 +107,7 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
   useEffect(() => { void load(''); }, [load]);
   useEffect(() => {
     let active = true;
-    void getKnowledgeStatus().then(value => { if (active) setStatus(value); }).catch(() => { if (active) setStatus(null); });
+    void getKnowledgeStatus().then(value => { if (active && !offlineLibraryRef.current) setStatus(value); }).catch(() => { if (active && !offlineLibraryRef.current) setStatus(null); });
     return () => { active = false; };
   }, []);
   useEffect(() => {
@@ -89,31 +123,53 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
     setDetailErrorKey(null);
     setLoadingDetail(true);
     try {
-      const result = await getScienceArticle(summary.article_id);
-      if (current()) setArticle(result);
+      if (offlineLibrary) {
+        const local = getOfflineCliffArticle(summary.article_id);
+        if (current()) {
+          if (local) setArticle(local);
+          else setDetailErrorKey('scienceRecordUnavailable');
+        }
+      } else {
+        const result = await getScienceArticle(summary.article_id);
+        if (current()) setArticle(result);
+      }
     } catch (error) {
-      if (current()) setDetailErrorKey(errorMessageKey(error));
+      const local = canUseOfflineLibrary(error) ? getOfflineCliffArticle(summary.article_id) : null;
+      if (current()) {
+        if (local) {
+          offlineLibraryRef.current = true;
+          setOfflineLibrary(true);
+          setStatus(OFFLINE_CLIFF_STATUS);
+          setArticle(local);
+          const localPage = searchOfflineCliffArticles(query, 100, 0);
+          setItems(localPage.items);
+          setIndexed(OFFLINE_CLIFF_COUNT);
+          setMatched(localPage.matched);
+          setNextOffset(localPage.next_offset ?? localPage.items.length);
+          setHasMore(localPage.has_more ?? false);
+        } else setDetailErrorKey(errorMessageKey(error));
+      }
     } finally {
       if (current()) setLoadingDetail(false);
     }
   };
 
   const submitSearch = () => { beginDetail(); setSelected(null); setArticle(null); void load(query); };
-  const refresh = () => { if (selected) void openArticle(selected); else { setSelected(null); setArticle(null); void load(query); void getKnowledgeStatus().then(setStatus).catch(() => setStatus(null)); } };
+  const refresh = () => { if (selected) void openArticle(selected); else { setSelected(null); setArticle(null); void load(query); void getKnowledgeStatus().then(value => { if (!offlineLibraryRef.current) setStatus(value); }).catch(() => { if (!offlineLibraryRef.current) setStatus(null); }); } };
   const loadMore = () => { if (!loadingMore && hasMore) void load(query, nextOffset, true); };
 
   return (
     <AppPage>
       <AppHeader title={t(locale, 'science')} onBack={onBack} backLabel={t(locale, 'back')} trailing={
         <Pressable accessibilityRole="button" accessibilityLabel={t(locale, 'refresh')} onPress={refresh} style={styles.refreshButton}>
-          <Ionicons name="refresh" size={18} color={colors.cyan} />
+          <Ionicons name="refresh" size={18} color={colors.primary} />
         </Pressable>
       } />
 
       {selected ? (
         <>
           <Pressable accessibilityRole="button" onPress={() => { beginDetail(); setSelected(null); setArticle(null); setDetailErrorKey(null); }} style={styles.backToList}>
-            <Ionicons name="chevron-back" size={17} color={colors.cyan} /><Text style={styles.backText}>{t(locale, 'scienceBack')}</Text>
+            <Ionicons name="chevron-back" size={17} color={colors.primary} /><Text style={styles.backText}>{t(locale, 'scienceBack')}</Text>
           </Pressable>
           {loadingDetail ? <Loading label={t(locale, 'loading')} /> : detailErrorKey ? <Panel><Body>{t(locale, detailErrorKey)}</Body></Panel> : article ? (
             <ArticleDetail article={article} status={status} locale={locale} serverBaseUrl={serverBaseUrl} onAskAi={onAskAi} />
@@ -135,7 +191,7 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
               returnKeyType="search"
               placeholder={t(locale, 'scienceSearchPlaceholder')}
               placeholderTextColor={colors.faint}
-              selectionColor={colors.cyan}
+              selectionColor={colors.primary}
               style={styles.searchInput}
             />
             <Pressable accessibilityRole="button" onPress={submitSearch} style={styles.searchButton}>
@@ -167,7 +223,7 @@ function ArticleCard({ item, onPress, locale }: { item: ScienceArticleSummary; o
   const verification = item.source_claim;
   return <Pressable accessibilityRole="button" onPress={onPress} style={({ pressed }) => [styles.cardPressable, pressed && styles.pressed]}>
     <Panel style={styles.articleCard}>
-      <View style={styles.cardTop}><Ionicons name="document-text-outline" size={19} color={colors.cyan} /><Text style={styles.category}>{item.category || '—'}</Text></View>
+      <View style={styles.cardTop}><Ionicons name="document-text-outline" size={19} color={colors.primary} /><Text style={styles.category}>{item.category || '—'}</Text></View>
       <Text style={styles.articleTitle}>{item.title}</Text>
       <View style={styles.cardMeta}><Text style={styles.cardMetaText}>{t(locale, 'scienceSections')}: {item.sections}</Text><Text style={styles.cardMetaText}>{t(locale, 'scienceReferences')}: {item.references}</Text></View>
       <StatusPill label={`${t(locale, 'scienceSourceStatus')}: ${verification || 'UNKNOWN'}`} tone={verification === 'VERIFIED' ? 'good' : 'warn'} />
@@ -207,8 +263,8 @@ function ArticleDetail({ article, status, locale, serverBaseUrl, onAskAi }: { ar
       <Text selectable style={styles.sourceNote}>{sourceNote}</Text>
     </Panel>
 
-    {onAskAi && article.sections.length > 0 ? <Pressable accessibilityRole="button" onPress={() => onAskAi(article.summary)} style={styles.askAi}>
-      <Ionicons name="sparkles-outline" size={18} color="#FFFFFF" /><Text style={styles.askAiText}>{t(locale, 'scienceAskAi')}</Text><Ionicons name="arrow-forward" size={17} color="#FFFFFF" />
+    {onAskAi && article.sections.length > 0 ? <Pressable accessibilityRole='button' onPress={() => onAskAi(article.summary)} style={styles.askAi}>
+      <Ionicons name='sparkles-outline' size={18} color='#FFFFFF' /><Text style={styles.askAiText}>{t(locale, 'scienceAskAi')}</Text><Ionicons name='arrow-forward' size={17} color='#FFFFFF' />
     </Pressable> : null}
 
     {limitations.length > 0 ? <Panel style={styles.metadataPanel}>
@@ -281,7 +337,12 @@ function MetaRow({ label, value, selectable = false }: { label: string; value: s
 
 function Loading({ label }: { label: string }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
-  return <View style={styles.loading}><ActivityIndicator color={colors.cyan} /><Text style={styles.loadingText}>{label}</Text></View>;
+  return <View style={styles.loading}><ActivityIndicator color={colors.primary} /><Text style={styles.loadingText}>{label}</Text></View>;
+}
+
+function canUseOfflineLibrary(error: unknown): boolean {
+  if (error instanceof ApiError) return error.status === 0 || error.status === 408;
+  return error instanceof Error && error.message === 'SERVER_URL_MISSING';
 }
 
 function errorMessageKey(error: unknown): MessageKey {
@@ -308,10 +369,10 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   indexed: { color: colors.muted, fontSize: 12, fontWeight: '700' },
   searchPanel: { flexDirection: 'row', gap: 8, padding: 10 },
   searchInput: { flex: 1, minWidth: 0, minHeight: 45, paddingHorizontal: 12, color: colors.text, fontSize: 14, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, borderRadius: 13 },
-  searchButton: { minHeight: 45, borderRadius: 13, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 5, backgroundColor: colors.cyan },
+  searchButton: { minHeight: 45, borderRadius: 13, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 5, backgroundColor: colors.primary },
   searchButtonText: { color: '#FFFFFF', fontSize: 11, fontWeight: '900' },
   articleList: { gap: 9 },
-  loadMoreButton: { minHeight: 44, borderRadius: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cyan },
+  loadMoreButton: { minHeight: 44, borderRadius: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: colors.primary },
   loadMoreText: { color: '#FFFFFF', fontSize: 13, fontWeight: '800' },
   cardPressable: { borderRadius: 20 },
   articleCard: { gap: 9 },
@@ -324,7 +385,7 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   loading: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10, padding: 22 },
   loadingText: { color: colors.muted, fontSize: 13, fontWeight: '700' },
   backToList: { alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 2, minHeight: 34, paddingRight: 8 },
-  backText: { color: colors.cyan, fontSize: 12, fontWeight: '800' },
+  backText: { color: colors.primary, fontSize: 12, fontWeight: '800' },
   detailContent: { gap: 12, paddingBottom: 16 },
   detailHeading: { gap: 6, paddingTop: 4 },
   metadataPanel: { gap: 10 },
@@ -333,9 +394,9 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   metaLabel: { width: '34%', color: colors.muted, fontSize: 10, fontWeight: '800' },
   metaValue: { flex: 1, color: colors.text, fontSize: 11, lineHeight: 16, textAlign: 'right' },
   linkArea: { flex: 1 },
-  linkText: { color: colors.cyan, fontSize: 11, lineHeight: 16, textAlign: 'right', textDecorationLine: 'underline' },
+  linkText: { color: colors.primary, fontSize: 11, lineHeight: 16, textAlign: 'right', textDecorationLine: 'underline' },
   sourceNote: { color: colors.muted, fontSize: 10, lineHeight: 15 },
-  askAi: { minHeight: 48, backgroundColor: colors.cyan, borderRadius: 13, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8 },
+  askAi: { minHeight: 48, backgroundColor: colors.primary, borderRadius: 13, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8 },
   askAiText: { color: '#FFFFFF', fontWeight: '800', fontSize: 12 },
   sectionList: { gap: 8 },
   contentSection: { gap: 8 },

@@ -12,7 +12,7 @@ export function PrivacyScreen({ locale, onBack }: { locale: Locale; onBack: () =
     <AppPage>
       <AppHeader title={t(locale, 'privacyTitle')} onBack={onBack} backLabel={t(locale, 'back')} />
       <Panel style={{ gap: 12 }}>
-        <View style={{ width: 46, height: 46, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cardSoft }}><Ionicons name="shield-checkmark-outline" size={24} color={colors.cyan} /></View>
+        <View style={{ width: 46, height: 46, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cardSoft }}><Ionicons name="shield-checkmark-outline" size={24} color={colors.primary} /></View>
         <Text style={{ color: colors.text, fontWeight: '800', fontSize: 15 }}>{t(locale, 'privacyTitle')}</Text>
         <Body>{t(locale, 'privacy')}</Body>
         <Body>{t(locale, 'privacyAi')}</Body>
@@ -22,4 +22,5 @@ export function PrivacyScreen({ locale, onBack }: { locale: Locale; onBack: () =
     </AppPage>
   );
 }
+
 

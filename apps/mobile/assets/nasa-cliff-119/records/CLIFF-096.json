@@ -1,0 +1,607 @@
+{
+  "article_id": "CLIFF-096",
+  "slot": 96,
+  "display_title": "EVA-Related Heat Illness",
+  "category": "Environmental",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-096",
+    "publisher": "NASA",
+    "title": "EVA-Related Heat Illness \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-heat-illness-cliff-2023.pdf?emrc=64fc0a",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-heat-illness-cliff-2023.pdf?emrc=64fc0a",
+    "retrieved_at_utc": "2026-11-14T06:34:59.859422+00:00",
+    "content_sha256": "5b76658444c6c8e1931ca815bccfb1b1084318fc87fc9d291160ea3b73030b26",
+    "original_mime": "application/pdf",
+    "original_bytes": 342377,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-096-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch      Baseline\n\n\n\n ICL43_Eva Related Heat Illness\n\n Heat illness is the constellation of syndromes that are associated with an elevated core temperature. This CRT specifically relates to exertional heat\n illness, commonly seen among military recruits and athletes who are exerting themselves in conditions of high temperature and humidity that limit the\n bodies ability to dissipate heat. Conditions include heat cramps, heat syncope, heat exhaustion, and heat stroke. While on EVA the temperature can\n vary between -200F in the dark to 300F in the sun and life support systems must maintain crew member temperatures within homeostatic ranges\n despite these large swings. The ergonomics of the EMU require crew members to heavily exert themselves to perform tasks and thus can generate\n large amounts of heat that must be buffered by cooling systems. Several Gemini astronauts noted significant overheating while on EVA and future\n iterations of EVA suits have been adapted accordingly. The most recent iteration of space suit, the xEMU, places emphasis on better heating and\n cooling systems to prepare for the increased energy expenditure required for frequent EVAs in partial gravity.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  There have been no incidents of EVA related heat illness in spaceflight to date. During the Gemini programs there were several anecdotes of crew\n  members sweating and overheating while on EVA but none suffered any significant signs or symptoms of heat illness. The xEMU has been\n  designed to minimize the risk of overheating based on engineering parameters. The PRA team that determines risk of engineering failure for the\n  xEMU was consulted and provided the risk that each of 4 redundant systems would fail which allowed for calculation of incidence of suit cooling\n  failure. This in turn was used as a surrogate for incidence of heat illness as this condition can only occur in the setting of engineering failure.\n\n  ANALOG LITERATURE\n\n  No analog data was used in this condition\n\n  TERRESTRIAL LITERATURE\n\n  There are numerous terrestrial studies evaluating the incidence of exertional heat illness. These are either population based studies of all-comers\n  visits to the emergency department or are looking at a specific cohort exposed to extreme environmental conditions while performing physical\n  activity. Incidences range from 2.5/100,000 person years in population studies to 2.3/1000 in an endurance race cohort study. The large variability\n  seen within exertional heat illness literature is likely due to the correlation with environmental conditions and exercise requirements. On EVA\n  environmental conditions are maintained within a narrow homeostatic range and thus these terrestrial studies have limited external validity when\n  applied to spaceflight.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   mean 7.406E-13 events per EVA\n   SD 8.507E-13\n\n\n  INCIDENCE SUMMARY\n\n  The incidence proportion distribution for EVA-related Heat Illness is Beta(shape1=0.7578871, shape2=1.023318e+12) with mean 7.406E-13 and\n\n\n\n\n8/23/2023 5:46:41 PM                                              ICL43_Eva Related Heat Illness Cliff                                                     page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-096-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SD 8.507E-13 events per EVA. This distribution was estimated using simulation based on distributions developed for each hardware system. Either\n  hardware within each system failing leads to system to failure. All systems need to fail to cause heat-related illness.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     EVA\n     Segment\n     EVA All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Binomial\n     Incidence Dist.\n     Beta\n     Mean\n     7.40617E-13\n     SD\n     8.5073E-13\n\n\n     Beta\n     (Alpha): 0.757887\n     (Beta): 1.02332E+12\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                           Source                            LOC Value\n\n   Dagroot, D and Martin, R. 2015                                                     Terrestrial                       2\n\n   Demartini, JK et al. 2014                                                          Terrestrial                       2\n\n   Dickinson, JG 1994                                                                 Terrestrial                       2\n\n   Carter, R et al. 2005                                                              Terrestrial                       2\n\n   Alele, F et al. 2019                                                               Terrestrial                       2\n\n   Nelson, NG et al. 2011                                                             Terrestrial                       2\n\n   xEMU PRA                                                                           Spaceflight                       4\n\n\n  There are countless studies looking at the incidence and prevalence of exertional heat related illness terrestrially. They give wide ranges of\n  incidence primarily due to the changes in environmental exposures suffered by each group. Studies such as Dagroot, D 2015, Dickinson, JG 1994,\n  Carter, R et al. 2005 were all military studies among recruits during training drills occurring in high temperatures and humidity. Demartini, JK et al.\n  2014 included runners from a notoriously difficult endurance race. Alele, F et al. 209 and Nelson, NG et al. 2011 were population based studies that\n  looked at allcomers seeking hospital treatment. Environmental conditions, hydration status, and activity are all correlated to heat illness and as\n  such these terrestrial studies are less indicative of a crew members risk. Heat illness during EVA will be entirely dependent on a suit cooling failure\n  and as such the xEMU PRA group data on failure rates of different components will be the gold standard for calculating incidence.\n\n\n\n\n8/23/2023 5:46:41 PM                                               ICL43_Eva Related Heat Illness Cliff                                                     page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-096-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  There are no preflight screening measures available for prevention of EVA heat illness. Poor cardiovascular fitness, medical comorbidities, and age\n  are all correlated to heat illness and there are general health and fitness standards for astronauts. However, no specific standards or screening are\n  available to reduce the risk of this condition\n\n  BEST CASE SCENARIO DEFINITION\n\n  Heat cramps, or heat exhaustion responsive to stopping activity and hydration.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Heat stroke (body core temperature > 40\u00b0C).\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  EVA Related - Heat cramps EVA Related - Heat Exhaustion EVA Related - Heat Stroke\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  Terrestrial data provides a range from 1.8% (Nelson, NG et al. 2011) to 13.6%(Dagroot, D and Martin, R. 2015) of heat stroke as a proportion of all\n  heat illness. Other studies evaluated fall between these values. Incidence of heat illness and severity (i.e. proportion of heat stroke) is heavily\n  correlated with environmental conditions and has considerable variability among studies. Thus 90:10 BC:WC proportion was chosen as an\n  approximate ratio based on the range of data available.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                            Source                          LOC Value\n\n   Dagroot, D. and Martin, R. 2015                                                     Terrestrial                     2\n\n   Dickinson, JG 1994                                                                  Terrestrial                     2\n\n   Alele, F et al. 2019                                                                Terrestrial                     2\n\n   Nelson, NG et al. 2011                                                              Terrestrial                     2\n\n  The referenced terrestrial studies received a score of 2. All studies reviewed evaluated prevalence of heat stroke and provided ranges from\n  approximately 2-12%. None of these studies were specific to the spaceflight environment and were dependent on extreme environmental factors\n  which is less applicable to the environmental controls of EVA. As such they may not be accurate representations of BC:WC scenario in flight.\n\n\n\n\n8/23/2023 5:46:41 PM                                              ICL43_Eva Related Heat Illness Cliff                                                    page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-096-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                                CP1: Diagnosis       CP2: Treatment             CP3: Condition End State\n\n                                                                TI%       Duration   TI%         Duration       TI%       RTDC             LOCL\n                                               Condition\n   Case Scenario     Composite Incidence       Probability %    Preset    Preset     Preset      Min    Max     Preset    Min%    Max%     Min%     Max%\n\n   Treated Best      mean 7.406E-13            90 - 90          100       0.91       19.2665     4      24      0         0       0        0        0\n   Case (TBC)        events per EVA SD\n                     8.507E-13\n   Treated Worst                               10 - 10          100       1.25       50          24     504     0         7       100      0        1\n   Case (TWC)\n\n   Untreated Best    N/A                       N/A              N/A       0.91       69.2665     24     72      100       0       0        0        0\n   Case (UTBC)\n\n   Untreated         N/A                       N/A              N/A       1.25       100         168    1104    100       100     100      6        100\n   Worst Case\n   (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n8/23/2023 5:46:41 PM                                               ICL43_Eva Related Heat Illness Cliff                                                       page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-096-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  EVA related heat illness is the result of suit colling failure and over heating of a crew member. As crew core temperature rises so does the severity\n  of symptoms. While on EVA, the management of a crew member suffering from heat illness and heat stroke would be extremely limited and would\n  require evacuation to host ship or habitat for cooling and hydration. Cooling can occur both passively and actively depending on severity of\n  symptoms and available resources. Cold water submersion is a common treatment for severe illness however this is not a feasible approach in\n  flight. More likely would be evaporative cooling which is possible with current resource limitations and has been shown to be effective.. Rapid return\n  to core temperature normothermia can be definitive management with this medical condition however delays result in worsening organ injury. One\n  common error of management is over cooling and resulting hypothermia which should be carefully avoided. RTDC in this case is defined as\n  hospitalization or end organ injury. This surrogate was chosen because heat illness can present in broad severity from mild and self limited without\n  intervention to critical care management and multiorgan failure.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  The best case scenario for EVA related heat illness is defined as heat cramps, or heat exhaustion responsive to stopping activity and hydration.\n  Given this definition the duration is assumed to be between 4-24 hours based on expert opinion and Nelson, NG et al. 2011 which noted that 90%\n  of all severities of heat stroke were discharged without hospital admission. This cohort likely represents this scenario. The RTDC surrogate was\n  hospitalization and incidence was assumed to be zero given the definition of BC . The LOCL was also assumed to be zero in the treated mild heat\n  illness patient.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  The definitions of the worst case scenario is heat stroke (body core temperature > 40\u00b0C). The duration of heat stroke was determined to be 24\n  hours to 3 weeks in length. DiMartini, JK et al. 2014 showed that immediate cold water immersion among endurance athletes suffering from heat\n  stroke can rapidly cool core temperature and had a mortality rate of 0% among a young cohort that is representative of a crew member. Duration of\n  illness at a minimum was assumed to be 24 hours for recovery before return to duty. Dickinson, JG 1994 showed a more protracted course. While\n  83% of service members with heat illness did not require hospitalization, 5% required 3 weeks of inpatient treatment. This is likely a severely ill\n  cohort with end organ damage and may not represent the typical heat stroke patient. Thus 3 weeks was chosen as the maximum treatment time.\n  RTDC is defined as hospitalization or end organ injury. Guideline including the Wilderness Medicine Society recommend hospitalization for anyone\n  suffering from heat stroke. This is standard of care but is likely overly conservative during spaceflight given the resources needed. DiMartini\n  showed that cold water immersion cut their hospital transportation to only 7% if initiated rapidly and evaluated by a physician. This is an outlier from\n  traditional teaching but also represents a more realistic approach to management in the austere setting. LOCL was assumed to be 0% due to this\n  same DiMartini study and a maximum of 1% based on military data from Dickinson, JG et al. 1994\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  The best case scenario for EVA related heat illness is defined as heat cramps, or heat exhaustion responsive to stopping activity and hydration. In\n  the treated scenario it was assumed that intentional oral rehydration and rest would result in a duration of 4-24 hours of symptoms based on expert\n  opinion and Nelson, NG et al. 2011 which noted 90% of patients were discharged home from the emergency department without admission. Rest\n  and oral intake is a standard operational step after EVA and was not assumed to be treatment, however intentional extended rest or increased oral\n  rehydration outside of nominal operations was assumed to be. As such, the duration of symptoms was assumed to be longer in the untreated BC\n  scenario when compared to the treated cohort. The final outcome of complete recovery without RTDC or LOCL however was assumed to be the\n  same as the treated cohort given the definition of best case scenario that notes response to rest and hydration. Duration was expected to be\n  between 24-72 hours based on expert opinion and Nelson, NG et al. 2011. RTDC and LOCL were both accepted to be 0.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  The definitions of the worst case scenario is heat stroke (body core temperature > 40\u00b0C). The duration of heat stroke was determined to be 7 days\n  to 46 days in duration based on Carter, R et al . 2005 and length of hospital stay data. Average admission time was 2.5d +/-4.5 days for all comers\n  who received treatment including ICU care if needed. Maximum stay was 46 days among this cohort and thus this range was chosen to reflect the\n  UTWC. RTDC is defined as hospitalization or end organ injury. Guideline including the Wilderness Medicine Society recommend hospitalization for\n  anyone suffering from heat stroke. In the patient that suffers from heat stroke but is untreated from presumed lack of capability, a 100% RTDC\n  would be necessary. LOCL was determined from Dickinson, JG which had a mortality rate of 6% among army recruits with heat stroke. This included\n  treated patients. Literature on untreated heat stroke was not available due to the ethics of withholding care in a life threatening condition. A patient\n  who is altered and severely hyperthermic who does not receive any treatment may have up to a 100% mortality rate and thus this maximum was\n  chosen although it is likely an overestimate.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n8/23/2023 5:46:41 PM                                               ICL43_Eva Related Heat Illness Cliff                                                      page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-096-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                                    Source                               LOC Value\n\n   Nelson, NG et al. 2011                                                      Terrestrial\n\n   Dickinson, JG 1994                                                          Terrestrial\n\n   Demartini, JK et al. 2014                                                   Terrestrial                                           2\n\n   Carter, R et al. 2005                                                       Terrestrial\n\n   Expert opinion                                                              Terrestrial\n\n  Nelson, NG et al. 2011, Dickinson, JG et al 1994, Demartini, JK et al. 2014, and Carter et al. 2005 are all studies evaluating heat stroke among\n  individuals heavily exerting themselves in severe environmental conditions. All studies are well designed but are specific to a cohort within certain\n  temperature and activity parameters. As such they may not be accurate to spaceflight conditions as crew members are maintained within very\n  narrow temperature ranges.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                    Source                               LOC Value\n\n   Demartini, JK et al. 2014                                                   Terrestrial\n\n   Lipman, GS et al. 2019                                                      Terrestrial                                           2\n\n   Expert opinion                                                              Terrestrial\n\n  Lipman, GS et al. 2019 sets the wilderness medicine guidelines for heat illness. They recommend hospital evaluation for all patients with exertional\n  heat stroke. Standard of care is admission for these patients given the level of monitoring required and risk of end organ injury. However, many\n  studies and guidelines reference Demartini, JK et al. 2014 which showed a significant reduction in hospitalization if early aggressive cold immersion\n  is initiated for patients with heat illness. These studies set terrestrial standards for management but may not be applicable to the spaceflight\n  environment depending on resources available.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                    Source                               LOC Value\n\n   Demartini, JK et al. 2014                                                   Terrestrial\n\n   Dickinson, JG 1994                                                          Terrestrial                                           2\n\n   Expert opinion                                                              Terrestrial\n\n  Demartini, JK et al. 2014 and Dickinson, JG 1994 evaluated mortality rate among members exerting themselves in severe heat conditions. This is\n  likely not entirely applicable to the space flight environment given the engineering redundancies in place to limit severe injury or death.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope\n\n  Overview\n  Heat illness is the constellation of syndromes that is associated with an elevated core temperature. This CRT specifically relates to exertional heat\n  illness, which includes heat cramps, heat syncope, heat exhaustion, and heat stroke. As with other EVA conditions, the prevention and\n  management of this condition is significantly dependent on engineering to maintain a homeostatic environment and thus this condition will only\n  occur in the setting of engineering failure.\n  The best case scenario is defined as a crew member on EVA who suffers heat cramps or heat exhaustion that responds to stopping activity and\n  hydration. The worse case scenario is heat stroke with a core temperature above 40C and neurologic symptoms.\n\n  CNES: Heat cramps, heat exhaustion, heat stroke, heat syncope\n\n  Diagnostic Scope and Resourcing\n  In the best case scenario the diagnosis is made clinically based on history and exam alone. This is consistent with terrestrial standards.\n\n  In the worst case scenario the diagnosis is made clinically based on history and physical but includes POC glucose as a crew members mental\n\n\n\n\n8/23/2023 5:46:41 PM                                               ICL43_Eva Related Heat Illness Cliff                                                   page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-096-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  status will limit history, and to rule out hypoglycemia. This is similar to terrestrial standards. There are instances in which a terrestrial patient who is\n  hyperthermic and has altered mental status may receive a much broader workup for alternative pathology. However, a straight forward presentation\n  of exertional heat stroke is commonly made with clinical evaluation alone. Evaluation for hyponatremia was considered however this was excluded\n  as it was considered a complication to the condition (i.e. often due to large free water intake during exertion) rather than part of heat stroke itself.\n\n  Clinical Phase 1 Duration and Rationale\n  This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\n  consensus duration is as follows:\n\n  CP1 BC (Treated or Untreated):0.91\n  CP1 WC (Treated or Untreated): 1.25\n\n  The highest scope of practice required is level 4 (Intern) due to the complexity and time sensitivity of the condition\n\n  Treatment Scope and Resourcing\n\n  In the best case scenario, treatment of heat cramps and heat exhaustion will include termination of EVA, external cooling, and PO electrolyte\n  containing fluids. This is equivalent to terrestrial standards.\n\n  In the worst case scenario, treatment of heat stroke will include termination of EVA, external cooling, and cold IV fluids. Other than cold IV fluids,\n  internal cooling was excluded due to the efficacy of rapid external cooling and the lack of clear benefit when compared to external cooling alone in\n  the treatment of heat stroke. Fridge ration is necessary for cooling IV fluid which may or may not be a standard part of ship design.\n\n  Terrestrial external cooling traditionally occurs via cold water submersion or evaporative cooling. Due to the logistical constraints of creating a cold\n  water tub, submersion was excluded as a potential approach to rapid cooling in flight. Evaporative cooling with mist and fans, augmented with ice or\n  cold towels to the core can be effective without the same logistical challenges.\n\n  Communications and Support Needs\n  While real-time video and audio loop communications are desired for diagnosis and treatment, they were not considered a necessity. Rapid cooling\n  and rehydration are the mainstays of treatment and can be accomplished without realtime guidance.\n\n  REFERENCES\n  Alele, F., et al. (2020). \"Systematic review of gender differences in the epidemiology and risk factors of exertional heat illness and heat tolerance in\n  the armed forces.\" BMJ Open 10(4): e031825.\n\n  American College of Sports, M., et al. (2007). \"American College of Sports Medicine position stand. Exertional heat illness during training and\n  competition.\" Med Sci Sports Exerc 39(3): 556-572.\n\n  Bedno, S. A., et al. (2010). \"Exertional heat illness among overweight U.S. Army recruits in basic training.\" Aviat Space Environ Med 81(2): 107-111.\n\n  Belobrajdic, B., et al. (2021). \"Planetary extravehicular activity (EVA) risk mitigation strategies for long-duration space missions.\" NPJ Microgravity\n  7(1): 16.\n\n  Carter, R. (2008). \"Exertional Heat Illness and Hyponatremia: and Epidemiological Prospective.\" Current Sports Medicine Reports 7.\n\n  Carter, R., 3rd, et al. (2005). \"Epidemiology of hospitalizations and deaths from heat illness in soldiers.\" Med Sci Sports Exerc 37(8): 1338-1344.\n\n  Dagroot, D. and R. Martin (2015). Within Year Exertional Heat Illness Incidence in U.S. Army Soldiers, 2008-2012, Army Public Health Center.\n\n  Demartini, J. K., et al. (2015). \"Effectiveness of cold water immersion in the treatment of exertional heat stroke at the Falmouth Road Race.\" Med\n  Sci Sports Exerc 47(2): 240-245.\n\n  Dickinson, J. G. (1994). \"Heat Illness in the Service.\" Journal of Royal Medical Corps(140): 7-12.\n\n  Gamage, P. J., et al. (2020). \"Epidemiology of exertional heat illnesses in organised sports: A systematic review.\" J Sci Med Sport 23(8): 701-709.\n\n  Gardner, J. W., et al. (2002). \"Nontraumatic Exercise-Related Deaths in the U.S. Military, 1996-1999.\" Military Medicine.\n\n  Gubernot, D. M., et al. (2014). \"The epidemiology of occupational heat exposure in the United States: a review of the literature and assessment of\n  research needs in a changing climate.\" Int J Biometeorol 58(8): 1779-1788.\n\n  Lipman, G. S., et al. (2014). \"Wilderness Medical Society practice guidelines for the prevention and treatment of heat-related illness: 2014 update.\"\n  Wilderness Environ Med 25(4 Suppl): S55-65.\n\n  Lipman, G. S., et al. (2019). \"Wilderness Medical Society Clinical Practice Guidelines for the Prevention and Treatment of Heat Illness: 2019\n  Update.\" Wilderness Environ Med 30(4S): S33-S46.\n\n  Nakamura, S. and T. Aruga (2013). \"Epidemiology of Heat Illness.\" Japanese Medical Association.\n\n  Nelson, N. G., et al. (2011). \"Exertional heat-related injuries treated in emergency departments in the U.S., 1997-2006.\" Am J Prev Med 40(1): 54-\n  60.\n\n  Pryor, R. R., et al. (2015). \"Medical Evaluation for Exposure Extremes: Heat.\" Wilderness Environ Med 26(4 Suppl): S69-75.\n\n  Schlotman, T. E., et al. (2019). \"Bridging the gap between military prolonged field care monitoring and exploration spaceflight: the compensatory\n  reserve.\" NPJ Microgravity 5: 29.\n\n  Waligora, J. M., et al. (1975). Apollo Experience Report - Assessment of Metabolic Expenditures, Lyndon B. Johnson Space Center.\n\n  Wallace, R. F. (2003). Risk Factors and Mortality in Relation to Heat Illness Severity, U.S. Army Research Institute of Environmental Medicine.\n\n\n\n\n8/23/2023 5:46:41 PM                                                 ICL43_Eva Related Heat Illness Cliff                                                        page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-096-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  Yaglou, C. P. and D. Minard (1956). Prevention of Heat Casualties at Marine Corps Training Centers.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  No prior IMM CLIFF exists for this condition\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  \u2022 Heat illness is significantly correlated if not entirely dependent on high environmental temperatures, humidity, and workload. On EVA these 3\n  factors are regulated by engineering systems and operational rules. Terrestrial literature therefore is inherently not accurate when evaluating the\n  incidence of this condition. \u2022 There are 4 redundant cooling systems within the xEMU specifically to reduce the risk of overheating during EVA to as\n  close to 0 as possible. This medical condition is effectively mitigated by engineering design and may not require medical risk assessment \u2022\n  Treatment for heat illness involve rapid cooling and hydration. By default, a crew member overheating on EVA would be cooled to ambient ship\n  temperatures and would rehydrate with normal oral intake. Untreated scenarios likely overestimate RTDC and LOCL as the simple act of returning\n  from EVA and initiating nominal activity would provide therapeutic benefit\n\n\n\n\n8/23/2023 5:46:41 PM                                              ICL43_Eva Related Heat Illness Cliff                                                   page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-096-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                              Clinical Phase 2: Treatment\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                    Dentition          GI             GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n                            664                              89                                           145                          13\n    Case\n    (TBC)\n  Untreated\n    Best\n                            664                              89                                           145                          13\n    Case\n   (UTBC)\n   Treated\n    Worst\n           223              664            113               89             854            44             145          5               13             6\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223             664            113               89             854            44             145          5               13             6\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                                  TI Calculation                        TI Score\n                                                                                                                                                             Total\n                                                                                                                                                           Human\n                                                                                            Translation &                               Total Tasks\n                Hand                                            Lower         Ambul &                       Don/Doff       Pressure                        System\n                            Hand (Any)     Upper Extremity                                  Stabilization                              Impaired By                         TI Decimal         TI %\n               (Dom)                                          Extremity     Standing (g)                  Equipment         Ops                           Category\n                                                                                           (microgravity)                               Condition\n                                                                                                                                                          Tasks Full\n                                                                                                                                                           Mission\n   Treated\n     Best\n           132                                                              196                                        211             1450           3763             0.385331         38.5331\n    Case\n    (TBC)\n  Untreated\n    Best\n            132                                                             196                                        211             1450           3763             0.385331         38.5331\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132              564            414               22             196            34             34           211             3763           3763             1                100\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132             564            414               22             196            34             34           211             3763           3763             1                100\n    Case\n   (UTWC)\n\n                                                                          Clinical Phase 3: Condition End State\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                    Dentition          GI             GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n            223             664            113               89             854            44             145          5               13             6\n    Case\n   (UTBC)\n   Treated\n    Worst\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223             664            113               89             854            44             145          5               13             6\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                                  TI Calculation                        TI Score\n\n\n\n\n8/23/2023 5:46:41 PM                                               ICL43_Eva Related Heat Illness Cliff                                                                                    page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-096-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                           Total\n                                                                                                                                         Human\n                                                                                 Translation &                           Total Tasks\n               Hand                                      Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                              Stabilization                          Impaired By                      TI Decimal         TI %\n              (Dom)                                    Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                                (microgravity)                           Condition\n                                                                                                                                        Tasks Full\n                                                                                                                                         Mission\n   Treated\n     Best\n                                                                                                                        0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n            132        564          414               22           196         34             34            211         3763           3763          1                100\n    Case\n   (UTBC)\n   Treated\n    Worst\n                                                                                                                        0              3763          0                0\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132        564          414               22           196         34             34            211         3763           3763          1                100\n    Case\n   (UTWC)\n\n\n\n\n8/23/2023 5:46:41 PM                                        ICL43_Eva Related Heat Illness Cliff                                                                          page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-096-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n8/23/2023 5:46:41 PM                                              ICL43_Eva Related Heat Illness Cliff                                                     page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-096-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   Alele, F., et al. (2020). \"Systematic review of gender differences in the epidemiology and risk factors of exertional heat illness and heat tolerance\n   in the armed forces.\" BMJ Open 10(4): e031825.\n\n   American College of Sports, M., et al. (2007). \"American College of Sports Medicine position stand. Exertional heat illness during training and\n   competition.\" Med Sci Sports Exerc 39(3): 556-572.\n\n   Bedno, S. A., et al. (2010). \"Exertional heat illness among overweight U.S. Army recruits in basic training.\" Aviat Space Environ Med 81(2): 107-\n   111.\n\n   Belobrajdic, B., et al. (2021). \"Planetary extravehicular activity (EVA) risk mitigation strategies for long-duration space missions.\" NPJ Microgravity\n   7(1): 16.\n\n   Carter, R. (2008). \"Exertional Heat Illness and Hyponatremia: and Epidemiological Prospective.\" Current Sports Medicine Reports 7.\n\n   Carter, R., 3rd, et al. (2005). \"Epidemiology of hospitalizations and deaths from heat illness in soldiers.\" Med Sci Sports Exerc 37(8): 1338-1344.\n\n   Dagroot, D. and R. Martin (2015). Within Year Exertional Heat Illness Incidence in U.S. Army Soldiers, 2008-2012, Army Public Health Center.\n\n   Demartini, J. K., et al. (2015). \"Effectiveness of cold water immersion in the treatment of exertional heat stroke at the Falmouth Road Race.\" Med\n   Sci Sports Exerc 47(2): 240-245.\n\n   Dickinson, J. G. (1994). \"Heat Illness in the Service.\" Journal of Royal Medical Corps(140): 7-12.\n\n   Duncan, G., et al. (2021). EVA Dehydration Heat Illness PRA Input. Artemis Risk Analysis. Houston, Texas, Probable Risk Assessment Team.\n\n   Gamage, P. J., et al. (2020). \"Epidemiology of exertional heat illnesses in organised sports: A systematic review.\" J Sci Med Sport 23(8): 701-709.\n\n   Gardner, J. W., et al. (2002). \"Nontraumatic Exercise-Related Deaths in the U.S. Military, 1996-1999.\" Military Medicine.\n\n   Gubernot, D. M., et al. (2014). \"The epidemiology of occupational heat exposure in the United States: a review of the literature and assessment\n   of research needs in a changing climate.\" Int J Biometeorol 58(8): 1779-1788.\n\n   Lipman, G. S., et al. (2014). \"Wilderness Medical Society practice guidelines for the prevention and treatment of heat-related illness: 2014\n   update.\" Wilderness Environ Med 25(4 Suppl): S55-65.\n\n   Lipman, G. S., et al. (2019). \"Wilderness Medical Society Clinical Practice Guidelines for the Prevention and Treatment of Heat Illness: 2019\n   Update.\" Wilderness Environ Med 30(4S): S33-S46.\n\n   Nakamura, S. and T. Aruga (2013). \"Epidemiology of Heat Illness.\" Japanese Medical Association.\n\n   Nelson, N. G., et al. (2011). \"Exertional heat-related injuries treated in emergency departments in the U.S., 1997-2006.\" Am J Prev Med 40(1):\n   54-60.\n\n   Pryor, R. R., et al. (2015). \"Medical Evaluation for Exposure Extremes: Heat.\" Wilderness Environ Med 26(4 Suppl): S69-75.\n\n   Schlotman, T. E., et al. (2019). \"Bridging the gap between military prolonged field care monitoring and exploration spaceflight: the compensatory\n   reserve.\" NPJ Microgravity 5: 29.\n\n   Waligora, J. M., et al. (1975). Apollo Experience Report - Assessment of Metabolic Expenditures, Lyndon B. Johnson Space Center.\n\n   Wallace, R. F. (2003). Risk Factors and Mortality in Relation to Heat Illness Severity, U.S. Army Research Institute of Environmental Medicine.\n\n   Yaglou, C. P. and D. Minard (1956). Prevention of Heat Casualties at Marine Corps Training Centers.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                       PHRASE\n\n   AAOMS                         American Association of Oral and Maxillofacial Surgeons\n\n   AMA                           American Medical Association\n\n   ARCL                          All Remaining Conditions List\n\n   ARS                           Acute Radiation Sickness\n\n   BHP                           Behavioral Health and Performance\n\n   CAC                           Coronary Artery Calcium\n\n\n\n\n8/23/2023 5:46:41 PM                                               ICL43_Eva Related Heat Illness Cliff                                                      page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-096-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   CHS                 Crew Health and Safety\n\n   CL                  Condition List\n\n   CliFF               Clinical Finding Form\n\n   CMO                 Crew Medical Officer\n\n   COMFORT             Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                 Clinical Phase 1\n\n   CP2                 Clinical Phase 2\n\n   CP3                 Clinical Phase 3\n\n   CRL                 Clinical Resource Level\n\n   CRT                 Capability Resource Table\n\n   CST                 Clinical Science Team\n\n   DCS                 Decompression Syndrome\n\n   DRM                 Design Reference Mission\n\n   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n\n\n\n8/23/2023 5:46:41 PM                                     ICL43_Eva Related Heat Illness Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    },
+    {
+      "section_id": "CLIFF-096-P14",
+      "ordinal": 13,
+      "heading": "Page 14 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n8/23/2023 5:46:41 PM                                     ICL43_Eva Related Heat Illness Cliff   page: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "page:14"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-096-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "EVA"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "EVA All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Binomial"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Beta"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "7.40617E-13"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "8.5073E-13"
+        ],
+        [
+          "Beta"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-096-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                           Source                            LOC Value"
+        ],
+        [
+          "Dagroot, D and Martin, R. 2015                                                     Terrestrial                       2"
+        ],
+        [
+          "Demartini, JK et al. 2014                                                          Terrestrial                       2"
+        ],
+        [
+          "Dickinson, JG 1994                                                                 Terrestrial                       2"
+        ],
+        [
+          "Carter, R et al. 2005                                                              Terrestrial                       2"
+        ],
+        [
+          "Alele, F et al. 2019                                                               Terrestrial                       2"
+        ],
+        [
+          "Nelson, NG et al. 2011                                                             Terrestrial                       2"
+        ],
+        [
+          "xEMU PRA                                                                           Spaceflight                       4"
+        ],
+        [
+          "There are countless studies looking at the incidence and prevalence of exertional heat related illness terrestrially. They give wide ranges of"
+        ],
+        [
+          "incidence primarily due to the changes in environmental exposures suffered by each group. Studies such as Dagroot, D 2015, Dickinson, JG 1994,"
+        ],
+        [
+          "Carter, R et al. 2005 were all military studies among recruits during training drills occurring in high temperatures and humidity. Demartini, JK et al."
+        ],
+        [
+          "2014 included runners from a notoriously difficult endurance race. Alele, F et al. 209 and Nelson, NG et al. 2011 were population based studies that"
+        ],
+        [
+          "looked at allcomers seeking hospital treatment. Environmental conditions, hydration status, and activity are all correlated to heat illness and as"
+        ],
+        [
+          "such these terrestrial studies are less indicative of a crew members risk. Heat illness during EVA will be entirely dependent on a suit cooling failure"
+        ],
+        [
+          "and as such the xEMU PRA group data on failure rates of different components will be the gold standard for calculating incidence."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-096-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                            Source                          LOC Value"
+        ],
+        [
+          "Dagroot, D. and Martin, R. 2015                                                     Terrestrial                     2"
+        ],
+        [
+          "Dickinson, JG 1994                                                                  Terrestrial                     2"
+        ],
+        [
+          "Alele, F et al. 2019                                                                Terrestrial                     2"
+        ],
+        [
+          "Nelson, NG et al. 2011                                                              Terrestrial                     2"
+        ],
+        [
+          "The referenced terrestrial studies received a score of 2. All studies reviewed evaluated prevalence of heat stroke and provided ranges from"
+        ],
+        [
+          "approximately 2-12%. None of these studies were specific to the spaceflight environment and were dependent on extreme environmental factors"
+        ],
+        [
+          "which is less applicable to the environmental controls of EVA. As such they may not be accurate representations of BC:WC scenario in flight."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-096-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment             CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration   TI%         Duration       TI%       RTDC             LOCL"
+        ],
+        [
+          "Condition"
+        ],
+        [
+          "Case Scenario     Composite Incidence       Probability %    Preset    Preset     Preset      Min    Max     Preset    Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best      mean 7.406E-13            90 - 90          100       0.91       19.2665     4      24      0         0       0        0        0"
+        ],
+        [
+          "Case (TBC)        events per EVA SD"
+        ],
+        [
+          "8.507E-13"
+        ],
+        [
+          "Treated Worst                               10 - 10          100       1.25       50          24     504     0         7       100      0        1"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best    N/A                       N/A              N/A       0.91       69.2665     24     72      100       0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated         N/A                       N/A              N/A       1.25       100         168    1104    100       100     100      6        100"
+        ],
+        [
+          "Worst Case"
+        ],
+        [
+          "(UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-096-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "8/23/2023 5:46:41 PM                                               ICL43_Eva Related Heat Illness Cliff                                                      page: 5"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-096-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                    Source                               LOC Value"
+        ],
+        [
+          "Demartini, JK et al. 2014                                                   Terrestrial"
+        ],
+        [
+          "Lipman, GS et al. 2019                                                      Terrestrial                                           2"
+        ],
+        [
+          "Expert opinion                                                              Terrestrial"
+        ],
+        [
+          "Lipman, GS et al. 2019 sets the wilderness medicine guidelines for heat illness. They recommend hospital evaluation for all patients with exertional"
+        ],
+        [
+          "heat stroke. Standard of care is admission for these patients given the level of monitoring required and risk of end organ injury. However, many"
+        ],
+        [
+          "studies and guidelines reference Demartini, JK et al. 2014 which showed a significant reduction in hospitalization if early aggressive cold immersion"
+        ],
+        [
+          "is initiated for patients with heat illness. These studies set terrestrial standards for management but may not be applicable to the spaceflight"
+        ],
+        [
+          "environment depending on resources available."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-096-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                    Source                               LOC Value"
+        ],
+        [
+          "Demartini, JK et al. 2014                                                   Terrestrial"
+        ],
+        [
+          "Dickinson, JG 1994                                                          Terrestrial                                           2"
+        ],
+        [
+          "Expert opinion                                                              Terrestrial"
+        ],
+        [
+          "Demartini, JK et al. 2014 and Dickinson, JG 1994 evaluated mortality rate among members exerting themselves in severe heat conditions. This is"
+        ],
+        [
+          "likely not entirely applicable to the space flight environment given the engineering redundancies in place to limit severe injury or death."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-096-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision           Hearing                    Dentition          GI             GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664                              89                                           145                          13"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664                              89                                           145                          13"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223              664            113               89             854            44             145          5               13             6"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223             664            113               89             854            44             145          5               13             6"
+        ]
+      ],
+      "page_number": 9,
+      "source_anchor": "page:9#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-096-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-096/skin_thermoregulation_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 491,
+      "height": 625,
+      "sha256": "9857280031a998a5645482eeaa5a6fd060812b6ab87ceebb5a8783045c966a09",
+      "creator": "Wong, D.J. and Chang, H.Y. Skin tissue engineering (March 31, 2009), StemBook, ed. The Stem Cell Research Community, StemBook, doi/10.3824/stembook.1.44.1, http://www.stembook.org.",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AAnatomy_of_the_skin.jpg",
+      "attribution": "Wong, D.J. and Chang, H.Y. Skin tissue engineering (March 31, 2009), StemBook, ed. The Stem Cell Research Community, StemBook, doi/10.3824/stembook.1.44.1, http://www.stembook.org., via Wikimedia Commons (CC BY 3.0)",
+      "caption": "Cross-sectional diagram of human skin including sweat glands and dermal vasculature for thermoregulation.",
+      "alt_text": "Diagram of human skin layers.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Anatomy of the skin.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-096-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-096/epidermis_dermis_cross_section.jpg",
+      "mime_type": "image/jpeg",
+      "width": 2236,
+      "height": 1800,
+      "sha256": "ffd579623e4c4851e337ad9654c40cf8813adb0fb96a57a9bf503ab76fdf1146",
+      "creator": "Unknown Illustrator",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ASkin-_epidermis_and_dermis.jpg",
+      "attribution": "Unknown Illustrator, via Wikimedia Commons (Public domain)",
+      "caption": "Anatomical drawing of dermal vasculature and sweat structures involved in heat dissipation.",
+      "alt_text": "Line drawing of epidermis and dermis.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Skin- epidermis and dermis.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-096-IMG-03",
+      "ordinal": 2,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-096/pulmonary_alveolus_nih.png",
+      "mime_type": "image/png",
+      "width": 895,
+      "height": 640,
+      "sha256": "41a22e2a4d4a1beae75a31c9d7d45ad386c5bfb993983adf5c6bbbd1dfbd81a7",
+      "creator": "NIH NIAID",
+      "license_identifier": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3APulmonary_Alveolus_%28NIH_BioArt_567%29.png",
+      "attribution": "NIH NIAID, via Wikimedia Commons (CC BY 4.0)",
+      "caption": "NIH BioArt illustration of the alveolar-capillary interface supporting hyperthermic metabolic demand.",
+      "alt_text": "NIH BioArt diagram of a pulmonary alveolus.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Pulmonary Alveolus (NIH BioArt 567).png)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-096-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 EVA-Related Heat Illness",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-heat-illness-cliff-2023.pdf?emrc=64fc0a",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

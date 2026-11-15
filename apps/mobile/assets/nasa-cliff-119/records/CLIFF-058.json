@@ -1,0 +1,282 @@
+{
+  "article_id": "CLIFF-058",
+  "slot": 58,
+  "display_title": "Central Neuropathy (Impingement-Related)",
+  "category": "Neurological Conditions",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "NASA Integrated Medical Model (IMM) Clinical Finding Form (CliFF 2023) for mission risk-planning; NOT a validated bedside clinical protocol or NASA endorsement of AETHERION.",
+  "source": {
+    "source_id": "NASA-CLIFF-058",
+    "publisher": "NASA",
+    "title": "Central Neuropathy (Impingement-Related) CliFF (2023)",
+    "source_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/neuropathy-central-impingement-related-cliff-2023.pdf?emrc=e6506a",
+    "retrieved_at_utc": "2026-11-14T06:20:50.933647+00:00",
+    "content_sha256": "c910f9ea5a5a383e65989d98ab026f4b77a65172204224f60bf2a3bb960950e9",
+    "original_mime": "application/pdf",
+    "original_bytes": 297536,
+    "license_identifier": "NASA-US-GOV-PUBLIC-DOMAIN",
+    "attribution": "NASA Integrated Medical Model (IMM) Documentation (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "limitations": [
+    "NASA IMM CliFF is probabilistic spaceflight medical risk-planning evidence, not a validated bedside treatment protocol.",
+    "There was no prior IMM LD68 CliFF for this condition; incidence values rely on analog and terrestrial cervical/lumbar radiculopathy epidemiology (p.2, p.5).",
+    "Motor neuropathy and radicular outcomes are extrapolated from terrestrial surgical and conservative management cohorts (p.5-6)."
+  ],
+  "sections": [
+    {
+      "section_id": "CLIFF-058-sec-0",
+      "heading": "Branch Baseline & Clinical Overview",
+      "text_content": "Clinical Finding Form (CliFF)\nBranch\n\nBaseline\n\nICL72_Neuropathy - Central, Impingement Related\nThere is no IMM LD68 CliFF for this condition. This condition consists cervical radiculopathy and lumbar radiculopathy. Cervical radiculopathy is\ntypically caused by an impingement or displacement of a cervical nerve root by a herniated or prolapsed disc or by bony irregularities associated with\ncervical spondylosis. Lumbar radiculopathy is typically caused by an impingement or displacement of a lumbar nerve root by a herniated or prolapsed\ndisc or by bony irregularities associated with lumbar spondylosis. Peripheral nerve impingement syndromes such as carpal tunnel syndrome are not\nincluded. Incidence values are based on analog military populations. A composite incidence value will need to be determined by adding incidence\nvalues for cervical impingement and lumbar impingement. Best case/worst case percentages and CP2 durations based on terrestrial general\npopulation data. RTDC probabilities are based on best and worst case definitions and terrestrial general population data. LOCL probabilities are\nbased on best case and worst case definitions.\n\nINCIDENCE DATA INCLUDED IN THE MODEL\n\nThe model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\nstatus, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\ntype of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\noccurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\nIncidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n(proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\nhistory characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\nare assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\noccurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\nincluded in the MEDPRAT Technical Description Document.\n\nINCIDENCE DATA\n\nSPACEFLIGHT LITERATURE\n\nNo spaceflight data is available for this condition.\nANALOG LITERATURE\n\nSchoenfeld, A. J., et al. (2012). \"Incidence and Epidemiology of Cervical Radiculopathy in the United States Military 2000 to 2009.\" J Spinal Disord\nTech 25(1): 17-22. Schoenfeld, A. J., et al. (2012). Characterization of the Incidence and Risk Factors for the Development of Lumbar\nRadiculopathy. J Spinal Disord Tech 25(3): 163-167.\nTERRESTRIAL LITERATURE\n\nRadhakrishnan, K., et al. (1994). \"Epidemiology of cervical radiculopathy. A population-based study from Rochester, Minnesota, 1976 through\n1990.\" Brain 117 ( Pt 2): 325-335. Sampath, P., et al. (1999). \"Outcome in patients with cervical radiculopathy. Prospective, multicenter study with\nindependent clinical review.\" Spine (Phila Pa 1976) 24(6): 591-597. Peul, W. C., et al. (2007). \"Surgery versus prolonged conservative treatment\nfor sciatica.\" N Engl J Med 356(22): 2245-2256. Lequin, M. B., et al. (2013). \"Surgery versus prolonged conservative treatment for sciatica: 5-year\nresults of a randomized controlled trial.\" BMJ Open 3(5). Bailey, C. S., et al. (2020). \"Surgery versus Conservative Care for Persistent Sciatica\nLasting 4 to 12 Months.\" N Engl J Med 382(12): 1093-1102.\n\nOVERALL INCIDENCE SUMMARY\n\nINCIDENCE\n\nmean 6.646E-3 and SD 2.223E-5\n\nINCIDENCE SUMMARY\n\nThe Bayesian posterior distribution for the incidence rate given the U.S. Military analog data (91,808 events over 13,813,333 person-years) under\nan uninformative prior is Gamma(shape=89380.29, rate=13448734) with mean 6.646E-3 and SD 2.223E-5. Evidence: \u2022 Cervical \u2013 Analog \u2013\nSchoenfeld 2012 \u2013 Incidence and Epidemiology of Cervical Radiculopathy in the United States Military 2000 to 2009. 24,742 events over\n\n11/22/2022 8:47:18 AM\n\nICL72_Neuropathy - Central, Impingement Related Cliff\n\npage: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "p.1"
+    },
+    {
+      "section_id": "CLIFF-058-sec-1",
+      "heading": "Incidence Data & Analog Estimates",
+      "text_content": "13,813,333 person-years. IR: 1.791E-3 (95%CI: 1.769E-3, 1.814E-3). \u2022 Lumbar \u2013 Analog \u2013 Schoenfeld 2012 \u2013 Characterization of the Incidence\nand Risk Factors for the Development of Lumbar Radiculopathy. 4.86 per 1kpy. Also, using the same database between 2000 and 2009. 67,066\ncases over 13,813,333 person-years. IR: 4.855E-3 (95%CI: 4.818E-3, 4.892E-3) Given these references report on the same data source, it is\npossible to sum the events over the two sites to model to get an overall rate. Total events 91,808 over 13,813,333 person-years. IR: 6.646E-3\n(95%CI: 6.603E-3, 6.689E-3).\n\nTABLE 1. INCIDENCE MODEL\n\nIncidence Details\nIncidence Type\nGeneral\nSegment\nAll\nEnv. Exposure\nNA\nSex\nAny\nCrowns\nAny\nContacts\nAny\nPregnancy\nAny\nIncidence Distribution\nOccurrence Dist\nPoisson\nIncidence Dist.\nGamma\nMean\n0.006646\nSD\n2.223E-05\nGamma\n(Shape): 89380.3\n(Rate): 1.34487E+07\n\nTABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nSchoenfeld, 2012\n\nTerrestrial\n\n3\n\nLOC = 3 (somewhat confident) based on terrestrial studies. Not given a LOC of 4 (confident) since terrestrial general population and analog military\ndata may not be directly applicable to the astronaut population during spaceflight due to the uniqueness of the astronaut population and the\nspaceflight environment.\n\n11/22/2022 8:47:18 AM\n\nICL72_Neuropathy - Central, Impingement Related Cliff\n\npage: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "p.2"
+    },
+    {
+      "section_id": "CLIFF-058-sec-2",
+      "heading": "Crewmember Selection, Prevention & Case Scenarios",
+      "text_content": "CREWMEMBER SELECTION/PREVENTION\n\nDISQUALIFYING CONDITIONS\n\nRefer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n(2016).\nPREFLIGHT PREVENTATIVE MEASURES\n\nNo preflight preventive measures.\nBEST CASE SCENARIO DEFINITION\n\nNeuropathy due to nerve impingement that resolves spontaneously (i.e. pinched nerve) or with symptomatic treatment (this excludes peripheral\nimpingement syndromes).\nWORSE CASE SCENARIO DEFINITION\n\nPersistent neuropathy due to impingement that requires nerve-modulating agents, steroids, or surgical intervention. (This excludes peripheral\nimpingement syndromes)\nCONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\nNone\n\nBEST CASE/WORST CASE PROBABILITY COMMENTS\n\nBest case/worst case percentages of 54-74%/26-46% based on probability of surgical treatment from terrestrial studies. References:\nRadhakrishnan, K., et al. (1994). \"Epidemiology of cervical radiculopathy. A population-based study from Rochester, Minnesota, 1976 through\n1990.\" Brain 117 ( Pt 2): 325-335. Sampath, P., et al. (1999). \"Outcome in patients with cervical radiculopathy. Prospective, multicenter study with\nindependent clinical review.\" Spine (Phila Pa 1976) 24(6): 591-597. Peul, W. C., et al. (2007). \"Surgery versus prolonged conservative treatment\nfor sciatica.\" N Engl J Med 356(22): 2245-2256. Lequin, M. B., et al. (2013). \"Surgery versus prolonged conservative treatment for sciatica: 5-year\nresults of a randomized controlled trial.\" BMJ Open 3(5). Bailey, C. S., et al. (2020). \"Surgery versus Conservative Care for Persistent Sciatica\nLasting 4 to 12 Months.\" N Engl J Med 382(12): 1093-1102.\nTABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nRadhakrishnan, 1994\n\nTerrestrial\n\n3\n\nSampath, 1999\n\nTerrestrial\n\n3\n\nPeul, 2007\n\nTerrestrial\n\n3\n\nLequin, 2013\n\nTerrestrial\n\n3\n\nBailey, 2020\n\nTerrestrial\n\n3\n\nBest case/worst case percentages of 54-74%/26-46% based on probability of surgical treatment from terrestrial studies. LOC = 3 (somewhat\nconfident). Radhakrishnan, K., et al. (1994). \"Epidemiology of cervical radiculopathy. A population-based study from Rochester, Minnesota, 1976\nthrough 1990.\" Brain 117 ( Pt 2): 325-335. Sampath, P., et al. (1999). \"Outcome in patients with cervical radiculopathy. Prospective, multicenter\nstudy with independent clinical review.\" Spine (Phila Pa 1976) 24(6): 591-597. Peul, W. C., et al. (2007). \"Surgery versus prolonged conservative\ntreatment for sciatica.\" N Engl J Med 356(22): 2245-2256. Lequin, M. B., et al. (2013). \"Surgery versus prolonged conservative treatment for\nsciatica: 5-year results of a randomised controlled trial.\" BMJ Open 3(5). Bailey, C. S., et al. (2020). \"Surgery versus Conservative Care for\nPersistent Sciatica Lasting 4 to 12 Months.\" N Engl J Med 382(12): 1093-1102.\n\n11/22/2022 8:47:18 AM\n\nICL72_Neuropathy - Central, Impingement Related Cliff\n\npage: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "p.3"
+    },
+    {
+      "section_id": "CLIFF-058-sec-3",
+      "heading": "Table 4. CliFF Treatment & Outcome Table by Clinical Phase",
+      "text_content": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\nCP1: Diagnosis\n\nCP2: Treatment\n\nCP3: Condition End State\n\nTI%\n\nDuration\n\nTI%\n\nDuration\n\nTI%\n\nRTDC\n\nCase Scenario\n\nComposite\nIncidence\n\nCondition\nProbability %\n\nPreset\n\nPreset\n\nPreset\n\nMin\n\nMax\n\nPreset\n\nMin%\n\nMax%\n\nMin%\n\nMax%\n\nTreated Best\nCase (TBC)\n\nmean 6.646E-3\nand SD 2.223E-5\n\n54 - 74\n\n100\n\n1.8\n\n38.67\n\n336\n\n672\n\n0\n\n0\n\n0\n\n0\n\n0\n\n26 - 46\n\n100\n\n1.9\n\n38.67\n\n1008\n\n1344\n\n0\n\n1\n\n5\n\n0\n\n0\n\nTreated Worst\nCase (TWC)\n\nLOCL\n\nUntreated Best\nCase (UTBC)\n\nN/A\n\nN/A\n\nN/A\n\n1.8\n\n42.52\n\n336\n\n672\n\n0\n\n0\n\n0\n\n0\n\n0\n\nUntreated Worst\nCase (UTWC)\n\nN/A\n\nN/A\n\nN/A\n\n1.9\n\n44.88\n\n1008\n\n1344\n\n38.7\n\n100\n\n100\n\n0\n\n0\n\nTABLE 4 KEY\nComposite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\nFor space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\nCondition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\nClinical Phase General Comments:\nTI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\nto the medical condition.\nDurations are defined in hours.\nRemoval to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\nend state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\npotential for intractable pain.\nLoss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\nClinical Phase 1: Initial Assessment and Diagnosis:\nCovers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\ncrewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\nconsidered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\napplicable.\"\nClinical Phase 2: Stabilization, Treatment, and Convalescence:\nThe affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\nto recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\nrecurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\nmaximum hours.\nClinical Phase 3: Condition End State:\nReached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\nenvironment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\ncondition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\nbe noted in the condition end state results.\n\n11/22/2022 8:47:18 AM\n\nICL72_Neuropathy - Central, Impingement Related Cliff\n\npage: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "p.4"
+    },
+    {
+      "section_id": "CLIFF-058-sec-4",
+      "heading": "Scenario Overview & Treatment Comments",
+      "text_content": "SCENARIO OVERVIEW COMMENTS\n\nThere is no IMM LD68 CliFF for this condition. Incidence values are based on analog military populations. Composite incidence value will need to\nbe determined by adding incidence values for cervical impingement and lumbar impingement. Best case/worst case percentages and CP2 durations\nbased on terrestrial general population data. RTDC probabilities are based on best and worst case definitions and terrestrial general population\ndata. LOCL probabilities are based on best case and worst case definitions.\n\nTREATED BEST CASE (TBC) SCENARIO COMMENTS\n\nNo RTDC or LOCL is expected for the treated best case scenario based on the definition.\n\nTREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n1-5% probability of RTDC based on worst case surrogates of cauda equina syndrome or profound motor neuropathy. References: Dynamed Cervical Spinal Stenosis and Cauda Equina Syndrome. LOCL is not expected.\n\nUNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\nNo RTDC or LOCL is expected for the untreated best case scenario based on the definition.\n\nUNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\nRTDC is expected (100%) based on worst case definition (persistent neuropathy with no available treatment). LOCL is not expected.\n\nTABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nWeber et al, 1993\n\nTerrestrial\n\nKuijper et al, 2009\n\nTerrestrial\n\nPeul et al, 2007\n\nTerrestrial\n\nLOC Value\n\n3\n\nTreated best case: Weber- Average Piriformis Syndrome: 4 weeks; Age 45.9; M 41%. Kuijper- Average age 47y; M 55%; Smokers 43%; some\npatients still have pain at 6mo. LOC = 3 (somewhat confident). Treated worst case: Peul et al, 2007 - Sciatica: 4 weeks to 52 weeks; Age 41.7; F\n37%; RDQ 16.5\n\nTABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nN/A\n\nCase definition\n\nSpijker-Huiges et al, 2015\n\nTerrestrial\n\nLOC Value\n\n4\n\nTreated best case RTDC = 0% based on best case definition (neuropathy due to nerve impingement that resolves spontaneously or with\nsymptomatic treatment): LOC = 4 (confident). Treated worst case RTDC = 1-5% based on worst case surrogates of cauda equina syndrome or\n\n11/22/2022 8:47:18 AM\n\nICL72_Neuropathy - Central, Impingement Related Cliff\n\npage: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "p.5"
+    },
+    {
+      "section_id": "CLIFF-058-sec-5",
+      "heading": "Outcome Level of Confidence (LOC) & Limitations Summary",
+      "text_content": "profound motor neuropathy: LOC = 3 (somewhat confident). References: Spijker-Huiges et al, 2015. Untreated best case RTDC = 0% based on\nbest case definition (neuropathy due to nerve impingement that resolves spontaneously or with symptomatic treatment): LOC = 4 (confident).\nUntreated worst case RTDC = 100% based on worst case definition (persistent neuropathy with no available treatment): LOC = 4 (confident).\n\nTABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nN/A\n\nCase definition\n\n4\n\nLOCL is not expected in any scenarios based on best case and worst case scenario definitions: LOC = 4 (confident). There is no evidence to\nsupport that LOCL is associated with cervical nerve root impingement or lumbar nerve root impingement.\n\nCAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\nCapabilities and Resourcing Scope Overview Worst Case Definition: Persistent neuropathy due to impingement that requires nerve-modulating\nagents, steroids, or surgical intervention. (This excludes peripheral impingement syndromes) Best Case Definition: Neuropathy due to nerve\nimpingement that resolves spontaneously (i.e. pinched nerve) or with symptomatic treatment (this excludes peripheral impingement syndromes).\nThis is just a central (brain and spinal cord) impingement syndrome, and does not include impingement of anything peripheral to that. Diagnostic\nScope and Resourcing In the best-case scenario, diagnosis is based on history and physical examination (musculoskeletal and neurologic) only.\nImaging, including ultrasound would be helpful in diagnosis of peripheral neuropathy, but is unlikely to be informative in a central impingement. In\nthe worst-case scenario, diagnosis is based on history, physical examination (musculoskeletal, neurologic, and vital signs), and imaging. The utility\nof musculoskeletal ultrasound would be determined on a case-by-case basis. It was included as a non-necessary capability. This diagnostic\nframework is consistent with the terrestrial workup for peripheral vs central impingement based on severe disease. It may be used to rule out\nperipheral disease. Clinical Phase 1 Duration and Rationale This version of IMPACT presumes physician level knowledge, skill, and ability will be\npresent on the mission. The CRT working group SME consensus duration is as follows: CP1 BC (Treated or Untreated): 1.8 hours This is the\nlongest reasonable time to complete this task for an experienced clinician adjusted for being in the spaceflight environment to do the following: 1 Take a proper history of the patient 2 - Perform a physical on the patient CP1 WC (Treated or Untreated): 1.9 hours This is the longest reasonable\ntime to complete this task for an experienced clinician adjusted for being in the spaceflight environment to do the following: 1 - Take a proper\nhistory of the patient 2 - Perform a physical on the patient including a musculoskeletal ultrasound The highest scope of practice code used in this\nCRT which includes interpretation of diagnosis, performing diagnostic tests and performing treatment would be a four, or an intern level. Treatment\nScope and Resourcing Most best-case in terrestrial populations resolve without need for medication at all and just require physical therapy.\nHowever, NSAIDs are being given as part of the differential because we are not likely to be sure of the source of the pain. Terrestrially, worst-case\nconditions may require reduction of inflammation with anti-inflammatory medications and neuropathic pain modulators such as gabapentin are being\ngiven for relief. Additionally the following notes should be made concerning the Worst case scenario: 1 - Muscle relaxants are not resourced to this\ncondition because they do not actually help true neuropathic pain. 2 - We are not including the ground communication because we believe that it\nshould not be absolutely required for making a differential or starting treatment. 3 - NSAIDs are being given as part of the differential because we\nare not likely to be sure of the source of the pain. Communications and Support Needs While real-time video and audio loop communications are\ndesired for diagnosis and treatment, they were not considered a necessity, particularly in the best-case scenario. For the WC, consultation with\nground specialists to facilitate treatment and healing was considered helpful, but again not necessary. REFERENCES\n\nIMM CLIFF RECONCILATION COMMENTS\n\nThere is no IMM CliFF for this condition.\n\nLIMITATIONS SUMMARY\n\nThere is no spaceflight data. Terrestrial general population and analog military data may not be directly applicable to the astronaut population\nduring spaceflight due to the uniqueness of the astronaut population and the spaceflight environment.\n\n11/22/2022 8:47:18 AM\n\nICL72_Neuropathy - Central, Impingement Related Cliff\n\npage: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "p.6"
+    },
+    {
+      "section_id": "CLIFF-058-sec-6",
+      "heading": "Table 8. Task Impairment Calculation by Human Systems Task Categories",
+      "text_content": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\nClinical Phase 2: Treatment\nAffected HSTCs\nCognitive Simple\n\nCognitive Complex\n\nTreated\nBest\nCase\n(TBC)\n\n664\n\nUntreated\nBest\nCase\n(UTBC)\n\n664\n\nTreated\nWorst\nCase\n(TWC)\n\n664\n\nUntreated\nWorst\nCase\n(UTWC)\n\n664\n\nCommunications\n\nInterpersonal\nSkills\n\nVision\n\nHearing\n\nCardiopulmonary\n\nDentition\n\nGI\n\n145\n\n89\n\n145\n\nAffected HSTCs (Continued)\n\nHand\n(Dom)\n\nHand (Any)\n\nGU\n\nUpper Extremity\n\nLower\nExtremity\n\nAmbul &\nStanding (g)\n\nTI Calculation\n\nTranslation &\nDon/Doff\nStabilization\nEquipment\n(microgravity)\n\nPressure\nOps\n\nTI Score\n\nTotal Tasks\nImpaired By\nCondition\n\nTotal\nHuman\nSystem\nCategory\nTasks Full\nMission\n\nTI Decimal\n\nTI %\n\nTreated\nBest\n132\nCase\n(TBC)\n\n414\n\n34\n\n211\n\n1455\n\n3763\n\n0.38666\n\n38.666\n\nUntreated\nBest\n132\nCase\n(UTBC)\n\n414\n\n34\n\n211\n\n1600\n\n3763\n\n0.425193\n\n42.5193\n\nTreated\nWorst\n132\nCase\n(TWC)\n\n414\n\n34\n\n211\n\n1455\n\n3763\n\n0.38666\n\n38.666\n\nUntreated\nWorst\n132\nCase\n(UTWC)\n\n414\n\n34\n\n211\n\n1689\n\n3763\n\n0.448844\n\n44.8844\n\nClinical Phase 3: Condition End State\nAffected HSTCs\nCognitive Simple\n\nCognitive Complex\n\nCommunications\n\nInterpersonal\nSkills\n\nVision\n\nHearing\n\nCardiopulmonary\n\nDentition\n\nGI\n\nGU\n\nTreated\nBest\nCase\n(TBC)\nUntreated\nBest\nCase\n(UTBC)\nTreated\nWorst\nCase\n(TWC)\nUntreated\nWorst\nCase\n(UTWC)\n\n664\n\nAffected HSTCs (Continued)\n\n11/22/2022 8:47:18 AM\n\nICL72_Neuropathy - Central, Impingement Related Cliff\n\nTI Calculation\n\nTI Score\n\npage: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "p.7"
+    },
+    {
+      "section_id": "CLIFF-058-sec-7",
+      "heading": "Table 8. Full Mission Task Impairment Totals",
+      "text_content": "Total Tasks\nImpaired By\nCondition\n\nTotal\nHuman\nSystem\nCategory\nTasks Full\nMission\n\nTreated\nBest\nCase\n(TBC)\n\n0\n\n3763\n\n0\n\n0\n\nUntreated\nBest\nCase\n(UTBC)\n\n0\n\n3763\n\n0\n\n0\n\nTreated\nWorst\nCase\n(TWC)\n\n0\n\n3763\n\n0\n\n0\n\n1455\n\n3763\n\n0.38666\n\n38.666\n\nHand\n(Dom)\n\nUntreated\nWorst\n132\nCase\n(UTWC)\n\n11/22/2022 8:47:18 AM\n\nHand (Any)\n\nUpper Extremity\n\n414\n\nLower\nExtremity\n\nTranslation &\nAmbul &\nDon/Doff\nStabilization\nStanding (g)\nEquipment\n(microgravity)\n\n34\n\nPressure\nOps\n\n211\n\nICL72_Neuropathy - Central, Impingement Related Cliff\n\nTI Decimal\n\nTI %\n\npage: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "p.8"
+    },
+    {
+      "section_id": "CLIFF-058-sec-8",
+      "heading": "Table 8 Key. Human System Task Category (HSTC) Definitions",
+      "text_content": "TABLE 8 KEY\nHuman System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\nsimple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\ncomplex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\nwith inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\nrequiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\nwhich visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\nalarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\nactivities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\nsolids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n(Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n(Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\nTasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n(excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\nboth lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\nuse of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\nsetting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\nequipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\nCriteria for Assignment of Conditions to HSTCs (any of the following):\n1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n5) Does pain associated with the condition impair any further human system categories?\n\nTASK IMPAIRMENT COMMENTS\n\nCP2: No comment CP3: No comment\n\nEVIDENCE COLLECTION PROCESS\n\nMesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n(CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\nIncidence:\nDatabases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\nsearch, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\nNY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\nDuration, RTDC, LOCL:\nDatabases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\nLOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\napplicable, the article was included in the CLiFF.\n\nLEVEL OF CONFIDENCE (LOC) SCORING\n\nArticles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\nenvironment using the following grading scale:\n4 \u2013 Confident\n3 \u2013 Somewhat confident\n2 \u2013 Neutral\n1 \u2013 Somewhat unconfident\n0 \u2013 Not confident\nThe following considerations factor into the grading scale above:\n\u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n\u2022 How closely does the population included resemble the astronaut population?\n\u2022 Quality of the paper (number of subjects, methods, etc.)\n\u2022 How much does the editor trust the source of the evidence?\n\u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n\u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n11/22/2022 8:47:18 AM\n\nICL72_Neuropathy - Central, Impingement Related Cliff\n\npage: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "p.9"
+    },
+    {
+      "section_id": "CLIFF-058-sec-9",
+      "heading": "References",
+      "text_content": "REFERENCES\n\nReference\nSchoenfeld, A. J., et al. (2012). \"Incidence and Epidemiology of Cervical Radiculopathy in the United States Military\n2000 to 2009.\" J Spinal Disord Tech 25(1): 17-22. Schoenfeld, A. J., et al. (2012). Characterization of the Incidence and Risk Factors for the\nDevelopment of Lumbar Radiculopathy. J Spinal Disord Tech 25(3): 163-167. Radhakrishnan, K., et al. (1994). \"Epidemiology of cervical\nradiculopathy. A population-based study from Rochester, Minnesota, 1976 through 1990.\" Brain 117 ( Pt 2): 325-335. Sampath, P., et al. (1999).\n\"Outcome in patients with cervical radiculopathy. Prospective, multicenter study with independent clinical review.\" Spine (Phila Pa 1976) 24(6):\n591-597. Peul, W. C., et al. (2007). \"Surgery versus prolonged conservative treatment for sciatica.\" N Engl J Med 356(22): 2245-2256. Lequin,\nM. B., et al. (2013). \"Surgery versus prolonged conservative treatment for sciatica: 5-year results of a randomized controlled trial.\" BMJ Open\n3(5).\nBailey, C. S., et al. (2020). \"Surgery versus Conservative Care for Persistent Sciatica Lasting 4 to 12 Months.\" N Engl J Med 382(12): 1093-1102.\nKuijper, B., et al. (2009). \"Cervical collar or physiotherapy versus wait and see policy for recent onset cervical radiculopathy: randomised trial.\"\nBMJ (Clinical research ed.) 339: b3883\nWeber, H., et al. (1993). \"The natural course of acute sciatica with nerve root symptoms in a double-blind placebo-controlled trial evaluating the\neffect of piroxicam.\" Spine (Phila Pa 1976) 18(11): 1433-1438\nSpijker-Huiges, A., et al. (2015). \"Radiating low back pain in general practice: incidence, prevalence, diagnosis, and long-term clinical course of\nillness.\" Scand J Prim Health Care 33(1): 27-32\n\nACRONYMS\n\nACRONYM\n\nPHRASE\n\nAAOMS\n\nAmerican Association of Oral and Maxillofacial Surgeons\n\nAMA\n\nAmerican Medical Association\n\nARCL\n\nAll Remaining Conditions List\n\nARS\n\nAcute Radiation Sickness\n\nBHP\n\nBehavioral Health and Performance\n\nCAC\n\nCoronary Artery Calcium\n\nCHS\n\nCrew Health and Safety\n\nCL\n\nCondition List\n\nCliFF\n\nClinical Finding Form\n\nCMO\n\nCrew Medical Officer\n\nCOMFORT\n\nClinical Outcome Metrics for Optimization of Robust Training\n\nCP1\n\nClinical Phase 1\n\nCP2\n\nClinical Phase 2\n\nCP3\n\nClinical Phase 3\n\nCRL\n\nClinical Resource Level\n\nCRT\n\nCapability Resource Table\n\nCST\n\nClinical Science Team\n\nDCS\n\nDecompression Syndrome\n\nDRM\n\nDesign Reference Mission\n\nED\n\nEmergency Medicine Doctor\n\nEL\n\nEvidence Library\n\nEMCL\n\nExploration Medical Condition List\n\n11/22/2022 8:47:18 AM\n\nICL72_Neuropathy - Central, Impingement Related Cliff\n\npage: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "p.10"
+    },
+    {
+      "section_id": "CLIFF-058-sec-10",
+      "heading": "Acronyms & Abbreviations (Part 1)",
+      "text_content": "EMT\n\nEmergency Medical Technician\n\nEVA\n\nExtravehicular Activity\n\nEXMC\n\nExploration Medical Capability\n\nHRP\n\nHuman Research Program\n\nICD\n\nInternational Classification of Disease\n\nICL 1.0\n\nIMPACT 1.0 Medical Conditions List\n\nICU\n\nIntensive Care Unit\n\nIMCL\n\niMED Condition List\n\niMED\n\nIntegrated Medical Evidence Database\n\nIMM\n\nIntegrated Medical Model\n\nIMPACT-MD\n\nImpact Medical Database\n\nIP\n\nIncidence Proportion\n\nIR\n\nIncidence Rate\n\nISS\n\nInternational Space Station\n\nIV\n\nIntravenous\n\nJSC\n\nJohnson Space Center\n\nLEO\n\nLow-Earth orbit\n\nLEVA\n\nLunar Extravehicular Activity\n\nLOCL\n\nLoss of Crew Life\n\nLOM\n\nLoss of Mission\n\nLSAH\n\nLifetime Surveillance of Astronaut Health\n\nLSO\n\nLunar Surface Operations\n\nMCL\n\nMaster Condition List\n\nMEVA\n\nMedical Extravehicular Activity\n\nNASA\n\nNational Aeronautics and Space Administration\n\nN/A\n\nNot Applicable\n\nNP\n\nNurse Practitioner\n\nOBGYN\n\nObstetrics and Gynecology\n\nOR\n\nOccurrence Rate\n\nPA\n\nPhysician Assistant\n\nPDQ\n\nPain Disability Questionnaire\n\nPFCL\n\nProposed Future Conditions List\n\nPPE\n\nPersonal Protective Equipment\n\nPTRS\n\nProject Technical Requirements Specification\n\nPRL\n\nPharmaceutical Resource Level\n\nQTL\n\nQuality Time Lost\n\nRCL\n\nRemoved Conditions List\n\nREP\n\nRochester Epidemiology Study\n\nRTDC\n\nRemoval to Definitive Care\n\nSANS\n\nSpaceflight-Associated Neuro-ocular Syndrome\n\nSAS\n\nSpace Adaptation Syndrome\n\nSEVA\n\nSpaceflight Extravehicular Activity\n\nSME\n\nSubject Matter Expert\n\n11/22/2022 8:47:18 AM\n\nICL72_Neuropathy - Central, Impingement Related Cliff\n\npage: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "p.11"
+    },
+    {
+      "section_id": "CLIFF-058-sec-11",
+      "heading": "Acronyms & Abbreviations (Part 2)",
+      "text_content": "SoP\n\nStandard Operating Procedure\n\nSPE\n\nSolar Particle Event\n\nTBD\n\nTo Be Determined\n\nTI\n\nTask Impairment\n\n11/22/2022 8:47:18 AM\n\nICL72_Neuropathy - Central, Impingement Related Cliff\n\npage: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "p.12"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-058-tbl-1",
+      "title": "Table 1. Incidence Model (ICL72_Neuropathy - Central, Impingement Related)",
+      "rows": [
+        [
+          "Incidence Type",
+          "General"
+        ],
+        [
+          "Reference Page",
+          "p.1-2"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "p.2"
+    },
+    {
+      "table_id": "CLIFF-058-tbl-4",
+      "title": "Table 4. CliFF Treatment & Outcome Table by Clinical Phase",
+      "rows": [
+        [
+          "Scenario",
+          "Treated Best Case (TBC)",
+          "Treated Worst Case (TWC)",
+          "Untreated Best Case (UTBC)",
+          "Untreated Worst Case (UTWC)"
+        ],
+        [
+          "Details",
+          "See extracted page 4 full table text",
+          "See extracted page 4 full table text",
+          "See extracted page 4 full table text",
+          "See extracted page 4 full table text"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "p.4"
+    },
+    {
+      "table_id": "CLIFF-058-tbl-8",
+      "title": "Table 8. Task Impairment Calculation by Human Systems Task Categories",
+      "rows": [
+        [
+          "Phase / Scenario",
+          "Full Mission Task Impairment Summary"
+        ],
+        [
+          "Details",
+          "See pages 7-8 HSTC breakdown"
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "p.7-8"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-058-ref-0",
+      "label": "Schoenfeld, A. J., et al. (2012). \"Incidence and Epidemiology of Cervical Radiculopathy in the United States Military 2000 to 2009.\" J Spinal Disord Tech 25(1): 17-22. Schoenfeld, A. J., et al. (2012). Characterization of the Incidence and Risk Factors for the Development of Lumbar Radiculopathy. J Spinal Disord Tech 25(3): 163-167. Radhakrishnan, K., et al. (1994). \"Epidemiology of cervical radiculopathy. A population-based study from Rochester, Minnesota, 1976 through 1990.\" Brain 117 ( Pt 2): 325-335. Sampath, P., et al. (1999).",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/neuropathy-central-impingement-related-cliff-2023.pdf?emrc=e6506a",
+      "page_number": 10
+    },
+    {
+      "reference_id": "CLIFF-058-ref-1",
+      "label": "\"Outcome in patients with cervical radiculopathy. Prospective, multicenter study with independent clinical review.\" Spine (Phila Pa 1976) 24(6): 591-597. Peul, W. C., et al. (2007). \"Surgery versus prolonged conservative treatment for sciatica.\" N Engl J Med 356(22): 2245-2256. Lequin, M. B., et al. (2013). \"Surgery versus prolonged conservative treatment for sciatica: 5-year results of a randomized controlled trial.\" BMJ Open 3(5).",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/neuropathy-central-impingement-related-cliff-2023.pdf?emrc=e6506a",
+      "page_number": 10
+    },
+    {
+      "reference_id": "CLIFF-058-ref-2",
+      "label": "Bailey, C. S., et al. (2020). \"Surgery versus Conservative Care for Persistent Sciatica Lasting 4 to 12 Months.\" N Engl J Med 382(12): 1093-1102.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/neuropathy-central-impingement-related-cliff-2023.pdf?emrc=e6506a",
+      "page_number": 10
+    },
+    {
+      "reference_id": "CLIFF-058-ref-3",
+      "label": "Kuijper, B., et al. (2009). \"Cervical collar or physiotherapy versus wait and see policy for recent onset cervical radiculopathy: randomised trial.\" BMJ (Clinical research ed.) 339: b3883 Weber, H., et al. (1993). \"The natural course of acute sciatica with nerve root symptoms in a double-blind placebo-controlled trial evaluating the effect of piroxicam.\" Spine (Phila Pa 1976) 18(11): 1433-1438",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/neuropathy-central-impingement-related-cliff-2023.pdf?emrc=e6506a",
+      "page_number": 10
+    },
+    {
+      "reference_id": "CLIFF-058-ref-4",
+      "label": "Spijker-Huiges, A., et al. (2015). \"Radiating low back pain in general practice: incidence, prevalence, diagnosis, and long-term clinical course of illness.\" Scand J Prim Health Care 33(1): 27-32",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/neuropathy-central-impingement-related-cliff-2023.pdf?emrc=e6506a",
+      "page_number": 10
+    },
+    {
+      "reference_id": "CLIFF-058-ref-5",
+      "label": "ACRONYMS ACRONYM PHRASE AAOMS American Association of Oral and Maxillofacial Surgeons AMA American Medical Association ARCL All Remaining Conditions List ARS Acute Radiation Sickness BHP Behavioral Health and Performance CAC Coronary Artery Calcium CHS Crew Health and Safety CL Condition List CliFF Clinical Finding Form CMO Crew Medical Officer COMFORT Clinical Outcome Metrics for Optimization of Robust Training CP1 Clinical Phase 1 CP2 Clinical Phase 2 CP3 Clinical Phase 3 CRL Clinical Resource Level CRT Capability Resource Table CST Clinical Science Team DCS Decompression Syndrome DRM Design Reference Mission ED Emergency Medicine Doctor EL Evidence Library EMCL Exploration Medical Condition List",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/neuropathy-central-impingement-related-cliff-2023.pdf?emrc=e6506a",
+      "page_number": 10
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-058-img-0",
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-058/4b00e4d3902d618e8a3f2e8dfd53a91591e315d2c65b0d43b8b4bc3d85b580aa.png",
+      "mime_type": "image/png",
+      "width": 768,
+      "height": 1024,
+      "sha256": "4b00e4d3902d618e8a3f2e8dfd53a91591e315d2c65b0d43b8b4bc3d85b580aa",
+      "creator": "BruceBlaus",
+      "license_identifier": "CC-BY-3.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Blausen_0822_SpinalCord.png",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Blausen_0822_SpinalCord.png",
+      "attribution": "BruceBlaus (CC-BY-3.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Blausen_0822_SpinalCord.png)",
+      "caption": "Anatomical illustration of the spinal cord, meninges, and exiting dorsal and ventral spinal nerve roots within the vertebral canal.",
+      "alt_text": "Medical illustration of the spinal cord and spinal nerve roots.",
+      "clinical_relevance": "Identifies spinal cord and nerve root structures vulnerable to central/radicular impingement in cervical and lumbar spine pathology (CLIFF-058, p.1, p.5).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 1",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-058-img-1",
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-058/b21ab659e55fbf96a2db5966fb3f288e080e70eb9192134315e0695211995654.jpg",
+      "mime_type": "image/jpeg",
+      "width": 752,
+      "height": 1263,
+      "sha256": "b21ab659e55fbf96a2db5966fb3f288e080e70eb9192134315e0695211995654",
+      "creator": "OpenStax",
+      "license_identifier": "CC-BY-4.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/1321_Spinal_Nerve_Plexuses.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:1321_Spinal_Nerve_Plexuses.jpg",
+      "attribution": "OpenStax (CC-BY-4.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:1321_Spinal_Nerve_Plexuses.jpg)",
+      "caption": "Posterior anatomical diagram of the human spinal cord and cervical, brachial, lumbar, and sacral nerve plexuses.",
+      "alt_text": "Anatomical diagram showing the spinal cord and major peripheral nerve plexuses.",
+      "clinical_relevance": "Maps spinal nerve root distributions (cervical and lumbar) that determine motor/sensory deficits in impingement-related central neuropathy (CLIFF-058, p.1-2, p.6).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 2",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-058-img-2",
+      "media_kind": "RADIOLOGY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-058/7170769483a61d537d382bc182ede014ebfc3409871839e6941f7dd39f378c2d.png",
+      "mime_type": "image/png",
+      "width": 508,
+      "height": 505,
+      "sha256": "7170769483a61d537d382bc182ede014ebfc3409871839e6941f7dd39f378c2d",
+      "creator": "Nevit Dilmen (talk)",
+      "license_identifier": "CC-BY-SA-3.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Neck_MRI_133023.png",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Neck_MRI_133023.png",
+      "attribution": "Nevit Dilmen (talk) (CC-BY-SA-3.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Neck_MRI_133023.png)",
+      "caption": "Sagittal T2-weighted MRI of the cervical spine demonstrating intervertebral disc protrusion and spinal canal narrowing.",
+      "alt_text": "Sagittal MRI scan of the cervical spine showing disc impingement.",
+      "clinical_relevance": "Illustrates neuroimaging used to diagnose structural spinal cord or nerve root impingement in worst-case radiculopathy/myelopathy (CLIFF-058, p.5-6).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 3",
+      "usage_review": "APPROVED"
+    }
+  ]
+}

@@ -35,6 +35,7 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad, onLibrary, on
     void syncNasaMa7Demo().then(value => { if (active) setSource(value); }).catch(() => {});
     return () => { active = false; };
   }, []);
+
   useEffect(() => {
     let active = true;
     void AsyncStorage.getItem(HEALTH_TIP_KEY).then(async shown => {
@@ -53,7 +54,6 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad, onLibrary, on
     dismissHealthTip();
     onHealthGuide?.();
   };
-
   return (
     <AppPage>
       <AppHeader title={t(locale, 'demoTitle')} onBack={onBack} backLabel={t(locale, 'back')} />
@@ -67,7 +67,7 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad, onLibrary, on
       {source ? (
         <>
           <View style={styles.briefing}>
-            <View style={styles.briefingHeader}><View><Text style={styles.sectionKicker}>{locale === 'en' ? 'THE ARCHIVE' : 'DỮ LIỆU'}</Text><Text style={styles.briefingTitle}>{locale === 'en' ? 'A real flight, in focus' : 'Một chuyến bay thực'}</Text></View><Ionicons name="document-text-outline" size={22} color={colors.cyan} /></View>
+            <View style={styles.briefingHeader}><View><Text style={styles.sectionKicker}>{locale === 'en' ? 'THE ARCHIVE' : 'DỮ LIỆU'}</Text><Text style={styles.briefingTitle}>{locale === 'en' ? 'A real flight, in focus' : 'Một chuyến bay thực'}</Text></View><Ionicons name="document-text-outline" size={22} color={colors.primary} /></View>
             <Text style={styles.briefingText}>{locale === 'en' ? 'Explore the measurements recorded in NASA’s postflight report.' : 'Khám phá số liệu trong báo cáo sau chuyến bay của NASA.'}</Text>
             <View style={styles.factRow}>
               <View style={styles.fact}><Text style={styles.factValue}>{source.summary.timepoint_count}</Text><Text style={styles.factLabel}>{t(locale, 'demoTimepoints')}</Text></View>
@@ -78,12 +78,11 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad, onLibrary, on
           </View>
           <ActionButton title={copy(locale, 'demoStart')} onPress={onLoad} />
           {onLibrary ? <Pressable accessibilityRole="button" onPress={onLibrary} style={styles.libraryAction}>
-            <Ionicons name="book-outline" size={18} color={colors.cyan} /><Text style={styles.libraryText}>{locale === 'en' ? 'Explore NASA Library' : 'Khám phá thư viện NASA'}</Text><Ionicons name="arrow-forward" size={17} color={colors.cyan} />
+            <Ionicons name="book-outline" size={18} color={colors.primary} /><Text style={styles.libraryText}>{locale === 'en' ? 'Explore NASA Library' : 'Khám phá thư viện NASA'}</Text><Ionicons name="arrow-forward" size={17} color={colors.primary} />
           </Pressable> : null}
-          {onHealthGuide ? <Pressable accessibilityRole="button" onPress={onHealthGuide} style={styles.libraryAction}>
-            <Ionicons name="pulse-outline" size={18} color={colors.cyan} /><Text style={styles.libraryText}>{copy(locale, 'healthGuide')}</Text><Ionicons name="arrow-forward" size={17} color={colors.cyan} />
-          </Pressable> : null}
-          <Pressable accessibilityRole="button" accessibilityState={{ expanded: details }} onPress={() => setDetails(value => !value)} style={styles.sourceLink}><Text style={styles.sourceLinkText}>{copy(locale, 'sourceDetails')}</Text><Ionicons name={details ? 'chevron-up' : 'chevron-down'} size={18} color={colors.cyan} /></Pressable>
+                    {onHealthGuide ? <Pressable accessibilityRole='button' onPress={onHealthGuide} style={styles.libraryAction}>
+            <Ionicons name='pulse-outline' size={18} color={colors.primary} /><Text style={styles.libraryText}>{copy(locale, 'healthGuide')}</Text><Ionicons name='arrow-forward' size={17} color={colors.primary} />
+          </Pressable> : null}<Pressable accessibilityRole="button" accessibilityState={{ expanded: details }} onPress={() => setDetails(value => !value)} style={styles.sourceLink}><Text style={styles.sourceLinkText}>{copy(locale, 'sourceDetails')}</Text><Ionicons name={details ? 'chevron-up' : 'chevron-down'} size={18} color={colors.primary} /></Pressable>
           {details ? <>
           <Panel style={styles.sourcePanel}>
             <Text style={styles.reportTitle}>{source.data.source_title}</Text>
@@ -99,11 +98,11 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad, onLibrary, on
               </View>
             ))}
             <Pressable accessibilityRole="link" onPress={() => void Linking.openURL(source!.data.source_url)} style={styles.sourceLink}>
-              <Ionicons name="open-outline" size={16} color={colors.cyan} />
+              <Ionicons name="open-outline" size={16} color={colors.primary} />
               <Text style={styles.sourceLinkText}>{t(locale, 'demoOpenNasaSource')}</Text>
             </Pressable>
             <Pressable accessibilityRole="link" onPress={() => void Linking.openURL(source!.data.challenge_link)} style={styles.sourceLink}>
-              <Ionicons name="open-outline" size={16} color={colors.cyan} />
+              <Ionicons name="open-outline" size={16} color={colors.primary} />
               <Text style={styles.sourceLinkText}>{t(locale, 'demoOpenChallenge')}</Text>
             </Pressable>
           </Panel>
@@ -130,28 +129,27 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad, onLibrary, on
       )}
       <Modal transparent visible={healthTipVisible} animationType={appearance.reduceMotion ? 'none' : 'fade'} onRequestClose={dismissHealthTip}>
         <View style={styles.tipModalRoot}>
-          <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'healthTipClose')} style={[StyleSheet.absoluteFill, styles.tipBackdrop]} onPress={dismissHealthTip} />
+          <Pressable accessibilityRole='button' accessibilityLabel={copy(locale, 'healthTipClose')} style={[StyleSheet.absoluteFill, styles.tipBackdrop]} onPress={dismissHealthTip} />
           <View style={styles.tipCard}>
             <View style={styles.tipHeader}>
-              <View style={styles.tipIcon}><Ionicons name="pulse-outline" size={19} color={colors.cyan} /></View>
+              <View style={styles.tipIcon}><Ionicons name='pulse-outline' size={19} color={colors.primary} /></View>
               <Text style={styles.tipTitle}>{copy(locale, 'healthTipTitle')}</Text>
-              <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'healthTipClose')} hitSlop={8} onPress={dismissHealthTip} style={styles.tipClose}>
-                <Ionicons name="close" size={20} color={colors.text} />
+              <Pressable accessibilityRole='button' accessibilityLabel={copy(locale, 'healthTipClose')} hitSlop={8} onPress={dismissHealthTip} style={styles.tipClose}>
+                <Ionicons name='close' size={20} color={colors.text} />
               </Pressable>
             </View>
             <Text style={styles.tipBody}>{copy(locale, 'healthTipBody')}</Text>
             <View style={styles.tipActions}>
-              {onHealthGuide ? <Pressable accessibilityRole="button" onPress={openHealthGuide} style={[styles.tipAction, styles.tipSecondary]}>
+              {onHealthGuide ? <Pressable accessibilityRole='button' onPress={openHealthGuide} style={[styles.tipAction, styles.tipSecondary]}>
                 <Text style={styles.tipSecondaryText}>{copy(locale, 'healthTipOpen')}</Text>
               </Pressable> : null}
-              <Pressable accessibilityRole="button" onPress={dismissHealthTip} style={[styles.tipAction, styles.tipPrimary]}>
+              <Pressable accessibilityRole='button' onPress={dismissHealthTip} style={[styles.tipAction, styles.tipPrimary]}>
                 <Text style={styles.tipPrimaryText}>{copy(locale, 'healthTipDismiss')}</Text>
               </Pressable>
             </View>
           </View>
         </View>
-      </Modal>
-    </AppPage>
+      </Modal>    </AppPage>
   );
 }
 
@@ -175,7 +173,7 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   heroKicker: { color: '#D1DDF3', fontWeight: '800', fontSize: 10, letterSpacing: 1.2 },
   briefing: { paddingHorizontal: 3, paddingVertical: 3, gap: 9 },
   briefingHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  sectionKicker: { color: colors.cyan, fontSize: 9, fontWeight: '800', letterSpacing: 1.2, marginBottom: 4 },
+  sectionKicker: { color: colors.primary, fontSize: 9, fontWeight: '800', letterSpacing: 1.2, marginBottom: 4 },
   briefingTitle: { color: colors.text, fontSize: 19, lineHeight: 24, fontWeight: '800', letterSpacing: -0.4 },
   briefingText: { color: colors.muted, fontSize: 12, lineHeight: 18 },
   factRow: { flexDirection: 'row', gap: 8 },
@@ -185,6 +183,22 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   sourceMeta: { color: colors.muted, fontSize: 10, lineHeight: 15 },
   libraryAction: { minHeight: 48, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 13, gap: 9, borderRadius: 13, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card },
   libraryText: { flex: 1, color: colors.text, fontSize: 13, fontWeight: '800' },
+  sourcePanel: { gap: 12 },
+  reportTitle: { color: colors.text, fontSize: 15, fontWeight: '900', lineHeight: 21 },
+  metaRow: { flexDirection: 'row', justifyContent: 'space-between', gap: 10 },
+  metaLabel: { color: colors.muted, fontSize: 12, fontWeight: '700' },
+  metaValue: { color: colors.text, fontSize: 12, fontWeight: '800', textAlign: 'right' },
+  sourceGroup: { borderTopWidth: 1, borderTopColor: colors.border, paddingTop: 9, gap: 3 },
+  groupTitle: { color: colors.text, fontSize: 12, fontWeight: '800' },
+  tableRef: { color: colors.muted, fontSize: 11 },
+  sourceLink: { minHeight: 38, flexDirection: 'row', alignItems: 'center', gap: 8 },
+  sourceLinkText: { color: colors.primary, fontSize: 12, fontWeight: '800' },
+  limitsPanel: { gap: 11 },
+  sectionTitle: { color: colors.text, fontSize: 15, fontWeight: '900' },
+  unavailableHeading: { color: colors.muted, fontSize: 12, fontWeight: '800' },
+  unavailableList: { flexDirection: 'row', flexWrap: 'wrap', gap: 7 },
+  unavailableChip: { paddingHorizontal: 9, paddingVertical: 6, borderRadius: 12, backgroundColor: colors.cardSoft },
+  unavailableText: { color: colors.muted, fontSize: 11, fontWeight: '700' },
   tipModalRoot: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 12, backgroundColor: 'rgba(8,12,32,0.5)' },
   tipBackdrop: { backgroundColor: 'transparent' },
   tipCard: { width: '100%', maxWidth: 420, padding: 17, borderRadius: 20, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, gap: 12 },
@@ -196,25 +210,8 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   tipActions: { flexDirection: 'row', justifyContent: 'flex-end', gap: 8 },
   tipAction: { flex: 1, minHeight: 44, alignItems: 'center', justifyContent: 'center', borderRadius: 12, paddingHorizontal: 10 },
   tipSecondary: { borderWidth: 1, borderColor: colors.border, backgroundColor: colors.cardSoft },
-  tipPrimary: { backgroundColor: colors.cyan },
+  tipPrimary: { backgroundColor: colors.primary },
   tipSecondaryText: { color: colors.text, fontSize: 12, fontWeight: '800' },
-  tipPrimaryText: { color: '#FFFFFF', fontSize: 12, fontWeight: '900' },
-  sourcePanel: { gap: 12 },
-  reportTitle: { color: colors.text, fontSize: 15, fontWeight: '900', lineHeight: 21 },
-  metaRow: { flexDirection: 'row', justifyContent: 'space-between', gap: 10 },
-  metaLabel: { color: colors.muted, fontSize: 12, fontWeight: '700' },
-  metaValue: { color: colors.text, fontSize: 12, fontWeight: '800', textAlign: 'right' },
-  sourceGroup: { borderTopWidth: 1, borderTopColor: colors.border, paddingTop: 9, gap: 3 },
-  groupTitle: { color: colors.text, fontSize: 12, fontWeight: '800' },
-  tableRef: { color: colors.muted, fontSize: 11 },
-  sourceLink: { minHeight: 38, flexDirection: 'row', alignItems: 'center', gap: 8 },
-  sourceLinkText: { color: colors.cyan, fontSize: 12, fontWeight: '800' },
-  limitsPanel: { gap: 11 },
-  sectionTitle: { color: colors.text, fontSize: 15, fontWeight: '900' },
-  unavailableHeading: { color: colors.muted, fontSize: 12, fontWeight: '800' },
-  unavailableList: { flexDirection: 'row', flexWrap: 'wrap', gap: 7 },
-  unavailableChip: { paddingHorizontal: 9, paddingVertical: 6, borderRadius: 12, backgroundColor: colors.cardSoft },
-  unavailableText: { color: colors.muted, fontSize: 11, fontWeight: '700' },
-  errorPanel: { alignItems: 'flex-start' },
+  tipPrimaryText: { color: '#FFFFFF', fontSize: 12, fontWeight: '900' },  errorPanel: { alignItems: 'flex-start' },
 });
 

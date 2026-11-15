@@ -1,0 +1,613 @@
+{
+  "article_id": "CLIFF-026",
+  "slot": 26,
+  "display_title": "Eye Irritation Corneal Abrasion/Ulceration",
+  "category": "Eye Injury",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-026",
+    "publisher": "NASA",
+    "title": "Eye Irritation Corneal Abrasion/Ulceration \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eye-irritation-corneal-abrasion-ulceration-cliff-2023.pdf?emrc=21ed9a",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eye-irritation-corneal-abrasion-ulceration-cliff-2023.pdf?emrc=21ed9a",
+    "retrieved_at_utc": "2026-11-14T06:04:59.991039+00:00",
+    "content_sha256": "6a7f1717d0a0fcbd483f12fa029e5fe14e281b810a1fdd5e023514a58e0e604a",
+    "original_mime": "application/pdf",
+    "original_bytes": 380485,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-026-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch      Baseline\n\n\n\n ICL49_Eye Irritation/Corneal Abrasion/Ulceration\n\n The eye is comprised of three layers: the exterior fibrous layer (cornea and sclera), the middle vascular layer (choroid, ciliary body, and iris) and the\n internal layer (retina). The lens partitions the anterior structures (iris, anterior chamber, and cornea) from the posterior structures (vitreous, retina,\n choroid, and optic nerve). Eye irritation can be secondary to superficial foreign bodies trapped on the cornea, conjunctiva or sclera. Dry eyes\n (compromised ocular lubrication) can also lead to eye irritation. The risk of irritation from a superficial ocular foreign body is higher in microgravity\n secondary to particles free-floating in the cabin (Barratt et al., 2019). Dry eyes are also of increased concern given the varying environmental\n conditions, possible changes in blink-rate and changes in surface tension of the tear-film in space. A corneal abrasion results when there is a defect\n in the epithelium, usually from an external trauma. Patients who wear contact lenses are at increased risk for abrasions and microbial pathogens\n (Ahmed et al., 2015). Most abrasions will heal without treatment, but some can progress to corneal ulcerations. Corneal ulcers are an ophthalmologic\n emergency as they are associated with progressive tissue destruction. Untreated, corneal ulcers can rapidly continue to corneal perforations and loss\n of the eye (Tuli et al., 2007). Even with rapid treatment, visual defects can occur from residual scarring. In terrestrial scenarios, patients with corneal\n ulcerations require urgent ophthalmologic evaluation and immediate initiation of medication. Many ulcerations will fail to respond to medical\n therapeutics (both topical and systemic) and do require procedural intervention.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Spaceflight literature were derived from two LSAH data gathering events (Walton, 2010; Saile et. al, 2017) and a NASA white paper (Antonsen et\n  al., 2017). Unfortunately, the authors of this CLiFF did not have direct access to the data from those LSAH events. Definitions from previous IMM\n  effort have changed. Earlier definitions included: \u201cEye Chemical Burn,\u201d \u201cEye Corneal Ulcer\u201d and \u201cEye Irritation/Abrasion.\u201d In contrast, for this effort,\n  relevant CliFF conditions include: \u201cEye Irritation/Corneal Abrasion/Ulceration,\u201d \u201cBurn-Chemical Eye\u201d and \u201cEye foreign body.\u201d Subject matter\n  consensus led to a more inclusive definition for this condition and included irritations, abrasions, and ulcerations secondary to foreign bodies (as\n  there is no means of separating out the data from the LSAH pulls), chemical burns and idiopathic etiologies. Data was taken from the relevant older\n  IMM CliFFs. The statistician of this CLiFF was able to contact the authors of Antonsen et al. and verify the data (which was also based on the prior\n  LSAH events). During her analysis it was observed that in the Antonsen et al. paper Table 1 was mislabeled as 'ISS through Exp 40' when it should\n  read ' ISS expeditions 9 and 14 through 40'; this CLIFF corrects for that error At the time of this CLIFF completion, a repeat LSAH data gathering\n  event was not possible and missions past 2017 are not represented. No additional articles were found through a literature search the herritage cliff\n  for eye irritation reports cites a Walton M, 2010 and reports \"The most frequently described foreign bodies are particulates (16), particles (9),\n  debris (5) or lint (4) in the air (34/62). They range from minor events relieved by blinking to moderate events causing irritation for hours and up to 1\n  day. We have no information on the treatment received for this type of injury.\" if person time data is available for the mission covered in the Walton,\n  2010 article this incidence would likely be hightly accurate to the spaceflight environment\n\n  ANALOG LITERATURE\n\n  Although analog studies included larger sample sizes, studies did not accurately reflect condition environments or spaceflight populations. As a\n  result, spaceflight data was rated much higher than analog data in the incidence calculation. A study analyzing medical visit data between 1996-\n  2005 of active-duty personnel via the Defense Medical Surveillance System (Hilber et al., 2010) described foreign bodies (3.6%), corneal injuries by\n  contact lenses (4.2%) and corneal abrasions (26.7%) as three of the top ten ocular injuries. This study was used to derive incidence data for the\n  risk of corneal abrasion for those that wear contacts. In Psolka et al. (2007), a retrospective review was conducted of 107 United States military\n  personnel who were referred to the Walter Reed Army Medical Center ophthalmology service between January 1, 2003 and September 30, 2005\n  with non-battle pathologies. During this time there were two dry eye events, one corneal abrasion event and one corneal foreign body event found\n  in the in the 33 months of this study. The total number of cases in this study may underestimate true incidence as patients were initially evaluated\n  by their \u201cprimary service\u201d and not every ocular event likely warranted an ophthalmology referral. Unfortunately, this study could not be used to\n  calculate an incidence rate as there was no information provided regarding whole population (only total number of patients). Another study (Tansey\n  et al., 1979) analyzed medical reports from 885 Fleet ballistic missile submarine patrols from 1963-1973 and compared them to illness rates found\n  in crewmembers on surface-level vessels. Within this timespan there were 11 reported events of \u201ccorneal foreign body\u201d, one case of \u201ccorneal\n  abrasion,\u201d and two cases of \u201ccorneal ulcerations\u201d out a total of 48 eye medical cases in a total of 7,650,000 man-days. The rate of contact lens use\n  is unknown. The authors do comment that they believed the reporting of medical conditions on submarines was artificially low secondary to the lack\n\n\n\n\n8/23/2023 5:48:20 PM                                     ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                                page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-026-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  of medical personnel and fear of retribution. In Thomas et al. (2003), a retrospective analysis was conducted of the medical records between\n  January 1, 1997 and September 30, 2000 of 1389 officers and 11,952 enlisted crew members. This accounted for a total of 215,086 and 1,955,521\n  person-days at sea, respectively. The subjects in this study were a highly screened, healthy population and the study was conducted to develop\n  epidemiological data to determine risk in space medicine. \u201cDisorders of the eye and adnexa\u201d had a reported six officer events for 1.0/100 person-\n  years and 54 enlisted men events for 1.0/100 person-years. Unfortunately, there were no further details regarding the types of pathologies\n  involved. A retrospective analysis (Aslam et al., 2005) of medical records presenting to a British Army Field Hospital during Operation Telic, study\n  period March 27 and May 1, 2003, reported that there were seven foreign body events, three petrochemical ocular injuries and 16 corneal abrasion\n  events out of a total of 45 eye complaints. One evaluation was needed due to an abrasion, accounting for 14% of the total evacuations (1/7).\n  Unfortunately, despite the relevance of the population of this study, an incidence cannot be calculated as there is not enough information provided\n  to calculate an incidence rate in person-years. McCarty2000 is one analog study in australian pilots , a self-reporting survey in which dryness\n  during flight was reported by 901 (72.2%, 95% CI=69.7-74.8%) of responsdents while only 67 (5.4% 95% CI=4.2%-6.8%) reported dryness\n  independent of flight.\n\n  TERRESTRIAL LITERATURE\n\n  Terrestrial literature came from large retrospective studies with data gathered from nationally representative databases. These studies\n  encompassed populations with increased rates of comorbid conditions. There were no metanalysis incidence data available for this condition.\n  McGwin et al. (2005), analyzed the data from the Consumer Product Safety Commission\u2019s National Electronic Injury Surveillance System (NEISS) All\n  Injury Program in the year 2000 and found that the rate of emergency department treated eye injury in the United States was 3.15 per 1000\n  population (95% confidence interval, 2.66-3.63). \u201cContusion/abrasion,\u201d \u201cforeign bodies\u201d and \u201cburns\u201d accounted for 44.4%, 30.8% and 10.2% of\n  these presentations, respectively. Chana et al. (2016) reviewed data from 2006-2011 in the U.S Nationwide Emergency Department Sample (NEDS)\n  for ocular problems. There were over 11,929,955 ED visits for ophthalmic conditions during this timeframe; of these, 1,630,506 (13.7%) visits were\n  for \u201ccorneal abrasion\u201d and 893,397 (7.5%) visits were for \u201cforeign body on external eye.\u201d \"Other burn of cornea and conjunctival sac\" accounted for\n  only 0.5% of the total visits. Although pertaining only to the worst-case scenario, Jeng et al. 2010 was useful in determining an incidence rate for\n  corneal ulceration in contact wearers. This was a retrospective, cohort study of medical records with a diagnosis coding for corneal ulcers during a\n  12-month period in Northern California. Out of a population of 1,093,210 patients, 302 developed ulcerative keratitis. The incidence of ulcerative\n  keratitis was 27.6 per 100 000 person-years (95% confidence interval, 24.6-30.9). The incidence of corneal ulceration in contact lens wearers was\n  130.4 per 100 000 person-years (95% confidence interval, 111.3-151.7), with an adjusted relative risk of 9.31 (7.42-11.7; P.001) compared with\n  non\u2013contact lens wearers, who had an incidence of ulcerative keratitis of 14.0 per 100 000 person-years (11.7-16.6). Hykin1994 was hand\n  searched looking for outcome data. It involved 117 patients who were recruited to the study at their hospital presentation for corneal erosion. 82\n  presented for an acute episode for of which ony 4 of them (4.9%) had failure of of the episode to resolve after 5 days. In this prospective RCT,\n  Over 95% of patients presenting with an acute corneal erosion were successfully managed with patching, cyclo\u200bplegic meds and topical antibiotic\n  ointment. The vast amount of liteature results have cited quick and spontaneous resoltuion of corneal abrasions without sequeale but none had\n  reported any data for it. Hykin 1994 provides this data. McGwin 2015 reports overall, males (9.5 per 1000) have more than twice the rate of eye\n  injury com-pared with females (4.5 per 1000). Their study estimated that, in 2001, approximately 2 million persons in the United States sustained\n  eye injuries that required medical treatment, at a rate of 6.98 per 1000 population. \" Tab1A of this cliff reportt that \"40% of US astronauts who wear\n  spectacles prefer to wear contact lenses during space missions\" thus it is noteworthy to underscore the Ahmed 2015 ( a review article) which\n  reported that 12% of corneal abrasions were related to the use of contact lenses.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   Crew members without contacts: mean of 2.116 and SD 0.2144; Contact lens wearers corneal abrasions: mean of 2.118 and SD: 0.2144\n\n\n\n  INCIDENCE SUMMARY\n\n  For this condition, we model 2 rates. One rate will apply to all crewmembers who wear contacts (or TRUE for the model), and the other to the crew\n  that do not wear contacts (or FALSE for the model).\n  In addition, a second incidence rate for contact use associated abrasion and ulceration will be applied only to crew who wear contacts. This second\n  incidence rate only informs the extra risk of this condition for contact users.\n          NO CONTACTS: The Bayesian posterior distribution for the incidence rate is Gamma(shape=97.41, rate=46.03) with mean 2.116 and SD\n          0.2144. This is the posterior distribution given the inflight data of 96 events over 45.49 person-years under an uninformative prior.\n          YES CONTACTS: The posterior distribution for the incidence rate associated for contact wearers. This is modeled through the sum of the\n          baseline rate and additional rates associated with contact use for abrasions and ulcerations Gamma(shape=97.59, rate=46.08) with mean\n          2.118 and SD 0.2144.\n  BACKGROUND RATE:\n  Spaceflight Data:\n  IMED:\n          Eye Irritation / Abrasion (foreign body): 70 events over 45.49 person-years\n          Eye Corneal Ulcer: 0 events over 45.49 person-years\n          Eye Chemical Burns: 4 events over 45.49 person-years\n          Total events: 74 over 45.49 person-years. IR: 1.627 (95%CI: 1.287, 2.031)\n  Antonsen Report\n          Table 1 \u2013 22 events (4 debris, 4 dry eyes, 5 irritation, 9 abnormality)\n          Table 2 \u2013 76 events (70 foreign body and 6 eye chemical burn). This should match exactly as it is the IMED counting of the first LSAH data\n          request. There is a discrepancy in the eye chemical burn numbers. Further review showed that the 6 eye chemical burns were reduced to 4\n          within IMED but that result was not continued to the Table 2 included in Antonsen\n          Total events: 96 (98 events - 2 reduced eye chemical burns) over 45.49 person-years. IR: 2.11 (95%CI: 1.719, 2.566)\n  Since the Antonsen report captures more sub-conditions, I recommend proceeding with that source over IMED but correcting the count of eye\n\n\n\n\n8/23/2023 5:48:20 PM                                     ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                            page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-026-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  chemical burns.\n  CONTACT WEARING RISK OF ABRASION AND ULCERATION\n  Evidence for contact wearers:\n        Corneal abrasion:\n             Hilber 2010 \u2013 Eye Injury Surveillance in the U.S. Department of Defense, 1996-2005. In 2005, corneal injury by contact lens was 4.2%\n             of all eye injury visits. Rate of all eye injuries and number of caes in 2005 is included in Figure 1 legend. In 2005, the number of cases\n             was 30,354 and the incidence rate was 2204 per 100kpy. This means the total person-years is 1377223. 4.2% of the 30354 cases\n             means 1275 cases due to corneal injury by contact lens. 1275 events over 1377223 person-years IR 9.258E-4 (95%CI: 8.76E-4,\n             9.777E-4)\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Yes\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     2.116\n     SD\n     0.2144\n\n\n     Gamma\n     (Shape): 97.41\n     (Rate): 46.03\n\n\n     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     No\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     2.118\n\n\n\n\n8/23/2023 5:48:20 PM                                    ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                            page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-026-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "     SD\n     0.2144\n\n\n     Gamma\n     (Shape): 97.59\n     (Rate): 46.08\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                              Source                                   LOC Value\n\n   Walton, 2010                                                          Spaceflight                              3\n\n   Saile et al., 2017                                                    Spaceflight                              3\n\n   Antonsen et al., 2017                                                 Spaceflight                              4\n\n   Hilber et al., 2010                                                   Analog                                   2\n\n   Psolka et al., 2007                                                   Analog                                   1\n\n   Tansey et al., 1979                                                   Analog                                   1\n\n   Thomas et al., 2003                                                   Analog                                   1\n\n   Aslam et al., 2005                                                    Analog                                   1\n\n   McGwin et. al, 2005                                                   Terrestrial                              1\n\n   Channa et al., 2016                                                   Terrestrial                              1\n\n  Spaceflight incidence data was rated the highest as analog and terrestrial studies did not accurately reflect the highly screened crewmembers or\n  the spaceflight environmental conditions. Further, there was concern that analog and terrestrial studies would exert an overwhelming influence on\n  the final incidence distribution given their large number of poorly representative subjects. However, when calculating an incidence rate for irritation\n  and corneal abrasions for contact lens users, analog studies were used as data regarding the associated of ocular space events and contacts were\n  unavailable.\n\n\n\n\n8/23/2023 5:48:20 PM                                     ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                             page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-026-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Crewmembers undergo several preflight ocular examinations. Firstly, at L-21/18 m an MRI (3T or better using specific ocular imaging protocols) is\n  obtained. Then at L-21/18 m and L-9/6 m an eye exam is conducted which is inclusive of the following testing: refraction (manifest and cycloplegic),\n  visual acuity (distance and near), Amsler grid, threshold visual fields, pupil reflexes, contrast sensitivity, biomicroscopy (slit lamp), extraocular\n  muscle balance, tonometry, optical biometry, retinal photography, dilated fundoscopic examination and optical coherence tomography (high\n  resolution) including spontaneous venous pulsations (SVP) videography. Also, at L-9/6 m, 2-D ultrasound imaging and contact lens or spectacle\n  fitting is performed. Lastly, at L-90/30 d the best corrected visual acuity, color vision, refraction (manifest), biomicroscopy (slit lamp), tonometry,\n  fundus exam (undilated) and OCT (if any baseline scans need to be repeated) tests are performed. Of note, crew-members are trained to conduct\n  vision testing, fundoscopy and 2-D ultrasound so that they can conduct in-flight eye examinations. All astronauts must undergo annual medical\n  examination that includes a medical history review and clinical laboratory testing.\n\n  BEST CASE SCENARIO DEFINITION\n\n  Vision sparing dry/irritated eyes responsive to lubrication, or corneal abrasion not requiring treatment.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Corneal abrasion requiring treatment, or corneal ulceration, which has the potential to result in a permanent impairment of vision.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  Eye - Dry Eyes\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  The worst case scenario has never occurred in spaceflight, despite 96 reports of the best case scenario. Thus, the worst case scenario can be\n  expected to be rare. This spaceflight data was used to construct a probability distribution for the worst case. The distribution is described by a\n  range of values from 0 to 2%, with corresponding best case probabilities of 98-100%. The worst case range is slightly lower than reported in\n  terrestrial studies, as might be expected for a controlled environment. Using spaceflight data most accurately predicts the probability of the worst\n  case occurring during future missions.\u201d\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                               Source                                  LOC Value\n\n   Walton, 2010                                                           Spaceflight                             3\n\n   Saile et al., 2017                                                     Spaceflight                             3\n\n   Antonsen et al., 2017                                                  Spaceflight                             4\n\n   Channa et al., 2016                                                    Terrestrial                             2\n\n  Only terrestrial data were obtainable to determine the worst-case probability, albeit the total number of instances of the best-case scenario in\n  spaceflight was used to estimate an upper-bound for the expected worst-case probability.\n\n\n\n\n8/23/2023 5:48:20 PM                                     ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                             page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-026-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n\n                                                                CP1: Diagnosis       CP2: Treatment           CP3: Condition End State\n\n                                                  Condition     TI%      Duration    TI%         Duration     TI%         RTDC             LOCL\n   Case                                           Probability\n   Scenario      Composite Incidence              %             Preset   Preset      Preset      Min   Max Preset         Min%    Max%     Min%     Max%\n\n   Treated       All inclusive incidence: 2.108   98 - 100      100      0.62        2.80361     0.5   24     0           0       0        0        0\n   Best Case     person-years and SD\n   (TBC)         0.2164; Contact lens\n                 wearers corneal abrasions:\n   Treated       9.258E-4 person-years SD:        0-2           100      1           15.9049     72    336    0           9.5     37       0        0\n   Worst         2.613E-5\n   Case\n   (TWC)\n\n   Untreated     N/A                              N/A           N/A      0.62        15.9049     0.5   24     0           0       0        0        0\n   Best Case\n   (UTBC)\n\n   Untreated     N/A                              N/A           N/A      1           44.7781     72    744    31.8097     100     100      0        0\n   Worst\n   Case\n   (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n8/23/2023 5:48:20 PM                                     ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                               page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-026-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  The best-case scenario describes a patient experiencing dry eyes or a small, insignificant corneal abrasion. Per definition, these are self-resolving\n  pathologies. In terrestrial conditions, those experiencing the best-case condition would not likely seek medical care. While the condition is likely to\n  recover on it's own per the definition, However, in spaceflight conditions, treatment could be implemented to prevent crew discomfort, limit disability,\n  and speed recovery. The worst case is likely a corneal ulceration. These are often associated with a significant amount of pain and can affect vision\n  if untreated. Patients experiencing the worst case often require an urgent or emergent intervention. RTDC for this CLiFF condition is need for\n  surgical intervention.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  The pathology for dry or irritated eyes in terrestrial conditions is multifactorial and can be secondary to ocular disease, infection, immune-mediated\n  conditions, and environmental exposures. Since crewmembers undergo extensive preflight ophthalmologic screening, we expect most cases of the\n  best-case condition to be due to environmental exposures. The lower bound of duration was estimated to be the time necessary to remove a\n  superficial foreign body from the globe or administer a topical lubricant once (Clayton, 2018). Further, liposome thickened agents demonstrated\n  appropriate lipid layer grading in as little of 30 minutes along with patient comfort compared to a control group (Craig et al., 2010). The severity of\n  symptoms for dry eyes and tear film composition varies over a 24-hour period. Consequently, many advocate for a 24-hour period of treatment\n  (Guillon et al., 2019). Consequently, it was subject matter consensus to choose 24 hours as the upper bound of duration. This is further supported\n  in Wong et al. (1998) in which ocular injuries in the automobile industry were analyzed. Out of a total of 1983 ocular injuries, conditions that were\n  relevant to this CLiFF (superficial corneal foreign body (69.2%), corneal abrasion (17.5%), chemical injury (4.5%), and irritative conjunctivitis\n  (2.1%)) accounted for 93.3%. Over 32.3% of the total workers did require at least 24 hours before resuming their normal duties. Given the\n  condition definition, RTDC and LOCL are expected to be zero.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  Corneal ulcerations are a vision-threatening ocular emergency. Complications of a corneal ulcers include corneal opacities, perforations, cataracts\n  and endophthalmitides (Byrd et al., 2021). Most cases are secondary to an infectious cause, albeit autoimmune disease, severe allergic conditions\n  and certain chemicals result in corneal ulcerations as well. In spaceflight, these would be expected to occur secondary to a superinfection of a\n  corneal abrasion (likely from an environmental exposure) or inadequate contact lenses hygiene. Treatment is usually a course of topical antibiotics,\n  antivirals (HSV is a common cause) or antifungals. When no improvement is observed, adjuvant therapies can be initiated, such as corticosteroids\n  and systemic anti-infectious agents. Surgery is indicated for impending perforation, extremely thin corneas, or progressive or unresponsive\n  disease. Treatment regimens vary from three to 14 days based on pathology and response to therapy (Wilhelmus, 2015; Lin et al., 2019; Austin et\n  al., 2017; Tsatos et al., 2016). Even with treatment, surgery may still be indicated if rapid response is not observed. Procedural interventions can\n  occlude debridement, punctal occlusion, superficial keratectomy, or keratoplasy (Statmate et al., 2019). In one prospective, nonrandomized study\n  (Khor et al., 2018) 6626 eyes were diagnosed with infectious ulcerations. Of these, 628 eyes (9.5%) required operative management. In a\n  retrospective review of diagnosed fungal keratitis/ulcerations cases at Duke University Eye Center from January 1, 1998 to October 6, 2008 (Ho et\n  al., 2016), it was determined that 37% of cases required surgical intervention. LOCL is not expected for ocular conditions.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  By definition, the untreated best-case is self-resolving. Consequently, it is expected that the duration, RTDC and LOCL parameters would be similar\n  to the treated best case.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  Although corneal ulceration is a leading cause of worldwide blindness, especially in resource-poor countries, the duration to time of complication\n  (most often corneal opacity) is understudied given ethical concerns. One retrospective study (Claerhout et al., 2004) reports on 14 patients\n  ultimately diagnosed with corneal ulcerations secondary to acanthamoeba. The median delay in treatment was 31 days (744 hours). Albeit\n  acanthamoeba infection (protozoa) is an extremely rare cause of corneal ulceration, it does exist on the ISS (Ott et al., 2004) and theoretically is still\n  a possibility. The lower bound for duration was decided to be the same as the treated worst case. Corneal ulcerations are not expected to heal\n  without treatment. Given the impending loss of vision, RTDC was determined to be 100%. LOCL is not expected for ocular conditions.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n8/23/2023 5:48:20 PM                                      ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                               page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-026-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                                 Source                                    LOC Value\n\n   Clayton, 2018                                                            Terrestrial\n\n   Craig et al., 2010                                                       Terrestrial\n\n   Guillon et al., 2019                                                     Terrestrial\n\n   Wong et al., 1998                                                        Terrestrial\n\n   Wilhelmus, 2015                                                          Terrestrial                                                 2\n\n   Lin et al., 2019                                                         Terrestrial\n\n   Austin et al., 2017                                                      Terrestrial\n\n   Tsatos et al., 2016                                                      Terrestrial\n\n   Claerhout et al., 2004                                                   Terrestrial\n\n  Available studies to determine durations for treated cases involved retrospective studies and review papers. There was one consensus guidelines\n  available, however it did not provide definitive timelines. Due to the increasingly more rigourous Institutional Review Board guidelines at institutions,\n  literature for untreated best and worst cases were limited; this information was often extropolated from single, low-powered studies.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                        Source                                      LOC Value\n\n   Khor et al., 2018                                               Terrestrial\n                                                                                                                                    2\n   Ho et al., 2016                                                 Terrestrial\n\n\n  RTDC for the best-cases are expected to be zero given the conditions' definitions; as such articles were not reviewed for these scenarios. A\n  prospective study and a retrospective review were used to determine RTDC for the worst-cases.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                       Source                                      LOC Value\n\n   None                                           None                                                                      4\n\n\n  Based on the definitions, loss of crew life is not expected for any of the scenariors associated with this CLiFF.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope Overview This condition covers dry eye, corneal abrasions, and corneal ulcerations. Diagnostic and treatment\n  for these conditions can be accomplished effectively with low mass, low volume equipment. CNES: Dry Eyes Diagnostic Scope and Resourcing For\n  the best case diagnosis is expected to include history, superficial eye exam, functional eye exam (APD, EOM, etc...), eye lid exam. In the worst case,\n  the diagnostic adds a visual acuity exam and a Fluoresceine exam using a cobalt blue lamp, and a high resolution camera as a magnifier. A slit\n  lamp was considered too mass/volume expensive to warrant inclusion. Clinical Phase 1 Duration and Rationale This version of IMPACT presumes\n  physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME consensus duration is as follows: CP1 BC\n  (Treated or Untreated): 0.62 hours to perform a history, superficial eye exam, functional eye exam, and eye lid exam. CP1 WC (Treated or\n  Untreated): 1 hour for 0.62 hours to perform a history, superficial eye exam, functional eye exam, eye lid exam, and a fluoresceine exam. This\n  condition requires a Scope of Practice 4 corresponding to the training and skill level of a high functioning first year resident (Intern). Treatment\n  Scope and Resourcing Treatment for the best case includes eye irrigation and eye lubrication with the worst case adding the capability to treat mor\n  e significant ulcerations and abrasions. This includes ophthalmic antibiotics, cycloplegics, ocular steroids and systemic pain management with\n  NSAIDs or Acetaminophen Communications and Support Needs The best case is self-limited and easily treated without consultation. The worst case\n  includes conditions that may require consultations with ground support via audio and video to facilitate treatment recommendations.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n\n\n8/23/2023 5:48:20 PM                                       ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                             page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-026-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  This CLiFF is the successor to the previous IMM CLiFFs entitled \"Eye Irritation/Abrasion \u201cand \u201cEye Corneal Ulcer.\u201d However, given overlapping\n  definitions that have changed in this effort, it does include data from previous \u201cEye Chemical Burn\u201d as well. As such, the incidence calculation was\n  updated. Duration and RTDC values have also changed after an updated literature review.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  \u2022 The definitions for this condition were confusing as they overlapped with other ocular definitions (i.e. corneal ulceration is typically infectious in\n  nature and there is an existing anterior eye infection CLiFF). \u2022 There was no spaceflight data available to calculate incidence related to contact\n  lenses use. \u2022 The ocular definitions were updated in this effort without a concomitant LSAH pull. \u2022 Literature regarding the untreated worst-case\n  scenario was extremely limited and several parameters are based on subject matter expert opinion. \u2022 While the resulting distributions are supported\n  by the evidence, there are concerns for underestimation of the risk to contact lens wearers. For example, the incidence of corneal abrasion in\n  contact lens wearers should be more common than the much more serious corneal ulceration. Yet, the rate of ulceration that is derived from\n  terrestrial sources shows an incidence that is about 50% higher than abrasions. \u2022 The incidence rates imply that there is little additional risk for\n  contact lens wearers. The total incidence rate calculated for contact lens wearers is 2.112 per person-year while it is 2.108 for non-contact lens\n  wearers. Intuitively, one would think that the relative risk of eye complications would be higher than this in contact lens wearers. \u2022 Because of their\n  large sample size, the studies used to compute the composite incidence of risk in contact lens wearers most likely overestimates the confidence we\n  have in the assigned value. \u2022 This medical condition may be dependent on mission phase, particularly in partial g environments where the hazard of\n  suspension of particles in the air will be reduced. \u2022 Under-reporting for this condition could have been present during past space missions due to\n  subtle eye irritation that may not have been reported by the crew.\n\n\n\n\n8/23/2023 5:48:20 PM                                     ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                              page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-026-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                              Clinical Phase 2: Treatment\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision         Hearing                   Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                            854\n    Case\n   (UTBC)\n   Treated\n    Worst\n                                                                            854\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223             664                              89             854\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                       Total\n                                                                                                                                                     Human\n                                                                                            Translation &                            Total Tasks\n                Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                            Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n               (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                           (microgravity)                            Condition\n                                                                                                                                                    Tasks Full\n                                                                                                                                                     Mission\n   Treated\n     Best\n                                                                                                                       211          211            3763          0.0560723 5.60723\n    Case\n    (TBC)\n  Untreated\n    Best\n            132                                                                                                        211          1197           3763          0.318097      31.8097\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                                                                                                         211          1197           3763          0.318097      31.8097\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132                                                                                                        211          2173           3763          0.577465      57.7465\n    Case\n   (UTWC)\n\n                                                                          Clinical Phase 3: Condition End State\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision         Hearing                   Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n    Case\n   (UTBC)\n   Treated\n    Worst\n     Case\n    (TWC)\n  Untreated\n    Worst\n                                                                            854\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n8/23/2023 5:48:20 PM                                    ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                                                  page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-026-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                Translation &                           Total Tasks\n               Hand                                     Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal        TI %\n              (Dom)                                   Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                               (microgravity)                           Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n   Treated\n     Best\n                                                                                                                       0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                                                                       0              3763          0                0\n    Case\n   (UTBC)\n   Treated\n    Worst\n                                                                                                                       0              3763          0                0\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132                                                                                            211         1197           3763          0.318097         31.8097\n    Case\n   (UTWC)\n\n\n\n\n8/23/2023 5:48:20 PM                             ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                                                  page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-026-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n8/23/2023 5:48:20 PM                                    ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                             page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-026-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. Ahmed, F., R. J. House, and B. H. Feldman. 2015. 'Corneal Abrasions and Corneal Foreign Bodies', Prim Care, 42: 363-75.\n\n   2. Antonsen, Erik, Tina Bayuse, Rebecca Blue, Vernie Daniels , Melinda Hailey, Sam Hussey, Eric Kerstman, Mike Krihak, Kara Latorella, Jennifer\n   Mindock, Jerry Myers, Robert Mulcahy, Rebekah Reed, Davis Reyes, Michelle Urbina, and Marlei Walton. 2017. \"Evidence Report: Risk of\n   Adverse Health Outcomes and Decrements in Performance due to In-Flight Medical Conditions.\" In.\n\n   3. Aslam, S., and M. F. Griffiths. 2005. 'Eye casualties during Operation Telic', J R Army Med Corps, 151: 34-6.\n\n   4. Austin, Ariana, Tom Lietman, and Jennifer Rose-Nussbaumer. 2017. 'Update on the Management of Infectious Keratitis', Ophthalmology, 124:\n   1678-89.\n\n   5. Barratt, Michael R., Ellen S. Baker, Sam L. Pool, and SpringerLink (Online service). 2019. \"Principles of Clinical Medicine for Space Flight.\" In,\n   XVIII, 936 p. 362 illus., 268 illus. in color. New York, NY: Springer New York : Imprint: Springer,.\n\n   6. Byrd, L. B., and N. Martin. 2021. 'Corneal Ulcer.' in, StatPearls (StatPearls Publishing Copyright \u00a9 2021, StatPearls Publishing LLC.: Treasure\n   Island (FL)).\n\n   7. Channa, R., S. N. Zafar, J. K. Canner, R. S. Haring, E. B. Schneider, and D. S. Friedman. 2016. 'Epidemiology of Eye-Related Emergency\n   Department Visits', JAMA Ophthalmol, 134: 312-9.\n\n   8. Claerhout, I., A. Goegebuer, C. Van Den Broecke, and Ph Kestelyn. 2004. 'Delay in diagnosis and outcome of Acanthamoeba keratitis',\n   Graefe's Archive for Clinical and Experimental Ophthalmology, 242: 648-53.\n\n   9. Clayton, Janine A. 2018. 'Dry Eye', New England Journal of Medicine, 378: 2212-23.\n\n   10. Craig, J. P., C. Purslow, P. J. Murphy, and J. S. Wolffsohn. 2010. 'Effect of a liposomal spray on the pre-ocular tear film', Cont Lens Anterior\n   Eye, 33: 83-7.\n\n   11. Guillon, M., and S. Shah. 2019. 'Rationale for 24-hour management of dry eye disease: A review', Cont Lens Anterior Eye, 42: 147-54.\n\n   12. Hilber, D., T. A. Mitchener, J. Stout, B. Hatch, and M. Canham-Chervak. 2010. 'Eye injury surveillance in the U.S. Department of Defense,\n   1996-2005', Am J Prev Med, 38: S78-85.\n\n   13. Ho, J. W., M. M. Fernandez, R. A. Rebong, A. N. Carlson, T. Kim, and N. A. Afshari. 2016. 'Microbiological profiles of fungal keratitis: a 10-\n   year study at a tertiary referral center', J Ophthalmic Inflamm Infect, 6: 5.\n\n   14. Jeng, B. H., D. C. Gritz, A. B. Kumar, D. S. Holsclaw, T. C. Porco, S. D. Smith, J. P. Whitcher, T. P. Margolis, and I. G. Wong. 2010.\n   'Epidemiology of ulcerative keratitis in Northern California', Arch Ophthalmol, 128: 1022-8.\n\n   15. Khor, W. B., V. N. Prajna, P. Garg, J. S. Mehta, L. Xie, Z. Liu, M. D. B. Padilla, C. K. Joo, Y. Inoue, P. Goseyarakwong, F. R. Hu, K. Nishida, S.\n   Kinoshita, V. Puangsricharern, A. L. Tan, R. Beuerman, A. Young, N. Sharma, B. Haaland, F. S. Mah, E. Y. Tu, F. J. Stapleton, R. L. Abbott, and\n   D. T. Tan. 2018. 'The Asia Cornea Society Infectious Keratitis Study: A Prospective Multicenter Study of Infectious Keratitis in Asia', Am J\n   Ophthalmol, 195: 161-70.\n\n   16. Lin, A., M. K. Rhee, E. K. Akpek, G. Amescua, M. Farid, F. J. Garcia-Ferrer, D. M. Varu, D. C. Musch, S. P. Dunn, and F. S. Mah. 2019.\n   'Bacterial Keratitis Preferred Practice Pattern\u00ae', Ophthalmology, 126: P1-p55.\n\n   17. McGwin, Gerald, Jr, and Cynthia Owsley. 2005. 'Incidence of Emergency Department\u2013Treated Eye Injury in the United States', Archives of\n   Ophthalmology, 123: 662-66.\n\n   18. Ott, C., Rebekah Bruce, and Duane Pierson. 2004. 'Microbial Characterization of Free Floating Condensate aboard the Mir Space Station',\n   Microbial ecology, 47: 133-6.\n\n   19. Psolka, M., K. S. Bower, D. B. Brooks, S. J. Donnelly, M. Iglesias, W. R. Rimm, and T. P. Ward. 2007. 'Ocular diseases and nonbattle injuries\n   seen at a tertiary care medical center during the Global War on Terrorism', Mil Med, 172: 491-7.\n\n   20. Saile L., Boley L., Kerstman E. 2017. 'Integration RWS ISS STS Observed Incidence V2.'.\n\n   21. Tansey, W. A., J. M. Wilson, and K. E. Schaefer. 1979. 'Analysis of health data from 10 years of Polaris submarine patrols', Undersea Biomed\n   Res, 6 Suppl: S217-46.\n\n   22. Thomas, T. L., F. C. Garland, D. Mol\u00e9, B. A. Cohen, T. M. Gudewicz, R. T. Spiro, and S. H. Zahm. 2003. 'Health of U.S. Navy submarine crew\n   during periods of isolation', Aviat Space Environ Med, 74: 260-5.\n\n   23. Tsatsos, M., C. MacGregor, I. Athanasiadis, M. M. Moschos, P. Hossain, and D. Anderson. 2016. 'Herpes simplex virus keratitis: an update of\n   the pathogenesis and current treatment with oral and topical antiviral agents', Clin Exp Ophthalmol, 44: 824-37.\n\n   24. Tuli, S. S., G. S. Schultz, and D. M. Downer. 2007. 'Science and strategy for preventing and managing corneal ulceration', Ocul Surf, 5: 23-\n   39.\n\n   25. Walton M, Kerstman E. 2010. ' IMM In-flight Compilation v20100414_Incidence_calculation'.\n\n   26. Wilhelmus, K. R. 2015. 'Antiviral treatment and other therapeutic interventions for herpes simplex virus epithelial keratitis', Cochrane\n   Database Syst Rev, 1: Cd002898.\n\n\n\n\n8/23/2023 5:48:20 PM                                     ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                             page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    },
+    {
+      "section_id": "CLIFF-026-P14",
+      "ordinal": 13,
+      "heading": "Page 14 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Reference\n\n   27. Wong, T. Y., A. Lincoln, J. M. Tielsch, and S. P. Baker. 1998. 'The epidemiology of ocular injury in a major US automobile corporation', Eye\n   (Lond), 12 ( Pt 5): 870-4.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                      PHRASE\n\n   AAOMS                        American Association of Oral and Maxillofacial Surgeons\n\n   AMA                          American Medical Association\n\n   ARCL                         All Remaining Conditions List\n\n   ARS                          Acute Radiation Sickness\n\n   BHP                          Behavioral Health and Performance\n\n   CAC                          Coronary Artery Calcium\n\n   CHS                          Crew Health and Safety\n\n   CL                           Condition List\n\n   CliFF                        Clinical Finding Form\n\n   CMO                          Crew Medical Officer\n\n   COMFORT                      Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                          Clinical Phase 1\n\n   CP2                          Clinical Phase 2\n\n   CP3                          Clinical Phase 3\n\n   CRL                          Clinical Resource Level\n\n   CRT                          Capability Resource Table\n\n   CST                          Clinical Science Team\n\n   DCS                          Decompression Syndrome\n\n   DRM                          Design Reference Mission\n\n   ED                           Emergency Medicine Doctor\n\n   EL                           Evidence Library\n\n   EMCL                         Exploration Medical Condition List\n\n   EMT                          Emergency Medical Technician\n\n   EVA                          Extravehicular Activity\n\n   EXMC                         Exploration Medical Capability\n\n   HRP                          Human Research Program\n\n   ICD                          International Classification of Disease\n\n   ICL 1.0                      IMPACT 1.0 Medical Conditions List\n\n   ICU                          Intensive Care Unit\n\n   IMCL                         iMED Condition List\n\n   iMED                         Integrated Medical Evidence Database\n\n   IMM                          Integrated Medical Model\n\n   IMPACT-MD                    Impact Medical Database\n\n   IP                           Incidence Proportion\n\n\n\n\n8/23/2023 5:48:20 PM                                      ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                      page: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "page:14"
+    },
+    {
+      "section_id": "CLIFF-026-P15",
+      "ordinal": 14,
+      "heading": "Page 15 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n8/23/2023 5:48:20 PM                           ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff   page: 15",
+      "page_start": 15,
+      "page_end": 15,
+      "source_anchor": "page:15"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-026-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "General"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Yes"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Poisson"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Gamma"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "2.116"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.2144"
+        ],
+        [
+          "Gamma"
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-026-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                              Source                                   LOC Value"
+        ],
+        [
+          "Walton, 2010                                                          Spaceflight                              3"
+        ],
+        [
+          "Saile et al., 2017                                                    Spaceflight                              3"
+        ],
+        [
+          "Antonsen et al., 2017                                                 Spaceflight                              4"
+        ],
+        [
+          "Hilber et al., 2010                                                   Analog                                   2"
+        ],
+        [
+          "Psolka et al., 2007                                                   Analog                                   1"
+        ],
+        [
+          "Tansey et al., 1979                                                   Analog                                   1"
+        ],
+        [
+          "Thomas et al., 2003                                                   Analog                                   1"
+        ],
+        [
+          "Aslam et al., 2005                                                    Analog                                   1"
+        ],
+        [
+          "McGwin et. al, 2005                                                   Terrestrial                              1"
+        ],
+        [
+          "Channa et al., 2016                                                   Terrestrial                              1"
+        ],
+        [
+          "Spaceflight incidence data was rated the highest as analog and terrestrial studies did not accurately reflect the highly screened crewmembers or"
+        ],
+        [
+          "the spaceflight environmental conditions. Further, there was concern that analog and terrestrial studies would exert an overwhelming influence on"
+        ],
+        [
+          "the final incidence distribution given their large number of poorly representative subjects. However, when calculating an incidence rate for irritation"
+        ],
+        [
+          "and corneal abrasions for contact lens users, analog studies were used as data regarding the associated of ocular space events and contacts were"
+        ],
+        [
+          "unavailable."
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-026-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                               Source                                  LOC Value"
+        ],
+        [
+          "Walton, 2010                                                           Spaceflight                             3"
+        ],
+        [
+          "Saile et al., 2017                                                     Spaceflight                             3"
+        ],
+        [
+          "Antonsen et al., 2017                                                  Spaceflight                             4"
+        ],
+        [
+          "Channa et al., 2016                                                    Terrestrial                             2"
+        ],
+        [
+          "Only terrestrial data were obtainable to determine the worst-case probability, albeit the total number of instances of the best-case scenario in"
+        ],
+        [
+          "spaceflight was used to estimate an upper-bound for the expected worst-case probability."
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-026-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment           CP3: Condition End State"
+        ],
+        [
+          "Condition     TI%      Duration    TI%         Duration     TI%         RTDC             LOCL"
+        ],
+        [
+          "Case                                           Probability"
+        ],
+        [
+          "Scenario      Composite Incidence              %             Preset   Preset      Preset      Min   Max Preset         Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated       All inclusive incidence: 2.108   98 - 100      100      0.62        2.80361     0.5   24     0           0       0        0        0"
+        ],
+        [
+          "Best Case     person-years and SD"
+        ],
+        [
+          "(TBC)         0.2164; Contact lens"
+        ],
+        [
+          "wearers corneal abrasions:"
+        ],
+        [
+          "Treated       9.258E-4 person-years SD:        0-2           100      1           15.9049     72    336    0           9.5     37       0        0"
+        ],
+        [
+          "Worst         2.613E-5"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated     N/A                              N/A           N/A      0.62        15.9049     0.5   24     0           0       0        0        0"
+        ],
+        [
+          "Best Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Untreated     N/A                              N/A           N/A      1           44.7781     72    744    31.8097     100     100      0        0"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTWC)"
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-026-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "8/23/2023 5:48:20 PM                                      ICL49_Eye Irritation/Corneal Abrasion/Ulceration Cliff                                               page: 7"
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-026-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                        Source                                      LOC Value"
+        ],
+        [
+          "Khor et al., 2018                                               Terrestrial"
+        ],
+        [
+          "2"
+        ],
+        [
+          "Ho et al., 2016                                                 Terrestrial"
+        ],
+        [
+          "RTDC for the best-cases are expected to be zero given the conditions' definitions; as such articles were not reviewed for these scenarios. A"
+        ],
+        [
+          "prospective study and a retrospective review were used to determine RTDC for the worst-cases."
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-026-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                       Source                                      LOC Value"
+        ],
+        [
+          "None                                           None                                                                      4"
+        ],
+        [
+          "Based on the definitions, loss of crew life is not expected for any of the scenariors associated with this CLiFF."
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-026-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision         Hearing                   Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "854"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "854"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223             664                              89             854"
+        ],
+        [
+          "Case"
+        ]
+      ],
+      "page_number": 10,
+      "source_anchor": "page:10#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-026-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-026/cornea_anatomy_limbal.jpg",
+      "mime_type": "image/jpeg",
+      "width": 793,
+      "height": 426,
+      "sha256": "0c0e90ffef93c88e56a5a35cb1c4b9ceb4d424575bcbb60e7be372170eaa7fc2",
+      "creator": "Yue Ruan, Subao Jiang, Aytan Musayeva, Norbert Pfeiffer and Adrian Gericke",
+      "license_identifier": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AThe_localization_of_limbal_epithelial_stem_cells_and_the_anatomy_of_the_cornea.jpg",
+      "attribution": "Yue Ruan, Subao Jiang, Aytan Musayeva, Norbert Pfeiffer and Adrian Gericke, via Wikimedia Commons (CC BY 4.0)",
+      "caption": "Anatomical diagram of the human cornea and limbal epithelium illustrating layers involved in corneal abrasion and ulceration.",
+      "alt_text": "Diagram of corneal layers and limbal epithelial stem cell region.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:The localization of limbal epithelial stem cells and the anatomy of the cornea.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-026-IMG-02",
+      "ordinal": 1,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-026/corneal_abrasion_fluorescein.jpg",
+      "mime_type": "image/jpeg",
+      "width": 2428,
+      "height": 2295,
+      "sha256": "f99924e0ca5cad83ca0d990685a508e3da3022776bcaa72555441ea0812ca097",
+      "creator": "James Heilman, MD",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ACorneal_Abrasion_with_Fluorescein_Staining.jpg",
+      "attribution": "James Heilman, MD, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Clinical photograph of a corneal abrasion highlighted with sodium fluorescein staining under cobalt blue light.",
+      "alt_text": "Corneal abrasion stained bright green with fluorescein.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Corneal Abrasion with Fluorescein Staining.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-026-IMG-03",
+      "ordinal": 2,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-026/corneal_ulcer_fluorescein.jpg",
+      "mime_type": "image/jpeg",
+      "width": 2448,
+      "height": 3264,
+      "sha256": "18d33e7aa87272e9439e3150cc59e2bc29693a0323bcccca8c64d9614c4bcd29",
+      "creator": "Iceclanl",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AContact_Lens_Related_Small_Corneal_Ulcer_with_Sodium_Fluorescein_Staining_3.jpg",
+      "attribution": "Iceclanl, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Clinical photograph of a small contact lens-related corneal ulcer visualized with sodium fluorescein staining.",
+      "alt_text": "Small corneal ulcer highlighted by fluorescein staining.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Contact Lens Related Small Corneal Ulcer with Sodium Fluorescein Staining 3.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-026-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Eye Irritation Corneal Abrasion/Ulceration",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eye-irritation-corneal-abrasion-ulceration-cliff-2023.pdf?emrc=21ed9a",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External corneal anatomy/clinical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

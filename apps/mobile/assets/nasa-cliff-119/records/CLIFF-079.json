@@ -1,0 +1,517 @@
+{
+  "article_id": "CLIFF-079",
+  "slot": 79,
+  "display_title": "Respiratory Tract Infection",
+  "category": "Respiratory",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-079",
+    "publisher": "NASA",
+    "title": "Respiratory Tract Infection — Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/respiratory-tract-infection-upper-cliff-2023.pdf?emrc=f32d6d",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/respiratory-tract-infection-upper-cliff-2023.pdf?emrc=f32d6d",
+    "retrieved_at_utc": "2026-11-14T06:30:38.105433+00:00",
+    "content_sha256": "8cdf77b07497be56976ddf5cb81c8f3a0076479d08294e02acfa470ca6cb2324",
+    "original_mime": "application/pdf",
+    "original_bytes": 304765,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-079-P01",
+      "ordinal": 0,
+      "heading": "Page 1 — NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n   Branch     Baseline\n\n\n\n ICL82_Respiratory Tract Infection - Upper\n\n Respiratory tract infections in this CLIFF include the common cold and rhinitis (viral and bacterial). Upper respiratory tract infection (URI) represents\n the most common acute illness evaluated in the outpatient setting. The common cold is typically a mild, self-limited, catarrhal syndrome of the\n nasopharynx. URIs involve direct invasion of the mucosal lining the upper airway. Person-to-person spread of viruses accounts for most URIs.\n (Meneghetti, 2011). Respiratory infections have been reported in space in spite of efforts to mitigate this risk with a 7 day pre-launch quarantine. The\n diagnosis can be challenging since similar symptoms have been attributed to a cephalad fluid shift and the dry spacecraft cabin atmosphere.\n Susceptibility to infection is increased due to an impaired immune response seen in astronauts during space missions. (Marshburn, 2008)\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Crucian et al. reports 1.0 events/flight year of \"prolonged congestion, rhinitis, sneezing\" and 0.1 events/flight year of pharyngitis, on board the ISS.\n  Wotring et al. discusses medication use on the ISS and reports 43 cases of medication taken for congestion or allergy, over 10 years.\n\n  ANALOG LITERATURE\n\n  Thomas et al. reports ICD-9 data from isolated US Navy submarine crews, sorted by age and rank. The group of officers over age 30, the closest\n  analog to astronauts, had 8.8 upper respiratory infections/100 person-years, and less specifically 9.2 \"respiratory system disorders\" per 100\n  person-years. Cameron et al reported in 1968 about a crew of Australian researchers to Antarctica; 13 out of 27 initially developed URIs but they\n  did not have another URI for 1 year in isolation. Both of these studies are relevant analogs because the population studied is healthy working-age\n  males under conditions of group isolation.\n\n  TERRESTRIAL LITERATURE\n\n  Simasek et al reports that the average American has 2-4 upper respiratory infections per year. There is not further discussion about the\n  demographic breakdown of this data.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   mean: 2.126 SD: 0.2642\n\n\n\n  INCIDENCE SUMMARY\n\n  Incidence Distribution - Gamma(shape=64.75, rate=30.46) mean: 2.126 SD: 0.2642\n\n\n  TABLE 1. INCIDENCE MODEL\n\n\n\n\n6/15/2023 2:05:11 PM                                         ICL82_Respiratory Tract Infection - Upper Cliff                                                 page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-079-P02",
+      "ordinal": 1,
+      "heading": "Page 2 — NASA CliFF (2023) Original Text",
+      "text_content": "     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     2.126\n     SD\n     0.2642\n\n\n     Gamma\n     (Shape): 64.75\n     (Rate): 30.46\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                    Source                                      LOC Value\n\n   Simasek, 2007                                               Terrestrial                                 2\n\n   Pleis, 2010                                                 Terrestrial                                 2\n\n   Crucian B, 2016                                             Spaceflight                                 4\n\n   Wotring, 2015                                               Spaceflight                                 4\n\n   Thomas, 2003                                                Analog                                      2\n\n   Cameron, 1968                                               Analog                                      2\n\n  Studies are overall not representative of the Astronaut Corps. These studies are potentially biased due to lack of either methodology or due to\n  recall bias; however, the data is consistent with other studies regarding URIs in adults. Incidence is generally dependent on surveys.\n\n\n\n\n6/15/2023 2:05:11 PM                                       ICL82_Respiratory Tract Infection - Upper Cliff                                          page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-079-P03",
+      "ordinal": 2,
+      "heading": "Page 3 — NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Pre-flight quarantine program was established to limit viral or bacterial infections to crew members; however, breaches are possible. Pulmonary\n  problems unique to space flight include exposure to exotic atmospheric and environmental contaminants which may cause irritation of the upper\n  airways. (Marshburn, 2008\n\n  BEST CASE SCENARIO DEFINITION\n\n  Uncomplicated viral or allergic rhinosinusitis, non-strep pharyngitis, or the common cold that are treated successfully with first line treatment.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Bacterial rhinosinusitis requiring antibiotics.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  Respiratory Tract Infection (Upper) - Rhinitis, Acute Respiratory Tract Infection (Upper) - Sinusitis, Acute Respiratory Tract Infection (Upper) -\n  Pharyngitis, Non-strep\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                       Source                                       LOC Value\n\n   Simasek, 2007                                                  Terrestrial                                  2\n\n   Pleis, 2010.                                                   Terrestrial                                  2\n\n   Crucian B, 2016                                                Spaceflight                                  4\n\n   Wotring, 2015                                                  Spaceflight                                  4\n\n   Thomas, 2003                                                   Analog                                       2\n\n   Cameron, 1968                                                  Analog                                       2\n\n  Studies are overall not representative of the Astronaut Corps. These studies are potentially biased due to lack of either methodology or due to\n  recall bias; however, the data is consistent with other studies regarding URIs in adults. Incidence is generally dependent on surveys\n\n\n\n\n6/15/2023 2:05:11 PM                                          ICL82_Respiratory Tract Infection - Upper Cliff                                          page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-079-P04",
+      "ordinal": 3,
+      "heading": "Page 4 — NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                            CP1: Diagnosis       CP2: Treatment              CP3: Condition End State\n\n                                                            TI%       Duration   TI%         Duration        TI%        RTDC               LOCL\n                       Composite          Condition\n   Case Scenario       Incidence          Probability %     Preset    Preset     Preset      Min      Max Preset        Min%     Max%      Min%     Max%\n\n   Treated Best        mean: 2.126        98 - 98           100       0.5        2.80361     24       504    0          0        0         0        0\n   Case (TBC)          SD: 0.2642\n\n   Treated Worst                          2-2               100       0.5        13.3803     168      360    0          0        0         0        0\n   Case (TWC)\n\n   Untreated Best      N/A                N/A               N/A       0.5        14.5628     24       504    0          0        0         0        0\n   Case (UTBC)\n\n   Untreated Worst     N/A                N/A               N/A       0.5        17.4329     153.6    408    5.60723    0.067    0.1192    1.25     75\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this “recovered” state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n6/15/2023 2:05:11 PM                                         ICL82_Respiratory Tract Infection - Upper Cliff                                                  page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-079-P05",
+      "ordinal": 4,
+      "heading": "Page 5 — NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Best case is URI without bacterial infection requiring antibiotics; treatments are supportive/symptomatic and do not impact duration of illness.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  TWC = bacterial sinusitis treated with antibiotics\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  Since there is no definitive treatment for viral URI, this scenario is the same as TBC\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  Bacterial rhinosinusitis requiring antibiotics which is not treated\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                             Source                                LOC Value\n\n   Heikkinen, 2003                                                      Terrestrial\n\n   Harris, 2016                                                         Terrestrial\n\n   Rosenfeld, 2015                                                      Terrestrial                                               3\n\n   Lindbaek, 1996                                                       Terrestrial\n\n   Varonen H, 2003                                                      Terrestrial\n\n\n  Harris, Lindebaek, and Rosenfeld appropriately address a population that is similar to crew (adults only) while focusing on treatment. Heikkinen was\n  offering a somewhat dated and broader scope of the treatment of the common cold which is too broad for our purposes to get a higher level of\n  confidence than given. Varonen's focus is on the efficacy of ultrasound as a diagnostic modality and has some passing use for antibiotic efficacy,\n  thus the current confidence it use.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                Source                              LOC Value\n\n   Heikkinen, 2003                                                         Terrestrial\n\n   Fokkens WJ, 2012                                                        Terrestrial\n                                                                                                                                   3\n   Hansen, 2012                                                            Terrestrial\n\n   Petersen, 2007                                                          Terrestrial\n\n\n\n\n6/15/2023 2:05:11 PM                                           ICL82_Respiratory Tract Infection - Upper Cliff                                           page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-079-P06",
+      "ordinal": 5,
+      "heading": "Page 6 — NASA CliFF (2023) Original Text",
+      "text_content": "  Fokkens not particularly helpful because these patients have polyps and are refractory to treatment. This population is unlike crew who would have\n  been screened for this. Hansen helps to address some of the worst case scenarios (treated and untreated) statistically and is therefore somewhat\n  gives us confidence in the data provided. Petersen is a good broad paper on the state of stewardship and treatment complications, but does not\n  address our patient population or our concerns well.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                        Source                                       LOC Value\n\n   Heikkinen, 2003                                                 Terrestrial\n\n   Hansen, 2012                                                    Terrestrial\n                                                                                                                                     3\n   Williams, 1937                                                  Terrestrial\n\n   Richards, 1931                                                  Terrestrial\n\n\n  Williams is a decent attempt to capture the UTWC data. Richards does not address the appropriate population\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope Overview Worst Case Definition: Bacterial rhinosinusitis requiring antibiotics. Best Case Definition:\n  Uncomplicated viral or allergic rhinosinusitis, non-strep pharyngitis, or the common cold that are treated successfully with first line treatment.\n  Essentially this is an upper respiratory infection that either does or does not require antibiotics to resolve within weeks. Terrestrially, the cutoff is\n  considered roughly 7 days before potential \"conversion\" to a bacterial infection that will necessitate antibiotic therapy. Diagnostic Scope and\n  Resourcing In the best-case scenario, diagnosis is based on history and physical examination. In the worst-case scenario, diagnosis is based on\n  history and physical examination. Clinical Phase 1 Duration and Rationale This version of IMPACT presumes physician level knowledge, skill, and\n  ability will be present on the mission. The CRT working group SME consensus duration is as follows: CP1 BC (Treated or Untreated): 0.5 hours This\n  is the longest reasonable time to complete this task for an experienced clinician adjusted for being in the spaceflight environment to do the\n  following: 1 - Take a proper history of the patient 2 - Perform a physical on the patient CP1 WC (Treated or Untreated): 0.5 hours This is the\n  longest reasonable time to complete this task for an experienced clinician adjusted for being in the spaceflight environment to do the following: 1 -\n  Take a proper history of the patient 2 - Perform a physical on the patient The highest scope of practice code used in this CRT which includes\n  interpretation of diagnosis, performing diagnostic tests and performing treatment would be a three, or nursing level. Treatment Scope and\n  Resourcing In the best-case scenario, treatment is limited to management of the symptoms which includes mild pain medications and decongestant\n  therapy. The worst case scenario, where conservative management fails, antibiotics are added to resolve the bacterial infection. Terrestrially, even\n  most bacterial causes of upper respiratory infections resolve eventually. Communications and Support Needs In the best-case and worst-case\n  scenario, diagnosis and course of treatment is uncomplicated and likely within the scope of care of onboard crew members.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  The conditions across IMM and IMPACT are not very similar. The distinction drawn in IMM was between Respiratory infections and Sinusitis while\n  the distinction in IMPACT was between upper and lower respiratory tract infections. It was therefore, a little difficult to fully reconcile the two systems.\n  However, data for the current delineation (upper vs lower infection) is more easily found in the literature and is more important clinically to make.\n  Therefore, data gathering was easier. The data comparison however with IMM was reasonable and a good correlation between the conditional\n  definitions could be made regardless of this distinction difference.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  The UTWC data is extremely sparse but that may be expected as treatment is generally readily available and the course of untreated disease is\n  usually self-limited anyway. Analog and Terrestrial data is somewhat not helpful in this study because the spaceflight environment or patient\n  populations are so different than studies available. On-orbit data may have an under-reporting bias as this condition is generally mild and self-\n  limited, so crew may not be motivated to report the condition.\n\n\n\n\n6/15/2023 2:05:11 PM                                          ICL82_Respiratory Tract Infection - Upper Cliff                                                    page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-079-P07",
+      "ordinal": 6,
+      "heading": "Page 7 — NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                               Clinical Phase 2: Treatment\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision         Hearing                      Dentition          GI          GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n     Case\n     (TBC)\n   Untreated\n     Best\n                             664                              89\n     Case\n    (UTBC)\n    Treated\n     Worst\n                             664\n      Case\n     (TWC)\n   Untreated\n     Worst\n                             664                              89                                                        5\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                                  TI Calculation                  TI Score\n                                                                                                                                                           Total\n                                                                                                                                                         Human\n                                                                                             Translation &                               Total Tasks\n                 Hand                                            Lower         Ambul &                       Don/Doff       Pressure                     System\n                             Hand (Any)     Upper Extremity                                  Stabilization                              Impaired By                   TI Decimal      TI %\n                (Dom)                                          Extremity     Standing (g)                  Equipment         Ops                        Category\n                                                                                            (microgravity)                               Condition\n                                                                                                                                                        Tasks Full\n                                                                                                                                                         Mission\n    Treated\n      Best\n                                                                                                                        211             211            3763          0.0560723 5.60723\n     Case\n     (TBC)\n   Untreated\n     Best\n             132                                                                                                        211             1096           3763          0.291257      29.1257\n     Case\n    (UTBC)\n    Treated\n     Worst\n            132                                                                                                         211             1007           3763          0.267606      26.7606\n      Case\n     (TWC)\n   Untreated\n     Worst\n             132                                                                                                        211             1101           3763          0.292586      29.2586\n     Case\n    (UTWC)\n\n                                                                           Clinical Phase 3: Condition End State\n                                                                                              Affected HSTCs\n                                                                 Inter-\n               Cognitive -    Cognitive -                                                                    Cardio-\n                                            Communications     personal         Vision         Hearing                      Dentition          GI          GU\n                Simple        Complex                                                                      pulmonary\n                                                                Skills\n    Treated\n      Best\n     Case\n     (TBC)\n   Untreated\n     Best\n     Case\n    (UTBC)\n    Treated\n     Worst\n      Case\n     (TWC)\n   Untreated\n     Worst\n     Case\n    (UTWC)\n                                                        Affected HSTCs (Continued)                                                                  TI Calculation                  TI Score\n\n\n\n\n6/15/2023 2:05:11 PM                                          ICL82_Respiratory Tract Infection - Upper Cliff                                                                         page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-079-P08",
+      "ordinal": 7,
+      "heading": "Page 8 — NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                Translation &                           Total Tasks\n                Hand                                    Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal       TI %\n               (Dom)                                  Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                               (microgravity)                           Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n    Treated\n      Best\n                                                                                                                       0              3763          0                0\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                                                       0              3763          0                0\n     Case\n    (UTBC)\n    Treated\n     Worst\n                                                                                                                       0              3763          0                0\n      Case\n     (TWC)\n   Untreated\n     Worst\n                                                                                                           211         211            3763          0.0560723 5.60723\n     Case\n    (UTWC)\n\n\n\n\n6/15/2023 2:05:11 PM                                  ICL82_Respiratory Tract Infection - Upper Cliff                                                                    page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-079-P09",
+      "ordinal": 8,
+      "heading": "Page 9 — NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: Interpersonal skills were considered to be impaired due to the risk of crewmembers spreading infection in close contact in untreated scenarios\n  (i.e. they likely would be self-isolating to try to prevent infecting the rest of the crew). In the worst case, untreated scenario dentition was impaired\n  due to assumed maxillary pain from the infection. URI was considered an aeromedical contraindication to EVA. CP3: In a worst case, untreated\n  scenario, chronic sinusitis would present a continued aeromedical contraindication to EVA.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 – Confident\n  3 – Somewhat confident\n  2 – Neutral\n  1 – Somewhat unconfident\n  0 – Not confident\n\n  The following considerations factor into the grading scale above:\n\n  • How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  • How closely does the population included resemble the astronaut population?\n  • Quality of the paper (number of subjects, methods, etc.)\n  • How much does the editor trust the source of the evidence?\n  • How closely does the editor think that the data represents the exploration spaceflight environment?\n  • Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n6/15/2023 2:05:11 PM                                         ICL82_Respiratory Tract Infection - Upper Cliff                                                  page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-079-P10",
+      "ordinal": 9,
+      "heading": "Page 10 — NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   Crucian B, Babiak-Vazquez A, Johnston S, Pierson DL, Ott CM, Sams C. Incidence of clinical symptoms during long-duration orbital spaceflight.\n   Int J Gen Med. 2016 Nov 3;9:383-391. doi: 10.2147/IJGM.S114188. PMID: 27843335; PMCID: PMC5098747.\n\n   Wotring VE. Medication use by U.S. crewmembers on the International Space Station. FASEB J. 2015 Nov;29(11):4417-23. doi: 10.1096/fj.14-\n   264838. Epub 2015 Jul 17. PMID: 26187345.\n\n   Thomas TL, Garland FC, Molé D, Cohen BA, Gudewicz TM, Spiro RT, Zahm SH. Health of U.S. Navy submarine crew during periods of isolation.\n   Aviat Space Environ Med. 2003 Mar;74(3):260-5. PMID: 12650274.\n\n   Cameron AS, Moore BW. The epidemiology of respiratory infection in an isolated Antarctic community. J Hyg (Lond). 1968 Sep;66(3):427-37. doi:\n   10.1017/s0022172400041292. PMID: 5245224; PMCID: PMC2130641.\n\n   Simasek, Madeline, and David Blandino. \"Treatment of the common cold.\" American family physician 75.4 (2007): 515-520.\n\n   Hickner JM, Bartlett JG, Besser RE, Gonzales R, Hoffman JR, Sande MA; American Academy of Family Physicians; American College of\n   Physicians-American Society of Internal Mediciine; Centers for Disease Control; Infectious Diseases Society of America. Principles of appropriate\n   antibiotic use for acute rhinosinusitis in adults: background. Ann Intern Med. 2001 Mar 20;134(6):498-505. doi: 10.7326/0003-4819-134-6-\n   200103200-00017. PMID: 11255528.\n\n   BADGER GF, DINGLE JH, FELLER AE, HODGES RG, JORDAN WS Jr, RAMMELKAMP CH Jr. A study of illness in a group of Cleveland families.\n   IV. The spread of respiratory infections within the home. Am J Hyg. 1953 Sep;58(2):174-8. doi: 10.1093/oxfordjournals.aje.a119598. PMID:\n   13080257.\n\n   Heikkinen, T., and A. Järvinen. 2003. 'The common cold', Lancet, 361: 51-9.\n\n   Harris, A. M., L. A. Hicks, and A. Qaseem. 2016. 'Appropriate Antibiotic Use for Acute Respiratory Tract Infection in Adults: Advice for High-Value\n   Care From the American College of Physicians and the Centers for Disease Control and Prevention', Ann Intern Med, 164: 425-34.\n\n   Rosenfeld, R. M., J. F. Piccirillo, S. S. Chandrasekhar, I. Brook, K. Ashok Kumar, M. Kramper, R. R. Orlandi, J. N. Palmer, Z. M. Patel, A. Peters,\n   S. A. Walsh, and M. D. Corrigan. 2015. 'Clinical practice guideline (update): adult sinusitis', Otolaryngol Head Neck Surg, 152: S1-S39.\n\n   Fokkens WJ, Lund VJ, Mullol J, Bachert C, Alobid I, Baroody F, Cohen N, Cervin A, Douglas R, Gevaert P, Georgalas C, Goossens H, Harvey R,\n   Hellings P, Hopkins C, Jones N, Joos G, Kalogjera L, Kern B, Kowalski M, Price D, Riechelmann H, Schlosser R, Senior B, Thomas M, Toskala E,\n   Voegels R, Wang de Y, Wormald PJ. European Position Paper on Rhinosinusitis and Nasal Polyps 2012. Rhinol Suppl. 2012 Mar;23:3 p\n   preceding table of contents, 1-298. PMID: 22764607.\n\n   Hansen, F. S., et al. (2012). \"Complications of acute rhinosinusitis in The Netherlands.\" Fam Pract 29(2): 147-153.\n\n   Lindbaek, M., P. Hjortdahl, and U. L. Johnsen. 1996. 'Randomised, double blind, placebo controlled trial of penicillin V and amoxycillin in\n   treatment of acute sinus infections in adults', BMJ (Clinical research ed.), 313: 325-9.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                       PHRASE\n\n   AAOMS                         American Association of Oral and Maxillofacial Surgeons\n\n   AMA                           American Medical Association\n\n   ARCL                          All Remaining Conditions List\n\n   ARS                           Acute Radiation Sickness\n\n   BHP                           Behavioral Health and Performance\n\n   CAC                           Coronary Artery Calcium\n\n   CHS                           Crew Health and Safety\n\n   CL                            Condition List\n\n   CliFF                         Clinical Finding Form\n\n   CMO                           Crew Medical Officer\n\n   COMFORT                       Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                           Clinical Phase 1\n\n\n\n\n6/15/2023 2:05:11 PM                                        ICL82_Respiratory Tract Infection - Upper Cliff                                              page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-079-P11",
+      "ordinal": 10,
+      "heading": "Page 11 — NASA CliFF (2023) Original Text",
+      "text_content": "   CP2                 Clinical Phase 2\n\n   CP3                 Clinical Phase 3\n\n   CRL                 Clinical Resource Level\n\n   CRT                 Capability Resource Table\n\n   CST                 Clinical Science Team\n\n   DCS                 Decompression Syndrome\n\n   DRM                 Design Reference Mission\n\n   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n\n\n\n6/15/2023 2:05:11 PM                               ICL82_Respiratory Tract Infection - Upper Cliff   page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-079-P12",
+      "ordinal": 11,
+      "heading": "Page 12 — NASA CliFF (2023) Original Text",
+      "text_content": "   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n6/15/2023 2:05:11 PM                                ICL82_Respiratory Tract Infection - Upper Cliff   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-079-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "6/15/2023 2:05:11 PM                                         ICL82_Respiratory Tract Infection - Upper Cliff                                                 page: 1"
+        ]
+      ],
+      "page_number": 1,
+      "source_anchor": "page:1#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-079-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                    Source                                      LOC Value"
+        ],
+        [
+          "Simasek, 2007                                               Terrestrial                                 2"
+        ],
+        [
+          "Pleis, 2010                                                 Terrestrial                                 2"
+        ],
+        [
+          "Crucian B, 2016                                             Spaceflight                                 4"
+        ],
+        [
+          "Wotring, 2015                                               Spaceflight                                 4"
+        ],
+        [
+          "Thomas, 2003                                                Analog                                      2"
+        ],
+        [
+          "Cameron, 1968                                               Analog                                      2"
+        ],
+        [
+          "Studies are overall not representative of the Astronaut Corps. These studies are potentially biased due to lack of either methodology or due to"
+        ],
+        [
+          "recall bias; however, the data is consistent with other studies regarding URIs in adults. Incidence is generally dependent on surveys."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-079-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                       Source                                       LOC Value"
+        ],
+        [
+          "Simasek, 2007                                                  Terrestrial                                  2"
+        ],
+        [
+          "Pleis, 2010.                                                   Terrestrial                                  2"
+        ],
+        [
+          "Crucian B, 2016                                                Spaceflight                                  4"
+        ],
+        [
+          "Wotring, 2015                                                  Spaceflight                                  4"
+        ],
+        [
+          "Thomas, 2003                                                   Analog                                       2"
+        ],
+        [
+          "Cameron, 1968                                                  Analog                                       2"
+        ],
+        [
+          "Studies are overall not representative of the Astronaut Corps. These studies are potentially biased due to lack of either methodology or due to"
+        ],
+        [
+          "recall bias; however, the data is consistent with other studies regarding URIs in adults. Incidence is generally dependent on surveys"
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-079-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment              CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration   TI%         Duration        TI%        RTDC               LOCL"
+        ],
+        [
+          "Composite          Condition"
+        ],
+        [
+          "Case Scenario       Incidence          Probability %     Preset    Preset     Preset      Min      Max Preset        Min%     Max%      Min%     Max%"
+        ],
+        [
+          "Treated Best        mean: 2.126        98 - 98           100       0.5        2.80361     24       504    0          0        0         0        0"
+        ],
+        [
+          "Case (TBC)          SD: 0.2642"
+        ],
+        [
+          "Treated Worst                          2-2               100       0.5        13.3803     168      360    0          0        0         0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best      N/A                N/A               N/A       0.5        14.5628     24       504    0          0        0         0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst     N/A                N/A               N/A       0.5        17.4329     153.6    408    5.60723    0.067    0.1192    1.25     75"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-079-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                             Source                                LOC Value"
+        ],
+        [
+          "Heikkinen, 2003                                                      Terrestrial"
+        ],
+        [
+          "Harris, 2016                                                         Terrestrial"
+        ],
+        [
+          "Rosenfeld, 2015                                                      Terrestrial                                               3"
+        ],
+        [
+          "Lindbaek, 1996                                                       Terrestrial"
+        ],
+        [
+          "Varonen H, 2003                                                      Terrestrial"
+        ],
+        [
+          "Harris, Lindebaek, and Rosenfeld appropriately address a population that is similar to crew (adults only) while focusing on treatment. Heikkinen was"
+        ],
+        [
+          "offering a somewhat dated and broader scope of the treatment of the common cold which is too broad for our purposes to get a higher level of"
+        ],
+        [
+          "confidence than given. Varonen's focus is on the efficacy of ultrasound as a diagnostic modality and has some passing use for antibiotic efficacy,"
+        ],
+        [
+          "thus the current confidence it use."
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-079-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                Source                              LOC Value"
+        ],
+        [
+          "Heikkinen, 2003                                                         Terrestrial"
+        ],
+        [
+          "Fokkens WJ, 2012                                                        Terrestrial"
+        ],
+        [
+          "3"
+        ],
+        [
+          "Hansen, 2012                                                            Terrestrial"
+        ],
+        [
+          "Petersen, 2007                                                          Terrestrial"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-079-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                        Source                                       LOC Value"
+        ],
+        [
+          "Heikkinen, 2003                                                 Terrestrial"
+        ],
+        [
+          "Hansen, 2012                                                    Terrestrial"
+        ],
+        [
+          "3"
+        ],
+        [
+          "Williams, 1937                                                  Terrestrial"
+        ],
+        [
+          "Richards, 1931                                                  Terrestrial"
+        ],
+        [
+          "Williams is a decent attempt to capture the UTWC data. Richards does not address the appropriate population"
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-079-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision         Hearing                      Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664                              89"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664                              89                                                        5"
+        ],
+        [
+          "Case"
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-079-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-079/upper_respiratory_nasal_anatomy.png",
+      "mime_type": "image/png",
+      "width": 642,
+      "height": 665,
+      "sha256": "03d89bb16f18e92f772823714368f9ccaa1eccdb9403508708e4435cc3bdc5ed",
+      "creator": "Stella Gänger and Katharina Schindowski",
+      "license_identifier": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AAnatomy_of_the_human_nasal_cavity.png",
+      "attribution": "Stella Gänger and Katharina Schindowski, via Wikimedia Commons (CC BY 4.0)",
+      "caption": "Anatomical diagram of the upper respiratory nasal cavity and nasopharynx.",
+      "alt_text": "Diagram of the human nasal cavity.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Anatomy of the human nasal cavity.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-079-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-079/sinus_upper_respiratory_cdc.png",
+      "mime_type": "image/png",
+      "width": 1101,
+      "height": 720,
+      "sha256": "9325f53a6887634d5a88449e468adb6ad7bdc9b4fb0c70d823fe388d63896211",
+      "creator": "Centers for Disease Control and Prevention",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3ASinusitis_cdc.png",
+      "attribution": "Centers for Disease Control and Prevention, via Wikimedia Commons (Public domain)",
+      "caption": "CDC illustration of upper respiratory and paranasal sinus mucosal inflammation.",
+      "alt_text": "CDC diagram of upper respiratory sinusitis.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Sinusitis cdc.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-079-IMG-03",
+      "ordinal": 2,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-079/respiratory_tract_lungs.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1896,
+      "height": 1304,
+      "sha256": "af248a03968a5738c1f2ef260f5d9f097a3fd8e15c84643bf77fde6af1989cde",
+      "creator": "OpenStax College",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3A2312_Gross_Anatomy_of_the_Lungs.jpg",
+      "attribution": "OpenStax College, via Wikimedia Commons (CC BY 3.0)",
+      "caption": "OpenStax anatomical illustration of the trachea, bronchi, and lower respiratory tract.",
+      "alt_text": "Diagram of respiratory tract and lungs.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:2312 Gross Anatomy of the Lungs.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-079-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) — Respiratory Tract Infection",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/respiratory-tract-infection-upper-cliff-2023.pdf?emrc=f32d6d",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

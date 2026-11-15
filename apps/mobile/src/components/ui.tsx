@@ -43,7 +43,7 @@ export function ActionButton({ title, onPress, disabled, loading, secondary }: {
   return (
     <Pressable accessibilityRole="button" onPress={onPress} disabled={disabled || loading}
       style={({ pressed }) => [styles.action, secondary && styles.actionSecondary, (disabled || loading) && styles.actionDisabled, pressed && !disabled && styles.actionPressed]}>
-      {loading ? <ActivityIndicator color={secondary ? colors.cyan : colors.onAccent} /> : <Text style={[styles.actionText, secondary && styles.actionTextSecondary]}>{title}</Text>}
+      {loading ? <ActivityIndicator color={secondary ? colors.primary : colors.onAccent} /> : <Text style={[styles.actionText, secondary && styles.actionTextSecondary]}>{title}</Text>}
     </Pressable>
   );
 }
@@ -53,7 +53,7 @@ export function Field({ label, ...props }: TextInputProps & { label: string }) {
   return (
     <View style={styles.fieldWrap}>
       <Text style={styles.fieldLabel}>{label}</Text>
-      <TextInput accessibilityLabel={label} {...props} placeholderTextColor={colors.faint} selectionColor={colors.cyan} style={[styles.field, props.style]} />
+      <TextInput accessibilityLabel={label} {...props} placeholderTextColor={colors.faint} selectionColor={colors.primary} style={[styles.field, props.style]} />
     </View>
   );
 }
@@ -77,27 +77,26 @@ export function AppHeader({ title, onBack, trailing, backLabel = 'Back' }: { tit
   );
 }
 
-type NavKey = 'portal' | 'health' | 'monitor' | 'ai' | 'more';
+type NavKey = 'portal' | 'monitor' | 'settings';
 
 export function BottomNav({ active, onSelect, labels }: { active: string; onSelect: (id: string) => void; labels: Record<string, string> }) {
-  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
+  const { colors, styles } = useThemedStyles(buildStyles);
   const insets = useSafeAreaInsets();
   const items: Array<{ id: NavKey; icon: keyof typeof Ionicons.glyphMap }> = [
     { id: 'portal', icon: 'planet-outline' },
-    { id: 'health', icon: 'body-outline' },
     { id: 'monitor', icon: 'pulse-outline' },
-    { id: 'more', icon: 'grid-outline' },
+    { id: 'settings', icon: 'settings-outline' },
   ];
   return (
     <View style={[styles.navSafe, { paddingBottom: Math.max(insets.bottom, 10) }]}>
       <View style={styles.nav}>
         <NavItem id={items[0].id} icon={items[0].icon} active={active === items[0].id} label={labels[items[0].id]} onPress={() => onSelect(items[0].id)} />
         <NavItem id={items[1].id} icon={items[1].icon} active={active === items[1].id} label={labels[items[1].id]} onPress={() => onSelect(items[1].id)} />
-        <Pressable accessibilityRole="tab" accessibilityLabel={labels.ai} accessibilityState={{ selected: active === 'ai' }} onPress={() => onSelect('ai')} style={styles.aiNavButton}>
+        <View accessible={false} style={styles.aiNavSpacer} />
+        <NavItem id={items[2].id} icon={items[2].icon} active={active === items[2].id} label={labels[items[2].id]} onPress={() => onSelect(items[2].id)} />
+        <Pressable accessibilityRole="tab" accessibilityLabel={labels.ai} accessibilityState={{ selected: active === 'ai' }} onPress={() => onSelect('ai')} style={[styles.aiNavButton, active === 'ai' && styles.aiNavButtonActive]}>
           <Image source={AI_ORB} resizeMode="contain" style={styles.aiNavOrb} />
         </Pressable>
-        <NavItem id={items[2].id} icon={items[2].icon} active={active === items[2].id} label={labels[items[2].id]} onPress={() => onSelect(items[2].id)} />
-        <NavItem id={items[3].id} icon={items[3].icon} active={active === items[3].id} label={labels[items[3].id]} onPress={() => onSelect(items[3].id)} />
       </View>
     </View>
   );
@@ -107,7 +106,7 @@ function NavItem({ id, icon, active, label, onPress }: { id: NavKey; icon: keyof
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return (
     <Pressable key={id} onPress={onPress} accessibilityRole="tab" accessibilityState={{ selected: active }} style={styles.navItem}>
-      <Ionicons name={icon} size={20} color={active ? colors.cyan : colors.muted} />
+      <Ionicons name={icon} size={20} color={active ? colors.primary : colors.muted} />
       <Text numberOfLines={1} style={[styles.navLabel, active && styles.navSelected]}>{label}</Text>
     </Pressable>
   );
@@ -118,11 +117,11 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   safe: { flex: 1 },
   pageContent: { flexGrow: 1, paddingHorizontal: 16, paddingTop: 8, paddingBottom: 120, gap: 12 },
   mobileContent: { width: '100%', maxWidth: 470, alignSelf: 'center' },
-  eyebrow: { color: colors.cyan, fontWeight: '800', letterSpacing: 1.2, fontSize: 10, marginBottom: 7 },
+  eyebrow: { color: colors.primary, fontWeight: '800', letterSpacing: 1.2, fontSize: 10, marginBottom: 7 },
   title: { color: colors.text, fontWeight: '800', letterSpacing: -0.4, lineHeight: 34 },
   body: { color: colors.muted, fontSize: 14, lineHeight: 21 },
   panel: { backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border, borderRadius: 14, padding: 14, shadowColor: '#392073', shadowOpacity: 0.05, shadowRadius: 12, shadowOffset: { width: 0, height: 7 }, elevation: 2 },
-  action: { minHeight: 50, borderRadius: 12, backgroundColor: colors.cyan, paddingHorizontal: 16, alignItems: 'center', justifyContent: 'center' },
+  action: { minHeight: 50, borderRadius: 12, backgroundColor: colors.primary, paddingHorizontal: 16, alignItems: 'center', justifyContent: 'center' },
   actionSecondary: { backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border },
   actionDisabled: { opacity: 0.56 },
   actionPressed: { transform: [{ scale: 0.985 }], opacity: 0.86 },
@@ -142,9 +141,12 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   navSafe: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: 16, paddingTop: 10, alignItems: 'center', backgroundColor: 'transparent' },
   nav: { width: '100%', maxWidth: 470, height: 80, borderRadius: 28, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, paddingHorizontal: 4, flexDirection: 'row', alignItems: 'center', shadowColor: '#311C6F', shadowOpacity: 0.12, shadowRadius: 18, shadowOffset: { width: 0, height: 6 }, elevation: 9 },
   navItem: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 3, minHeight: 54 },
+  aiNavSpacer: { width: 62 },
   navLabel: { color: colors.muted, fontSize: 11, fontWeight: '700' },
-  navSelected: { color: colors.cyan },
-  aiNavButton: { width: 62, height: 62, borderRadius: 31, alignItems: 'center', justifyContent: 'center', marginTop: -24, backgroundColor: colors.card, borderWidth: 5, borderColor: '#E9E1FF', shadowColor: '#5528E9', shadowOpacity: 0.35, shadowRadius: 15, shadowOffset: { width: 0, height: 5 }, elevation: 10 },
+  navSelected: { color: colors.primary },
+  aiNavButton: { position: 'absolute', left: '50%', top: -20, marginLeft: -31, width: 62, height: 62, borderRadius: 31, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.card, borderWidth: 5, borderColor: colors.cardSoft, shadowColor: '#5528E9', shadowOpacity: 0.35, shadowRadius: 15, shadowOffset: { width: 0, height: 5 }, elevation: 10 },
+  aiNavButtonActive: { transform: [{ scale: 1.04 }], borderColor: colors.primary },
   aiNavOrb: { width: 51, height: 51 },
 });
+
 

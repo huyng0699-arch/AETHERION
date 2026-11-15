@@ -5,10 +5,10 @@
     "scheme": "aetherion",
     "version": "0.1.0",
     "orientation": "portrait",
-    "icon": "./assets/truy-tinh-logo.png",
+    "icon": "./assets/aetherion-app-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/truy-tinh-logo.png",
+      "image": "./assets/aetherion-app-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#F8F6FF"
     },
@@ -26,7 +26,7 @@
     "web": {
       "bundler": "metro",
       "output": "single",
-      "favicon": "./assets/truy-tinh-logo.png"
+      "favicon": "./assets/aetherion-app-icon.png"
     },
     "plugins": ["expo-secure-store"],
     "experiments": {
@@ -34,5 +34,4 @@
     }
   }
 }
-
 

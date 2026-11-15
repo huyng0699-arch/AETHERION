@@ -1,0 +1,691 @@
+{
+  "article_id": "CLIFF-105",
+  "slot": 105,
+  "display_title": "Fracture Wrist",
+  "category": "Musculoskeletal",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-105",
+    "publisher": "NASA",
+    "title": "Fracture Wrist \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-wrist-cliff-2023.pdf?emrc=73e0e4",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-wrist-cliff-2023.pdf?emrc=73e0e4",
+    "retrieved_at_utc": "2026-11-14T06:37:03.363196+00:00",
+    "content_sha256": "651d07b7e827755594eb9f07e882e70f582cc9be6cf43193e6770989627891eb",
+    "original_mime": "application/pdf",
+    "original_bytes": 357734,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-105-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch     Baseline\n\n\n\n ICL56_Fracture - Wrist\n\n The wrist is an anatomic linkage bridging the hand to the forearm. The hand relative to the forearm can flex, extend, pronate, supinate, and deviate\n radially and ulnarly. Malfunction of the wrist occurs when the structural alignment of the bones has changed, i.e. distal radius malunion and acute\n fracture of carpal bones (Steinberg, 2002). For the purposes of this CLiFF, a \u201cWrist Fracture\u201d includes a fracture of the distal radius or ulna, or\n fracture of any of the carpal bones (scaphoid, lunate, triquetrum, trapezoid, trapezium, capitate, hamate, and pisiform). Distal radius fractures are the\n most common type of wrist fracture, and one of the most common fractures in adults (Baawa-Ameyaw et al, 2020). The most injured carpal bone is\n the scaphoid where 70% of carpal fractures occur (Steinberg, 2002). Potential mechanisms of injury for wrist fracture in space include impact to\n structure from an outstretched hand during intra-vehicular translation, hyperflexion or a direct blow to the wrist such as while stowing equipment, or\n excessive forces exerted such as doing a repair during an EVA (Scheuring, 2009). Acute fractures results in pain, tenderness, swelling and potential\n deformity. Crewmembers may be faced with substantial morbidity if fracture healing is delayed or results in clinically significant deformity. Worst-case\n fractures pose additional risks of complex regional pain syndrome, infection, and neurovascular compromise. All best-case fractures are terrestrially\n recommended to be treated with splinting, followed by casting. All worst-case fractures terrestrially are treated with surgical intervention. Spaceflight-\n induced bone atrophy is due to the mechanical unloading of the skeletal system and is targeted to specific regions of the skeleton. These site-\n specific losses occur at normally weight-bearing skeletal areas (on Earth) suggesting that the regions that experience the larger deficits in mechanical\n loading undergo the greater adaptation. In low Earth orbit operations, the degree of BMD loss in the wrist has not been substantial. Radiation\n increases bone resorption and outside low earth orbit; BMD may be greater. In microgravity demineralization may be potentiated by the poor\n absorption of vitamin D. A deficiency in vitamin D could lead to malabsorption of calcium in the intestine and poor re-absorption by the proximal\n tubules of the kidney. The failure to conserve calcium because of vitamin D deficiency will limit the availability of calcium to support the anabolic\n effects of exercise and physical activity on bone and muscles. It is noted that the hands and wrists are the primary means of ambulation on orbit. The\n possible effect of mineralization or de-mineralization of wrist bones is not known (Sibonga, 2008).\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  There have been no reported wrist fractures during spaceflight. Lewandowski et al (2008) used predictive modeling to derive a probability of wrist\n  fracture sustained from a fall during an EVA on a Mars mission to be: Male: 0.0128; Female: 0.0240. Nelson et al. (2009) published findings from\n  the Bone Fracture Risk Model (used in IMM) to estimate the probability of wrist fracture on missions to the moon of 14 days or less to be < 1%,\n  short-duration Mars missions (344d) to be 1-2.5%, and long-duration Mars Missions (918d) to be < 1.5%.\n\n  ANALOG LITERATURE\n\n  A retrospective 8-year study (1998-2006) by Wolf et al (2009) found an incidence of 1.21 scaphoid fractures/1000 person-years among active duty\n  military members. Nice and Hilton (1990) report a combined incidence of carpal fractures onboard 20 US naval ships of 4.08/1000 person-years.\n\n  TERRESTRIAL LITERATURE\n\n  Terrestrial data was found from studies which utilized national databases to collect incidence data. Karl et al (2009) performed a retrospective study\n  of all upper extremity fractures, but provided incidence data for distal radius/ulnar fractures of 16.2/100,000 person-years, scaphoid fractures of\n  1.09/100,000 person-years, and all other carpal fractures of 2.38/100,000 person-years. Duckworth et al (2012) reported an incidence limited to\n  scaphoid fractures of 29/100,000 person-years from a 1-year prospective study of adults 13yo and older presenting to the Edinburgh Orthopaedic\n  Trauma Unit, Royal Infirmary of Edinburgh, Edinburgh, United Kingdom.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n\n6/15/2023 1:59:03 PM                                                     ICL56_Fracture - Wrist Cliff                                                         page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-105-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  INCIDENCE\n\n   Males: mean: 0.0052, SD: 0.0052 Females: mean:0.004, SD: 0.004\n\n\n\n  INCIDENCE SUMMARY\n\n  NASA's bone fracture risk model (BFxRM) was chosen to be best for predicting wrist bone fracture risk (incidence). The incidence is being linked to\n  surface operations during EVA for Lunar missions (the risk of wrist fracture in microgravity is assumed to be 0). ExMC is in pursuit of updated\n  predictions from the modeling team but in the meantime, a Beta distribution is being used to approximate the prediction distribution cited in\n  Lewendowski et al 2008, \" Forecasting proximal femur and wrist fracture caused by a fall to the side during space exploration missions to the Moon\n  and Mars.\" The means and variance of those probability predictions are specified in Table 2 of the manuscript. A Beta distribution will be used to\n  approximate the simulated distributions until new predictions can be incorporated. For males on the lunar surface, the distribution is\n  Beta(shape1=0.00207, shape2=1.615), mean: 0.00128, SD: 0.0221. For females on the lunar surface, the distribution is Beta(shape1=0.2128,\n  shape2=25.39), mean:0.00831, SD: 0.0176\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     EVA\n     Segment\n     EVA Surface\n     Env. Exposure\n     NA\n\n\n     Sex\n     Male\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Binomial\n     Incidence Dist.\n     Beta\n     Mean\n     0.0052\n     SD\n     0.0052\n\n\n     Beta\n     (Alpha): 0.00207\n     (Beta): 1.615\n\n\n     Incidence Details\n     Incidence Type\n     EVA\n     Segment\n     EVA Surface\n     Env. Exposure\n     NA\n\n\n     Sex\n     Female\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n\n\n\n\n6/15/2023 1:59:03 PM                                                   ICL56_Fracture - Wrist Cliff                                                     page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-105-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "     Binomial\n     Incidence Dist.\n     Beta\n     Mean\n     0.004\n     SD\n     0.004\n\n\n     Beta\n     (Alpha): 0.2128\n     (Beta): 25.39\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                     Source                                LOC Value\n\n   Duckworth et al, 2012.                                                       Terrestrial                           0\n\n   Karl et al, 2009.                                                            Terrestrial                           2\n\n   Wolf et al, 2009.                                                            Analog                                0\n\n   Nice et al, 1990.                                                            Analog                                1\n\n   Lewandowski et al, 2008.                                                     Spaceflight                           3\n\n   Nelson et al, 2009.                                                          Spaceflight                           3\n\n\n  Duckworth et al, 2012 presents terrestrial scaphoid fractures. Wolf et al, 2009 presents scaphoid fractures, but in military personnel. While\n  scaphoid fractures are the most common carpal bone fracture, they are less common than distal radius fractures (the most common type of wrist\n  fracture). Using scaphoid fractures alone as an estimate for incidence would not provide an accurate picture of wrist fractures (inclusive of distal\n  radius/ulna and carpal bones). Nice et al, 1990 presents incidence data for carpal fractures (expanding upon lone scaphoid fractures) in Naval\n  submarines. However, again this disregards the most common wrist fracture, the distal radius. While military analogs can be well matched to the\n  astronaut population in age and elite health status, fractures in military members are suspected to be less representative of fractures seen in\n  spaceflight (particularly those sustained in combat). Of the two military analog papers (Wolf et al, 2009 and Nice et al 1990), Nice et al is likely more\n  representative given the isolated, confined environment of a submarine. Of the terrestrial and analog data sources, the most inclusive of all types of\n  wrist fracture is Karl et al, 2009. It provides incidence for distal radius/ulnar fractures, scaphoid fractures, and \"other carpal bones.\" Despite this,\n  terrestrial data (whether analog or not) is suspected to over-estimate risk of in-flight fracture due to 1G on earth as compared to microgravity\n  inflight, vs. 1/6G Lunar and 1/3G Martian surfaces. Lewandowski et al, 2008 and Nelson et al, 2009 are papers presenting NASA's Bone Fracture\n  Risk Model (BFxRM) designed for use with IMM to predict fracture probability in different spaceflight environments. The Lewandowski et al 2008\n  paper specifically presents wrist fracture probabilities for Martian and Lunar surfaces for the astronaut population, thus information presented in\n  this paper is used for incidence for Wrist Fracture as it is the most representative provided in the data set.\n\n\n\n\n6/15/2023 1:59:03 PM                                                     ICL56_Fracture - Wrist Cliff                                                         page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-105-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  All crewmembers undergo DXA scanning pre- and post-flight. Pre-flight at L-21/18 month; and L-180/30 day (As close to launch as possible). Post-\n  flight at R+5/30, then as clinically indicated to assess BMD recovery.\n\n  BEST CASE SCENARIO DEFINITION\n\n  A closed, non-comminuted, non-segmented, non-displaced, or minimally displaced fracture resulting in no neurovascular compromise to the\n  affected limb.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  A fracture that is: open, comminuted, segmented, moderately to severely displaced, intra-articular, or results in neurovascular compromise to the\n  affected limb, likely requiring surgical intervention.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  Fracture of the carpal bones, distal radius, distal ulna.\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  The WC probability was assigned 16-39% based on a relative weighting of distal radius fractures (which account for approx. 20 of all fracture types)\n  and scaphoid fractures (which account for approx. 1.8% of all fracture types). The 54% WC probability seen during the UK COVID lockdown quoted\n  in Baawa-Ameyaw et al, 2020 was not considered in this calculation as it was felt to be an outlier. Therefore 11-36% was weighted for distal radius\n  fractures and 68.9% was weighted for scaphoid fractures\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                        Source                             LOC Value\n\n   Duckworth et al, 2012.                                                          Terrestrial                        2\n\n   Baawa-Ameyaw et al, 2020.                                                       Terrestrial                        3\n\n   Earnshaw et al, 2002.                                                           Terrestrial                        3\n\n   Lindau et al, 1999.                                                             Terrestrial                        2\n\n   DeWeber, 2022                                                                   Terrestrial                        N/A\n\n   Meena et al, 2014                                                               Terrestrial                        N/A\n\n  Duckworth et al, 2012 gave a WC probability of 68.9% for scaphoid fractures. Baawa-Ameyaw et al, 2020 looked at distal radius fractures that met\n  radiographic criteria for surgery in patients in the UK during the first COVID-19 lockdown (during which time the UK made the decision not to\n  operate on any distal radius fractures). Unfortunately, no follow-up data was available for patients who ultimately required surgery after the\n  lockdown (i.e. failed non-surgical treatment). The article presented a 54% WC probability during the first lockdown, but also contrasted this\n  incidence with a WC probability of 36% pre-COVID. (Both values were used in this average). Earnshaw et al, 2002 is a historic reference from\n  Queen's Medical Center in the UK that IMM used. At 5 weeks post- distal radius fracture there was a WC probability of 25%. Lindau et al 1999 is\n  another historic article from the IMM effort, looking at a series of 341 athletes from Sweden) that presented a WC probability of 11% for distal radius\n  fractures.\n\n\n\n\n6/15/2023 1:59:03 PM                                                    ICL56_Fracture - Wrist Cliff                                                        page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-105-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n\n                                                             CP1: Diagnosis       CP2: Treatment              CP3: Condition End State\n\n                                              Condition      TI%       Duration   TI%         Duration        TI%         RTDC             LOCL\n   Case                                       Probability\n   Scenario        Composite Incidence        %              Preset    Preset     Preset      Min     Max     Preset      Min%    Max%     Min%     Max%\n\n   Treated Best    Males: mean: 0.0052,       61 - 84        100       1.23       5.46107     672     1512    0           3       6.7      0        0\n   Case (TBC)      SD: 0.0052 Females:\n                   mean:0.004, SD:\n   Treated         0.004                      16 - 39        100       2.52       19.2931     2160    8760    10.0186     100     100      0        0\n   Worst Case\n   (TWC)\n\n   Untreated       N/A                        N/A            N/A       1.23       35.3973     672     1512    10.0186     3       6.7      0        0\n   Best Case\n   (UTBC)\n\n   Untreated       N/A                        N/A            N/A       2.52       50.1063     2160    8760    27.7172     100     100      0        0\n   Worst Case\n   (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n6/15/2023 1:59:03 PM                                                     ICL56_Fracture - Wrist Cliff                                                         page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-105-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  The RTDC surrogate used for the CLiFF was open reduction and internal fixation (ORIF) or permanent disability. This data collection effort for this\n  CliFF was unable to identify data for untreated scenarios (see details below).\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Duration and RTDC for the treated, best-case scenario, were based on distal radius and scaphoid fractures only and did not include the other\n  bones of the wrist. The duration articles (Beleckas and Calfee 2017), (Winston and Welland 2017), are specific to athlete populations. The RTDC\n  surrogate chosen was open reduction and internal fixation (ORIF) or permanent disability. All fracture types in the BC definition (closed, non- or\n  minimally-displaced, non-comminuted, non-segmented) are recommended to be managed non-surgically. Among those managed non-surgically,\n  the complication considered that could lead to permanent disability was complex regional pain syndrome (CRPS). Roh et al (2014) provided\n  incidence data on Complex Regional Pain Syndrome based on a study including 498 patients (roughly evenly split between M/F) ages 56.9 +/- 18.7\n  presenting to a tertiary care center (Gil Medical Center, Gachon University School of Medicine, Incheon, Korea) with distal radius fractures. Non-\n  comminuted distal radius fractures had an incidence of CPRS of 17/286, (whereas comminuted distal radius fractures, more in line with WC\n  scenario, had incidence of CPRS of 25/191). Extra-articular distal radius fractures had an incidence of CPRS of 16/238 (intra-articular 26/239). Aro\n  and Koivunen (1991) examined long-term functional outcomes of patients with varying degrees of radial shortening following distal radius fractures.\n  47 patients age 54 +/- 18 with no radiographic deformity were included in the study. 2/47 patients had \"unsatisfactory\" long-term outcomes. Dias\n  and Kantharuban (2017) described complication rates in scaphoid fractures, citing incidence of CRPS at 3% with non-operative management.\n  LOCL was deemed 0% probability, which is appropriate for a BC wrist fracture (Duckworth et al, 2012), (Karl et al, 2009).\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  The same search was used for treated best case and treated worst case duration in Dynamed (Distal Radius and Scaphoid Fractures). RTDC for\n  treated worst case searches was limited to Distal Radius and Scaphoid Fractures and the RTDC surrogate chosen was \u201cORIF / Permanent disability\n  incidence.\u201d This disregards the possibility of Compartment Syndrome as an RTDC surrogate. However, all worst-case wrist fractures should receive\n  surgical intervention based on clinical practice guidelines (Lichtman et al, 2010) so RTDC was assigned a 100% probability (which would not have\n  changed if compartment syndrome was included). The LOCL probability search was limited to distal radius and scaphoid fractures. LOCL\n  probability was determined to be 0% (Duckworth et al, 2012) (Karl et al, 2015). However, this does not include the complication of compartment\n  syndrome, which may present a probability of death > 0%. Thus, LOCL may underestimate the true probability of LOCL in the model.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  The literature search was unable to identify any duration or RTDC probability data for untreated wrist fractures. Thus, the duration and RTDC\n  probability for untreated is using treated best-case data, i.e. the duration and RTDC for treated and untreated BC scenario will be identical. This is\n  a limitation of the data. The duration (Beleckas and Calfee, 2017), (Winston and Weiland 2017) and RTDC probability (Roh et al, 2014), (Aro and\n  Koivunen, 1991), (Dias and Kantharuban, 2017) are based on distal radius and scaphoid fractures. It was assumed that the LOCL probability would\n  remain 0% for the BC untreated scenario based on data from the BC treated scenario (Duckworth et al, 2012), (Karl et al, 2009).\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  The literature search was unable to identify any duration, RTDC probability, or LOCL probability data for untreated worst-case wrist fractures. The\n  duration for untreated WC is using treated WC data, i.e. the duration probability for treated and untreated WC scenario will be identical (MacDermid\n  et al, 2001). This is a limitation of the data. One additional source was found comparing radiographic outcomes of delayed vs. immediate surgical\n  intervention of distal radius fractures (Lee at al, 2020). Lee et al presented a small cohort study of distal radius fractures with 25 cases (delayed\n  surgery, average 24.8 days post-fracture) and 50 controls (immediate surgery average 5.6 days post-fracture). Subjects spanned ages 18-87.\n  Notably, open fractures and concomitant fractures of carpal bones were excluded. The authors found no significant difference in radiographic\n  outcomes of healing with delayed vs. immediate surgery. However, they did note that delayed surgery, based on operative notes review, \u201crevealed\n  that an extended surgical approach and invasive dissection techniques were utilized more frequently in the delayed group.\u201d This study was felt to\n  support a WC untreated duration that is equivalent to the WC treated duration. This assumes the ability to RTDC for definitive surgical care within\n  an average of 24.8 days post-fracture and is limited to a closed, distal radius fracture. The lack of available data for untreated worst-case is a\n  limitation of this CliFF. The assumption was made that, given the RTDC probability for the treated WC is 100% (i.e. for all fracture types under the\n  WC definition, the recommended treatment is surgery), the RTDC for the untreated WC scenario would also have to be 100% (Lichtman et al,\n  2010). The LOCL probability from the worst-case treated scenario was used for the worst-case untreated scenario since no additional data was\n  available (Duckworth et al, 2012), (Karl et al, 2015). Whereas this is likely an appropriate assumption to make for LOCL probability for the BC\n  scenario, there is a higher risk of underestimating LOCL probability for the WC untreated scenario, particularly in reference to infection from\n  untreated open fracture and compartment syndrome (neither infection or compartment syndrome were considered specifically in searches for\n  LOCL, which is a limitation of the data supporting this CLiFF). Thus, worst-case untreated LOCL probability is suspected to be an underestimate, a\n  limitation of this CLiFF.\n\n\n\n\n6/15/2023 1:59:03 PM                                                    ICL56_Fracture - Wrist Cliff                                                       page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-105-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                                                  Source                                LOC Value\n\n   Beleckas et al, 2017                                                      Terrestrial\n\n   Winston et al, 2017                                                       Terrestrial\n                                                                                                                                     3\n   MacDermid et al, 2001                                                     Terrestrial\n\n   Lee et al, 2020                                                           Terrestrial\n\n  Unique data for untreated scenarios was unable to be obtained, so treated and untreated durations are identical. Becleckas et al, 2017 is a review\n  article for distal radius fractures in athletes age 18-60. Winston et al, 2017 is a review of scaphoid fractures in athletes. Macdermid et al 2001 is a\n  prospective study of distal radius fractures in adults. Lee et al, 2020 is a small cohort study of delayed surgical intervention (24.8 days post-\n  fracture) vs. immediate surgery (5.6 days post-fracture) for distal radius fracture. Notably, it excludes open or concomitant carpal bone fractures,\n  but was used to help inform worst-case, untreated duration.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                           Source                           LOC Value\n\n   Roh et al, 2014                                                                    Terrestrial\n\n   Aro and Koivunen, 1991                                                             Terrestrial\n                                                                                                                                         3\n   Dias and Kantharuban, 2017                                                         Terrestrial\n\n   Lichtman et al, 2010                                                               Terrestrial\n\n\n  Unique data for untreated scenarios was unable to be obtained, so treated and untreated RTDCs are identical. The RTDC surrogate is open\n  reduction and internal fixation (ORIF) or permanent disability. All fracture types in the BC definition are recommended to be managed non-\n  surgically. Among those managed non-surgically, the complication that could lead to permanent disability that was considered was complex regional\n  pain syndrome (CRPS) - which represents a small percentage for RTDC (3-6.7%) in best case scenarios. All fracture types in the WC definition are\n  recommended to be managed surgically, thus RTDC for WC scenarios is 100%.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                                                  Source                                LOC Value\n\n   Duckworth et al, 2012.                                                    Terrestrial\n                                                                                                                                     1\n   Karl et al, 2009.                                                         Terrestrial\n\n\n  Unique data for untreated scenarios was unable to be obtained, so treated and untreated LOCLs are identical. Loss of Crew Life secondary to a\n  wrist fracture was considered to have a 0% probability based on the literature. This is likely an underestimate for untreated scenarios, particularly\n  the worst-case untreated scenario.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Overview Wrist fracture refers to a fracture of the carpal bones (and/or the distal radius/ulna), with the best-case scenario representing\n  uncomplicated fractures and the worst-case scenario representing complicated fractures. Any fracture, if left untreated, could result in further\n  complications such as malunion, loss-of function, and/or chronic pain. A worst-case scenario, left untreated, could result in additional significant\n  complications such as neurovascular compromise. CNES: Fracture of the carpal bones, distal radius, distal ulna Diagnostic Scope and Resourcing:\n  In the best-case scenario, diagnosis is based on history, physical examination (musculoskeletal and neurologic), and imaging. Plain film (X-Ray),\n  CT, and MRI will be unavailable inflight. Musculoskeletal ultrasound was included in the CRT as it may serve as a useful adjunct in diagnosis for\n  some cases, but it was not considered a necessary capability to diagnose wrist fracture. In the worst-case scenario, diagnosis is based on history,\n  physical examination (musculoskeletal, neurologic, and vital signs), and imaging. In some cases, musculoskeletal ultrasound may be\n  contraindicated due to risk of contamination of an open fracture, or further displacement of the fracture(s). The utility of musculoskeletal ultrasound\n\n\n\n\n6/15/2023 1:59:03 PM                                                     ICL56_Fracture - Wrist Cliff                                                       page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-105-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  would be determined on a case-by-case basis. It was included as a non-necessary capability. This diagnostic framework is consistent with the\n  terrestrial workup for wrist fracture with the exception of the inability to perform plain film X-Ray (and if warranted CT or MRI), and thereby using\n  Musculoskeletal Ultrasound as a possible surrogate. Clinical Phase 1 Duration and Rationale This version of IMPACT presumes physician level\n  knowledge, skill, and ability will be present on the mission. The CRT working group SME consensus Clinical Phase 1 duration: Best Case CP1: 1.23\n  hours Worst Case CP1: 2.52 hours Treatment Scope and Resourcing: Most best-case wrist fractures in terrestrial populations resolve without\n  reduction, with an initial period of splinting, followed by 4-6 weeks of casting. Splinting was considered a necessity, whereas casting was included as\n  a capability but not considered a necessity in this CRT. Physical therapy is recommended post-immobilization. Pain is variable depending on the\n  patient. NSAIDs and Acetaminophen were included in the best-case treatment scenario. Terrestrially, all worst-case fractures warrant surgical\n  intervention. Thus, a worst-case wrist fracture in-flight would present a significant treatment challenge. These fractures would warrant an attempted\n  reduction to achieve more physiologic alignment. Open fractures inflight would be treated with copious irrigation, wound closure, prophylactic\n  antibiotics and splinting with possible casting after wound healing. Again, both splinting and casting were included as capabilities, but only splinting\n  was considered a necessary capability in this CRT. Both plaster and fiberglass (and their associated means of removal) are included for trade-\n  space analysis. Pain from a worst-case fracture may require narcotic analgesia. Physical therapy would be advised until the end of the mission.\n  Exercise modification is also recommended, but not built into the CRT as this does not represent a clinical resource. Ertapenem and Ceftriaxone\n  are provided for antibiotic prophylaxis for open fractures. Although ertapenem is not traditionally used terrestrially, it was selected due to its broad\n  spectrum, daily dosing, and ability to be dosed IM \u2013 decreasing mass/volume requirements associated with IV medications. Communications and\n  Support Needs: While real-time video and audio loop communications are desired for diagnosis and treatment, they were not considered a\n  necessity, particularly in the best-case scenario. For the WC, consultation with ground specialists to facilitate treatment and healing was considered\n  necessary given the limited diagnostic and treatment capabilities in-flight. References 1. American Academy of Orthopedic Surgeons. Management\n  of Distal Radius Fractures: Evidence-Based Clinical Practice Guideline. 2020. Retrieved from https://www.aaos.org/globalassets/quality-and-\n  practice-resources/distal-radius/drfcpg.pdf 2. Daniels JM, Zook EG, Lynch JM. Hand and Wrist Injuries: Part II. Emergent Evaluation. AFP 2004;\n  69:1949\u201356. 3. Phillips TG, Reibach A, Slomiany WP. Diagnosis and Management of Scaphoid Fractures. AFP 2004; 70:879\u201384. 4. Open-\n  fractures_ADULT.pdf. Retrieved 23 January 2021 from http://www.med.umich.edu/asp/pdf/adult_guidelines/Open-fractures_ADULT.pdf\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  It was a challenge for the IMM to find untreated BC/WC data and thus used durations that were similar between best and worst case scenarios in\n  the IMM (i.e. the duration of treated best case was similar to untreated best case, and the duration of the treated worst case was similar to the\n  untreated worst case). This same assumption is being made in this CLiFF. The paucity of data for untreated scenarios remains a limitation in this\n  effort. The durations for this effort are considerably longer for the worst-case scenarios (12-52 weeks vs. 6-12 weeks) based on the updated\n  evidence review. The RTDC probabilities are similar between IMM and IMPACT. Both IMM and IMPACT assume a 0% probability of LOCL for any\n  scenario, although as stated previously this is likely an underestimate for the worst-case, untreated scenario which may have a greater than 0% of\n  LOCL in the event of untreated open fracture or fracture resulting in untreated compression syndrome.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  \u2022 Analog articles examining wrist fracture in the context of fragility fractures/osteopenia/osteoporosis were disregarded by the student effort at not\n  applicable. However, fractures that occur in spaceflight would be most similar to these types of fractures terrestrially. This is a limitation of the\n  search. \u2022 Searches for incidence did not consistently use the same mesh words. For instance, distal radius fractures were included for terrestrial\n  incidence data, but not for spaceflight or analog incidence searches. It is appropriate to include distal radius/ulna fractures in the searches, but\n  they should be included for all searches, not just some to make it uniform. Of note, distal radius fractures are incredibly common, terrestrially. This\n  could be artificially inflating the terrestrial incidence value. Students documented concerns about inconsistency in the terrestrial data studies.\n  Scaphoid fracture was used as a surrogate in many cases (which is the most common carpal bone fracture, but not as common as distal radius\n  fracture). \u2022 Duration, RTDC, and LOCL were based on distal radius and scaphoid fractures only and did not include the other bones of the wrist. \u2022\n  The RTDC surrogate chosen was \u201cORIF / Permanent disability incidence.\u201d This does disregard the possibility of Compartment Syndrome as an\n  RTDC surrogate. \u2022 The literature search was unable to identify any duration, RTDC of LOCL data for untreated wrist fractures. Thus, the duration\n  and RTDC for untreated scenarios is using treated data, i.e. the duration and RTDC %, and LOCL % for treated and untreated scenarios will be\n  identical. This is a limitation of the data. The paucity of data for untreated scenarios remains a limitation in this effort. \u2022 LOCL probability was\n  determined to be 0% for both best and worst-case scenarios (Duckworth et al, 2012) (Karl et al, 2015). However, in the worst-case scenario this\n  does not include the complication of compartment syndrome, which may present a probability of death > 0%. It seems intuitive that the risk of death\n  from an untreated WC fracture - comminuted, open - that isn\u2019t treated could be > 0% (infection, sepsis, compartment syndrome). There was no data\n  available for the untreated scenario, so treated was used (0%). Thus, LOCL may underestimate the true probability of LOCL in the model,\n  especially in the WC, untreated scenario.\n\n\n\n\n6/15/2023 1:59:03 PM                                                     ICL56_Fracture - Wrist Cliff                                                        page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-105-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                              Clinical Phase 2: Treatment\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                 Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n                            664                              89                                           145\n    Case\n   (UTBC)\n   Treated\n    Worst\n                            664\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223             664                              89                                           145\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                       Total\n                                                                                                                                                     Human\n                                                                                            Translation &                            Total Tasks\n                Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                            Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n               (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                           (microgravity)                            Condition\n                                                                                                                                                    Tasks Full\n                                                                                                                                                     Mission\n   Treated\n     Best\n           132                                                                             34             34           211          411            3763          0.109221      10.9221\n    Case\n    (TBC)\n  Untreated\n    Best\n            132             564            414                                             34             34           211          2287           3763          0.60776       60.776\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                                                                             34             34           211          1075           3763          0.285676      28.5676\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132             564            414               22             196            34             34           211          2728           3763          0.724953      72.4953\n    Case\n   (UTWC)\n\n                                                                          Clinical Phase 3: Condition End State\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                 Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n    Case\n   (UTBC)\n   Treated\n    Worst\n     Case\n    (TWC)\n  Untreated\n    Worst\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n6/15/2023 1:59:03 PM                                                       ICL56_Fracture - Wrist Cliff                                                                           page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-105-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                           Total\n                                                                                                                                         Human\n                                                                                 Translation &                           Total Tasks\n               Hand                                      Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                              Stabilization                          Impaired By                      TI Decimal        TI %\n              (Dom)                                    Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                                (microgravity)                           Condition\n                                                                                                                                        Tasks Full\n                                                                                                                                         Mission\n   Treated\n     Best\n                                                                                                                        0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n            132                                                                               34            211         377            3763          0.100186         10.0186\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                                                                                34            211         377            3763          0.100186         10.0186\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132                     414               22           196         34             34            211         1043           3763          0.277172         27.7172\n    Case\n   (UTWC)\n\n\n\n\n6/15/2023 1:59:03 PM                                               ICL56_Fracture - Wrist Cliff                                                                           page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-105-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: In the worst-case treated scenario, pain medications assumed to impair complex cognitive tasks. In all untreated scenarios, pain from the wrist\n  fracture was assumed to prevent the use of the hands. CP3: No comments.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n6/15/2023 1:59:03 PM                                                    ICL56_Fracture - Wrist Cliff                                                       page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-105-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. American Academy of Orthopaedic Surgeons. Management of Distal Radius Fractures: Evidence-Based Clinical Practice Guideline. 2020.\n\n   2. Aro HT, Koivunen T. Minor axial shortening of the radius affects outcome of Colles\u2019 fracture treatment. J Hand Surg Am. 1991; 16(3):392\u20138\n\n   3. Baawa-Ameyaw J, Kabariti R, Chandra A, Rhee J. The theoretical impact on corrective upper limb elective services following analysis of distal\n   radius fractures managed nonoperatively during COVID-19 pandemic. Bone Jt Open. 2020; 1(10):612\u20136\n\n   4. Beleckas C, Calfee R. Distal radius fractures in the athlete. Curr Rev Musculoskelet Med. 2017; 10(1):62\u201371\n\n   5. Daniels JM, Zook EG, Lynch JM. Hand and Wrist Injuries: Part II. Emergent Evaluation. AFP. 2004; 69(8):1949\u201356\n\n   6. Dias J, Kantharuban S. Treatment of Scaphoid Fractures: European Approaches. Hand Clin. 2017; 33(3):501\u20139\n\n   7. Duckworth AD, Jenkins PJ, Aitken SA, Clement ND, Court-Brown CM, McQueen MM. Scaphoid fracture epidemiology. J Trauma Acute Care\n   Surg. 2012; 72(2):E41-45\n\n   8. Earnshaw SA, Aladin A, Surendran S, Moran CG. Closed reduction of colles fractures: comparison of manual manipulation and finger-trap\n   traction: a prospective, randomized study. J Bone Joint Surg Am. 2002; 84(3):354\u20138\n\n   9. Karl JW, Olson PR, Rosenwasser MP. The Epidemiology of Upper Extremity Fractures in the United States, 2009. J Orthop Trauma. 2015;\n   29(8):e242-244\n\n   10. Lee SJ, Stenquist DS, Collins JE, Mora AN, Teplitz BA, Blazar PE, et al. Radiographic Outcomes and Complications of Delayed Fixation of\n   Distal Radius Fractures. Hand (N Y). 2020; 1558944720930301\n\n   11. Lewandowski B, Myers J, Sulkowski C, Reuhl K, Licata A. Forecasting Proximal Femur and Wrist Fracture Caused by a Fall to the Side During\n   Space Exploration Missions to the Moon and Mars. In: Space Life Sciences Symposium. 2008\n\n   12. Lichtman DM, Bindra RR, Boyer MI, Putnam MD, Ring D, Slutsky DJ, et al. Treatment of distal radius fractures. J Am Acad Orthop Surg. 2010;\n   18(3):180\u20139\n\n   13. Lindau TR, Aspenberg P, Arner M, Redlundh-Johnell I, Hagberg L. Fractures of the distal forearm in young adults. An epidemiologic\n   description of 341 patients. Acta Orthop Scand. 1999; 70(2):124\u20138\n\n   14. MacDermid JC, Richards RS, Roth JH. Distal radius fracture: a prospective outcome study of 275 patients. J Hand Ther. 2001; 14(2):154\u201369\n\n   15. Nelson ES, Lewandowski B, Licata A, Myers JG. Development and validation of a predictive bone fracture risk model for astronauts. Ann\n   Biomed Eng. 2009; 37(11):2337\u201359\n\n   16. Nice DS, Hilton SM. Sex Differences In Health Care Requirements Aboard U.S. Navy Ships: (541412006-001). 1990\n\n   17. Phillips TG, Reibach A, Slomiany WP. Diagnosis and Management of Scaphoid Fractures. AFP. 2004; 70(5):879\u201384\n\n   18. Roh YH, Lee BK, Noh JH, Baek JR, Oh JH, Gong HS, et al. Factors associated with complex regional pain syndrome type I in patients with\n   surgically treated distal radius fracture. Arch Orthop Trauma Surg. 2014; 134(12):1775\u201381\n\n   19. Scheuring RA, Mathers CH, Jones JA, Wear ML. Musculoskeletal injuries and minor trauma in space: incidence and injury mechanisms in U.S.\n   astronauts. Aviat Space Environ Med. 2009; 80(2):117\u201324\n\n   20. Sibonga JD, Jones J, Myers J, Lewandowski B, Lang T, Keyak J. Evidence Book Risk of Bone Fracture. 2008\n\n   21. Steinberg B. Acute wrist injuries in the athlete. Orthop Clin North Am. 2002; 33(3):535\u201345, vi\n\n   22. Winston MJ, Weiland AJ. Scaphoid fractures in the athlete. Curr Rev Musculoskelet Med. 2017; 10(1):38\u201344\n\n   23. Wolf JM, Dawson L, Mountcastle SB, Owens BD. The incidence of scaphoid fracture in a military population. Injury. 2009; 40(12):1316\u20139\n\n   24. Open-fractures_ADULT.pdf.\n\n   25.DeWeber K. Overview of Carpal Fractures. Up To Date. 2022 Retrieved 31 August 2022 from uptodate.com\n\n   26.Meena S, Sharma P, Sambharia AK, Dawar A. Fractures of Distal Radius: An Overview. J Family Med Prim Care. 2014; 3(4):325\u201332\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                       PHRASE\n\n   AAOMS                         American Association of Oral and Maxillofacial Surgeons\n\n\n\n\n6/15/2023 1:59:03 PM                                                    ICL56_Fracture - Wrist Cliff                                                  page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-105-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   AMA                 American Medical Association\n\n   ARCL                All Remaining Conditions List\n\n   ARS                 Acute Radiation Sickness\n\n   BHP                 Behavioral Health and Performance\n\n   CAC                 Coronary Artery Calcium\n\n   CHS                 Crew Health and Safety\n\n   CL                  Condition List\n\n   CliFF               Clinical Finding Form\n\n   CMO                 Crew Medical Officer\n\n   COMFORT             Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                 Clinical Phase 1\n\n   CP2                 Clinical Phase 2\n\n   CP3                 Clinical Phase 3\n\n   CRL                 Clinical Resource Level\n\n   CRT                 Capability Resource Table\n\n   CST                 Clinical Science Team\n\n   DCS                 Decompression Syndrome\n\n   DRM                 Design Reference Mission\n\n   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n\n\n\n6/15/2023 1:59:03 PM                                             ICL56_Fracture - Wrist Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    },
+    {
+      "section_id": "CLIFF-105-P14",
+      "ordinal": 13,
+      "heading": "Page 14 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n6/15/2023 1:59:03 PM                                         ICL56_Fracture - Wrist Cliff   page: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "page:14"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-105-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "EVA"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "EVA Surface"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Male"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Binomial"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Beta"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.0052"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.0052"
+        ],
+        [
+          "Beta"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-105-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                     Source                                LOC Value"
+        ],
+        [
+          "Duckworth et al, 2012.                                                       Terrestrial                           0"
+        ],
+        [
+          "Karl et al, 2009.                                                            Terrestrial                           2"
+        ],
+        [
+          "Wolf et al, 2009.                                                            Analog                                0"
+        ],
+        [
+          "Nice et al, 1990.                                                            Analog                                1"
+        ],
+        [
+          "Lewandowski et al, 2008.                                                     Spaceflight                           3"
+        ],
+        [
+          "Nelson et al, 2009.                                                          Spaceflight                           3"
+        ],
+        [
+          "Duckworth et al, 2012 presents terrestrial scaphoid fractures. Wolf et al, 2009 presents scaphoid fractures, but in military personnel. While"
+        ],
+        [
+          "scaphoid fractures are the most common carpal bone fracture, they are less common than distal radius fractures (the most common type of wrist"
+        ],
+        [
+          "fracture). Using scaphoid fractures alone as an estimate for incidence would not provide an accurate picture of wrist fractures (inclusive of distal"
+        ],
+        [
+          "radius/ulna and carpal bones). Nice et al, 1990 presents incidence data for carpal fractures (expanding upon lone scaphoid fractures) in Naval"
+        ],
+        [
+          "submarines. However, again this disregards the most common wrist fracture, the distal radius. While military analogs can be well matched to the"
+        ],
+        [
+          "astronaut population in age and elite health status, fractures in military members are suspected to be less representative of fractures seen in"
+        ],
+        [
+          "spaceflight (particularly those sustained in combat). Of the two military analog papers (Wolf et al, 2009 and Nice et al 1990), Nice et al is likely more"
+        ],
+        [
+          "representative given the isolated, confined environment of a submarine. Of the terrestrial and analog data sources, the most inclusive of all types of"
+        ],
+        [
+          "wrist fracture is Karl et al, 2009. It provides incidence for distal radius/ulnar fractures, scaphoid fractures, and \"other carpal bones.\" Despite this,"
+        ],
+        [
+          "terrestrial data (whether analog or not) is suspected to over-estimate risk of in-flight fracture due to 1G on earth as compared to microgravity"
+        ],
+        [
+          "inflight, vs. 1/6G Lunar and 1/3G Martian surfaces. Lewandowski et al, 2008 and Nelson et al, 2009 are papers presenting NASA's Bone Fracture"
+        ],
+        [
+          "Risk Model (BFxRM) designed for use with IMM to predict fracture probability in different spaceflight environments. The Lewandowski et al 2008"
+        ],
+        [
+          "paper specifically presents wrist fracture probabilities for Martian and Lunar surfaces for the astronaut population, thus information presented in"
+        ],
+        [
+          "this paper is used for incidence for Wrist Fracture as it is the most representative provided in the data set."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-105-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                        Source                             LOC Value"
+        ],
+        [
+          "Duckworth et al, 2012.                                                          Terrestrial                        2"
+        ],
+        [
+          "Baawa-Ameyaw et al, 2020.                                                       Terrestrial                        3"
+        ],
+        [
+          "Earnshaw et al, 2002.                                                           Terrestrial                        3"
+        ],
+        [
+          "Lindau et al, 1999.                                                             Terrestrial                        2"
+        ],
+        [
+          "DeWeber, 2022                                                                   Terrestrial                        N/A"
+        ],
+        [
+          "Meena et al, 2014                                                               Terrestrial                        N/A"
+        ],
+        [
+          "Duckworth et al, 2012 gave a WC probability of 68.9% for scaphoid fractures. Baawa-Ameyaw et al, 2020 looked at distal radius fractures that met"
+        ],
+        [
+          "radiographic criteria for surgery in patients in the UK during the first COVID-19 lockdown (during which time the UK made the decision not to"
+        ],
+        [
+          "operate on any distal radius fractures). Unfortunately, no follow-up data was available for patients who ultimately required surgery after the"
+        ],
+        [
+          "lockdown (i.e. failed non-surgical treatment). The article presented a 54% WC probability during the first lockdown, but also contrasted this"
+        ],
+        [
+          "incidence with a WC probability of 36% pre-COVID. (Both values were used in this average). Earnshaw et al, 2002 is a historic reference from"
+        ],
+        [
+          "Queen's Medical Center in the UK that IMM used. At 5 weeks post- distal radius fracture there was a WC probability of 25%. Lindau et al 1999 is"
+        ],
+        [
+          "another historic article from the IMM effort, looking at a series of 341 athletes from Sweden) that presented a WC probability of 11% for distal radius"
+        ],
+        [
+          "fractures."
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-105-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment              CP3: Condition End State"
+        ],
+        [
+          "Condition      TI%       Duration   TI%         Duration        TI%         RTDC             LOCL"
+        ],
+        [
+          "Case                                       Probability"
+        ],
+        [
+          "Scenario        Composite Incidence        %              Preset    Preset     Preset      Min     Max     Preset      Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best    Males: mean: 0.0052,       61 - 84        100       1.23       5.46107     672     1512    0           3       6.7      0        0"
+        ],
+        [
+          "Case (TBC)      SD: 0.0052 Females:"
+        ],
+        [
+          "mean:0.004, SD:"
+        ],
+        [
+          "Treated         0.004                      16 - 39        100       2.52       19.2931     2160    8760    10.0186     100     100      0        0"
+        ],
+        [
+          "Worst Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated       N/A                        N/A            N/A       1.23       35.3973     672     1512    10.0186     3       6.7      0        0"
+        ],
+        [
+          "Best Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Untreated       N/A                        N/A            N/A       2.52       50.1063     2160    8760    27.7172     100     100      0        0"
+        ],
+        [
+          "Worst Case"
+        ],
+        [
+          "(UTWC)"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-105-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                  Source                                LOC Value"
+        ],
+        [
+          "Beleckas et al, 2017                                                      Terrestrial"
+        ],
+        [
+          "Winston et al, 2017                                                       Terrestrial"
+        ],
+        [
+          "3"
+        ],
+        [
+          "MacDermid et al, 2001                                                     Terrestrial"
+        ],
+        [
+          "Lee et al, 2020                                                           Terrestrial"
+        ],
+        [
+          "Unique data for untreated scenarios was unable to be obtained, so treated and untreated durations are identical. Becleckas et al, 2017 is a review"
+        ],
+        [
+          "article for distal radius fractures in athletes age 18-60. Winston et al, 2017 is a review of scaphoid fractures in athletes. Macdermid et al 2001 is a"
+        ],
+        [
+          "prospective study of distal radius fractures in adults. Lee et al, 2020 is a small cohort study of delayed surgical intervention (24.8 days post-"
+        ],
+        [
+          "fracture) vs. immediate surgery (5.6 days post-fracture) for distal radius fracture. Notably, it excludes open or concomitant carpal bone fractures,"
+        ],
+        [
+          "but was used to help inform worst-case, untreated duration."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-105-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                           Source                           LOC Value"
+        ],
+        [
+          "Roh et al, 2014                                                                    Terrestrial"
+        ],
+        [
+          "Aro and Koivunen, 1991                                                             Terrestrial"
+        ],
+        [
+          "3"
+        ],
+        [
+          "Dias and Kantharuban, 2017                                                         Terrestrial"
+        ],
+        [
+          "Lichtman et al, 2010                                                               Terrestrial"
+        ],
+        [
+          "Unique data for untreated scenarios was unable to be obtained, so treated and untreated RTDCs are identical. The RTDC surrogate is open"
+        ],
+        [
+          "reduction and internal fixation (ORIF) or permanent disability. All fracture types in the BC definition are recommended to be managed non-"
+        ],
+        [
+          "surgically. Among those managed non-surgically, the complication that could lead to permanent disability that was considered was complex regional"
+        ],
+        [
+          "pain syndrome (CRPS) - which represents a small percentage for RTDC (3-6.7%) in best case scenarios. All fracture types in the WC definition are"
+        ],
+        [
+          "recommended to be managed surgically, thus RTDC for WC scenarios is 100%."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-105-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                  Source                                LOC Value"
+        ],
+        [
+          "Duckworth et al, 2012.                                                    Terrestrial"
+        ],
+        [
+          "1"
+        ],
+        [
+          "Karl et al, 2009.                                                         Terrestrial"
+        ],
+        [
+          "Unique data for untreated scenarios was unable to be obtained, so treated and untreated LOCLs are identical. Loss of Crew Life secondary to a"
+        ],
+        [
+          "wrist fracture was considered to have a 0% probability based on the literature. This is likely an underestimate for untreated scenarios, particularly"
+        ],
+        [
+          "the worst-case untreated scenario."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-105-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision           Hearing                 Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664                              89                                           145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223             664                              89                                           145"
+        ],
+        [
+          "Case"
+        ]
+      ],
+      "page_number": 9,
+      "source_anchor": "page:9#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-105-IMG-01",
+      "ordinal": 0,
+      "media_kind": "RADIOLOGY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-105/scaphoid_wrist_fracture_xray.jpg",
+      "mime_type": "image/jpeg",
+      "width": 558,
+      "height": 463,
+      "sha256": "1262662fe2504b462b4336069c05d7b9be5a20d92adc0b26a890c265da1f95af",
+      "creator": "Mohamed Jarraya, Daichi Hayashi, Frank W. Roemer, Michel D. Crema, Luis Diaz, Jane Conlin, Monica D. Marra, Nabil Jomaah, and Ali Guermazi",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AScaphoid_fracture_-_barely_visible_on_initial_X-ray.jpg",
+      "attribution": "Mohamed Jarraya, Daichi Hayashi, Frank W. Roemer, Michel D. Crema, Luis Diaz, Jane Conlin, Monica D. Marra, Nabil Jomaah, and Ali Guermazi, via Wikimedia Commons (CC BY 3.0)",
+      "caption": "Wrist radiograph illustrating a subtle scaphoid carpal fracture.",
+      "alt_text": "X-ray of a wrist scaphoid fracture.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Scaphoid fracture - barely visible on initial X-ray.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-105-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-105/hand_carpal_bones.png",
+      "mime_type": "image/png",
+      "width": 670,
+      "height": 830,
+      "sha256": "cbf7db6572202d29b64aebba395490f4fbd9522af12167fdb16a28d0a94613fe",
+      "creator": "Sad Edgar",
+      "license_identifier": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AHand_bones_numbered.png",
+      "attribution": "Sad Edgar, via Wikimedia Commons (CC BY-SA 3.0)",
+      "caption": "Anatomical diagram of the eight carpal bones of the wrist.",
+      "alt_text": "Numbered diagram of hand and wrist bones.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Hand bones numbered.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-105-IMG-03",
+      "ordinal": 2,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-105/distal_radius_ulna_anatomy.png",
+      "mime_type": "image/png",
+      "width": 155,
+      "height": 618,
+      "sha256": "bb063b1ac9ffa0879dce6e4c22e6d344c41eb94651c4c9b853cd9ae573fa1d2f",
+      "creator": "Mikael H\u00e4ggstr\u00f6m",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AHumerus%2C_ulna_and_radius_%28female%29.png",
+      "attribution": "Mikael H\u00e4ggstr\u00f6m, via Wikimedia Commons (Public domain)",
+      "caption": "Anatomical diagram of the distal radius and ulna articulating with the wrist.",
+      "alt_text": "Diagram of forearm bones.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Humerus, ulna and radius (female).png)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-105-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Fracture Wrist",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/fracture-wrist-cliff-2023.pdf?emrc=73e0e4",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

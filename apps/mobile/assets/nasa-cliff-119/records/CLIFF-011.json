@@ -1,0 +1,859 @@
+{
+  "article_id": "CLIFF-011",
+  "slot": 11,
+  "display_title": "Atrial Fibrillation/Atrial Flutter",
+  "category": "Cardiovascular Conditions",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "NASA Integrated Medical Model (IMM) Clinical Finding Form (CliFF 2023) for mission risk-planning; NOT a validated bedside clinical protocol or NASA endorsement of AETHERION.",
+  "source": {
+    "source_id": "NASA-CLIFF-011",
+    "publisher": "NASA",
+    "title": "Atrial Fibrillation/Atrial Flutter CliFF (2023)",
+    "source_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+    "retrieved_at_utc": "2026-11-14T05:41:54.673486+00:00",
+    "content_sha256": "c4f54817eda3de23bacca5a01c931e1f022d03b5efa6867395c9716e2279cb72",
+    "original_mime": "application/pdf",
+    "original_bytes": 370365,
+    "license_identifier": "NASA-US-GOV-PUBLIC-DOMAIN",
+    "attribution": "NASA Integrated Medical Model (IMM) Documentation (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "limitations": [
+    "NASA IMM CliFF is probabilistic spaceflight medical risk-planning evidence, not a validated bedside treatment protocol.",
+    "New-onset A-Fib incidence relies on terrestrial cohort data stratified by gender and age (p.2-3).",
+    "Spaceflight atrial remodeling and fluid shifts introduce uncertainty beyond terrestrial analogs."
+  ],
+  "sections": [
+    {
+      "section_id": "CLIFF-011-sec-0",
+      "heading": "Branch Baseline & Clinical Overview",
+      "text_content": "Clinical Finding Form (CliFF)\nBranch\n\nBaseline\n\nICL10_Atrial Fibrillation/Atrial Flutter\nAtrial fibrillation (A-Fib) is an irregular rhythm of the heart due to irregular contractility of the atria (out of sync with the ventricles). Symptoms can\ninclude palpitations, dizziness, shortness of breath, and weakness. (Mayo Clinic, NHLBI/NIH) There are four primary classifications of A-Fib: 1)\nParoxysmal \u2013 a brief episode lasting 24 hours to 1 week in duration. 2) Persistent \u2013 an episode lasting longer than a week (but may resolve\nspontaneously). 3) Long-term persistent \u2013 An episode lasting more than a year. 4) Permanent \u2013 A-Fib that persists despite treatment. (NHLBI/NIH)\nAlthough terrestrially, A-Fib often presents with a rapid heart rate (Mayo Clinic), in astronauts it is often within a normal range. This is felt to be\nsecondary to increased vagal tone in crewmembers due to their high level of physical fitness. (Barr, 2010). This may explain why most crewmembers\ndiagnosed with A-Fib are found incidentally (Barr, 2010). Atrial fibrillation increases the risk of blood clot formation in the atria, thereby increasing the\nrisk of ischemic cerebrovascular accident (Mayo Clinic). Treatment can include medications for rate control, anticoagulation, cardioversion, or\nablation. In rare cases associated with bradycardia, pace making is required. (NHLBI/NIH) Atrial flutter is also caused by an abnormal rhythm of the\natria, but it is regular and rapid. It also carries a risk of blood clot formation, increasing the risk of ischemic CVA. (Mayo Clinic)\n\nINCIDENCE DATA INCLUDED IN THE MODEL\n\nThe model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\nstatus, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\ntype of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\noccurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\nIncidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n(proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\nhistory characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\nare assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\noccurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\nincluded in the MEDPRAT Technical Description Document.\n\nINCIDENCE DATA\n\nSPACEFLIGHT LITERATURE\n\nThere have been no documented cases of Atrial Fibrillation or Atrial Flutter in U.S. Spaceflight. However, there have been cases (primarily of A-Fib)\namong active and retired crewmembers terrestrially. Lee et al, 2021 represents LSAH data from the HSRB Cardiovascular Risk Update CR SA03267 approved May 13, 2021. It reports 9 cases of A-Fib/A-Flutter over 4359 person-years for active crewmembers ( a total of 315 active\ncrewmembers). An additional source providing information for the astronaut cohort is the NASA Atrial Arrythmia Summit Report reports a history of\n11 cases of A-Fib/A-Flutter or SVT in active astronauts between 1959 and January 22, 2010. An additional 6 cases were reported in retired\nastronauts during the same time frame. There were reportedly 317 active and retired astronauts during this timeframe. Of the 23 cases, 22\noccurred in men. The summit reports that between 2001 and 2010, five astronauts out of a cohort of approximately 100 in the active astronaut\ncorps underwent radiofrequency ablation treatment for atrial arrhythmias (mostly atrial fibrillation). It should be noted that any long duration flyers\nfound to have A-Fib were treated with ablation during this time period. (Barr, 2010) The LSAH data from the 2021 HSRB Cardiovascular update\n(Lee et al, 2021) will be used to inform the incidence for this CLiFF as it is felt to have several advantages over Barr, 2021. First, Lee et al, 2021\nincludes only active astronauts, whereas Barr, 2010 includes retired astronauts. The incidence of A-Fib/A-Flutter increase with age, so restricting to\nactive astronauts is anticipated to provide a more accurate estimate of incidence. Second, Lee et al, 2021 includes only cases of A-Fib/A-Flutter\nwhereas Barr, 2010 also includes supraventricular tachycardia.\nANALOG LITERATURE\n\nThese data were not used to inform the incidence distribution for this CLiFF. Hunter et al, 2013, is a retrospective 5 year study of UK Royal Air\nForce members from 2006-2011. 360 military aircrew were identified during this period. Of these, 23 were diagnosed with Atrial Fibrillation (primarily\nparoxysmal). The median age of those with a diagnosis of Atrial Fibrillation was 42 years old (range, 18-64 years old). Notably, 22 of the 23 aircrew\ndiagnosed were men. Of the 23 crewmember who were diagnosed with Atrial Fibrillation during the study period, 8 required at least one of the\nfollowing interventions: cardioversion, ablation, or pacemaker placement.\nTERRESTRIAL LITERATURE\n\nThese data were not used to inform the incidence distribution for this CLiFF. Haim et al, 2015 is a prospective cohort study from 2004-2011 of\nprevalence and incidence of atrial fibrillation in an Israeli population of adults 20 years of age and older. Co-morbidities were not removed from\ndata. New onset A-Fib incidence was stratified by gender and age. The incidence (per 10,000 person year at risk) of A-Fib was 635 in men as\ncompared with 575 in women. The incidence was significantly higher among men at any age group and it increased from 47.7 at age <35 to 4427.6\nin men >85 years of age and from 36.7 at age <35 to 3790 in women >85 years of age. Bjorck et al, 2013 conducted a retrospective period\nprevalence study in Sweden of adults 20 years and older. Co-morbidities were not removed from data. Incidence was not calculated.\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "p.1"
+    },
+    {
+      "section_id": "CLIFF-011-sec-1",
+      "heading": "Overall Incidence Summary",
+      "text_content": "OVERALL INCIDENCE SUMMARY\n\nINCIDENCE\n\nMean: 0.00207\nSD: 7.019E-4\n\nINCIDENCE SUMMARY\n\nLee et al, 2021 (LSAH data from the HSRB Cardiovascular Risk Update CR SA-03267 approved May 13, 2021) was used to inform the incidence\ndistribution for this CLiFF. It reports 9 cases of A-Fib/A-Flutter over 4359 person-years for active crewmembers (a total of 315 active\ncrewmembers). The Bayesian posterior distribution for the incidence rate given the Active Astronaut data (9 events over 4359 person-years) is\nGamma(shape=8.697, rate=4201.65) with mean 0.00207 and SD 7.019E-4.\nTABLE 1. INCIDENCE MODEL\n\nIncidence Details\nIncidence Type\nGeneral\nSegment\nAll\nEnv. Exposure\nNA\nSex\nAny\nCrowns\nAny\nContacts\nAny\nPregnancy\nAny\nIncidence Distribution\nOccurrence Dist\nPoisson\nIncidence Dist.\nGamma\nMean\n0.0020699\nSD\n0.000701883\nGamma\n(Shape): 8.697\n(Rate): 4201.65\n\nTABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nLee et al, 2021\n\nSpaceflight\n\n4\n\nBarr, 2010\n\nSpaceflight\n\n4\n\nHunter et al, 2013\n\nAnalog\n\n3\n\nHaim et al, 2015\n\nTerrestrial\n\n1\n\nBjorck et al, 2013\n\nTerrestrial\n\n0\n\nLee et al, 2021 represents LSAH data from the HSRB Cardiovascular Risk Update CR SA-03267 approved May 13, 2021. It reports 9 cases of AFib/A-Flutter over 4359 person-years for active crewmembers ( a total of 315 active crewmembers). Barr, 2010 is the NASA Atrial Arrythmia Summit\nReport. It reports a history of 11 cases of A-Fib/A-Flutter or SVT active astronauts between 1959 and January 22, 2010. An additional 6 cases were\nreported in retired astronauts during the same time frame. Hunter et al, 2013, is a retrospective 5 year study of UK Royal Air Force members from\n2006-2011. 360 military aircrew were identified during this period. Of these, 23 were diagnosed with Atrial Fibrillation (primarily paroxysmal). The\nmedian age of those with a diagnosis of Atrial Fibrillation was 42 years old (range, 18-64 years old). Haim et al, 2015 is a prospective cohort study\nfrom 2004-2011 of prevalence and incidence of atrial fibrillation in an Israeli population of adults 20 years of age and older. Co-morbidities were not\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "p.2"
+    },
+    {
+      "section_id": "CLIFF-011-sec-2",
+      "heading": "Incidence Stratification & Limitations",
+      "text_content": "removed from data. New onset A-Fib incidence was stratified by gender and age. Bjorck et al, 2013 conducted a retrospective period prevalence\nstudy in Sweden of adults 20 years and older. Co-morbidities were not removed from data. Incidence was not calculated.\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "p.3"
+    },
+    {
+      "section_id": "CLIFF-011-sec-3",
+      "heading": "Crewmember Selection, Prevention & Incidence Citations",
+      "text_content": "CREWMEMBER SELECTION/PREVENTION\n\nDISQUALIFYING CONDITIONS\n\nRefer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n(2016).\nPREFLIGHT PREVENTATIVE MEASURES\n\nAll mission assigned crewmembers for mission durations of 30 days or more are required to undergo the following monitoring: \u2022 24-hour Holter\nMonitoring at L-365 days and as clinically indicated. (NASA, MedB 1.7) \u2022 Exercise treadmill testing at L-180 days and L-30/45 days (NASA,\nMR006L). \u2022 Pre- and Post-Flight resting ECG at L-9/6 months to L-10 days and R+0/3 days (NASA, MedB 1.6). \u2022 Heart-rate monitoring for 2 weeks\nduring exercise training at L-1year, L-45 to L-15 days. In-flight heart-rate monitoring occurs during the first 2 weeks of every mission during every\ntreadmill and cycle ergometer session, as well as during periodic fitness evaluation (PFE) sessions. Thereafter, inflight heart rate monitoring occurs\nduring each (PFE), while exercising on the Russian cycle ergometer, or during contingencies. (NASA, MR019L)\nBEST CASE SCENARIO DEFINITION\n\nAtrial fibrillation or flutter that does not require emergent cardioversion, rate/rhythm control, or thromboembolic prophylaxis.\nWORSE CASE SCENARIO DEFINITION\n\nAtrial fibrillation or flutter that requires emergent cardioversion, rate/rhythm control, or thromboembolic prophylaxis.\nCONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\nNone\n\nBEST CASE/WORST CASE PROBABILITY COMMENTS\n\nThe worst-case scenario was informed by Hunter et al, 2013, a retrospective 5 year study of UK Royal Air Force pilots from 2006-2011. Of 28\naircrew who were diagnosed with Atrial Fibrillation during the study period, 8 required at least one of the following interventions: cardioversion,\nablation, or pacemaker placement. This was considered a reasonable surrogate for the worst-case scenario and the population was felt to be a\nbetter analog for the Astronaut Corps than all-comer terrestrial data. Therefore, a worst-case probability of 37.48% and a best-case probability of\n62.52% were assigned.\nTABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nHunter et al, 2013\n\nAnalog\n\n3\n\nHunter et al, 2013, is a retrospective 5 year study of UK Royal Air Force members from 2006-2011. 360 aircrew were identified during this period.\nOf these, 23 were diagnosed with Atrial Fibrillation (primarily paroxysmal). Of the 23 crewmember who were diagnosed with Atrial Fibrillation during\nthe study period, 8 required at least one of the following interventions: cardioversion, ablation, or pacemaker placement.\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "p.4"
+    },
+    {
+      "section_id": "CLIFF-011-sec-4",
+      "heading": "Table 4. CliFF Treatment & Outcome Table by Clinical Phase",
+      "text_content": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\nCP1: Diagnosis\n\nCP2: Treatment\n\nCP3: Condition End State\n\nTI%\n\nDuration\n\nTI%\n\nDuration\n\nTI%\n\nRTDC\n\nCase Scenario\n\nComposite\nIncidence\n\nCondition\nProbability %\n\nPreset\n\nPreset\n\nPreset\n\nMin\n\nMax\n\nPreset\n\nMin%\n\nMax%\n\nMin%\n\nMax%\n\nTreated Best\nCase (TBC)\n\nMean: 0.00207\nSD: 7.019E-4\n\n62.52 - 62.52\n\n100\n\n2.26\n\n0\n\n0.1\n\n30.4\n\n0\n\n0\n\n0\n\n0\n\n1.6\n\n37.48 - 37.48\n\n100\n\n2.43\n\n27.4116\n\n0.3\n\n127\n\n5.60723\n\n10\n\n59\n\n0\n\n7.09\n\nTreated Worst\nCase (TWC)\n\nLOCL\n\nUntreated Best\nCase (UTBC)\n\nN/A\n\nN/A\n\nN/A\n\n2.26\n\n9.11507\n\n0.1\n\n30.4\n\n9.11507\n\n0\n\n0\n\n0\n\n1.6\n\nUntreated Worst\nCase (UTWC)\n\nN/A\n\nN/A\n\nN/A\n\n2.43\n\n100\n\n0.3\n\n127\n\n100\n\n10\n\n59\n\n0\n\n10.18\n\nTABLE 4 KEY\nComposite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\nFor space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\nCondition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\nClinical Phase General Comments:\nTI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\nto the medical condition.\nDurations are defined in hours.\nRemoval to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\nend state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\npotential for intractable pain.\nLoss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\nClinical Phase 1: Initial Assessment and Diagnosis:\nCovers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\ncrewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\nconsidered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\napplicable.\"\nClinical Phase 2: Stabilization, Treatment, and Convalescence:\nThe affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\nto recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\nrecurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\nmaximum hours.\nClinical Phase 3: Condition End State:\nReached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\nenvironment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\ncondition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\nbe noted in the condition end state results.\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "p.5"
+    },
+    {
+      "section_id": "CLIFF-011-sec-5",
+      "heading": "Scenario Overview Comments \u2014 Part 1",
+      "text_content": "SCENARIO OVERVIEW COMMENTS\n\nThe RTDC surrogate used was need for emergent cardioversion. Class I AHA/ACA recommendations for pharmacologic and electrical\ncardioversion of A-Fib include: 1) Patient's with A-Fib with rapid ventricular response and ECG evidence of acute MI or symptomatic hypotension,\nangina, or heart failure that doesn't respond promptly to pharmacologic measures, 2) Hemodynamic instability (Fuster et al, 2006). It was assumed\nthat best-case scenarios would not have sequalae requiring emergent cardioversion. For worst-case scenarios, the need for emergent\ncardioversion was based studies indicating the proportion of A-Fib cases that are \"unstable\" (Tischler et al, 1990; Kanji et al, 2012). The RTDC\nprobabilities for the worst-case scenario may be an overestimate because participants in these studies had multiple comorbidities (including cardiac\ncomorbidities), and Kanji et al, 2012 specifically looked at ICU patients (who may be hemodynamically unstable based on other underlying\nillness/causes). Durations for the best-case scenarios are based on paroxysmal A-Fib. Durations for the worst-case scenarios are based on\nrecurrent A-Fib (Go et al, 2018). The LOCL probabilities are based on age-restricted data for decades of life 30s-50s in untreated patients with AFib, using thromboembolic event as a surrogate for mortality (Lip et al, 2010).\n\nTREATED BEST CASE (TBC) SCENARIO COMMENTS\n\nThe durations used were informed by Go et al, 2018 and relate to the duration of paroxysmal A-Fib episodes seen in the study population. This was\na 5 year study of 1,965 adult participants with paroxysmal A-Fib. Notably, the mean age was 69 years old. 45% of participants were women. The\nmedian CHA2DS2-VASc score of participants was 3. Participants wore a holter monitor for 14 days. All participants were untreated. The minimum\nand maximum durations of runs of paroxysmal A-Fib from this study were assigned for this scenario: 0.1 hours (6 minutes) and 30.4 hours (1824\nminutes). Class I AHA/ACA recommendations for electrical cardioversion of A-Fib include: 1) When A-Fib with rapid ventricular response does not\nrespond to pharmacologic cardioversion with ongoing myocardial ischemia, symptomatic hypotension, angina, or heart failure, 2) Hemodynamic\ninstability, 3) When the symptoms are unacceptable to the patient (Fuster et al, 2006). In a best-case scenario episode of A-Fib, these sequelae\nare not anticipated. Thus, the need for emergent cardioversion (the chosen RTDC surrogate) would not exist. Therefore, the RTDC probability for\nbest-case scenarios was assigned 0%. Per Barr, 2010 most astronauts have a CHADS2 score of 0-1. When the score is expanded to CHADS2VASC, sex is also included. Accounting for sex, astronauts could have scores from 0-2. (Points being collected for being female and having\nhypertension). Lip et al, 2010, a prospective cohort study of A-Fib (from the EURO Heart Study) included patients without mitral stenosis, previous\nvalvular surgeries, and not on anticoagulation. There were 0, 162 (0.6%), and 184 (1.6%) thromboembolic events in participants with CHADS2Vasc scores of 0, 1, and 2 respectively. Thus, using thromboembolic events as a surrogate for mortality, the LOCL probability was assigned a\nrange of 0-1.6%.\n\nTREATED WORST CASE SCENARIO (TWC) COMMENTS\n\nThe durations used were informed by Go et al, 2018 and relate to the total duration of multiple A-Fib episodes seen in the study population. This\nwas a 5 year study of 1,965 adult participants with paroxysmal A-Fib. Notably, the mean age was 69 years old. 45% of participants were women.\nThe median CHA2DS2-VASc score of participants was 3. Participants wore a holter monitor for 14 days. All participants were untreated. The\nminimum and maximum durations were assigned as 0.2 hours and 120 hours, respectively. Class I AHA/ACA recommendations for electrical\ncardioversion of A-Fib include: 1) When A-Fib with rapid ventricular response does not respond to pharmacologic cardioversion with ongoing\nmyocardial ischemia, symptomatic hypotension, angina, or heart failure, 2) Hemodynamic instability, 3) When the symptoms are unacceptable to the\npatient (Fuster et al, 2006). The minimum RTDC probability of 10% was informed by Kanji et al, 2012. In this retrospective observational study,\nconsecutive patients admitted to either medical or surgical adult ICUs in 3 Canadian hospitals between Jan 1 and Dec 31, 2006 were considered.\n325 patients were identified as having A-Fib during their ICU stay, and of these, 139 cases were determined to be new-onset A-Fib. Hemodynamic\ninstability developed in 10% of patients with new-onset A-Fib. The mean age of participants with new-onset A-Fib was 71.6 years and 60% of\nparticipants were male. Notably, the admitting diagnosis was A-Fib in only 6 patients. Otherwise, admitting diagnoses included (sepsis, respiratory\nfailure/pneumonia, cardiogenic shock/cardiac arrest, CVA, post-operative care, and \"other\"). There were notably many comorbidities (e.g. smoking,\nasthma, COPD on oxygen, valvular heart disease, HTN, CHF, cardiomyopathy, CKD, history of CVA, and diabetes). 39% of patients with new-onset\nA-Fib were on either a beta blocker, calcium channel blocker, or digoxin prior to admission. The maximum RTDC probability of 59% was informed by\nTischler et al, 1990 a retrospective review conducted at Brigham and Women's Hospital from Jan 1, 1985-Dec 31, 1988. 87 patients met the\ninclusion criteria of presumed new-onset A-Fib (symptoms less than 48 hours), and technically adequate echocardiograms performed while in sinus\nrhythm during the hospitalization. Mitral stenosis was excluded. Participants were classified as \"unstable\" if they met any of the following criteria:\nhypotension (SBP < 90mmHg), angina or chest pain with ST-segment depressions of at least 1 mm in at least 2 leads, congestive heart failure\nbased on physical exam and x-ray, or witness syncopal episode. 59% of patients were considered unstable in this cohort. Notably, the average age\nof participants was 61 years for stable A-Fib patients, 66 years for unstable A-Fib patients. The study included nearly 50% female participants.\nSignificant co-morbidities existed in the cohort. Despite the presumption of new-onset A-Fib, pre-existing A-Fib was documented in 31% of unstable\npatients. Other comorbidities included valvular issues (aortic stenosis /regurgitation, mitral regurgitation), hypertension, angina/MI, COPD. The\nprobability of LOCL was assigned 0-7.09% based on all-cause mortality data presented in Lee et al, 2018 a retrospective cohort study of 15,411\npatients with A-Fib, identified by ICD-10 code from a national database in South Korea between 2002-2013. The range of all-cause mortality for this\ngroup spans from 0-10.18%, but this value was discounted by 32.3% based on data in the study showing decreased mortality of 32.3% for those on\nanticoagulation therapy. Notably, only a third of the patients in this cohort were less than 60 years old. However, all-cause mortality was provided by\ndecade of life, so the maximum probability value was derived by age restricting the data to decades 20s-50s (464 deaths in 4556 patients) and then\ndiscounting as above to account for the benefit of anticoagulation therapy. While valvular AF was excluded from this study, pre-existing comorbidities of ischemic heart disease, prior myocardial infarction, and congestive heart failure existed in the patient population, which indicates that\nthis may be an overestimate of LOCL probability.\n\nUNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\nThe same values were used for duration, RTDC probability, and LOCL probability for this scenario as the treated best-case scenario. The following\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "p.6"
+    },
+    {
+      "section_id": "CLIFF-011-sec-6",
+      "heading": "Scenario Overview Comments \u2014 Part 2",
+      "text_content": "explanation is identical to the treated best-case scenario. The durations used were informed by Go et al, 2018 and relate to the duration of\nparoxysmal A-Fib episodes seen in the study population. This was a 5 year study of 1,965 adult participants with paroxysmal A-Fib. Notably, the\nmean age was 69 years old. 45% of participants were women. The median CHA2DS2-VASc score of participants was 3. Participants wore a holter\nmonitor for 14 days. All participants were untreated. The minimum and maximum durations of runs of paroxysmal A-Fib from this study were\nassigned for this scenario: 0.1 hours (6 minutes) and 30.4 hours (1824 minutes). Class I AHA/ACA recommendations for electrical cardioversion of\nA-Fib include: 1) When A-Fib with rapid ventricular response does not respond to pharmacologic cardioversion with ongoing myocardial ischemia,\nsymptomatic hypotension, angina, or heart failure, 2) Hemodynamic instability, 3) When the symptoms are unacceptable to the patient (Fuster et al,\n2006). In a best-case scenario episode of A-Fib, these sequelae are not anticipated. Thus, the need for emergent cardioversion (the chosen RTDC\nsurrogate) would not exist. Therefore, the RTDC probability for best-case scenarios was assigned 0%. Per Barr, 2010 most astronauts have a\nCHADS2 score of 0-1. When the score is expanded to CHADS2-VASC, sex is also included. Accounting for sex, astronauts could have scores from\n0-2. (Points being collected for being female and having hypertension). Lip et al, 2010, a prospective cohort study of A-Fib (from the EURO Heart\nStudy) included patients without mitral stenosis, previous valvular surgeries, and not on anticoagulation. There were 0, 162 (0.6%), and 184 (1.6%)\nthromboembolic events in participants with CHADS2-Vasc scores of 0, 1, and 2 respectively. Thus, using thromboembolic events as a surrogate for\nmortality, the LOCL probability was assigned a range of 0-1.6%.\n\nUNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\nThe same values were used for duration and RTDC probability for this scenario as the treated worst-case scenario. The LOCL probability differs.\nThe durations used were informed by Go et al, 2018 and relate to the total duration of multiple A-Fib episodes seen in the study population. This\nwas a 5 year study of 1,965 adult participants with paroxysmal A-Fib. Notably, the mean age was 69 years old. 45% of participants were women.\nThe median CHA2DS2-VASc score of participants was 3. Participants wore a holter monitor for 14 days. All participants were untreated. The\nminimum and maximum durations were assigned as 0.2 hours and 120 hours, respectively. Class I AHA/ACA recommendations for electrical\ncardioversion of A-Fib include: 1) When A-Fib with rapid ventricular response does not respond to pharmacologic cardioversion with ongoing\nmyocardial ischemia, symptomatic hypotension, angina, or heart failure, 2) Hemodynamic instability, 3) When the symptoms are unacceptable to the\npatient (Fuster et al, 2006). The minimum RTDC probability of 10% was informed by Kanji et al, 2012. In this retrospective observational study,\nconsecutive patients admitted to either medical or surgical adult ICUs in 3 Canadian hospitals between Jan 1 and Dec 31, 2006 were considered.\n325 patients were identified as having A-Fib during their ICU stay, and of these, 139 cases were determined to be new-onset A-Fib. Hemodynamic\ninstability developed in 10% of patients with new-onset A-Fib. The mean age of participants with new-onset A-Fib was 71.6 years and 60% of\nparticipants were male. Notably, the admitting diagnosis was A-Fib in only 6 patients. Otherwise, admitting diagnoses included (sepsis, respiratory\nfailure/pneumonia, cardiogenic shock/cardiac arrest, CVA, post-operative care, and \"other\"). There were notably many comorbidities (e.g. smoking,\nasthma, COPD on oxygen, valvular heart disease, HTN, CHF, cardiomyopathy, CKD, history of CVA, and diabetes). 39% of patients with new-onset\nA-Fib were on either a beta blocker, calcium channel blocker, or digoxin prior to admission. The maximum RTDC probability of 59% was informed by\nTischler et al, 1990 a retrospective review conducted at Brigham and Women's Hospital from Jan 1, 1985-Dec 31, 1988. 87 patients met the\ninclusion criteria of presumed new-onset A-Fib (symptoms less than 48 hours), and technically adequate echocardiograms performed while in sinus\nrhythm during the hospitalization. Mitral stenosis was excluded. Participants were classified as \"unstable\" if they met any of the following criteria:\nhypotension (SBP < 90mmHg), angina or chest pain with ST-segment depressions of at least 1 mm in at least 2 leads, congestive heart failure\nbased on physical exam and x-ray, or witness syncopal episode. 59% of patients were considered unstable in this cohort. Notably, the average age\nof participants was 61 years for stable A-Fib patients, 66 years for unstable A-Fib patients. The study included nearly 50% female participants.\nSignificant co-morbidities existed in the cohort. Despite the presumption of new-onset A-Fib, pre-existing A-Fib was documented in 31% of unstable\npatients. Other comorbidities included valvular issues (aortic stenosis /regurgitation, mitral regurgitation), hypertension, angina/MI, COPD. The\nprobability of LOCL was assigned 0-10.18% based on all-cause mortality data presented in Lee et al, 2018 a retrospective cohort study of 15,411\npatients with A-Fib, identified by ICD-10 code from a national database in South Korea between 2002-2013. Notably, only a third of the patients in\nthis cohort were less than 60 years old. However, all-cause mortality was provided by decade of life, so the maximum probability value was derived\nby age restricting the data to decades 20s-50s (464 deaths in 4556 patients). The younger patients in this study had lower CHADS2-Vasc scores,\nindicating that fewer of these subjects were treated with anticoagulation. Similarly, fewer of these subjects were treated with anti-arrhythmics. Thus,\nby age restricting we may be selecting a largely \"untreated\" population. While valvular AF was excluded from this study, pre-existing co-morbidities\nof ischemic heart disease, prior myocardial infarction, and congestive heart failure existed in the patient population, which indicates that this may be\nan overestimate of LOCL probability.\n\nTABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nGo et al, 2018\n\nTerrestrial\n\n3\n\nDuration values for all scenarios are driven by data from Paroxysmal A-Fib. The worst-case scenarios include recurrent episodes of paroxysmal AFib.\n\nTABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nFuster et al, 2006\n\nTerrestrial\n\nTischler et al, 1990\n\nTerrestrial\n\nLOC Value\n\n2\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "p.7"
+    },
+    {
+      "section_id": "CLIFF-011-sec-7",
+      "heading": "Scenario Citations & Level of Evidence \u2014 Part 1",
+      "text_content": "Citation\n\nSource\n\nKanji et al, 2012\n\nTerrestrial\n\nLOC Value\n\nThe RTDC surrogate of need for emergent cardioversion was used. Tischler et al, 1990 and Kanji et al, 2012 present the proportion of A-Fib cases\nthat are unstable (i.e. they warrant emergent cardioversion). Note, these may overestimate RTDC probability due to the age of the participants\n(60s-70s) and multiple comorbidities, including cardiac co-morbidities. Kanji et al, 2012 is specifically in an ICU population, which would be\nanticipated to be more ill than a non-ICU population. Regardless of these limitations, this was the best data available to inform these probabilities.\n\nTABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLip et al, 2010\n\nTerrestrial\n\nLee et al, 2018\n\nTerrestrial\n\nBarr, 2010\n\nTerrestrial\n\nLOC Value\n\n2\n\nLOCL probability values are driven by risk of thromboembolism (being used as a surrogate for mortality) for best-case scenarios (Lip et al, 2010).\nThromboembolism incidence rates were selected for CHADS2-Vasc scores of 0-2 (the most likely scores for the astronaut cohort based on Barr,\n2010). Using thromboembolism as a surrogate for mortality may overestimate LOCL probability. For the worst-case scenarios, all-cause mortality in\npatients with A-Fib from a National Database in South Korea was used (Lee et al, 2018). The data was age restricted for decades of life 30s-50s to\nbetter approximate the astronaut cohort. The population had multiple co-morbidities (including cardiac), thus the worst-case scenario estimates for\nLOCL may also be overestimates.\n\nCAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\nICL - 10, ATRIAL FIBRILLATION/ ATRIAL FLUTTER\nDefinitions:\nBest Case: Atrial fibrillation or flutter that does not require emergent cardioversion, rate/rhythm control, or thromboembolic prophylaxis.\nWorst Case: Atrial fibrillation or flutter that requires emergent cardioversion, rate/rhythm control, or thromboembolic prophylaxis.\nCapabilities and Resourcing Scope\nOverview\nAtrial fibrillation occurs when diffuse or irregular electrical activity in the heart\u2019s atrium suppresses the typical sinus conduction pattern.1 Untreated,\nsustained atrial fibrillation leads to an increased risk of morbidity and mortality resulting in heart failure, venous thromboembolism (such as stroke or\npulmonary embolism) or cardiogenic shock.2, 3 Patient presentation varies as some are asymptomatic and only discover the arrhythmia during\nroutine screening; others may experience palpations, shortness of breath, exercise intolerance, chest pain or malaise. Atrial fibrillation can occur in\npersons with no predisposing conditions when associated with episodes of profound catecholamine surges or increased vagal tone. Severe\nemotional stressors or vigorous exercise have caused bouts of atrial fibrillation in otherwise healthy patients. Atrial fibrillation is often categorized as\neither paroxysmal, persistent, or permanent.3-5 In paroxysmal cases, episodes of atrial fibrillation terminate within seven days (and often within 24\nhours) without any intervention. Persistent atrial fibrillation lasts more than seven days and requires either medication or a procedure to restore a\nregular conduction pattern. Permanent atrial fibrillation is not amenable to any medication or interventions to restore sinus rhythm.\nIn this CRT, the best-case definition refers to an episode of paroxysmal atrial fibrillation. The spaceflight crewmember may discover this episode\nincidentally during regular crew monitoring or have associated mild symptoms. The crewmember would revert to sinus rhythm within 24-48 hours\nwithout intervention.\nThe worst-case scenario would involve persistent or permanent atrial fibrillation. Albeit it would be expected that if untreated the worst case would\nlead to such complications such as venous thromboembolism, acute cardiac syndrome, or cardiogenic shock, this CRT does not include resources\nfor these downstream conditions as they are provided for in other CRTs.\nDiagnostic Scope and Resourcing\nIn the best case, diagnosis will likely be made via history, physical and electrocardiogram. However, at the time of identification, it will unknown\nwhether this is the best-case or worst-case scenario as this will be differentiated by the chronicity of the arrhythmia. Consequently, resources\nallocated for CP1 are similar in both scenarios. Laboratory testing and cardiac ultrasounds are included to conduct simple differentials for common\nreversible causes of the arrythmia (anemia, electrolyte derangements, myocardial infarction, pulmonary embolism, pericardial effusion,\nhypovolemia). Thyroid testing is not included as crews would be screened for abnormalities preflight. A chest plain film (X-ray), which is commonly\nobtained in terrestrial scenarios, is unavailable inflight. Adenosine, which is sometimes used to differentiate between atrial fibrillation, atrial flutter\nand supraventricular tachycardia in cases of rapid heart rates, was decided to be beyond the scope of this condition by CRT subject matter expert\nconsensus.\nClinical Phase 1 Duration and Rationale\nThis version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\nconsensus duration is as follows:\nCP1 BC (Treated or Untreated): 2.26 hours\nThis is the longest reasonable time to complete the task for an experienced clinician adjusted for being in the spaceflight environment 1) to remove\na crewmember from duties 2) obtain a history 3) examine the patient 4) obtain an EKG 5) insert an intravenous line 6) perform blood work and 7)\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "p.8"
+    },
+    {
+      "section_id": "CLIFF-011-sec-8",
+      "heading": "Scenario Citations & Level of Evidence \u2014 Part 2",
+      "text_content": "obtain a cardiac ultrasound.\nCP1 WC (Treated or Untreated): 2.43 hours\nThis is the same time allocated in the best-case condition with the addition of ground communications.\nThe highest scope of practice code used in this CRT which includes interpretation of diagnosis, performing diagnostic tests and performing\ntreatment (particularly moderate sedation and synchronized cardioversion) would be a five: this is at the experienced procedural trained generalist\nattending (emergency medicine attending)\nTreatment Scope and Resourcing\nIn the best-case scenario, treatment is limited to reversing all causes that may have elicited the arrhythmia. Optimizing crew-member hydration\nwould be an expected course in addition to monitoring for arrythmia reoccurrence. Of note, platelet inhibitors, such as aspirin, are not indicated in\natrial fibrillation. By its definition, the worst-case scenario requires intervention. The type of involvement will vary by the clinical scenario and cause\nof the arrhythmia. Consequently, resources for both rate and rhythm control are allocated. Of note, many common terrestrial medications that would\nbe used in an emergency department, such as intravenous diltiazem or metoprolol are not on currently on spaceflight formulary but amiodarone\nwhich is a second-line medication for rate control of atrial fibrillation in patients with few comorbidities is available. In this CRT, it is expected that\nshould immediate rhythm control be necessary, electrical cardioversion would be used as procainamide is not on formulary and has varying\nsuccess rates of conversion. At least intermittent heart rhythm monitoring would be advised until end of mission. Medications that have weightbased dosing in this CRT have all been allocated for a 75 kg individual.\n\nCommunications and Support Needs\nIn the best-case scenario, diagnosis and course of treatment is uncomplicated and likely within the scope of care of onboard crew members. In the\nworst-case condition, ground communications are necessary as there might be uncertainty regarding rhythm and ultrasound interpretation and the\ncourse of treatment, particularly since treatment can include high-risk interventions.\nREFERENCES\n1. Morin DP, Bernard ML, Madias C, Rogers PA, Thihalolipavan S, Estes NA, 3rd. The State of the Art: Atrial Fibrillation Epidemiology, Prevention,\nand Treatment. Mayo Clin Proc. 2016;91:1778-1810.\n2. Staerk L, Sherer JA, Ko D, Benjamin EJ, Helm RH. Atrial Fibrillation: Epidemiology, Pathophysiology, and Clinical Outcomes. Circ Res.\n2017;120:1501-1517.\n3. Zimetbaum P. Atrial Fibrillation. Ann Intern Med. 2017;166:Itc33-itc48.\n4. Margulescu AD, Mont L. Persistent atrial fibrillation vs paroxysmal atrial fibrillation: differences in management. Expert Rev Cardiovasc Ther.\n2017;15:601-618.\n5. Van Gelder IC, Rienstra M, Crijns HJ, Olshansky B. Rate control in atrial fibrillation. Lancet. 2016;388:818-828.\n\nIMM CLIFF RECONCILATION COMMENTS\n\nThe best and worst-case scenario definitions have changed. The best-case scenario definition in the IMM Cliff was, \u201cAn isolated episode of lone\natrial fibrillation or atrial flutter. There is low risk of thrombo-embolic events. The episode is asymptomatic or mildly symptomatic and/or resolves\nspontaneously. An underlying precipitating factor such as physical stress, infection, etc. may or may not be identified.\u201d The current best-case\nscenario definition is, \u201cAtrial fibrillation or flutter that does not require emergent cardioversion, rate/rhythm control, or thromboembolic prophylaxis.\u201d\nThe prior IMM definition of the worst-case scenario was, \u201cNew onset of atrial fibrillation or atrial flutter that is either symptomatic, sustained, or\nassociated with complications requiring oral or intravenous treatment for rate or rhythm control, as well as prophylaxis for thrombo-embolic\ncomplications.\u201d The current worst-case scenario definition is, \u201cAtrial fibrillation or flutter that requires emergent cardioversion, rate/rhythm control, or\nthromboembolic prophylaxis.\u201d These changes reflect an attempt to focus the current definitions on need for intervention/treatment. In the IMM\nCLiFF, the maximum duration for all scenarios was 72 hours. The maximum duration for the best-case scenarios in this CLiFF is 30.4 hours and\nworst-case scenarios is 127 hours. EVAC probability in the IMM CLiFF was 0-100% for best-case scenarios and 100% for worst-case scenarios. In\nthe current CLiFF the RTDC probability is 0% for best-case scenarios and 10-59% for worst-case scenarios. IMM LOCL probability was 0% for all\nscenarios. In this CliFF it is 0-1.6% for best-case scenarios and 0-10.18% for worst-case scenarios.\n\nLIMITATIONS SUMMARY\n\n\u2022 The evidence informing the entire CLiFF is based primarily on A-Fib, rather than A-Flutter. \u2022 All durations were based on a single study of\nParoxysmal A-Fib. By definition (see overview) paroxysmal A-Fib is brief episode lasting less than a week. Other types of A-Fib (persistent, longterm persistent, and permanent) obviously last longer with permanent being presumed to be life-long. \u2022 The RTDC surrogate of need for emergent\ncardioversion was used. Tischler et al, 1990 and Kanji et al, 2012 present the proportion of A-Fib cases that are unstable (i.e. they warrant\nemergent cardioversion). Note, these may overestimate RTDC probability due to the age of the participants (60s-70s) and multiple comorbidities,\nincluding cardiac co-morbidities. Kanji et al, 2012 is specifically in an ICU population, which would be anticipated to be more ill than a non-ICU\npopulation. Regardless of these limitations, this was the best data available to inform these probabilities. \u2022 LOCL probability values are driven by\nrisk of thromboembolism (being used as a surrogate for mortality) for best-case scenarios (Lip et al, 2010). Thromboembolism incidence rates were\nselected for CHADS2-Vasc scores of 0-2 (the most likely scores for the astronaut cohort based on Barr, 2010). Using thromboembolism as a\nsurrogate for mortality may overestimate LOCL probability. \u2022 LOCL probability values for the worst-case scenarios are based on all-cause mortality\nin patients with A-Fib from a National Database in South Korea (Lee et al, 2018). The data was age restricted for decades of life 30s-50s to better\napproximate the astronaut cohort. The population had multiple co-morbidities (including cardiac), thus the worst-case scenario estimates for LOCL\nmay also be overestimates.\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "p.9"
+    },
+    {
+      "section_id": "CLIFF-011-sec-9",
+      "heading": "Table 8. Task Impairment Calculation (HSTC) \u2014 Part 1",
+      "text_content": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\nClinical Phase 2: Treatment\nAffected HSTCs\nCognitive Simple\n\nCognitive Complex\n\nCommunications\n\nInterpersonal\nSkills\n\nVision\n\nHearing\n\nCardiopulmonary\n\nDentition\n\nGI\n\nGU\n\nTreated\nBest\nCase\n(TBC)\nUntreated\nBest\nCase\n(UTBC)\nTreated\nWorst\nCase\n(TWC)\n\n664\n\nUntreated\nWorst\n223\nCase\n(UTWC)\n\n664\n\n145\n\n113\n\n89\n\n854\n\n44\n\n145\n\n5\n\n13\n\n6\n\nAffected HSTCs (Continued)\n\nHand\n(Dom)\n\nHand (Any)\n\nUpper Extremity\n\nLower\nExtremity\n\nAmbul &\nStanding (g)\n\nTI Calculation\nTotal Tasks\nImpaired By\nCondition\n\n0\n\n3763\n\n0\n\n211\n\n343\n\n3763\n\n0.0911507 9.11507\n\nTranslation &\nDon/Doff\nStabilization\nEquipment\n(microgravity)\n\nPressure\nOps\n\nTreated\nBest\nCase\n(TBC)\nUntreated\nBest\n132\nCase\n(UTBC)\nTreated\nWorst\n132\nCase\n(TWC)\nUntreated\nWorst\n132\nCase\n(UTWC)\n\n564\n\nTI Score\n\nTotal\nHuman\nSystem\nCategory\nTasks Full\nMission\n\nTI Decimal\n\nTI %\n\n0\n\n414\n\n22\n\n196\n\n34\n\n34\n\n211\n\n1852\n\n3763\n\n0.492161\n\n49.2161\n\n414\n\n22\n\n196\n\n34\n\n34\n\n211\n\n3763\n\n3763\n\n1\n\n100\n\nClinical Phase 3: Condition End State\nAffected HSTCs\nCognitive Simple\n\nCognitive Complex\n\nCommunications\n\n664\n\n113\n\nInterpersonal\nSkills\n\nVision\n\nHearing\n\nCardiopulmonary\n\nDentition\n\nGI\n\nGU\n\nTreated\nBest\nCase\n(TBC)\nUntreated\nBest\nCase\n(UTBC)\nTreated\nWorst\nCase\n(TWC)\nUntreated\nWorst\n223\nCase\n(UTWC)\n\n89\n\n854\n\n44\n\n145\n\nAffected HSTCs (Continued)\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\n5\n\n13\n\n6\n\nTI Calculation\n\nTI Score\n\npage: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "p.10"
+    },
+    {
+      "section_id": "CLIFF-011-sec-10",
+      "heading": "Table 8. Task Impairment Calculation (HSTC) \u2014 Part 2",
+      "text_content": "Hand\n(Dom)\n\nHand (Any)\n\nUpper Extremity\n\nLower\nExtremity\n\nTranslation &\nAmbul &\nDon/Doff\nStabilization\nStanding (g)\nEquipment\n(microgravity)\n\nPressure\nOps\n\nTreated\nBest\nCase\n(TBC)\n\nTotal Tasks\nImpaired By\nCondition\n\nTotal\nHuman\nSystem\nCategory\nTasks Full\nMission\n\n0\n\n3763\n\n0\n\nTI Decimal\n\nTI %\n\n0\n\nUntreated\nBest\n132\nCase\n(UTBC)\n\n211\n\n343\n\n3763\n\n0.0911507 9.11507\n\nTreated\nWorst\nCase\n(TWC)\n\n211\n\n211\n\n3763\n\n0.0560723 5.60723\n\n211\n\n3763\n\n3763\n\n1\n\nUntreated\nWorst\n132\nCase\n(UTWC)\n\n6/15/2023 1:34:12 PM\n\n564\n\n414\n\n22\n\n196\n\n34\n\n34\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\n100\n\npage: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "p.11"
+    },
+    {
+      "section_id": "CLIFF-011-sec-11",
+      "heading": "Table 8 Key & HSTC Definitions",
+      "text_content": "TABLE 8 KEY\nHuman System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\nsimple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\ncomplex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\nwith inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\nrequiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\nwhich visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\nalarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\nactivities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\nsolids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n(Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n(Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\nTasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n(excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\nboth lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\nuse of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\nsetting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\nequipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\nCriteria for Assignment of Conditions to HSTCs (any of the following):\n1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n5) Does pain associated with the condition impair any further human system categories?\n\nTASK IMPAIRMENT COMMENTS\n\nCP2: No comment. CP3: No comment.\n\nEVIDENCE COLLECTION PROCESS\n\nMesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n(CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\nIncidence:\nDatabases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\nsearch, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\nNY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\nDuration, RTDC, LOCL:\nDatabases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\nLOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\napplicable, the article was included in the CLiFF.\n\nLEVEL OF CONFIDENCE (LOC) SCORING\n\nArticles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\nenvironment using the following grading scale:\n4 \u2013 Confident\n3 \u2013 Somewhat confident\n2 \u2013 Neutral\n1 \u2013 Somewhat unconfident\n0 \u2013 Not confident\nThe following considerations factor into the grading scale above:\n\u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n\u2022 How closely does the population included resemble the astronaut population?\n\u2022 Quality of the paper (number of subjects, methods, etc.)\n\u2022 How much does the editor trust the source of the evidence?\n\u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n\u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "p.12"
+    },
+    {
+      "section_id": "CLIFF-011-sec-12",
+      "heading": "References",
+      "text_content": "REFERENCES\n\nReference\n1. Barr Y. Atrial Arrhythmia Summit: Post Summit Report. NASA Technical Reports. 2010.\n2. Bjorck S, Palaszewski B, Friberg L, Bergfeldt L. Atrial fibrillation, stroke risk, and warfarin therapy revisited: a population-based study. Stroke.\n2013;44(11):3103-8. Epub 2013/08/29. doi: 10.1161/STROKEAHA.113.002329. PubMed PMID: 23982711.\n3. Fuster V, Ryd\u00e9n LE, Cannom DS, Crijns HJ, Curtis AB, Ellenbogen KA, et al. ACC/AHA/ESC 2006 guidelines for the management of patients\nwith atrial fibrillation\u2013executive summary. A report of the American College of Cardiology/American Heart Association Task Force on practice\nguidelines and the European Society of Cardiology Committee for Practice Guidelines (Writing Committee to Revise the 2001 Guidelines for the\nManagement of Patients with Atrial Fibrillation). Circulation. 2006;114:700-52. doi: 10.1093/eurheartj/ehm315.\n4. Go AS, Reynolds K, Yang J, Gupta N, Lenane J, Sung SH, et al. Association of Burden of Atrial Fibrillation With Risk of Ischemic Stroke in\nAdults With Paroxysmal Atrial Fibrillation: The KP-RHYTHM Study. JAMA Cardiol. 2018;3(7):601-8. Epub 2018/05/26. doi:\n10.1001/jamacardio.2018.1176. PubMed PMID: 29799942; PubMed Central PMCID: PMCPMC6145663.\n5. Haim M, Hoshen M, Reges O, Rabi Y, Balicer R, Leibowitz M. Prospective national study of the prevalence, incidence, management and\noutcome of a large contemporary cohort of patients with incident non-valvular atrial fibrillation. J Am Heart Assoc. 2015;4(1):e001486. Epub\n2015/01/23. doi: 10.1161/JAHA.114.001486. PubMed PMID: 25609415; PubMed Central PMCID: PMCPMC4330072.\n6. Hunter AH, Timperley AC, Reid AN, McLoughlin DC, Nicol E. A 5-year review of atrial fibrillation in military aircrew. Aviat Space Environ Med.\n2013;84(12):1249-54. Epub 2014/01/28. doi: 10.3357/asem.3690.2013. PubMed PMID: 24459795.\n7. Kanji S, Williamson DR, Mohammadzadeh Y, Albert M, McIntyre L. Epidemiology and management of atrial fibrillation in medical and\nnoncardiac surgical adult intensive care unit patients. Journal of Critical Care. 2012;27:326.e1-.e8.\n8. Lee S, Charvat J, Suresh R. Risk fo Cardiovascular Adaptations Contributing to Adverse Mission Performance and Health Outcomes\n(Cardiovascular Risk). HSRB CR SA-03267. Approved 5/13/21. . NASA, 2021.\n9. Lee E, Choi EK, Han KD, Lee H, Choe WS, Lee SR, et al. Mortality and causes of death in patients with atrial fibrillation: A nationwide\npopulation-based study. PLoS One. 2018;13(12):e0209687. Epub 2018/12/27. doi: 10.1371/journal.pone.0209687. PubMed PMID: 30586468;\nPubMed Central PMCID: PMCPMC6306259.\n10. Lip GY, Nieuwlaat R, Pisters R, Lane DA, Crijns HJ. Refining clinical risk stratification for predicting stroke and thromboembolism in atrial\nfibrillation using a novel risk factor-based approach: the euro heart survey on atrial fibrillation. Chest. 2010;137(2):263-72. Epub 2009/09/19.\ndoi: 10.1378/chest.09-1584. PubMed PMID: 19762550.\n11. Atrial fibrillation - Symptoms and causes: Mayo Clinic; [cited 2021 July 5]. Available from: https://www.mayoclinic.org/diseasesconditions/atrial-fibrillation/symptoms-causes/syc-20350624.\n12. NASA. MedB 1.6 Resting ECG. JSC28913. 2013.\nhttps://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MEDB_1.6_Resting_ECG_MR011L_1.28.2014_Project_02_26_2015_12_42_04.pdf.\n13. NASA. MedB 1.7 24-Hour Ambulatory ECG Monitoring. SLSDCR-SMCCB-07-016-R1. 2007.\nhttps://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MEDB_17_MR071L.pdf.\n14. NASA. MR006L Exercise Treadmill Test. MSD-MO-023. 2000. https://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MR006L.pdf.\n15. NASA. MR019L Heart Rate Monitoring. SM-FI-077-R1. 2002. https://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MR019L.pdf.\n16. Atrial Fibrillation | NHLBI, NIH: National Institute of Health: National Heart, Lung, and Blood Institute; [cited 2021 July 5]. Available from:\nhttps://www.nhlbi.nih.gov/health-topics/atrial-fibrillation.\n17. Tischler MD, Lee TH, McAndrew KA, Sax PE, Sutton MSJ, Lee RT. Clinical, Echocardiographic and Doppler Correlates of Clinical Instability\nwith Onset of Atrial Fibrillation Am J Cardiol. 1990;66:721-4.\n\nACRONYMS\n\nACRONYM\n\nPHRASE\n\nAAOMS\n\nAmerican Association of Oral and Maxillofacial Surgeons\n\nAMA\n\nAmerican Medical Association\n\nARCL\n\nAll Remaining Conditions List\n\nARS\n\nAcute Radiation Sickness\n\nBHP\n\nBehavioral Health and Performance\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "p.13"
+    },
+    {
+      "section_id": "CLIFF-011-sec-13",
+      "heading": "Glossary & Acronyms \u2014 Part 1",
+      "text_content": "CAC\n\nCoronary Artery Calcium\n\nCHS\n\nCrew Health and Safety\n\nCL\n\nCondition List\n\nCliFF\n\nClinical Finding Form\n\nCMO\n\nCrew Medical Officer\n\nCOMFORT\n\nClinical Outcome Metrics for Optimization of Robust Training\n\nCP1\n\nClinical Phase 1\n\nCP2\n\nClinical Phase 2\n\nCP3\n\nClinical Phase 3\n\nCRL\n\nClinical Resource Level\n\nCRT\n\nCapability Resource Table\n\nCST\n\nClinical Science Team\n\nDCS\n\nDecompression Syndrome\n\nDRM\n\nDesign Reference Mission\n\nED\n\nEmergency Medicine Doctor\n\nEL\n\nEvidence Library\n\nEMCL\n\nExploration Medical Condition List\n\nEMT\n\nEmergency Medical Technician\n\nEVA\n\nExtravehicular Activity\n\nEXMC\n\nExploration Medical Capability\n\nHRP\n\nHuman Research Program\n\nICD\n\nInternational Classification of Disease\n\nICL 1.0\n\nIMPACT 1.0 Medical Conditions List\n\nICU\n\nIntensive Care Unit\n\nIMCL\n\niMED Condition List\n\niMED\n\nIntegrated Medical Evidence Database\n\nIMM\n\nIntegrated Medical Model\n\nIMPACT-MD\n\nImpact Medical Database\n\nIP\n\nIncidence Proportion\n\nIR\n\nIncidence Rate\n\nISS\n\nInternational Space Station\n\nIV\n\nIntravenous\n\nJSC\n\nJohnson Space Center\n\nLEO\n\nLow-Earth orbit\n\nLEVA\n\nLunar Extravehicular Activity\n\nLOCL\n\nLoss of Crew Life\n\nLOM\n\nLoss of Mission\n\nLSAH\n\nLifetime Surveillance of Astronaut Health\n\nLSO\n\nLunar Surface Operations\n\nMCL\n\nMaster Condition List\n\nMEVA\n\nMedical Extravehicular Activity\n\nNASA\n\nNational Aeronautics and Space Administration\n\nN/A\n\nNot Applicable\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "p.14"
+    },
+    {
+      "section_id": "CLIFF-011-sec-14",
+      "heading": "Glossary & Acronyms \u2014 Part 2",
+      "text_content": "NP\n\nNurse Practitioner\n\nOBGYN\n\nObstetrics and Gynecology\n\nOR\n\nOccurrence Rate\n\nPA\n\nPhysician Assistant\n\nPDQ\n\nPain Disability Questionnaire\n\nPFCL\n\nProposed Future Conditions List\n\nPPE\n\nPersonal Protective Equipment\n\nPTRS\n\nProject Technical Requirements Specification\n\nPRL\n\nPharmaceutical Resource Level\n\nQTL\n\nQuality Time Lost\n\nRCL\n\nRemoved Conditions List\n\nREP\n\nRochester Epidemiology Study\n\nRTDC\n\nRemoval to Definitive Care\n\nSANS\n\nSpaceflight-Associated Neuro-ocular Syndrome\n\nSAS\n\nSpace Adaptation Syndrome\n\nSEVA\n\nSpaceflight Extravehicular Activity\n\nSME\n\nSubject Matter Expert\n\nSoP\n\nStandard Operating Procedure\n\nSPE\n\nSolar Particle Event\n\nTBD\n\nTo Be Determined\n\nTI\n\nTask Impairment\n\n6/15/2023 1:34:12 PM\n\nICL10_Atrial Fibrillation/Atrial Flutter Cliff\n\npage: 15",
+      "page_start": 15,
+      "page_end": 15,
+      "source_anchor": "p.15"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-011-tbl-0",
+      "title": "Treatment & Outcome Table by Clinical Phase (p.5)",
+      "rows": [
+        [
+          "CP1: Diagnosis",
+          "CP2: Treatment",
+          "CP3: Condition End State"
+        ],
+        [
+          "TI%",
+          "Duration",
+          "TI%",
+          "Duration",
+          "TI%",
+          "RTDC",
+          "LOCL"
+        ],
+        [
+          "Composite",
+          "Condition"
+        ],
+        [
+          "Case Scenario",
+          "Incidence",
+          "Probability %",
+          "Preset",
+          "Preset",
+          "Preset",
+          "Min",
+          "Max",
+          "Preset",
+          "Min%",
+          "Max%",
+          "Min%",
+          "Max%"
+        ],
+        [
+          "Treated Best",
+          "Mean: 0.00207",
+          "62.52 - 62.52",
+          "100",
+          "2.26",
+          "0",
+          "0.1",
+          "30.4",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1.6"
+        ],
+        [
+          "Case (TBC)",
+          "SD: 7.019E-4"
+        ],
+        [
+          "Treated Worst",
+          "37.48 - 37.48",
+          "100",
+          "2.43",
+          "27.4116",
+          "0.3",
+          "127",
+          "5.60723",
+          "10",
+          "59",
+          "0",
+          "7.09"
+        ],
+        [
+          "Untreated Best",
+          "N/A",
+          "N/A",
+          "N/A",
+          "2.26",
+          "9.11507",
+          "0.1",
+          "30.4",
+          "9.11507",
+          "0",
+          "0",
+          "0",
+          "1.6"
+        ],
+        [
+          "Untreated Worst",
+          "N/A",
+          "N/A",
+          "N/A",
+          "2.43",
+          "100",
+          "0.3",
+          "127",
+          "100",
+          "10",
+          "59",
+          "0",
+          "10.18"
+        ],
+        [
+          "6/15/2023 1:34:12 PM",
+          "ICL10_Atrial Fibrillation/Atrial Flutter Cliff",
+          "page: 5"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "p.5"
+    },
+    {
+      "table_id": "CLIFF-011-tbl-1",
+      "title": "Scenario Citations & LOE (p.8-9)",
+      "rows": [
+        [
+          "Citation",
+          "Source",
+          "LOC Value"
+        ],
+        [
+          "Kanji et al, 2012",
+          "Terrestrial"
+        ],
+        [
+          "Citation",
+          "Source",
+          "LOC Value"
+        ],
+        [
+          "Lip et al, 2010",
+          "Terrestrial"
+        ],
+        [
+          "Lee et al, 2018",
+          "Terrestrial",
+          "2"
+        ],
+        [
+          "Barr, 2010",
+          "Terrestrial"
+        ],
+        [
+          "6/15/2023 1:34:12 PM",
+          "ICL10_Atrial Fibrillation/Atrial Flutter Cliff",
+          "page: 8"
+        ],
+        [
+          "6/15/2023 1:34:12 PM",
+          "ICL10_Atrial Fibrillation/Atrial Flutter Cliff",
+          "page: 9"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "p.8-9"
+    },
+    {
+      "table_id": "CLIFF-011-tbl-2",
+      "title": "Task Impairment Calculation Based on Affected HSTC (p.10-11)",
+      "rows": [
+        [
+          "Cognitive -",
+          "Cognitive -",
+          "Cardio-"
+        ],
+        [
+          "Communications",
+          "personal",
+          "Vision",
+          "Hearing",
+          "Dentition",
+          "GI",
+          "GU"
+        ],
+        [
+          "Simple",
+          "Complex",
+          "pulmonary"
+        ],
+        [
+          "664",
+          "145"
+        ],
+        [
+          "223",
+          "664",
+          "113",
+          "89",
+          "854",
+          "44",
+          "145",
+          "5",
+          "13",
+          "6"
+        ],
+        [
+          "Affected HSTCs (Continued)",
+          "TI Calculation",
+          "TI Score"
+        ],
+        [
+          "Translation &",
+          "Total Tasks"
+        ],
+        [
+          "Hand",
+          "Lower",
+          "Ambul &",
+          "Don/Doff",
+          "Pressure",
+          "System"
+        ],
+        [
+          "Hand (Any)",
+          "Upper Extremity",
+          "Stabilization",
+          "Impaired By",
+          "TI Decimal",
+          "TI %"
+        ],
+        [
+          "(Dom)",
+          "Extremity",
+          "Standing (g)",
+          "Equipment",
+          "Ops",
+          "Category"
+        ],
+        [
+          "(microgravity)",
+          "Condition"
+        ],
+        [
+          "0",
+          "3763",
+          "0",
+          "0"
+        ],
+        [
+          "132",
+          "211",
+          "343",
+          "3763",
+          "0.0911507 9.11507"
+        ],
+        [
+          "132",
+          "414",
+          "22",
+          "196",
+          "34",
+          "34",
+          "211",
+          "1852",
+          "3763",
+          "0.492161",
+          "49.2161"
+        ],
+        [
+          "132",
+          "564",
+          "414",
+          "22",
+          "196",
+          "34",
+          "34",
+          "211",
+          "3763",
+          "3763",
+          "1",
+          "100"
+        ],
+        [
+          "Cognitive -",
+          "Cognitive -",
+          "Cardio-"
+        ],
+        [
+          "Communications",
+          "personal",
+          "Vision",
+          "Hearing",
+          "Dentition",
+          "GI",
+          "GU"
+        ],
+        [
+          "Simple",
+          "Complex",
+          "pulmonary"
+        ],
+        [
+          "223",
+          "664",
+          "113",
+          "89",
+          "854",
+          "44",
+          "145",
+          "5",
+          "13",
+          "6"
+        ],
+        [
+          "Affected HSTCs (Continued)",
+          "TI Calculation",
+          "TI Score"
+        ],
+        [
+          "6/15/2023 1:34:12 PM",
+          "ICL10_Atrial Fibrillation/Atrial Flutter Cliff",
+          "page: 10"
+        ],
+        [
+          "Translation &",
+          "Total Tasks"
+        ],
+        [
+          "Hand",
+          "Lower",
+          "Ambul &",
+          "Don/Doff",
+          "Pressure",
+          "System"
+        ],
+        [
+          "Hand (Any)",
+          "Upper Extremity",
+          "Stabilization",
+          "Impaired By",
+          "TI Decimal",
+          "TI %"
+        ],
+        [
+          "(Dom)",
+          "Extremity",
+          "Standing (g)",
+          "Equipment",
+          "Ops",
+          "Category"
+        ],
+        [
+          "(microgravity)",
+          "Condition"
+        ],
+        [
+          "0",
+          "3763",
+          "0",
+          "0"
+        ],
+        [
+          "132",
+          "211",
+          "343",
+          "3763",
+          "0.0911507 9.11507"
+        ],
+        [
+          "211",
+          "211",
+          "3763",
+          "0.0560723 5.60723"
+        ],
+        [
+          "132",
+          "564",
+          "414",
+          "22",
+          "196",
+          "34",
+          "34",
+          "211",
+          "3763",
+          "3763",
+          "1",
+          "100"
+        ],
+        [
+          "6/15/2023 1:34:12 PM",
+          "ICL10_Atrial Fibrillation/Atrial Flutter Cliff",
+          "page: 11"
+        ]
+      ],
+      "page_number": 10,
+      "source_anchor": "p.10-11"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-011-ref-0",
+      "label": "1. Barr Y. Atrial Arrhythmia Summit: Post Summit Report. NASA Technical Reports. 2010.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-1",
+      "label": "2. Bjorck S, Palaszewski B, Friberg L, Bergfeldt L. Atrial fibrillation, stroke risk, and warfarin therapy revisited: a population-based study. Stroke.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-2",
+      "label": "2013;44(11):3103-8. Epub 2013/08/29. doi: 10.1161/STROKEAHA.113.002329. PubMed PMID: 23982711.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-3",
+      "label": "3. Fuster V, Ryd\u00e9n LE, Cannom DS, Crijns HJ, Curtis AB, Ellenbogen KA, et al. ACC/AHA/ESC 2006 guidelines for the management of patients",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-4",
+      "label": "with atrial fibrillation\u2013executive summary. A report of the American College of Cardiology/American Heart Association Task Force on practice",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-5",
+      "label": "guidelines and the European Society of Cardiology Committee for Practice Guidelines (Writing Committee to Revise the 2001 Guidelines for the",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-6",
+      "label": "Management of Patients with Atrial Fibrillation). Circulation. 2006;114:700-52. doi: 10.1093/eurheartj/ehm315.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-7",
+      "label": "4. Go AS, Reynolds K, Yang J, Gupta N, Lenane J, Sung SH, et al. Association of Burden of Atrial Fibrillation With Risk of Ischemic Stroke in",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-8",
+      "label": "Adults With Paroxysmal Atrial Fibrillation: The KP-RHYTHM Study. JAMA Cardiol. 2018;3(7):601-8. Epub 2018/05/26. doi:",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-9",
+      "label": "10.1001/jamacardio.2018.1176. PubMed PMID: 29799942; PubMed Central PMCID: PMCPMC6145663.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-10",
+      "label": "5. Haim M, Hoshen M, Reges O, Rabi Y, Balicer R, Leibowitz M. Prospective national study of the prevalence, incidence, management and",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-11",
+      "label": "outcome of a large contemporary cohort of patients with incident non-valvular atrial fibrillation. J Am Heart Assoc. 2015;4(1):e001486. Epub",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-12",
+      "label": "2015/01/23. doi: 10.1161/JAHA.114.001486. PubMed PMID: 25609415; PubMed Central PMCID: PMCPMC4330072.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-13",
+      "label": "6. Hunter AH, Timperley AC, Reid AN, McLoughlin DC, Nicol E. A 5-year review of atrial fibrillation in military aircrew. Aviat Space Environ Med.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-14",
+      "label": "2013;84(12):1249-54. Epub 2014/01/28. doi: 10.3357/asem.3690.2013. PubMed PMID: 24459795.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-15",
+      "label": "7. Kanji S, Williamson DR, Mohammadzadeh Y, Albert M, McIntyre L. Epidemiology and management of atrial fibrillation in medical and",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-16",
+      "label": "noncardiac surgical adult intensive care unit patients. Journal of Critical Care. 2012;27:326.e1-.e8.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-17",
+      "label": "8. Lee S, Charvat J, Suresh R. Risk fo Cardiovascular Adaptations Contributing to Adverse Mission Performance and Health Outcomes",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-18",
+      "label": "(Cardiovascular Risk). HSRB CR SA-03267. Approved 5/13/21. . NASA, 2021.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-19",
+      "label": "9. Lee E, Choi EK, Han KD, Lee H, Choe WS, Lee SR, et al. Mortality and causes of death in patients with atrial fibrillation: A nationwide",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-20",
+      "label": "population-based study. PLoS One. 2018;13(12):e0209687. Epub 2018/12/27. doi: 10.1371/journal.pone.0209687. PubMed PMID: 30586468;",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-21",
+      "label": "PubMed Central PMCID: PMCPMC6306259.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-22",
+      "label": "10. Lip GY, Nieuwlaat R, Pisters R, Lane DA, Crijns HJ. Refining clinical risk stratification for predicting stroke and thromboembolism in atrial",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-23",
+      "label": "fibrillation using a novel risk factor-based approach: the euro heart survey on atrial fibrillation. Chest. 2010;137(2):263-72. Epub 2009/09/19.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-24",
+      "label": "doi: 10.1378/chest.09-1584. PubMed PMID: 19762550.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-25",
+      "label": "11. Atrial fibrillation - Symptoms and causes: Mayo Clinic; [cited 2021 July 5]. Available from: https://www.mayoclinic.org/diseasesconditions/atrial-fibrillation/symptoms-causes/syc-20350624.",
+      "citation_url": "https://www.mayoclinic.org/diseasesconditions/atrial-fibrillation/symptoms-causes/syc-20350624.",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-26",
+      "label": "12. NASA. MedB 1.6 Resting ECG. JSC28913. 2013.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-27",
+      "label": "https://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MEDB_1.6_Resting_ECG_MR011L_1.28.2014_Project_02_26_2015_12_42_04.pdf.",
+      "citation_url": "https://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MEDB_1.6_Resting_ECG_MR011L_1.28.2014_Project_02_26_2015_12_42_04.pdf.",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-28",
+      "label": "13. NASA. MedB 1.7 24-Hour Ambulatory ECG Monitoring. SLSDCR-SMCCB-07-016-R1. 2007.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-29",
+      "label": "https://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MEDB_17_MR071L.pdf.",
+      "citation_url": "https://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MEDB_17_MR071L.pdf.",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-30",
+      "label": "14. NASA. MR006L Exercise Treadmill Test. MSD-MO-023. 2000. https://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MR006L.pdf.",
+      "citation_url": "https://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MR006L.pdf.",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-31",
+      "label": "15. NASA. MR019L Heart Rate Monitoring. SM-FI-077-R1. 2002. https://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MR019L.pdf.",
+      "citation_url": "https://lsda.jsc.nasa.gov/lsda_data/document/Project/MRID/MR019L.pdf.",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-32",
+      "label": "16. Atrial Fibrillation | NHLBI, NIH: National Institute of Health: National Heart, Lung, and Blood Institute; [cited 2021 July 5]. Available from:",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-33",
+      "label": "https://www.nhlbi.nih.gov/health-topics/atrial-fibrillation.",
+      "citation_url": "https://www.nhlbi.nih.gov/health-topics/atrial-fibrillation.",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-34",
+      "label": "17. Tischler MD, Lee TH, McAndrew KA, Sax PE, Sutton MSJ, Lee RT. Clinical, Echocardiographic and Doppler Correlates of Clinical Instability",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-35",
+      "label": "with Onset of Atrial Fibrillation Am J Cardiol. 1990;66:721-4.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-36",
+      "label": "American Association of Oral and Maxillofacial Surgeons",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-37",
+      "label": "American Medical Association",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-38",
+      "label": "All Remaining Conditions List",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-39",
+      "label": "Acute Radiation Sickness",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-40",
+      "label": "Behavioral Health and Performance",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-41",
+      "label": "6/15/2023 1:34:12 PM",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    },
+    {
+      "reference_id": "CLIFF-011-ref-42",
+      "label": "ICL10_Atrial Fibrillation/Atrial Flutter Cliff",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/atrial-fibrillation-atrial-flutter-cliff-2023.pdf?emrc=19c3e5",
+      "page_number": 13
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-011-img-0",
+      "media_kind": "RADIOLOGY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-011/b0b1118ef8616b9edb3fcfebec13ea1211f3efdd0ba7623524324199219bc538.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1730,
+      "height": 1016,
+      "sha256": "b0b1118ef8616b9edb3fcfebec13ea1211f3efdd0ba7623524324199219bc538",
+      "creator": "Ciernik M",
+      "license_identifier": "CC-BY-SA-4.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/ECG-atrial_flutter.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:ECG-atrial_flutter.jpg",
+      "attribution": "Ciernik M (CC-BY-SA-4.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:ECG-atrial_flutter.jpg)",
+      "caption": "Electrocardiogram demonstrating classic sawtooth atrial flutter (F) waves.",
+      "alt_text": "ECG tracing showing regular sawtooth flutter waves between QRS complexes.",
+      "clinical_relevance": "Illustrates ECG differentiation of atrial flutter within CLIFF-011 (p.1, p.5-9).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 1",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-011-img-1",
+      "media_kind": "RADIOLOGY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-011/cd04f90632f3cd853274f42773f7944fcc51981feb7ee726df5a179c9ae70665.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1286,
+      "height": 593,
+      "sha256": "cd04f90632f3cd853274f42773f7944fcc51981feb7ee726df5a179c9ae70665",
+      "creator": "Ewingdo",
+      "license_identifier": "CC-BY-SA-4.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/43/ECG_Atrial_Fibrillation_90_bpm.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:ECG_Atrial_Fibrillation_90_bpm.jpg",
+      "attribution": "Ewingdo (CC-BY-SA-4.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:ECG_Atrial_Fibrillation_90_bpm.jpg)",
+      "caption": "Electrocardiogram demonstrating atrial fibrillation with an irregularly irregular ventricular rhythm and absent discrete P waves.",
+      "alt_text": "12-lead ECG tracing showing irregular R-R intervals and fibrillatory baseline characteristic of atrial fibrillation.",
+      "clinical_relevance": "Illustrates ECG diagnosis of atrial fibrillation referenced in CLIFF-011 (p.1, p.5-9).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 2",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-011-img-2",
+      "media_kind": "DIAGRAM",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-011/fc8ef3b315bdb8ae11af98e3b493f15b8aea1770b68dda9518d358aa14d01230.png",
+      "mime_type": "image/png",
+      "width": 1200,
+      "height": 750,
+      "sha256": "fc8ef3b315bdb8ae11af98e3b493f15b8aea1770b68dda9518d358aa14d01230",
+      "creator": "BruceBlaus",
+      "license_identifier": "CC-BY-SA-4.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Atrial_Fibrillation.png",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Atrial_Fibrillation.png",
+      "attribution": "BruceBlaus (CC-BY-SA-4.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Atrial_Fibrillation.png)",
+      "caption": "Anatomical diagram comparing normal sinus rhythm electrical conduction with disorganized atrial electrical activity in atrial fibrillation.",
+      "alt_text": "Diagram of two hearts comparing coordinated sinus node conduction with chaotic atrial impulses in atrial fibrillation.",
+      "clinical_relevance": "Explains atrial arrhythmia mechanism and thromboembolic/hemodynamic risk in spaceflight (CLIFF-011, p.1).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 3",
+      "usage_review": "APPROVED"
+    }
+  ]
+}

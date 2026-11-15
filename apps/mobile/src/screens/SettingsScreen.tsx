@@ -36,7 +36,7 @@ function SettingsRow({ icon, title, value, onPress, last }: { icon: keyof typeof
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return (
     <Pressable accessibilityRole="button" onPress={onPress} style={({ pressed }) => [styles.row, !last && styles.rowBorder, pressed && styles.pressed]}>
-      <View style={styles.icon}><Ionicons name={icon} size={20} color={colors.cyan} /></View>
+      <View style={styles.icon}><Ionicons name={icon} size={20} color={colors.primary} /></View>
       <Text style={styles.rowTitle}>{title}</Text>
       {value ? <Text style={styles.value}>{value}</Text> : null}
       <Ionicons name="chevron-forward" size={18} color={colors.faint} />
@@ -53,4 +53,5 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   value: { color: colors.muted, fontSize: 12, fontWeight: '800' },
   pressed: { opacity: 0.72 },
 });
+
 

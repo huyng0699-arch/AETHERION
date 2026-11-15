@@ -71,7 +71,7 @@ function LocaleRow({ label, selected, onPress, last }: { label: string; selected
     <Pressable accessibilityRole="radio" accessibilityState={{ selected }} onPress={onPress} style={[styles.localeRow, !last && styles.rowBorder]}>
       <View style={[styles.radio, selected && styles.radioSelected]}>{selected ? <View style={styles.radioDot} /> : null}</View>
       <Text style={styles.localeText}>{label}</Text>
-      {selected ? <Ionicons name="checkmark" size={18} color={colors.cyan} /> : null}
+      {selected ? <Ionicons name="checkmark" size={18} color={colors.primary} /> : null}
     </Pressable>
   );
 }
@@ -85,8 +85,9 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   localeRow: { minHeight: 58, flexDirection: 'row', alignItems: 'center', gap: 12 },
   rowBorder: { borderBottomWidth: 1, borderBottomColor: colors.border },
   radio: { width: 21, height: 21, borderRadius: 11, borderWidth: 1.5, borderColor: colors.faint, alignItems: 'center', justifyContent: 'center' },
-  radioSelected: { borderColor: colors.cyan },
-  radioDot: { width: 11, height: 11, borderRadius: 6, backgroundColor: colors.cyan },
+  radioSelected: { borderColor: colors.primary },
+  radioDot: { width: 11, height: 11, borderRadius: 6, backgroundColor: colors.primary },
   localeText: { flex: 1, color: colors.text, fontWeight: '800', fontSize: 14 },
 });
+
 
