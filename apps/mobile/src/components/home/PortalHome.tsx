@@ -308,6 +308,7 @@ export function PortalHome({ locale, setLocale, isAuthenticated, token, serverSt
             </Animated.View>
           </View>
         </View>
+      </Modal>
       <Modal transparent visible={healthTipVisible} animationType={appearance.reduceMotion ? 'none' : 'fade'} onRequestClose={dismissHealthTip}>
         <View style={styles.tipModalRoot}>
           <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'healthTipClose')} style={[StyleSheet.absoluteFill, styles.tipBackdrop]} onPress={dismissHealthTip} />
@@ -330,7 +331,6 @@ export function PortalHome({ locale, setLocale, isAuthenticated, token, serverSt
             </View>
           </View>
         </View>
-      </Modal>
       </Modal>
     </View>
   );
