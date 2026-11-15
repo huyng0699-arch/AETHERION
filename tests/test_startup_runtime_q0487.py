@@ -134,8 +134,10 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                 page.set_verified_session(
                     "verified-bearer",
                     {"username": "operator", "role": "crew", "allowed_subjects": ["CREW-01"]},
+                    "http://127.0.0.1:18000",
                 )
                 self.assertEqual(page._token, "verified-bearer")
+                self.assertEqual(page.api_url, "http://127.0.0.1:18000")
                 self.assertEqual(page._subjects, ["CREW-01"])
                 self.assertEqual(page._selected_subject(), "CREW-01")
                 refresh_subject.assert_called_once()
@@ -144,6 +146,7 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                     page.set_verified_session(
                         "verified-bearer",
                         {"username": "operator", "role": "crew", "allowed_subjects": allowed},
+                        "http://127.0.0.1:18000",
                     )
                     self.assertEqual(page._selected_subject(), "")
                     self.assertFalse(page.open_personal_button.isEnabled())
