@@ -62,6 +62,7 @@ Expo/React Native shares application code across Android and iOS and can export 
 ## Project guidance
 
 - [Getting started and operations](docs/GETTING_STARTED.md)
+- [Server, AI and future device integration contract](docs/OPERATIONS_AI_DEVICE_INTEGRATION.md)
 - [OnePad AI integration and provider boundaries](docs/AI_ONEPAD_INTEGRATION.md)
 - [NASA catalog and archive audit](docs/NASA_CLIFF_119_ARCHIVE_AUDIT.md)
 - [Third-party notices](THIRD_PARTY_NOTICES.md)
