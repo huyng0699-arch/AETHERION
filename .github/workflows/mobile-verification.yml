@@ -1,0 +1,35 @@
+name: Mobile offline verification
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "apps/mobile/**"
+      - "knowledge/nasa/cliff_119_2023/records/**"
+      - ".github/workflows/mobile-verification.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/mobile/package-lock.json
+      - name: Install locked mobile dependencies
+        run: npm ci --prefix apps/mobile --no-audit --no-fund
+      - name: Typecheck
+        run: npm run typecheck --prefix apps/mobile
+      - name: Verify bundled CliFF inventory
+        run: npm run verify:offline-cliff --prefix apps/mobile
+      - name: Export Expo web bundle
+        env:
+          EXPO_NO_TELEMETRY: "1"
+        run: npm run export:web --prefix apps/mobile
