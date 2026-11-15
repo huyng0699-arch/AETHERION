@@ -20,7 +20,7 @@ export function HelpScreen({ locale, onBack, onOpen }: { locale: Locale; onBack:
         <ActionButton title="Demo" onPress={() => onOpen('demoIntro')} secondary />
         <ActionButton title={copy(locale, 'connection')} onPress={() => onOpen('connection')} secondary />
         <ActionButton title={t(locale, 'privacyTitle')} onPress={() => onOpen('privacy')} secondary />
-        <Text style={{ color: colors.muted, fontSize: 11, lineHeight: 17 }}>AETHERION · TRUY TINH</Text>
+        <Text style={{ color: colors.muted, fontSize: 11, lineHeight: 17 }}>TRUY TINH · AETHERION</Text>
         <Body style={{ fontSize: 11 }}>{locale === 'en' ? 'Interface and artwork adapted from Solo Business AI, supplied by the project owner. Scientific records retain their original authors and sources.' : 'Giao diện và hình ảnh được chuyển thể từ Solo Business AI do chủ dự án cung cấp. Tài liệu khoa học giữ nguyên tác giả và nguồn gốc.'}</Body>
       </Panel>
     </AppPage>

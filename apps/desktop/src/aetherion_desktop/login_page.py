@@ -11,6 +11,7 @@ import os
 from urllib.parse import urlsplit
 
 from PySide6.QtCore import QByteArray, QTimer, QUrl, Qt, Signal
+from PySide6.QtGui import QPixmap
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import (
     QFrame,
@@ -171,6 +172,18 @@ class LoginPage(QWidget):
         card_layout = QVBoxLayout(self.card)
         card_layout.setContentsMargins(34, 30, 34, 30)
         card_layout.setSpacing(14)
+
+        self.brand_mark = QLabel(self.card)
+        self.brand_mark.setAccessibleName("Truy Tinh")
+        logo_path = os.path.join(os.path.dirname(__file__), "assets", "truy-tinh-logo.png")
+        logo = QPixmap(logo_path)
+        if not logo.isNull():
+            self.brand_mark.setPixmap(logo.scaled(
+                60, 60, Qt.AspectRatioMode.KeepAspectRatio,
+                Qt.TransformationMode.SmoothTransformation,
+            ))
+        self.brand_mark.setFixedSize(60, 60)
+        card_layout.addWidget(self.brand_mark, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.eyebrow = QLabel(self.card)
         self.eyebrow.setObjectName("eyebrow")

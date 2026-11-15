@@ -1,0 +1,720 @@
+{
+  "source_title": "NASA Exploration Medical Capability Evidence Library Methods, Revision B (November 2023), Appendix C",
+  "source_url": "https://ntrs.nasa.gov/api/citations/20240004774/downloads/HRP-48036%20RevB_ExMC%20Evidence%20Library%20Methods.pdf",
+  "records": [
+    {
+      "condition_id": "ICL1",
+      "title": "Abdominal Wall Hernia",
+      "source_page": 105,
+      "article_id": null
+    },
+    {
+      "condition_id": "ICL2",
+      "title": "Abnormal Uterine Bleeding",
+      "source_page": 105,
+      "article_id": "CLIFF-108"
+    },
+    {
+      "condition_id": "ICL3",
+      "title": "Acute Coronary Syndrome",
+      "source_page": 105,
+      "article_id": "CLIFF-010"
+    },
+    {
+      "condition_id": "ICL4",
+      "title": "Acute Radiation Syndrome",
+      "source_page": 106,
+      "article_id": "CLIFF-092"
+    },
+    {
+      "condition_id": "ICL5",
+      "title": "Allergic Reaction (Mild To Moderate)",
+      "source_page": 106,
+      "article_id": "CLIFF-003"
+    },
+    {
+      "condition_id": "ICL6",
+      "title": "Altitude Sickness",
+      "source_page": 106,
+      "article_id": "CLIFF-093"
+    },
+    {
+      "condition_id": "ICL7",
+      "title": "Anaphylaxis",
+      "source_page": 106,
+      "article_id": "CLIFF-004"
+    },
+    {
+      "condition_id": "ICL8",
+      "title": "Appendicitis",
+      "source_page": 106,
+      "article_id": "CLIFF-032"
+    },
+    {
+      "condition_id": "ICL9",
+      "title": "Arthritis, Acute",
+      "source_page": 107,
+      "article_id": "CLIFF-050"
+    },
+    {
+      "condition_id": "ICL10",
+      "title": "Atrial Fibrillation/ Atrial Flutter",
+      "source_page": 107,
+      "article_id": "CLIFF-011"
+    },
+    {
+      "condition_id": "ICL11",
+      "title": "Barotrauma (Ear/Sinus Block)",
+      "source_page": 107,
+      "article_id": "CLIFF-065"
+    },
+    {
+      "condition_id": "ICL12",
+      "title": "Benzodiazapine Or Opioid Overdose",
+      "source_page": 107,
+      "article_id": "CLIFF-049"
+    },
+    {
+      "condition_id": "ICL13",
+      "title": "BHP - Adjustment Disorder",
+      "source_page": 108,
+      "article_id": "CLIFF-005"
+    },
+    {
+      "condition_id": "ICL14",
+      "title": "BHP - Anxiety",
+      "source_page": 108,
+      "article_id": "CLIFF-006"
+    },
+    {
+      "condition_id": "ICL15",
+      "title": "BHP - Depression",
+      "source_page": 109,
+      "article_id": "CLIFF-007"
+    },
+    {
+      "condition_id": "ICL16",
+      "title": "BHP - Grief Reaction",
+      "source_page": 110,
+      "article_id": "CLIFF-008"
+    },
+    {
+      "condition_id": "ICL17",
+      "title": "BHP - Psychosis Secondary To Depression",
+      "source_page": 110,
+      "article_id": "CLIFF-009"
+    },
+    {
+      "condition_id": "ICL18",
+      "title": "BHP - Sleep Disturbance",
+      "source_page": 111,
+      "article_id": "CLIFF-091"
+    },
+    {
+      "condition_id": "ICL19",
+      "title": "Burn - Chemical Eye",
+      "source_page": 111,
+      "article_id": "CLIFF-024"
+    },
+    {
+      "condition_id": "ICL20",
+      "title": "Burn - Chemical Skin",
+      "source_page": 112,
+      "article_id": "CLIFF-082"
+    },
+    {
+      "condition_id": "ICL21",
+      "title": "Burn - Mild, Thermal",
+      "source_page": 112,
+      "article_id": "CLIFF-083"
+    },
+    {
+      "condition_id": "ICL22",
+      "title": "Burn - Moderate To Severe, Thermal",
+      "source_page": 113,
+      "article_id": "CLIFF-084"
+    },
+    {
+      "condition_id": "ICL23",
+      "title": "Cerebrovascular Accident",
+      "source_page": 113,
+      "article_id": "CLIFF-059"
+    },
+    {
+      "condition_id": "ICL24",
+      "title": "Cerumen Impaction",
+      "source_page": 113,
+      "article_id": "CLIFF-066"
+    },
+    {
+      "condition_id": "ICL25",
+      "title": "Choking/Obstructed Airway",
+      "source_page": 113,
+      "article_id": "CLIFF-067"
+    },
+    {
+      "condition_id": "ICL26",
+      "title": "Cholelithiasis/ Biliary Colic, Acute",
+      "source_page": 114,
+      "article_id": null
+    },
+    {
+      "condition_id": "ICL28",
+      "title": "Dental Abscess",
+      "source_page": 114,
+      "article_id": "CLIFF-019"
+    },
+    {
+      "condition_id": "ICL29",
+      "title": "Dental Crown Loss",
+      "source_page": 114,
+      "article_id": "CLIFF-020"
+    },
+    {
+      "condition_id": "ICL30",
+      "title": "Dental Filling Loss",
+      "source_page": 115,
+      "article_id": "CLIFF-022"
+    },
+    {
+      "condition_id": "ICL31",
+      "title": "Dental Fracture/ Exposed Pulp",
+      "source_page": 115,
+      "article_id": "CLIFF-021"
+    },
+    {
+      "condition_id": "ICL32",
+      "title": "Dental Luxation/ Avulsion (Tooth Loss)",
+      "source_page": 115,
+      "article_id": "CLIFF-023"
+    },
+    {
+      "condition_id": "ICL33",
+      "title": "Dislocation - Finger",
+      "source_page": 115,
+      "article_id": "CLIFF-103"
+    },
+    {
+      "condition_id": "ICL34",
+      "title": "Dislocation - Shoulder",
+      "source_page": 116,
+      "article_id": "CLIFF-057"
+    },
+    {
+      "condition_id": "ICL35",
+      "title": "Diverticulitis, Acute",
+      "source_page": 116,
+      "article_id": "CLIFF-030"
+    },
+    {
+      "condition_id": "ICL36A",
+      "title": "Dust Exposure - Lunar (Surface EVA)",
+      "source_page": 116,
+      "article_id": "CLIFF-098"
+    },
+    {
+      "condition_id": "ICL36B",
+      "title": "Dust Exposure - Lunar (EVA Habitat)",
+      "source_page": 117,
+      "article_id": "CLIFF-097"
+    },
+    {
+      "condition_id": "ICL37",
+      "title": "Ebullism",
+      "source_page": 117,
+      "article_id": "CLIFF-095"
+    },
+    {
+      "condition_id": "ICL38",
+      "title": "Epistaxis",
+      "source_page": 117,
+      "article_id": "CLIFF-069"
+    },
+    {
+      "condition_id": "ICL39",
+      "title": "EVA Related Decompression Sickness",
+      "source_page": 117,
+      "article_id": "CLIFF-094"
+    },
+    {
+      "condition_id": "ICL40",
+      "title": "EVA Related Dehydration",
+      "source_page": 118,
+      "article_id": "CLIFF-013"
+    },
+    {
+      "condition_id": "ICL41",
+      "title": "EVA Related Fingernail Delamination",
+      "source_page": 118,
+      "article_id": "CLIFF-100"
+    },
+    {
+      "condition_id": "ICL42",
+      "title": "EVA Related Hand Injury",
+      "source_page": 118,
+      "article_id": "CLIFF-101"
+    },
+    {
+      "condition_id": "ICL43",
+      "title": "EVA Related Heat Illness",
+      "source_page": 118,
+      "article_id": "CLIFF-096"
+    },
+    {
+      "condition_id": "ICL44",
+      "title": "EVA Related Paresthesia",
+      "source_page": 118,
+      "article_id": "CLIFF-060"
+    },
+    {
+      "condition_id": "ICL45",
+      "title": "EVA Related Shoulder Injury",
+      "source_page": 119,
+      "article_id": "CLIFF-102"
+    },
+    {
+      "condition_id": "ICL46",
+      "title": "EVA Related Suit Contact Injury",
+      "source_page": 119,
+      "article_id": "CLIFF-054"
+    },
+    {
+      "condition_id": "ICL47",
+      "title": "Eye - Retinal Injury",
+      "source_page": 119,
+      "article_id": "CLIFF-027"
+    },
+    {
+      "condition_id": "ICL48",
+      "title": "Eye Foreign Body",
+      "source_page": 119,
+      "article_id": "CLIFF-025"
+    },
+    {
+      "condition_id": "ICL49",
+      "title": "Eye Irritation/Corneal Abrasion/Ulceration",
+      "source_page": 120,
+      "article_id": "CLIFF-026"
+    },
+    {
+      "condition_id": "ICL50",
+      "title": "Eyelid And Anterior Eye Infection",
+      "source_page": 120,
+      "article_id": "CLIFF-028"
+    },
+    {
+      "condition_id": "ICL51",
+      "title": "Fracture - Arm",
+      "source_page": 120,
+      "article_id": "CLIFF-099"
+    },
+    {
+      "condition_id": "ICL52",
+      "title": "Fracture - Cervical Spine",
+      "source_page": 120,
+      "article_id": "CLIFF-053"
+    },
+    {
+      "condition_id": "ICL53",
+      "title": "Fracture - Distal Leg",
+      "source_page": 121,
+      "article_id": "CLIFF-045"
+    },
+    {
+      "condition_id": "ICL54",
+      "title": "Fracture - Femur",
+      "source_page": 121,
+      "article_id": "CLIFF-046"
+    },
+    {
+      "condition_id": "ICL55",
+      "title": "Fracture - Hand",
+      "source_page": 121,
+      "article_id": "CLIFF-104"
+    },
+    {
+      "condition_id": "ICL56",
+      "title": "Fracture - Wrist",
+      "source_page": 122,
+      "article_id": "CLIFF-105"
+    },
+    {
+      "condition_id": "ICL57",
+      "title": "Fracture-Thoracic/Lumbar Spine",
+      "source_page": 122,
+      "article_id": "CLIFF-055"
+    },
+    {
+      "condition_id": "ICL58",
+      "title": "Gastritis/Reflux/ Esophagitis",
+      "source_page": 122,
+      "article_id": "CLIFF-035"
+    },
+    {
+      "condition_id": "ICL59",
+      "title": "Gastroenteritis/ Acute Diarrhea",
+      "source_page": 123,
+      "article_id": "CLIFF-034"
+    },
+    {
+      "condition_id": "ICL60",
+      "title": "Glaucoma, Acute Angle-Closure",
+      "source_page": 123,
+      "article_id": "CLIFF-117"
+    },
+    {
+      "condition_id": "ICL61",
+      "title": "Gravity Well - Neurovestibular Disturbance",
+      "source_page": 123,
+      "article_id": "CLIFF-063"
+    },
+    {
+      "condition_id": "ICL62",
+      "title": "Gravity Well - Orthostatic Intolerance",
+      "source_page": 123,
+      "article_id": "CLIFF-014"
+    },
+    {
+      "condition_id": "ICL63",
+      "title": "Headache",
+      "source_page": 124,
+      "article_id": "CLIFF-042"
+    },
+    {
+      "condition_id": "ICL64",
+      "title": "Headache - CO2 Induced",
+      "source_page": 124,
+      "article_id": "CLIFF-040"
+    },
+    {
+      "condition_id": "ICL65",
+      "title": "Hearing Loss",
+      "source_page": 124,
+      "article_id": "CLIFF-071"
+    },
+    {
+      "condition_id": "ICL66",
+      "title": "Hearing Loss - Noise-Related",
+      "source_page": 124,
+      "article_id": "CLIFF-070"
+    },
+    {
+      "condition_id": "ICL67",
+      "title": "Hemorrhoids",
+      "source_page": 125,
+      "article_id": "CLIFF-036"
+    },
+    {
+      "condition_id": "ICL68",
+      "title": "Herpes Zoster Reactivation (Shingles)",
+      "source_page": 125,
+      "article_id": "CLIFF-043"
+    },
+    {
+      "condition_id": "ICL70",
+      "title": "Mouth Ulcer",
+      "source_page": 125,
+      "article_id": "CLIFF-072"
+    },
+    {
+      "condition_id": "ICL71",
+      "title": "Nephrolithiasis",
+      "source_page": 126,
+      "article_id": "CLIFF-110"
+    },
+    {
+      "condition_id": "ICL72",
+      "title": "Neuropathy - Central, Impingement Related",
+      "source_page": 126,
+      "article_id": "CLIFF-058"
+    },
+    {
+      "condition_id": "ICL73",
+      "title": "Otitis Externa",
+      "source_page": 126,
+      "article_id": "CLIFF-074"
+    },
+    {
+      "condition_id": "ICL74",
+      "title": "Otitis Media",
+      "source_page": 126,
+      "article_id": "CLIFF-075"
+    },
+    {
+      "condition_id": "ICL75",
+      "title": "Pancreatitis, Acute",
+      "source_page": 127,
+      "article_id": "CLIFF-031"
+    },
+    {
+      "condition_id": "ICL76",
+      "title": "Pregnancy, Risk For",
+      "source_page": 127,
+      "article_id": "CLIFF-112"
+    },
+    {
+      "condition_id": "ICL77",
+      "title": "Prostatitis, Acute",
+      "source_page": 128,
+      "article_id": "CLIFF-109"
+    },
+    {
+      "condition_id": "ICL78",
+      "title": "Rash, Spaceflight Associated",
+      "source_page": 128,
+      "article_id": "CLIFF-088"
+    },
+    {
+      "condition_id": "ICL80",
+      "title": "Respiratory Failure",
+      "source_page": 128,
+      "article_id": "CLIFF-078"
+    },
+    {
+      "condition_id": "ICL81",
+      "title": "Respiratory Tract Infection - Lower",
+      "source_page": 129,
+      "article_id": "CLIFF-077"
+    },
+    {
+      "condition_id": "ICL82",
+      "title": "Respiratory Tract Infection - Upper",
+      "source_page": 129,
+      "article_id": "CLIFF-079"
+    },
+    {
+      "condition_id": "ICL83",
+      "title": "Seizures",
+      "source_page": 129,
+      "article_id": "CLIFF-061"
+    },
+    {
+      "condition_id": "ICL84",
+      "title": "Sepsis",
+      "source_page": 130,
+      "article_id": "CLIFF-044"
+    },
+    {
+      "condition_id": "ICL85",
+      "title": "Shock - Cardiogenic",
+      "source_page": 130,
+      "article_id": "CLIFF-012"
+    },
+    {
+      "condition_id": "ICL86",
+      "title": "Skin Abrasion",
+      "source_page": 130,
+      "article_id": "CLIFF-085"
+    },
+    {
+      "condition_id": "ICL87",
+      "title": "Skin Infection - Bacterial",
+      "source_page": 130,
+      "article_id": "CLIFF-086"
+    },
+    {
+      "condition_id": "ICL88",
+      "title": "Skin Infection - Viral/Fungal",
+      "source_page": 131,
+      "article_id": null
+    },
+    {
+      "condition_id": "ICL89",
+      "title": "Skin Laceration",
+      "source_page": 131,
+      "article_id": "CLIFF-087"
+    },
+    {
+      "condition_id": "ICL90",
+      "title": "Small Bowel Obstruction",
+      "source_page": 131,
+      "article_id": "CLIFF-037"
+    },
+    {
+      "condition_id": "ICL91",
+      "title": "Space Adaptation - Back Pain",
+      "source_page": 131,
+      "article_id": "CLIFF-051"
+    },
+    {
+      "condition_id": "ICL92",
+      "title": "Space Adaptation - Constipation",
+      "source_page": 131,
+      "article_id": "CLIFF-033"
+    },
+    {
+      "condition_id": "ICL93",
+      "title": "Space Adaptation - Epistaxis",
+      "source_page": 132,
+      "article_id": "CLIFF-068"
+    },
+    {
+      "condition_id": "ICL94",
+      "title": "Space Adaptation - Headache",
+      "source_page": 132,
+      "article_id": "CLIFF-041"
+    },
+    {
+      "condition_id": "ICL95",
+      "title": "Space Adaptation - Insomnia",
+      "source_page": 132,
+      "article_id": "CLIFF-090"
+    },
+    {
+      "condition_id": "ICL96",
+      "title": "Space Adaptation - Nasal Congestion",
+      "source_page": 132,
+      "article_id": "CLIFF-073"
+    },
+    {
+      "condition_id": "ICL97",
+      "title": "Space Adaptation - Space Motion Sickness",
+      "source_page": 132,
+      "article_id": "CLIFF-064"
+    },
+    {
+      "condition_id": "ICL98",
+      "title": "Space Adaptation - Urinary Retention",
+      "source_page": 133,
+      "article_id": "CLIFF-114"
+    },
+    {
+      "condition_id": "ICL99",
+      "title": "Space Adaptation - Urinary Incontinence",
+      "source_page": 133,
+      "article_id": "CLIFF-113"
+    },
+    {
+      "condition_id": "ICL100",
+      "title": "Spaceflight Associated Neuro-Ocular Syndrome (SANS)",
+      "source_page": 133,
+      "article_id": "CLIFF-118"
+    },
+    {
+      "condition_id": "ICL101",
+      "title": "Sprain/Strain - Back",
+      "source_page": 133,
+      "article_id": "CLIFF-052"
+    },
+    {
+      "condition_id": "ICL102",
+      "title": "Sprain/Strain - Lower Extremity",
+      "source_page": 134,
+      "article_id": "CLIFF-047"
+    },
+    {
+      "condition_id": "ICL103",
+      "title": "Sprain/Strain - Neck",
+      "source_page": 134,
+      "article_id": "CLIFF-056"
+    },
+    {
+      "condition_id": "ICL104",
+      "title": "Sprain/Strain - Upper Extremity",
+      "source_page": 134,
+      "article_id": "CLIFF-106"
+    },
+    {
+      "condition_id": "ICL105",
+      "title": "Streptococcal Pharyngitis",
+      "source_page": 134,
+      "article_id": "CLIFF-076"
+    },
+    {
+      "condition_id": "ICL106",
+      "title": "Sudden Cardiac Arrest",
+      "source_page": 135,
+      "article_id": "CLIFF-015"
+    },
+    {
+      "condition_id": "ICL107",
+      "title": "Tendinopathy/ Enthesopathy/ Bursitis/Over-Use Injuries - Lower Extremity",
+      "source_page": 135,
+      "article_id": "CLIFF-048"
+    },
+    {
+      "condition_id": "ICL108",
+      "title": "Tendinopathy/ Enthesopathy /Bursitis/Over-Use Injuries - Upper Extremity",
+      "source_page": 135,
+      "article_id": "CLIFF-107"
+    },
+    {
+      "condition_id": "ICL109",
+      "title": "Toxic Dermal Exposure",
+      "source_page": 136,
+      "article_id": "CLIFF-089"
+    },
+    {
+      "condition_id": "ICL110",
+      "title": "Toxic Inhalation Exposure",
+      "source_page": 136,
+      "article_id": "CLIFF-081"
+    },
+    {
+      "condition_id": "ICL111",
+      "title": "Toxic Inhalation Exposure - Combustion Products",
+      "source_page": 137,
+      "article_id": "CLIFF-080"
+    },
+    {
+      "condition_id": "ICL112",
+      "title": "Trauma - Abdominal Injury (Blunt)",
+      "source_page": 137,
+      "article_id": "CLIFF-002"
+    },
+    {
+      "condition_id": "ICL113",
+      "title": "Trauma - Chest Injury (Blunt)",
+      "source_page": 138,
+      "article_id": "CLIFF-018"
+    },
+    {
+      "condition_id": "ICL114",
+      "title": "Trauma - Minor Head",
+      "source_page": 138,
+      "article_id": "CLIFF-038"
+    },
+    {
+      "condition_id": "ICL115",
+      "title": "Trauma - Severe Head",
+      "source_page": 139,
+      "article_id": "CLIFF-039"
+    },
+    {
+      "condition_id": "ICL116",
+      "title": "Traumatic Hypovolemic Shock",
+      "source_page": 139,
+      "article_id": "CLIFF-016"
+    },
+    {
+      "condition_id": "ICL117",
+      "title": "Urinary Tract Infection",
+      "source_page": 139,
+      "article_id": "CLIFF-115"
+    },
+    {
+      "condition_id": "ICL118",
+      "title": "Vaginal Yeast Infection",
+      "source_page": 140,
+      "article_id": "CLIFF-116"
+    },
+    {
+      "condition_id": "ICL119",
+      "title": "Venous Thromboembolism",
+      "source_page": 140,
+      "article_id": "CLIFF-017"
+    },
+    {
+      "condition_id": "ICL122",
+      "title": "Gravity Well - Entry Motion Sickness",
+      "source_page": 141,
+      "article_id": "CLIFF-062"
+    },
+    {
+      "condition_id": "ICL123",
+      "title": "Pregnancy, First Trimester",
+      "source_page": 141,
+      "article_id": "CLIFF-111"
+    }
+  ]
+}

@@ -21,8 +21,10 @@ type ChatBubble = {
   notice?: string;
 };
 
-export function AiScreen({ locale, token, onBack, onUnauthorized }: {
-  locale: Locale; token: string; onBack: () => void; onUnauthorized: () => void;
+type SourceContext = { articleId: string; title: string };
+
+export function AiScreen({ locale, token, context, onClearContext, onBack, onUnauthorized }: {
+  locale: Locale; token: string; context: SourceContext | null; onClearContext: () => void; onBack: () => void; onUnauthorized: () => void;
 }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const [status, setStatus] = useState<AssistantStatus | null>(null);
@@ -37,6 +39,15 @@ export function AiScreen({ locale, token, onBack, onUnauthorized }: {
   const [refreshKey, setRefreshKey] = useState(0);
 
   const beginStatus = useRequestGate(), beginChat = useRequestGate();
+  const sendingLock = useRef(false);
+  useEffect(() => {
+    beginChat();
+    sendingLock.current = false;
+    setSending(false);
+    setMessages([]);
+    setDraft('');
+    setChatError(null);
+  }, [context?.articleId, beginChat]);
   const loadStatus = useCallback(async () => {
     const current = beginStatus();
     setChecking(true);
@@ -62,7 +73,6 @@ export function AiScreen({ locale, token, onBack, onUnauthorized }: {
     return status.cloud_available && cloudConsent;
   }, [checking, cloudConsent, provider, sending, status]);
 
-  const sendingLock = useRef(false);
   const send = async () => {
     const content = draft.trim();
     if (sendingLock.current || !content || content.length > 3000 || !canSend || !status) return;
@@ -79,6 +89,7 @@ export function AiScreen({ locale, token, onBack, onUnauthorized }: {
       provider,
       cloud_consent: provider === 'cloud' && cloudConsent,
       locale,
+      ...(context ? { source_article_id: context.articleId } : {}),
     };
     try {
       const result = await sendAssistantChat(token, requestBody);
@@ -94,8 +105,10 @@ export function AiScreen({ locale, token, onBack, onUnauthorized }: {
       else setChatError(errorMessageKey(error));
       if (error instanceof ApiError && error.status === 503) setStatus(null);
     } finally {
-      sendingLock.current = false;
-      if (current()) setSending(false);
+      if (current()) {
+        sendingLock.current = false;
+        setSending(false);
+      }
     }
   };
 
@@ -143,6 +156,18 @@ export function AiScreen({ locale, token, onBack, onUnauthorized }: {
           ) : null}
         </Panel>
       ) : null}
+
+      {context ? <Panel style={styles.sourceContext}>
+        <View style={styles.sourceContextCopy}>
+          <Text style={styles.sourceContextLabel}>{t(locale, 'assistantSourceContext')}</Text>
+          <Text numberOfLines={2} style={styles.sourceContextTitle}>{context.title}</Text>
+          <Text style={styles.sourceContextId}>{context.articleId} · {t(locale, 'assistantSourceAttached')}</Text>
+        </View>
+        <Pressable accessibilityRole="button" accessibilityLabel={t(locale, 'assistantClearSource')} onPress={onClearContext} style={styles.clearSource}>
+          <Ionicons name="close-circle-outline" size={19} color={colors.muted} />
+          <Text style={styles.clearSourceText}>{t(locale, 'assistantClearSource')}</Text>
+        </Pressable>
+      </Panel> : null}
 
       {!checking && !status && statusError ? <Panel><Body>{t(locale, statusError)}</Body></Panel> : null}
       {!checking && status && !available ? <Panel><Body>{t(locale, 'aiUnavailable')}</Body></Panel> : null}
@@ -192,21 +217,27 @@ function MessageBubble({ message, locale }: { message: ChatBubble; locale: Local
     <Text selectable style={[styles.messageText, message.role === 'user' && styles.userMessageText]}>{message.content}</Text>
     {message.role === 'assistant' && message.sources?.length ? <View style={styles.sources}>
       <Text style={styles.messageMeta}>{t(locale, 'source')}</Text>
-      {message.sources.map((source, index) => <SourceLine key={`${message.id}-source-${index}`} value={source} />)}
+      {message.sources.map((source, index) => <SourceLine key={`${message.id}-source-${index}`} value={source} locale={locale} />)}
     </View> : null}
     {message.role === 'assistant' && !message.sources?.length ? <Text style={styles.noticeText}>{t(locale, 'aiNoSources')}</Text> : null}
     {message.role === 'assistant' && message.notice ? <Text style={styles.noticeText}>{message.notice}</Text> : null}
   </View>;
 }
 
-function SourceLine({ value }: { value: unknown }) {
+function SourceLine({ value, locale }: { value: unknown; locale: Locale }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const row = value && typeof value === 'object' ? value as Record<string, unknown> : null;
   const title = typeof value === 'string' ? value : String(row?.title || row?.citation || row?.source_id || '');
   const url = typeof row?.url === 'string' ? row.url : typeof row?.source_url === 'string' ? row.source_url : '';
   if (!title && !url) return null;
-  return url ? <Pressable accessibilityRole="link" onPress={() => { void Linking.openURL(url); }}><Text style={styles.sourceLink}>{title || url}</Text></Pressable>
-    : <Text style={styles.sourceText}>{title}</Text>;
+  const claim = typeof row?.source_claim === 'string' ? row.source_claim : '';
+  const contentState = typeof row?.content_state === 'string' ? row.content_state : '';
+  const originalPdfVerified = row?.independent_pdf_verification === true;
+  return <View style={styles.sourceLine}>
+    {url ? <Pressable accessibilityRole="link" onPress={() => { void Linking.openURL(url); }}><Text style={styles.sourceLink}>{title || url}</Text></Pressable>
+      : <Text style={styles.sourceText}>{title}</Text>}
+    {claim || contentState ? <Text style={styles.sourceProvenance}>{t(locale, 'assistantSourceStatus')}: {[claim, contentState].filter(Boolean).join(' · ')} · {t(locale, originalPdfVerified ? 'assistantPdfVerified' : 'assistantPdfUnverified')}</Text> : null}
+  </View>;
 }
 
 function providerLabel(label: string, model: string | null | undefined) {
@@ -257,8 +288,17 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   messageMeta: { color: colors.cyan, fontSize: 10, fontWeight: '900', textTransform: 'uppercase', letterSpacing: 0.4 },
   noticeText: { color: colors.muted, fontSize: 11, lineHeight: 16 },
   sources: { gap: 5, borderTopWidth: 1, borderTopColor: colors.border, paddingTop: 8 },
+  sourceLine: { gap: 3 },
   sourceText: { color: colors.text, fontSize: 11, lineHeight: 16 },
   sourceLink: { color: colors.cyan, fontSize: 11, lineHeight: 16, textDecorationLine: 'underline' },
+  sourceProvenance: { color: colors.muted, fontSize: 10, lineHeight: 14 },
+  sourceContext: { flexDirection: 'row', alignItems: 'center', gap: 10, padding: 12 },
+  sourceContextCopy: { flex: 1, gap: 3 },
+  sourceContextLabel: { color: colors.cyan, fontSize: 10, fontWeight: '900', textTransform: 'uppercase', letterSpacing: 0.5 },
+  sourceContextTitle: { color: colors.text, fontSize: 12, lineHeight: 16, fontWeight: '800' },
+  sourceContextId: { color: colors.muted, fontSize: 10 },
+  clearSource: { alignItems: 'center', gap: 2, padding: 4 },
+  clearSourceText: { color: colors.muted, fontSize: 9, fontWeight: '700' },
   errorPanel: { borderColor: `${colors.red}44` },
   errorText: { color: colors.red, fontSize: 13, lineHeight: 19 },
   composer: { gap: 9 },

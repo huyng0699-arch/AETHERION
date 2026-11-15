@@ -35,6 +35,7 @@ export type AssistantChatRequest = {
   provider: AssistantProvider;
   cloud_consent: boolean;
   locale: 'vi' | 'en';
+  source_article_id?: string;
 };
 
 export function getAssistantStatus(token: string): Promise<AssistantStatus> {
@@ -44,3 +45,4 @@ export function getAssistantStatus(token: string): Promise<AssistantStatus> {
 export function sendAssistantChat(token: string, body: AssistantChatRequest): Promise<AssistantChatResult> {
   return request('/api/v1/assistant/chat', { method: 'POST', body, token, timeoutMs: 55000 });
 }
+

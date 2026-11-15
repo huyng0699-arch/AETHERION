@@ -53,11 +53,12 @@ function AppShell() {
   const [serverStatus, setServerStatus] = useState<'online' | 'offline' | 'unknown'>('unknown');
   const [busy, setBusy] = useState(false), [error, setError] = useState(''), [ready, setReady] = useState(false);
   const [subjects, setSubjects] = useState<Subject[]>([]), [subjectId, setSubjectId] = useState<string>(), [chooseSubject, setChooseSubject] = useState(false);
+  const [assistantContext, setAssistantContext] = useState<{ articleId: string; title: string } | null>(null);
   const busyFlag = useRef(false);
   const operation = useRef(0), mounted = useRef(true), localeWrites = useRef(Promise.resolve());
   const fade = useRef(new Animated.Value(1)).current;
   const beginSubjects = useRequestGate();
-  const clearIdentity = useCallback(() => { beginSubjects(); setSession(null); setIdentity(null); setUnlocked(false); setSubjects([]); setSubjectId(undefined); setChooseSubject(false); }, [beginSubjects]);
+  const clearIdentity = useCallback(() => { beginSubjects(); setSession(null); setIdentity(null); setUnlocked(false); setSubjects([]); setSubjectId(undefined); setChooseSubject(false); setAssistantContext(null); }, [beginSubjects]);
   useEffect(() => { mounted.current = true; let active = true; const restoreOperation = operation.current; void (async () => {
     const [saved, language, url] = await Promise.all([readSession(), loadLocale().catch(() => 'en' as Locale), readServerUrl().catch(() => '')]);
     if (!active) return;
@@ -97,10 +98,10 @@ function AppShell() {
       {route === 'health' && unlocked && <PersonalHealthScreen locale={locale} token={session?.access_token || ''} subjectId={subjectId} onBack={goBack} onUnauthorized={handleUnauthorized} />}
       {route === 'monitor' && unlocked && <MonitorScreen locale={locale} token={session?.access_token || ''} subjectId={subjectId} onBack={goBack} onUnauthorized={handleUnauthorized} />}
       {route === 'care' && unlocked && <CareScreen locale={locale} token={session?.access_token || ''} subjectId={subjectId} onBack={goBack} onUnauthorized={handleUnauthorized} />}
-      {route === 'ai' && unlocked && <AiScreen locale={locale} token={session?.access_token || ''} onBack={goBack} onUnauthorized={handleUnauthorized} />}
-      {route === 'science' && <ScienceScreen locale={locale} onBack={goBack} />}
+      {route === 'ai' && unlocked && <AiScreen locale={locale} token={session?.access_token || ''} context={assistantContext} onClearContext={() => setAssistantContext(null)} onBack={goBack} onUnauthorized={handleUnauthorized} />}
+      {route === 'science' && <ScienceScreen locale={locale} onBack={goBack} onAskAi={article => { setAssistantContext({ articleId: article.article_id, title: article.title }); openRoute('ai'); }} />}
       {route === 'mission' && unlocked && <MissionScreen locale={locale} role={identity?.role || ''} subjects={subjects} token={session?.access_token || ''} onRefresh={refreshSubjects} onSelect={id => { setSubjectId(id); openRoute('health'); }} onBack={goBack} />}
-      {route === 'demoIntro' && <HackathonDemoIntroScreen locale={locale} onBack={goBack} onLoad={() => openRoute('demoData')} />}
+      {route === 'demoIntro' && <HackathonDemoIntroScreen locale={locale} onBack={goBack} onLoad={() => openRoute('demoData')} onLibrary={() => openRoute('science')} />}
       {route === 'demoData' && <HackathonDemoDataScreen locale={locale} onBack={goBack} />}
       {route === 'more' && <MoreScreen locale={locale} onBack={goBack} onOpen={openRoute} />}
       {route === 'appearance' && <AppearanceSettingsScreen locale={locale} onBack={goBack} />}

@@ -10,7 +10,7 @@ import json
 import sys
 
 from PySide6.QtCore import Qt, QUrl, QTimer, QObject, QEvent
-from PySide6.QtGui import QAction, QShortcut, QKeySequence
+from PySide6.QtGui import QAction, QShortcut, QKeySequence, QIcon
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkReply, QNetworkRequest
 from PySide6.QtWidgets import (
     QApplication, QFrame, QHBoxLayout, QLabel, QMainWindow, QMenu,
@@ -66,10 +66,10 @@ class FeatureLanding(QWidget):
         block = QVBoxLayout(panel)
         block.setContentsMargins(26, 25, 26, 26)
         block.setSpacing(14)
-        status = QLabel("CHƯA CÓ DỮ LIỆU / CHƯA KẾT NỐI TÍNH NĂNG")
+        status = QLabel("NO DATA / NOT CONNECTED")
         status.setObjectName("eyebrow")
         block.addWidget(status)
-        hint = QLabel("Chỉ dữ liệu thật, có nguồn xác định và quyền truy cập hợp lệ mới được hiển thị.")
+        hint = QLabel("Only source-backed data and authorized services are shown.")
         hint.setObjectName("pageHint")
         hint.setWordWrap(True)
         block.addWidget(hint)
@@ -115,7 +115,8 @@ class AetherionWindow(QMainWindow):
 
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle("AETHERION  ·  TRUY TINH")
+        self.setWindowTitle("TRUY TINH | AETHERION")
+        self.setWindowIcon(QIcon(os.path.join(os.path.dirname(__file__), "assets", "truy-tinh-logo.png")))
         self.resize(1360, 850)
         self.setMinimumSize(1040, 650)
         self.api_url = os.environ.get("AETHERION_API_URL", "http://127.0.0.1:8765").rstrip("/")
@@ -123,6 +124,7 @@ class AetherionWindow(QMainWindow):
         self._health_reply = None
         self.access_token = ""
         self.session_identity = None
+        self._pending_ai_source = None
         self.preferences = VisualPreferences()
         self.ui_language = normalize_locale(self.preferences.settings.value("ui/language", "en"))
         app = QApplication.instance()
@@ -229,6 +231,7 @@ class AetherionWindow(QMainWindow):
         self.ecg_page.open_mission.connect(self.show_mission)
         self.pages.addWidget(self.ecg_page)
         self.assistant_page = ChatPage(self.api_url, self.network, self.ui_language)
+        self.knowledge_browser_page.ask_ai_requested.connect(self._ask_about_nasa_source)
         self.assistant_page.authorization_requested.connect(self.show_mission)
         self.assistant_page.open_symptom.connect(self.show_symptom_interview)
         self.assistant_page.open_library.connect(self.show_medical_library)
@@ -611,10 +614,8 @@ class AetherionWindow(QMainWindow):
                 page.api_url = base_url
             if hasattr(page, "_api_url"):
                 page._api_url = base_url
-        # Free-form AI Chat is authenticated to the actual login account, not
-        # to an invented medical subject. Clinical subject ACLs remain separate.
-        account_name = str(self.session_identity.get("username", ""))
-        self.assistant_page.set_identity("account:" + account_name, self.access_token)
+        # Chat is authenticated by the user session, even without a profile.
+        self.assistant_page.set_identity("", self.access_token)
         self.logout_button.show()
         self.show_portal()
         self.check_server()
@@ -634,18 +635,24 @@ class AetherionWindow(QMainWindow):
                     rows = json.loads(bytes(r.readAll()).decode("utf-8")).get("subjects", [])
                     if rows:
                         self.open_personal_subject(rows[0]["subject_id"], expected_token)
-                        self.show_portal()
+                        if not self._pending_ai_source:
+                            self.show_portal()
             except (ValueError, KeyError, TypeError):
                 pass
             finally:
                 if isValid(r):
                     r.deleteLater()
+            if self.access_token == expected_token and self._pending_ai_source:
+                article_id, title = self._pending_ai_source
+                self._pending_ai_source = None
+                self._ask_about_nasa_source(article_id, title)
         reply.finished.connect(subjects_loaded)
 
     def sign_out(self):
         token = self.access_token
         self.access_token = ""
         self.session_identity = None
+        self._pending_ai_source = None
         self.logout_button.hide()
         self.pages.setCurrentWidget(self.login_page)
         self.personal_today_page.select_subject("", "")
@@ -739,6 +746,14 @@ class AetherionWindow(QMainWindow):
     def show_observatory(self):
         """Open the real native article search on the canonical AETHERION Server."""
         self._show_workspace_feature("science")
+
+    def _ask_about_nasa_source(self, article_id: str, title: str):
+        if not self.access_token:
+            self._pending_ai_source = (article_id, title)
+            self.pages.setCurrentWidget(self.login_page)
+            return
+        self.assistant_page.set_source_context(article_id, title)
+        self.show_assistant()
 
     def show_hackathon_demo(self):
         """Genuine historical NASA MA-7, never the SIMULATED patient store."""

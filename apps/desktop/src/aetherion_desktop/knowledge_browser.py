@@ -11,7 +11,7 @@ import json
 import math
 import os
 
-from PySide6.QtCore import Qt, QTimer, QUrl, QUrlQuery, QRectF, QSize
+from PySide6.QtCore import Qt, QTimer, QUrl, QUrlQuery, QRectF, QSize, Signal
 from PySide6.QtGui import QColor, QDesktopServices, QPainter, QPen, QRadialGradient
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkRequest
 from PySide6.QtWidgets import (
@@ -118,6 +118,8 @@ class KnowledgeOrb(QWidget):
 class KnowledgeBrowser(QWidget):
     """Source-backed native search and article reading with bilingual UI chrome."""
 
+    ask_ai_requested = Signal(str, str)
+
     def __init__(self, parent=None, api_url: str | None = None, *, locale="vi",
                  theme="daybreak", mode="light", reduce_motion=False, intensity=48):
         super().__init__(parent)
@@ -130,6 +132,8 @@ class KnowledgeBrowser(QWidget):
         self.network = QNetworkAccessManager(self)
         self.current_items: dict[str, dict] = {}
         self.token = 0
+        self.selected_article_id = None
+        self.selected_article_title = ''
 
         self.root = QVBoxLayout(self)
         self.root.setContentsMargins(28, 20, 28, 20)
@@ -221,9 +225,16 @@ class KnowledgeBrowser(QWidget):
         reader_layout = QVBoxLayout(reader_panel)
         reader_layout.setContentsMargins(14, 12, 14, 14)
         reader_layout.setSpacing(10)
+        reader_bar = QHBoxLayout()
         self.reader_heading = QLabel()
         self.reader_heading.setObjectName("eyebrow")
-        reader_layout.addWidget(self.reader_heading)
+        reader_bar.addWidget(self.reader_heading, 1)
+        self.ask_ai_button = QPushButton()
+        self.ask_ai_button.setObjectName("primaryAction")
+        self.ask_ai_button.clicked.connect(self.ask_about_selected_article)
+        self.ask_ai_button.hide()
+        reader_bar.addWidget(self.ask_ai_button)
+        reader_layout.addLayout(reader_bar)
         self.reader = QTextBrowser()
         self.reader.setOpenExternalLinks(False)
         self.reader.anchorClicked.connect(self.open_source)
@@ -285,6 +296,8 @@ class KnowledgeBrowser(QWidget):
         self.search_button.setText(self.t("search"))
         self.results_heading.setText(self.t("results"))
         self.reader_heading.setText(self.t("reader"))
+        self.ask_ai_button.setText("Ask AI about this source" if self.language == "en" else "Hỏi AI theo nguồn này")
+        self.ask_ai_button.setAccessibleName(self.ask_ai_button.text())
         self.results.setAccessibleName(self.t("search.accessible"))
         self.reader.setAccessibleName(self.t("reader.accessible"))
         self.note.setText(self.t("note"))
@@ -317,13 +330,16 @@ class KnowledgeBrowser(QWidget):
         target = QUrl(self.api_url + "/api/v1/knowledge/" + mode)
         query = QUrlQuery()
         query.addQueryItem("query", self.query.text().strip())
-        query.addQueryItem("limit", "100")
+        query.addQueryItem("limit", "120" if mode == "articles" else "100")
         target.setQuery(query)
         self.status.setText(self.t("loading"))
         self.source_label.setText(self.t("status.disconnected"))
         self.matches_label.setText(self.t("matches") + "  —")
         self.indexed_label.setText(self.t("indexed") + "  —")
         self.current_items = {}
+        self.selected_article_id = None
+        self.selected_article_title = ''
+        self.ask_ai_button.hide()
         self.results.clear()
         self.reader.setPlainText(self.t("reader.empty"))
         self.progress.show()
@@ -380,6 +396,10 @@ class KnowledgeBrowser(QWidget):
         self._receive(reply, received)
 
     def select_item(self, current, _previous):
+        # Do not allow the previous document to be sent while the next loads.
+        self.selected_article_id = None
+        self.selected_article_title = ''
+        self.ask_ai_button.hide()
         if current is None:
             return
         key = current.data(Qt.ItemDataRole.UserRole)
@@ -443,6 +463,14 @@ class KnowledgeBrowser(QWidget):
             self.reader.setPlainText(self.t("article.failure", error="Article identity mismatch"))
             return
         title = str(summary.get("title") or key)
+        sections = obj.get("sections")
+        full_text = isinstance(sections, list) and any(
+            isinstance(section, dict) and str(section.get("text_content") or "").strip()
+            for section in sections
+        )
+        self.selected_article_id = key
+        self.selected_article_title = title
+        self.ask_ai_button.setVisible(full_text)
         chunks = self._document_header(title)
         chunks.append('<p><b>' + html.escape(self.t("article.note")) + '</b></p>')
         chunks.append('<h3>' + html.escape(self.t("article.source")) + '</h3>')
@@ -456,8 +484,16 @@ class KnowledgeBrowser(QWidget):
         else:
             chunks.append('<p>' + html.escape(self.t("source.unknown")) + '</p>')
 
+        state = str(obj.get("completeness_state") or summary.get("content_state") or "UNKNOWN")
+        chunks.append('<p><b>Archive record:</b> ' + html.escape(state) +
+                      '; original PDF bytes are not independently verified.</p>')
+        source_notes = obj.get("source_notes")
+        if isinstance(source_notes, str) and source_notes.strip():
+            chunks.append('<p>' + html.escape(source_notes) + '</p>')
+        if not full_text:
+            chunks.append('<p><em>NASA index metadata only. No archived document text is available for AI context.</em></p>')
+
         chunks.append('<h3>' + html.escape(self.t("article.sections")) + '</h3>')
-        sections = obj.get("sections")
         if isinstance(sections, list):
             for section in sections:
                 if not isinstance(section, dict):
@@ -485,12 +521,22 @@ class KnowledgeBrowser(QWidget):
         if isinstance(refs, list):
             for ref in refs[:250]:
                 if isinstance(ref, dict):
-                    chunks.append('<li>' + html.escape(str(ref.get("label", ""))) + '</li>')
+                    label = html.escape(str(ref.get("label", "")))
+                    citation_url = ref.get("citation_url")
+                    if isinstance(citation_url, str) and citation_url.startswith("https://"):
+                        safe_url = html.escape(citation_url, quote=True)
+                        chunks.append('<li><a href="' + safe_url + '">' + label + '</a></li>')
+                    else:
+                        chunks.append('<li>' + label + '</li>')
         chunks.append("</ol>")
         chunks.append('<h3>' + html.escape(self.t("article.images")) + '</h3>')
         chunks.append('<p>' + html.escape(self.t("article.images.notice")) + '</p>')
         chunks.append('<p><em>' + html.escape(self.t("safety")) + '</em></p></div></body></html>')
         self.reader.setHtml("\n".join(chunks))
+
+    def ask_about_selected_article(self):
+        if self.selected_article_id and self.ask_ai_button.isVisible():
+            self.ask_ai_requested.emit(self.selected_article_id, self.selected_article_title)
 
     def open_source(self, url: QUrl):
         if (url.scheme().lower() == "https" and url.host()
@@ -500,3 +546,4 @@ class KnowledgeBrowser(QWidget):
 
 def build_knowledge_browser(parent=None, **kwargs) -> KnowledgeBrowser:
     return KnowledgeBrowser(parent, **kwargs)
+

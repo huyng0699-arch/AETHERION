@@ -17,6 +17,7 @@ export function PrivacyScreen({ locale, onBack }: { locale: Locale; onBack: () =
         <Body>{t(locale, 'privacy')}</Body>
         <Body>{t(locale, 'privacyAi')}</Body>
         <Body>{t(locale, 'privacyDemo')}</Body>
+        <Body>{t(locale, 'privacySources')}</Body>
       </Panel>
     </AppPage>
   );

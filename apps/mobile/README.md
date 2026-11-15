@@ -35,9 +35,20 @@ $env:AETHERION_ALLOW_DEV_HTTP='1'
 npm run android
 ```
 
-Use `http://10.0.2.2:8765` for an Android emulator, or `adb reverse tcp:8765 tcp:8765` and `http://127.0.0.1:8765` for USB. Native release builds require a configured HTTPS server; physical LAN/TLS pairing and an APK are not verified by the source export.
+For an Android emulator, use `http://10.0.2.2:8765`; for USB development, run `adb reverse tcp:8765 tcp:8765` and use `http://127.0.0.1:8765`. These HTTP addresses are development-only. A physical release client requires HTTPS, while the current Server intentionally remains loopback-only.
 
-`npm run export:android` requests normal Hermes bytecode. `npm run export:android:js` produces a debugging JavaScript export when the host cannot launch Hermes. The latter is not an APK or release acceptance.
+To build an installable debug-signed demo APK locally, install Android Studio, JDK 17, Android SDK Platform 36 and Build Tools 36.0.0, then run:
+
+```powershell
+npm ci
+npx expo prebuild --platform android --no-install
+Set-Location android
+.\gradlew.bat assembleDebug
+```
+
+The APK is `android/app/build/outputs/apk/debug/app-debug.apk`. The GitHub workflow `.github/workflows/android-demo-apk.yml` builds the same APK and publishes it to the repository Releases after Gradle succeeds. It is a sideloadable demo, not a Play Store-signed release. See [the full install and operations guide](../../docs/GETTING_STARTED.md).
+
+`npm run export:android` and `npm run export:android:js` export JavaScript bundles only; neither command creates an APK.
 
 ## Server contract
 

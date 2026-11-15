@@ -1,0 +1,79 @@
+name: Build Android demo APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/mobile/**'
+      - 'docs/GETTING_STARTED.md'
+      - 'README.md'
+      - '.github/workflows/android-demo-apk.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/mobile/package-lock.json
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+
+      - name: Install locked mobile dependencies
+        run: npm ci --prefix apps/mobile --no-audit --no-fund
+
+      - name: Generate the native Android project
+        working-directory: apps/mobile
+        run: npx expo prebuild --platform android --no-install
+
+      - name: Build the installable APK
+        working-directory: apps/mobile/android
+        run: ./gradlew assembleDebug --no-daemon
+
+      - name: Name and identify APK
+        run: |
+          mkdir -p dist-apk
+          cp apps/mobile/android/app/build/outputs/apk/debug/app-debug.apk dist-apk/AETHERION-Android-Demo-v0.1.0.apk
+          sha256sum dist-apk/AETHERION-Android-Demo-v0.1.0.apk | tee dist-apk/SHA256SUMS.txt
+
+      - name: Upload APK workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AETHERION-Android-Demo-v0.1.0
+          path: dist-apk/*
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish APK to GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: aetherion-android-demo-${{ github.run_number }}-${{ github.run_attempt }}
+          name: AETHERION Android Demo v0.1.0 (build ${{ github.run_number }})
+          prerelease: true
+          target_commitish: ${{ github.sha }}
+          files: dist-apk/*
+          body: |
+            Installable AETHERION Expo/React Native Android demo build.
+
+            - Package: `io.truytinh.aetherion.mobile`
+            - Signed with the Android debug key for sideloading; not a Google Play release.
+            - The public NASA MA-7 demo archive is bundled for offline viewing.
+            - Live server features require a reachable AETHERION Server.
+            - SHA-256 is included in `SHA256SUMS.txt`.

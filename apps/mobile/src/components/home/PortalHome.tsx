@@ -1,17 +1,19 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, Image, Modal, PanResponder, Platform, Pressable, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { AppPage, StatusPill } from '../ui';
 import { Locale } from '../../types';
 import { MessageKey, t } from '../../i18n';
 import { copy } from '../../uiCopy';
 import { ThemeColors, useThemedStyles } from '../../theme';
+import { OrbitEarth } from './OrbitEarth';
 
 export type MobileScreen = 'health' | 'monitor' | 'ai' | 'science' | 'mission' | 'login' | 'settings' | 'demoIntro' | 'demoData' | 'more' | 'connection' | 'settingConnection' | 'settingAccount' | 'settingLanguage' | 'notifications' | 'help' | 'privacy' | 'care' | 'appearance';
 type Icon = keyof typeof Ionicons.glyphMap;
 type Destination = { route: MobileScreen; icon: Icon; label: string };
 
-const AI_ROBOT = require('../../../assets/aetherion-ai-robot.png');
+const TRUY_TINH_MARK = require('../../../assets/truy-tinh-logo.png');
 
 export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, onOpen }: {
   locale: Locale;
@@ -20,7 +22,7 @@ export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, o
   serverStatus: 'online' | 'offline' | 'unknown';
   onOpen: (screen: MobileScreen) => void;
 }) {
-  const { colors, styles, appearance } = useThemedStyles(buildStyles);
+  const { colors, styles, appearance, gradient } = useThemedStyles(buildStyles);
   const { width: viewportWidth } = useWindowDimensions();
   const frameWidth = Math.min(viewportWidth, 470);
   const frameLeft = Math.max(0, (viewportWidth - frameWidth) / 2);
@@ -108,7 +110,7 @@ export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, o
     <View style={styles.root} {...edgeSwipe.panHandlers}>
       <AppPage contentStyle={styles.content}>
         <View style={styles.header}>
-          <View style={styles.logo}><Ionicons name="planet-outline" size={21} color={colors.onAccent} /></View>
+          <View style={styles.logo}><Image accessibilityLabel="Truy Tinh" source={TRUY_TINH_MARK} resizeMode="contain" style={styles.brandMark} /></View>
           <View style={styles.heading}>
             <Text numberOfLines={1} style={styles.brand}>{t(locale, 'brand')}</Text>
             <Text numberOfLines={1} style={styles.subtitle}>{isVi ? 'Sức khỏe phi hành đoàn' : 'Mission health'}</Text>
@@ -131,6 +133,19 @@ export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, o
           </Pressable>
         </View>
 
+        <LinearGradient colors={gradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.demoHero}>
+          <View style={styles.demoEarth}><OrbitEarth size={146} /></View>
+          <View style={styles.demoHeroContent}>
+            <View style={styles.demoKickerRow}><Ionicons name="planet-outline" size={14} color="#FFFFFF" /><Text style={styles.demoKicker}>{t(locale, 'demoKicker')}</Text></View>
+            <Text style={styles.heroTitle}>{t(locale, 'demoBannerTitle')}</Text>
+            <Text style={styles.heroCaption}>{t(locale, 'demoHistorical')}</Text>
+            <Pressable accessibilityRole="button" onPress={() => openDestination('demoIntro')} style={({ pressed }) => [styles.heroAction, pressed && styles.pressed]}>
+              <Text style={styles.heroActionText}>{t(locale, 'demoForHackathon')}</Text>
+              <Ionicons name="arrow-forward" size={16} color={colors.cyan} />
+            </Pressable>
+          </View>
+        </LinearGradient>
+
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>{isVi ? 'Tìm kiếm' : 'Search'}</Text>
           <View style={styles.search}>
@@ -145,22 +160,6 @@ export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, o
               <Ionicons name="chevron-forward" size={17} color={colors.faint} />
             </Pressable>) : <Text style={styles.emptySearch}>{isVi ? 'Không tìm thấy chức năng' : 'No matching tools'}</Text>}
           </View> : null}
-        </View>
-
-        <View style={styles.card}>
-          <View style={styles.heroTop}>
-            <View style={styles.heroCopy}>
-              <Text style={styles.sectionTitle}>{t(locale, 'demoKicker')}</Text>
-              <Text style={styles.heroTitle}>{t(locale, 'demoBannerTitle')}</Text>
-              <Text style={styles.heroCaption}>{t(locale, 'demoHistorical')}</Text>
-            </View>
-            <Image source={AI_ROBOT} resizeMode="contain" style={styles.robot} />
-          </View>
-          <Pressable accessibilityRole="button" onPress={() => openDestination('demoIntro')} style={({ pressed }) => [styles.heroAction, pressed && styles.pressed]}>
-            <Ionicons name="planet-outline" size={18} color={colors.onAccent} />
-            <Text style={styles.heroActionText}>{t(locale, 'demoForHackathon')}</Text>
-            <Ionicons name="arrow-forward" size={17} color={colors.onAccent} />
-          </Pressable>
         </View>
 
         <View style={styles.card}>
@@ -191,7 +190,7 @@ export function PortalHome({ locale, setLocale, isAuthenticated, serverStatus, o
           <View pointerEvents="box-none" style={styles.modalCanvas}>
             <Animated.View {...closeSwipe.panHandlers} style={[styles.drawer, { width: drawerWidth, transform: [{ translateX: drawerPosition }] }]}>
               <View style={styles.drawerTop}>
-                <View style={styles.drawerMark}><Ionicons name="planet-outline" size={24} color={colors.cyan} /></View>
+                <View style={styles.drawerMark}><Image accessibilityLabel="Truy Tinh" source={TRUY_TINH_MARK} resizeMode="contain" style={styles.drawerBrandMark} /></View>
                 <View style={styles.heading}><Text style={styles.drawerTitle}>{isVi ? 'Menu nhanh' : 'Quick menu'}</Text><Text style={styles.subtitle}>AETHERION</Text></View>
                 <Pressable accessibilityRole="button" accessibilityLabel={isVi ? 'Đóng menu' : 'Close menu'} onPress={closeDrawer} style={styles.headerButton}><Ionicons name="close" size={21} color={colors.text} /></Pressable>
               </View>
@@ -215,6 +214,7 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   content: { gap: 12 },
   header: { flexDirection: 'row', alignItems: 'center', gap: 8, minHeight: 36 },
   logo: { width: 36, height: 36, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cyan },
+  brandMark: { width: 31, height: 31 },
   heading: { flex: 1, minWidth: 0 },
   brand: { color: colors.text, fontWeight: '700', fontSize: 15 },
   subtitle: { color: colors.muted, fontSize: 12, marginTop: 2 },
@@ -230,13 +230,15 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   searchResult: { minHeight: 46, flexDirection: 'row', alignItems: 'center', gap: 10, borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: colors.border },
   searchResultText: { color: colors.text, flex: 1, fontSize: 13, fontWeight: '700' },
   emptySearch: { color: colors.muted, fontSize: 13, paddingVertical: 14 },
-  heroTop: { flexDirection: 'row', alignItems: 'center', minHeight: 76 },
-  heroCopy: { flex: 1, minWidth: 0 },
-  heroTitle: { color: colors.text, fontSize: 18, fontWeight: '700', marginBottom: 6 },
-  heroCaption: { color: colors.muted, fontSize: 13 },
-  robot: { width: 88, height: 88, marginLeft: 8 },
-  heroAction: { minHeight: 44, marginTop: 6, backgroundColor: colors.cyan, borderRadius: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, paddingHorizontal: 12 },
-  heroActionText: { color: colors.onAccent, fontWeight: '700', fontSize: 14 },
+  demoHero: { minHeight: 167, borderRadius: 21, padding: 16, overflow: 'hidden' },
+  demoEarth: { position: 'absolute', right: -19, top: 13, opacity: 0.9 },
+  demoHeroContent: { alignItems: 'flex-start', maxWidth: '74%' },
+  demoKickerRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 7 },
+  demoKicker: { color: '#FFFFFF', fontSize: 9, letterSpacing: 1.1, fontWeight: '900' },
+  heroTitle: { color: '#FFFFFF', fontSize: 19, lineHeight: 24, fontWeight: '800', marginBottom: 3, letterSpacing: -0.3 },
+  heroCaption: { color: '#F2EDFF', fontSize: 11 },
+  heroAction: { minHeight: 38, marginTop: 11, backgroundColor: '#FFFFFF', borderRadius: 11, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, paddingHorizontal: 12 },
+  heroActionText: { color: colors.cyan, fontWeight: '800', fontSize: 11 },
   actionGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   action: { flexBasis: '48%', flexGrow: 1, minHeight: 42, borderRadius: 10, backgroundColor: colors.cardSoft, borderWidth: 1, borderColor: colors.border, paddingVertical: 9, paddingHorizontal: 8, flexDirection: 'row', gap: 7, alignItems: 'center', justifyContent: 'center' },
   actionLabel: { color: colors.text, fontSize: 13, fontWeight: '600', flexShrink: 1, textAlign: 'center' },
@@ -247,6 +249,7 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   drawer: { height: '100%', backgroundColor: colors.card, borderRightWidth: 1, borderRightColor: colors.border, paddingTop: 28, paddingHorizontal: 16 },
   drawerTop: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 22 },
   drawerMark: { width: 45, height: 45, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cardSoft },
+  drawerBrandMark: { width: 39, height: 39 },
   drawerTitle: { color: colors.text, fontWeight: '900', fontSize: 19 },
   drawerRows: { gap: 8 },
   drawerRow: { minHeight: 55, borderRadius: 17, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 10 },

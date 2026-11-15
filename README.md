@@ -1,113 +1,47 @@
 # AETHERION
+
 ### One Health. One Humanity. Beyond Earth.
 
-**AETHERION** is an open-source, offline-oriented health intelligence platform envisioned for people on Earth and future crews operating far from Earth. It begins as **Team TRUY TINH's independent entry** for **NASA Space Apps Challenge 2026**, addressing **[Create Health Monitoring Software for Astronauts on Space Missions](https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/)**.
+AETHERION is an independent Truy Tinh project for the NASA Space Apps Challenge 2026. It combines a Python/FastAPI server, a native Python/Qt desktop client, and an Expo/React Native mobile client. It is not a NASA product or endorsement, a flight-ready system, a certified medical device, or a validated diagnostic system.
 
-> **Mission:** Make understandable, responsible, evidence-based health information accessible to individuals and crews, even when connectivity is unreliable.
->
-> **Vision 2050:** Explore how the same foundations could evolve from a public-facing health companion on Earth into an autonomous crew-health platform for future deep-space and Mars expeditions. **2050 is our design horizon, not a confirmed NASA mission date.**
+## Start here
 
-This is **an independent participant project**, not a NASA product, endorsement, flight-ready system, certified medical device, or validated diagnostic system.
-
-## The problem
-
-Long-duration missions combine altered gravity, radiation, isolation, distance from Earth and constrained living environments. Crew members need to see what has been measured, understand changes over time, review trustworthy contextual knowledge, decide when to seek help and document follow-up. On Earth, people face related challenges: fragmented health data, unequal access to intelligible information and weak continuity between self-monitoring and professional care.
-
-## Updated AETHERION owner design
-
-**[Read the complete screen-by-screen AETHERION V3 design](docs/DESIGN_2026_11_14.md)**. The first native Windows and Mobile view is intended to be a **five-card Portal** (personal health, monitoring/ECG, AI, science, mission/journey), not direct Mission Control. Windows has a top horizontal menu and no dual permanent sidebars. A distinct Server Control GUI configures Local/Cloud AI (including admin-pasted API key), users, devices, NASA originals versus AI clinical knowledge versus human-readable encyclopedia, LAN and an optional Telegram *Earth test* relay. Animated ambient galaxy/planet/rain/water themes remain blended into the deepest background and can change fonts, colors and motion. **Desktop source now implements the Portal-first visual shell** (Q-0437); actual Windows interactive verification remains pending. Other features named above are still target design, not completed functionality.
-
-## The proposed approach: GATHER → EVALUATE → ACT → RECHECK
-
-1. **GATHER:** Collect health observations with explicit subject, source, timestamp, unit and quality.
-2. **EVALUATE:** Show trends and uncertainty; contextualize data against evidence; do not infer health from missing measurements.
-3. **ACT:** Present source-linked educational recommendations, care workflows and routes to human assistance. Never substitute an unvalidated rule or AI output for professional judgment.
-4. **RECHECK:** Record actions and follow-up measurements to support continuity.
-
-## System architecture
-
-```text
-                  AETHERION SERVER
-        Local HTTP API | health records | future AI adapters
-                  /        |        \
-         Windows Desktop   Mobile   Wearable
-             (starter)   (planned) (planned)
-                   |
-     Scientific reference library and provenance
-```
-
-The server is the single authority for observation data. Clients are separate applications; an optional local AI module and a cloud AI interface are future extensions, not claims of functioning AI. Offline capability applies only where components and licensed knowledge have actually been installed and tested.
-
-## Current implementation status (14 November 2026)
-
-| Component | Current state |
-| --- | --- |
-| Repository structure, architecture and installation documentation | Initial scaffold |
-| Local Python HTTP service, API health endpoint | Initial runnable implementation; Windows operation not yet independently verified |
-| SQLite observation storage and API routes | Initial local-only implementation; not clinically validated |
-| Native Windows desktop (PySide6) | Initial interface shell with navigation and API connectivity check |
-| Medical response engine, actionable clinical guidance | Planned; **not implemented** |
-| NASA datasets and 119-condition medical encyclopedia | 116/119 structured CliFF JSON records and media exist in `knowledge/nasa/cliff_119_2023/records/` (`CLIFF-019`, `CLIFF-021`, `CLIFF-119` missing); **0 verified original PDF archives are stored locally** |
-| Mobile application, Wear OS, physical sensors, true 3D anatomy, local/cloud AI | Planned; **not implemented** |
-| Windows installer or packaged EXE | Planned; **not available yet** |
-
-**Do not use this prototype with real patient information.** The current code now includes some session/auth scaffolding, but production-grade authorization, encryption and privacy protections have not been independently accepted. It binds to localhost by default. No invented sensor readings, fake live telemetry or unsupported health verdicts are displayed.
-
-## Install and launch on Windows
-
-**Requirements:** Windows 10/11, Git and Python 3.11 (including the `py` launcher).
+The fastest local demo runs the Expo web app and the Python server together. On Windows, install Git, Python 3.11+, and Node.js 22, then run:
 
 ```powershell
 git clone https://github.com/huyng0699-arch/AETHERION.git
 cd AETHERION
-powershell -ExecutionPolicy Bypass -File .\scripts\setup_windows.ps1
+py -3 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install -e "apps/server[admin]" -e apps/desktop
+npm ci --prefix apps/mobile
+.\scripts\start_mobile_local.ps1
 ```
 
-Then open **two PowerShell windows**, both inside the repository:
+Open **http://127.0.0.1:8765/**. The first screen is Sign in with a visible **Demo** button. Demo opens the bundled, historical NASA Mercury-Atlas 7 archive and works without an account or server connection. It is historical astronaut research, not a current patient record or live sensor feed. The local launcher creates an owner account only when its local database is empty; its private credentials are written to `.runtime/local-access.json` and are ignored by Git.
 
-```powershell
-.\scripts\start_server.ps1
-```
+See **[Getting started: Server, AI, Desktop and Android](docs/GETTING_STARTED.md)** for the local Admin setup, Ollama/Gemini/OpenAI configuration, desktop launch, APK installation, and build commands. Find APK builds under **[GitHub Releases](https://github.com/huyng0699-arch/AETHERION/releases)** after the Android build workflow succeeds.
 
-```powershell
-.\scripts\start_desktop.ps1
-```
+## What is in this first version
 
-The local API runs at `http://127.0.0.1:8765`; interactive API documentation is at `http://127.0.0.1:8765/docs`. The desktop is a native Qt window, **not a browser wrapper**. **Current Desktop source now starts with five-card Portal**, top horizontal grouped navigation and selectable native ambient themes. See [Q-0437](quests/v1/Q-0437.md) and [DESIGN V3](docs/DESIGN_2026_11_14.md). Actual Windows interactive and independent review are pending.
+- **Mobile:** Expo SDK 54 / React Native source targets Android and iOS, with an Expo Web export. The Android demo contains the NASA MA-7 archive for offline viewing; an iOS package has not been built or verified. Sign-in, health records, the server-backed library, and chat need a reachable AETHERION server.
+- **Server:** Python 3.11+ / FastAPI with SQLite, bearer sessions, access checks, an Admin Control interface, and optional local or cloud chat providers. The server defaults to loopback and is not configured as a public production service.
+- **Desktop:** separate native PySide6 client; it is not a browser wrapped in a window and is not the same binary as the Expo app.
+- **NASA library:** the catalog lists 119 official condition names; 118 source JSON documents are currently archived. A catalog entry does not guarantee a full original PDF, clinical review, or treatment protocol.
+- **AI:** disabled until configured and successfully tested by an administrator. Local inference uses Ollama on the same host as the server. The current cloud choices are Gemini and OpenAI; keys are held in server-process memory when entered through Admin and are lost on restart. Chat does not silently invent a reply when no model is available.
 
-See **[full Windows installation and troubleshooting](docs/INSTALL_WINDOWS.md)**, [complete V3 owner design](docs/DESIGN_2026_11_14.md), [architecture](docs/ARCHITECTURE.md), [product definition](docs/PRODUCT_SPEC.md), [scientific and safety boundaries](docs/SCIENCE_AND_SAFETY.md), [roadmap](docs/ROADMAP_2050.md) and [2026 submission plan](submission/README.md).
+## Platform support, stated accurately
 
-## Repository map
+Expo/React Native shares application code across **Android and iOS**, and Expo can export the web client. iOS packaging requires macOS/Xcode and Apple signing. This project has an Android APK build workflow; the APK is a demo build signed with the Android debug key, not a Play Store release. Windows has a separate Python/Qt desktop client. Expo does not export this app directly to Windows or Linux: those targets need their own client integration or packaging. A browser can run the web client on those operating systems.
 
-| Path | Responsibility |
-| --- | --- |
-| `apps/server/` | One local-first HTTP backend, data ingestion and persistence |
-| `apps/desktop/` | Independent native Windows client |
-| `apps/mobile/`, `apps/watch/` | Planned separate companion applications |
-| `packages/contracts/` | Shared API conventions and planned machine-readable schemas |
-| `knowledge/nasa/`, `knowledge/medical/` | Curated scientific references, provenance, licensed imports |
-| `docs/` | Architecture, installation, validation and long-term vision |
-| `submission/` | Submission narrative, citations, demo evidence and outstanding requirements |
-| `scripts/`, `tests/` | Local setup, launches and verification |
+The long-term aim is to let phones, watches, habitat systems, and future lunar or planetary rover interfaces use the same server and data contracts. A watch or rover will need its own tested hardware adapters, interface, offline behavior, security, and mission qualification. Those integrations are future work; the Android APK is not a rover or smartwatch app.
 
-## Long-term direction: Earth to Mars 2050
+## Project guidance
 
-**Earth first:** a multilingual, accessible personal health companion supporting preventive learning, device interoperability and ethical privacy safeguards. **Remote care settings:** resilient local deployments for isolated communities, expeditions and disaster response. **Beyond Earth:** a crew-oriented system built for weak connectivity, resource constraints, behavioral health support and evidence traceability. Flight integration would require extensive clinical, security, human-factors and spaceflight qualification that does not yet exist.
+- [Getting started and operations](docs/GETTING_STARTED.md)
+- [Mobile delivery record and verification limits](docs/MOBILE_DELIVERY_20261115.md)
+- [OnePad AI integration and provider boundaries](docs/AI_ONEPAD_INTEGRATION.md)
+- [NASA catalog/archive audit](docs/NASA_CLIFF_119_ARCHIVE_AUDIT.md)
+- [Third-party notices](THIRD_PARTY_NOTICES.md)
 
-Read [ROADMAP_2050](docs/ROADMAP_2050.md) for explicit maturity gates rather than promises of completed capability.
-
-## Open-source third-party reference source trees
-
-The directory **[Các mã nguồn mở tham khảo](Các%20m%C3%A3%20ngu%E1%BB%93n%20m%E1%BB%9F%20tham%20kh%E1%BA%A3o/README.md)** contains immutable third-party research snapshots, not code currently loaded into the AETHERION runtime. **PyVistaQt is already present in full (51/51 original Git blobs verified).** VisPy, PyQtGraph, NASA Open MCT, napari and 3D Slicer are pinned for full source import, **not yet confirmed as copied** because the GitHub Actions import run failed. See [source lock](Các%20m%C3%A3%20ngu%E1%BB%93n%20m%E1%BB%9F%20tham%20kh%E1%BA%A3o/SOURCES.lock.json) and [import workflow](.github/workflows/vendor_reference_sources.yml). Source presence is not evidence of a working Qt integration.
-
-## Scientific integrity, licensing and credits
-
-- This project is not affiliated with or endorsed by NASA.
-- NASA references are credited and linked; NASA content is not automatically covered by this repository's software license.
-- Project-authored code is under [Apache License 2.0](LICENSE); third-party materials retain their own licenses and attribution requirements.
-- Inspect [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [submission/REFERENCES.md](submission/REFERENCES.md) before redistribution or judging.
-- To meet NASA Space Apps submission requirements, complete the official **Project tab** on the team page; GitHub alone is not a submission.
-
-**Team:** TRUY TINH · **Event:** NASA Space Apps Challenge 2026 · **Category:** Human Exploration / Software.
-
-© 2026 Nguyen Gia Huy and AETHERION contributors. See [NOTICE](NOTICE).
+The project is not yet validated for clinical use or real patient data. NASA material remains subject to its source and reuse terms; see the notices and source metadata before redistribution.

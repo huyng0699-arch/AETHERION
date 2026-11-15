@@ -14,10 +14,11 @@ import unicodedata
 
 REPOSITORY = Path(__file__).resolve().parents[4]
 RECORDS = REPOSITORY / "knowledge" / "nasa" / "cliff_119_2023" / "records"
+CONDITIONS = REPOSITORY / "knowledge" / "nasa" / "impact_conditions_2023.json"
 SYMPTOMS = REPOSITORY / "knowledge" / "symptoms" / "ASTRA_819_REFERENCE.json"
 SYMPTOM_EN_ALIASES = REPOSITORY / "knowledge" / "symptoms" / "label_aliases_en.json"
 ARTICLE_RE = re.compile(r"^CLIFF-\d{3}$")
-MAX_RESULTS = 100
+MAX_RESULTS = 200
 
 
 def normalized(text: str) -> str:
@@ -177,7 +178,9 @@ def _summary(record: dict) -> dict:
         "original_url": source.get("final_url") or source.get("source_url"),
         "source_claim": source.get("verification_state", "UNKNOWN"),
         "original_sha256_claim": source.get("content_sha256"),
-        "content_state": "STRUCTURED_JSON_LOCAL_NOT_PDF_INTEGRITY_PROOF",
+        "content_state": record.get(
+            "completeness_state", "STRUCTURED_JSON_LOCAL_NOT_PDF_INTEGRITY_PROOF"
+        ),
     }
 
 
@@ -208,8 +211,55 @@ def articles(query: str = "", limit: int = 30, category: str = "") -> dict:
     return {
         "indexed": len(records()), "matched": len(hits),
         "items": hits[:max(1, min(limit, MAX_RESULTS))],
-        "source": "Local JSON records produced from NASA IMM CliFF source PDFs",
-        "note": "A source verification flag in JSON is a claim, not independent verification of original PDF bytes.",
+        "source": "Read-only local catalogue of NASA IMM CliFF records and NASA index metadata",
+        "note": (
+            "A source verification flag in JSON is a claim, not independent verification of original PDF bytes. "
+            "Metadata-only entries contain no extracted NASA document text."
+        ),
+    }
+
+
+@lru_cache(maxsize=1)
+def condition_index() -> dict:
+    """NASA IMPACT condition names and their Appendix C PDF page references."""
+    if not CONDITIONS.is_file():
+        return {"source_title": "", "source_url": "", "records": []}
+    try:
+        data = json.loads(CONDITIONS.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, ValueError):
+        return {"source_title": "", "source_url": "", "records": []}
+    return data if isinstance(data, dict) and isinstance(data.get("records"), list) else {
+        "source_title": "", "source_url": "", "records": []
+    }
+
+
+def conditions(query: str = "") -> dict:
+    data = condition_index()
+    source_url = str(data.get("source_url") or "")
+    term = normalized(query[:200])
+    all_rows = data["records"]
+    items = []
+    for row in all_rows:
+        if not isinstance(row, dict):
+            continue
+        condition_id = str(row.get("condition_id") or "")
+        title = str(row.get("title") or "")
+        if term and term not in normalized(condition_id + " " + title):
+            continue
+        page = row.get("source_page")
+        article_id = row.get("article_id")
+        if article_id and record_by_id(str(article_id)) is None:
+            article_id = None
+        items.append({
+            "condition_id": condition_id,
+            "title": title,
+            "source_page": page,
+            "source_url": f"{source_url}#page={page}" if source_url and isinstance(page, int) else source_url,
+            "article_id": article_id,
+        })
+    return {
+        "total": len(all_rows), "matched": len(items), "items": items,
+        "source_title": str(data.get("source_title") or ""), "source_url": source_url,
     }
 
 
@@ -224,6 +274,8 @@ def article(article_id: str) -> dict | None:
         "references": data.get("references") or [],
         "media": data.get("media") or [],
         "limitations": data.get("limitations") or [],
+        "completeness_state": data.get("completeness_state", "STRUCTURED_JSON_LOCAL_NOT_PDF_INTEGRITY_PROOF"),
+        "source_notes": data.get("source_notes", ""),
         "source": data.get("source") or {},
         "read_only": True, "clinical_decision_support": False,
     }
@@ -234,12 +286,19 @@ def status() -> dict:
     docs = records()
     expected = {f"CLIFF-{n:03}" for n in range(1, 120)}
     actual = {x["article_id"] for x in docs}
+    metadata_only = sum(
+        1 for item in docs
+        if str(item.get("completeness_state", "")).startswith("METADATA_ONLY")
+    )
     return {
         "json_articles": len(docs), "expected_slots": 119,
         "missing_slots": sorted(expected - actual),
+        "full_text_records": len(docs) - metadata_only,
+        "metadata_only_records": metadata_only,
         "symptom_labels": len(source["entries"]),
         "article_full_text_search": True,
         "original_pdf_archive_verified": False,
         "clinical_rules_validated": False,
         "read_only": True,
     }
+

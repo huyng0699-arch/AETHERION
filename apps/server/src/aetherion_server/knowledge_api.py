@@ -44,9 +44,14 @@ def get_status():
     return knowledge_catalog.status()
 
 
+@router.get("/conditions")
+def search_conditions(query: str = Query("", max_length=200)):
+    return knowledge_catalog.conditions(query)
+
+
 @router.get("/articles")
 def search_articles(query: str = Query("", max_length=200),
-                    limit: int = Query(30, ge=1, le=100),
+                    limit: int = Query(30, ge=1, le=200),
                     category: str = Query("", max_length=100)):
     return knowledge_catalog.articles(query, limit, category)
 
@@ -102,3 +107,4 @@ def get_anatomy_model_file(anatomical_id: str):
             "X-Content-Sha256": meta["sha256"],
         },
     )
+
