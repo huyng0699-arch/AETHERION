@@ -80,7 +80,7 @@ function Metric({ label, value }: { label: string; value: string }) {
   return <Panel style={styles.metricCard}><Text style={styles.label}>{label}</Text><Text style={styles.bigValue}>{value}</Text></Panel>;
 }
 function Loading({ label }: { label: string }) {
-  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles); return <View style={styles.loading}><ActivityIndicator color={colors.cyan} /><Text style={styles.loadingText}>{label}</Text></View>; }
+  const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles); return <View style={styles.loading}><ActivityIndicator color={colors.primary} /><Text style={styles.loadingText}>{label}</Text></View>; }
 function formatDate(value: string, locale: Locale) { const date = new Date(value); return Number.isNaN(date.getTime()) ? value : date.toLocaleString(locale === 'vi' ? 'vi-VN' : 'en-US'); }
 function errorText(locale: Locale, cause: unknown) {
   if (cause instanceof ApiError && cause.status === 403) return t(locale, 'forbidden');
@@ -91,7 +91,7 @@ function errorText(locale: Locale, cause: unknown) {
 
 const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   heading: { gap: 8, paddingTop: 8 },
-  refresh: { color: colors.cyan, fontSize: 12, fontWeight: '800', padding: 8 },
+  refresh: { color: colors.primary, fontSize: 12, fontWeight: '800', padding: 8 },
   statusPanel: { gap: 12 },
   label: { color: colors.muted, fontSize: 12, fontWeight: '700', letterSpacing: 0.3 },
   value: { color: colors.text, fontSize: 16, fontWeight: '700', marginTop: 8 },
@@ -99,9 +99,10 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   metricCard: { flex: 1, minHeight: 95, justifyContent: 'space-between' },
   bigValue: { color: colors.text, fontSize: 28, fontWeight: '800' },
   metricList: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 10 },
-  metricTag: { color: colors.cyan, backgroundColor: 'rgba(104,217,242,0.10)', paddingHorizontal: 10, paddingVertical: 6, borderRadius: 999, overflow: 'hidden', fontSize: 12, fontWeight: '700' },
+  metricTag: { color: colors.primary, backgroundColor: 'rgba(104,217,242,0.10)', paddingHorizontal: 10, paddingVertical: 6, borderRadius: 999, overflow: 'hidden', fontSize: 12, fontWeight: '700' },
   loading: { flexDirection: 'row', alignItems: 'center', gap: 10, padding: 18 },
   loadingText: { color: colors.muted },
   error: { color: colors.red, lineHeight: 20 },
 });
+
 
