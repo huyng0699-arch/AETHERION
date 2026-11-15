@@ -10,7 +10,7 @@ import { buildScienceMediaUrl, getKnowledgeStatus, getScienceArticle, searchScie
 import { AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../components/ui';
 import { copy } from '../uiCopy';
 
-export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () => void }) {
+export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onBack: () => void; onAskAi?: (article: ScienceArticleSummary) => void }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const [query, setQuery] = useState('');
   const [items, setItems] = useState<ScienceArticleSummary[]>([]);
@@ -116,7 +116,7 @@ export function ScienceScreen({ locale, onBack }: { locale: Locale; onBack: () =
             <Ionicons name="chevron-back" size={17} color={colors.cyan} /><Text style={styles.backText}>{t(locale, 'scienceBack')}</Text>
           </Pressable>
           {loadingDetail ? <Loading label={t(locale, 'loading')} /> : detailErrorKey ? <Panel><Body>{t(locale, detailErrorKey)}</Body></Panel> : article ? (
-            <ArticleDetail article={article} status={status} locale={locale} serverBaseUrl={serverBaseUrl} />
+            <ArticleDetail article={article} status={status} locale={locale} serverBaseUrl={serverBaseUrl} onAskAi={onAskAi} />
           ) : null}
         </>
       ) : (
@@ -175,7 +175,7 @@ function ArticleCard({ item, onPress, locale }: { item: ScienceArticleSummary; o
   </Pressable>;
 }
 
-function ArticleDetail({ article, status, locale, serverBaseUrl }: { article: ScienceArticle; status: KnowledgeStatus | null; locale: Locale; serverBaseUrl: string }) {
+function ArticleDetail({ article, status, locale, serverBaseUrl, onAskAi }: { article: ScienceArticle; status: KnowledgeStatus | null; locale: Locale; serverBaseUrl: string; onAskAi?: (article: ScienceArticleSummary) => void }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const record = article.source || {};
   const publisher = record.publisher;
@@ -206,6 +206,10 @@ function ArticleDetail({ article, status, locale, serverBaseUrl }: { article: Sc
       {status && !status.clinical_rules_validated ? <Text style={styles.sourceNote}>{t(locale, 'scienceRulesNotValidated')}</Text> : null}
       <Text selectable style={styles.sourceNote}>{sourceNote}</Text>
     </Panel>
+
+    {onAskAi && article.sections.length > 0 ? <Pressable accessibilityRole="button" onPress={() => onAskAi(article.summary)} style={styles.askAi}>
+      <Ionicons name="sparkles-outline" size={18} color="#FFFFFF" /><Text style={styles.askAiText}>{t(locale, 'scienceAskAi')}</Text><Ionicons name="arrow-forward" size={17} color="#FFFFFF" />
+    </Pressable> : null}
 
     {limitations.length > 0 ? <Panel style={styles.metadataPanel}>
       <Text style={styles.panelTitle}>{copy(locale, 'sourceLimitations')}</Text>
@@ -331,6 +335,8 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   linkArea: { flex: 1 },
   linkText: { color: colors.cyan, fontSize: 11, lineHeight: 16, textAlign: 'right', textDecorationLine: 'underline' },
   sourceNote: { color: colors.muted, fontSize: 10, lineHeight: 15 },
+  askAi: { minHeight: 48, backgroundColor: colors.cyan, borderRadius: 13, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8 },
+  askAiText: { color: '#FFFFFF', fontWeight: '800', fontSize: 12 },
   sectionList: { gap: 8 },
   contentSection: { gap: 8 },
   sectionTitle: { color: colors.text, fontSize: 14, fontWeight: '900' },
