@@ -1,6 +1,6 @@
-# AETHERION — Native Windows & Post-Sync Screen Status / Trạng thái màn hình
+# AETHERION — Screen Status, Historical QA & Current Evidence / Trạng thái màn hình
 
-## Current public-entry and auth handoff checkpoint — 2026-11-15
+## Historical public-entry and auth handoff checkpoint — 2026-11-15 (superseded by the current status above)
 
 The current product direction is public Mission Operations Home → explicit SIMULATED Demo, with NASA MA-7 as a separate historical archive. Protected routes return to Login, then resume only after bearer-authenticated `GET /api/v1/auth/me`; subject context is derived only from its flat `allowed_subjects` list. Auto-select exactly one authorized ID; keep zero/multiple IDs visibly unselected. Sign-out must clear the outer and Mission Control sessions, and Ask AI must restore local `account:<username>` identity. Q-0487 is currently **STALE** with its implementation/evidence preserved; physical Windows/runtime proof belongs only to Q-0488.
 
@@ -8,7 +8,7 @@ Q-0485 has a draft-branch Mission Control session handoff/reset and a focused au
 
 ---
 
-**Post-Sync Integrated QA (after reconciling `98e92f5` + `up.zip` + `PR #9` + `PR #11`, Linux `QT_QPA_PLATFORM=offscreen` + PySide6 `6.12.0` + Python `3.11`):**  
+**Historical QA snapshot — Post-Sync Integrated QA (recorded against `98e92f5` + `up.zip` + `PR #9` + `PR #11`, Linux `QT_QPA_PLATFORM=offscreen` + PySide6 `6.12.0` + Python `3.11`; not current-head acceptance):**  
 - **Cold-start Login -> Public NASA Demo -> Operations Home (`Q-0487` / `98e92f5` + `Q-0485`):** `AetherionWindow` opens on bilingual [`LoginPage`](file:///home/antigravity/huyng0699-arch/AETHERION/apps/desktop/src/aetherion_desktop/login_page.py) (`set_visuals` styled `Demo` button, card width `460–560 px`). `login_page.demo_button` opens the genuine historical NASA archive briefing ([`hackathon_demo_page`](file:///home/antigravity/huyng0699-arch/AETHERION/apps/desktop/src/aetherion_desktop/features/demo/nasa_ma7.py)), while `operations_home_page.demo` (`DEMO FOR HACKATHON`) opens [`SimulatedDemoBriefing`](file:///home/antigravity/huyng0699-arch/AETHERION/apps/desktop/src/aetherion_desktop/features/demo/synthetic_briefing.py) -> Start -> isolated 5-patient / 540-day / 12-metric (`31,610` rows) SQLite explorer inside the persistent Open MCT-style `Browse / Workspace / Inspect` shell.
 - **3-way `mission_ops_home.py` & `main.py` crash/lifecycle fixes:** Resolved PR #11 `set_visuals()` `AttributeError` (`self.utc_chart.set_points(self.utc_chart._points, self.theme, self.mode, index_offset=self.utc_chart._index_offset)`), preserved `QTimeZone.utc()`, Inspector `ScrollBarAlwaysOff`, `_browse_selected()`, `care_guide`, `time_range_changed` -> `MonitoringWorkspace.sync_utc_window` (`Q-0477` ACL preserved), `_api_url` propagation for `AuthorizedPersonalTodayPage`, `shiboken6.isValid`, and `closeEvent` timer/reply/`StartupRuntime.stop()` cleanup.
 - **Rendered PNG & live verifier evidence:** 9 re-rendered post-rebase captures in [docs/qa/unsynced_20261114/postsync_preview/](docs/qa/unsynced_20261114/postsync_preview/) visually inspected (`1040×650`, `1360×850`, `1600×900`, Light/Dark theme switch clean, single Time Conductor outside Monitoring); [`scripts/verify_native_login.py`](scripts/verify_native_login.py) passed **`8/8 (100%)`** against real loopback HTTP bearer auth.
@@ -16,10 +16,10 @@ Q-0485 has a draft-branch Mission Control session handoff/reset and a focused au
 
 ---
 
-**Latest Windows QA & build verification (from `up.zip`, pre-`98e92f5`):** 2026-11-14 (Windows 10 `10.0.19045`, Python 3.13.14, PySide6 6.12.0, PyVista, PyInstaller 6.22.3).  
+**Historical Windows QA & build verification snapshot (from `up.zip`, pre-`98e92f5`; not current-head acceptance):** 2026-11-14 (Windows 10 `10.0.19045`, Python 3.13.14, PySide6 6.12.0, PyVista, PyInstaller 6.22.3).  
 **Evidence class:** Live Windows Qt rendering (`QWidget.grab()` connected to real local FastAPI/uvicorn server), Windows UI Automation offline probes on both source launch and compiled `AETHERION-Desktop.exe`, headless `tests/` suite, and governance/audit checks. Independent human/external reviewer sign-off remains `PENDING`.
 
-## Windows Runtime & Visual QA Update — 2026-11-14
+## Historical Windows Runtime & Visual QA Update — 2026-11-14
 
 ### Resolved integration & UI/visual findings (verified on Windows)
 
@@ -49,7 +49,7 @@ Q-0485 has a draft-branch Mission Control session handoff/reset and a focused au
 **Prior authoring audit (preserved for traceability):** 2026-11-14, P0 persistent hosted Mission Operations and original-phase NASA table; source only, no Qt screenshot.  
 **Evidence class:** GitHub file SHA and source inspection only. PySide6 unavailable in this runtime; **no new Linux offscreen or Windows screenshot and no runtime acceptance**.
 
-## Final source SHA after MA-7 selection consistency patch
+## Historical source SHA after MA-7 selection consistency patch
 
 - `mission_ops_home.py` latest committed blob: `9e338397d9f61d63ac2ad4b420e31af8a67c80c2` — [`b14978623ee530cc292048a412d4f02a927cff59`](https://github.com/huyng0699-arch/AETHERION/commit/b14978623ee530cc292048a412d4f02a927cff59). The original NASA phase-comparison table now retains the selected metric in the source measurement table and Inspect when switching report phases, and measurement selection drives the same comparison metric. Values and source labels remain read-only.
 - [Q-0486 PR #9](https://github.com/huyng0699-arch/AETHERION/pull/9) was inspected but **not imported or edited**: its telemetry widget has UTC time-axis semantics, unsuitable for MA-7's categorical phase/timepoint records without verified UTC timestamps.
@@ -57,7 +57,7 @@ Q-0485 has a draft-branch Mission Control session handoff/reset and a focused au
 
 ---
 
-## P0 source checkpoint — persistent Mission Operations (2026-11-14)
+## Historical P0 source checkpoint — persistent Mission Operations (2026-11-14)
 
 **Owner override:** Browse/Workspace/Inspect and bottom UTC conductor must persist throughout normal native routes, not just cold-start Home; the five-card Portal and duplicate horizontal top navigation are explicitly rejected. This is the user's **actual app visual**, not the Server Admin page.
 
@@ -76,7 +76,7 @@ Q-0485 has a draft-branch Mission Control session handoff/reset and a focused au
 
 ---
 
-## Latest corrected native Home layout (GitHub source only; 2026-11-14)
+## Historical corrected native Home layout (GitHub source only; 2026-11-14)
 
 **Commit:** [`b92e1a9daac3c8ba036774e6b27aeef7b32633ae`](https://github.com/huyng0699-arch/AETHERION/commit/b92e1a9daac3c8ba036774e6b27aeef7b32633ae) · `mission_ops_home.py` blob `d39354c4b7571847cf6ffc3eb79572573e9533d2`.
 
@@ -96,7 +96,7 @@ The owner’s updated NASA Open MCT direction supersedes five-card Portal / hori
 
 ---
 
-## Latest Q-0485 source-only workspace review — 2026-11-14
+## Historical Q-0485 source-only workspace review — 2026-11-14
 
 **Owner visual override:** The old SPEC/AGENTS five-card and horizontal-menu-only design language is superseded **only for the first native app screen**. The target is the actual Browse → Workspace → Inspect layout from the NASA Open MCT user-facing information architecture, with one time conductor. This is an implementation requirement, **not** a claim that AETHERION itself is NASA Open MCT or that its appearance has passed.
 
