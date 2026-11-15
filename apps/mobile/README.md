@@ -1,12 +1,12 @@
 # AETHERION Mobile
 
-Expo SDK 54 / React Native / TypeScript. English is the initial language; VI/EN and appearance preferences persist. The owner's Solo artwork and navigation pattern are retained with AETHERION naming and attribution.
+Expo SDK 58 / React Native / TypeScript. English is the initial language; VI/EN and appearance preferences persist. The owner's Solo artwork and navigation pattern are retained with AETHERION naming and attribution.
 
 ## Entry flow
 
-**Every launch opens Sign in.** The visible **Demo** button opens a short NASA briefing, then the read-only MA-7 archive. A saved session offers an explicit Continue action; it never bypasses the login screen automatically. Desktop uses the same Login → Demo introduction flow.
+**Every launch opens Sign in.** The **Demo** button enters the full AETHERION app session directly. A saved session offers an explicit Continue action; it never bypasses the login screen automatically.
 
-After sign-in, Home opens Health, Monitor, AI, Library and Care. More opens Crew/profiles, connection, Settings, language, appearance, privacy and help. Back navigation and edge swipe return to the previous screen; a bottom-tab Back returns to Home.
+The four primary destinations are Home, Monitor, AI chat and Settings; the raised center AI button opens the existing chat directly. The side drawer keeps the other existing screens, profile tools, language, appearance, help and sign-out reachable. Back navigation returns to the previous screen.
 
 ## Run the web app and API together
 
@@ -35,20 +35,9 @@ $env:AETHERION_ALLOW_DEV_HTTP='1'
 npm run android
 ```
 
-For an Android emulator, use `http://10.0.2.2:8765`; for USB development, run `adb reverse tcp:8765 tcp:8765` and use `http://127.0.0.1:8765`. These HTTP addresses are development-only. A physical release client requires HTTPS, while the current Server intentionally remains loopback-only.
+Use `http://10.0.2.2:8765` for an Android emulator, or `adb reverse tcp:8765 tcp:8765` and `http://127.0.0.1:8765` for USB. Native release builds require a configured HTTPS server; physical LAN/TLS pairing and an APK are not verified by the source export.
 
-To build an installable debug-signed demo APK locally, install Android Studio, JDK 17, Android SDK Platform 36 and Build Tools 36.0.0, then run:
-
-```powershell
-npm ci
-npx expo prebuild --platform android --no-install
-Set-Location android
-.\gradlew.bat assembleDebug
-```
-
-The APK is `android/app/build/outputs/apk/debug/app-debug.apk`. The GitHub workflow `.github/workflows/android-demo-apk.yml` builds the same APK and publishes it to the repository Releases after Gradle succeeds. It is a sideloadable demo, not a Play Store-signed release. See [the full install and operations guide](../../docs/GETTING_STARTED.md).
-
-`npm run export:android` and `npm run export:android:js` export JavaScript bundles only; neither command creates an APK.
+`npm run export:android` requests normal Hermes bytecode. `npm run export:android:js` produces a debugging JavaScript export when the host cannot launch Hermes. The latter is not an APK or release acceptance.
 
 ## Server contract
 
@@ -73,3 +62,4 @@ python scripts/verify_mobile_acl.py
 Use `node scripts/verify_mobile_web.mjs` for actual headless browser checks when the host permits Chromium to launch. Browser rendering, physical Android, a packaged Windows EXE and configured AI-model completion require their own observed acceptance. See `docs/MOBILE_DELIVERY_20261115.md` for recorded results and limits.
 
 The verification port is deliberately separate from the normal local server. Reuse an existing matching verification runtime on that port; do not run the fixture checks against a normal-use database.
+
