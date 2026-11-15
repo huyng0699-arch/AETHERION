@@ -12,9 +12,11 @@ import time
 import unittest
 from unittest.mock import patch
 
+from PySide6.QtCore import QDateTime
 from PySide6.QtWidgets import QApplication
 
 from aetherion_desktop.login_page import _normalize_loopback_base_url
+from aetherion_desktop.mission_ops_home import MissionOperationsHome
 from aetherion_desktop.main import AetherionWindow
 from aetherion_desktop.startup_runtime import StartupRuntime, _may_autostart_server
 
@@ -120,6 +122,71 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                     win.hackathon_demo_page,
                 )
                 win.close()
+
+    def test_home_utc_range_matches_monitoring_min_and_max(self) -> None:
+        """Home accepts the same inclusive 1-minute..366-day bounds as Q-0477."""
+        os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+        app = QApplication.instance() or QApplication([])
+        messages = {
+            "en": (
+                "UTC range must be at least 1 minute.",
+                "UTC range cannot exceed 366 days.",
+            ),
+            "vi": (
+                "Khoảng UTC phải dài ít nhất 1 phút.",
+                "Khoảng UTC không được vượt quá 366 ngày.",
+            ),
+        }
+
+        for locale, (too_short_message, too_long_message) in messages.items():
+            with self.subTest(locale=locale):
+                home = MissionOperationsHome(locale=locale)
+                # Preserve millisecond precision in the widget used for the min-boundary test.
+                home.begin_utc.setDisplayFormat("yyyy-MM-dd HH:mm:ss.zzz 'UTC'")
+                home.end_utc.setDisplayFormat("yyyy-MM-dd HH:mm:ss.zzz 'UTC'")
+                emitted: list[tuple[str, str]] = []
+                home.time_range_changed.connect(
+                    lambda start, end: emitted.append((start, end))
+                )
+                previously_applied = (home._start_epoch, home._end_epoch)
+                start = QDateTime.currentDateTimeUtc()
+
+                home.begin_utc.setDateTime(start)
+                home.end_utc.setDateTime(start.addMSecs(59_999))
+                home.apply_utc_window()
+                self.assertEqual(home.window_status.text(), too_short_message)
+                self.assertEqual(
+                    (home._start_epoch, home._end_epoch), previously_applied
+                )
+                self.assertEqual(emitted, [])
+
+                exactly_minimum = start.addSecs(60)
+                home.end_utc.setDateTime(exactly_minimum)
+                home.apply_utc_window()
+                self.assertEqual(
+                    (home._start_epoch, home._end_epoch),
+                    (start.toSecsSinceEpoch(), exactly_minimum.toSecsSinceEpoch()),
+                )
+                self.assertEqual(len(emitted), 1)
+
+                accepted_minimum = (home._start_epoch, home._end_epoch)
+                home.end_utc.setDateTime(start.addDays(366).addMSecs(1))
+                home.apply_utc_window()
+                self.assertEqual(home.window_status.text(), too_long_message)
+                self.assertEqual(
+                    (home._start_epoch, home._end_epoch), accepted_minimum
+                )
+                self.assertEqual(len(emitted), 1)
+
+                exactly_maximum = start.addDays(366)
+                home.end_utc.setDateTime(exactly_maximum)
+                home.apply_utc_window()
+                self.assertEqual(
+                    (home._start_epoch, home._end_epoch),
+                    (start.toSecsSinceEpoch(), exactly_maximum.toSecsSinceEpoch()),
+                )
+                self.assertEqual(len(emitted), 2)
+                home.close()
 
     def test_auth_me_resumes_route_and_rejected_session_is_cleared(self) -> None:
         os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
