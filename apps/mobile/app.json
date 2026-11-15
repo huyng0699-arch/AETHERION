@@ -5,14 +5,14 @@
     "scheme": "aetherion",
     "version": "0.1.0",
     "orientation": "portrait",
-    "icon": "./assets/truy-tinh-cosmic-orbit.png",
+    "icon": "./assets/aetherion-app-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/truy-tinh-cosmic-orbit.png",
+      "image": "./assets/aetherion-app-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#020718"
+      "backgroundColor": "#F8F6FF"
     },
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "android": {
       "package": "io.truytinh.aetherion.mobile",
       "softwareKeyboardLayoutMode": "pan",
@@ -25,7 +25,8 @@
     },
     "web": {
       "bundler": "metro",
-      "output": "single"
+      "output": "single",
+      "favicon": "./assets/aetherion-app-icon.png"
     },
     "plugins": ["expo-secure-store"],
     "experiments": {
