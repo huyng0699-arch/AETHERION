@@ -179,6 +179,7 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
         server_thread = threading.Thread(target=server.serve_forever, daemon=True)
         server_thread.start()
         base_url = f"http://127.0.0.1:{server.server_port}"
+        temporary_home = tempfile.TemporaryDirectory()
         windows = []
         try:
             with patch.dict(
@@ -186,6 +187,8 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                 {
                     "AETHERION_AUTOSTART_LOCAL_SERVER": "0",
                     "AETHERION_API_URL": base_url,
+                    "HOME": temporary_home.name,
+                    "XDG_CONFIG_HOME": str(Path(temporary_home.name) / "config"),
                 },
             ):
                 win = AetherionWindow()
@@ -231,24 +234,21 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                 # A rejected /auth/me response must revoke/clear the login token and
                 # leave later selections gated at Login.
                 server.auth_status = 403
-                rejected = AetherionWindow()
-                windows.append(rejected)
-                rejected.monitor_page.refresh = lambda: None
-                rejected.open_operations_route("monitor")
-                rejected.login_page.authenticated.emit(
+                win.open_operations_route("monitor")
+                win.login_page.authenticated.emit(
                     {"access_token": "verified-bearer", "user": {"username": "operator"}},
                     base_url,
                 )
                 deadline = time.monotonic() + 5.0
-                while rejected.access_token and time.monotonic() < deadline:
+                while win.access_token and time.monotonic() < deadline:
                     app.processEvents()
                     time.sleep(0.01)
                 app.processEvents()
-                self.assertEqual(rejected.access_token, "")
-                self.assertFalse(getattr(rejected, "_session_verified", False))
-                self.assertEqual(rejected.mission_control_page._token, "")
-                rejected.open_operations_route("monitor")
-                self.assertIs(rejected.pages.currentWidget(), rejected.login_page)
+                self.assertEqual(win.access_token, "")
+                self.assertFalse(getattr(win, "_session_verified", False))
+                self.assertEqual(win.mission_control_page._token, "")
+                win.open_operations_route("monitor")
+                self.assertIs(win.pages.currentWidget(), win.login_page)
                 deadline = time.monotonic() + 2.0
                 while server.logout_requests < 2 and time.monotonic() < deadline:
                     app.processEvents()
@@ -260,6 +260,7 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
             server.shutdown()
             server.server_close()
             server_thread.join(timeout=2.0)
+            temporary_home.cleanup()
 
     def test_mission_control_reuses_verified_session_and_clears_it(self) -> None:
         os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
