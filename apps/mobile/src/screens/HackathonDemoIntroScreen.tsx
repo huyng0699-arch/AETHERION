@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Linking, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { Locale } from '../types';
@@ -10,6 +11,7 @@ import { loadNasaMa7Demo, syncNasaMa7Demo } from '../api/demo';
 import { copy } from '../uiCopy';
 import { OrbitEarth } from '../components/home/OrbitEarth';
 
+const HEALTH_TIP_KEY = 'aetherion.mobile.health-tip.shown.v1';
 const UNAVAILABLE_LABELS: Record<string, MessageKey> = {
   ecg_waveform: 'demoUnavailableEcg',
   spo2: 'demoUnavailableSpo2',
@@ -21,9 +23,10 @@ const UNAVAILABLE_LABELS: Record<string, MessageKey> = {
   longitudinal_sensor_stream: 'demoUnavailableLongitudinal',
 };
 
-export function HackathonDemoIntroScreen({ locale, onBack, onLoad, onLibrary }: { locale: Locale; onBack: () => void; onLoad: () => void; onLibrary?: () => void }) {
+export function HackathonDemoIntroScreen({ locale, onBack, onLoad, onLibrary, onHealthGuide }: { locale: Locale; onBack: () => void; onLoad: () => void; onLibrary?: () => void; onHealthGuide?: () => void }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const [details, setDetails] = useState(false);
+  const [healthTipVisible, setHealthTipVisible] = useState(false);
   const [source, setSource] = useState<ReturnType<typeof loadNasaMa7Demo> | null>(() => {
     try { return loadNasaMa7Demo(); } catch { return null; }
   });
@@ -32,6 +35,24 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad, onLibrary }: 
     void syncNasaMa7Demo().then(value => { if (active) setSource(value); }).catch(() => {});
     return () => { active = false; };
   }, []);
+  useEffect(() => {
+    let active = true;
+    void AsyncStorage.getItem(HEALTH_TIP_KEY).then(async shown => {
+      if (shown) return false;
+      await AsyncStorage.setItem(HEALTH_TIP_KEY, 'shown');
+      return true;
+    }).then(show => { if (active && show) setHealthTipVisible(true); })
+      .catch(() => { if (active) setHealthTipVisible(true); });
+    return () => { active = false; };
+  }, []);
+  const dismissHealthTip = () => {
+    setHealthTipVisible(false);
+    void AsyncStorage.setItem(HEALTH_TIP_KEY, 'shown').catch(() => undefined);
+  };
+  const openHealthGuide = () => {
+    dismissHealthTip();
+    onHealthGuide?.();
+  };
 
   return (
     <AppPage>
@@ -58,6 +79,9 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad, onLibrary }: 
           <ActionButton title={copy(locale, 'demoStart')} onPress={onLoad} />
           {onLibrary ? <Pressable accessibilityRole="button" onPress={onLibrary} style={styles.libraryAction}>
             <Ionicons name="book-outline" size={18} color={colors.cyan} /><Text style={styles.libraryText}>{locale === 'en' ? 'Explore NASA Library' : 'Khám phá thư viện NASA'}</Text><Ionicons name="arrow-forward" size={17} color={colors.cyan} />
+          </Pressable> : null}
+          {onHealthGuide ? <Pressable accessibilityRole="button" onPress={onHealthGuide} style={styles.libraryAction}>
+            <Ionicons name="pulse-outline" size={18} color={colors.cyan} /><Text style={styles.libraryText}>{copy(locale, 'healthGuide')}</Text><Ionicons name="arrow-forward" size={17} color={colors.cyan} />
           </Pressable> : null}
           <Pressable accessibilityRole="button" accessibilityState={{ expanded: details }} onPress={() => setDetails(value => !value)} style={styles.sourceLink}><Text style={styles.sourceLinkText}>{copy(locale, 'sourceDetails')}</Text><Ionicons name={details ? 'chevron-up' : 'chevron-down'} size={18} color={colors.cyan} /></Pressable>
           {details ? <>
@@ -104,6 +128,29 @@ export function HackathonDemoIntroScreen({ locale, onBack, onLoad, onLibrary }: 
           <StatusPill label={t(locale, 'demoSourceError')} tone="bad" />
         </Panel>
       )}
+      <Modal transparent visible={healthTipVisible} animationType={appearance.reduceMotion ? 'none' : 'fade'} onRequestClose={dismissHealthTip}>
+        <View style={styles.tipModalRoot}>
+          <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'healthTipClose')} style={[StyleSheet.absoluteFill, styles.tipBackdrop]} onPress={dismissHealthTip} />
+          <View style={styles.tipCard}>
+            <View style={styles.tipHeader}>
+              <View style={styles.tipIcon}><Ionicons name="pulse-outline" size={19} color={colors.cyan} /></View>
+              <Text style={styles.tipTitle}>{copy(locale, 'healthTipTitle')}</Text>
+              <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'healthTipClose')} hitSlop={8} onPress={dismissHealthTip} style={styles.tipClose}>
+                <Ionicons name="close" size={20} color={colors.text} />
+              </Pressable>
+            </View>
+            <Text style={styles.tipBody}>{copy(locale, 'healthTipBody')}</Text>
+            <View style={styles.tipActions}>
+              {onHealthGuide ? <Pressable accessibilityRole="button" onPress={openHealthGuide} style={[styles.tipAction, styles.tipSecondary]}>
+                <Text style={styles.tipSecondaryText}>{copy(locale, 'healthTipOpen')}</Text>
+              </Pressable> : null}
+              <Pressable accessibilityRole="button" onPress={dismissHealthTip} style={[styles.tipAction, styles.tipPrimary]}>
+                <Text style={styles.tipPrimaryText}>{copy(locale, 'healthTipDismiss')}</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </AppPage>
   );
 }
@@ -138,6 +185,20 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   sourceMeta: { color: colors.muted, fontSize: 10, lineHeight: 15 },
   libraryAction: { minHeight: 48, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 13, gap: 9, borderRadius: 13, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card },
   libraryText: { flex: 1, color: colors.text, fontSize: 13, fontWeight: '800' },
+  tipModalRoot: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 12, backgroundColor: 'rgba(8,12,32,0.5)' },
+  tipBackdrop: { backgroundColor: 'transparent' },
+  tipCard: { width: '100%', maxWidth: 420, padding: 17, borderRadius: 20, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, gap: 12 },
+  tipHeader: { minHeight: 32, flexDirection: 'row', alignItems: 'center', gap: 9 },
+  tipIcon: { width: 30, height: 30, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cardSoft },
+  tipTitle: { flex: 1, color: colors.text, fontSize: 15, fontWeight: '900' },
+  tipClose: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
+  tipBody: { color: colors.muted, fontSize: 13, lineHeight: 19 },
+  tipActions: { flexDirection: 'row', justifyContent: 'flex-end', gap: 8 },
+  tipAction: { flex: 1, minHeight: 44, alignItems: 'center', justifyContent: 'center', borderRadius: 12, paddingHorizontal: 10 },
+  tipSecondary: { borderWidth: 1, borderColor: colors.border, backgroundColor: colors.cardSoft },
+  tipPrimary: { backgroundColor: colors.cyan },
+  tipSecondaryText: { color: colors.text, fontSize: 12, fontWeight: '800' },
+  tipPrimaryText: { color: '#FFFFFF', fontSize: 12, fontWeight: '900' },
   sourcePanel: { gap: 12 },
   reportTitle: { color: colors.text, fontSize: 15, fontWeight: '900', lineHeight: 21 },
   metaRow: { flexDirection: 'row', justifyContent: 'space-between', gap: 10 },
