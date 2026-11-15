@@ -55,6 +55,7 @@ TEXT = {
         "utcAllMetrics": "All metric families",
         "utcAllSources": "All verified sources",
         "utcChartSeries": "One selected metric and unit · one selected source · verification stays in Inspect · discrete samples only · no interpolation",
+        "utcChartNeedsFilter": "Choose one metric/unit and one source to display a single series. Verification remains in Inspect.",
         "utcXAxis": "TIME · UTC",
         "utcYAxis": "VALUE · {unit}",
         "utcSeriesTitle": "SELECTED SERIES · {metric} ({unit}) · {source}",
@@ -138,7 +139,7 @@ TEXT = {
         "utcTime": "Observed UTC",
         "utcValue": "Value",
         "utcSource": "Source / quality",
-        "utcPlot": "UTC SAMPLE TIMELINE  /  DISCRETE POINTS",
+        "utcPlot": "SELECT ONE METRIC AND SOURCE TO PLOT",
         "inspectNone": "Select a report timepoint, variable or UTC observation to inspect its original source and quality.",
         "homeInspectTitle": "Mission Workspace properties",
         "inspectCurrent": "Selected object",
@@ -177,6 +178,7 @@ TEXT = {
         "utcAllMetrics": "Tất cả nhóm chỉ số",
         "utcAllSources": "Tất cả nguồn đã xác minh",
         "utcChartSeries": "Một chỉ số và đơn vị được chọn · một nguồn được chọn · trạng thái xác minh ở Inspect · chỉ điểm rời rạc · không nội suy",
+        "utcChartNeedsFilter": "Chọn một chỉ số/đơn vị và một nguồn để hiển thị một chuỗi. Trạng thái xác minh vẫn ở Inspect.",
         "utcXAxis": "THỜI GIAN · UTC",
         "utcYAxis": "GIÁ TRỊ · {unit}",
         "utcSeriesTitle": "CHUỖI ĐANG CHỌN · {metric} ({unit}) · {source}",
@@ -260,7 +262,7 @@ TEXT = {
         "utcTime": "Ghi nhận UTC",
         "utcValue": "Giá trị",
         "utcSource": "Nguồn / chất lượng",
-        "utcPlot": "DÒNG THỜI GIAN UTC  /  ĐIỂM ĐO RỜI RẠC",
+        "utcPlot": "CHỌN MỘT CHỈ SỐ VÀ NGUỒN ĐỂ VẼ",
         "inspectNone": "Chọn mốc, biến hoặc quan sát UTC để xem nguồn và mức độ xác minh.",
         "homeInspectTitle": "Thuộc tính không gian điều hành",
         "inspectCurrent": "Đối tượng đang chọn",
@@ -335,17 +337,31 @@ class UtcSamplePlot(QWidget):
         self._mode = "light"
         self._time_axis_label = "TIME · UTC"
         self._value_axis_label = ""
+        self._time_bounds: tuple[float, float] | None = None
 
     def set_points(
         self, points, theme="daybreak", mode="light", *, index_offset=0,
-        time_axis_label="TIME · UTC", value_axis_label=""
+        time_axis_label=None, value_axis_label=None, time_bounds=None
     ):
         self._points = tuple(points)
         self._index_offset = max(0, int(index_offset))
         self._theme = theme
         self._mode = mode
-        self._time_axis_label = str(time_axis_label)
-        self._value_axis_label = str(value_axis_label)
+        if time_axis_label is not None:
+            self._time_axis_label = str(time_axis_label)
+        if value_axis_label is not None:
+            self._value_axis_label = str(value_axis_label)
+        if time_bounds is not None:
+            try:
+                start, end = map(float, time_bounds)
+            except (TypeError, ValueError, OverflowError):
+                self._time_bounds = None
+            else:
+                self._time_bounds = (
+                    (start, end)
+                    if math.isfinite(start) and math.isfinite(end) and end > start
+                    else None
+                )
         self.update()
 
     def paintEvent(self, _event):
@@ -391,7 +407,10 @@ class UtcSamplePlot(QWidget):
         if low == high:
             padding = max(abs(low) * .05, 1.0)
             low, high = low - padding, high + padding
-        first_time, last_time = min(times), max(times)
+        if self._time_bounds is not None:
+            first_time, last_time = self._time_bounds
+        else:
+            first_time, last_time = min(times), max(times)
         time_span = last_time - first_time
 
         grid = QColor(pal.border)
@@ -1336,21 +1355,26 @@ class MissionOperationsHome(QWidget):
             chart_title = self._t(
                 "utcSeriesTitle", metric=metric, unit=unit, source=source_filter
             )
+            chart_note = self._t("utcChartSeries")
             value_axis_label = self._t("utcYAxis", unit=unit)
         else:
             chart_title = self._t("utcPlot")
+            chart_note = self._t("utcChartNeedsFilter")
             value_axis_label = ""
         time_axis_label = self._t("utcXAxis")
         self.utc_chart_heading.setText(chart_title)
         self.utc_chart.setAccessibleName(chart_title)
         self.utc_chart.setAccessibleDescription(
-            f"{self._t('utcChartSeries')} · {time_axis_label} · {value_axis_label}"
+            " · ".join(label for label in (
+                chart_note, time_axis_label, value_axis_label
+            ) if label)
         )
         self.utc_chart.set_points(
             series, self.theme, self.mode, index_offset=index_offset,
             time_axis_label=time_axis_label, value_axis_label=value_axis_label,
+            time_bounds=(start, end),
         )
-        self.utc_chart_note.setText(self._t("utcChartSeries"))
+        self.utc_chart_note.setText(chart_note)
         self._active_utc_row = None
         if self._filtered_utc and self._selection[0] == "utc":
             self.utc_table.selectRow(0)
