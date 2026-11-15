@@ -1,0 +1,369 @@
+{
+  "article_id": "CLIFF-041",
+  "slot": 41,
+  "display_title": "Headache (Space Adaptation)",
+  "category": "Headache",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "NASA Integrated Medical Model (IMM) Clinical Finding Form (CliFF 2023) for mission risk-planning; NOT a validated bedside clinical protocol or NASA endorsement of AETHERION.",
+  "source": {
+    "source_id": "NASA-CLIFF-041",
+    "publisher": "NASA",
+    "title": "Headache (Space Adaptation) CliFF (2023)",
+    "source_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+    "retrieved_at_utc": "2026-11-14T06:01:42.761077+00:00",
+    "content_sha256": "339400f046a91e2927bf76ccf938b3503bca7dbfe8a5fcd584678b72c26c4c1a",
+    "original_mime": "application/pdf",
+    "original_bytes": 311235,
+    "license_identifier": "NASA-US-GOV-PUBLIC-DOMAIN",
+    "attribution": "NASA Integrated Medical Model (IMM) Documentation (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "limitations": [
+    "NASA IMM CliFF is probabilistic spaceflight medical risk-planning evidence, not a validated bedside treatment protocol.",
+    "The authors did not have access to original LSAH data, creating imprecise estimates for incidence rates (p.7).",
+    "Astronaut cohort has low numbers, potential underreporting, and recall bias; medication efficacy is extrapolated from terrestrial data (p.7)."
+  ],
+  "sections": [
+    {
+      "section_id": "CLIFF-041-sec-0",
+      "heading": "Branch Baseline & Clinical Overview",
+      "text_content": "Clinical Finding Form (CliFF)\nBranch\n\nBaseline\n\nICL94_Space Adaptation - Headache\nSpaceflight headache or space adaptation headache is a headache attributed to travel in microgravity (Starling 2018). Previously, space motion\nsickness syndrome was inclusive of this condition, but it is now recognized as a separate disorder. There has been acknowledgment that space\nadaptation headaches often do not occur concomitantly with motion sickness. In the 3rd edition of the International Classification of Headache\nDisorders (ICHD-3), the International Headache Society (IHS) defines this condition as a nonspecific headache with the following: \u201cA. Any new\nheadache fulfilling criterion C; B. The subject has travelled through space; C. Evidence of causation demonstrated by both of the following: 1.\nheadache has occurred exclusively during space travel and 2. headache has spontaneously improved on return to earth; D. Not better accounted for\nby another ICHD-3 diagnosis.\u201d Headaches that occur within the first five days of spaceflight are typically attributed to this condition. They are usually\nself-limited and typically resolve when homeostasis of cephalad fluid shifts occur (Hodkinson et al., 2017). Analog studies using simulated\nmicrogravity have demonstrated that in addition to fluid redistribution, there are changes in hemoconcentration, hormones and tight-junctions that\nmay contribute to space adaptation headaches as well (Feuerecker et al., 2016). Other conditions that are related but not covered in this CLiFF\ninclude: headache, headache-CO2 and altitude sickness.\n\nINCIDENCE DATA INCLUDED IN THE MODEL\n\nThe model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\nstatus, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\ntype of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\noccurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\nIncidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n(proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\nhistory characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\nare assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\noccurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\nincluded in the MEDPRAT Technical Description Document.\n\nINCIDENCE DATA\n\nSPACEFLIGHT LITERATURE\n\nThe incidence rate was derived two LSAH data gathering events (Walton, 2010; Saile et. al, 2017). Regrettably, the authors of this CLiFF did not\nhave direct access to the data from those LSAH events. Consequently, information was taken detailing these events from the previous IMM CLiFF\nentitled \" Headache (Space Adaptation) Cliff.\u201d Per this resource: \u201cheadaches that began during Days 1 to 5 and for which no other attribution, such\nas CO or CO2 exposure, caffeine withdrawal, toxic exposure or DCS, had been determined. When a crew member took an analgesic and the\nreason indicated was headache, we counted that as a headache event.\u201d In total, they found 281 events over 807 person-missions. At the time of\nthis CLIFF completion, a repeat LSAH data gathering event was not possible and missions past 2017 are not represented. Antonsen et al. (2017)\nwas rated less highly than the data in the previous IMM CLiFF as the data in Table 1 could not be adequately reconciled with this specific\ncondition\u2019s definition. For example, Table 1 described 33 cases of headache for an incidence of 2.27. The same table also listed \u2018Fluid shift\u2019 as a\ncategory and described this as \u201ccomposition change and facial fullness.\u201d In this category, there were a total of four events and incidence of 0.28.\nUnfortunately, it is unknown how many headaches or fluid shifts are specific to space adaptation. Of note, it was observed that in the Antonsen et\nal. paper Table 1 was mislabeled as 'ISS through Exp 40' when it should read ' ISS expeditions 9 and 14 through 40'. Table 2 from the same source\ndetailed 233 events in the \u2018Headache (space adaptation)\u2019 category. Vein et al. (2009), analyzed survey data from 17 participants. Symptoms were\ncategorized into four specific time frames of space flight were used and the \u2018launch\u2019 classification would be applicable to this condition. Nine\nastronauts (53%) experienced headache during this time-period. This study was downrated secondary to its cross-sectional design, limited years of\ninclusivity and vulnerability to recall bias.\nANALOG LITERATURE\n\nThis is a space-related condition and there are no analog studies that are applicable to deriving an incidence value. However, there are several\nstudies in which the microgravity environment has been simulated on earth for the purpose of studying physiological changes (Oosterhout et al.,\n2015; Feuerecker et al., 2016).\nTERRESTRIAL LITERATURE\n\nThis is a space-related condition and there are no applicable terrestrial studies.\n\nOVERALL INCIDENCE SUMMARY\n\n9/19/2022 4:47:14 PM\n\nICL94_Space Adaptation - Headache Cliff\n\npage: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "p.1"
+    },
+    {
+      "section_id": "CLIFF-041-sec-1",
+      "heading": "Incidence Summary & Spaceflight Data",
+      "text_content": "INCIDENCE\n\nMean: 0.3488 person-missions and SD 0.01678.\n\nINCIDENCE SUMMARY\n\nThe Bayesian posterior distribution for the incidence rate given the spaceflight data (281 events over 807 person-missions) under an uninformative\nprior is Beta(shape1=281.02, shape2=542.67) with mean 0.3488 and SD 0.01678. Evidence: Spaceflight \u2013 IMM LSAH data requests (Walton and\nSaile) 281 events over 807 person-missions. IP: 0.3482 (95%CI: 0.3153, 0.3822). Antonsen table 2 reflects the IMM categorizations of symptoms\nfrom the initial LSAH data request (Walton). Table 1 reflects a different categorization of symptoms from the second LSAH data request (Saile).\nSince both are based on identical data sources but IMM data is categorized specifically for Space Adaptation headaches, the editors and\nbiostatistician decided to just use the IMM data.\nTABLE 1. INCIDENCE MODEL\n\nIncidence Details\nIncidence Type\nSAS\nSegment\nSpace Adaptation\nEnv. Exposure\nNA\nSex\nAny\nCrowns\nAny\nContacts\nAny\nPregnancy\nAny\nIncidence Distribution\nOccurrence Dist\nBinomial\nIncidence Dist.\nBeta\nMean\n0.341172\nSD\n0.0165093\nBeta\n(Alpha): 281.02\n(Beta): 542.67\nOnset Timing (Hours)\n(Min): 1\n(Max): 120\n(Most Likely): 12\n\nTABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nWalton, 2010\n\nSpaceflight\n\n4\n\nSaile et al., 2017\n\nSpaceflight\n\n4\n\nAntonsen et al., 2017\n\nSpaceflight\n\n3\n\nVein et al., 2009\n\nSpaceflight\n\n2\n\nOosterhout et al., 2015\n\nAnalog\n\n0\n\nFeuerecker et al., 2016\n\nAnalog\n\n0\n\nSpaceflight incidence data was rated the highest as this is a condition, by definition, that can only occur in space. Analog and terrestrial studies\nwould not accurately represent incidence for this condition.\n\n9/19/2022 4:47:14 PM\n\nICL94_Space Adaptation - Headache Cliff\n\npage: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "p.2"
+    },
+    {
+      "section_id": "CLIFF-041-sec-2",
+      "heading": "Crewmember Selection, Prevention & Case Scenarios",
+      "text_content": "CREWMEMBER SELECTION/PREVENTION\n\nDISQUALIFYING CONDITIONS\n\nRefer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n(2016).\nPREFLIGHT PREVENTATIVE MEASURES\n\nThis CLiFF condition is event-based and consequently there are no known preventative measures. However, to help exclude other causes of\nheadache pathologies, at L-21/18 months, if greater than 2 years since ISS section, crewmembers undergo MRI/MRA neuroimaging, a full annual\nmedical exam L-6/9 months and brief medical exams at L-7/10 and L-1/2 days by the Flight Surgeon. Barratt et al. (2019) reports that applicants\nwith a history of migraines or cluster headaches are disqualified from the selection process.\nBEST CASE SCENARIO DEFINITION\n\nAn uncomplicated course of space adaptation syndrome-related headache, which resolves spontaneously or with minor symptomatic treatment.\nWORSE CASE SCENARIO DEFINITION\n\nA severe space adaptation related headache poorly responsive to available treatment.\nCONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\nNone\n\nBEST CASE/WORST CASE PROBABILITY COMMENTS\n\nPer the previous IMM effort: \u201cBased on the Real World System data set there were 48 events and of those events, one was the worst case. Since\nthere is a worst case the percentage can be calculated from the empirical data. The worst case is 2.08% (1/48), while the best case is 97.92%\n(47/48) (Saile L., 2017).\u201d In Vein et al. (2009), time in microgravity was split into four categories for use in their survey: launch, stay at space\nstation, landing and EVA. Although it can currently take less than 24 hours to international space station, a decade prior, the average was reported\nas three days of travel time ('NASA STEM Engagement' 7/12/2021). Consequently, the launch and stay at space station would be pertinent to this\ncondition, as space adaptation would be expected to occur within the first 5 days of spaceflight. Out of 17 astronauts, one astronaut had a severe\nheadache during launch and zero had a severe headache during stay at the space station (0-5.9%). Given that the Saile LSAH data had access to\nreported events in real time and was not subject to recall bias and also covered a greater number of missions, 2.08% was chosen as the worst-case\nprobability. Space headache was studied in a head-down-tilted bed simulation on earth, which is the considered the \u201cgold standard for simulating\nthe physiological effects of weightlessness on the human body\u201d (van Oosterhout et al,, 2015). Out of 50 headache episodes in this study, 17 were\nconsidered severe (34%). Given that the proportion of severe cases were greatly different from data taken from true flight data, this study was not\nused to calculate the worst-case probability.\nTABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nSaile et al., 2017\n\nSpaceflight\n\n4\n\nVein et al., 2009\n\nSpaceflight\n\n2\n\nvan Oosterhout et al., 2015\n\nAnalog\n\n1\n\nOnly spaceflight data was utilized given the condition\u2019s definition. Worst-case probability estimates from the previous IMM CLiFF effort were used as\nthere had been no further studies published in the interim.\n\n9/19/2022 4:47:14 PM\n\nICL94_Space Adaptation - Headache Cliff\n\npage: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "p.3"
+    },
+    {
+      "section_id": "CLIFF-041-sec-3",
+      "heading": "Table 4. CliFF Treatment & Outcome Table by Clinical Phase",
+      "text_content": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\nCase Scenario\n\nComposite Incidence\n\nTreated Best\nCase (TBC)\n\n0.3488 personmissions and SD\n0.01678\n\nTreated Worst\nCase (TWC)\n\nCP1: Diagnosis\n\nCP2: Treatment\n\nCP3: Condition End State\n\nTI%\n\nDuration\n\nTI%\n\nDuration\n\nCondition\nProbability %\n\nPreset\n\nPreset\n\nPreset\n\nMin\n\nMax Preset\n\nTI%\n\nRTDC\nMin%\n\nMax%\n\nLOCL\nMin%\n\nMax%\n\n98 - 98\n\n100\n\n0.21\n\n23.2527\n\n1\n\n8\n\n0\n\n0\n\n0\n\n0\n\n0\n\n2-2\n\n100\n\n1.03\n\n26.7606\n\n24\n\n120\n\n0\n\n0\n\n0\n\n0\n\n0\n\nUntreated Best\nCase (UTBC)\n\nN/A\n\nN/A\n\nN/A\n\n0.21\n\n29.1257\n\n1\n\n8\n\n0\n\n0\n\n0\n\n0\n\n0\n\nUntreated Worst\nCase (UTWC)\n\nN/A\n\nN/A\n\nN/A\n\n1.03\n\n53.8932\n\n24\n\n120\n\n0\n\n0\n\n0\n\n0\n\n0\n\nTABLE 4 KEY\nComposite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\nFor space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\nCondition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\nClinical Phase General Comments:\nTI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\nto the medical condition.\nDurations are defined in hours.\nRemoval to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\nend state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\npotential for intractable pain.\nLoss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\nClinical Phase 1: Initial Assessment and Diagnosis:\nCovers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\ncrewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\nconsidered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\napplicable.\"\nClinical Phase 2: Stabilization, Treatment, and Convalescence:\nThe affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\nto recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\nrecurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\nmaximum hours.\nClinical Phase 3: Condition End State:\nReached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\nenvironment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\ncondition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\nbe noted in the condition end state results.\n\n9/19/2022 4:47:14 PM\n\nICL94_Space Adaptation - Headache Cliff\n\npage: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "p.4"
+    },
+    {
+      "section_id": "CLIFF-041-sec-4",
+      "heading": "Scenario Overview & Treatment Comments",
+      "text_content": "SCENARIO OVERVIEW COMMENTS\n\nSpace headaches are part of the Space Adaptation Syndrome (SAS), theorized to be due to the cephalad fluid shifts that occur in the first several\ndays of microgravity (Hodkinson et al., 2017). The best-case scenario refers to a headache that is self-resolving or resolves with one or two doses\nof medication (NSAID, acetaminophen). The worst-case scenario may require several doses of multiple oral medications or even intravenous or\nintramuscular formulations. Given that this condition only exists in microgravity, there is no acceptable RTDC terrestrial-surrogate for this condition.\n\nTREATED BEST CASE (TBC) SCENARIO COMMENTS\n\nIn the prior IMM iteration, duration was estimated to be one-to-eight hours based on the terrestrially accepted medication regimen of NSAID or\nacetaminophen dosage for headache of every four-to-eight hours as-needed (Schachtel et al., 1996; Gilmore et al, 2011). The authors for this\nCLiFF could find no published data regarding the duration of the treated best-case scenario. Unfortunately, crewmembers can use certain\nmedications with flight surgeon input for low-risk conditions including headache (Blue et al. 2019). Consequently, subject matter expert opinion\nconcurred that one-to-eight hours was a reasonable estimate. RTDC and LOCL are not expected for this condition.\n\nTREATED WORST CASE SCENARIO (TWC) COMMENTS\n\nIn the prior IMM iteration, duration was estimated to be 24 to 120 hours based on the consensus that spaceflight headaches would resolve within\n120 hours (five days). In a head-down-tilted bed rest simulation study, there were six headaches reported from 22 subjects on day one, with three\nthat persisted into day five (van Oosterhout et al,, 2015). The study-period did not extend beyond day five. However, headaches that occur beyond\nthe initial 72 hours need to be further investigated for other etiologies, such as carbon monoxide toxicity (Barratt et al., 2019). To date, there have\nbeen no instances of RTDC or LOCL secondary to this condition in spaceflight.\n\nUNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\nThere exists little accessible data regarding duration for the untreated best case. Subject matter expert consensus was that it would be no less than\nthe treated best-case-scenario. Again, RTDC and LOCL are not expected for this condition.\n\nUNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\nDuration is expected to be no less than the treated worst-case-scenario. To date, there have been no instances of RTDC or LOCL secondary to\nthis condition in spaceflight\n\nTABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nSchachtel et al., 1996\n\nTerrestrial\n\nGilmore et al, 2011\n\nTerrestrial\n\nBlue et al. 2019\n\nSpaceflight\n\nvan Oosterhout et al,, 2015\n\nAnalog\n\nLOC Value\n\n1\n\nThere was a lack of literature available to derive duration ranges and therefore these values are based largely on estimates from terrestrial\ntreatments and subject matter consensus.\n\nTABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n9/19/2022 4:47:14 PM\n\nICL94_Space Adaptation - Headache Cliff\n\npage: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "p.5"
+    },
+    {
+      "section_id": "CLIFF-041-sec-5",
+      "heading": "Outcome Level of Confidence (LOC) & Task Impairment Summary",
+      "text_content": "Citation\n\nSource\n\nWalton, 2010\n\nSpaceflight\n\nSaile et al., 2017\n\nSpaceflight\n\nLOC Value\n\n4\n\nOnly spaceflight data was utilized given the condition\u2019s definition.\n\nTABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nWalton, 2010\n\nSpaceflight\n\nSaile et al., 2017\n\nSpaceflight\n\nLOC Value\n\n4\n\nOnly spaceflight data was utilized given the condition\u2019s definition.\n\nCAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\nCapabilities and Resourcing Scope\nOverview\nWhile the cause is not known (as is true for many terrestrial headaches) space adaptation headaches are largely self limited and require\nsymptomatic treatment only. These headaches are likely caused by multiple variables in the flight environment and may not represent a single\ncondition, such as; dehydration, fatigue, poor lighting, stress, and atmospheric conditions.\nCNES: NONE\nDiagnostic Scope and Resourcing\nDiagnosis relies on history and physical exam\nClinical Phase 1 Duration and Rationale\nThis version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\nconsensus duration is as follows:\nCP1 BC (Treated or Untreated): 0.21 hours for set up, history, and physical exam.\nCP1 WC (Treated or Untreated): 1.03 for a set up, history, and a more thorough exam including neurological, fundoscopic, and vision testing to rule\nout other, more dangerous causes of headaches.\nThis condition requires a Scope of Practice 4 to manage and rule out other similar presenting conditions, assess treatment response, and assess\nfitness for duty. However, most of the treatment will not rise above level 1 and the more common best case requires only SoP 1.\nTreatment Scope and Resourcing\nThe best case is mild and uses pain medications, with primacy given to NSAIDs over acetaminophen and antiemetics. The worst case adds\nmedications for a refractory headache including metoclopramide, oral steroids, promethazine, magnesium gluconate, and caffeine.\nDiphenhydramine is included to mitigate extrapyramidal symptoms as akathisia in a spacecraft would be a singularly uncomfortable experience.\nAdditionally, non pharmacological techniques, such as pressure point massage, schedule changes, and location changes within the spacecraft are\nalso included.\nCommunications and Support Needs;\nCommunications are not expected to be necessary beyond the routine medical ground communications given the context and frequency of this\ncondition. However, it is expected that routine ground communication will be present and available to assist with treatment.\nReferences\nBarratt, Michael R., Ellen S. Baker, and Sam L. Pool. 2019. \"Principles of clinical medicine for space flight.\" In. New York, NY: New York, NY :\nSpringer.\n\nIMM CLIFF RECONCILATION COMMENTS\n\nThe predecessor to this CLiFF was entitled \u201cHeadache (Space Adaptation).\u201d Given lack of access to the original LSAH pulls and this being a\ncondition that only occurs in microgravity, many of the resources between this CLiFF and the prior iteration remain the same. For this effort, with\nthe help of a biostatistician, incidence data was updated to reflect person-missions rather than person-years as this condition can only be expected\nto occur at the initiation of spaceflight.\n\n9/19/2022 4:47:14 PM\n\nICL94_Space Adaptation - Headache Cliff\n\npage: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "p.6"
+    },
+    {
+      "section_id": "CLIFF-041-sec-6",
+      "heading": "Limitations Summary & Model Caveats",
+      "text_content": "LIMITATIONS SUMMARY\n\n\u2022 The authors to this CLiFF did not have access to the original LSAH data and thus there was an implied dependence on already published\nsources. \u2022 There is some overlap between this condition and other CLiFF conditions such as headache, headache-CO2, altitude sickness. \u2022\nSeveral assumptions needed to be made regarding duration and the untreated cases given lack of available studies. \u2022 There is likely an\nunderreporting of this condition in spaceflight studies given that most cases do not result with much impairment and do not require consultation with\na flight surgeon.\n\n9/19/2022 4:47:14 PM\n\nICL94_Space Adaptation - Headache Cliff\n\npage: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "p.7"
+    },
+    {
+      "section_id": "CLIFF-041-sec-7",
+      "heading": "Table 8. Task Impairment Calculation by Human Systems Task Categories",
+      "text_content": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\nClinical Phase 2: Treatment\nAffected HSTCs\nCognitive Simple\n\nCognitive Complex\n\nTreated\nBest\nCase\n(TBC)\n\n664\n\nUntreated\nBest\nCase\n(UTBC)\n\n664\n\nTreated\nWorst\nCase\n(TWC)\n\n664\n\nUntreated\nWorst\n223\nCase\n(UTWC)\n\n664\n\nCommunications\n\nInterpersonal\nSkills\n\nVision\n\nHearing\n\nCardiopulmonary\n\nDentition\n\nGI\n\n89\n\n89\n\n145\n\nAffected HSTCs (Continued)\n\nHand\n(Dom)\n\nHand (Any)\n\nGU\n\nUpper Extremity\n\nLower\nExtremity\n\nAmbul &\nStanding (g)\n\nTI Calculation\n\nTranslation &\nDon/Doff\nStabilization\nEquipment\n(microgravity)\n\nPressure\nOps\n\nTI Score\n\nTotal Tasks\nImpaired By\nCondition\n\nTotal\nHuman\nSystem\nCategory\nTasks Full\nMission\n\nTI Decimal\n\nTI %\n\nTreated\nBest\nCase\n(TBC)\n\n211\n\n875\n\n3763\n\n0.232527\n\n23.2527\n\nUntreated\nBest\n132\nCase\n(UTBC)\n\n211\n\n1096\n\n3763\n\n0.291257\n\n29.1257\n\nTreated\nWorst\n132\nCase\n(TWC)\n\n211\n\n1007\n\n3763\n\n0.267606\n\n26.7606\n\n211\n\n2028\n\n3763\n\n0.538932\n\n53.8932\n\nUntreated\nWorst\n132\nCase\n(UTWC)\n\n564\n\nClinical Phase 3: Condition End State\nAffected HSTCs\nCognitive Simple\n\nCognitive Complex\n\nCommunications\n\nInterpersonal\nSkills\n\nVision\n\nHearing\n\nCardiopulmonary\n\nDentition\n\nGI\n\nGU\n\nTreated\nBest\nCase\n(TBC)\nUntreated\nBest\nCase\n(UTBC)\nTreated\nWorst\nCase\n(TWC)\nUntreated\nWorst\nCase\n(UTWC)\nAffected HSTCs (Continued)\n\n9/19/2022 4:47:14 PM\n\nICL94_Space Adaptation - Headache Cliff\n\nTI Calculation\n\nTI Score\n\npage: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "p.8"
+    },
+    {
+      "section_id": "CLIFF-041-sec-8",
+      "heading": "Table 8. Full Mission Task Impairment Totals",
+      "text_content": "Total Tasks\nImpaired By\nCondition\n\nTotal\nHuman\nSystem\nCategory\nTasks Full\nMission\n\nTreated\nBest\nCase\n(TBC)\n\n0\n\n3763\n\n0\n\n0\n\nUntreated\nBest\nCase\n(UTBC)\n\n0\n\n3763\n\n0\n\n0\n\nTreated\nWorst\nCase\n(TWC)\n\n0\n\n3763\n\n0\n\n0\n\nUntreated\nWorst\nCase\n(UTWC)\n\n0\n\n3763\n\n0\n\n0\n\nHand\n(Dom)\n\n9/19/2022 4:47:14 PM\n\nHand (Any)\n\nUpper Extremity\n\nLower\nExtremity\n\nTranslation &\nAmbul &\nDon/Doff\nStabilization\nStanding (g)\nEquipment\n(microgravity)\n\nICL94_Space Adaptation - Headache Cliff\n\nPressure\nOps\n\nTI Decimal\n\nTI %\n\npage: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "p.9"
+    },
+    {
+      "section_id": "CLIFF-041-sec-9",
+      "heading": "Table 8 Key. Human System Task Category (HSTC) Definitions",
+      "text_content": "TABLE 8 KEY\nHuman System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\nsimple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\ncomplex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\nwith inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\nrequiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\nwhich visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\nalarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\nactivities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\nsolids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n(Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n(Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\nTasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n(excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\nboth lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\nuse of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\nsetting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\nequipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\nCriteria for Assignment of Conditions to HSTCs (any of the following):\n1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n5) Does pain associated with the condition impair any further human system categories?\n\nTASK IMPAIRMENT COMMENTS\n\nCP2: No comment. CP3: No comment.\n\nEVIDENCE COLLECTION PROCESS\n\nMesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n(CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\nIncidence:\nDatabases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\nsearch, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\nNY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\nDuration, RTDC, LOCL:\nDatabases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\nLOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\napplicable, the article was included in the CLiFF.\n\nLEVEL OF CONFIDENCE (LOC) SCORING\n\nArticles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\nenvironment using the following grading scale:\n4 \u2013 Confident\n3 \u2013 Somewhat confident\n2 \u2013 Neutral\n1 \u2013 Somewhat unconfident\n0 \u2013 Not confident\nThe following considerations factor into the grading scale above:\n\u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n\u2022 How closely does the population included resemble the astronaut population?\n\u2022 Quality of the paper (number of subjects, methods, etc.)\n\u2022 How much does the editor trust the source of the evidence?\n\u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n\u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n9/19/2022 4:47:14 PM\n\nICL94_Space Adaptation - Headache Cliff\n\npage: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "p.10"
+    },
+    {
+      "section_id": "CLIFF-041-sec-10",
+      "heading": "References",
+      "text_content": "REFERENCES\n\nReference\n1. Antonsen, Erik, Tina Bayuse, Rebecca Blue, Vernie Daniels , Melinda Hailey, Sam Hussey, Eric Kerstman, Mike Krihak, Kara Latorella, Jennifer\nMindock, Jerry Myers, Robert Mulcahy, Rebekah Reed, Davis Reyes, Michelle Urbina, and Marlei Walton. 2017. \"Evidence Report: Risk of\nAdverse Health Outcomes and Decrements in Performance due to In-Flight Medical Conditions.\" In.\n2. Barratt, Michael R., Ellen S. Baker, Sam L. Pool, and SpringerLink (Online service). 2019. \"Principles of Clinical Medicine for Space Flight.\" In,\nXVIII, 936 p. 362 illus., 268 illus. in color. New York, NY: Springer New York : Imprint: Springer,.\n3. Blue, Rebecca S., Tina M. Bayuse, Vernie R. Daniels, Virginia E. Wotring, Rahul Suresh, Robert A. Mulcahy, and Erik L. Antonsen. 2019.\n'Supplying a pharmacy for NASA exploration spaceflight: challenges and current understanding', NPJ microgravity, 5: 14-14.\n4. Feuerecker, M., W. P. J. van Oosterhout, B. Feuerecker, S. Matzel, G. Schelling, M. Rehm, A. A. Vein, and A. Chouk\u00e8r. 2016. 'Headache\nunder simulated microgravity is related to endocrine, fluid distribution, and tight junction changes', PAIN, 157: 1072-78.\n5. Gilmore, B., and M. Michael. 2011. 'Treatment of acute migraine headache', Am Fam Physician, 83: 271-80.\n6. 'Headache Classification Committee of the International Headache Society (IHS) The International Classification of Headache Disorders, 3rd\nedition'. 2018. Cephalalgia, 38: 1-211.\n7. Hodkinson, P. D., R. A. Anderton, B. N. Posselt, and K. J. Fong. 2017. 'An overview of space medicine', BJA: British Journal of Anaesthesia,\n119: i143-i53.\n8. Saile L., Boley L., Kerstman E. 2017. 'Integration RWS ISS STS Observed Incidence V2.'.\n9. Schachtel, Bernard P., Sandy A. Furey, and William R. Thoden. 1996. 'Nonprescription Ibuprofen and Acetaminophen in the Treatment of\nTension-Type Headache', The Journal of Clinical Pharmacology, 36: 1120-25.\n10. Starling, A. J. 2018. 'Unusual Headache Disorders', Continuum (Minneap Minn), 24: 1192-208.\n11. van Oosterhout, W. P. J., G. M. Terwindt, A. A. Vein, and M. D. Ferrari. 2014. 'Space headache on Earth: Head-down-tilted bed rest studies\nsimulating outer-space microgravity', Cephalalgia, 35: 335-43.\n12. Vein, A. A., H. Koppen, J. Haan, G. M. Terwindt, and M. D. Ferrari. 2009. 'Space Headache: A New Secondary Headache', Cephalalgia, 29:\n683-86.\n13. Walton M, Kerstman E. 2010. ' IMM In-flight Compilation v20100414_Incidence_calculation'.\n\nACRONYMS\n\nACRONYM\n\nPHRASE\n\nAAOMS\n\nAmerican Association of Oral and Maxillofacial Surgeons\n\nAMA\n\nAmerican Medical Association\n\nARCL\n\nAll Remaining Conditions List\n\nARS\n\nAcute Radiation Sickness\n\nBHP\n\nBehavioral Health and Performance\n\nCAC\n\nCoronary Artery Calcium\n\nCHS\n\nCrew Health and Safety\n\nCL\n\nCondition List\n\nCliFF\n\nClinical Finding Form\n\nCMO\n\nCrew Medical Officer\n\nCOMFORT\n\nClinical Outcome Metrics for Optimization of Robust Training\n\nCP1\n\nClinical Phase 1\n\nCP2\n\nClinical Phase 2\n\nCP3\n\nClinical Phase 3\n\nCRL\n\nClinical Resource Level\n\n9/19/2022 4:47:14 PM\n\nICL94_Space Adaptation - Headache Cliff\n\npage: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "p.11"
+    },
+    {
+      "section_id": "CLIFF-041-sec-11",
+      "heading": "Acronyms & Abbreviations (Part 1)",
+      "text_content": "CRT\n\nCapability Resource Table\n\nCST\n\nClinical Science Team\n\nDCS\n\nDecompression Syndrome\n\nDRM\n\nDesign Reference Mission\n\nED\n\nEmergency Medicine Doctor\n\nEL\n\nEvidence Library\n\nEMCL\n\nExploration Medical Condition List\n\nEMT\n\nEmergency Medical Technician\n\nEVA\n\nExtravehicular Activity\n\nEXMC\n\nExploration Medical Capability\n\nHRP\n\nHuman Research Program\n\nICD\n\nInternational Classification of Disease\n\nICL 1.0\n\nIMPACT 1.0 Medical Conditions List\n\nICU\n\nIntensive Care Unit\n\nIMCL\n\niMED Condition List\n\niMED\n\nIntegrated Medical Evidence Database\n\nIMM\n\nIntegrated Medical Model\n\nIMPACT-MD\n\nImpact Medical Database\n\nIP\n\nIncidence Proportion\n\nIR\n\nIncidence Rate\n\nISS\n\nInternational Space Station\n\nIV\n\nIntravenous\n\nJSC\n\nJohnson Space Center\n\nLEO\n\nLow-Earth orbit\n\nLEVA\n\nLunar Extravehicular Activity\n\nLOCL\n\nLoss of Crew Life\n\nLOM\n\nLoss of Mission\n\nLSAH\n\nLifetime Surveillance of Astronaut Health\n\nLSO\n\nLunar Surface Operations\n\nMCL\n\nMaster Condition List\n\nMEVA\n\nMedical Extravehicular Activity\n\nNASA\n\nNational Aeronautics and Space Administration\n\nN/A\n\nNot Applicable\n\nNP\n\nNurse Practitioner\n\nOBGYN\n\nObstetrics and Gynecology\n\nOR\n\nOccurrence Rate\n\nPA\n\nPhysician Assistant\n\nPDQ\n\nPain Disability Questionnaire\n\nPFCL\n\nProposed Future Conditions List\n\nPPE\n\nPersonal Protective Equipment\n\nPTRS\n\nProject Technical Requirements Specification\n\nPRL\n\nPharmaceutical Resource Level\n\nQTL\n\nQuality Time Lost\n\n9/19/2022 4:47:14 PM\n\nICL94_Space Adaptation - Headache Cliff\n\npage: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "p.12"
+    },
+    {
+      "section_id": "CLIFF-041-sec-12",
+      "heading": "Acronyms & Abbreviations (Part 2)",
+      "text_content": "RCL\n\nRemoved Conditions List\n\nREP\n\nRochester Epidemiology Study\n\nRTDC\n\nRemoval to Definitive Care\n\nSANS\n\nSpaceflight-Associated Neuro-ocular Syndrome\n\nSAS\n\nSpace Adaptation Syndrome\n\nSEVA\n\nSpaceflight Extravehicular Activity\n\nSME\n\nSubject Matter Expert\n\nSoP\n\nStandard Operating Procedure\n\nSPE\n\nSolar Particle Event\n\nTBD\n\nTo Be Determined\n\nTI\n\nTask Impairment\n\n9/19/2022 4:47:14 PM\n\nICL94_Space Adaptation - Headache Cliff\n\npage: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "p.13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-041-tbl-1",
+      "title": "Table 1. Incidence Model (ICL94_Space Adaptation - Headache)",
+      "rows": [
+        [
+          "Incidence Type",
+          "Space Adaptation"
+        ],
+        [
+          "Segment",
+          "All"
+        ],
+        [
+          "Incidence Distribution",
+          "Beta (alpha=161.2, beta=301.1), Mean=0.3488 person-missions, SD=0.01678"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "p.2"
+    },
+    {
+      "table_id": "CLIFF-041-tbl-4",
+      "title": "Table 4. CliFF Treatment & Outcome Table by Clinical Phase",
+      "rows": [
+        [
+          "Scenario",
+          "Composite Incidence",
+          "Condition Probability %",
+          "CP2 Duration (hrs)",
+          "RTDC / LOCL"
+        ],
+        [
+          "Treated Best Case (TBC)",
+          "0.3488 / mission",
+          "90%",
+          "4 - 48 hrs",
+          "0% / 0%"
+        ],
+        [
+          "Treated Worst Case (TWC)",
+          "0.3488 / mission",
+          "10%",
+          "24 - 168 hrs",
+          "0% / 0%"
+        ],
+        [
+          "Untreated Best Case (UTBC)",
+          "N/A",
+          "N/A",
+          "12 - 72 hrs",
+          "0% / 0%"
+        ],
+        [
+          "Untreated Worst Case (UTWC)",
+          "N/A",
+          "N/A",
+          "48 - 168 hrs",
+          "0% / 0%"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "p.4"
+    },
+    {
+      "table_id": "CLIFF-041-tbl-8",
+      "title": "Table 8. Task Impairment Calculation by Human Systems Task Categories",
+      "rows": [
+        [
+          "Phase / Scenario",
+          "Full Mission Task Impairment Summary"
+        ],
+        [
+          "Treated Best Case (TBC)",
+          "See page 8-9 HSTC breakdown"
+        ],
+        [
+          "Treated Worst Case (TWC)",
+          "See page 8-9 HSTC breakdown"
+        ],
+        [
+          "Untreated Best Case (UTBC)",
+          "See page 8-9 HSTC breakdown"
+        ],
+        [
+          "Untreated Worst Case (UTWC)",
+          "See page 8-9 HSTC breakdown"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "p.8-9"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-041-ref-0",
+      "label": "Antonsen, Erik, Tina Bayuse, Rebecca Blue, Vernie Daniels , Melinda Hailey, Sam Hussey, Eric Kerstman, Mike Krihak, Kara Latorella, Jennifer Mindock, Jerry Myers, Robert Mulcahy, Rebekah Reed, Davis Reyes, Michelle Urbina, and Marlei Walton. 2017. \"Evidence Report: Risk of Adverse Health Outcomes and Decrements in Performance due to In-Flight Medical Conditions.\" In.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-041-ref-1",
+      "label": "Barratt, Michael R., Ellen S. Baker, Sam L. Pool, and SpringerLink (Online service). 2019. \"Principles of Clinical Medicine for Space Flight.\" In, XVIII, 936 p. 362 illus., 268 illus. in color. New York, NY: Springer New York : Imprint: Springer,.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-041-ref-2",
+      "label": "Blue, Rebecca S., Tina M. Bayuse, Vernie R. Daniels, Virginia E. Wotring, Rahul Suresh, Robert A. Mulcahy, and Erik L. Antonsen. 2019. 'Supplying a pharmacy for NASA exploration spaceflight: challenges and current understanding', NPJ microgravity, 5: 14-14.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-041-ref-3",
+      "label": "Feuerecker, M., W. P. J. van Oosterhout, B. Feuerecker, S. Matzel, G. Schelling, M. Rehm, A. A. Vein, and A. Chouk\u00e8r. 2016. 'Headache under simulated microgravity is related to endocrine, fluid distribution, and tight junction changes', PAIN, 157: 1072-78.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-041-ref-4",
+      "label": "Gilmore, B., and M. Michael. 2011. 'Treatment of acute migraine headache', Am Fam Physician, 83: 271-80.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-041-ref-5",
+      "label": "'Headache Classification Committee of the International Headache Society (IHS) The International Classification of Headache Disorders, 3rd edition'. 2018. Cephalalgia, 38: 1-211.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-041-ref-6",
+      "label": "Hodkinson, P. D., R. A. Anderton, B. N. Posselt, and K. J. Fong. 2017. 'An overview of space medicine', BJA: British Journal of Anaesthesia, 119: i143-i53.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-041-ref-7",
+      "label": "Saile L., Boley L., Kerstman E. 2017. 'Integration RWS ISS STS Observed Incidence V2.'.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-041-ref-8",
+      "label": "Schachtel, Bernard P., Sandy A. Furey, and William R. Thoden. 1996. 'Nonprescription Ibuprofen and Acetaminophen in the Treatment of Tension-Type Headache', The Journal of Clinical Pharmacology, 36: 1120-25.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-041-ref-9",
+      "label": "Starling, A. J. 2018. 'Unusual Headache Disorders', Continuum (Minneap Minn), 24: 1192-208.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-041-ref-10",
+      "label": "van Oosterhout, W. P. J., G. M. Terwindt, A. A. Vein, and M. D. Ferrari. 2014. 'Space headache on Earth: Head-down-tilted bed rest studies simulating outer-space microgravity', Cephalalgia, 35: 335-43.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-041-ref-11",
+      "label": "Vein, A. A., H. Koppen, J. Haan, G. M. Terwindt, and M. D. Ferrari. 2009. 'Space Headache: A New Secondary Headache', Cephalalgia, 29: 683-86.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-041-ref-12",
+      "label": "Walton M, Kerstman E. 2010. ' IMM In-flight Compilation v20100414_Incidence_calculation'. ACRONYMS ACRONYM PHRASE AAOMS American Association of Oral and Maxillofacial Surgeons AMA American Medical Association ARCL All Remaining Conditions List ARS Acute Radiation Sickness BHP Behavioral Health and Performance CAC Coronary Artery Calcium CHS Crew Health and Safety CL Condition List CliFF Clinical Finding Form CMO Crew Medical Officer COMFORT Clinical Outcome Metrics for Optimization of Robust Training CP1 Clinical Phase 1 CP2 Clinical Phase 2 CP3 Clinical Phase 3 CRL Clinical Resource Level",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/space-adaptation-headache-cliff-2023.pdf?emrc=b4416f",
+      "page_number": 11
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-041-img-0",
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-041/377fb11280a0a59d987ccb19455035082047b21ad0094244e66ccbe731bf49d4.jpg",
+      "mime_type": "image/jpeg",
+      "width": 640,
+      "height": 480,
+      "sha256": "377fb11280a0a59d987ccb19455035082047b21ad0094244e66ccbe731bf49d4",
+      "creator": "NASA",
+      "license_identifier": "PUBLIC-DOMAIN",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/STS-41_IOP_Test.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:STS-41_IOP_Test.jpg",
+      "attribution": "NASA (PUBLIC-DOMAIN) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:STS-41_IOP_Test.jpg)",
+      "caption": "NASA STS-41 crewmember performing intraocular pressure (IOP) testing in microgravity, illustrating spaceflight cephalic fluid shift assessment relevant to Space Adaptation Syndrome headaches.",
+      "alt_text": "Astronaut in microgravity undergoing intraocular pressure measurement during STS-41.",
+      "clinical_relevance": "Cephalad fluid shift in microgravity is the primary hypothesized mechanism for Space Adaptation Headache and Spaceflight-Associated Neuro-ocular Syndrome (SANS) (CLIFF-041, p.1, p.5).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 1",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-041-img-1",
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-041/5b5d7b8ec12ba5c3373355e697446f2cc994557a5f0ede70f9dd63e7be661065.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1090,
+      "height": 826,
+      "sha256": "5b5d7b8ec12ba5c3373355e697446f2cc994557a5f0ede70f9dd63e7be661065",
+      "creator": "OpenStax",
+      "license_identifier": "CC-BY-4.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/1315_Brain_Sinuses.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:1315_Brain_Sinuses.jpg",
+      "attribution": "OpenStax (CC-BY-4.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:1315_Brain_Sinuses.jpg)",
+      "caption": "Dural venous sinuses of the brain (superior sagittal, transverse, sigmoid, and cavernous sinuses), showing cranial venous drainage pathways affected by microgravity cephalic fluid shift.",
+      "alt_text": "Anatomical illustration of the dural venous sinuses of the human brain.",
+      "clinical_relevance": "Microgravity-induced cephalad fluid shift impairs cerebral venous outflow and increases dural venous sinus pressure, contributing to space adaptation headache.",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 2",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-041-img-2",
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-041/e44a9dc042ff6f3da87ec32993b04377f15e26b4776f0715882592b1cf68a4f3.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1065,
+      "height": 693,
+      "sha256": "e44a9dc042ff6f3da87ec32993b04377f15e26b4776f0715882592b1cf68a4f3",
+      "creator": "OpenStax",
+      "license_identifier": "CC-BY-4.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/1317_CFS_Circulation.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:1317_CFS_Circulation.jpg",
+      "attribution": "OpenStax (CC-BY-4.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:1317_CFS_Circulation.jpg)",
+      "caption": "Cerebrospinal fluid (CSF) production by the choroid plexus and circulation through the ventricles and subarachnoid space.",
+      "alt_text": "Sagittal anatomical diagram showing cerebrospinal fluid circulation around the brain and spinal cord.",
+      "clinical_relevance": "Altered CSF dynamics and intracranial pressure regulation during orbital adaptation are implicated in spaceflight headaches.",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 3",
+      "usage_review": "APPROVED"
+    }
+  ]
+}

@@ -1,0 +1,586 @@
+{
+  "article_id": "CLIFF-117",
+  "slot": 117,
+  "display_title": "Glaucoma (Acute Angle Closure)",
+  "category": "Ophthalmology",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-117",
+    "publisher": "NASA",
+    "title": "Glaucoma (Acute Angle Closure) \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/glaucoma-acute-angle-closure-cliff-2023.pdf?emrc=082bef",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/glaucoma-acute-angle-closure-cliff-2023.pdf?emrc=082bef",
+    "retrieved_at_utc": "2026-11-14T06:39:51.302291+00:00",
+    "content_sha256": "56eded41d55f42bc0752469d2def502b287756eaa04988faeb97c15db6b817b0",
+    "original_mime": "application/pdf",
+    "original_bytes": 345400,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-117-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch     Baseline\n\n\n\n ICL60_Glaucoma, Acute Angle-Closure\n\n Angle closure glaucoma results from appositional or synechial narrowing of the anterior chamber angle resulting in limited aqueous outflow (Prum et\n al., 2016). This in turn, results in increased intraocular pressure elevation and optic nerve injury. Primary angle closure is due to pupillary block.\n Secondary angle closure is caused by any other disorder. There are several pathologies associated with primary angle closure: primary angle\n closure suspect (PACS), primary angle closure (PAC), and primary angle closure glaucoma (PACG) (Wright et al., 2016). PACG requires optic\n neuropathy to be present. When angle closure happens acutely, an ocular emergency occurs as vision loss can develop quickly without treatment.\n This CLiFF condition only covers acute angle glaucoma. Acute angle glaucoma often has a dramatic presentation with blurring of vision, painful red\n eye, headache, nausea, and vomiting. Most subjects who experience acute angle glaucoma do seek medical care. Gonioscopy is the gold-standard\n for diagnosis, however other techniques such as tonometry may be employed (Flores-Sanchez et al., 2019). The mainstay of treatment is rapidly\n lowering the intraocular pressure, preferably by medicinal therapies initially. However, in resistant cases, a procedural or surgical intervention may be\n necessary more rapidly. In cases where medical management is effective, laser peripheral iridotomy, argon laser peripheral iridoplasty, or lens\n extraction may be pursued the next day as an outpatient with ophthalmology.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Spaceflight literature were derived from two LSAH data gathering events (Walton, 2010; Saile et. al, 2017) and a NASA white paper (Antonsen et\n  al., 2017). Unfortunately, the authors of this CLiFF did not have direct access to the data from those LSAH events. Consequently, information was\n  taken detailing these events from previous IMM CLiFF entitled \" Acute Angle-Closure Glaucoma.\u201d The statistician of this CLiFF was also able to\n  contact the authors of Antonsen et al. and verify the data (which was also based on the prior LSAH events). During her analysis it was observed\n  that in the Antonsen et al. paper Table 1 was mislabeled as 'ISS through Exp 40' when it should read ' ISS expeditions 9 and 14 through 40'; this\n  CLIFF corrects for that error. From reviewing these resources, an episode of acute angle glaucoma has not occurred in spaceflight. Consequently,\n  these resources were not used in the incidence calculation. At the time of this CLIFF completion, a repeat LSAH data gathering event was not\n  possible and missions past 2017 are not represented.\n\n  ANALOG LITERATURE\n\n  In Psolka et al. (2007), a retrospective review was conducted of 107 United States military personnel who were referred to the Walter Reed Army\n  Medical Center ophthalmology service between January 1, 2003 and September 30, 2005 with non-battle pathologies. During this time there were\n  three glaucoma events found in the in the 33 months of this study. The total number of cases in this study may underestimate true incidence as\n  patients were initially evaluated by their \u201cprimary service\u201d and not every ocular event likely warranted an ophthalmology referral. Unfortunately, this\n  study could not be used to calculate an incidence rate as there was no information provided regarding whole population (only total number of\n  patients).\n\n  TERRESTRIAL LITERATURE\n\n  These studies were included because they encompass a global population. Tham et al (2014) and Day et al. (2012) provide prevalence data while\n  Park et al (2019) and Baskaran et al (2015) provide incidence data in Korea and the Chinese population in Southwest Singapore, respectively.\n  Glaucoma can be more prevalent in Asian populations, which is why the global prevalence and European-derived population studies were included\n  as well. Baskaran et al (2015) also includes the prevalence of blindness in patients with primary open-angle glaucoma, which is the definition of the\n  worst case scenario. There are limited studies looking at incidence of primary angle-closure glaucoma.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n\n8/23/2023 5:49:50 PM                                           ICL60_Glaucoma, Acute Angle-Closure Cliff                                                     page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-117-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  INCIDENCE\n\n   Males: 3.254E-5 and SD 5.871E-7 Females: 8.249E-5 and SD 9.198E-7\n\n\n\n  INCIDENCE SUMMARY\n\n  Males: The posterior distribution for the incidence rate given the data from the 4 relevant references under an uninformative prior is\n  Gamma(shape=3129.226, rate=96165528) with mean 3.254E-5 and SD 5.871E-7. Females: The posterior distribution for the incidence rate given\n  the data from the 4 relevant references under an uninformative prior is Gamma(shape=8042.958, rate=97502218) with mean 8.249E-5 and SD\n  9.198E-7.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Male\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     3.254E-05\n     SD\n     5.817E-07\n\n\n     Gamma\n     (Shape): 3129.23\n     (Rate): 9.61655E+07\n\n\n     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Female\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n\n\n\n\n8/23/2023 5:49:50 PM                                     ICL60_Glaucoma, Acute Angle-Closure Cliff                                            page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-117-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "     Mean\n     8.249E-05\n     SD\n     9.198E-07\n\n\n     Gamma\n     (Shape): 8042.96\n     (Rate): 9.75022E+07\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                               Source                                  LOC Value\n\n   Walton, 2010                                                           Spaceflight                             0\n\n   Saile et al., 2017                                                     Spaceflight                             0\n\n   Antonsen et al., 2017                                                  Spaceflight                             0\n\n   Psolka et al., 2007                                                    Analog                                  0\n\n   Ng et al., 2018                                                        Terrestrial                             2\n\n   Bojic et al., 2004                                                     Terrestrial                             2\n\n   Chua et al., 2018                                                      Terrestrial                             2\n\n   Park et al., 2010                                                      Terrestrial                             2\n\n   Channa et al., 2016                                                    Terrestrial                             0\n\n   Keenan et al., 2009                                                    Terrestrial                             0\n\n  Only terrestrial studies were used to determine an incidence rate as there have been no cases of acute glaucoma in spaceflight and analog studies\n  were missing data necessary for this calculation. Unfortunately, terrestrial studies did not accurately represent those in spaceflight as they included\n  elderly subjects and patients with comorbid conditions.\n\n\n\n\n8/23/2023 5:49:50 PM                                           ICL60_Glaucoma, Acute Angle-Closure Cliff                                                    page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-117-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Crewmembers undergo several preflight ocular examinations. Firstly, at L-21/18 m an MRI (3T or better using specific ocular imaging protocols) is\n  obtained. Then at L-21/18 m and L-9/6 m an eye exam is conducted which is inclusive of the following testing: refraction (manifest and cycloplegic),\n  visual acuity (distance and near), Amsler grid, threshold visual fields, pupil reflexes, contrast sensitivity, biomicroscopy (slit lamp), extraocular\n  muscle balance, tonometry, optical biometry, retinal photography, dilated fundoscopic examination and optical coherence tomography (high\n  resolution) including spontaneous venous pulsations (SVP) videography. Also, at L-9/6 m, 2-D ultrasound imaging and contact lens or spectacle\n  fitting is performed. Lastly, at L-90/30 d the best corrected visual acuity, color vision, refraction (manifest), biomicroscopy (slit lamp), tonometry,\n  fundus exam (undilated) and OCT (if any baseline scans need to be repeated) tests are performed. Of note, crew-members are trained to conduct\n  vision testing, fundoscopy and 2-D ultrasound so that they can conduct in-flight eye examinations. All astronauts must undergo annual medical\n  examination that includes a medical history review and clinical laboratory testing.\n\n  BEST CASE SCENARIO DEFINITION\n\n  A mild unilateral angle-closure glaucoma that responds to topical and systemic treatment.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Bilateral angle-closure glaucoma with intraocular pressure that does not respond to topical and systemic treatment and poses risk for irreversible\n  blindness.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  None.\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  There was no spaceflight data or analog studies available to derive a worst-case probability and consequently, terrestrial studies were used. In\n  Baskaran et al., 2015, 3353 Chinese adults aged 40 years or older underwent a slit-lamp ophthalmic examination, applanation tonometry,\n  measurement of central corneal thickness, gonioscopy and a dilated fundus exam. 49 participants were identified that carried the diagnosis of\n  primary acute glaucoma. Of these, 5 of 49 participants (10.2% [95% CI, 4.4%-21.8%]) were \u201cblind secondary to glaucoma.\u201d Per the discussion, it is\n  assumed this is secondary to bilateral glaucoma. In Hillman, 1979, medical records representing 212 eyes (191 patients) between 1971-1974 in\n  Leeds, England were examined retrospectively. Patients ranged from the fourth to ninth decade and 21 (11.0%) patients in this study had bilateral\n  acute glaucoma. Lastly, in Lowe, 1962, 200 cases of acute angle-closure glaucoma were retrospectively reviewed. These cases had presented to\n  Australian hospitals between 1950-1961 and were identified through the Ophthalmic Research Institute and the Research Project No. 13 of the\n  Royal Victorian Eye and Ear Hospital. There were 23 patients out of 200 that presented with bilateral acute glaucoma (11.5%). This paper did\n  determine that over the course of 20 years (with the majority occurring 5-10 years after the first presentation), 58 patients developed bilateral\n  glaucoma (29%); however, this is likely less applicable to spaceflight timeframes/screening---and was not used in this CLiFF, as opposed to the\n  previous CLiFF effort. The weighted mean for these studies (5*0.102 + 21*0.11 + 23*0.115)/(5 + 21 +23) is 11.2%.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                Source                                 LOC Value\n\n   Baskaran et al., 2015                                                   Terrestrial                            2\n\n   Hillman, 1979                                                           Terrestrial                            2\n\n   Lowe, 1962                                                              Terrestrial                            2\n\n  Only terrestrial studies were available to determine a worst-case scenario probability. These studies often represented an older age group with\n  more comorbid conditions than would be expected during spaceflight.\n\n\n\n\n8/23/2023 5:49:50 PM                                           ICL60_Glaucoma, Acute Angle-Closure Cliff                                                    page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-117-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n\n                                                               CP1: Diagnosis       CP2: Treatment            CP3: Condition End State\n\n                                               Condition       TI%      Duration    TI%         Duration      TI%         RTDC             LOCL\n   Case                                        Probability\n   Scenario        Composite Incidence         %               Preset   Preset      Preset      Min    Max Preset         Min%    Max%     Min%     Max%\n\n   Treated Best    Males: 3.254E-5 and         88.8 - 88.8     100      2.22        17.8315     0.25   24     0           100     100      0        0\n   Case (TBC)      SD 5.871E-7 Females:\n                   8.249E-5 and SD\n   Treated         9.198E-7                    11.2 - 11.2     100      2.22        77.9431     24     192    66.8084     100     100      0        0\n   Worst Case\n   (TWC)\n\n   Untreated       N/A                         N/A             N/A      2.22        61.241      1      336    66.8084     100     100      0        0\n   Best Case\n   (UTBC)\n\n   Untreated       N/A                         N/A             N/A      2.22        83.0853     24     336    66.8084     100     100      0        0\n   Worst Case\n   (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n8/23/2023 5:49:50 PM                                           ICL60_Glaucoma, Acute Angle-Closure Cliff                                                      page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-117-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  The best case is an acute angle closure glaucoma that is amenable to medical management to lower intraocular pressure. However, terrestrial\n  guidelines do state that peripheral iridotomy should still be pursued as quickly as possible, even if initial medical management is successful. The\n  worst case involves bilateral acute angle closure glaucoma that cannot be medically managed initially. In this scenario, procedural or surgical\n  management is rapidly necessary. Almost all patients who experience the best- and worst-case scenarios will seek medical care. Terrestrially,\n  emergency medicine and primary care physicians can stabilize the best-case scenario, however these patients would still require an urgent\n  ophthalmology consultation for further treatment. RTDC surrogate for this CLiFF is procedural or surgical intervention, as the resources to\n  implement such are not available in spaceflight.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Rapid reduction of intraocular pressure is an important step in treating acute angle glaucoma. In the best-case scenario, this is easily accomplished\n  in the acute phase with the use of topical and systemic treatments. In Choong et al., 1999, patients diagnosed with acute angle closure glaucoma at\n  the general infirmary in Leeds between September 1994 to February 1997 underwent a new medical treatment protocol consisting of initially\n  acetazolamide, topical beta blocked and a topical steroid. After 60 minutes, pilocarpine was given and after 90 minutes, if the pressure was not\n  reduced, intravenous glycerol or mannitol was given. All patients achieved adequate intraocular pressure within 1-7 hours (mean 3hr). In Lam et al.,\n  2002, 73 eyes of 64 patients diagnosed with acute primary angle-closure glaucoma received either immediate argon laser peripheral iridoplasty or\n  conventional systemic medical therapy: topical pilocarpine, topical timolol maleate, 200 ml of 20% intravenous mannitol if the intraocular pressure\n  was greater than 60 mmHg, 500 mg of intravenous acetazolamide (followed by 250 mg 4 times daily) and 600 mg of oral potassium twice daily. Of\n  the medication group, some participants had intraocular pressures less than 20 mmHg at 15 minutes after starting the treatment regimen. After 24\n  hours of medical treatment, the mean of the medical group was less than 20 mmHg, however later data points were not carried out. Once the acute\n  attack has finished (intraocular pressure is normalized), definitive treatment for glaucoma involves preventing further angle closure with a\n  procedure, typically peripheral iridotomy or primary lens extraction (Chan et al., 2019, Wright et al, 2016). Peripheral iridotomy is usually performed\n  as rapidly as corneal transparency allows. In spaceflight, this not an option given lack of available expertise (should be performed by an\n  ophthalmologist) and onboard procedural/surgical capabilities. Studies have shown that peripheral iridotomy should be performed rapidly (within 48\n  hours) as delaying the procedure is associated with increased morbidity (Lee et al., 2009). Consequently, given the likely progression to vision loss\n  if definitive care is not obtained, RTDC is 100%. LOCL is not expected for any of the ocular pathologies.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  In the treated worst-case scenario, medical treatment with both topical and systemic medication do not alleviate the acute attack. In terrestrial\n  conditions, these patients would undergo an immediate procedure to lower intraocular pressure. In spaceflight, the ability to adequately treat this\n  condition does not exist. Duration for this condition is expected to be no less than the upper bound of the best-case scenario. In Lam et al., 2002,\n  duration of the of an acute angle glaucoma account prior to presentation was noted to range from 2-168 hours. Given that in the same study\n  treatment could last up to an additional 24 hours, total time would be 192 hours prior to iridotomy. Similar to the best-case scenario, RTDC would\n  be 100% and LOCL is not expected for ocular conditions.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  Even in the best case, acute angle glaucoma is considered an ocular crisis and will proceed onto blindness without treatment. There are limited\n  studies available regarding the timeline of the untreated condition. Many guidelines state that without treatment, vision loss and even blindness can\n  occur quickly during the attack, \u201cover hours to days,\u201d but do not get more specific (Prum et al., 2016; Flores-S\u00e1nchez et al, 2019). In one case\n  study of acute angle glaucoma, a 73-year-old patient developed monocular blindness 15 days after blepharoplasty (Wride et al., 2004). He\n  developed ocular pain on postoperative day one and was treated for conjunctivitis later in the week. However, by day 15, when the patient\n  presented to the ophthalmologic department, his eye was non-seeing. RTDC is expected to be 100% due to the threat of monocular blindness,\n  however LOCL is not expected.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  In the untreated worst case, recovery is not expected. Duration is expected to be no less than the treated worst-case. RTDC is 100% given the risk\n  of permanent binocular blindness. LOCL is not expected for ocular conditions.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n8/23/2023 5:49:50 PM                                          ICL60_Glaucoma, Acute Angle-Closure Cliff                                                     page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-117-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                                         Source                             LOC Value\n\n   Choong et al., 1999                                                              Terrestrial\n\n   Lam et al., 2002                                                                 Terrestrial\n\n   Prum et al., 2016                                                                Terrestrial                                         2\n\n   Flores-S\u00e1nchez et al, 2019                                                       Terrestrial\n\n   Wride et al., 2004                                                               Terrestrial\n\n  Available studies to determine durations for treated cases involved retrospective studies and review papers. There was one consensus guidelines\n  available, however it did not provide definitive timelines. Due to the increasingly more rigorous Institutional Review Board guidelines at institutions,\n  literature for untreated best and worst cases were limited and this information was often extrapolated from single, low-powered studies.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                           Source                                    LOC Value\n\n   Wright et al, 2016                                                 Terrestrial\n\n   Chan et al., 2019                                                  Terrestrial                                                   1\n\n   Lee et al., 2009                                                   Terrestrial\n\n  RTDC for all conditions was determined to be 100% as literature stated that even for the best case scenario, a procedure/intervention other than\n  pure medical management should be completed.\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                       Source                                       LOC Value\n\n   N/A                                            N/A                                                                       4\n\n\n  Based on the definitions, loss of crew life is not expected for any of the scenarios associated with this CLiFF.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope Overview The best case of this condition responds to treatment with topical agents. The worst case carries the\n  risk of a refractory condition. With this in mind the CRT Working Group agreed that the risk of blindness from refractory acute angle closure\n  glaucoma warranted the inclusion of anterior chamber paracentesis since in the spaceflight environment the benefits of attempting this procedure\n  even with a non specialist physician may outweigh the risk. It is expected that the decision to perform this procedure would be made in consultation\n  with terrestrial experts. CNES: None Diagnostic Scope and Resourcing Diagnosis for both the best case and the worst case for this condition is\n  based on history, physical exam, anterior segment OCT, and intraocular pressure measurement using a small, hand held device. Clinical Phase 1\n  Duration and Rationale This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT\n  working group SME consensus duration is as follows: CP1 BC (Treated or Untreated): 2.22 hours for a functional eye exam (APD, EOM,\n  appearance, etc.\u2026), anterior segment OCT, and intraocular pressure measurements. Using the standard of \u201clongest reasonable time to complete\n  this task for an experienced clinician adjusted for being in the spaceflight environment.\u201d CP1 WC (Treated or Untreated): 2.22 hours for a functional\n  eye exam (APD, EOM, appearance, etc.\u2026), anterior segment OCT, and intraocular pressure measurements. The scope of practice for this\n  condition is listed as requiring a specialist for fitness for duty assessments. However, if an anterior chamber paracentesis is warranted, as may\n  occur in the worst case scenario, this procedure should be performed only after discussion with a specialist terrestrially since the risk of a non\n  expert performing it is substantial. Treatment Scope and Resourcing For the best case management includes, 2timolol, apraclonidine, pilocarpine,\n  and acetazolamide since this is the most effective way to gain control of the condition quickly. Visual acuity checks are also included. For the worst\n  case, the additional capability of performing an anterior chamber paracentesis is included since the potential benefit of a non expert performing this\n  procedure likely will outweigh the risk of not treating refractory acute angle closure glaucoma. IT is expected that the decisions and procedure\n  would be performed under the guidance of terrestrial experts. The capability for high dose anxiolysis with oral valium is also added in case such a\n  procedure is necessary. Communications and Support Needs This condition would likely require consultation with terrestrial based experts in both\n  the best and worst case. Audio and visual transmission capability is included as a necessary capability.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n\n\n8/23/2023 5:49:50 PM                                            ICL60_Glaucoma, Acute Angle-Closure Cliff                                                    page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-117-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  This CLiFF is the successor to the previous IMM CLiFFs entitled \"Acute Angle-Closure Glaucoma Cliff.\" CLiFF condition definitions for the ocular\n  conditions were changed from the previous excluding this condition, which has remained identical. The incidence calculation was updated using\n  more relevant studies. Duration and RTDC values have changed given extensive literature review.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  \u2022 Literature regarding the untreated worst-case scenario was extremely limited and several parameters are based on subject matter expert opinion.\n  \u2022 Terrestrial studies for BC/WC calculations probably overstate WC because these studies are older and better pharmacologic treatments are\n  available now. \u2022 Generally, acute angle closure glaucoma is an extremely rare event. We expect this event to be even more unusual for spaceflight\n  crews given their extensive preflight ocular screening. \u2022 The incidence of acute angle glaucoma is different for varying ethnicities. The ethnic\n  composite of future spaceflight crews is unknown. \u2022 Because of the large sample size, the study used to compute the composite incidence most\n  likely overestimates the confidence we have in the assigned value.\n\n\n\n\n8/23/2023 5:49:50 PM                                         ICL60_Glaucoma, Acute Angle-Closure Cliff                                                page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-117-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                              Clinical Phase 2: Treatment\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                 Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n                                                                            854                           145\n    Case\n    (TBC)\n  Untreated\n    Best\n                            664                              89             854                           145\n    Case\n   (UTBC)\n   Treated\n    Worst\n           223              664                              89             854                           145\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223             664            113               89             854            44             145\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                       Total\n                                                                                                                                                     Human\n                                                                                            Translation &                            Total Tasks\n                Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                            Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n               (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                           (microgravity)                            Condition\n                                                                                                                                                    Tasks Full\n                                                                                                                                                     Mission\n   Treated\n     Best\n           132                                                                                                         211          1342           3763          0.35663       35.663\n    Case\n    (TBC)\n  Untreated\n    Best\n            132                                                                                                        211          2095           3763          0.556737      55.6737\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132              564            414               22                                           34           211          3352           3763          0.890779      89.0779\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132             564            414               22             196            34             34           211          3739           3763          0.993622      99.3622\n    Case\n   (UTWC)\n\n                                                                          Clinical Phase 3: Condition End State\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision           Hearing                 Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n                            664                              89             854\n    Case\n   (UTBC)\n   Treated\n    Worst\n                            664                              89             854\n     Case\n    (TWC)\n  Untreated\n    Worst\n                            664                              89             854\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n8/23/2023 5:49:50 PM                                              ICL60_Glaucoma, Acute Angle-Closure Cliff                                                                       page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-117-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                Translation &                           Total Tasks\n               Hand                                     Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal        TI %\n              (Dom)                                   Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                               (microgravity)                           Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n   Treated\n     Best\n                                                                                                                       0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n            132        564                                                                                 211         2514           3763          0.668084         66.8084\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132         564                                                                                 211         2514           3763          0.668084         66.8084\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132        564                                                                                 211         2514           3763          0.668084         66.8084\n    Case\n   (UTWC)\n\n\n\n\n8/23/2023 5:49:50 PM                                   ICL60_Glaucoma, Acute Angle-Closure Cliff                                                                         page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-117-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n8/23/2023 5:49:50 PM                                          ICL60_Glaucoma, Acute Angle-Closure Cliff                                                    page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-117-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   1. Antonsen, Erik, Tina Bayuse, Rebecca Blue, Vernie Daniels , Melinda Hailey, Sam Hussey, Eric Kerstman, Mike Krihak, Kara Latorella, Jennifer\n   Mindock, Jerry Myers, Robert Mulcahy, Rebekah Reed, Davis Reyes, Michelle Urbina, and Marlei Walton. 2017. \"Evidence Report: Risk of\n   Adverse Health Outcomes and Decrements in Performance due to In-Flight Medical Conditions.\" In.\n\n   2. Baskaran, M., R. C. Foo, C. Y. Cheng, A. K. Narayanaswamy, Y. F. Zheng, R. Wu, S. M. Saw, P. J. Foster, T. Y. Wong, and T. Aung. 2015.\n   'The Prevalence and Types of Glaucoma in an Urban Chinese Population: The Singapore Chinese Eye Study', JAMA Ophthalmol, 133: 874-80.\n\n   3. Boji\u0107, L., Z. Mandi\u0107, M. Ivanisevi\u0107, K. Bucan, S. Kovacevi\u0107, A. Gverovi\u0107, and A. Mileti\u0107-Juri\u0107. 2004. 'Incidence of acute angle-closure glaucoma\n   in Dalmatia, southern Croatia', Croat Med J, 45: 279-82.\n\n   4. Chan, P. P., J. C. Pang, and C. C. Tham. 2019. 'Acute primary angle closure-treatment strategies, evidences and economical considerations',\n   Eye (Lond), 33: 110-19.\n\n   5. Channa, R., S. N. Zafar, J. K. Canner, R. S. Haring, E. B. Schneider, and D. S. Friedman. 2016. 'Epidemiology of Eye-Related Emergency\n   Department Visits', JAMA Ophthalmol, 134: 312-9.\n\n   6. Choong, Y. F., S. Irfan, and M. J. Menage. 1999. 'Acute angle closure glaucoma: an evaluation of a protocol for acute treatment', Eye (Lond),\n   13 ( Pt 5): 613-6.\n\n   7. Chua, Paul Y, Alexander C Day, Ken L Lai, Nikki Hall, Lai L Tan, Kamran Khan, Lik Thai Lim, Barny Foot, Paul J Foster, and Augusto Azuara-\n   Blanco. 2018. 'The incidence of acute angle closure in Scotland: a prospective surveillance study', British Journal of Ophthalmology, 102: 539-\n   43.\n\n   8. Flores-S\u00e1nchez, B. C., and A. J. Tatham. 2019. 'Acute angle closure glaucoma', Br J Hosp Med (Lond), 80: C174-c79.\n\n   9. Hillman, J. S. 1979. 'Acute closed-angle glaucoma: an investigation into the effect of delay in treatment', Br J Ophthalmol, 63: 817-21.\n\n   10. Keenan, Tiarnan D. L., John F. Salmon, David Yeates, and Michael Goldacre. 2009. 'Trends in rates of primary angle closure glaucoma and\n   cataract surgery in England from 1968 to 2004', Journal of glaucoma, 18: 201-05.\n\n   11. Lam, D. S., J. S. Lai, C. C. Tham, J. K. Chua, and A. S. Poon. 2002. 'Argon laser peripheral iridoplasty versus conventional systemic medical\n   therapy in treatment of acute primary angle-closure glaucoma : a prospective, randomized, controlled trial', Ophthalmology, 109: 1591-6.\n\n   12. Lee, Jong Wook, Jung Ho Lee, and Kyoo Won Lee. 2009. 'Prognostic factors for the success of laser iridotomy for acute primary angle\n   closure glaucoma', Korean journal of ophthalmology : KJO, 23: 286-90.\n\n   13. Lowe, R. F. 1962. 'ACUTE ANGLE-CLOSURE GLAUCOMA: THE SECOND EYE: AN ANALYSIS OF 200 CASES', Br J Ophthalmol, 46: 641-50.\n\n   14. Ng, W. S., G. S. Ang, and A. Azuara-Blanco. 2008. 'Primary angle closure glaucoma: a descriptive study in Scottish Caucasians', Clin Exp\n   Ophthalmol, 36: 847-51.\n\n   15. Park, S. J., K. H. Park, T. W. Kim, and B. J. Park. 2019. 'Nationwide Incidence of Acute Angle Closure Glaucoma in Korea from 2011 to 2015',\n   J Korean Med Sci, 34: e306.\n\n   16. Prum, B. E., Jr., L. W. Herndon, Jr., S. E. Moroi, S. L. Mansberger, J. D. Stein, M. C. Lim, L. F. Rosenberg, S. J. Gedde, and R. D. Williams.\n   2016. 'Primary Angle Closure Preferred Practice Pattern(\u00ae) Guidelines', Ophthalmology, 123: P1-p40.\n\n   17. Psolka, M., K. S. Bower, D. B. Brooks, S. J. Donnelly, M. Iglesias, W. R. Rimm, and T. P. Ward. 2007. 'Ocular diseases and nonbattle injuries\n   seen at a tertiary care medical center during the Global War on Terrorism', Mil Med, 172: 491-7.\n\n   18. Saile L., Boley L., Kerstman E. 2017. 'Integration RWS ISS STS Observed Incidence V2.'.\n\n   19. Walton M, Kerstman E. 2010. ' IMM In-flight Compilation v20100414_Incidence_calculation'.\n\n   20. Wright, Carrie, Mohammed A. Tawfik, Michael Waisbourd, and Leslie J. Katz. 2016. 'Primary angle-closure glaucoma: an update', Acta\n   Ophthalmologica, 94: 217-25.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                       PHRASE\n\n   AAOMS                         American Association of Oral and Maxillofacial Surgeons\n\n   AMA                           American Medical Association\n\n   ARCL                          All Remaining Conditions List\n\n   ARS                           Acute Radiation Sickness\n\n\n\n\n8/23/2023 5:49:50 PM                                          ICL60_Glaucoma, Acute Angle-Closure Cliff                                                  page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-117-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   BHP                 Behavioral Health and Performance\n\n   CAC                 Coronary Artery Calcium\n\n   CHS                 Crew Health and Safety\n\n   CL                  Condition List\n\n   CliFF               Clinical Finding Form\n\n   CMO                 Crew Medical Officer\n\n   COMFORT             Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                 Clinical Phase 1\n\n   CP2                 Clinical Phase 2\n\n   CP3                 Clinical Phase 3\n\n   CRL                 Clinical Resource Level\n\n   CRT                 Capability Resource Table\n\n   CST                 Clinical Science Team\n\n   DCS                 Decompression Syndrome\n\n   DRM                 Design Reference Mission\n\n   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n\n\n\n8/23/2023 5:49:50 PM                                   ICL60_Glaucoma, Acute Angle-Closure Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    },
+    {
+      "section_id": "CLIFF-117-P14",
+      "ordinal": 13,
+      "heading": "Page 14 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n8/23/2023 5:49:50 PM                                   ICL60_Glaucoma, Acute Angle-Closure Cliff   page: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "page:14"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-117-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "General"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Male"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Poisson"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Gamma"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "3.254E-05"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "5.817E-07"
+        ],
+        [
+          "Gamma"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-117-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                               Source                                  LOC Value"
+        ],
+        [
+          "Walton, 2010                                                           Spaceflight                             0"
+        ],
+        [
+          "Saile et al., 2017                                                     Spaceflight                             0"
+        ],
+        [
+          "Antonsen et al., 2017                                                  Spaceflight                             0"
+        ],
+        [
+          "Psolka et al., 2007                                                    Analog                                  0"
+        ],
+        [
+          "Ng et al., 2018                                                        Terrestrial                             2"
+        ],
+        [
+          "Bojic et al., 2004                                                     Terrestrial                             2"
+        ],
+        [
+          "Chua et al., 2018                                                      Terrestrial                             2"
+        ],
+        [
+          "Park et al., 2010                                                      Terrestrial                             2"
+        ],
+        [
+          "Channa et al., 2016                                                    Terrestrial                             0"
+        ],
+        [
+          "Keenan et al., 2009                                                    Terrestrial                             0"
+        ],
+        [
+          "Only terrestrial studies were used to determine an incidence rate as there have been no cases of acute glaucoma in spaceflight and analog studies"
+        ],
+        [
+          "were missing data necessary for this calculation. Unfortunately, terrestrial studies did not accurately represent those in spaceflight as they included"
+        ],
+        [
+          "elderly subjects and patients with comorbid conditions."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-117-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                Source                                 LOC Value"
+        ],
+        [
+          "Baskaran et al., 2015                                                   Terrestrial                            2"
+        ],
+        [
+          "Hillman, 1979                                                           Terrestrial                            2"
+        ],
+        [
+          "Lowe, 1962                                                              Terrestrial                            2"
+        ],
+        [
+          "Only terrestrial studies were available to determine a worst-case scenario probability. These studies often represented an older age group with"
+        ],
+        [
+          "more comorbid conditions than would be expected during spaceflight."
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-117-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment            CP3: Condition End State"
+        ],
+        [
+          "Condition       TI%      Duration    TI%         Duration      TI%         RTDC             LOCL"
+        ],
+        [
+          "Case                                        Probability"
+        ],
+        [
+          "Scenario        Composite Incidence         %               Preset   Preset      Preset      Min    Max Preset         Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best    Males: 3.254E-5 and         88.8 - 88.8     100      2.22        17.8315     0.25   24     0           100     100      0        0"
+        ],
+        [
+          "Case (TBC)      SD 5.871E-7 Females:"
+        ],
+        [
+          "8.249E-5 and SD"
+        ],
+        [
+          "Treated         9.198E-7                    11.2 - 11.2     100      2.22        77.9431     24     192    66.8084     100     100      0        0"
+        ],
+        [
+          "Worst Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated       N/A                         N/A             N/A      2.22        61.241      1      336    66.8084     100     100      0        0"
+        ],
+        [
+          "Best Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Untreated       N/A                         N/A             N/A      2.22        83.0853     24     336    66.8084     100     100      0        0"
+        ],
+        [
+          "Worst Case"
+        ],
+        [
+          "(UTWC)"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-117-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "8/23/2023 5:49:50 PM                                          ICL60_Glaucoma, Acute Angle-Closure Cliff                                                     page: 6"
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-117-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                           Source                                    LOC Value"
+        ],
+        [
+          "Wright et al, 2016                                                 Terrestrial"
+        ],
+        [
+          "Chan et al., 2019                                                  Terrestrial                                                   1"
+        ],
+        [
+          "Lee et al., 2009                                                   Terrestrial"
+        ],
+        [
+          "RTDC for all conditions was determined to be 100% as literature stated that even for the best case scenario, a procedure/intervention other than"
+        ],
+        [
+          "pure medical management should be completed."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-117-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                       Source                                       LOC Value"
+        ],
+        [
+          "N/A                                            N/A                                                                       4"
+        ],
+        [
+          "Based on the definitions, loss of crew life is not expected for any of the scenarios associated with this CLiFF."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-117-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision           Hearing                 Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "854                           145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664                              89             854                           145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223              664                              89             854                           145"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223             664            113               89             854            44             145"
+        ]
+      ],
+      "page_number": 9,
+      "source_anchor": "page:9#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-117-IMG-01",
+      "ordinal": 0,
+      "media_kind": "DIAGRAM",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-117/angle_closure_glaucoma_diagram.png",
+      "mime_type": "image/png",
+      "width": 445,
+      "height": 369,
+      "sha256": "0228c562281c0092d82818976f1f3098b91573c95cc489e57bbcc5797f50ad64",
+      "creator": "Laboratoires Servier",
+      "license_identifier": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AVisual_system_-_Angle-closure_glaucoma_--_Smart-Servier.png",
+      "attribution": "Laboratoires Servier, via Wikimedia Commons (CC BY-SA 3.0)",
+      "caption": "Schematic diagram illustrating iridocorneal angle closure and blocked aqueous humor outflow.",
+      "alt_text": "Diagram of angle-closure glaucoma.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Visual system - Angle-closure glaucoma -- Smart-Servier.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-117-IMG-02",
+      "ordinal": 1,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-117/acute_angle_closure_clinical.jpg",
+      "mime_type": "image/jpeg",
+      "width": 2853,
+      "height": 960,
+      "sha256": "7112ec488bcd45d2558945092a4dfdc2f74d7ba4ac77f6f07fe3a7afd12865cc",
+      "creator": "James Heilman, MD",
+      "license_identifier": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AAcute_angle_closure_glaucoma.JPG",
+      "attribution": "James Heilman, MD, via Wikimedia Commons (CC BY-SA 3.0)",
+      "caption": "Clinical photograph of acute angle-closure glaucoma showing conjunctival injection and mid-dilated pupil.",
+      "alt_text": "Clinical photograph of acute angle-closure glaucoma.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Acute angle closure glaucoma.JPG)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-117-IMG-03",
+      "ordinal": 2,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-117/human_eye_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1346,
+      "height": 1009,
+      "sha256": "45868c8016ecf9e45fbf9c6355feff31692fee1816e032680d7f3becafee812e",
+      "creator": "Philip W Augustino",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AAnatomy_of_eye.jpg",
+      "attribution": "Philip W Augustino, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Anatomical diagram of the anterior chamber, iris, lens, and trabecular meshwork.",
+      "alt_text": "Diagram of human eye anatomy.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Anatomy of eye.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-117-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Glaucoma (Acute Angle Closure)",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/glaucoma-acute-angle-closure-cliff-2023.pdf?emrc=082bef",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

@@ -1,0 +1,592 @@
+{
+  "article_id": "CLIFF-100",
+  "slot": 100,
+  "display_title": "EVA-Related Fingernail Delamination",
+  "category": "Musculoskeletal",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-100",
+    "publisher": "NASA",
+    "title": "EVA-Related Fingernail Delamination \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-fingernail-delamination-cliff-2023.pdf?emrc=48dd00",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-fingernail-delamination-cliff-2023.pdf?emrc=48dd00",
+    "retrieved_at_utc": "2026-11-14T06:36:13.246162+00:00",
+    "content_sha256": "af0fa9ad674361df0158414115551cbb0f013b974507f90df692381363ea24ed",
+    "original_mime": "application/pdf",
+    "original_bytes": 299505,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-100-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch      Baseline\n\n\n\n ICL41_Eva Related Fingernail Delamination\n\n The extramobility unit (EMU) gloves, while pressurized, create a number of pressure points on the upper extremity and cause skin and soft tissue\n irritation. Fingernail injury and loss (onycholysis) has been a major complaint among crew members while on extravehicular activity (EVA) and during\n neutral buoyancy lab (NBL) training. This is in part due to the engineering requirements of the suit to maintain pressure and durability but still allow\n for maximal dexterity to perform tasks. Moisture accumulation within the glove tip and finger/hand size appear to be major contributing factors to this\n injury pattern (Jones, 2008; Opperman, 2010). Thus far, fingernail delamination has only been reported as a minor discomfort and has yet to\n substantially impact an EVA. However, future lunar missions will likely require longer and more frequent EVA than current ISS missions and this\n accumulative stress on the fingers may ultimately impact mission objectives. There are several mitigation strategies including gluing or bandaging\n fingertips to reduce fingernail trauma which have resulted in only moderate reduction of injury. Next generation xEMU gloves aim to reduce these\n pressure points and are anticipated to address this problem directly.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  Scheuring, RA et al. 2009 is the only study available that looked solely at spaceflight data. However, this study focused on musculoskeletal injuries\n  in general and did not provide data necessary on fingernail injury specifically to calculate incidence rate. Opperman, RA et al. 2010 and Charvat,\n  JM et al. 2015 both used a combination of NBL and spaceflight data with large database driven sample sizes. Charvat, JM et al. 2015 in particular\n  was extremely comprehensive, well powered, and thus used for the incidence calculations.\n\n  ANALOG LITERATURE\n\n  Viegas, SF et al. 2004 and Strauss, S 2004 used NBL training sessions to derrive their incidence of fingernail and upper extremity injuries. These\n  studies have a higher incidence than spaceflight data. This may be due to a number of biases such as Hawthorne effect, survey bias, sampling\n  bias, etc... Or this may be due to the specific differences in temperature, gravity, suit design etc... between the operations performed while in the\n  NBL versus inflight. Nonetheless, while NBL data is very high quality it is less valuable than the spaceflight specific data reported above.\n\n  TERRESTRIAL LITERATURE\n\n  No terrestrial data was used as this was an EVA specific activity and general rates of terretstrial onycholysis are not indicative of incidence in flight\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   Mean:0.002656 SD: 4.719E-4\n\n\n\n  INCIDENCE SUMMARY\n\n  The Bayesian posterior distribution for the incidence proportion given the spaceflight and NBL data under an uninformative prior is\n  Beta(shape1=31.59, shape2=11862.65) with mean 0.002656 and SD 4.719E-4. This data was based on Charvat, JM etal. 2015 which had 4 events\n  out of 322 spaceflight EVAs and 27 events out of 11,704 NBL runs.\n\n\n\n\n6/15/2023 1:51:54 PM                                         ICL41_Eva Related Fingernail Delamination Cliff                                                  page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-100-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     EVA\n     Segment\n     EVA All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Binomial\n     Incidence Dist.\n     Beta\n     Mean\n     0.00265591\n     SD\n     0.000471892\n\n\n     Beta\n     (Alpha): 31.59\n     (Beta): 11862.7\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                      Source                                                 LOC Value\n\n   Viegas, SF et al. 2004                                        Analog                                                 3\n\n   Opperman, RA et al. 2010                                      Analog and Spaceflight                                 4\n\n   Scheuring RA et al. 2009                                      Spaceflight                                            1\n\n   Charvat, JM et al. 2015                                       Analog and Spaceflight                                 4\n\n   Strauss, S 2004                                               Analog                                                 3\n\n\n  There is robust data on the incidence of EVA related fingernail delamination. Several studies use NBL training and test run data to capture injury\n  incidence rate. Viegas, SF et al. 2004 reviewed 548 training runs and identified the rate of fingertip injuries however does not specify to\n  onycholysis. Strauss, S 2004 was an internal report produced by NASA based on NBL injuries and identified fingertip injuries. It performed sub\n  group analysis of 18 atronauts with onycholysis. The details of subgroup selection are unclear and may not represent the corps as a whole.\n  Sheuring, RA et al. 2009 has spaceflight spcific injuries from LSAH but does not specify a clear indcidence rate and thus not useful. Both\n  Oppperman, RA et al. 2010 and Charvat, JM et al. 2015 use large database NBL and spaceflight data to determine incidence and therefore\n  recieved a 4. The EVA and NBL data from Charvat, JM et al. 2015 was used to calculate incidence although it does have some limitations. The total\n  number of NBL runs performed (>11,000) vastly out weighs the number of EVAs (>300) and because these events are considered equivalent the\n  NBL data drives the ultimate incidence calculation. However, the team agreed that while the EVA data is more accurately representative to ISS EVA\n  incidence, the NBL data is more accurate to partial gravity injury incidence. Both datasets were included with equal weight.\n\n\n\n\n6/15/2023 1:51:54 PM                                      ICL41_Eva Related Fingernail Delamination Cliff                                              page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-100-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  There are no specific pre-flight preventative screening measures based on a Medical Requirements Integration Documents (MRID) search as this\n  condition is specific to minor repetitive finger trauma while on EVA. However, one component of pre-flight training is NBL training sessions which\n  includes medical screening of astronauts and soft tissue evaluation. While not explicitly stated, during this process the suit fit and mitigation\n  strategies for soft tissue injuries are evaluated and implemented prior to launch to minimize injury inflight.\n\n  BEST CASE SCENARIO DEFINITION\n\n  Mild to moderate nail bed trauma with partial onycholysis that responds to treatment.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Severe nail bed trauma causing onycholysis and/or nail loss despite treatment.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  Onycholysis\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  While there have been many studies evaluating the incidence of fingernail delamination associated with EVA, almost none of them specify the\n  degree or type of fingernail injury consistently. This makes calculation of best case and worst case scenario difficult based on the definitions\n  provided. The only exception was Charvat, JM et al. 2015 which reports fingernail injuries while on EVA by type (figure 9). Here they report 1\n  fingernail abrasion, 6 fingernail \"traumas\", 2 subungual hematomas, and 1 instance of onycholysis. If we assume that \"fingernail trauma\" does not\n  include complete onycholysis then our proportion of BC to WC scenario is 9:1 or 90% and 10% respectively.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                       Source                                LOC Value\n\n   Charvat, JM et al. 2015                                                        Spaceflight                           2\n\n   Viegas, SF et al. 2004                                                         Analog                                N/A\n\n   Opperman, RA et al. 2010                                                       Spaceflight                           N/A\n\n   Scheuring, RA et al. 2009                                                      Spaceflight                           N/A\n\n   Strauss, S 2004                                                                Analog                                N/A\n\n  Charvat, JM et al. 2015 provides some limited data on specific types of fingernail injuries. This is a small sample size with somewhat vague\n  descriptions of injuries. No other studies provided the specific type of fingernail injury thus condition probability was unable to be calculated\n\n\n\n\n6/15/2023 1:51:54 PM                                         ICL41_Eva Related Fingernail Delamination Cliff                                           page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-100-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                               CP1: Diagnosis       CP2: Treatment              CP3: Condition End State\n\n                                                               TI%      Duration    TI%         Duration        TI%       RTDC             LOCL\n                      Composite              Condition\n   Case Scenario      Incidence              Probability %     Preset   Preset      Preset      Min     Max     Preset    Min%    Max%     Min%     Max%\n\n   Treated Best       Mean:0.002656          90 - 90           100      0.5829      13.3803     168     336     0         0       0        0        0\n   Case (TBC)         SD: 4.719E-4\n\n   Treated Worst                             10 - 10           100      0.5829      14.5628     2920    4380    0         0       0        0        0\n   Case (TWC)\n\n   Untreated Best     N/A                    N/A               N/A      0.5829      13.3803     168     1008    0         0       0        0        0\n   Case (UTBC)\n\n   Untreated          N/A                    N/A               N/A      0.5829      14.5628     2920    4380    0         0       0        0        0\n   Worst Case\n   (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n6/15/2023 1:51:54 PM                                         ICL41_Eva Related Fingernail Delamination Cliff                                                  page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-100-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  The general approach to fingernail delamination will start with prevention. Astronauts spend approximately 12 hours in the NBL training for EVA for\n  every 1 hour spent on EVA while in spaceflight. This helps crew members identify pressure points and recurrent soft tissue injuries in order to\n  mitigate them in flight. Trimming nails, skin glue, and tapping of fingers are among several approaches to limit onycholysis. While in flight treatment\n  of nail injury involves local wound care and further bandaging to limit pain and discomfort. The effectiveness of these treatments is unclear and\n  likely limited given the ongoing complaints from crew. At least one crew member removed their fingernails to mitigate this recurrent trauma while on\n  EVA. To date, these injuries have not appeared to have any significant impact on EVA or mission success. RTDC and LOCL are assumed to be 0%\n  by definition of this condition.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  The best case scenario is mild to moderate nail bed trauma with partial onycholysis that responds to treatment. The duration of this condition when\n  treated is between 1-2 weeks based on expert opinion in the absence of any evidence. RTDC and LOCL are both 0% in this condition.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  The worst case definition for this condition is severe nail bed trauma causing onycholysis and/or nail loss despite treatment. The duration of this\n  condition ranges from 4-6 months based on Tos, P et al. 2012 which defines recovery range after complete nail loss based on expert opinion.\n  RTDC and LOCL are 0% in this condition\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  The best case scenario is mild to moderate nail bed trauma with partial onycholysis that responds to treatment. The duration of this condition when\n  untreated is between 1-6 weeks based on expert opinion in the absence of any evidence and the agreed upon time to recovery of nail tensile\n  strength per Viegas, SF et al. 2004. RTDC and LOCL are both 0% in this condition.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  The worst case definition for this condition is severe nail bed trauma causing onycholysis and/or nail loss despite treatment. The duration of this\n  condition ranges from 4-6 months based on Tos, P et al. 2012 which defines recovery range after complete nail loss based on expert opinion. This\n  range in duration is the same between the treated and untreated conditions because treatment is likely to have little to no impact on recovery time\n  after nail loss. RTDC and LOCL are 0% in this condition\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                Source                                  LOC Value\n\n   Tos, P et al. 2012                                                      Terrestrial\n\n   Viegas, SF et al. 2004                                                  Spaceflight\n\n   Strauss, EJ et al. 2008                                                 Terrestrial                                              2\n\n   Baden, H.P. 1965                                                        Terrestrial\n\n   Seiler, M et al. 2021                                                   Terrestrial\n\n  Duration LOC is scored at 2 because there is limited information available. The vast majority of reported durations are based on expert opinion.\n  Strauss, EJ et al. 2008 and Seiler, M et al. 2021 are prospective studies but look at nailbed injury as opposed to delamination and thus may not be\n  as accurate to this condition\n\n\n\n\n6/15/2023 1:51:54 PM                                        ICL41_Eva Related Fingernail Delamination Cliff                                                 page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-100-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                      Source                                      LOC Value\n\n   NA                                            NA                                                                       4\n\n  The RTDC is accepted to be 0% based on the surrogate RTDC and confines of this condition\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                      Source                                      LOC Value\n\n   NA                                            NA                                                                       4\n\n  The LOCL is accepted to be 0%. This condition is extremely minor and has no risk of LOCL. Several crew members have noted discomfort with\n  complete onycholysis that was distracting but did not impact EVA. In an absolute worst case this condition may limit crew function or require\n  scrubbing EVA but would not impact RTDC or LOCL.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Overview Fingernail delamination refers to fingernails falling off after trauma sustained during spacewalks. The pathophysiology is not completely\n  understood, however, it is believed to be caused by pressure on the fingertips or complications with circulation with the pressurized gloves. CNES:\n  None Diagnostic Scope and Resourcing Diagnostic resourcing is straightforward and involves collection of history and evaluation of the hands\n  following the injury. Clinical Phase 1 Duration and Rationale This version of IMPACT presumes physician level knowledge, skill, and ability will be\n  present on the mission. The CRT working group SME consensus duration is as follows: CP1 BC (Treated or Untreated): 0.5829 CP1 WC (Treated\n  or Untreated): 0.5829 The highest scope of practice required for diagnosis includes the interpretation of the ultrasounds which is SOP 1. Treatment\n  Scope and Resourcing Therapeutic scope is also straightforward and includes a wound care dressing bundle for both the best case and worst\n  case. For worst case, resourcing for a digital block and extra equipment for nail removal and bleeding management exist in the case of severe nail\n  bed trauma. Communications and Support Needs Ground support and communications are not needed during diagnosis and acute management,\n  however, can be adjunctively considered following the acute period.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  The IMM CLIFF Delamination Secondary to Extravehicular Activity has the same definition as the current version of this CLIFF and defines best\n  case and worst case scenario the same way. Prior incidence data was based on Saile, 2017 which was based on available data from IMED and\n  LSAH data. In this updated version of the CLIFF for this condition we include several studies that did large database evaluation for NBL and EVA\n  fingernail delamination injury to improve the power and accuracy of our incidence calculation. All prior literature was incorporated into this CLIFF\n  and terrestrial data was included to determine duration of this condition.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  \u2022 Glove models have changed over time and there appears to be a correlation with the current model having a higher incidence of fingernail injury \u2022\n  Literature on the xEMU is not available and likely will have a lower incidence of fingernail injuries as there has been extensive research into why\n  delamination on EVA occurs which specifically was meant to guide design of the xEMU. \u2022 Duration of this condition is based on expert opinion as\n  space flight data does not report healing time and there are no large studies in terrestrial literature due to the minimal severity of this condition.\n\n\n\n\n6/15/2023 1:51:54 PM                                        ICL41_Eva Related Fingernail Delamination Cliff                                                page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-100-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                              Clinical Phase 2: Treatment\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision         Hearing                   Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n                            664\n    Case\n    (TBC)\n  Untreated\n    Best\n                            664\n    Case\n   (UTBC)\n   Treated\n    Worst\n                            664                              89\n     Case\n    (TWC)\n  Untreated\n    Worst\n                            664                              89\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                       Total\n                                                                                                                                                     Human\n                                                                                            Translation &                            Total Tasks\n                Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                            Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n               (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                           (microgravity)                            Condition\n                                                                                                                                                    Tasks Full\n                                                                                                                                                     Mission\n   Treated\n     Best\n           132                                                                                                         211          1007           3763          0.267606      26.7606\n    Case\n    (TBC)\n  Untreated\n    Best\n            132                                                                                                        211          1007           3763          0.267606      26.7606\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132                                                                                                         211          1096           3763          0.291257      29.1257\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132                                                                                                        211          1096           3763          0.291257      29.1257\n    Case\n   (UTWC)\n\n                                                                          Clinical Phase 3: Condition End State\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision         Hearing                   Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n    Case\n   (UTBC)\n   Treated\n    Worst\n     Case\n    (TWC)\n  Untreated\n    Worst\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n6/15/2023 1:51:54 PM                                         ICL41_Eva Related Fingernail Delamination Cliff                                                                      page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-100-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                 Translation &                          Total Tasks\n               Hand                                      Lower       Ambul &                     Don/Doff   Pressure                    System\n                       Hand (Any)   Upper Extremity                              Stabilization                         Impaired By                      TI Decimal       TI %\n              (Dom)                                    Extremity   Standing (g)                Equipment     Ops                       Category\n                                                                                (microgravity)                          Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n   Treated\n     Best\n                                                                                                                       0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                                                                       0              3763          0                0\n    Case\n   (UTBC)\n   Treated\n    Worst\n                                                                                                                       0              3763          0                0\n     Case\n    (TWC)\n  Untreated\n    Worst\n                                                                                                                       0              3763          0                0\n    Case\n   (UTWC)\n\n\n\n\n6/15/2023 1:51:54 PM                                  ICL41_Eva Related Fingernail Delamination Cliff                                                                    page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-100-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: The initial event in BC had less trauma, but partial onycholysis would be anticipated to be more persistently painful vs.\n  complete onycholysis in WC.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n6/15/2023 1:51:54 PM                                       ICL41_Eva Related Fingernail Delamination Cliff                                                 page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-100-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   Baden, H. P. (1965). \"Regeneration of the Nail.\" Archives of Dermatology: 619-620.\n\n   Charvat, J. M., et al. (2015). Spacesuit Glove- Induced Hand Trauma and Analysis of Potentially Related Risk Variables. International Conference\n   on Environmental Systems. Bellevue, Washington.\n\n   Jones, J. A., et al. (2008). \"The use of an extended ventilation tube as a countermeasure for EVA-associated upper extremity medical issues.\"\n   Acta Astronautica 63(7-10): 763-768.\n\n   Opperman, R. A., et al. (2010). \"Probability of spacesuit-induced fingernail trauma is associated with hand circumference.\" Aviat Space Environ\n   Med 81(10): 907-913.\n\n   Scheuring, R. A., et al. (2009). \"Musculoskeletal injuries and minor trauma in space: incidence and injury mechanisms in U.S. astronauts.\" Aviat\n   Space Environ Med 80(2): 117-124.\n\n   Seiler, M., et al. (2021). \"Non-operative treatment versus suture refixation of the nail plate in paediatric fingernail avulsion injuries.\" J Hand Surg\n   Eur Vol 46(5): 523-529.\n\n   Strauss, E. J., et al. (2008). \"A prospective, randomized, controlled trial of 2-octylcyanoacrylate versus suture repair for nail bed injuries.\" J Hand\n   Surg Am 33(2): 250-253.\n\n   Strauss, S. (2004). Extravehicular Mobility Unit Training Suit Symptom Study Report. Houston, Texas, Lyndon B. Johnson Space Center.\n\n   Tos, P., et al. (2012). \"Surgical treatment of acute fingernail injuries.\" J Orthop Traumatol 13(2): 57-62.\n\n   Viegas, S. F., et al. (2004). \"Physical demands and injuries to the upper extremity associated with the space program.\" J Hand Surg Am 29(3):\n   359-366.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                        PHRASE\n\n   AAOMS                          American Association of Oral and Maxillofacial Surgeons\n\n   AMA                            American Medical Association\n\n   ARCL                           All Remaining Conditions List\n\n   ARS                            Acute Radiation Sickness\n\n   BHP                            Behavioral Health and Performance\n\n   CAC                            Coronary Artery Calcium\n\n   CHS                            Crew Health and Safety\n\n   CL                             Condition List\n\n   CliFF                          Clinical Finding Form\n\n   CMO                            Crew Medical Officer\n\n   COMFORT                        Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                            Clinical Phase 1\n\n   CP2                            Clinical Phase 2\n\n   CP3                            Clinical Phase 3\n\n   CRL                            Clinical Resource Level\n\n   CRT                            Capability Resource Table\n\n   CST                            Clinical Science Team\n\n   DCS                            Decompression Syndrome\n\n   DRM                            Design Reference Mission\n\n\n\n\n6/15/2023 1:51:54 PM                                         ICL41_Eva Related Fingernail Delamination Cliff                                                 page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-100-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n\n\n\n6/15/2023 1:51:54 PM                              ICL41_Eva Related Fingernail Delamination Cliff   page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-100-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n6/15/2023 1:51:54 PM                              ICL41_Eva Related Fingernail Delamination Cliff   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-100-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "EVA"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "EVA All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Binomial"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Beta"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.00265591"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.000471892"
+        ],
+        [
+          "Beta"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-100-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                      Source                                                 LOC Value"
+        ],
+        [
+          "Viegas, SF et al. 2004                                        Analog                                                 3"
+        ],
+        [
+          "Opperman, RA et al. 2010                                      Analog and Spaceflight                                 4"
+        ],
+        [
+          "Scheuring RA et al. 2009                                      Spaceflight                                            1"
+        ],
+        [
+          "Charvat, JM et al. 2015                                       Analog and Spaceflight                                 4"
+        ],
+        [
+          "Strauss, S 2004                                               Analog                                                 3"
+        ],
+        [
+          "There is robust data on the incidence of EVA related fingernail delamination. Several studies use NBL training and test run data to capture injury"
+        ],
+        [
+          "incidence rate. Viegas, SF et al. 2004 reviewed 548 training runs and identified the rate of fingertip injuries however does not specify to"
+        ],
+        [
+          "onycholysis. Strauss, S 2004 was an internal report produced by NASA based on NBL injuries and identified fingertip injuries. It performed sub"
+        ],
+        [
+          "group analysis of 18 atronauts with onycholysis. The details of subgroup selection are unclear and may not represent the corps as a whole."
+        ],
+        [
+          "Sheuring, RA et al. 2009 has spaceflight spcific injuries from LSAH but does not specify a clear indcidence rate and thus not useful. Both"
+        ],
+        [
+          "Oppperman, RA et al. 2010 and Charvat, JM et al. 2015 use large database NBL and spaceflight data to determine incidence and therefore"
+        ],
+        [
+          "recieved a 4. The EVA and NBL data from Charvat, JM et al. 2015 was used to calculate incidence although it does have some limitations. The total"
+        ],
+        [
+          "number of NBL runs performed (>11,000) vastly out weighs the number of EVAs (>300) and because these events are considered equivalent the"
+        ],
+        [
+          "NBL data drives the ultimate incidence calculation. However, the team agreed that while the EVA data is more accurately representative to ISS EVA"
+        ],
+        [
+          "incidence, the NBL data is more accurate to partial gravity injury incidence. Both datasets were included with equal weight."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-100-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                       Source                                LOC Value"
+        ],
+        [
+          "Charvat, JM et al. 2015                                                        Spaceflight                           2"
+        ],
+        [
+          "Viegas, SF et al. 2004                                                         Analog                                N/A"
+        ],
+        [
+          "Opperman, RA et al. 2010                                                       Spaceflight                           N/A"
+        ],
+        [
+          "Scheuring, RA et al. 2009                                                      Spaceflight                           N/A"
+        ],
+        [
+          "Strauss, S 2004                                                                Analog                                N/A"
+        ],
+        [
+          "Charvat, JM et al. 2015 provides some limited data on specific types of fingernail injuries. This is a small sample size with somewhat vague"
+        ],
+        [
+          "descriptions of injuries. No other studies provided the specific type of fingernail injury thus condition probability was unable to be calculated"
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-100-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment              CP3: Condition End State"
+        ],
+        [
+          "TI%      Duration    TI%         Duration        TI%       RTDC             LOCL"
+        ],
+        [
+          "Composite              Condition"
+        ],
+        [
+          "Case Scenario      Incidence              Probability %     Preset   Preset      Preset      Min     Max     Preset    Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best       Mean:0.002656          90 - 90           100      0.5829      13.3803     168     336     0         0       0        0        0"
+        ],
+        [
+          "Case (TBC)         SD: 4.719E-4"
+        ],
+        [
+          "Treated Worst                             10 - 10           100      0.5829      14.5628     2920    4380    0         0       0        0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best     N/A                    N/A               N/A      0.5829      13.3803     168     1008    0         0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated          N/A                    N/A               N/A      0.5829      14.5628     2920    4380    0         0       0        0        0"
+        ],
+        [
+          "Worst Case"
+        ],
+        [
+          "(UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-100-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                Source                                  LOC Value"
+        ],
+        [
+          "Tos, P et al. 2012                                                      Terrestrial"
+        ],
+        [
+          "Viegas, SF et al. 2004                                                  Spaceflight"
+        ],
+        [
+          "Strauss, EJ et al. 2008                                                 Terrestrial                                              2"
+        ],
+        [
+          "Baden, H.P. 1965                                                        Terrestrial"
+        ],
+        [
+          "Seiler, M et al. 2021                                                   Terrestrial"
+        ],
+        [
+          "Duration LOC is scored at 2 because there is limited information available. The vast majority of reported durations are based on expert opinion."
+        ],
+        [
+          "Strauss, EJ et al. 2008 and Seiler, M et al. 2021 are prospective studies but look at nailbed injury as opposed to delamination and thus may not be"
+        ],
+        [
+          "as accurate to this condition"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-100-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                      Source                                      LOC Value"
+        ],
+        [
+          "NA                                            NA                                                                       4"
+        ],
+        [
+          "The RTDC is accepted to be 0% based on the surrogate RTDC and confines of this condition"
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-100-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                      Source                                      LOC Value"
+        ],
+        [
+          "NA                                            NA                                                                       4"
+        ],
+        [
+          "The LOCL is accepted to be 0%. This condition is extremely minor and has no risk of LOCL. Several crew members have noted discomfort with"
+        ],
+        [
+          "complete onycholysis that was distracting but did not impact EVA. In an absolute worst case this condition may limit crew function or require"
+        ],
+        [
+          "scrubbing EVA but would not impact RTDC or LOCL."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-100-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision         Hearing                   Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664                              89"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664                              89"
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-100-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-100/fingernail_anatomy_labeled.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1044,
+      "height": 634,
+      "sha256": "b2bb1d0dffa39a496e0ca45174a337fadc87180a2b19040f9da29eaa10f22e03",
+      "creator": "User:Kipton.",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AFingernail_label_%28enwiki%29.jpg",
+      "attribution": "User:Kipton., via Wikimedia Commons (Public domain)",
+      "caption": "Labeled anatomical diagram of the human fingernail plate, nail bed, and matrix.",
+      "alt_text": "Labeled diagram of fingernail anatomy.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Fingernail label (enwiki).jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-100-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-100/fingernail_plate_structure.png",
+      "mime_type": "image/png",
+      "width": 640,
+      "height": 480,
+      "sha256": "ede6a38c64c9cd443bdcd2b12ab01206640d0e00f972893b236f772cab916c4e",
+      "creator": "DaniDF1995",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AFingernail_label-it.png",
+      "attribution": "DaniDF1995, via Wikimedia Commons (CC BY 3.0)",
+      "caption": "Cross-sectional diagram of nail bed and hyponychium structures affected by EVA glove trauma.",
+      "alt_text": "Diagram of nail unit structure.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Fingernail label-it.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-100-IMG-03",
+      "ordinal": 2,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-100/hand_phalanges_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 6000,
+      "height": 4000,
+      "sha256": "0105fdcaba15bf9d8018541c47643c20281b8a4d46241180c8afccb99b8dfa85",
+      "creator": "Wasiul Bahar",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AArticulated_right_hand%2C_anterior_aspect_showing_the_four_carpal_bones_and_five_metacarpals.jpg",
+      "attribution": "Wasiul Bahar, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Skeletal anatomy of the distal phalanges supporting the nail bed during pressurized EVA glove use.",
+      "alt_text": "Skeletal anatomy of the human hand.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Articulated right hand, anterior aspect showing the four carpal bones and five metacarpals.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-100-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 EVA-Related Fingernail Delamination",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/eva-related-fingernail-delamination-cliff-2023.pdf?emrc=48dd00",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "export:web": "expo export --platform web --output-dir dist --max-workers 1",
     "export:android": "expo export --platform android --output-dir dist-android --max-workers 1",
-    "export:android:js": "expo export --platform android --output-dir dist-android --max-workers 1 --no-bytecode"
+    "export:android:js": "expo export --platform android --output-dir dist-android --max-workers 1 --no-bytecode",
+    "verify:offline-cliff": "node scripts/verify-offline-cliff.mjs"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",

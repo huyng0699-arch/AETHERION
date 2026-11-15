@@ -1,0 +1,752 @@
+{
+  "article_id": "CLIFF-040",
+  "slot": 40,
+  "display_title": "Headache (CO2-Induced)",
+  "category": "Headache",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "NASA Integrated Medical Model (IMM) Clinical Finding Form (CliFF 2023) for mission risk-planning; NOT a validated bedside clinical protocol or NASA endorsement of AETHERION.",
+  "source": {
+    "source_id": "NASA-CLIFF-040",
+    "publisher": "NASA",
+    "title": "Headache (CO2-Induced) CliFF (2023)",
+    "source_url": "https://www.nasa.gov/integrated-medical-model-documentation/",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+    "retrieved_at_utc": "2026-11-14T05:57:34.507994+00:00",
+    "content_sha256": "0159abb605f9ffa27cf866cf759f1b7fc71850fa3c16327d3f5c23aa82aee939",
+    "original_mime": "application/pdf",
+    "original_bytes": 310846,
+    "license_identifier": "NASA-US-GOV-PUBLIC-DOMAIN",
+    "attribution": "NASA Integrated Medical Model (IMM) Documentation (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "limitations": [
+    "NASA IMM CliFF is probabilistic spaceflight medical risk-planning evidence, not a validated bedside treatment protocol.",
+    "CO2-induced headache incidence depends heavily on spacecraft environmental control and cabin pCO2 thresholds (p.2, p.5).",
+    "Symptoms are generally short-duration and rapidly reversible once CO2 exposure is reduced (p.5)."
+  ],
+  "sections": [
+    {
+      "section_id": "CLIFF-040-sec-0",
+      "heading": "Branch Baseline & Clinical Overview",
+      "text_content": "Clinical Finding Form (CliFF)\nBranch\n\nBaseline\n\nICL64_Headache - Co2 Induced\nA carbon dioxide induced headache results from the build up of ambient carbon dioxide. Several cases have been reported in the US space program.\nAmbient carbon dioxide levels above 2% are known to cause headaches and lethargy. The nominal levels recorded on US spacecraft have been\n0.26%. It is thought that pockets of small poorly ventilated volumes in modules may be responsible. Headaches could also be a sign that at carbon\ndioxide scrubber system has failed. Symptoms typically resolve rapidly and spontaneously with improvement of intramodular airflow. Analgesics are\navailable to be used as needed. (Marshburn, 2008)\n\nINCIDENCE DATA INCLUDED IN THE MODEL\n\nThe model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\nstatus, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\ntype of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\noccurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\nIncidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n(proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\nhistory characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\nare assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\noccurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\nincluded in the MEDPRAT Technical Description Document.\n\nINCIDENCE DATA\n\nSPACEFLIGHT LITERATURE\n\nLarge review of astronaut data regarding side effects from CO2 exposure in space.\nANALOG LITERATURE\n\nSimulation training at NASA for CO2 conditions looking at side effects including headache. The other study looks at induced hypoxia which is the\neffect of excess CO2 inhalation so this creates a nice simulation.\nTERRESTRIAL LITERATURE\n\nNone addressed. The spaceflight literature is clear that crew are much more sensitive to CO2 induced headache while on orbit than on ground.\nTherefore, terrestrial data would be misleading.\n\nOVERALL INCIDENCE SUMMARY\n\nINCIDENCE\n\nmean 0.686 and SD 0.587\n\nINCIDENCE SUMMARY\n\nA Gamma(shape= 1.3685, rate=1.9936) with mean 0.686 and SD 0.587 is used to model the distribution of the incidence rate estimated from\ntransforming excess risk probabilities from the Law model. Excess risk was estimated as the increased probability at 3.0mmHg (current operational\nlimit) as compared to 0.3mmHg (Earth\u2019s ambient CO2 level).\nTABLE 1. INCIDENCE MODEL\n\nIncidence Details\nIncidence Type\nGeneral\nSegment\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\npage: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "p.1"
+    },
+    {
+      "section_id": "CLIFF-040-sec-1",
+      "heading": "Incidence Summary & Environmental Exposure",
+      "text_content": "All\nEnv. Exposure\nNA\nSex\nAny\nCrowns\nAny\nContacts\nAny\nPregnancy\nAny\nIncidence Distribution\nOccurrence Dist\nPoisson\nIncidence Dist.\nGamma\nMean\n0.686447\nSD\n0.586792\nGamma\n(Shape): 1.3685\n(Rate): 1.9936\n\nTABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nSubudhi AW, et al. 2010\n\nTerrestrial\n\n3\n\nLaw J, et al. 2014\n\nSpaceflight\n\n4\n\nLaw J, et al. 2017\n\nTerrestrial\n\n3\n\nWe have a fairly limited data set here. The incidence of CO2 induced headache during a mission is an Engineering question more than a medical\none. We can calculate the probability of a headache occuring when CO2 levels rise, but the frequency of rising CO2 levels is the major driver of this\ncondition. Therefore, how frequent we reach high levels, being an engineering/design question makes this conditional incidence difficult to\nassertain.\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\npage: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "p.2"
+    },
+    {
+      "section_id": "CLIFF-040-sec-2",
+      "heading": "Crewmember Selection, Prevention & Incidence Citations",
+      "text_content": "CREWMEMBER SELECTION/PREVENTION\n\nDISQUALIFYING CONDITIONS\n\nRefer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n(2016).\nPREFLIGHT PREVENTATIVE MEASURES\n\nVehicle requirement(s) CO removal systems are used to scrub the spacecraft or space-station atmosphere, as part of the air revitalization system.\nContingency measure(s): If the CO levels rise above the pre-determined Spacecraft Maximum Allowable Concentrations (SMAC levels) due to\nfailure of the nominal air revitalization system or due to a larger number of crewmembers onboard (for example due to visiting vehicles or vehicle\ncontingencies), additional capability to scrub CO out of the cabin atmosphere is utilized. (James, 2008) (Bacal, Beck, & Barratt, 2008)\nBEST CASE SCENARIO DEFINITION\n\nA CO2-induced headache, which resolves spontaneously or with symptomatic treatment and does not impact mission objectives.\nWORSE CASE SCENARIO DEFINITION\n\nSevere CO2-induced headache that is either refractory to initial treatment or impacts mission objectives.\nCONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\nNone\n\nBEST CASE/WORST CASE PROBABILITY COMMENTS\n\nA worst case scenario has not been observed on orbit and is fairly unlikely. A best/worst case split following roughly that of the original CLiFF data\nis appropriate and likely reflects mission realities\nTABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLOC Value\n\nLaw J, et al. 2014\n\nSpaceflight\n\n4\n\nWe have a fairly limited data set here. The incidence of CO2 induced headache during a mission is an Engineering question more than a medical\none. We can calculate the probability of a headache occuring when CO2 levels rise, but the frequency of rising CO2 levels is the major driver of this\ncondition. Therefore, how frequent we reach high levels, being an engineering/design question makes this conditional incidence difficult to\nassertain. Therefore, it is best to utilitize past design constraints as a predictor of future design constraints. Therefore, past spaceflight data is the\nbest we can hope to use for this condition.\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\npage: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "p.3"
+    },
+    {
+      "section_id": "CLIFF-040-sec-3",
+      "heading": "Table 4. CliFF Treatment & Outcome Table by Clinical Phase",
+      "text_content": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\nCP1: Diagnosis\n\nCP2: Treatment\n\nCP3: Condition End State\n\nTI%\n\nDuration\n\nTI%\n\nDuration\n\nCase Scenario\n\nComposite\nIncidence\n\nCondition\nProbability %\n\nPreset\n\nPreset\n\nPreset\n\nMin\n\nMax Preset\n\nMin%\n\nMax%\n\nMin%\n\nMax%\n\nTreated Best\nCase (TBC)\n\nmean 0.686 and\nSD 0.587\n\n95 - 95\n\n100\n\n0.86\n\n0\n\n0.33\n\n1\n\n0\n\n0\n\n0\n\n0\n\n0\n\n5-5\n\n100\n\n0.86\n\n32.979\n\n2\n\n6\n\n0\n\n0\n\n0\n\n0\n\n0\n\nTreated Worst\nCase (TWC)\n\nTI%\n\nRTDC\n\nLOCL\n\nUntreated Best\nCase (UTBC)\n\nN/A\n\nN/A\n\nN/A\n\n0.86\n\n30.6139\n\n0.33\n\n2.5\n\n0\n\n0\n\n0\n\n0\n\n0\n\nUntreated Worst\nCase (UTWC)\n\nN/A\n\nN/A\n\nN/A\n\n0.86\n\n57.2416\n\n2\n\n48\n\n0\n\n0\n\n0\n\n0\n\n0\n\nTABLE 4 KEY\nComposite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\nFor space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\nCondition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\nClinical Phase General Comments:\nTI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\nto the medical condition.\nDurations are defined in hours.\nRemoval to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\nend state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\npotential for intractable pain.\nLoss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\nClinical Phase 1: Initial Assessment and Diagnosis:\nCovers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\ncrewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\nconsidered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\napplicable.\"\nClinical Phase 2: Stabilization, Treatment, and Convalescence:\nThe affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\nto recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\nrecurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\nmaximum hours.\nClinical Phase 3: Condition End State:\nReached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\nenvironment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\ncondition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\nbe noted in the condition end state results.\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\npage: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "p.4"
+    },
+    {
+      "section_id": "CLIFF-040-sec-4",
+      "heading": "Scenario Overview Comments",
+      "text_content": "SCENARIO OVERVIEW COMMENTS\n\nCO2 causes generally short-duration, rapidly reversible headaches. Even in the worst case, these may only last for up to 48 hours. There is no\nexpected RTDC or LOCL in any scenario with respect to CO2-induced headaches. The ultimate goal is prevention of rising CO2 levels, and if\nexposed, rapidly removing the astronaut from that environment and correcting the underlying problem.\n\nTREATED BEST CASE (TBC) SCENARIO COMMENTS\n\nCO2 induced headache is due to exposure to CO2 for several hours above 15mmHg. First signs of exposure include dyspnea and sweating. Higher\nCO2 concentrations will cause unconsciousness, muscle twitching, convulsions, and eventually death. Therefore, given that this is an exposure, it\nmakes more sense to attempt to minimize/reverse the excessive CO2 as the form of treatment than the return the astronauts, especially if the\nexcess CO2 is coming from within the spacecraft. These headaches are rapidly reversible when CO2 levels are reduced.\n\nTREATED WORST CASE SCENARIO (TWC) COMMENTS\n\nComprehensive literature searches were run and there is no evidence of loss of crew life from a CO2-induced headache with the parameters listed.\nTherefore with known clinical knowledge, LOCL is not expected. Halpern et al (2004) industrial accident paper demonstrates that headaches may\nlast 2-6 hours, and that up to 44% of those involved in the accident were hospitalized. It is important to note that the 44% exposed was a low\nnumber (n=11) and it was NOT due to headaches but rather other severe sequalae (e.g. pneumonitis, ECG changes). Therefore, we would expect\nan RTDC rate of 0% with respect to isolated, CO2-induced headaches. Immense CO2 exposures causing other sequelae are outside the scope of\nthis ICL\n\nUNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\nCetin 2015 study of 1,368,941 candidates in Turkey evaluating CO2 levels rising in crowded exam halls. Within first 10 minutes of elevated CO2,\nparticipants started experiencing symptoms related to excess CO2 including headache. No individuals were hospitalized and there were no deaths.\n\nUNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\nIn Engel 1969 study, 40 individuals underwent an experiment testing their response to 3 different chemicals, one included CO2. Participants were\nmonitored for symptoms including headache induced by CO2. The shortest duration reported was 45min and longest was up to 48 hours.\nUltimately, no patients were hospitalized and there were no deaths.\n\nTABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLaw J, et al. 2017\n\nAnalog\n\nHalpern, et al. 2004\n\nTerrestrial\n\nCetin M, 2017\n\nTerrestrial\n\nEngel D, 1969\n\nTerrestrial\n\nLOC Value\n\n2\n\nCO2 induced headache is due to exposure to CO2 for several hours above 15mmHg. First signs of exposure include dyspnea and sweating. Higher\nCO2 concentrations will cause unconsciousness, muscle twitching, convulsions, and eventually death. Therefore, given that this is an exposure, it\nmakes more sense to attempt to minimize/reverse the excessive CO2 as the form of treatment than the return the astronauts, especially if the\nexcess CO2 is coming from within the spacecraft. Return would likey be futile. Law et al (2017) notes most astronausts have a \"space headache\"\nfor at least the first 7 days of flight which would further invalidate the use of headache as a measure of CO2 exposure. CO2 exposure training is an\nimportant tool to educate astronauts about their potential acute CO2 symptoms. An industrial incident in 2004 caused by a container of liquid\ncarbon dioxide that was unintentionally opened in an enclosed working environment. 25 casualties reached the emergency department. Symptoms\nincluded dyspnea, cough, dizziness, chest pain, and headache. Cetin 2015 study of 1,368,941 candidates in Turkey evaluating CO2 levels rising in\ncrowded exam halls. Within first 10 minutes of elevated CO2, participants started experiencing symptoms related to excess CO2 including\nheadache. Engel D. Studies on headache produced by carbon dioxide, histamine and adrenalin. Acta Neurochir (Wien). 1969;21(4):269-83. doi:\n10.1007/BF01402961. PMID: 5376373.\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\npage: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "p.5"
+    },
+    {
+      "section_id": "CLIFF-040-sec-5",
+      "heading": "Table 6. RTDC Level of Confidence (LOC)",
+      "text_content": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nLaw J, et al. 2017\n\nAnalog\n\nHalpern P, et al. 2004\n\nTerrestrial\n\nCetin M., 2017\n\nTerrestrial\n\nEngel D., 1969\n\nTerrestrial\n\nLOC Value\n\n2\n\nCO2 induced headache is due to exposure to CO2 for several hours above 15mmHg. First signs of exposure include dyspnea and sweating. Higher\nCO2 concentrations will cause unconsciousness, muscle twitching, convulsions, and eventually death. Therefore, given that this is an exposure, it\nmakes more sense to attempt to minimize/reverse the excessive CO2 as the form of treatment than the return the astronauts, especially if the\nexcess CO2 is coming from within the spacecraft. Return would likey be futile. Law et al (2017) notes most astronausts have a \"space headache\"\nfor at least the first 7 days of flight which would further invalidate the use of headache as a measure of CO2 exposure. CO2 exposure training is an\nimportant tool to educate astronauts about their potential acute CO2 symptoms. An industrial incident in 2004 caused by a container of liquid\ncarbon dioxide that was unintentionally opened in an enclosed working environment. 25 casualties reached the emergency department. Symptoms\nincluded dyspnea, cough, dizziness, chest pain, and headache. Eleven (44%) patients were admitted to the hospital: 8 were discharged 24 hours\nlater and the others within 8 days. No patient died. It is important to note that the hospitalizations were NOT due to an isolated headache but rather\nmore serious sequalae (e.g. pneumonitis, ECG changes) Cetin (2015) study of 1,368,941 candidates in Turkey evaluating CO2 levels rising in\ncrowded exam halls. No student needed to be hospitalized and there were no deaths. Students were not removed from the enviroment and were not\ngiven any treatment. In 1969, 40 individuals underwent an experiment testing their response to 3 different chemicals, one included CO2.\nParticipants were monitored for symptoms including headache induced by CO2. No participants required hospitalization or other treatment and\nissue resolved with time. Please note that they were not continously exposed to CO2 so the removal of the CO2 enviroment could account for how\nthey resolved without needing treatment. However, the main treatment is removal from excess CO2 enviroment so this is a double edge sword.\nOverall, this is a good study looking at the UTWC RTDC model.\n\nTABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\nCitation\n\nSource\n\nN/A\n\nN/A\n\nLOC Value\n4\n\nComprehensive literature searches were run and there is no evidence of loss of crew life from a CO2-induced headache with the parameters listed.\nTherefore with known clinical knowledge, LOCL is not expected.\n\nCAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\nCapabilities and Resourcing Scope\nOverview\nWorst Case Definition: Severe CO2-induced headache that is either refractory to initial treatment or impacts mission objectives.\nBest Case Definition: A CO2-induced headache, which resolves spontaneously or with symptomatic treatment and does not impact mission\nobjectives.\nEssentially this is a headache that cannot occurs in the setting of elevated CO2 levels in the cabin. This condition is terrestrially caused when CO2\nreaches 7.0 but appears to be much more common in spaceflight and can present at 3.0. Generally this condition is one of discomfort rather than a\nmedical emergency.\nThe CRT condition focuses solely on the relief of this discomfort whether that requires moderate pain management, or not, and the removal of the\ncrew member from the area with high CO2 levels. The extent to which relief is achieved is simply crew preference and there is no medical\nassessment necessary.\nDiagnostic Scope and Resourcing\nIn the best-case scenario, diagnosis is based on history and physical examination.\nIn the worst-case scenario, diagnosis is based on history and physical examination.\nClinical Phase 1 Duration and Rationale\nThis version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\nconsensus duration is as follows:\nCP1 BC (Treated or Untreated): 0.86 hours\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\npage: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "p.6"
+    },
+    {
+      "section_id": "CLIFF-040-sec-6",
+      "heading": "Clinical Task Duration & Scenario Details",
+      "text_content": "This is the longest reasonable time to complete this task for an experienced clinician adjusted for being in the spaceflight environment to do the\nfollowing:\n1 - Take a proper history of the patient\n2 - Perform a physical on the patient\nCP1 WC (Treated or Untreated): 0.86 hours\nThis is the longest reasonable time to complete this task for an experienced clinician adjusted for being in the spaceflight environment to do the\nfollowing:\n1 - Take a proper history of the patient\n2 - Perform a physical on the patient\nThe highest scope of practice code used in this CRT which includes interpretation of diagnosis, performing diagnostic tests and performing\ntreatment would be a two.\nTreatment Scope and Resourcing\nIn the best-case scenario, treatment is limited to mild pain medications as this was specifically in the definition of the best case for this condition.\nThe worst case scenario, where the pain is refractory to mild medications results in an escalation of therapy options including decreasing the CO2\nlevel in the cabin and delivering O2 to the patient.\nMost headache in terrestrial populations (best or worst case) are resolved with medication without need for surgical or psychiatric intervention.\nCommunications and Support Needs\nIn the best-case and worst-case scenario, diagnosis and course of treatment is uncomplicated and likely within the scope of care of onboard crew\nmembers.\n\nIMM CLIFF RECONCILATION COMMENTS\n\nHeadache is not included as a condition in the American Medical Association guides to the Evaluation of Permanent Impairment. The calculation of\nfunctional impairments (FI) follows the IMM standard template for mild non-space adaptation conditions; we combined two tables: Migraine and\nComplex Regional Pain Syndrome (Upper Extremity). Migraine Whole Person Impairment ratings are based on Table 13-18, p.342 (American\nMedical Association, 2008). Complex Regional Pain Syndrome (CRPS-UE) gradings for upper extremity impairment are based on Table 15-16, p.\n454 (American Medical Association, 2008). The CRPS is converted from localized to Whole Person Impairment based on table 15-1, page 385\n(American Medical Association, 2008). Combined FI ratings are calculated using the Combined Values Chart as indicated in Appendix A, pp 604606 (American Medical Association, 2008). See the CliFF Appendix for detailed description of grading. For Clinical Phase I, by definition FI is 100%\nand duration is estimated as 15 minutes to evaluate headache as described in the ISS medical checklist. During Clinical Phase II, FI is estimated in\n0 to 10%, and duration is estimated as 1 to 8 hours considering it may take up to 2 doses for relief of headache as indicated in the ISS medical\nchecklist or resolve spontaneously (Headache Classification Subcommittee of the International Headache Society, 2010). During Clinical Phase III,\nheadache (CO induced) is expected to resolve and FI is 0%. Based on space flight data (Walton, 2010) EVAC and LOCL are not expected.\n\nLIMITATIONS SUMMARY\n\nThere is sparse terrestrial data to inform CP2 and best case-worst case probability split. There were a number of assumptions that needed to be\nmade to derive the composite incidence. These could lead to inaccuracies. CO2 concentrations do not remain constant on spacecraft and can vary\nby the hour. There are local pockets of higher CO2 levels. Excursions of CO2 levels above the assumed value can lead to much higher incidences\nof headache as the relationship between the number of headaches and an increase in CO2 levels is not linear. The assumption is that the\nventilation and CO2 removal capability of exploration spacecraft will be similar to ISS which may not be the case and may result in higher or lower\nCO2 concentrations. Because of the large sample size, the study used to compute the composite incidence most likely overestimates the\nconfidence we have in the assigned value. Under-reporting for this condition could have been significant during past space missions due to subtle\ndisease that may not have been apparent to the crew. This may have affected the development of the model that was used and result in\nunderestimation of the incidence.\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\npage: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "p.7"
+    },
+    {
+      "section_id": "CLIFF-040-sec-7",
+      "heading": "Table 8. Task Impairment Calculation (HSTC) \u2014 Part 1",
+      "text_content": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\nClinical Phase 2: Treatment\nAffected HSTCs\nCognitive Simple\n\nCognitive Complex\n\nCommunications\n\nInterpersonal\nSkills\n\nVision\n\nHearing\n\nCardiopulmonary\n\nDentition\n\nGI\n\nGU\n\nTreated\nBest\nCase\n(TBC)\nUntreated\nBest\nCase\n(UTBC)\n\n664\n\nTreated\nWorst\nCase\n(TWC)\n\n664\n\nUntreated\nWorst\n223\nCase\n(UTWC)\n\n664\n\n145\n\n113\n\n89\n\n145\n\n89\n\n145\n\n13\n\nAffected HSTCs (Continued)\n\nHand\n(Dom)\n\nHand (Any)\n\nUpper Extremity\n\nLower\nExtremity\n\nAmbul &\nStanding (g)\n\nTI Calculation\n\nTranslation &\nDon/Doff\nStabilization\nEquipment\n(microgravity)\n\nPressure\nOps\n\nTreated\nBest\nCase\n(TBC)\n\nTI Score\n\nTotal Tasks\nImpaired By\nCondition\n\nTotal\nHuman\nSystem\nCategory\nTasks Full\nMission\n\n0\n\n3763\n\n0\n\n0\n\nTI Decimal\n\nTI %\n\nUntreated\nBest\n132\nCase\n(UTBC)\n\n211\n\n1152\n\n3763\n\n0.306139\n\n30.6139\n\nTreated\nWorst\n132\nCase\n(TWC)\n\n211\n\n1241\n\n3763\n\n0.32979\n\n32.979\n\n211\n\n2154\n\n3763\n\n0.572416\n\n57.2416\n\nUntreated\nWorst\n132\nCase\n(UTWC)\n\n564\n\nClinical Phase 3: Condition End State\nAffected HSTCs\nCognitive Simple\n\nCognitive Complex\n\nCommunications\n\nInterpersonal\nSkills\n\nVision\n\nHearing\n\nCardiopulmonary\n\nDentition\n\nGI\n\nGU\n\nTreated\nBest\nCase\n(TBC)\nUntreated\nBest\nCase\n(UTBC)\nTreated\nWorst\nCase\n(TWC)\nUntreated\nWorst\nCase\n(UTWC)\nAffected HSTCs (Continued)\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\nTI Calculation\n\nTI Score\n\npage: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "p.8"
+    },
+    {
+      "section_id": "CLIFF-040-sec-8",
+      "heading": "Table 8. Task Impairment Calculation (HSTC) \u2014 Part 2",
+      "text_content": "Hand\n(Dom)\n\nHand (Any)\n\nUpper Extremity\n\nLower\nExtremity\n\nTranslation &\nAmbul &\nDon/Doff\nStabilization\nStanding (g)\nEquipment\n(microgravity)\n\nPressure\nOps\n\nTotal\nHuman\nSystem\nCategory\nTasks Full\nMission\n\nTotal Tasks\nImpaired By\nCondition\n\nTI Decimal\n\nTI %\n\nTreated\nBest\nCase\n(TBC)\n\n0\n\n0\n\n0\n\n0\n\nUntreated\nBest\nCase\n(UTBC)\n\n0\n\n0\n\n0\n\n0\n\nTreated\nWorst\nCase\n(TWC)\n\n0\n\n0\n\n0\n\n0\n\nUntreated\nWorst\nCase\n(UTWC)\n\n0\n\n0\n\n0\n\n0\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\npage: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "p.9"
+    },
+    {
+      "section_id": "CLIFF-040-sec-9",
+      "heading": "Table 8 Key & HSTC Definitions",
+      "text_content": "TABLE 8 KEY\nHuman System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\nsimple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\ncomplex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\nwith inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\nrequiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\nwhich visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\nalarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\nactivities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\nsolids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n(Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n(Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\nTasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n(excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\nboth lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\nuse of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\nsetting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\nequipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\nCriteria for Assignment of Conditions to HSTCs (any of the following):\n1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n5) Does pain associated with the condition impair any further human system categories?\n\nTASK IMPAIRMENT COMMENTS\n\nCP2: No comment. CP3: No comment.\n\nEVIDENCE COLLECTION PROCESS\n\nMesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n(CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\nIncidence:\nDatabases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\nsearch, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\nNY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\nDuration, RTDC, LOCL:\nDatabases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\nLOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\napplicable, the article was included in the CLiFF.\n\nLEVEL OF CONFIDENCE (LOC) SCORING\n\nArticles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\nenvironment using the following grading scale:\n4 \u2013 Confident\n3 \u2013 Somewhat confident\n2 \u2013 Neutral\n1 \u2013 Somewhat unconfident\n0 \u2013 Not confident\nThe following considerations factor into the grading scale above:\n\u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n\u2022 How closely does the population included resemble the astronaut population?\n\u2022 Quality of the paper (number of subjects, methods, etc.)\n\u2022 How much does the editor trust the source of the evidence?\n\u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n\u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\npage: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "p.10"
+    },
+    {
+      "section_id": "CLIFF-040-sec-10",
+      "heading": "References",
+      "text_content": "REFERENCES\n\nReference\n1 - Law, Jennifer MD, MPH; Van Baalen, Mary MS; Foy, Millennia PhD; Mason, Sara S. BS; Mendez, Claudia MPH; Wear, Mary L. PhD; Meyers,\nValerie E. PhD, DABT; Alexander, David MD Relationship Between Carbon Dioxide Levels and Reported Headaches on the International Space\nStation, Journal of Occupational and Environmental Medicine: May 2014 - Volume 56 - Issue 5 - p 477-483\n2 - Subudhi AW, Panerai RB, Roach RC. Effects of hypobaric hypoxia on cerebral autoregulation. Stroke. 2010 Apr;41(4):641-6. doi:\n10.1161/STROKEAHA.109.574749. Epub 2010 Feb 25. PMID: 20185774.\n3 - Law J, Young M, Alexander D, Mason SS, Wear ML, M\u00e9ndez CM, Stanley D, Ryder VM, Van Baalen M. Carbon Dioxide Physiological Training\nat NASA. Aerosp Med Hum Perform. 2017 Oct 1;88(10):897-902. doi: 10.3357/AMHP.4552.2017. PMID: 28923137.\n4 - Halpern P, Raskin Y, Sorkine P, Oganezov A. Exposure to extremely high concentrations of carbon dioxide: a clinical description of a mass\ncasualty incident. Ann Emerg Med. 2004 Feb;43(2):196-9. doi: 10.1016/j.annemergmed.2003.08.003. PMID: 14747808.\n5 - Cetin M. A Change in the Amount of CO2 at the Center of the Examination Halls: Case Study of Turkey. 2 OCT 2017.\nhttps://doi.org/10.1080/09735070.2016.11905483\n6 - Engel D. Studies on headache produced by carbon dioxide, histamine and adrenalin. Acta Neurochir (Wien). 1969;21(4):269-83. doi:\n10.1007/BF01402961. PMID: 5376373.\n\nACRONYMS\n\nACRONYM\n\nPHRASE\n\nAAOMS\n\nAmerican Association of Oral and Maxillofacial Surgeons\n\nAMA\n\nAmerican Medical Association\n\nARCL\n\nAll Remaining Conditions List\n\nARS\n\nAcute Radiation Sickness\n\nBHP\n\nBehavioral Health and Performance\n\nCAC\n\nCoronary Artery Calcium\n\nCHS\n\nCrew Health and Safety\n\nCL\n\nCondition List\n\nCliFF\n\nClinical Finding Form\n\nCMO\n\nCrew Medical Officer\n\nCOMFORT\n\nClinical Outcome Metrics for Optimization of Robust Training\n\nCP1\n\nClinical Phase 1\n\nCP2\n\nClinical Phase 2\n\nCP3\n\nClinical Phase 3\n\nCRL\n\nClinical Resource Level\n\nCRT\n\nCapability Resource Table\n\nCST\n\nClinical Science Team\n\nDCS\n\nDecompression Syndrome\n\nDRM\n\nDesign Reference Mission\n\nED\n\nEmergency Medicine Doctor\n\nEL\n\nEvidence Library\n\nEMCL\n\nExploration Medical Condition List\n\nEMT\n\nEmergency Medical Technician\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\npage: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "p.11"
+    },
+    {
+      "section_id": "CLIFF-040-sec-11",
+      "heading": "Glossary & Acronyms \u2014 Part 1",
+      "text_content": "EVA\n\nExtravehicular Activity\n\nEXMC\n\nExploration Medical Capability\n\nHRP\n\nHuman Research Program\n\nICD\n\nInternational Classification of Disease\n\nICL 1.0\n\nIMPACT 1.0 Medical Conditions List\n\nICU\n\nIntensive Care Unit\n\nIMCL\n\niMED Condition List\n\niMED\n\nIntegrated Medical Evidence Database\n\nIMM\n\nIntegrated Medical Model\n\nIMPACT-MD\n\nImpact Medical Database\n\nIP\n\nIncidence Proportion\n\nIR\n\nIncidence Rate\n\nISS\n\nInternational Space Station\n\nIV\n\nIntravenous\n\nJSC\n\nJohnson Space Center\n\nLEO\n\nLow-Earth orbit\n\nLEVA\n\nLunar Extravehicular Activity\n\nLOCL\n\nLoss of Crew Life\n\nLOM\n\nLoss of Mission\n\nLSAH\n\nLifetime Surveillance of Astronaut Health\n\nLSO\n\nLunar Surface Operations\n\nMCL\n\nMaster Condition List\n\nMEVA\n\nMedical Extravehicular Activity\n\nNASA\n\nNational Aeronautics and Space Administration\n\nN/A\n\nNot Applicable\n\nNP\n\nNurse Practitioner\n\nOBGYN\n\nObstetrics and Gynecology\n\nOR\n\nOccurrence Rate\n\nPA\n\nPhysician Assistant\n\nPDQ\n\nPain Disability Questionnaire\n\nPFCL\n\nProposed Future Conditions List\n\nPPE\n\nPersonal Protective Equipment\n\nPTRS\n\nProject Technical Requirements Specification\n\nPRL\n\nPharmaceutical Resource Level\n\nQTL\n\nQuality Time Lost\n\nRCL\n\nRemoved Conditions List\n\nREP\n\nRochester Epidemiology Study\n\nRTDC\n\nRemoval to Definitive Care\n\nSANS\n\nSpaceflight-Associated Neuro-ocular Syndrome\n\nSAS\n\nSpace Adaptation Syndrome\n\nSEVA\n\nSpaceflight Extravehicular Activity\n\nSME\n\nSubject Matter Expert\n\nSoP\n\nStandard Operating Procedure\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\npage: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "p.12"
+    },
+    {
+      "section_id": "CLIFF-040-sec-12",
+      "heading": "Glossary & Acronyms \u2014 Part 2",
+      "text_content": "SPE\n\nSolar Particle Event\n\nTBD\n\nTo Be Determined\n\nTI\n\nTask Impairment\n\n9/11/2022 3:53:40 PM\n\nICL64_Headache - Co2 Induced Cliff\n\npage: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "p.13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-040-tbl-0",
+      "title": "Treatment & Outcome Table by Clinical Phase (p.4)",
+      "rows": [
+        [
+          "CP1: Diagnosis",
+          "CP2: Treatment",
+          "CP3: Condition End State"
+        ],
+        [
+          "TI%",
+          "Duration",
+          "TI%",
+          "Duration",
+          "TI%",
+          "RTDC",
+          "LOCL"
+        ],
+        [
+          "Composite",
+          "Condition"
+        ],
+        [
+          "Case Scenario",
+          "Incidence",
+          "Probability %",
+          "Preset",
+          "Preset",
+          "Preset",
+          "Min",
+          "Max Preset",
+          "Min%",
+          "Max%",
+          "Min%",
+          "Max%"
+        ],
+        [
+          "Treated Best",
+          "mean 0.686 and",
+          "95 - 95",
+          "100",
+          "0.86",
+          "0",
+          "0.33",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "Case (TBC)",
+          "SD 0.587"
+        ],
+        [
+          "Treated Worst",
+          "5-5",
+          "100",
+          "0.86",
+          "32.979",
+          "2",
+          "6",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "Untreated Best",
+          "N/A",
+          "N/A",
+          "N/A",
+          "0.86",
+          "30.6139",
+          "0.33",
+          "2.5",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "Untreated Worst",
+          "N/A",
+          "N/A",
+          "N/A",
+          "0.86",
+          "57.2416",
+          "2",
+          "48",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "9/11/2022 3:53:40 PM",
+          "ICL64_Headache - Co2 Induced Cliff",
+          "page: 4"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "p.4"
+    },
+    {
+      "table_id": "CLIFF-040-tbl-1",
+      "title": "RTDC Level of Confidence (p.6)",
+      "rows": [
+        [
+          "Citation",
+          "Source",
+          "LOC Value"
+        ],
+        [
+          "Law J, et al. 2017",
+          "Analog"
+        ],
+        [
+          "Halpern P, et al. 2004",
+          "Terrestrial"
+        ],
+        [
+          "Cetin M., 2017",
+          "Terrestrial"
+        ],
+        [
+          "Engel D., 1969",
+          "Terrestrial"
+        ],
+        [
+          "Citation",
+          "Source",
+          "LOC Value"
+        ],
+        [
+          "N/A",
+          "N/A",
+          "4"
+        ],
+        [
+          "9/11/2022 3:53:40 PM",
+          "ICL64_Headache - Co2 Induced Cliff",
+          "page: 6"
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "p.6"
+    },
+    {
+      "table_id": "CLIFF-040-tbl-2",
+      "title": "Task Impairment Calculation Based on Affected HSTC (p.8-9)",
+      "rows": [
+        [
+          "Cognitive -",
+          "Cognitive -",
+          "Cardio-"
+        ],
+        [
+          "Communications",
+          "personal",
+          "Vision",
+          "Hearing",
+          "Dentition",
+          "GI",
+          "GU"
+        ],
+        [
+          "Simple",
+          "Complex",
+          "pulmonary"
+        ],
+        [
+          "664",
+          "145"
+        ],
+        [
+          "664",
+          "89",
+          "145"
+        ],
+        [
+          "223",
+          "664",
+          "113",
+          "89",
+          "145",
+          "13"
+        ],
+        [
+          "Affected HSTCs (Continued)",
+          "TI Calculation",
+          "TI Score"
+        ],
+        [
+          "Translation &",
+          "Total Tasks"
+        ],
+        [
+          "Hand",
+          "Lower",
+          "Ambul &",
+          "Don/Doff",
+          "Pressure",
+          "System"
+        ],
+        [
+          "Hand (Any)",
+          "Upper Extremity",
+          "Stabilization",
+          "Impaired By",
+          "TI Decimal",
+          "TI %"
+        ],
+        [
+          "(Dom)",
+          "Extremity",
+          "Standing (g)",
+          "Equipment",
+          "Ops",
+          "Category"
+        ],
+        [
+          "(microgravity)",
+          "Condition"
+        ],
+        [
+          "0",
+          "3763",
+          "0",
+          "0"
+        ],
+        [
+          "132",
+          "211",
+          "1152",
+          "3763",
+          "0.306139",
+          "30.6139"
+        ],
+        [
+          "132",
+          "211",
+          "1241",
+          "3763",
+          "0.32979",
+          "32.979"
+        ],
+        [
+          "132",
+          "564",
+          "211",
+          "2154",
+          "3763",
+          "0.572416",
+          "57.2416"
+        ],
+        [
+          "Cognitive -",
+          "Cognitive -",
+          "Cardio-"
+        ],
+        [
+          "Communications",
+          "personal",
+          "Vision",
+          "Hearing",
+          "Dentition",
+          "GI",
+          "GU"
+        ],
+        [
+          "Simple",
+          "Complex",
+          "pulmonary"
+        ],
+        [
+          "Affected HSTCs (Continued)",
+          "TI Calculation",
+          "TI Score"
+        ],
+        [
+          "9/11/2022 3:53:40 PM",
+          "ICL64_Headache - Co2 Induced Cliff",
+          "page: 8"
+        ],
+        [
+          "Translation &",
+          "Total Tasks"
+        ],
+        [
+          "Hand",
+          "Lower",
+          "Ambul &",
+          "Don/Doff",
+          "Pressure",
+          "System"
+        ],
+        [
+          "Hand (Any)",
+          "Upper Extremity",
+          "Stabilization",
+          "Impaired By",
+          "TI Decimal",
+          "TI %"
+        ],
+        [
+          "(Dom)",
+          "Extremity",
+          "Standing (g)",
+          "Equipment",
+          "Ops",
+          "Category"
+        ],
+        [
+          "(microgravity)",
+          "Condition"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "9/11/2022 3:53:40 PM",
+          "ICL64_Headache - Co2 Induced Cliff",
+          "page: 9"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "p.8-9"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-040-ref-0",
+      "label": "1 - Law, Jennifer MD, MPH; Van Baalen, Mary MS; Foy, Millennia PhD; Mason, Sara S. BS; Mendez, Claudia MPH; Wear, Mary L. PhD; Meyers,",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-1",
+      "label": "Valerie E. PhD, DABT; Alexander, David MD Relationship Between Carbon Dioxide Levels and Reported Headaches on the International Space",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-2",
+      "label": "Station, Journal of Occupational and Environmental Medicine: May 2014 - Volume 56 - Issue 5 - p 477-483",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-3",
+      "label": "2 - Subudhi AW, Panerai RB, Roach RC. Effects of hypobaric hypoxia on cerebral autoregulation. Stroke. 2010 Apr;41(4):641-6. doi:",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-4",
+      "label": "10.1161/STROKEAHA.109.574749. Epub 2010 Feb 25. PMID: 20185774.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-5",
+      "label": "3 - Law J, Young M, Alexander D, Mason SS, Wear ML, M\u00e9ndez CM, Stanley D, Ryder VM, Van Baalen M. Carbon Dioxide Physiological Training",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-6",
+      "label": "at NASA. Aerosp Med Hum Perform. 2017 Oct 1;88(10):897-902. doi: 10.3357/AMHP.4552.2017. PMID: 28923137.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-7",
+      "label": "4 - Halpern P, Raskin Y, Sorkine P, Oganezov A. Exposure to extremely high concentrations of carbon dioxide: a clinical description of a mass",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-8",
+      "label": "casualty incident. Ann Emerg Med. 2004 Feb;43(2):196-9. doi: 10.1016/j.annemergmed.2003.08.003. PMID: 14747808.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-9",
+      "label": "5 - Cetin M. A Change in the Amount of CO2 at the Center of the Examination Halls: Case Study of Turkey. 2 OCT 2017.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-10",
+      "label": "https://doi.org/10.1080/09735070.2016.11905483",
+      "citation_url": "https://doi.org/10.1080/09735070.2016.11905483",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-11",
+      "label": "6 - Engel D. Studies on headache produced by carbon dioxide, histamine and adrenalin. Acta Neurochir (Wien). 1969;21(4):269-83. doi:",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-12",
+      "label": "10.1007/BF01402961. PMID: 5376373.",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-13",
+      "label": "American Association of Oral and Maxillofacial Surgeons",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-14",
+      "label": "American Medical Association",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-15",
+      "label": "All Remaining Conditions List",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-16",
+      "label": "Acute Radiation Sickness",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-17",
+      "label": "Behavioral Health and Performance",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-18",
+      "label": "Coronary Artery Calcium",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-19",
+      "label": "Crew Health and Safety",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-20",
+      "label": "Clinical Finding Form",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-21",
+      "label": "Crew Medical Officer",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-22",
+      "label": "Clinical Outcome Metrics for Optimization of Robust Training",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-23",
+      "label": "Clinical Resource Level",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-24",
+      "label": "Capability Resource Table",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-25",
+      "label": "Clinical Science Team",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-26",
+      "label": "Decompression Syndrome",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-27",
+      "label": "Design Reference Mission",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-28",
+      "label": "Emergency Medicine Doctor",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-29",
+      "label": "Exploration Medical Condition List",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-30",
+      "label": "Emergency Medical Technician",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-31",
+      "label": "9/11/2022 3:53:40 PM",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    },
+    {
+      "reference_id": "CLIFF-040-ref-32",
+      "label": "ICL64_Headache - Co2 Induced Cliff",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/headache-co2-induced-cliff-2023.pdf?emrc=79ed88",
+      "page_number": 11
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-040-img-0",
+      "media_kind": "NASA_FIGURE",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-040/654bd36bd7d31d447df79169f3ab50ebf1e3ca099c53618c94fe403af36dc50f.jpg",
+      "mime_type": "image/jpeg",
+      "width": 2848,
+      "height": 4288,
+      "sha256": "654bd36bd7d31d447df79169f3ab50ebf1e3ca099c53618c94fe403af36dc50f",
+      "creator": "NASA",
+      "license_identifier": "US-GOV-PUBLIC-DOMAIN",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/STS-134_ISS-28_Michael_Fincke_and_Ron_Garan_on_the_Carbon_Dioxide_Removal_Assembly.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:STS-134_ISS-28_Michael_Fincke_and_Ron_Garan_on_the_Carbon_Dioxide_Removal_Assembly.jpg",
+      "attribution": "NASA (US-GOV-PUBLIC-DOMAIN) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:STS-134_ISS-28_Michael_Fincke_and_Ron_Garan_on_the_Carbon_Dioxide_Removal_Assembly.jpg)",
+      "caption": "NASA astronauts working on the International Space Station Carbon Dioxide Removal Assembly (CDRA), which scrubs cabin CO2 to prevent hypercapnic symptoms.",
+      "alt_text": "Two astronauts inside the ISS Destiny laboratory working on the Carbon Dioxide Removal Assembly rack.",
+      "clinical_relevance": "Illustrates spacecraft environmental CO2 scrubbing hardware directly tied to preventing CO2-induced headaches (CLIFF-040, p.1, p.5).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 1",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-040-img-1",
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-040/8e8c5d14d098828242c11cd3042e786f6ec27cf1d5daf5872b5c41adfbfe7062.jpg",
+      "mime_type": "image/jpeg",
+      "width": 949,
+      "height": 515,
+      "sha256": "8e8c5d14d098828242c11cd3042e786f6ec27cf1d5daf5872b5c41adfbfe7062",
+      "creator": "OpenStax",
+      "license_identifier": "CC-BY-4.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/1316_Meningeal_LayersN.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:1316_Meningeal_LayersN.jpg",
+      "attribution": "OpenStax (CC-BY-4.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:1316_Meningeal_LayersN.jpg)",
+      "caption": "OpenStax diagram of the cranial meninges (dura mater, arachnoid, pia mater) and dural venous sinuses surrounding the cerebral cortex.",
+      "alt_text": "Cross-sectional diagram of the skull, meningeal layers, subarachnoid space, and cerebral cortex.",
+      "clinical_relevance": "Illustrates pain-sensitive meningeal and vascular structures involved in elevated intracranial blood flow and CO2-induced headache (CLIFF-040, p.1).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 2",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-040-img-2",
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-040/b55fa36af67b1418035d597d7013aea70b8d26598094aecbcdb9a2b9c91dee8a.jpg",
+      "mime_type": "image/jpeg",
+      "width": 2112,
+      "height": 3594,
+      "sha256": "b55fa36af67b1418035d597d7013aea70b8d26598094aecbcdb9a2b9c91dee8a",
+      "creator": "NASA / Wikimedia Commons contributor",
+      "license_identifier": "CC-BY-4.0",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Arteries_at_base_of_brain%2C_%27Circle_of_Willis%27_Wellcome_L0037447.jpg",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Arteries_at_base_of_brain,_%27Circle_of_Willis%27_Wellcome_L0037447.jpg",
+      "attribution": "NASA / Wikimedia Commons contributor (CC-BY-4.0) via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Arteries_at_base_of_brain,_%27Circle_of_Willis%27_Wellcome_L0037447.jpg)",
+      "caption": "Anatomical illustration of the cerebral arteries at the base of the brain (Circle of Willis), which dilate in response to elevated arterial pCO2.",
+      "alt_text": "Detailed anatomical illustration of the ventral brain surface showing the Circle of Willis arterial ring.",
+      "clinical_relevance": "Illustrates the cerebral vasculature whose hypercapnia-mediated vasodilation drives CO2-induced headache (CLIFF-040, p.1).",
+      "page_number": 1,
+      "figure_reference": "Educational Figure 3",
+      "usage_review": "APPROVED"
+    }
+  ]
+}

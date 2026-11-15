@@ -7,6 +7,7 @@ import { MessageKey, t } from '../i18n';
 import { ThemeColors, useThemedStyles } from '../theme';
 import { ApiError, readServerUrl } from '../api/client';
 import { buildScienceMediaUrl, getKnowledgeStatus, getScienceArticle, searchScienceArticles, KnowledgeStatus, ScienceArticle, ScienceArticleSummary } from '../api/science';
+import { OFFLINE_CLIFF_COUNT, getOfflineCliffArticle, searchOfflineCliffArticles } from '../api/offlineCliff';
 import { AppHeader, AppPage, Body, Panel, StatusPill, Title } from '../components/ui';
 import { copy } from '../uiCopy';
 
@@ -21,6 +22,7 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
   const [loadingMore, setLoadingMore] = useState(false);
   const [serverBaseUrl, setServerBaseUrl] = useState('');
   const [status, setStatus] = useState<KnowledgeStatus | null>(null);
+  const [offlineLibrary, setOfflineLibrary] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [errorKey, setErrorKey] = useState<MessageKey | null>(null);
@@ -44,6 +46,7 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
     try {
       const result = await searchScienceArticles(term, 100, offset);
       if (!current()) return;
+      setOfflineLibrary(false);
       const page = Array.isArray(result.items) ? result.items : [];
       const total = Number.isFinite(result.matched) ? result.matched : page.length;
       const next = typeof result.next_offset === 'number' && Number.isFinite(result.next_offset) ? result.next_offset : offset + page.length;
@@ -54,14 +57,27 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
       setHasMore(typeof result.has_more === 'boolean' ? result.has_more : next < total);
     } catch (error) {
       if (!current()) return;
-      if (!append) {
-        setItems([]);
-        setIndexed(0);
-        setMatched(0);
-        setHasMore(false);
-        setNextOffset(0);
+      const authenticationDenied = error instanceof ApiError && (error.status === 401 || error.status === 403);
+      if (!authenticationDenied) {
+        const local = searchOfflineCliffArticles(term, 100, offset);
+        setOfflineLibrary(true);
+        setItems(previous => append ? [...previous, ...local.items] : local.items);
+        setIndexed(OFFLINE_CLIFF_COUNT);
+        setMatched(local.matched);
+        setNextOffset(local.next_offset ?? offset + local.items.length);
+        setHasMore(local.has_more ?? false);
+        setErrorKey(null);
+      } else {
+        setOfflineLibrary(false);
+        if (!append) {
+          setItems([]);
+          setIndexed(0);
+          setMatched(0);
+          setHasMore(false);
+          setNextOffset(0);
+        }
+        setErrorKey(errorMessageKey(error));
       }
-      setErrorKey(errorMessageKey(error));
     } finally {
       if (current()) {
         if (append) setLoadingMore(false);
@@ -89,10 +105,25 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
     setDetailErrorKey(null);
     setLoadingDetail(true);
     try {
-      const result = await getScienceArticle(summary.article_id);
-      if (current()) setArticle(result);
+      if (offlineLibrary) {
+        const local = getOfflineCliffArticle(summary.article_id);
+        if (current()) {
+          if (local) setArticle(local);
+          else setDetailErrorKey('scienceRecordUnavailable');
+        }
+      } else {
+        const result = await getScienceArticle(summary.article_id);
+        if (current()) setArticle(result);
+      }
     } catch (error) {
-      if (current()) setDetailErrorKey(errorMessageKey(error));
+      const authenticationDenied = error instanceof ApiError && (error.status === 401 || error.status === 403);
+      const local = authenticationDenied ? null : getOfflineCliffArticle(summary.article_id);
+      if (current()) {
+        if (local) {
+          setOfflineLibrary(true);
+          setArticle(local);
+        } else setDetailErrorKey(errorMessageKey(error));
+      }
     } finally {
       if (current()) setLoadingDetail(false);
     }
@@ -116,7 +147,7 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
             <Ionicons name="chevron-back" size={17} color={colors.primary} /><Text style={styles.backText}>{t(locale, 'scienceBack')}</Text>
           </Pressable>
           {loadingDetail ? <Loading label={t(locale, 'loading')} /> : detailErrorKey ? <Panel><Body>{t(locale, detailErrorKey)}</Body></Panel> : article ? (
-            <ArticleDetail article={article} status={status} locale={locale} serverBaseUrl={serverBaseUrl} onAskAi={onAskAi} />
+            <ArticleDetail article={article} status={status} locale={locale} serverBaseUrl={serverBaseUrl} onAskAi={onAskAi} offline={offlineLibrary} />
           ) : null}
         </>
       ) : (
@@ -147,6 +178,7 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
           {status?.missing_slots?.length ? <StatusPill label={copy(locale, 'missingSources') + ': ' + status.missing_slots.join(', ')} tone="warn" /> : null}
           {status && !status.original_pdf_archive_verified ? <StatusPill label={t(locale, 'sciencePdfNotVerified')} tone="warn" /> : null}
           {status && !status.clinical_rules_validated ? <StatusPill label={t(locale, 'scienceRulesNotValidated')} tone="neutral" /> : null}
+          {offlineLibrary ? <StatusPill label={copy(locale, 'offlineNasaLibrary')} tone="neutral" /> : null}
           {loading && items.length === 0 ? <Loading label={t(locale, 'loading')} /> : items.length === 0 ? (
             errorKey ? <Panel><Body>{t(locale, errorKey)}</Body></Panel> : <Panel><Text style={styles.emptyTitle}>{indexed === 0 ? t(locale, 'noData') : t(locale, 'scienceNoResults')}</Text></Panel>
           ) : <View style={styles.articleList}>
@@ -175,7 +207,7 @@ function ArticleCard({ item, onPress, locale }: { item: ScienceArticleSummary; o
   </Pressable>;
 }
 
-function ArticleDetail({ article, status, locale, serverBaseUrl, onAskAi }: { article: ScienceArticle; status: KnowledgeStatus | null; locale: Locale; serverBaseUrl: string; onAskAi?: (article: ScienceArticleSummary) => void }) {
+function ArticleDetail({ article, status, locale, serverBaseUrl, onAskAi, offline }: { article: ScienceArticle; status: KnowledgeStatus | null; locale: Locale; serverBaseUrl: string; onAskAi?: (article: ScienceArticleSummary) => void; offline: boolean }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   const record = article.source || {};
   const publisher = record.publisher;
@@ -205,6 +237,7 @@ function ArticleDetail({ article, status, locale, serverBaseUrl, onAskAi }: { ar
       {status && !status.original_pdf_archive_verified ? <Text style={styles.sourceNote}>{t(locale, 'sciencePdfNotVerified')}</Text> : null}
       {status && !status.clinical_rules_validated ? <Text style={styles.sourceNote}>{t(locale, 'scienceRulesNotValidated')}</Text> : null}
       <Text selectable style={styles.sourceNote}>{sourceNote}</Text>
+      {offline ? <Text style={styles.sourceNote}>{copy(locale, 'offlineCliffPdfMissing')}</Text> : null}
     </Panel>
 
     {onAskAi && article.sections.length > 0 ? <Pressable accessibilityRole='button' onPress={() => onAskAi(article.summary)} style={styles.askAi}>

@@ -1,0 +1,547 @@
+{
+  "article_id": "CLIFF-089",
+  "slot": 89,
+  "display_title": "Toxic Dermal Exposure",
+  "category": "Dermatology",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-089",
+    "publisher": "NASA",
+    "title": "Toxic Dermal Exposure \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/toxic-dermal-exposure-cliff-2023.pdf?emrc=52b9bc",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/toxic-dermal-exposure-cliff-2023.pdf?emrc=52b9bc",
+    "retrieved_at_utc": "2026-11-14T06:33:09.768508+00:00",
+    "content_sha256": "19c48ec80ba063c7f5f024340ea8f682d29bd98616eb98ed6cb8b4ac1600cec3",
+    "original_mime": "application/pdf",
+    "original_bytes": 318994,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-089-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n  Branch      Baseline\n\n\n\n ICL109_Toxic Dermal Exposure\n\n Toxic dermal exposure involves dermal injury, including urticaria, inflammation, scarring and ulceration, resulting from exposure to a substance.\n Conditions under this CLiFF include contact dermatitis and skin injury from toxic substances. Stevens-Johnson syndrome (SJS) may also fall under\n this as a severe case. Treatment often involves removal of the offending substance. Use of topical corticosteroids can reduce inflammation.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  No reported events of toxic dermal exposure occurring in spaceflight.\n\n  ANALOG LITERATURE\n\n  Lack of analog literature\n\n  TERRESTRIAL LITERATURE\n\n  Contact allergy with at least one reactant is common in the general population; 40.0% having a positive reaction to at least one allergen (Sch\u00e4fer T,\n  2001). Occupational skin reactions are also well documented, with latex/rubber allergies presenting with contact dermatitis (Cherry N. et al., 2000)\n  Other common substances presenting with skin irritation include nickel and epoxy. Of note, chromium exposure can cause a high incidence of skin\n  disease, leading to ulceration (Lee H. et al., 1988). Population studies for terrestrial incidence are well conducted, drawing data from a diverse\n  population. Studies were found by matching to the best case definition condition terms.\n\n\n\n\n  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   mean 1.063E-4 and SD 1.062E-6\n\n\n\n  INCIDENCE SUMMARY\n\n  The Bayesian posterior distribution for the total incidence rate given the component terrestrial data sources under an uninformative prior is\n  Gamma(shape=10018.84, rate=94250623) with mean 1.063E-4 and SD 1.062E-6. Evidence LOE 4 Terrestrial U.K. \u2013 Cherry 2000 \u2013 Surveillance of\n  occupational skin disease: EPIDERM and OPRA. 12,754 cases of occupational skin disease with incidence rate of 12.9 per 100kpy. This translates\n  to 98,868,217 person-years. The relevant disease categories from Table 1 are contact dermatitis and contact urticaria which comes to a total of\n  10,371 cases (9937+434). IR: 1.049E-4 (95%CI: 1.029E-4, 1.069E-4) Terrestrial Italy \u2013 Diphoorn 2015 \u2013 Incidence, causative factors and mortality\n  rates of Stevens-Johnson syndrome (SJS) and toxic epidermal necrolysis (TEN) in northern Italy: data from the REACT registry. 17 cases of TEN\n  and 59 cases of SJS with overall incidence of 1.4 per million person-years. This implies 76 total events and 54,285,714 person-years. IR: 1.4E-6\n  (95%CI: 1.111E-6, 1.743E-6). These conditions are not captured in the Cherry 2000 reference.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n\n\n\n6/15/2023 2:14:15 PM                                               ICL109_Toxic Dermal Exposure Cliff                                                      page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-089-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Any\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     Any\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     0.0001063\n     SD\n     1.062E-06\n\n\n     Gamma\n     (Shape): 10018.8\n     (Rate): 9.42506E+07\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                  Source                                LOC Value\n\n   Cherry N et al., 2000                                                     terrestrial                           2\n\n   Diphoorn J et al., 2015                                                   terrestrial                           2\n\n   Lee H et al., 1998                                                        terrestrial                           2\n\n   Sch\u00e4fer T et al., 2005                                                    terrestrial                           2\n\n   Alinaghi F et al., 2018                                                   terrestrial                           2\n\n   Hall AH et al., 2018                                                      Terrestrial                           2\n\n   Shah KR et al., 2010                                                      terrestrial                           2\n\n  All studies were well conducted and well designed in representative populations. Studies were matched to best case condition terms, with diverse\n  population. Worst case probability estimate drawn from Shah KR et al., 2010: BC/WC probablility rate is estimated from the rate of ulcerations in\n  workers with chemical exposure to materials including chromium, lime Occupational exposure is common in the general population. First line\n  treatment is removal of the irritant, which generally will resolve irritation/inflammation. In severe cases, corrosive substances can cause ulceration\n  and scarring.\n\n\n\n\n6/15/2023 2:14:15 PM                                                ICL109_Toxic Dermal Exposure Cliff                                                     page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-089-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  None\n\n  BEST CASE SCENARIO DEFINITION\n\n  Dermal exposure to an irritant substance resulting in inflammation/irritation that responds to treatment.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Dermal exposure to a corrosive substance resulting in cell death, ulceration, leading to permanent scarring.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  Toxic Dermal Exposure: Excludes chemical burns and allergic reactions. SJS and TEN included under this CLiFF\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  Worst case probability estimate drawn from Shah KR et al., 2010: BC/WC probability rate is estimated from the rate of ulcerations in workers with\n  chemical exposure to materials including chromium and lime Occupational exposure is common in the general population. First line treatment is\n  removal of the irritant, which generally will resolve irritation/inflammation. In severe cases, corrosive substances can cause ulceration and scarring.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                                    Source                              LOC Value\n\n   Diphoorn J et al., 2015                                                     terrestrial                         2\n\n   Lee H et al., 1998                                                          terrestrial                         2\n\n   Shah KR et al., 2010                                                        terrestrial                         2\n\n  All studies were well conducted and well designed in representative populations. Studies were matched to best case condition terms and drew from\n  diverse populations. Worst case probability estimates were drawn from Shah KR et al., 2010, with the BC/WC probability rate estimated from the\n  rate of ulcerations in workers with chemical exposures to materials such as chromium and lime Occupational exposure is common in the general\n  population. First line treatment is removal of the irritant, which generally will resolve irritation/inflammation. In severe cases, corrosive substances\n  can cause ulceration and scarring.\n\n\n\n\n6/15/2023 2:14:15 PM                                                ICL109_Toxic Dermal Exposure Cliff                                                       page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-089-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n                                                              CP1: Diagnosis        CP2: Treatment            CP3: Condition End State\n\n                                                              TI%       Duration    TI%        Duration       TI%         RTDC             LOCL\n                       Composite             Condition\n   Case Scenario       Incidence             Probability %    Preset    Preset      Preset     Min    Max     Preset      Min%    Max%     Min%     Max%\n\n   Treated Best        mean 1.063E-4         89 - 89          100       0.81        12.5033    0      336     0           0       0        0        0\n   Case (TBC)          and SD 1.062E-6\n\n   Treated Worst                             11 - 11          100       1.23        25.764     72     730     6.51076     5       100      5        29.4\n   Case (TWC)\n\n   Untreated Best      N/A                   N/A              N/A       0.81        21.3261    24     435     0           0       0        0        0\n   Case (UTBC)\n\n   Untreated Worst     N/A                   N/A              N/A       1.23        41.4031    720    1680    25.0066     29      100      29       30\n   Case (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n6/15/2023 2:14:15 PM                                                ICL109_Toxic Dermal Exposure Cliff                                                        page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-089-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  Exposure to toxic substances is generally well tolerated if the offending substance is removed and the affected skin washed and treated In worst\n  case scenarios, there is weak evidence supporting the use of corticosteroids to reduce inflammation.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Topical corticosteroids are used to reduce inflammation, duration is 3 days following exposure (Fornacier L. et al., 2015). Use of emollient is also\n  advised. Urticaria due to irritating substance is treated with 2nd generation antihistamines, duration 2 weeks, followed by up to a fourfold increase in\n  dose if refractory to treatment (Zuberbier T. et al., 2014). As treatment is generally management of symptoms and removal of irritant, hospitalization\n  and mortality data for best case scenarios are limited. Treatment for toxic dermal exposure in the best case scenario involves removal of the\n  offending agent and reducing inflammation and urticaria. RTDC and LOCL is not expected for the TBC scenario based on the definition provided of\n  the condition.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  The duration of treated worst case scenarios varies between the type of toxic dermal exposure. For exposure refractory to treatment, second and\n  third line treatment for irritant contact dermatitis involves a 12-24 hour course of systemic steroids (Usatine RP et al., 2010). For patients where\n  corticosteroids are contraindicated, topical tacrolimus is effective (Pacor M et al., 2006). There is no consensus on the best treatment for Stevens-\n  Johnson syndrome (SJS). Prognosis for SJS is poor, with ICU admission indicated if suspected, with up to 29.4% estimated mortality (Creamer D. et\n  al., 2016). Dermal exposure to trichloroethylene has been reported to trigger a SJS/TEN-like presentation, with a similar mortality rate (Kamijima, M.\n  et al., 2007). For chemical exposure to the skin, ulceration and permanent scarring are possible complications which can arise. Depending on the\n  severity and type of irritant, prognosis can vary from uncomplicated to loss of life (AH Hall et al., 2010; Touzopolous P et al., 2011).\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  For dermal exposure to toxic substances, the first line management before treatment is to remove the offending substance. Following this, the best\n  case condition will most likely resolve itself. Treatment consists of using moisturizers to hydrate the dermal layer and reduce irritation (Lod\u00e9n M et\n  al., 1996), or use of topical corticosteroids to reduce inflammation (Fornacier L. et al., 2015). Without treatment, irritation will resolve, however\n  recovery will be prolonged (Amrol D et al., 2003). ROTC and LOCL is estimated at 0% for UTBC.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  For UTWC, length of treatment and rate of hospitalization depends on the severity of the condition. Emergencies, such as SJS, will require\n  hospitalization for up to 4 weeks (Wolkenstein P et al., 1998). Exposure resulting in chronic skin inflammation may last over 16 weeks without\n  treatment (Griffiths C et al., 2021) . Mortality rate for emergencies resulting from toxic exposure is high in comparison to TWC, at 29-30% (Brown\n  KM et al., 2004; Wolkenstein P et al., 1998).\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                                                        Source                            LOC Value\n\n   Fonacier L et al., 2015                                                         terrestrial\n\n   Bains S et al., 2018                                                            terrestrial\n\n   Pacor M et al., 2006                                                            terrestrial\n\n   Li Y et al.,1993                                                                terrestrial\n\n   Creamer D et al., 2016                                                          terrestrial\n\n   Amrol D et al., 2003                                                            terrestrial                                        2\n\n\n\n\n6/15/2023 2:14:15 PM                                                ICL109_Toxic Dermal Exposure Cliff                                                       page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-089-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   Citation                                                                        Source                           LOC Value\n\n   Lod\u00e9n M et al., 1996                                                            terrestrial\n\n   Wolkenstein P et al., 1998                                                      terrestrial\n\n   Griffiths C et al., 2021                                                        terrestrial\n\n\n  All studies are representative of the duration of disease in the general population for best case and worst case. Data is drawn from clinical\n  guidelines (Fonacier L et al., 2015; Zuberbier T et al., 2014), and clinical trials. All evidence was selected was taken from adult populations with\n  immunocompetent individuals where possible. However, specifically with UTWC, as the incidence of toxic exposure emergency (Stevens-Johnson\n  syndrom (SJS), Toxic epidemal necrolysis (TEN)) is low, reliability of the data is reduced (Wolkenstein P et al., 1998).\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                         Source                           LOC Value\n\n   Morita, K. et al, 2019                                                           terrestrial\n                                                                                                                                      2\n   Touzopoulos P et al., 2011                                                       terrestrial\n\n  Using the RTDC surrogate, probability of TBC or UTBC RTDC is assumed to be 0%. For medical emergencies such as SJS following toxic exposure,\n  100% of suspected patients are admitted to an ICU or burn unit (Morita K et al., 2019). The other study included was also well conducted, although\n  had noted limitations due to data collection occuring in a single country. Furthermore, chemical skin exposure causing permanent scarring may also\n  cause little disability (Touzopolous P et al., 2011).\n\n\n\n\n  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                                                        Source                           LOC Value\n\n   Kamijima, M. et al., 2007                                                       terrestrial\n\n   Diphoorn J et al., 2015                                                         terrestrial\n\n   Wolkenstein P et al., 1998                                                      terrestrial                                       1\n\n   Brown KM et al., 2004                                                           terrestrial\n\n   Hall AH et al., 2018                                                            analog\n\n  While BC toxic dermal exposure is not likely to have serious impacts on loss of crew life, severe or chronic exposure can result in a high probability\n  of mortality, despite treatment (Kamijima M et al., 2007; Diphoorn J et al., 2015). Evidence for LOCL was drawn from hospitalized patients only. Data\n  for untreated worst case occurrences was given a low level of confidence due to the low number of participants in the trials. Furthermore, one of the\n  trials was terminated prematurely due to excess subject deaths in the intervention group (Wolkenstein P et al, 1998). Chemical skin exposure to\n  caustic and corrosive substances in worst case scenarios among military studies has a high rate of mortality (AH Hall et al., 2010).\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Capabilities and Resourcing Scope Overview Worst Case Definition: Dermal exposure to a corrosive substance resulting in cell death, ulceration,\n  leading to permanent scarring. Best Case Definition: Dermal exposure to an irritant substance resulting in inflammation/irritation that responds to\n  treatment. Toxic skin exposure associated medical response is to address the pain and discomfort associated with the condition and with antibiotic\n  therapy and dressings to mitigation infection risk. Generally this condition is one of discomfort rather than a medical emergency although some\n  antibiotics may need to be applied to reduce risk. The CRT condition focuses solely on the physical exam in the best case and the prevention of\n  infection and pain management in the worst case. Diagnostic Scope and Resourcing In the best-case scenario, diagnosis is based on history and\n  physical examination. In the worst-case scenario, diagnosis is based on history and physical examination. Clinical Phase 1 Duration and Rationale\n  This version of IMPACT presumes physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME\n  consensus duration is as follows: CP1 BC (Treated or Untreated): 0.81 hours This is the longest reasonable time to complete this task for an\n  experienced clinician adjusted for being in the spaceflight environment to do the following: 1 - Take a proper history of the patient 2 - Remove\n  impacted clothing 3 - Perform a physical on the patient 4 - Irrigation CP1 WC (Treated or Untreated): 1.23 hours This is the longest reasonable time\n  to complete this task for an experienced clinician adjusted for being in the spaceflight environment to do the following: 1 - Take a proper history of\n  the patient 2 - Remove impacted clothing 3 - Perform a physical on the patient 4 - Irrigation The highest scope of practice code used in this CRT\n  which includes interpretation of diagnosis, performing diagnostic tests and performing treatment would be a four: this is an intern level. Treatment\n  Scope and Resourcing In the best-case scenario, treatment is non-existent, based on definition of the condition. The worst case scenario also\n  allocates for irrigation, dressing application and antibiotic prophylaxis. 1 - Did not include nutritional changes, though these would be recommended\n\n\n\n\n6/15/2023 2:14:15 PM                                               ICL109_Toxic Dermal Exposure Cliff                                                      page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-089-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  to be high in protein, because food will not be a part of the med kit and we were instructed not to include resources not in the med kit 2 - Did not\n  include any grafting or alternatives as storage vs incidence seemed low value 3 - Did not include any resources for skin stretching as these are\n  typically either fairly large or specific for the application and makeshift items could be created for a similar purpose and efficacy 4 - Not including\n  ECLSS equipment shutoff for same reasons as food changes 5 - Any condition requiring IV antibiotics would result in Sepsis and will be considered\n  part of that condition 6 - NG tube not included as the scope of this condition will require a patient who remains awake and able to self feed 7 - No\n  ventilation is needed because if it is, we would assume respiratory failure has occurred and that condition would apply 8 - Duloxetine is not very\n  effective and was therefore excluded from consideration. 9 - Antidote application is not being included because we will not know the toxins being\n  flown. Communications and Support Needs In the best-case scenario, diagnosis and course of treatment is uncomplicated and likely within the\n  scope of care of onboard crew members. In the worst-case condition, ground communications will be helpful given the complicated nature of the\n  condition and the scope of care onboard. REFERENCES\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  No previous CLiFF data for this condition\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  Lacking spaceflight data and a prior CLiFF to draw from, this CLiFF was largely informed by terrestrial findings (e.g. large scale population-based\n  studies). While many of the terrestrial studies included healthy adult populations with few pre-existing conditions, the CLiFF is still limited by the lack\n  of good quality spaceflight data to inform estimates throughout.\n\n\n\n\n6/15/2023 2:14:15 PM                                                 ICL109_Toxic Dermal Exposure Cliff                                                         page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-089-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                              Clinical Phase 2: Treatment\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision         Hearing                   Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n                            664\n    Case\n   (UTBC)\n   Treated\n    Worst\n                            664                              89\n     Case\n    (TWC)\n  Untreated\n    Worst\n            223             664            113               89                                          145\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n                                                                                                                                                       Total\n                                                                                                                                                     Human\n                                                                                            Translation &                            Total Tasks\n                Hand                                            Lower         Ambul &                       Don/Doff    Pressure                     System\n                            Hand (Any)     Upper Extremity                                  Stabilization                           Impaired By                   TI Decimal      TI %\n               (Dom)                                          Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                           (microgravity)                            Condition\n                                                                                                                                                    Tasks Full\n                                                                                                                                                     Mission\n   Treated\n     Best\n           132              564                                                                          34            211          941            3763          0.250066      25.0066\n    Case\n    (TBC)\n  Untreated\n    Best\n            132             564                                                                          34            211          1605           3763          0.426521      42.6521\n    Case\n   (UTBC)\n   Treated\n    Worst\n           132              564                                                                          34            211          1694           3763          0.450173      45.0173\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132             564                                                                          34            211          2175           3763          0.577996      57.7996\n    Case\n   (UTWC)\n\n                                                                          Clinical Phase 3: Condition End State\n                                                                                             Affected HSTCs\n                                                                Inter-\n              Cognitive -    Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision         Hearing                   Dentition          GI          GU\n               Simple        Complex                                                                      pulmonary\n                                                               Skills\n   Treated\n     Best\n    Case\n    (TBC)\n  Untreated\n    Best\n    Case\n   (UTBC)\n   Treated\n    Worst\n     Case\n    (TWC)\n  Untreated\n    Worst\n    Case\n   (UTWC)\n                                                       Affected HSTCs (Continued)                                                               TI Calculation                  TI Score\n\n\n\n\n6/15/2023 2:14:15 PM                                                ICL109_Toxic Dermal Exposure Cliff                                                                            page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-089-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                          Total\n                                                                                                                                        Human\n                                                                                Translation &                           Total Tasks\n               Hand                                     Lower       Ambul &                     Don/Doff    Pressure                    System\n                       Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal       TI %\n              (Dom)                                   Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                               (microgravity)                           Condition\n                                                                                                                                       Tasks Full\n                                                                                                                                        Mission\n   Treated\n     Best\n                                                                                                                       0              3763          0                0\n    Case\n    (TBC)\n  Untreated\n    Best\n                                                                                                                       0              3763          0                0\n    Case\n   (UTBC)\n   Treated\n    Worst\n                                                                                             34            211         245            3763          0.0651076 6.51076\n     Case\n    (TWC)\n  Untreated\n    Worst\n            132        564                                                                   34            211         941            3763          0.250066         25.0066\n    Case\n   (UTWC)\n\n\n\n\n6/15/2023 2:14:15 PM                                        ICL109_Toxic Dermal Exposure Cliff                                                                           page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-089-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n6/15/2023 2:14:15 PM                                               ICL109_Toxic Dermal Exposure Cliff                                                      page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-089-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   Fonacier L, Bernstein D, Pacheco K et al. Contact Dermatitis: A Practice Parameter\u2013Update 2015. The Journal of Allergy and Clinical\n   Immunology: In Practice. 2015;3(3):S1-S39. doi:10.1016/j.jaip.2015.02.009\n\n   Bains S, Nash P, Fonacier L. Irritant Contact Dermatitis. Clin Rev Allergy Immunol. 2018;56(1):99-109. doi:10.1007/s12016-018-8713-0\n\n   Pacor M, Di Lorenzo G, Martinelli N et al. Tacrolimus ointment in nickel sulphate\u2013induced steroid-resistant allergic contact dermatitis. Allergy\n   Asthma Proc. 2006;27(6):527-531. doi:10.2500/aap.2006.27.2915\n\n   Li Y, Liu Y. Analysis of 155 patients with chemical injury: a 5-year experience. Burns. 1993;19(6):516-518. doi:10.1016/0305-4179(93)90011-v\n\n   Creamer D, Walsh SA, Dziewulski P, et al. U.K. guidelines for the management of Stevens-Johnson syndrome/toxic epidermal necrolysis in adults\n   2016. Br J Dermatol. 2016;174(6):1194-1227. doi:10.1111/bjd.14530\n\n   Amrol D, Keitel D, Hagaman D, Murray J. Topical pimecrolimus in the treatment of human allergic contact dermatitis. Ann Allergy Asthma Immunol.\n   2003;91(6):563-566. doi:10.1016/S1081-1206(10)61535-9\n\n   Lod\u00e9n M, Andersson AC. Effect of topically applied lipids on surfactant-irritated skin. Br J Dermatol. 1996;134(2):215-220.\n\n   Wolkenstein P, Latarjet J, Roujeau JC, et al. Randomised comparison of thalidomide versus placebo in toxic epidermal necrolysis. Lancet.\n   1998;352(9140):1586-1589. doi:10.1016/S0140-6736(98)02197-7\n\n   Griffiths C, de Bruin-Weller M, Deleuran M, et al. Dupilumab in Adults with Moderate-to-Severe Atopic Dermatitis and Prior Use of Systemic Non-\n   Steroidal Immunosuppressants: Analysis of Four Phase 3 Trials [published online ahead of print, 2021 Jun 18]. Dermatol Ther (Heidelb).\n   2021;10.1007/s13555-021-00558-0. doi:10.1007/s13555-021-00558-0 Kamijima, M., Hisanaga, N., Wang, H. et al. Occupational\n   trichloroethylene exposure as a cause of idiosyncratic generalized skin disorders and accompanying hepatitis similar to drug hypersensitivities.\n   Int Arch Occup Environ Health 80, 357\u2013370 (2007). https://doi.org/10.1007/s00420-006-0147-y\n\n   Diphoorn J, Cazzaniga S, Gamba C et al. Incidence, causative factors and mortality rates of Stevens-Johnson syndrome (SJS) and toxic\n   epidermal necrolysis (TEN) in northern Italy: data from the REACT registry. Pharmacoepidemiol Drug Saf. 2015;25(2):196-203.\n   doi:10.1002/pds.3937\n\n   Wolkenstein P, Latarjet J, Roujeau JC, et al. Randomised comparison of thalidomide versus placebo in toxic epidermal necrolysis. Lancet.\n   1998;352(9140):1586-1589. doi:10.1016/S0140-6736(98)02197-7\n\n   Brown KM, Silver GM, Halerz M, Walaszek P, Sandroni A, Gamelli RL. Toxic epidermal necrolysis: does immunoglobulin make a difference?. J\n   Burn Care Rehabil. 2004;25(1):81-88. doi:10.1097/01.BCR.0000105096.93526.27\n\n   Hall AH, Mathieu L, Maibach HI. Acute chemical skin injuries in the United States: a review. Crit Rev Toxicol. 2018;48(7):540-554.\n   doi:10.1080/10408444.2018.1493085\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                       PHRASE\n\n   AAOMS                         American Association of Oral and Maxillofacial Surgeons\n\n   AMA                           American Medical Association\n\n   ARCL                          All Remaining Conditions List\n\n   ARS                           Acute Radiation Sickness\n\n   BHP                           Behavioral Health and Performance\n\n   CAC                           Coronary Artery Calcium\n\n   CHS                           Crew Health and Safety\n\n   CL                            Condition List\n\n   CliFF                         Clinical Finding Form\n\n   CMO                           Crew Medical Officer\n\n   COMFORT                       Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                           Clinical Phase 1\n\n\n\n\n6/15/2023 2:14:15 PM                                               ICL109_Toxic Dermal Exposure Cliff                                                 page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-089-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   CP2                 Clinical Phase 2\n\n   CP3                 Clinical Phase 3\n\n   CRL                 Clinical Resource Level\n\n   CRT                 Capability Resource Table\n\n   CST                 Clinical Science Team\n\n   DCS                 Decompression Syndrome\n\n   DRM                 Design Reference Mission\n\n   ED                  Emergency Medicine Doctor\n\n   EL                  Evidence Library\n\n   EMCL                Exploration Medical Condition List\n\n   EMT                 Emergency Medical Technician\n\n   EVA                 Extravehicular Activity\n\n   EXMC                Exploration Medical Capability\n\n   HRP                 Human Research Program\n\n   ICD                 International Classification of Disease\n\n   ICL 1.0             IMPACT 1.0 Medical Conditions List\n\n   ICU                 Intensive Care Unit\n\n   IMCL                iMED Condition List\n\n   iMED                Integrated Medical Evidence Database\n\n   IMM                 Integrated Medical Model\n\n   IMPACT-MD           Impact Medical Database\n\n   IP                  Incidence Proportion\n\n   IR                  Incidence Rate\n\n   ISS                 International Space Station\n\n   IV                  Intravenous\n\n   JSC                 Johnson Space Center\n\n   LEO                 Low-Earth orbit\n\n   LEVA                Lunar Extravehicular Activity\n\n   LOCL                Loss of Crew Life\n\n   LOM                 Loss of Mission\n\n   LSAH                Lifetime Surveillance of Astronaut Health\n\n   LSO                 Lunar Surface Operations\n\n   MCL                 Master Condition List\n\n   MEVA                Medical Extravehicular Activity\n\n   NASA                National Aeronautics and Space Administration\n\n   N/A                 Not Applicable\n\n   NP                  Nurse Practitioner\n\n   OBGYN               Obstetrics and Gynecology\n\n   OR                  Occurrence Rate\n\n   PA                  Physician Assistant\n\n   PDQ                 Pain Disability Questionnaire\n\n   PFCL                Proposed Future Conditions List\n\n   PPE                 Personal Protective Equipment\n\n\n\n\n6/15/2023 2:14:15 PM                                     ICL109_Toxic Dermal Exposure Cliff   page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-089-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   PTRS                Project Technical Requirements Specification\n\n   PRL                 Pharmaceutical Resource Level\n\n   QTL                 Quality Time Lost\n\n   RCL                 Removed Conditions List\n\n   REP                 Rochester Epidemiology Study\n\n   RTDC                Removal to Definitive Care\n\n   SANS                Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                 Space Adaptation Syndrome\n\n   SEVA                Spaceflight Extravehicular Activity\n\n   SME                 Subject Matter Expert\n\n   SoP                 Standard Operating Procedure\n\n   SPE                 Solar Particle Event\n\n   TBD                 To Be Determined\n\n   TI                  Task Impairment\n\n\n\n\n6/15/2023 2:14:15 PM                                     ICL109_Toxic Dermal Exposure Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-089-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "6/15/2023 2:14:15 PM                                               ICL109_Toxic Dermal Exposure Cliff                                                      page: 1"
+        ]
+      ],
+      "page_number": 1,
+      "source_anchor": "page:1#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-089-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                  Source                                LOC Value"
+        ],
+        [
+          "Cherry N et al., 2000                                                     terrestrial                           2"
+        ],
+        [
+          "Diphoorn J et al., 2015                                                   terrestrial                           2"
+        ],
+        [
+          "Lee H et al., 1998                                                        terrestrial                           2"
+        ],
+        [
+          "Sch\u00e4fer T et al., 2005                                                    terrestrial                           2"
+        ],
+        [
+          "Alinaghi F et al., 2018                                                   terrestrial                           2"
+        ],
+        [
+          "Hall AH et al., 2018                                                      Terrestrial                           2"
+        ],
+        [
+          "Shah KR et al., 2010                                                      terrestrial                           2"
+        ],
+        [
+          "All studies were well conducted and well designed in representative populations. Studies were matched to best case condition terms, with diverse"
+        ],
+        [
+          "population. Worst case probability estimate drawn from Shah KR et al., 2010: BC/WC probablility rate is estimated from the rate of ulcerations in"
+        ],
+        [
+          "workers with chemical exposure to materials including chromium, lime Occupational exposure is common in the general population. First line"
+        ],
+        [
+          "treatment is removal of the irritant, which generally will resolve irritation/inflammation. In severe cases, corrosive substances can cause ulceration"
+        ],
+        [
+          "and scarring."
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-089-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                    Source                              LOC Value"
+        ],
+        [
+          "Diphoorn J et al., 2015                                                     terrestrial                         2"
+        ],
+        [
+          "Lee H et al., 1998                                                          terrestrial                         2"
+        ],
+        [
+          "Shah KR et al., 2010                                                        terrestrial                         2"
+        ],
+        [
+          "All studies were well conducted and well designed in representative populations. Studies were matched to best case condition terms and drew from"
+        ],
+        [
+          "diverse populations. Worst case probability estimates were drawn from Shah KR et al., 2010, with the BC/WC probability rate estimated from the"
+        ],
+        [
+          "rate of ulcerations in workers with chemical exposures to materials such as chromium and lime Occupational exposure is common in the general"
+        ],
+        [
+          "population. First line treatment is removal of the irritant, which generally will resolve irritation/inflammation. In severe cases, corrosive substances"
+        ],
+        [
+          "can cause ulceration and scarring."
+        ]
+      ],
+      "page_number": 3,
+      "source_anchor": "page:3#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-089-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis        CP2: Treatment            CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration    TI%        Duration       TI%         RTDC             LOCL"
+        ],
+        [
+          "Composite             Condition"
+        ],
+        [
+          "Case Scenario       Incidence             Probability %    Preset    Preset      Preset     Min    Max     Preset      Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best        mean 1.063E-4         89 - 89          100       0.81        12.5033    0      336     0           0       0        0        0"
+        ],
+        [
+          "Case (TBC)          and SD 1.062E-6"
+        ],
+        [
+          "Treated Worst                             11 - 11          100       1.23        25.764     72     730     6.51076     5       100      5        29.4"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best      N/A                   N/A              N/A       0.81        21.3261    24     435     0           0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated Worst     N/A                   N/A              N/A       1.23        41.4031    720    1680    25.0066     29      100      29       30"
+        ],
+        [
+          "Case (UTWC)"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-089-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                        Source                            LOC Value"
+        ],
+        [
+          "Fonacier L et al., 2015                                                         terrestrial"
+        ],
+        [
+          "Bains S et al., 2018                                                            terrestrial"
+        ],
+        [
+          "Pacor M et al., 2006                                                            terrestrial"
+        ],
+        [
+          "Li Y et al.,1993                                                                terrestrial"
+        ],
+        [
+          "Creamer D et al., 2016                                                          terrestrial"
+        ],
+        [
+          "Amrol D et al., 2003                                                            terrestrial                                        2"
+        ]
+      ],
+      "page_number": 5,
+      "source_anchor": "page:5#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-089-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                         Source                           LOC Value"
+        ],
+        [
+          "Morita, K. et al, 2019                                                           terrestrial"
+        ],
+        [
+          "2"
+        ],
+        [
+          "Touzopoulos P et al., 2011                                                       terrestrial"
+        ],
+        [
+          "Using the RTDC surrogate, probability of TBC or UTBC RTDC is assumed to be 0%. For medical emergencies such as SJS following toxic exposure,"
+        ],
+        [
+          "100% of suspected patients are admitted to an ICU or burn unit (Morita K et al., 2019). The other study included was also well conducted, although"
+        ],
+        [
+          "had noted limitations due to data collection occuring in a single country. Furthermore, chemical skin exposure causing permanent scarring may also"
+        ],
+        [
+          "cause little disability (Touzopolous P et al., 2011)."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-089-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                                        Source                           LOC Value"
+        ],
+        [
+          "Kamijima, M. et al., 2007                                                       terrestrial"
+        ],
+        [
+          "Diphoorn J et al., 2015                                                         terrestrial"
+        ],
+        [
+          "Wolkenstein P et al., 1998                                                      terrestrial                                       1"
+        ],
+        [
+          "Brown KM et al., 2004                                                           terrestrial"
+        ],
+        [
+          "Hall AH et al., 2018                                                            analog"
+        ],
+        [
+          "While BC toxic dermal exposure is not likely to have serious impacts on loss of crew life, severe or chronic exposure can result in a high probability"
+        ],
+        [
+          "of mortality, despite treatment (Kamijima M et al., 2007; Diphoorn J et al., 2015). Evidence for LOCL was drawn from hospitalized patients only. Data"
+        ],
+        [
+          "for untreated worst case occurrences was given a low level of confidence due to the low number of participants in the trials. Furthermore, one of the"
+        ],
+        [
+          "trials was terminated prematurely due to excess subject deaths in the intervention group (Wolkenstein P et al, 1998). Chemical skin exposure to"
+        ],
+        [
+          "caustic and corrosive substances in worst case scenarios among military studies has a high rate of mortality (AH Hall et al., 2010)."
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-089-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -    Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision         Hearing                   Dentition          GI          GU"
+        ],
+        [
+          "Simple        Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "664"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "664                              89"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "223             664            113               89                                          145"
+        ],
+        [
+          "Case"
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-089-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-089/skin_layers_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 491,
+      "height": 625,
+      "sha256": "9857280031a998a5645482eeaa5a6fd060812b6ab87ceebb5a8783045c966a09",
+      "creator": "Wong, D.J. and Chang, H.Y. Skin tissue engineering (March 31, 2009), StemBook, ed. The Stem Cell Research Community, StemBook, doi/10.3824/stembook.1.44.1, http://www.stembook.org.",
+      "license_identifier": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AAnatomy_of_the_skin.jpg",
+      "attribution": "Wong, D.J. and Chang, H.Y. Skin tissue engineering (March 31, 2009), StemBook, ed. The Stem Cell Research Community, StemBook, doi/10.3824/stembook.1.44.1, http://www.stembook.org., via Wikimedia Commons (CC BY 3.0)",
+      "caption": "Cross-sectional diagram of skin barrier layers exposed to toxic dermal agents.",
+      "alt_text": "Diagram of human skin layers.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Anatomy of the skin.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-089-IMG-02",
+      "ordinal": 1,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-089/toxic_dermal_chemical_injury.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1334,
+      "height": 1000,
+      "sha256": "6b10870a5169e2833b27d9b425fa7c9aa759d524c5c5d64c0ef47df1990a72c7",
+      "creator": "Erikaiijima",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AChemical_Burn.jpg",
+      "attribution": "Erikaiijima, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Clinical photograph of dermal chemical injury following toxic skin exposure.",
+      "alt_text": "Clinical photograph of chemical skin injury.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Chemical Burn.jpg)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-089-IMG-03",
+      "ordinal": 2,
+      "media_kind": "CLINICAL",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-089/toxic_dermal_forearm.jpg",
+      "mime_type": "image/jpeg",
+      "width": 2280,
+      "height": 3432,
+      "sha256": "63637717b197b13f58c6f3987ea7dd593d19fd5ac954ef2f7f07860748b2ef2e",
+      "creator": "Samuele Madini",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AAcetic_acid_chemical_burn.jpg",
+      "attribution": "Samuele Madini, via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Clinical photograph of localized chemical dermal irritation and erythema.",
+      "alt_text": "Clinical photograph of chemical dermal exposure.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Acetic acid chemical burn.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-089-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Toxic Dermal Exposure",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/toxic-dermal-exposure-cliff-2023.pdf?emrc=52b9bc",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}

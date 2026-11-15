@@ -1,0 +1,580 @@
+{
+  "article_id": "CLIFF-112",
+  "slot": 112,
+  "display_title": "Pregnancy Risk",
+  "category": "Genitourinary / Gynecology",
+  "article_version": "2023 (NASA IMM CliFF)",
+  "completeness_state": "COMPLETE",
+  "source_notes": "Extracted verbatim by page from official NASA IMM CliFF 119 (2023) PDF. Risk-planning evidence only, NOT a validated bedside treatment protocol.",
+  "source": {
+    "source_id": "NASA-CLIFF-112",
+    "publisher": "NASA",
+    "title": "Pregnancy Risk \u2014 Clinical Finding Form (CliFF)",
+    "source_url": "https://www.nasa.gov/wp-content/uploads/2026/08/pregnancy-risk-cliff-2023.pdf?emrc=847e3f",
+    "final_url": "https://www.nasa.gov/wp-content/uploads/2026/08/pregnancy-risk-cliff-2023.pdf?emrc=847e3f",
+    "retrieved_at_utc": "2026-11-14T06:38:58.784837+00:00",
+    "content_sha256": "801e23b3e0a71100dcbd4dda962496f2f8352d167894ccb89b1e8b9bcf3b570b",
+    "original_mime": "application/pdf",
+    "original_bytes": 325330,
+    "license_identifier": "NASA-Public-Domain-US-Government-Work",
+    "attribution": "NASA Integrated Medical Model (IMM) / MEDPRAT Evidence Library (2023)",
+    "verification_state": "VERIFIED"
+  },
+  "sections": [
+    {
+      "section_id": "CLIFF-112-P01",
+      "ordinal": 0,
+      "heading": "Page 1 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": " Clinical Finding Form (CliFF)\n   Branch     Baseline\n\n\n\n ICL76_Pregnancy, Risk For\n\n Pregnancy is currently an absolute contraindication for space travel. Not only is there a paucity of animal research evaluating the risks to both the\n mother and the fetus in the space environment, but a pregnancy in space would have dramatic impacts on crew dynamics, medical risks, and mission\n outcomes for the entire crew. While the risk of becoming pregnant can be optimally mitigated with perfect use of the various contraceptive options\n and emergency contraception, even the best hormonal modalities and human intentions are imperfect. This CliFF specifically addresses the\n possibility of intravaginal intercourse between a male and female that can lead to the risk of pregnancy. It does not comment on the risks to crew\n dynamics or other risks of intercourse beyond the chance of pregnancy. This CLiFF is also unique in comparison to others in its definitions of treated\n and untreated best- and worst-case scenarios as each of these four conditions may alter the risk of becoming pregnant. If pregnancy were to occur,\n this is specifically addressed in CLiFF 123: Pregnancy.\n\n\n  INCIDENCE DATA INCLUDED IN THE MODEL\n\n\n  The model imports the following incidence information from the MEDPRAT Evidence Library Database: incidence data category, space adaption\n  status, EVA status, incidence data type, incidence and occurrence distribution data and incidence data characteristics. Data category defines the\n  type of data available for incidence calculations (i.e. raw data vs. adjusted data). Space adaptation identifies medical events that where onset\n  occurs in the first 5-7 days of flight and does not reoccur. EVA-related incidence values identify medical events that occur only during an EVA.\n  Incidence values types vary by data category and define the number of medical events per person-year (rates) or medical events per person at-risk\n  (proportion) for each medical condition. Incidence values can be modified by crew characteristics such as gender sex and certain crew medical\n  history characteristics. Modifying characteristics are noted below and incidence values are listed individually for each characteristic. Distributions\n  are assigned to medical events incidence values and occurrences in the model. For each crewmember in a given trial, the incidence and number of\n  occurrences of each medical condition are randomly selected from these probability distributions. Detailed descriptions of the distributions are\n  included in the MEDPRAT Technical Description Document.\n\n\n\n\n  INCIDENCE DATA\n\n\n\n  SPACEFLIGHT LITERATURE\n\n  There is no spaceflight data evaluating the risk of pregnancy or incidence of intercourse. Review of internal data reveals that of the 126 total flights\n  involving females, that there were 6 post-menopausal female astronauts and 120 reproductive-aged astronauts. All males for long-duration\n  missions are presumed to be of reproductive age. The percentage of male or female astronauts who are infertile, have undergone a sterility\n  procedure, or are using contraceptive options has never been formally assessed.\n\n  ANALOG LITERATURE\n\n  Some of the closest analogs of spaceflight for this condition might include mixed crews at remote research stations such as in Antarctica or\n  deployed military populations. However, frequency of intercourse is not something that is scientifically tracked. The best surrogate for hypothesizing\n  this rate may be to determine the rate of unintended pregnancy amongst females and then back calculate the rate that a single episode of\n  intercourse can lead to pregnancy. While we do not have access to Antarctica station data, Grindlay has evaluated unintended pregnancy among\n  active-duty women in the military multiple times. The most representative sample within this analog is the officer population, thus in Grindlay 2013,\n  the rate of unintended pregnancy among officers was 0.02055 (95% CI: 1.389E-2, 2.923E-2), and in Grindlay 2015 it was 0.02774 (95%CI: 2.048E-\n  2, 3.679E-2). To be clear, this would mean that of officers in the military in a given 12-month period, 1 in 40 would have an unintended pregnancy.\n  Grindlay also evaluated whether the soldiers were on deployment during the period in which unintended pregnancy occurs which lowers the\n  incidence substantially as discussed below. While they had access and autonomy of using contraception during deployment, there is no mention of\n  whether emergency contraception was available and Grindlay manuscripts are calling for such access for this population. Lastly, while an incidence\n  rate cannot formally be calculated, Belmont 2010 independently evaluated disease and nonbattle injuries sustained by the US Army Brigade\n  Combat Team during Operation Iraqi Freedom and found that of women who were medically evacuated, 10.8% (35 out of 325) were evacuated for\n  pregnancy-related concerns, providing further evidence of pregnancy as a concern during deployment.\n\n  TERRESTRIAL LITERATURE\n\n  Building off the analog data above, Finer 2016 evaluated unintended pregnancy rates in the U.S. For those of reproductive age with a college\n  degree, the rate of unintended pregnancy is 0.025 (95%CI: 2.271E-2, 2.746E-2). This rate fits between the two incidence rates noted in the officer\n  population showing that this rate is consistent amongst analog and terrestrial data. Again, it is important to recall that this CLiFF is not directly\n  looking at unintended pregnancy rates. Rather, this CLiFF seeks to determine and model the actual risk for pregnancy following intercourse.\n  Robust data regarding frequency of intercourse is not available even in the terrestrial literature secondary to the range of methodological\n  inconsistencies, but terrestrial studies evaluating coital patterns and fecundability (probability of achieving pregnancy within a given menstrual\n  cycle) are available. Both Li et al 2016 and Colombo et al 2000 model the probability of pregnancy given an act of intercourse. They determined\n  that while the probability of pregnancy is altered by menstrual day (days 12-22 having the largest chance), that behavior is also altered by\n  menstrual day in that timing of intercourse and ovulation are not completely independent and that individuals are more likely to have intercourse\n  during the fertile window. The predicted probability of pregnancy given one act of intercourse averaged over a typical 28-day cycle is 0.0382 per\n  intercourse-day, meaning that on average it takes 26.2 acts of intercourse to achieve pregnancy. This fecundity data is also utilized to adjust our\n  risk for pregnancy model below.\n\n\n\n\n11/16/2023 3:00:10 PM                                                 ICL76_Pregnancy, Risk For Cliff                                                        page: 1",
+      "page_start": 1,
+      "page_end": 1,
+      "source_anchor": "page:1"
+    },
+    {
+      "section_id": "CLIFF-112-P02",
+      "ordinal": 1,
+      "heading": "Page 2 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  OVERALL INCIDENCE SUMMARY\n\n\n\n  INCIDENCE\n\n   Mean 0.165 SD 0.01067\n\n\n\n  INCIDENCE SUMMARY\n\n  The adjusted Bayesian posterior distribution for the incidence rate of intercourse given all the relevant data under uninformative priors is Gamma\n  (shape=239.13, rate=1449.29) with mean 0.165 and SD 0.01067. The incidence rate was calculated by first taking the number of unintended\n  pregnancies in an analog population, adjusting it for officer rank and military deployment status, then utilizing fecundability data that guides the\n  percentage chance of pregnancy (0.0382) to further adjust the incidence of unintended pregnancy into the risk for pregnancy from an episode of\n  intercourse. This condition should only be applied in the presence of mixed-sex crews and reveals that per 12-month period there is a 16.5%\n  chance of intercourse per person. Reported one final way to avoid confusion: one act of intercourse with risk for pregnancy may occur every 6.06\n  years per person, or with a mixed crew of 2 males and 2 females, one act of intercourse would occur on average per 3-year mission.\n\n\n  TABLE 1. INCIDENCE MODEL\n\n     Incidence Details\n     Incidence Type\n     General\n     Segment\n     All\n     Env. Exposure\n     NA\n\n\n     Sex\n     Female\n     Crowns\n     Any\n     Contacts\n     Any\n\n\n     Pregnancy\n     No\n     Incidence Distribution\n     Occurrence Dist\n     Poisson\n     Incidence Dist.\n     Gamma\n     Mean\n     0.164998\n     SD\n     0.0106699\n\n\n     Gamma\n     (Shape): 239.13\n     (Rate): 1449.29\n\n\n\n  TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                    Source                                      LOC Value\n\n   Finer, 2016                                                 Terrestrial                                 2\n\n   Grindlay, 2013                                              Analog                                      2\n\n   Grindlay, 2015                                              Analog                                      2\n\n   Belmont, 2010                                               Analog                                      1\n\n   Colombo, 2000                                               Terrestrial                                 2\n\n   Li, 2016                                                    Terrestrial                                 2\n\n\n\n\n11/16/2023 3:00:10 PM                                                ICL76_Pregnancy, Risk For Cliff                                                     page: 2",
+      "page_start": 2,
+      "page_end": 2,
+      "source_anchor": "page:2"
+    },
+    {
+      "section_id": "CLIFF-112-P03",
+      "ordinal": 2,
+      "heading": "Page 3 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  The level of confidence in this incidence is limited by the number of adjustments needing to be made. As arriving at this final incidence required\n  multiple adjustments, we do not pretend to understand human intention, and we do not have a clear example of how the space environment can\n  affect fertility, our level of confidence in this final incidence calculation is neutral.\n\n\n\n\n11/16/2023 3:00:10 PM                                                ICL76_Pregnancy, Risk For Cliff                                                   page: 3",
+      "page_start": 3,
+      "page_end": 3,
+      "source_anchor": "page:3"
+    },
+    {
+      "section_id": "CLIFF-112-P04",
+      "ordinal": 3,
+      "heading": "Page 4 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  CREWMEMBER SELECTION/PREVENTION\n\n\n\n  DISQUALIFYING CONDITIONS\n\n  Refer to Medical Evaluation Documents (MED) Volume A, Medical Standards for ISS Crewmembers, International Space Station Program, Rev 3.4\n  (2016).\n\n  PREFLIGHT PREVENTATIVE MEASURES\n\n  Astronauts are extensively counseled regarding contraceptive options pre-flight and have the autonomy to choose their form of contraceptive or\n  decide to not use contraception. Furthermore, a pregnancy test is completed within 10 days of flight. This does not completely exclude the\n  possibility of intercourse with a risk for pregnancy occurring during the 10-days before flight. While this risk is not directly factoring into our\n  modeling, the chance of this occurring likely remains consistent with our risk of intercourse modeling already.\n\n  BEST CASE SCENARIO DEFINITION\n\n  Vaginal intercourse involving a male and pre-menopausal female crewmember in which emergency contraception is used to prevent pregnancy. It is\n  also considered a Best Case scenario if a crewmember involved is using a long-acting reversible contraceptive (LARC) or undergone procedure for\n  permanent sterility.\n\n  WORSE CASE SCENARIO DEFINITION\n\n  Vaginal intercourse involving a male and pre-menopausal female crewmember who is not using a long-acting reversible contraceptive (LARC) or\n  has not undergone a procedure for permanent sterility AND emergency contraception was either not used or was not successful.\n\n  CONDITIONS INCLUDED, BUT NOT EXPLICITLY STATED (CNES)\n\n  None.\n\n\n\n\n  BEST CASE/WORST CASE PROBABILITY COMMENTS\n\n\n\n  The rate of contraceptive usage has not been evaluated in the astronaut population even when used for non-contraceptive purposes during\n  spaceflight. It is informally known that a majority of female astronauts have utilized various methods in the past (predominantly oral contraceptive\n  pills; Steller 2020), however, there is novel concern that this rate may decrease given the most recent concern for thrombosis/VTE revealed by\n  Aunon-Chancellor et. al. 2020. In evaluating the above analog studies, 60.2% of US servicewomen did not report using a contraceptive modality,\n  and 39.8% did report using a contraceptive modality (Grindlay 2011). However, it is critical to understand that the formal IR that was arrived at is\n  looking at unintended pregnancy rates amongst the entire population and not amongst the 60% of the population who were not using\n  contraception. Thus, the incidence rate our analysis arrived at is already inclusive of a mixed population rather than adjusting for contraceptive\n  usage, and the BC and WC definitions do not include barrier contraceptive modalities or non-LARC methods (i.e. pills, patch, ring). This is because\n  while perfect use of contraception can approach 99% effectiveness in preventing pregnancy, typical use falls far short. In one study, patients who\n  were incentivized to maintain perfect compliance reached 83% compliance (Westhoff 2012). In female military personnel using oral contraceptives\n  during missions, <33% maintained perfect compliance (Powell-Dunford 2011, Trego 2010) suggesting that compliance in operational settings may\n  be compromised. Factors adversely affecting compliance during spaceflight may include circadian shifting, busy operational schedules, and mission\n  critical events. Given these limitations, while using barrier contraceptives or non-LARC methods at baseline would further decrease the risk of\n  pregnancy, they are not included in the BC definition for simplification. Fortunately, oral emergency contraceptive options can delay ovulation and\n  decrease the rate of pregnancy after intercourse. Among terrestrial patients who used emergency contraception following intercourse with\n  appropriate timing, pregnancy rates are 0-2% (ACOG 2015). Thus, irrespective of traditional contraceptive usage, 98% and 2% would be\n  reasonable choices to reflect the actual risk for pregnancy for the best-case and worst-case scenarios, respectively. However, of importance is that\n  decisions regarding intercourse, use of contraceptive modalities, and use of emergency contraception are of incredibly personal nature. As we\n  cannot guarantee usage of EC and the fact that once this condition occurs once it is highly likely to have greatly increased incidence and that EC\n  can become unavailable, a more practical BC/WC ratio may be 90%/10%.\n\n  TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)\n\n\n   Citation                                                               Source                                  LOC Value\n\n   Steller, 2020                                                          Spaceflight                             2\n\n   Grindlay, 2011                                                         Analog                                  2\n\n   Grindlay, 2013                                                         Analog                                  2\n\n   Grindlay, 2015                                                         Analog                                  2\n\n   Trego, 2010                                                            Analog                                  2\n\n   Powell-Dunford, 2011                                                   Analog                                  2\n\n   Westhoff, 2012                                                         Terrestrial                             2\n\n   ACOG, 2015                                                             Terrestrial                             3\n\n\n  While we do have data regarding the effectiveness at emergency contraception at delaying ovulation and thus decreasing the chance of\n  pregnancy, we don\u2019t have data regarding its effectiveness, stability, and pharmacokinetic during spaceflight. Further, this proportion is limited by\n\n\n\n\n11/16/2023 3:00:10 PM                                                 ICL76_Pregnancy, Risk For Cliff                                                    page: 4",
+      "page_start": 4,
+      "page_end": 4,
+      "source_anchor": "page:4"
+    },
+    {
+      "section_id": "CLIFF-112-P05",
+      "ordinal": 4,
+      "heading": "Page 5 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  astronaut privacy concerns in that emergency contraception may not be utilized by personal choice or by not alerting the CMO to the need for such\n  a medication.\n\n\n\n\n11/16/2023 3:00:10 PM                                              ICL76_Pregnancy, Risk For Cliff                                                    page: 5",
+      "page_start": 5,
+      "page_end": 5,
+      "source_anchor": "page:5"
+    },
+    {
+      "section_id": "CLIFF-112-P06",
+      "ordinal": 5,
+      "heading": "Page 6 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE\n\n\n\n\n                                                         CP1: Diagnosis       CP2: Treatment                  CP3: Condition End State\n\n                                                         TI%       Duration   TI%         Duration            TI%         RTDC             LOCL\n                      Composite         Condition\n   Case Scenario      Incidence         Probability %    Preset    Preset     Preset      Min        Max      Preset      Min%    Max%     Min%     Max%\n\n   Treated Best       Mean 0.165        90 - 90          100       0.4996     0           0.00917    0.735    0           0       0        0        0\n   Case (TBC)         SD 0.01067\n\n   Treated Worst                        10 - 10          100       0.4996     2.97635     0.00917    0.735    0           0       100      0        0\n   Case (TWC)\n\n   Untreated Best     N/A               N/A              N/A       0.4996     0           0.00917    0.735    0           0       0        0        0\n   Case (UTBC)\n\n   Untreated          N/A               N/A              N/A       0.4996     6.7898      0.00917    0.735    7.97236     0       100      0        0\n   Worst Case\n   (UTWC)\n\n\n\n  TABLE 4 KEY\n\n  Composite Incidence: The same composite incidence will be used for both TBC and TWC. For EVA conditions: events per EVA (events/EVA).\n  For space adaptation conditions: events per person (events/person). For non-spaceflight conditions: events per person year (events/py).\n  Condition Probability: The probability that CLiFF condition progresses to a worst case scenario. Best case scenario: 100%-Worst Case.\n  Clinical Phase General Comments:\n        TI% = Task Impairment %. Task Impairment is the % of tasks that the crewmember is incapable of performing without impairment secondary\n        to the medical condition.\n        Durations are defined in hours.\n        Removal to Definitive Care (RTDC): The probability the entire crew aborts the mission and returns to earth. This is considered as a condition\n        end state result if any of the following criteria are met: 1) the potential for LOCL, 2) potential for significant permanent task impairment, or 3)\n        potential for intractable pain.\n        Loss of Crew Life (LOCL): The probability of death of affected crewmember due to medical condition.\n  Clinical Phase 1: Initial Assessment and Diagnosis:\n        Covers only the initial assessment and diagnosis of the affected crewmember to define his or her medical condition. While the affected\n        crewmember is being assessed, he or she is not able to perform any assigned tasks, thus Task Impairment (TI) during this phase is\n        considered 100%. In the untreated case, there is no diagnosis performed, therefore Task Impairment and Duration will always be \" not\n        applicable.\"\n  Clinical Phase 2: Stabilization, Treatment, and Convalescence:\n        The affected crewmember is receiving any appropriate initial or follow-on treatment for his or her medical condition to allow the crewmember\n        to recover as much as he or she is able to recover in the spaceflight environment. Clinical phase 2 also encompasses relapses or\n        recurrences of the same original medical condition in Clinical Phase 1. The duration of Clinical Phase 2 is expressed as minimum and\n        maximum hours.\n  Clinical Phase 3: Condition End State:\n        Reached once the affected crewmember has recovered from the medical condition as much as he or she is able to recover in the spaceflight\n        environment amongst treated and untreated best and worst case scenarios. This may or may not be recovery from the given medical\n        condition to the full extent possible. If this \u201crecovered\u201d state results in Removal to Definitive Care (RTDC) or Loss of Crew Life (LOCL) this will\n        be noted in the condition end state results.\n\n\n\n\n11/16/2023 3:00:10 PM                                                 ICL76_Pregnancy, Risk For Cliff                                                         page: 6",
+      "page_start": 6,
+      "page_end": 6,
+      "source_anchor": "page:6"
+    },
+    {
+      "section_id": "CLIFF-112-P07",
+      "ordinal": 6,
+      "heading": "Page 7 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  SCENARIO OVERVIEW COMMENTS\n\n\n  This scenario is unique in comparison to other medical conditions in that it is not a true medical condition. This CLiFF is evaluating the risk of\n  pregnancy following intercourse with or without emergency contraceptive usage.\n\n\n\n\n  TREATED BEST CASE (TBC) SCENARIO COMMENTS\n\n\n  Many crewmembers may not choose to treat the best-case scenario depending on their individual assessment of their own risk for progression to\n  pregnancy. However, the risk is non-zero, especially if using a non-LARC, barrier contraceptive, or no contraceptive. If a crewmember does not\n  desire pregnancy, the TBC presumes that EC is used after intercourse to prevent pregnancy if they are not already using a LARC and are not\n  sterile and is successful in preventing pregnancy.\n\n\n\n\n  TREATED WORST CASE SCENARIO (TWC) COMMENTS\n\n\n  Some crewmembers may not wish to use EC depending on their individual assessment of their own risk for progression to pregnancy or their desire\n  for a pregnancy. The TWC presumes that intercourse occurs between a male and pre-menopausal non-sterile female who is not using a LARC and\n  EC is used however fails to prevent pregnancy.\n\n\n\n\n  UNTREATED BEST CASE (UTBC) SCENARIO COMMENTS\n\n\n  The UTBC scenario is one in which emergency contraception is not used, however, pregnancy does not occur. They may have been sterile, using a\n  LARC, using a non-LARC modality, or used no preventative measures but did not get pregnant.\n\n\n\n\n  UNTREATED WORST CASE (UTWC) SCENARIO COMMENTS\n\n\n  Untreated WC scenarios include the chance that EC is not used and pregnancy occurs.\n\n\n\n\n  TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)\n\n\n\n   Citation                                                        Source                                      LOC Value\n\n   Waldinger, 2005                                                 Terrestrial                                                     2\n\n\n  Duration is largely irrelevant for this CLiFF. With that said, an international study found that the average duration of vaginal intromission to\n  completion is 5.4 minutes (range: 0.55-44.1 minutes). This duration would be the same for BC and WC scenarios. As it is unknown how the space\n  environment would affect duration, the LOC is neutral.\n\n\n\n\n  TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                       Source                                      LOC Value\n\n   N/A                                            N/A                                                                      2\n\n  There is not data to guide RTDC following intercourse, however, RTDC would be zero in best case scenarios where pregnancy is unlikely to arise\n  and 100% in worst cases scenarios where EC fails to prevent pregnancy or is not used.\n\n\n\n\n11/16/2023 3:00:10 PM                                                 ICL76_Pregnancy, Risk For Cliff                                                  page: 7",
+      "page_start": 7,
+      "page_end": 7,
+      "source_anchor": "page:7"
+    },
+    {
+      "section_id": "CLIFF-112-P08",
+      "ordinal": 7,
+      "heading": "Page 8 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)\n\n\n\n\n   Citation                                       Source                                       LOC Value\n\n   N/A                                            N/A                                                                       2\n\n\n  There is not data to guide LOCL following intercourse, however, this would be presumed to be 0 as this is not a medical comorbidity. Actual\n  pregnancy which is beyond the scope of this CLiFF would carry a LOCL that is non-zero.\n\n\n\n\n  CAPABILITY RESOURCE TABLE (CRT) OVERVIEW\n\n\n  Overview Emergency contraception (EC) can be considered following contraceptive failure, reproductive coercion, or sexual assault to prevent\n  pregnancy and helps avert unintended pregnancy due to inconsistent use or non-use of contraceptive modalities. This is because sperm can\n  survive for up to six days after sex waiting to fertilize an egg if one is released. Morning-after pills work like an emergency brake by temporarily\n  stopping the ovaries from releasing an egg. However, they won\u2019t work if ovulation has already occurred. Emergency contraception sometimes is\n  confused with medical abortion. Medical abortion is used to terminate an existing pregnancy, whereas emergency contraception is effective only\n  before a pregnancy is established (ACOG, 2015). For emergency contraception, efficacy can be defined in one of two ways: the first is the\n  proportion of women becoming pregnant after use of the method. The second is the number of pregnancies observed after treatment divided by\n  the estimated number of pregnancies that would occur without treatment. When this proportion is subtracted from one, the resulting statistic is the\n  \u201cprevented fraction,\u201d which represents the estimated percentage of cases averted by the treatment. Reported figures on the efficacy of emergency\n  contraception vary considerably and are imprecise. Pregnancy rates following use of these methods are 0-2%. Said another way they prevent 56-\n  94% of pregnancies that may have occurred (ACOG 2015). CNES: None Diagnostic Scope and Resourcing With the definitions as they stand, the\n  only resourcing required is a history and urine pregnancy test following an act of intercourse that is protected or unprotected (BC or WC scenario).\n  Serum bHCG or ultrasound are beyond the scope of this condition. Clinical Phase 1 Duration and Rationale This version of IMPACT presumes\n  physician level knowledge, skill, and ability will be present on the mission. The CRT working group SME consensus duration is as follows: CP1 BC\n  (Treated or Untreated): 0.5 CP1 WC (Treated or Untreated): 0.5 The duration involves obtaining a history, standard set up time and analysis of the\n  pregnancy test. It is the same for both BC and WC. Treatment Scope and Resourcing While not required of the BC scenario, emergency\n  contraception as described above would be recommended to prevent pregnancy after this condition occurred. Forms of EC to be considered\n  include ulipristal, levonorgestrel, or using any formulary of combined oral contraceptive pills in the Yuzpe fashion. Insertion of an IUD for EC is likely\n  beyond the scope of this CLiFF. Support Needs Ground-support is not needed for diagnosis, however, would be involved in any progression of\n  care if pregnancy was revealed. References Practice Bulletin No. 152: Emergency Contraception. Obstet Gynecol. 2015 Sep;126(3):e1-e11. doi:\n  10.1097/AOG.0000000000001047. PMID: 26287787.\n\n\n\n\n  IMM CLIFF RECONCILATION COMMENTS\n\n\n  No previous IMM.\n\n\n\n\n  LIMITATIONS SUMMARY\n\n\n  The data driving this CLiFF is severely limited. However, just because the limitations are great, does not mean that the condition can be ignored, as\n  the incidence will never be zero in the setting of mixed crews. Despite the limitations described throughout, the incidence of this scenario may be as\n  high or higher than most medical complications that may arise in space. As mentioned above, the incidence rate of intercourse during spaceflight or\n  in analog populations is not tracked. The rate or type of contraceptive use amongst astronauts is also not tracked and utilizing data from analog\n  population is further limited by access to care issues reported by military populations (Grindlay 2011). We do not have data evaluating the rate of\n  compliance with contraceptives among astronauts, though, we do have rates from analog and terrestrial populations. However, the barriers to\n  compliance between these populations are different making any conclusion limited. Relatedly, the BC and WC definitions are limited in that we\n  cannot stratify the risks based off the clinical scenario at hand. There is a spectrum of BC to WC that includes using no contraception, barrier\n  contraception, pills, patch, ring, subdermal implant, intrauterine device, +/- emergency contraception. Further, we do not know whether crews will be\n  mix-gendered, what their sexual orientation may be, what the crew dynamic would be, what their fertility status is, or what their ages are. Age is an\n  important factor that affects fertility as well as pregnancy risks, however, another limitation of the data above is that it is adjusted by the proportion\n  of pre-menopausal vs. post-menopausal astronauts who have flown historically. Not all pre-menopausal women are fertile, and thus the CLiFF\n  incidence is not engineered to adjust perfectly to age-matched fertility outcomes. Data regarding duration, RTDC, and LOCL are also limited as\n  described above.\n\n\n\n\n11/16/2023 3:00:10 PM                                                  ICL76_Pregnancy, Risk For Cliff                                                         page: 8",
+      "page_start": 8,
+      "page_end": 8,
+      "source_anchor": "page:8"
+    },
+    {
+      "section_id": "CLIFF-112-P09",
+      "ordinal": 8,
+      "heading": "Page 9 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)\n\n\n                                                                              Clinical Phase 2: Treatment\n                                                                                             Affected HSTCs\n                                                                Inter-\n               Cognitive -   Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision         Hearing                   Dentition         GI           GU\n                Simple       Complex                                                                      pulmonary\n                                                               Skills\n    Treated\n      Best\n     Case\n     (TBC)\n   Untreated\n     Best\n     Case\n    (UTBC)\n    Treated\n     Worst\n                                                                                                                                    13\n      Case\n     (TWC)\n   Untreated\n     Worst\n     Case\n    (UTWC)\n                                                       Affected HSTCs (Continued)                                                              TI Calculation                         TI Score\n                                                                                                                                                       Total\n                                                                                                                                                     Human\n                                                                                            Translation &                            Total Tasks\n                 Hand                                           Lower         Ambul &                       Don/Doff    Pressure                     System\n                             Hand (Any)    Upper Extremity                                  Stabilization                           Impaired By                      TI Decimal         TI %\n                (Dom)                                         Extremity     Standing (g)                  Equipment      Ops                        Category\n                                                                                           (microgravity)                            Condition\n                                                                                                                                                    Tasks Full\n                                                                                                                                                     Mission\n    Treated\n      Best\n                                                                                                                                    0              3763          0                0\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                                                                    0              3763          0                0\n     Case\n    (UTBC)\n    Treated\n     Worst\n                                                                                                                       211          224            3763          0.059527         5.9527\n      Case\n     (TWC)\n   Untreated\n     Worst\n                                                                                                                       211          211            3763          0.0560723 5.60723\n     Case\n    (UTWC)\n\n                                                                          Clinical Phase 3: Condition End State\n                                                                                             Affected HSTCs\n                                                                Inter-\n               Cognitive -   Cognitive -                                                                    Cardio-\n                                           Communications     personal         Vision         Hearing                   Dentition         GI           GU\n                Simple       Complex                                                                      pulmonary\n                                                               Skills\n    Treated\n      Best\n     Case\n     (TBC)\n   Untreated\n     Best\n     Case\n    (UTBC)\n    Treated\n     Worst\n      Case\n     (TWC)\n   Untreated\n     Worst\n                                                             89\n     Case\n    (UTWC)\n                                                       Affected HSTCs (Continued)                                                              TI Calculation                         TI Score\n\n\n\n\n11/16/2023 3:00:10 PM                                                 ICL76_Pregnancy, Risk For Cliff                                                                                   page: 9",
+      "page_start": 9,
+      "page_end": 9,
+      "source_anchor": "page:9"
+    },
+    {
+      "section_id": "CLIFF-112-P10",
+      "ordinal": 9,
+      "heading": "Page 10 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "                                                                                                                                           Total\n                                                                                                                                         Human\n                                                                                 Translation &                           Total Tasks\n                Hand                                     Lower       Ambul &                     Don/Doff    Pressure                    System\n                        Hand (Any)   Upper Extremity                             Stabilization                          Impaired By                      TI Decimal        TI %\n               (Dom)                                   Extremity   Standing (g)                Equipment      Ops                       Category\n                                                                                (microgravity)                           Condition\n                                                                                                                                        Tasks Full\n                                                                                                                                         Mission\n    Treated\n      Best\n                                                                                                                        0              3763          0                0\n     Case\n     (TBC)\n   Untreated\n     Best\n                                                                                                                        0              3763          0                0\n     Case\n    (UTBC)\n    Treated\n     Worst\n                                                                                                                        0              3763          0                0\n      Case\n     (TWC)\n   Untreated\n     Worst\n                                                                                                            211         300            3763          0.0797236 7.97236\n     Case\n    (UTWC)\n\n\n\n\n11/16/2023 3:00:10 PM                                          ICL76_Pregnancy, Risk For Cliff                                                                            page: 10",
+      "page_start": 10,
+      "page_end": 10,
+      "source_anchor": "page:10"
+    },
+    {
+      "section_id": "CLIFF-112-P11",
+      "ordinal": 10,
+      "heading": "Page 11 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  TABLE 8 KEY\n  Human System Task Category (HSTC) Definitions: Cognitive-Simple: Tasks requiring simple cognitive involvement (low levels of attention, following\n  simple checklists, and not requiring extensive decision making) in conjunction with inputs from other systems. Cognitive-Complex: Tasks requiring\n  complex cognitive involvement (requiring constant attention, frequent interpretation of outside stimuli to inform real-time situations) in conjunction\n  with inputs from other systems. Communication: Tasks requiring primarily communication, via hearing and speaking. Interpersonal Skills: Tasks\n  requiring interpersonal, social interaction between crew including complex technical tasks that require extended crew interaction. Vision: Tasks in\n  which visual information is required. Hearing: Tasks in which primarily auditory information is required, excluding communication, e.g. hearing\n  alarms, medical auscultation, OOHAs. Cardiopulmonary: Tasks requiring greater-than-baseline cardiopulmonary effort, e.g. physically strenuous\n  activities. Dentition: Tasks requiring use of teeth for mastication. GI (Gastrointestinal): Tasks requring use of the alimentary sytem, e.g.\n  solids/liquids consumption and solids excretion. GU (Genitourinary): Tasks requiring use of the male/female genitourinary systems. Hand\n  (Dominant): Tasks performed using primarily the hand, requiring use of the dominant hand (piloting, medical procedures, dental procedures). Hand\n  (Any): Tasks performed using primarily the hand(s), with no preference for dominance, with equivalent bilateral effectiveness. Upper Extremity:\n  Tasks requiring specific use of the upper extremities, excluding hands. Lower Extremity: Tasks requiring specific use of the lower extremities\n  (excluding ambulation and standing in the presence of gravity), e.g. using exercise equipment. Ambulation and Standing (g): Tasks requiring use of\n  both lower extremities to accomplish ambulation or standing in the presence of gravity. Translation and Stabilization (microgravity): Tasks requiring\n  use of either the upper or lower extremities to accomplish translational movement and stabilization (securing oneself to remain stationary) in the\n  setting of microgravity. Don/Doff Equipment: Tasks requiring the donning of personal equipment (including pressure suit, exercise harness, EVA\n  equipment, etc). Pressure Ops: EVA/contingency tasks performed while pressurized in a suit.\n  Criteria for Assignment of Conditions to HSTCs (any of the following):\n  1) Is affected crew member physically incapable of performing the human system task category, without impairment, with the condition?\n  2) Would the treatment (e.g. medications) impair the crewmember's ability to perform the human system task category? (Does not apply to UTx)\n  3) Does the condition have a high likelihood of causing a significant aeromedical contraindication with an associated human system task category\n  4) Would performing tasks in an associated task category worsen the condition? (If so, it is affected).\n  5) Does pain associated with the condition impair any further human system categories?\n\n\n\n\n  TASK IMPAIRMENT COMMENTS\n\n\n  CP2: No comment. CP3: No comment.\n\n\n\n\n  EVIDENCE COLLECTION PROCESS\n\n\n  Mesh terms that most closely resembled the best-case and worst-case scenarios, and associated Conditions Included but Not Explicitly Stated\n  (CNES), were utilized to build incidence, duration, RTDC, and LOCL searches by best- and worst-case.\n\n  Incidence:\n  Databases searched for spaceflight and analog incidence data included: PubMed, Google Scholar, NASA Technical Reports Server (NTRS) public\n  search, Defense Technical Information Center (DTIC), and Barratt MR, Baker E, Pool SL. Principles of Clinical Medicine for Space Flight. New York,\n  NY: Springer; 2019. 2nd Edition. Databases searched for terrestrial incidence included: DynaMed, PubMed, and Google Scholar.\n\n  Duration, RTDC, LOCL:\n  Databases searched for duration, RTDC, and LOCL included: Dynamed, Cochrane, PubMed, and Google Scholar. Note, that if duration, RTDC, or\n  LOCL data was found in a DynaMed search, the other search engines were not included. Relevant articles were selected and reviewed. If\n  applicable, the article was included in the CLiFF.\n\n\n\n\n  LEVEL OF CONFIDENCE (LOC) SCORING\n\n\n  Articles obtained to update the evidence behind this CLiFF were scored by ExMC editors, based on their applicability to the Exploration Spaceflight\n  environment using the following grading scale:\n\n  4 \u2013 Confident\n  3 \u2013 Somewhat confident\n  2 \u2013 Neutral\n  1 \u2013 Somewhat unconfident\n  0 \u2013 Not confident\n\n  The following considerations factor into the grading scale above:\n\n  \u2022 How closely does the paper describe the medical condition as defined by the IMPACT 1.0 Condiltion List (relevance)?\n  \u2022 How closely does the population included resemble the astronaut population?\n  \u2022 Quality of the paper (number of subjects, methods, etc.)\n  \u2022 How much does the editor trust the source of the evidence?\n  \u2022 How closely does the editor think that the data represents the exploration spaceflight environment?\n  \u2022 Other considerations, at the discretion of the editor, supported in the comments for LOE scoring.\n\n\n\n\n11/16/2023 3:00:10 PM                                                 ICL76_Pregnancy, Risk For Cliff                                                      page: 11",
+      "page_start": 11,
+      "page_end": 11,
+      "source_anchor": "page:11"
+    },
+    {
+      "section_id": "CLIFF-112-P12",
+      "ordinal": 11,
+      "heading": "Page 12 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "  REFERENCES\n\n\n\n   Reference\n\n   Finer LB, Zolna MR. Declines in unintended pregnancy in the United States, 2008-2011. N Engl J Med. 2016; 374(9):843\u2013852.\n\n   Grindlay K, Grossman D. Unintended pregnancy among active-duty women in the United States military, 2011. Contraception. 2015\n   Dec;92(6):589-95. doi: 10.1016/j.contraception.2015.07.015. Epub 2015 Sep 4. PMID: 26345183.\n\n   Holt K, Grindlay K, Taskier M, Grossman D. Unintended pregnancy and contraceptive use among women in the U.S. military: a systematic\n   literature review. Mil Med. 2011 Sep;176(9):1056-64. doi: 10.7205/milmed-d-11-00012. PMID: 21987966.\n\n   Li D, Wilcox AJ, Dunson DB. Benchmark pregnancy rates and the assessment of post-coital contraceptives: an update. Contraception.\n   2015;91(4):344-349. doi:10.1016/j.contraception.2015.01.002\n\n   Colombo B, Masarotto G. Daily fecundability: first results from a new data base. Demogr Res. 2000 Sep 6;3:[39] p.. PMID: 12178154.\n\n   Goyal V, Borrero S, Schwarz EB. Unintended pregnancy and contraception among active-duty servicewomen and veterans. Am J Obstet\n   Gynecol. 2012;206(6):463-469. doi:10.1016/j.ajog.2011.11.018\n\n   Grindlay K, Grossman D. Contraception access and use among U.S. servicewomen during deployment. Contraception. 2013 Feb;87(2):162-9.\n   doi: 10.1016/j.contraception.2012.09.019. Epub 2012 Oct 31. PMID: 23121821.\n\n   Au\u00f1\u00f3n-Chancellor SM, Pattarini JM, Moll S, Sargsyan A. Venous Thrombosis during Spaceflight. N Engl J Med. 2020 Jan 2;382(1):89-90. doi:\n   10.1056/NEJMc1905875. PMID: 31893522.\n\n   Westhoff CL, Torgal AT, Mayeda ER, Shimoni N, Stanczyk FZ, Pike MC. Predictors of noncompliance in an oral contraceptive clinical trial.\n   Contraception. 2012 May;85(5):465-9. doi: 10.1016/j.contraception.2011.09.019. Epub 2011 Nov 12. PMID: 22079603.\n\n   Powell-Dunford NC, Cuda AS, Moore JL, Crago MS, Kelly AM, Deuster PA. Menstrual suppression for combat operations: advantages of oral\n   contraceptive pills. Womens Health Issues. 2011 Jan-Feb;21(1):86-91. doi: 10.1016/j.whi.2010.08.006. PMID: 21185993.\n\n   Trego LL, Jordan PJ. Military women's attitudes toward menstruation and menstrual suppression in relation to the deployed environment:\n   development and testing of the MWATMS-9 (short form). Womens Health Issues. 2010 Jul-Aug;20(4):287-93. doi: 10.1016/j.whi.2010.03.002.\n   PMID: 20627773.\n\n   Steller JG, Blue RS, Burns R, Bayuse TM, Antonsen EL, Jain V, Blackwell MM, Jennings RT. Gynecologic Risk Mitigation Considerations for\n   Long-Duration Spaceflight. Aerosp Med Hum Perform. 2020 Jul 1;91(7):543-564. doi: 10.3357/AMHP.5538.2020. PMID: 32591031.\n\n   Practice Bulletin No. 152: Emergency Contraception. Obstet Gynecol. 2015 Sep;126(3):e1-e11. doi: 10.1097/AOG.0000000000001047. PMID:\n   26287787.\n\n   Trussell J, Rodr\u00edguez G, Ellertson C. Updated estimates of the effectiveness of the Yuzpe regimen of emergency contraception. Contraception.\n   1999 Mar;59(3):147-51. doi: 10.1016/s0010-7824(99)00018-9. PMID: 10382076.\n\n   ACOG Practice Bulletin No. 112: Emergency contraception. Obstet Gynecol. 2010 May;115(5):1100-1109. doi:\n   10.1097/AOG.0b013e3181deff2a. PMID: 20410799.\n\n\n\n\n  ACRONYMS\n\n\n\n\n   ACRONYM                      PHRASE\n\n   AAOMS                        American Association of Oral and Maxillofacial Surgeons\n\n   AMA                          American Medical Association\n\n   ARCL                         All Remaining Conditions List\n\n   ARS                          Acute Radiation Sickness\n\n   BHP                          Behavioral Health and Performance\n\n   CAC                          Coronary Artery Calcium\n\n   CHS                          Crew Health and Safety\n\n   CL                           Condition List\n\n   CliFF                        Clinical Finding Form\n\n   CMO                          Crew Medical Officer\n\n\n\n\n11/16/2023 3:00:10 PM                                              ICL76_Pregnancy, Risk For Cliff                                                page: 12",
+      "page_start": 12,
+      "page_end": 12,
+      "source_anchor": "page:12"
+    },
+    {
+      "section_id": "CLIFF-112-P13",
+      "ordinal": 12,
+      "heading": "Page 13 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   COMFORT              Clinical Outcome Metrics for Optimization of Robust Training\n\n   CP1                  Clinical Phase 1\n\n   CP2                  Clinical Phase 2\n\n   CP3                  Clinical Phase 3\n\n   CRL                  Clinical Resource Level\n\n   CRT                  Capability Resource Table\n\n   CST                  Clinical Science Team\n\n   DCS                  Decompression Syndrome\n\n   DRM                  Design Reference Mission\n\n   ED                   Emergency Medicine Doctor\n\n   EL                   Evidence Library\n\n   EMCL                 Exploration Medical Condition List\n\n   EMT                  Emergency Medical Technician\n\n   EVA                  Extravehicular Activity\n\n   EXMC                 Exploration Medical Capability\n\n   HRP                  Human Research Program\n\n   ICD                  International Classification of Disease\n\n   ICL 1.0              IMPACT 1.0 Medical Conditions List\n\n   ICU                  Intensive Care Unit\n\n   IMCL                 iMED Condition List\n\n   iMED                 Integrated Medical Evidence Database\n\n   IMM                  Integrated Medical Model\n\n   IMPACT-MD            Impact Medical Database\n\n   IP                   Incidence Proportion\n\n   IR                   Incidence Rate\n\n   ISS                  International Space Station\n\n   IV                   Intravenous\n\n   JSC                  Johnson Space Center\n\n   LEO                  Low-Earth orbit\n\n   LEVA                 Lunar Extravehicular Activity\n\n   LOCL                 Loss of Crew Life\n\n   LOM                  Loss of Mission\n\n   LSAH                 Lifetime Surveillance of Astronaut Health\n\n   LSO                  Lunar Surface Operations\n\n   MCL                  Master Condition List\n\n   MEVA                 Medical Extravehicular Activity\n\n   NASA                 National Aeronautics and Space Administration\n\n   N/A                  Not Applicable\n\n   NP                   Nurse Practitioner\n\n   OBGYN                Obstetrics and Gynecology\n\n   OR                   Occurrence Rate\n\n   PA                   Physician Assistant\n\n   PDQ                  Pain Disability Questionnaire\n\n\n\n\n11/16/2023 3:00:10 PM                                        ICL76_Pregnancy, Risk For Cliff   page: 13",
+      "page_start": 13,
+      "page_end": 13,
+      "source_anchor": "page:13"
+    },
+    {
+      "section_id": "CLIFF-112-P14",
+      "ordinal": 13,
+      "heading": "Page 14 \u2014 NASA CliFF (2023) Original Text",
+      "text_content": "   PFCL                 Proposed Future Conditions List\n\n   PPE                  Personal Protective Equipment\n\n   PTRS                 Project Technical Requirements Specification\n\n   PRL                  Pharmaceutical Resource Level\n\n   QTL                  Quality Time Lost\n\n   RCL                  Removed Conditions List\n\n   REP                  Rochester Epidemiology Study\n\n   RTDC                 Removal to Definitive Care\n\n   SANS                 Spaceflight-Associated Neuro-ocular Syndrome\n\n   SAS                  Space Adaptation Syndrome\n\n   SEVA                 Spaceflight Extravehicular Activity\n\n   SME                  Subject Matter Expert\n\n   SoP                  Standard Operating Procedure\n\n   SPE                  Solar Particle Event\n\n   TBD                  To Be Determined\n\n   TI                   Task Impairment\n\n\n\n\n11/16/2023 3:00:10 PM                                         ICL76_Pregnancy, Risk For Cliff   page: 14",
+      "page_start": 14,
+      "page_end": 14,
+      "source_anchor": "page:14"
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "CLIFF-112-TBL-01",
+      "ordinal": 0,
+      "title": "TABLE 1. INCIDENCE MODEL",
+      "rows": [
+        [
+          "Incidence Details"
+        ],
+        [
+          "Incidence Type"
+        ],
+        [
+          "General"
+        ],
+        [
+          "Segment"
+        ],
+        [
+          "All"
+        ],
+        [
+          "Env. Exposure"
+        ],
+        [
+          "NA"
+        ],
+        [
+          "Sex"
+        ],
+        [
+          "Female"
+        ],
+        [
+          "Crowns"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Contacts"
+        ],
+        [
+          "Any"
+        ],
+        [
+          "Pregnancy"
+        ],
+        [
+          "No"
+        ],
+        [
+          "Incidence Distribution"
+        ],
+        [
+          "Occurrence Dist"
+        ],
+        [
+          "Poisson"
+        ],
+        [
+          "Incidence Dist."
+        ],
+        [
+          "Gamma"
+        ],
+        [
+          "Mean"
+        ],
+        [
+          "0.164998"
+        ],
+        [
+          "SD"
+        ],
+        [
+          "0.0106699"
+        ],
+        [
+          "Gamma"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 1. INCIDENCE MODEL"
+    },
+    {
+      "table_id": "CLIFF-112-TBL-02",
+      "ordinal": 1,
+      "title": "TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                    Source                                      LOC Value"
+        ],
+        [
+          "Finer, 2016                                                 Terrestrial                                 2"
+        ],
+        [
+          "Grindlay, 2013                                              Analog                                      2"
+        ],
+        [
+          "Grindlay, 2015                                              Analog                                      2"
+        ],
+        [
+          "Belmont, 2010                                               Analog                                      1"
+        ],
+        [
+          "Colombo, 2000                                               Terrestrial                                 2"
+        ],
+        [
+          "Li, 2016                                                    Terrestrial                                 2"
+        ]
+      ],
+      "page_number": 2,
+      "source_anchor": "page:2#TABLE 2. INCIDENCE LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-112-TBL-03",
+      "ordinal": 2,
+      "title": "TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                               Source                                  LOC Value"
+        ],
+        [
+          "Steller, 2020                                                          Spaceflight                             2"
+        ],
+        [
+          "Grindlay, 2011                                                         Analog                                  2"
+        ],
+        [
+          "Grindlay, 2013                                                         Analog                                  2"
+        ],
+        [
+          "Grindlay, 2015                                                         Analog                                  2"
+        ],
+        [
+          "Trego, 2010                                                            Analog                                  2"
+        ],
+        [
+          "Powell-Dunford, 2011                                                   Analog                                  2"
+        ],
+        [
+          "Westhoff, 2012                                                         Terrestrial                             2"
+        ],
+        [
+          "ACOG, 2015                                                             Terrestrial                             3"
+        ],
+        [
+          "While we do have data regarding the effectiveness at emergency contraception at delaying ovulation and thus decreasing the chance of"
+        ],
+        [
+          "pregnancy, we don\u2019t have data regarding its effectiveness, stability, and pharmacokinetic during spaceflight. Further, this proportion is limited by"
+        ]
+      ],
+      "page_number": 4,
+      "source_anchor": "page:4#TABLE 3.BEST/WORST CASE PROBABILITY LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-112-TBL-04",
+      "ordinal": 3,
+      "title": "TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY CLINICAL PHASE",
+      "rows": [
+        [
+          "CP1: Diagnosis       CP2: Treatment                  CP3: Condition End State"
+        ],
+        [
+          "TI%       Duration   TI%         Duration            TI%         RTDC             LOCL"
+        ],
+        [
+          "Composite         Condition"
+        ],
+        [
+          "Case Scenario      Incidence         Probability %    Preset    Preset     Preset      Min        Max      Preset      Min%    Max%     Min%     Max%"
+        ],
+        [
+          "Treated Best       Mean 0.165        90 - 90          100       0.4996     0           0.00917    0.735    0           0       0        0        0"
+        ],
+        [
+          "Case (TBC)         SD 0.01067"
+        ],
+        [
+          "Treated Worst                        10 - 10          100       0.4996     2.97635     0.00917    0.735    0           0       100      0        0"
+        ],
+        [
+          "Case (TWC)"
+        ],
+        [
+          "Untreated Best     N/A               N/A              N/A       0.4996     0           0.00917    0.735    0           0       0        0        0"
+        ],
+        [
+          "Case (UTBC)"
+        ],
+        [
+          "Untreated          N/A               N/A              N/A       0.4996     6.7898      0.00917    0.735    7.97236     0       100      0        0"
+        ],
+        [
+          "Worst Case"
+        ],
+        [
+          "(UTWC)"
+        ]
+      ],
+      "page_number": 6,
+      "source_anchor": "page:6#TABLE 4. CLIFF TREATMENT & OUTCOME TABLE BY C"
+    },
+    {
+      "table_id": "CLIFF-112-TBL-05",
+      "ordinal": 4,
+      "title": "TABLE 5. CLINICAL PHASE II DURATION LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                                        Source                                      LOC Value"
+        ],
+        [
+          "Waldinger, 2005                                                 Terrestrial                                                     2"
+        ],
+        [
+          "Duration is largely irrelevant for this CLiFF. With that said, an international study found that the average duration of vaginal intromission to"
+        ],
+        [
+          "completion is 5.4 minutes (range: 0.55-44.1 minutes). This duration would be the same for BC and WC scenarios. As it is unknown how the space"
+        ],
+        [
+          "environment would affect duration, the LOC is neutral."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 5. CLINICAL PHASE II DURATION LEVEL OF "
+    },
+    {
+      "table_id": "CLIFF-112-TBL-06",
+      "ordinal": 5,
+      "title": "TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                       Source                                      LOC Value"
+        ],
+        [
+          "N/A                                            N/A                                                                      2"
+        ],
+        [
+          "There is not data to guide RTDC following intercourse, however, RTDC would be zero in best case scenarios where pregnancy is unlikely to arise"
+        ],
+        [
+          "and 100% in worst cases scenarios where EC fails to prevent pregnancy or is not used."
+        ]
+      ],
+      "page_number": 7,
+      "source_anchor": "page:7#TABLE 6. RTDC LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-112-TBL-07",
+      "ordinal": 6,
+      "title": "TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)",
+      "rows": [
+        [
+          "Citation                                       Source                                       LOC Value"
+        ],
+        [
+          "N/A                                            N/A                                                                       2"
+        ],
+        [
+          "There is not data to guide LOCL following intercourse, however, this would be presumed to be 0 as this is not a medical comorbidity. Actual"
+        ],
+        [
+          "pregnancy which is beyond the scope of this CLiFF would carry a LOCL that is non-zero."
+        ]
+      ],
+      "page_number": 8,
+      "source_anchor": "page:8#TABLE 7. LOCL LEVEL OF CONFIDENCE (LOC)"
+    },
+    {
+      "table_id": "CLIFF-112-TBL-08",
+      "ordinal": 7,
+      "title": "TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON AFFECTED HUMAN SYSTEMS TASK CATEGORIES (HSTC)",
+      "rows": [
+        [
+          "Clinical Phase 2: Treatment"
+        ],
+        [
+          "Affected HSTCs"
+        ],
+        [
+          "Inter-"
+        ],
+        [
+          "Cognitive -   Cognitive -                                                                    Cardio-"
+        ],
+        [
+          "Communications     personal         Vision         Hearing                   Dentition         GI           GU"
+        ],
+        [
+          "Simple       Complex                                                                      pulmonary"
+        ],
+        [
+          "Skills"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TBC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Best"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTBC)"
+        ],
+        [
+          "Treated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "13"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(TWC)"
+        ],
+        [
+          "Untreated"
+        ],
+        [
+          "Worst"
+        ],
+        [
+          "Case"
+        ],
+        [
+          "(UTWC)"
+        ],
+        [
+          "Affected HSTCs (Continued)                                                              TI Calculation                         TI Score"
+        ]
+      ],
+      "page_number": 9,
+      "source_anchor": "page:9#TABLE 8. TASK IMPAIRMENT CALCULATION BASED ON"
+    }
+  ],
+  "media": [
+    {
+      "media_id": "CLIFF-112-IMG-01",
+      "ordinal": 0,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-112/female_reproductive_anatomy.png",
+      "mime_type": "image/png",
+      "width": 1199,
+      "height": 804,
+      "sha256": "a1fe0d8fd63f85dcd038296470a7df5e575ce37f5c54677190c7d53bc6c6f18e",
+      "creator": "R. Dewaele (Bioscope, Unige), J. Abdulcadir (HUG), C. Brockmann (Bioscope, Unige), O. Fillod, S. Valera-Kummer (DIP)",
+      "license_identifier": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AFemale_reproductive_system_%2801%29.png",
+      "attribution": "R. Dewaele (Bioscope, Unige), J. Abdulcadir (HUG), C. Brockmann (Bioscope, Unige), O. Fillod, S. Valera-Kummer (DIP), via Wikimedia Commons (CC BY-SA 4.0)",
+      "caption": "Anatomical diagram of the female reproductive tract.",
+      "alt_text": "Diagram of female reproductive system.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Female reproductive system (01).png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-112-IMG-02",
+      "ordinal": 1,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-112/fetus_in_utero_gray.png",
+      "mime_type": "image/png",
+      "width": 400,
+      "height": 519,
+      "sha256": "ceb2238d9c6a49fa6dd71a2f1ae32860ce78a646cd3b0cd53f1fe7d0b9452043",
+      "creator": "Henry Vandyke Carter",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3AGray38_%E2%80%93_Illustration_of_a_fetus_in_utero_between_the_fifth_and_sixth_months.png",
+      "attribution": "Henry Vandyke Carter, via Wikimedia Commons (Public domain)",
+      "caption": "Gray's Anatomy illustration of gestational uterine anatomy.",
+      "alt_text": "Illustration of fetus in utero.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Gray38 \u2013 Illustration of a fetus in utero between the fifth and sixth months.png)",
+      "usage_review": "APPROVED"
+    },
+    {
+      "media_id": "CLIFF-112-IMG-03",
+      "ordinal": 2,
+      "media_kind": "ANATOMY",
+      "file_path": "knowledge/nasa/cliff_119_2023/media/CLIFF-112/placenta_anatomy.jpg",
+      "mime_type": "image/jpeg",
+      "width": 1048,
+      "height": 1033,
+      "sha256": "69ce71caddf31c9b6bc7ac718d64748a2dc2c19285b463740fc1488a2ff6728f",
+      "creator": "\u0645\u0627\u0646\u064a",
+      "license_identifier": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File%3APlacenta_Persian.jpg",
+      "attribution": "\u0645\u0627\u0646\u064a, via Wikimedia Commons (Public domain)",
+      "caption": "Anatomical diagram of placental and fetal vascular exchange.",
+      "alt_text": "Diagram of placenta anatomy.",
+      "page_number": null,
+      "figure_reference": "External medical/anatomical reference (Wikimedia Commons File:Placenta Persian.jpg)",
+      "usage_review": "APPROVED"
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "CLIFF-112-REF-01",
+      "ordinal": 0,
+      "label": "NASA IMM CliFF (2023) \u2014 Pregnancy Risk",
+      "citation_url": "https://www.nasa.gov/wp-content/uploads/2026/08/pregnancy-risk-cliff-2023.pdf?emrc=847e3f",
+      "doi": null,
+      "page_number": 1
+    }
+  ],
+  "limitations": [
+    "NASA CliFF documents are probabilistic risk-planning evidence for IMM, not validated clinical treatment protocols.",
+    "External medical and anatomical images are from Wikimedia Commons under their stated licenses and are not NASA-authored."
+  ]
+}
