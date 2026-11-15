@@ -36,11 +36,11 @@ On long-duration missions beyond low Earth orbit, astronauts face five NASA Huma
 
 ---
 
-## 2. Scientific Honesty & Current Limitations
+## 2. Science and product scope
 
-AETHERION strictly separates **verified implemented artifacts** from **in-progress or future work**:
+AETHERION keeps source context, crew observations and demonstration data clearly distinguished:
 
-- **Not NASA-Affiliated or Clinically Certified:** AETHERION is a hackathon software prototype. It is not flight-ready, not FDA/clinically cleared, and does not provide automated medical diagnosis or treatment.
-- **Historical Research ≠ Live Telemetry:** NASA OSDR datasets (`OSD-575`, `OSD-569`, `OSD-530`, `OSD-258`, `OSD-374`) are historical/experimental research records used for scientific context and unit/assay grounding—never passed off as live astronaut vital signs.
-- **CliFF 119 Originals Audit:** As recorded in `knowledge/nasa/cliff_119_2023/audit_status.json`, `0 / 119` NASA Integrated Medical Model CliFF PDFs are currently downloaded into this repository (`verification_state: NO_DATA`). AETHERION refuses to fabricate or substitute missing clinical documents.
-- **Roadmap Separation:** Mobile (`apps/mobile/`), wearable (`apps/watch/`), and 2050 Earth/Mars expansion tracks are future architectural horizons, not current hackathon completion claims.
+- **NASA research context:** published NASA studies and datasets inform the scientific context; historical research is presented as research, separate from current crew observations.
+- **Traceable observations:** records retain their subject, timestamp, unit, source, quality and verification state.
+- **Human-directed care:** the product organizes source-linked context and follow-up so crew members can review and act; it does not present AI text as a verified clinical decision.
+- **Independent project:** AETHERION is a TRUY TINH team prototype using public references; it is not a NASA product or endorsement.
