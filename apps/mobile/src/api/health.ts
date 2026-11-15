@@ -1,7 +1,9 @@
 import { Availability, ObservationPage } from '../types';
 import { request } from './client';
+import { getDemoAvailability, getDemoObservations, isDemoToken } from './demoHealth';
 
 export function getAvailability(subjectId: string, token: string): Promise<Availability> {
+  if (isDemoToken(token)) return Promise.resolve(getDemoAvailability(subjectId));
   return request(`/api/v1/subjects/${encodeURIComponent(subjectId)}/summary`, { token });
 }
 
@@ -10,6 +12,7 @@ export function getObservations(
   token: string,
   cursor?: string | null,
 ): Promise<ObservationPage> {
+  if (isDemoToken(token)) return Promise.resolve(getDemoObservations(subjectId));
   const base = `subject_id=${encodeURIComponent(subjectId)}&limit=50&order=desc&include_non_live=false`;
   const query = cursor ? `${base}&cursor=${encodeURIComponent(cursor)}` : base;
   return request(`/api/v1/observations?${query}`, { token });
