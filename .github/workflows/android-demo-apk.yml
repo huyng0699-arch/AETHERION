@@ -6,8 +6,6 @@ on:
     branches: [main]
     paths:
       - 'apps/mobile/**'
-      - 'docs/GETTING_STARTED.md'
-      - 'README.md'
       - '.github/workflows/android-demo-apk.yml'
 
 permissions:
@@ -15,7 +13,7 @@ permissions:
 
 concurrency:
   group: aetherion-android-release
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
