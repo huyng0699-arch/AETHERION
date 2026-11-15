@@ -28,4 +28,4 @@ for (const name of expected) {
   }
   bytes += Buffer.byteLength(await readFile(file));
 }
-console.log('Verified 118 offline NASA CliFF source files (' + bytes + ' bytes); CLIFF-119 absent.');
+console.log('Validated bundled inventory and JSON shape: 118 CliFF records (' + bytes + ' bytes). This does not verify source PDF integrity; CLIFF-119 is absent.');

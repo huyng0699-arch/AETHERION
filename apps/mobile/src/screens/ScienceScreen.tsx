@@ -45,6 +45,16 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
     }
     setErrorKey(null);
     try {
+      if (offlineLibraryRef.current && append) {
+        const local = searchOfflineCliffArticles(term, 100, offset);
+        if (!current()) return;
+        setItems(previous => [...previous, ...local.items]);
+        setIndexed(OFFLINE_CLIFF_COUNT);
+        setMatched(local.matched);
+        setNextOffset(local.next_offset ?? offset + local.items.length);
+        setHasMore(local.has_more ?? false);
+        return;
+      }
       const result = await searchScienceArticles(term, 100, offset);
       if (!current()) return;
       const wasOffline = offlineLibraryRef.current;
@@ -61,16 +71,17 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
       setHasMore(typeof result.has_more === 'boolean' ? result.has_more : next < total);
     } catch (error) {
       if (!current()) return;
-      const authenticationDenied = error instanceof ApiError && (error.status === 401 || error.status === 403);
-      if (!authenticationDenied) {
-        const local = searchOfflineCliffArticles(term, 100, offset);
+      if (canUseOfflineLibrary(error)) {
+        const appendLocal = append && offlineLibraryRef.current;
+        const localOffset = appendLocal ? offset : 0;
+        const local = searchOfflineCliffArticles(term, 100, localOffset);
         offlineLibraryRef.current = true;
         setOfflineLibrary(true);
         setStatus(OFFLINE_CLIFF_STATUS);
-        setItems(previous => append ? [...previous, ...local.items] : local.items);
+        setItems(previous => appendLocal ? [...previous, ...local.items] : local.items);
         setIndexed(OFFLINE_CLIFF_COUNT);
         setMatched(local.matched);
-        setNextOffset(local.next_offset ?? offset + local.items.length);
+        setNextOffset(local.next_offset ?? localOffset + local.items.length);
         setHasMore(local.has_more ?? false);
         setErrorKey(null);
       } else {
@@ -123,14 +134,19 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
         if (current()) setArticle(result);
       }
     } catch (error) {
-      const authenticationDenied = error instanceof ApiError && (error.status === 401 || error.status === 403);
-      const local = authenticationDenied ? null : getOfflineCliffArticle(summary.article_id);
+      const local = canUseOfflineLibrary(error) ? getOfflineCliffArticle(summary.article_id) : null;
       if (current()) {
         if (local) {
           offlineLibraryRef.current = true;
           setOfflineLibrary(true);
           setStatus(OFFLINE_CLIFF_STATUS);
           setArticle(local);
+          const localPage = searchOfflineCliffArticles(query, 100, 0);
+          setItems(localPage.items);
+          setIndexed(OFFLINE_CLIFF_COUNT);
+          setMatched(localPage.matched);
+          setNextOffset(localPage.next_offset ?? localPage.items.length);
+          setHasMore(localPage.has_more ?? false);
         } else setDetailErrorKey(errorMessageKey(error));
       }
     } finally {
@@ -139,7 +155,7 @@ export function ScienceScreen({ locale, onBack, onAskAi }: { locale: Locale; onB
   };
 
   const submitSearch = () => { beginDetail(); setSelected(null); setArticle(null); void load(query); };
-  const refresh = () => { if (selected) void openArticle(selected); else { setSelected(null); setArticle(null); void load(query); void getKnowledgeStatus().then(setStatus).catch(() => setStatus(null)); } };
+  const refresh = () => { if (selected) void openArticle(selected); else { setSelected(null); setArticle(null); void load(query); void getKnowledgeStatus().then(value => { if (!offlineLibraryRef.current) setStatus(value); }).catch(() => { if (!offlineLibraryRef.current) setStatus(null); }); } };
   const loadMore = () => { if (!loadingMore && hasMore) void load(query, nextOffset, true); };
 
   return (
@@ -322,6 +338,11 @@ function MetaRow({ label, value, selectable = false }: { label: string; value: s
 function Loading({ label }: { label: string }) {
   const { colors, styles, isDark, appearance, gradient } = useThemedStyles(buildStyles);
   return <View style={styles.loading}><ActivityIndicator color={colors.primary} /><Text style={styles.loadingText}>{label}</Text></View>;
+}
+
+function canUseOfflineLibrary(error: unknown): boolean {
+  if (error instanceof ApiError) return error.status === 0 || error.status === 408;
+  return error instanceof Error && error.message === 'SERVER_URL_MISSING';
 }
 
 function errorMessageKey(error: unknown): MessageKey {

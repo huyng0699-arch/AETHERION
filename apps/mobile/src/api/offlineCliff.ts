@@ -255,7 +255,7 @@ function toSummary(record: OfflineCliffRecord): ScienceArticleSummary {
     original_url: record.source.final_url || record.source.source_url || null,
     source_claim: record.source.verification_state || 'UNKNOWN',
     original_sha256_claim: record.source.content_sha256 || null,
-    content_state: record.completeness_state,
+    content_state: 'STRUCTURED_JSON_LOCAL_NOT_PDF_INTEGRITY_PROOF',
   };
 }
 
