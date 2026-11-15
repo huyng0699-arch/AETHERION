@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Animated, Platform, StyleSheet, View } from 'react-native';
 import { useTheme } from '../../theme';
 
-const EARTH = require('../../../assets/truy-tinh-earth.png');
+const EARTH = require('../../../assets/truy-tinh-cosmic-orbit.png');
 
 /** Decorative orbital illustration, independent of any live mission data. */
 export function OrbitEarth({ size = 160 }: { size?: number }) {
