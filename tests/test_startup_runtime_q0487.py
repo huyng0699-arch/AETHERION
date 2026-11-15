@@ -273,6 +273,14 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
         ):
             win = AetherionWindow()
             page = win.mission_control_page
+            page.set_locale("en")
+            auth_container = page.username.parentWidget()
+            login_actions = [
+                button for button in auth_container.findChildren(type(page.open_personal_button))
+                if button.objectName() == "primaryAction"
+            ]
+            self.assertEqual(len(login_actions), 1)
+            login_action = login_actions[0]
             with patch.object(page, "refresh_subject") as refresh_subject:
                 page.set_verified_session(
                     "verified-bearer",
@@ -281,6 +289,7 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                 )
                 self.assertEqual(page._token, "verified-bearer")
                 self.assertEqual(page.api_url, "http://127.0.0.1:18000")
+                self.assertFalse(login_action.isEnabled())
                 self.assertEqual(page._subjects, ["CREW-01"])
                 self.assertEqual(page._selected_subject(), "CREW-01")
                 refresh_subject.assert_called_once()
@@ -301,6 +310,7 @@ class StartupRuntimeQ0487Tests(unittest.TestCase):
                 self.assertEqual(page._selected_subject(), "")
                 self.assertFalse(page.open_personal_button.isEnabled())
                 self.assertTrue(page.username.isEnabled())
+                self.assertTrue(login_action.isEnabled())
             win.close()
 
 
