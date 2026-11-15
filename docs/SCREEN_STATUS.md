@@ -4,7 +4,7 @@
 
 The current product direction is public Mission Operations Home → explicit SIMULATED Demo, with NASA MA-7 as a separate historical archive. Protected routes return to Login, then resume only after bearer-authenticated `GET /api/v1/auth/me`; subject context is derived only from its flat `allowed_subjects` list. Auto-select exactly one authorized ID; keep zero/multiple IDs visibly unselected. Sign-out must clear the outer and Mission Control sessions, and Ask AI must restore local `account:<username>` identity. Q-0487 is currently **STALE** with its implementation/evidence preserved; physical Windows/runtime proof belongs only to Q-0488.
 
-Q-0485 has a draft-branch Mission Control session handoff/reset and a focused auth/route test wired into the existing offscreen workflow. **No test or render pass is claimed yet.** The current Q-0489 lease owns `main.py` through `2026-11-16T03:00:00Z`; its ACK/release is required to reconcile the preserved Q-0485 branch entrypoint patch, and no merge is safe before that. GitHub Actions jobs previously stopped before runner steps because of billing; this is not a source-test result. The branch's visual and route acceptance remains pending.
+Q-0485 has a draft-branch Mission Control session handoff/reset and a focused auth/route test wired into the existing offscreen workflow. **No test or render pass is claimed yet.** The current Q-0489 lease owns `main.py` and `quests/v1/Q-0489.md` through `2026-11-16T03:00:00Z`; its ACK/release and Quest metadata reconciliation are required before merging the preserved Q-0485 entrypoint patch. GitHub Actions jobs previously stopped before runner steps because of billing; this is not a source-test result. The branch's visual and route acceptance remains pending.
 
 ---
 
