@@ -1933,6 +1933,118 @@
         ]
       }
     },
+    "/api/v1/admin/ai/cloud/settings": {
+      "get": {
+        "tags": [
+          "server-admin"
+        ],
+        "summary": "Get Cloud Settings",
+        "operationId": "get_cloud_settings_api_v1_admin_ai_cloud_settings_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "server-admin"
+        ],
+        "summary": "Update Cloud Settings",
+        "operationId": "update_cloud_settings_api_v1_admin_ai_cloud_settings_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CloudSettingsIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "server-admin"
+        ],
+        "summary": "Delete Cloud Settings",
+        "operationId": "delete_cloud_settings_api_v1_admin_ai_cloud_settings_delete",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/ai/cloud/test": {
+      "post": {
+        "tags": [
+          "server-admin"
+        ],
+        "summary": "Test Cloud Settings",
+        "operationId": "test_cloud_settings_api_v1_admin_ai_cloud_test_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/admin/ai/local/models": {
       "get": {
         "tags": [
@@ -2313,6 +2425,30 @@
           }
         ]
       }
+    },
+    "/api/v1/demo/nasa-ma7": {
+      "get": {
+        "tags": [
+          "NASA historical archive"
+        ],
+        "summary": "Nasa Ma7 Archive",
+        "description": "Return the exact published bundle, never fabricated replacement values.",
+        "operationId": "nasa_ma7_archive_api_v1_demo_nasa_ma7_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Nasa Ma7 Archive Api V1 Demo Nasa Ma7 Get"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -2494,6 +2630,49 @@
           "content"
         ],
         "title": "ChatLine"
+      },
+      "CloudSettingsIn": {
+        "properties": {
+          "provider": {
+            "type": "string",
+            "enum": [
+              "gemini",
+              "openai"
+            ],
+            "title": "Provider"
+          },
+          "model": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Model"
+          },
+          "api_key": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "password",
+                "writeOnly": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Api Key"
+          },
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled",
+            "default": true
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "provider",
+          "model"
+        ],
+        "title": "CloudSettingsIn"
       },
       "DeviceHeartbeatIn": {
         "properties": {
