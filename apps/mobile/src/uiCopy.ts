@@ -1,6 +1,6 @@
 import { Locale } from './types';
 const en = {
-  demo: 'Demo', demoHint: 'Explore the NASA flight archive', welcome: 'Welcome back', tagline: 'Your health. One connected space.',
+  demo: 'Demo', demoHint: 'Enter the app with a full set of simulated health readings', demoModeLabel: 'DEMO · Simulated values, not readings from real sensors', demoSensorsOff: 'Demo readings · no sensor connected', welcome: 'Welcome back', tagline: 'Your health. One connected space.',
   connection: 'Server connection', appearance: 'Appearance', theme: 'Theme', mode: 'Mode', system: 'System', light: 'Light', dark: 'Dark',
   amethyst: 'Amethyst', ocean: 'Ocean', rose: 'Rose', midnight: 'Midnight', motion: 'Reduce motion',
   profile: 'Profile', chooseProfile: 'Choose a profile', noProfiles: 'No profiles assigned', retry: 'Try again', continueAs: 'Continue as',
@@ -17,7 +17,7 @@ const en = {
   guideMeasures: 'What it measures', guidePurpose: 'Why it is tracked', guideTip: 'Use it well', guideSources: 'Sources', guideOpenSource: 'Open source',
 };
 const vi: Record<keyof typeof en, string> = {
-  demo: 'Demo', demoHint: 'Khám phá dữ liệu chuyến bay NASA', welcome: 'Chào mừng trở lại', tagline: 'Sức khỏe của bạn. Một không gian kết nối.',
+  demo: 'Demo', demoHint: 'Vào ứng dụng với bộ chỉ số sức khỏe mô phỏng đầy đủ', demoModeLabel: 'DEMO · Chỉ số mô phỏng, không phải số đo cảm biến thật', demoSensorsOff: 'Chỉ số demo · chưa kết nối cảm biến', welcome: 'Chào mừng trở lại', tagline: 'Sức khỏe của bạn. Một không gian kết nối.',
   connection: 'Kết nối máy chủ', appearance: 'Giao diện', theme: 'Chủ đề', mode: 'Chế độ', system: 'Hệ thống', light: 'Sáng', dark: 'Tối',
   amethyst: 'Thạch anh tím', ocean: 'Đại dương', rose: 'Hoa hồng', midnight: 'Đêm sâu', motion: 'Giảm chuyển động',
   profile: 'Hồ sơ', chooseProfile: 'Chọn hồ sơ', noProfiles: 'Chưa được cấp hồ sơ', retry: 'Thử lại', continueAs: 'Tiếp tục với',
