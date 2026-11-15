@@ -299,6 +299,7 @@ export function PortalHome({ locale, isAuthenticated, demoMode, token, subjectId
             </Animated.View>
           </View>
         </View>
+      </Modal>
       <Modal transparent visible={healthTipVisible} animationType={appearance.reduceMotion ? 'none' : 'fade'} onRequestClose={dismissHealthTip}>
         <View style={styles.tipModalRoot}>
           <Pressable accessibilityRole="button" accessibilityLabel={copy(locale, 'healthTipClose')} style={[StyleSheet.absoluteFill, styles.tipBackdrop]} onPress={dismissHealthTip} />
@@ -321,7 +322,6 @@ export function PortalHome({ locale, isAuthenticated, demoMode, token, subjectId
             </View>
           </View>
         </View>
-      </Modal>
       </Modal>
     </View>
   );
@@ -441,5 +441,4 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   logoutIcon: { width: 37, height: 37, borderRadius: 13, backgroundColor: `${colors.red}14`, alignItems: 'center', justifyContent: 'center' },
   logoutLabel: { flex: 1, color: colors.red, fontSize: 14, fontWeight: '800' },
 });
-
 
