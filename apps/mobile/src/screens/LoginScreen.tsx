@@ -37,7 +37,7 @@ export function LoginScreen({ locale, setLocale, onAppearance, serverUrl, setSer
   return <AppPage contentStyle={styles.page}>
     <LinearGradient colors={['#111733', '#18234E', '#344577']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.hero}>
       <View style={styles.heroHeader}>
-        <Image source={require('../../assets/truy-tinh-logo.png')} accessibilityLabel="Truy Tinh" resizeMode="contain" style={styles.mark} />
+        <Image source={require('../../assets/truy-tinh-cosmic-orbit.png')} accessibilityLabel="Truy Tinh" resizeMode="contain" style={styles.mark} />
         <View style={styles.brandBlock}><Text style={styles.brand}>AETHERION</Text><Text style={styles.brandCaption}>BY TRUY TINH</Text></View>
         <Pressable accessibilityRole="button" accessibilityLabel={t(locale, 'language')} onPress={() => setLocale(locale === 'en' ? 'vi' : 'en')} style={styles.heroTool}>
           <Text style={styles.heroToolText}>{locale === 'en' ? 'EN' : 'VI'}</Text>
