@@ -1,6 +1,29 @@
-# AETHERION — Native Windows & Post-Sync Screen Status / Trạng thái màn hình
+# AETHERION — Screen Status, Historical QA & Current Evidence / Trạng thái màn hình
 
-**Post-Sync Integrated QA (after reconciling `98e92f5` + `up.zip` + `PR #9` + `PR #11`, Linux `QT_QPA_PLATFORM=offscreen` + PySide6 `6.12.0` + Python `3.11`):**  
+## Authoritative current review status — 2026-11-15 (PR #13)
+
+This dated block is the current evidence snapshot for this review. Older dated QA sections below are preserved as historical records from their stated branches, machines, files and commits; they do not prove the current PR screen was opened or visually accepted.
+
+- **GitHub references (product-code review snapshot):** PR #13 was draft at code head [`69b9234`](https://github.com/huyng0699-arch/AETHERION/commit/69b9234fcc32b1a08bf929b908692dd6b61bb7d0); the live `main` at that checkpoint was `c27e530edffbd2af7f51361de0cdb2c048cb3c56`. The code snapshot was 50 ahead / 4 behind, merge base `bd5eefd67df5af6e42176c1b88cfd35e612634bd`. Later commits in this status update only edit this documentation path and do not change the product code reviewed.
+- **Runner evidence:** GitHub lint/render checks ended before a runner or workflow steps were assigned because of the repository account billing/spending restriction. There is no CI test/render result from those runs.
+- **Local review environment:** No AETHERION application window was open during this review. The available local AETHERION folder has a broken Git HEAD (`.git/HEAD` points to `refs/heads/.invalid`) and does not contain the current PR's `tests/test_startup_runtime_q0487.py` or `quests/v1/Q-0485.md`; it cannot provide a checkout-based run of this PR.
+- **Screenshot evidence:** The previously referenced baseline PNG `C:\Users\Admin\Documents\Codex\2026-11-09\m-repository-huyng0699-arch-nasa-v\AETHERION\outputs\ui-review\pending\portal-user-provided-20261114.png` is absent from the available local workspace. No fresh after-fix screenshot was inspected. No screen has been accepted or marked changed, and no screenshot has been moved to `outputs/ui-review/changed`.
+- **Range behavior:** PR commits `3fb0c38` and `b52d1d1` add shared 1-minute / 366-day bounds and an authored VI/EN regression test. Source readback is not a runtime test; the test is **authored, not run**.
+- **Shared time-conductor integration:** An independent Q-0477 review reports that shell synchronization is currently one-way from Home to Monitor, Home's initial range can be emitted before the connection is ready, and Monitor-to-Home updates are not wired. The PR's Home 1-minute–366-day validation is a range-boundary fix only; it does **not** complete a shared Open-MCT time conductor. This integration remains pending Q-0489/main.py ownership reconciliation and must not be inferred from the range fix.
+- **Protected-route gate:** Q-0485 still requires bearer `GET /api/v1/auth/me` verification with the flat `allowed_subjects` contract and auto-selection only when exactly one authorized ID exists. Current branch `main.py` blob `0f26a309b716e9acd252638a52a39730e3bf4ee3` instead requests `/api/v1/subjects` and lacks the required `/auth/me` verified-session handoff. This is a source mismatch, not an observed test failure. Q-0489 owns `main.py` and `quests/v1/Q-0489.md` through `2026-11-16T03:00:00Z`; wait for its narrow ACK/release before reconciliation. Preserve the acceptance test and leave this gate pending.
+- **Screen disposition:** Visual acceptance is pending for every screen in this review. Keep screenshots out of `changed` until a reviewer inspects a fresh render and accepts the exact screen.
+
+---
+
+## Historical public-entry and auth handoff checkpoint — 2026-11-15 (superseded by the current status above)
+
+The current product direction is public Mission Operations Home → explicit SIMULATED Demo, with NASA MA-7 as a separate historical archive. Protected routes return to Login, then resume only after bearer-authenticated `GET /api/v1/auth/me`; subject context is derived only from its flat `allowed_subjects` list. Auto-select exactly one authorized ID; keep zero/multiple IDs visibly unselected. Sign-out must clear the outer and Mission Control sessions, and Ask AI must restore local `account:<username>` identity. Q-0487 is currently **STALE** with its implementation/evidence preserved; physical Windows/runtime proof belongs only to Q-0488.
+
+Q-0485 has a draft-branch Mission Control session handoff/reset and a focused auth/route test wired into the existing offscreen workflow. **No test or render pass is claimed yet.** The current Q-0489 lease owns `main.py` and `quests/v1/Q-0489.md` through `2026-11-16T03:00:00Z`; its ACK/release and Quest metadata reconciliation are required before merging the preserved Q-0485 entrypoint patch. GitHub Actions jobs previously stopped before runner steps because of billing; this is not a source-test result. The branch's visual and route acceptance remains pending.
+
+---
+
+**Historical QA snapshot — Post-Sync Integrated QA (recorded against `98e92f5` + `up.zip` + `PR #9` + `PR #11`, Linux `QT_QPA_PLATFORM=offscreen` + PySide6 `6.12.0` + Python `3.11`; not current-head acceptance):**  
 - **Cold-start Login -> Public NASA Demo -> Operations Home (`Q-0487` / `98e92f5` + `Q-0485`):** `AetherionWindow` opens on bilingual [`LoginPage`](file:///home/antigravity/huyng0699-arch/AETHERION/apps/desktop/src/aetherion_desktop/login_page.py) (`set_visuals` styled `Demo` button, card width `460–560 px`). `login_page.demo_button` opens the genuine historical NASA archive briefing ([`hackathon_demo_page`](file:///home/antigravity/huyng0699-arch/AETHERION/apps/desktop/src/aetherion_desktop/features/demo/nasa_ma7.py)), while `operations_home_page.demo` (`DEMO FOR HACKATHON`) opens [`SimulatedDemoBriefing`](file:///home/antigravity/huyng0699-arch/AETHERION/apps/desktop/src/aetherion_desktop/features/demo/synthetic_briefing.py) -> Start -> isolated 5-patient / 540-day / 12-metric (`31,610` rows) SQLite explorer inside the persistent Open MCT-style `Browse / Workspace / Inspect` shell.
 - **3-way `mission_ops_home.py` & `main.py` crash/lifecycle fixes:** Resolved PR #11 `set_visuals()` `AttributeError` (`self.utc_chart.set_points(self.utc_chart._points, self.theme, self.mode, index_offset=self.utc_chart._index_offset)`), preserved `QTimeZone.utc()`, Inspector `ScrollBarAlwaysOff`, `_browse_selected()`, `care_guide`, `time_range_changed` -> `MonitoringWorkspace.sync_utc_window` (`Q-0477` ACL preserved), `_api_url` propagation for `AuthorizedPersonalTodayPage`, `shiboken6.isValid`, and `closeEvent` timer/reply/`StartupRuntime.stop()` cleanup.
 - **Rendered PNG & live verifier evidence:** 9 re-rendered post-rebase captures in [docs/qa/unsynced_20261114/postsync_preview/](docs/qa/unsynced_20261114/postsync_preview/) visually inspected (`1040×650`, `1360×850`, `1600×900`, Light/Dark theme switch clean, single Time Conductor outside Monitoring); [`scripts/verify_native_login.py`](scripts/verify_native_login.py) passed **`8/8 (100%)`** against real loopback HTTP bearer auth.
@@ -8,10 +31,10 @@
 
 ---
 
-**Latest Windows QA & build verification (from `up.zip`, pre-`98e92f5`):** 2026-11-14 (Windows 10 `10.0.19045`, Python 3.13.14, PySide6 6.12.0, PyVista, PyInstaller 6.22.3).  
+**Historical Windows QA & build verification snapshot (from `up.zip`, pre-`98e92f5`; not current-head acceptance):** 2026-11-14 (Windows 10 `10.0.19045`, Python 3.13.14, PySide6 6.12.0, PyVista, PyInstaller 6.22.3).  
 **Evidence class:** Live Windows Qt rendering (`QWidget.grab()` connected to real local FastAPI/uvicorn server), Windows UI Automation offline probes on both source launch and compiled `AETHERION-Desktop.exe`, headless `tests/` suite, and governance/audit checks. Independent human/external reviewer sign-off remains `PENDING`.
 
-## Windows Runtime & Visual QA Update — 2026-11-14
+## Historical Windows Runtime & Visual QA Update — 2026-11-14
 
 ### Resolved integration & UI/visual findings (verified on Windows)
 
@@ -41,7 +64,7 @@
 **Prior authoring audit (preserved for traceability):** 2026-11-14, P0 persistent hosted Mission Operations and original-phase NASA table; source only, no Qt screenshot.  
 **Evidence class:** GitHub file SHA and source inspection only. PySide6 unavailable in this runtime; **no new Linux offscreen or Windows screenshot and no runtime acceptance**.
 
-## Final source SHA after MA-7 selection consistency patch
+## Historical source SHA after MA-7 selection consistency patch
 
 - `mission_ops_home.py` latest committed blob: `9e338397d9f61d63ac2ad4b420e31af8a67c80c2` — [`b14978623ee530cc292048a412d4f02a927cff59`](https://github.com/huyng0699-arch/AETHERION/commit/b14978623ee530cc292048a412d4f02a927cff59). The original NASA phase-comparison table now retains the selected metric in the source measurement table and Inspect when switching report phases, and measurement selection drives the same comparison metric. Values and source labels remain read-only.
 - [Q-0486 PR #9](https://github.com/huyng0699-arch/AETHERION/pull/9) was inspected but **not imported or edited**: its telemetry widget has UTC time-axis semantics, unsuitable for MA-7's categorical phase/timepoint records without verified UTC timestamps.
@@ -49,7 +72,7 @@
 
 ---
 
-## P0 source checkpoint — persistent Mission Operations (2026-11-14)
+## Historical P0 source checkpoint — persistent Mission Operations (2026-11-14)
 
 **Owner override:** Browse/Workspace/Inspect and bottom UTC conductor must persist throughout normal native routes, not just cold-start Home; the five-card Portal and duplicate horizontal top navigation are explicitly rejected. This is the user's **actual app visual**, not the Server Admin page.
 
@@ -68,7 +91,7 @@
 
 ---
 
-## Latest corrected native Home layout (GitHub source only; 2026-11-14)
+## Historical corrected native Home layout (GitHub source only; 2026-11-14)
 
 **Commit:** [`b92e1a9daac3c8ba036774e6b27aeef7b32633ae`](https://github.com/huyng0699-arch/AETHERION/commit/b92e1a9daac3c8ba036774e6b27aeef7b32633ae) · `mission_ops_home.py` blob `d39354c4b7571847cf6ffc3eb79572573e9533d2`.
 
@@ -88,7 +111,7 @@ The owner’s updated NASA Open MCT direction supersedes five-card Portal / hori
 
 ---
 
-## Latest Q-0485 source-only workspace review — 2026-11-14
+## Historical Q-0485 source-only workspace review — 2026-11-14
 
 **Owner visual override:** The old SPEC/AGENTS five-card and horizontal-menu-only design language is superseded **only for the first native app screen**. The target is the actual Browse → Workspace → Inspect layout from the NASA Open MCT user-facing information architecture, with one time conductor. This is an implementation requirement, **not** a claim that AETHERION itself is NASA Open MCT or that its appearance has passed.
 

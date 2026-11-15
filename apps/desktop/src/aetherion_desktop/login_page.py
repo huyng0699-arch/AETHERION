@@ -32,7 +32,7 @@ _TEXT = {
     "en": {
         "eyebrow": "TRUY TINH  /  MISSION HEALTH",
         "title": "AETHERION",
-        "subtitle": "Sign in to continue to your workspace, or explore the public NASA demo.",
+        "subtitle": "Sign in for protected health routes, or open the public NASA MA-7 historical archive.",
         "server": "SERVER ADDRESS",
         "username": "USERNAME",
         "password": "PASSWORD",
@@ -42,7 +42,8 @@ _TEXT = {
         "server_hint": "Local loopback server only · HTTP or HTTPS",
         "sign_in": "Sign in",
         "signing_in": "Signing in…",
-        "demo_hint": "No account needed for the NASA source demonstration.",
+        "demo_hint": "Open the NASA MA-7 historical archive; no account is needed.",
+        "archive_button": "NASA MA-7 archive",
         "err_url": "Enter a valid loopback server address, such as http://127.0.0.1:8765.",
         "err_credentials": "Enter both username and password.",
         "err_invalid_credentials": "The username or password was not accepted.",
@@ -57,7 +58,7 @@ _TEXT = {
     "vi": {
         "eyebrow": "TRUY TINH  /  SỨC KHỎE NHIỆM VỤ",
         "title": "AETHERION",
-        "subtitle": "Đăng nhập để vào không gian làm việc, hoặc khám phá demo NASA công khai.",
+        "subtitle": "Đăng nhập để mở chức năng sức khỏe cần quyền, hoặc xem kho lịch sử NASA MA-7 công khai.",
         "server": "ĐỊA CHỈ MÁY CHỦ",
         "username": "TÊN ĐĂNG NHẬP",
         "password": "MẬT KHẨU",
@@ -67,7 +68,8 @@ _TEXT = {
         "server_hint": "Chỉ máy chủ loopback trên thiết bị · HTTP hoặc HTTPS",
         "sign_in": "Đăng nhập",
         "signing_in": "Đang đăng nhập…",
-        "demo_hint": "Không cần tài khoản để xem dữ liệu NASA trong phần demo.",
+        "demo_hint": "Xem kho lịch sử NASA MA-7; không cần tài khoản.",
+        "archive_button": "Kho lưu trữ NASA MA-7",
         "err_url": "Nhập địa chỉ loopback hợp lệ, ví dụ http://127.0.0.1:8765.",
         "err_credentials": "Nhập cả tên đăng nhập và mật khẩu.",
         "err_invalid_credentials": "Tên đăng nhập hoặc mật khẩu không đúng.",
@@ -244,10 +246,10 @@ class LoginPage(QWidget):
         self.sign_in_button.clicked.connect(self._submit_login)
         actions.addWidget(self.sign_in_button, 2)
 
-        self.demo_button = QPushButton("Demo", self.card)
+        self.demo_button = QPushButton("", self.card)
         self.demo_button.setObjectName("navButton")
         self.demo_button.setMinimumHeight(48)
-        self.demo_button.setAccessibleName("Demo")
+        self.demo_button.setAccessibleName("NASA MA-7 archive")
         self.demo_button.clicked.connect(self._open_demo)
         actions.addWidget(self.demo_button, 1)
         card_layout.addLayout(actions)
@@ -289,8 +291,8 @@ class LoginPage(QWidget):
         self.password_input.setPlaceholderText(text["password_placeholder"])
         self.server_hint.setText(text["server_hint"])
         self.demo_hint.setText(text["demo_hint"])
-        self.demo_button.setText("Demo")
-        self.demo_button.setAccessibleName("Demo")
+        self.demo_button.setText(text["archive_button"])
+        self.demo_button.setAccessibleName(text["archive_button"])
         self.sign_in_button.setText(text["signing_in"] if self._busy else text["sign_in"])
         self._refresh_error_text()
 

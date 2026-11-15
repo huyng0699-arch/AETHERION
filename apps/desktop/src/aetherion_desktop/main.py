@@ -1,4 +1,4 @@
-"""AETHERION native Windows app — login-first Qt shell with a public Demo.
+"""AETHERION native Windows app — public Mission Operations Qt shell.
 
 AETHERION Server remains the single source of data. The client never invents
 sensor readings, AI answers, anatomy, or an emergency dispatch service.
@@ -41,6 +41,14 @@ from .knowledge_browser import KnowledgeBrowser
 from .features.demo.nasa_ma7 import build_hackathon_demo
 from .symptom_interview_page import SymptomInterviewPage
 from .features.care.journey_page import CareJourneyPage
+
+
+PROTECTED_WORKSPACE_ROUTES = frozenset({
+    "health", "mission", "crew", "monitor", "ecg", "assistant", "interview", "care",
+})
+SUBJECT_CONTEXT_ROUTES = frozenset({
+    "health", "monitor", "ecg", "interview", "care",
+})
 
 
 class FeatureLanding(QWidget):
@@ -123,6 +131,7 @@ class AetherionWindow(QMainWindow):
         self._health_reply = None
         self.access_token = ""
         self.session_identity = None
+        self._pending_protected_route: str | None = None
         self.preferences = VisualPreferences()
         self.ui_language = normalize_locale(self.preferences.settings.value("ui/language", "en"))
         app = QApplication.instance()
@@ -390,7 +399,8 @@ class AetherionWindow(QMainWindow):
         self.shortcut_legacy_portal = QShortcut(QKeySequence("Alt+Shift+Home"), self)
         self.shortcut_legacy_portal.activated.connect(self.show_legacy_portal)
         self._retranslate_shell()
-        self.pages.setCurrentWidget(self.login_page)
+        self.operations_home_page.show_overview()
+        self.pages.setCurrentWidget(self.operations_home_page)
         self.check_server()
         self.heartbeat = QTimer(self)
         self.heartbeat.setInterval(30000)
@@ -582,7 +592,8 @@ class AetherionWindow(QMainWindow):
 
     def _show_workspace_feature(self, route: str):
         """Keep Browse, Inspect and the bottom UTC conductor visible on routes."""
-        if route in {"health", "mission", "crew", "monitor", "ecg", "assistant", "interview", "care"} and not self.access_token:
+        if route in PROTECTED_WORKSPACE_ROUTES and not self.access_token:
+            self._pending_protected_route = route
             self.pages.setCurrentWidget(self.login_page)
             return
         if not self.operations_home_page.show_hosted(route):
@@ -616,7 +627,6 @@ class AetherionWindow(QMainWindow):
         account_name = str(self.session_identity.get("username", ""))
         self.assistant_page.set_identity("account:" + account_name, self.access_token)
         self.logout_button.show()
-        self.show_portal()
         self.check_server()
         request = QNetworkRequest(QUrl(base_url + "/api/v1/subjects"))
         request.setTransferTimeout(5000)
@@ -630,13 +640,26 @@ class AetherionWindow(QMainWindow):
             try:
                 if self.access_token != expected_token:
                     return
-                if r.error() == QNetworkReply.NetworkError.NoError:
-                    rows = json.loads(bytes(r.readAll()).decode("utf-8")).get("subjects", [])
-                    if rows:
-                        self.open_personal_subject(rows[0]["subject_id"], expected_token)
-                        self.show_portal()
+                status = r.attribute(QNetworkRequest.Attribute.HttpStatusCodeAttribute)
+                if r.error() != QNetworkReply.NetworkError.NoError or status != 200:
+                    self._pending_protected_route = None
+                    self.show_portal()
+                    return
+                payload = json.loads(bytes(r.readAll()).decode("utf-8"))
+                rows = payload.get("subjects", [])
+                if not isinstance(rows, list):
+                    raise TypeError("Invalid authorized subjects response")
+                route = self._pending_protected_route
+                if route in SUBJECT_CONTEXT_ROUTES and rows:
+                    self.open_personal_subject(rows[0]["subject_id"], expected_token)
+                self._pending_protected_route = None
+                if route:
+                    self.open_operations_route(route)
+                else:
+                    self.show_portal()
             except (ValueError, KeyError, TypeError):
-                pass
+                self._pending_protected_route = None
+                self.show_portal()
             finally:
                 if isValid(r):
                     r.deleteLater()
@@ -647,13 +670,14 @@ class AetherionWindow(QMainWindow):
         self.access_token = ""
         self.session_identity = None
         self.logout_button.hide()
-        self.pages.setCurrentWidget(self.login_page)
+        self._pending_protected_route = None
         self.personal_today_page.select_subject("", "")
         self.monitor_page.select_subject("", "")
         self.ecg_page.select_subject("", "")
         self.assistant_page.set_identity("", "")
         self.symptom_page.set_identity("", "")
         self.care_journal_page.set_identity("", "")
+        self.show_portal()
         if token:
             request = QNetworkRequest(QUrl(self.api_url + "/api/v1/auth/logout"))
             request.setTransferTimeout(2500)
@@ -664,9 +688,7 @@ class AetherionWindow(QMainWindow):
 
     def show_portal(self):
         """Home means the persistent native Mission Operations overview."""
-        if not self.access_token:
-            self.pages.setCurrentWidget(self.login_page)
-            return
+        self._pending_protected_route = None
         self.pages.setCurrentWidget(self.operations_home_page)
         self.operations_home_page.show_overview()
 
@@ -680,6 +702,10 @@ class AetherionWindow(QMainWindow):
     def open_operations_route(self, route: str):
         """Resolve every source/health route through the original safe handlers."""
         if route not in ROUTE_IDS:
+            return
+        if route in PROTECTED_WORKSPACE_ROUTES and not self.access_token:
+            self._pending_protected_route = route
+            self.pages.setCurrentWidget(self.login_page)
             return
         handler = {
             "mission": self.show_mission,
@@ -702,6 +728,7 @@ class AetherionWindow(QMainWindow):
 
     def show_simulated_briefing(self):
         """Every Demo entry opens a provenance guide in the persistent shell."""
+        self._pending_protected_route = None
         self._show_workspace_feature("simulated_briefing")
 
     def start_simulated_demo(self):
@@ -742,6 +769,7 @@ class AetherionWindow(QMainWindow):
 
     def show_hackathon_demo(self):
         """Genuine historical NASA MA-7, never the SIMULATED patient store."""
+        self._pending_protected_route = None
         self.hackathon_demo_page.show_briefing()
         self._show_workspace_feature("nasa_archive")
 
