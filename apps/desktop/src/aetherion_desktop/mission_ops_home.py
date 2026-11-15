@@ -54,7 +54,10 @@ TEXT = {
         "utcSourceFilter": "Filter UTC records by verified source",
         "utcAllMetrics": "All metric families",
         "utcAllSources": "All verified sources",
-        "utcChartSeries": "UTC time axis · measured points only · no interpolation",
+        "utcChartSeries": "One selected metric and unit · one verified source · discrete samples only · no interpolation",
+        "utcXAxis": "TIME · UTC",
+        "utcYAxis": "VALUE · {unit}",
+        "utcSeriesTitle": "SELECTED SERIES · {metric} ({unit}) · {source}",
 
         "inspect": "INSPECT  /  PROPERTIES",
         "workspace": "WORKSPACE",
@@ -173,7 +176,10 @@ TEXT = {
         "utcSourceFilter": "Lọc quan sát UTC theo nguồn đã xác minh",
         "utcAllMetrics": "Tất cả nhóm chỉ số",
         "utcAllSources": "Tất cả nguồn đã xác minh",
-        "utcChartSeries": "Trục thời gian UTC · chỉ điểm đo thực tế · không nội suy",
+        "utcChartSeries": "Một chỉ số và đơn vị được chọn · một nguồn đã xác minh · chỉ điểm rời rạc · không nội suy",
+        "utcXAxis": "THỜI GIAN · UTC",
+        "utcYAxis": "GIÁ TRỊ · {unit}",
+        "utcSeriesTitle": "CHUỖI ĐANG CHỌN · {metric} ({unit}) · {source}",
 
         "inspect": "THUỘC TÍNH  /  NGUỒN",
         "workspace": "KHÔNG GIAN DỮ LIỆU",
@@ -327,12 +333,19 @@ class UtcSamplePlot(QWidget):
         self._plotted_by_index: dict[int, dict] = {}
         self._theme = "daybreak"
         self._mode = "light"
+        self._time_axis_label = "TIME · UTC"
+        self._value_axis_label = ""
 
-    def set_points(self, points, theme="daybreak", mode="light", *, index_offset=0):
+    def set_points(
+        self, points, theme="daybreak", mode="light", *, index_offset=0,
+        time_axis_label="TIME · UTC", value_axis_label=""
+    ):
         self._points = tuple(points)
         self._index_offset = max(0, int(index_offset))
         self._theme = theme
         self._mode = mode
+        self._time_axis_label = str(time_axis_label)
+        self._value_axis_label = str(value_axis_label)
         self.update()
 
     def paintEvent(self, _event):
@@ -340,7 +353,8 @@ class UtcSamplePlot(QWidget):
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
         pal = palette_for(self._theme, self._mode)
         width, height = self.width(), self.height()
-        plot = QRectF(58, 12, max(1, width - 76), max(1, height - 54))
+        # Reserve a compact header for the selected value/unit and an explicit UTC x-axis label.
+        plot = QRectF(58, 27, max(1, width - 76), max(1, height - 69))
         positions = []
         plotted = []
         for local_index, row in enumerate(self._points):
@@ -353,6 +367,17 @@ class UtcSamplePlot(QWidget):
                      self._index_offset + local_index)
                 )
         points = tuple(plotted)
+        painter.setPen(QColor(pal.text))
+        painter.drawText(
+            QRectF(plot.left(), 2, plot.width(), 18),
+            Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter,
+            self._value_axis_label,
+        )
+        painter.drawText(
+            QRectF(max(plot.left(), plot.right() - 120), plot.bottom() + 22, 120, 16),
+            Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter,
+            self._time_axis_label,
+        )
         if not points:
             painter.setPen(QColor(pal.muted))
             painter.drawText(self.rect(), Qt.AlignmentFlag.AlignCenter, "—")
@@ -413,22 +438,15 @@ class UtcSamplePlot(QWidget):
                 label,
             )
 
-        painter.setPen(QColor(pal.text))
-        painter.drawText(
-            QRectF(plot.right() - 31, plot.bottom() + 22, 32, 16),
-            Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter,
-            "UTC",
-        )
         painter.setPen(Qt.PenStyle.NoPen)
+        painter.setBrush(QColor(pal.accent))
         radius = 4.5
         self._plotted_by_index = {}
-        for _draw_index, (row, value, epoch, source_index) in enumerate(points):
+        for row, value, epoch, source_index in points:
             x_fraction = .5 if time_span == 0 else (epoch - first_time) / time_span
             y_fraction = (value - low) / (high - low)
             x = plot.left() + x_fraction * plot.width()
             y = plot.bottom() - y_fraction * plot.height()
-            color = QColor(pal.accent if _draw_index % 2 == 0 else pal.second)
-            painter.setBrush(color)
             painter.drawEllipse(QRectF(x - radius, y - radius, radius * 2, radius * 2))
             positions.append((x, y, source_index))
             self._plotted_by_index[source_index] = row
@@ -744,6 +762,7 @@ class MissionOperationsHome(QWidget):
         utc_layout.addWidget(self.utc_table, 1)
         self.utc_chart_heading = QLabel()
         self.utc_chart_heading.setObjectName("eyebrow")
+        self.utc_chart_heading.setWordWrap(True)
         utc_layout.addWidget(self.utc_chart_heading)
         self.utc_chart = UtcSamplePlot()
         self.utc_chart.sample_selected.connect(self._select_utc_plot_point)
@@ -1312,8 +1331,24 @@ class MissionOperationsHome(QWidget):
         else:
             index_offset = max(0, len(series) - 32)
             series = series[index_offset:]
+        if metric_filter is not None and source_filter is not None:
+            metric, unit = metric_filter
+            chart_title = self._t(
+                "utcSeriesTitle", metric=metric, unit=unit, source=source_filter
+            )
+            value_axis_label = self._t("utcYAxis", unit=unit)
+        else:
+            chart_title = self._t("utcPlot")
+            value_axis_label = ""
+        time_axis_label = self._t("utcXAxis")
+        self.utc_chart_heading.setText(chart_title)
+        self.utc_chart.setAccessibleName(chart_title)
+        self.utc_chart.setAccessibleDescription(
+            f"{self._t('utcChartSeries')} · {time_axis_label} · {value_axis_label}"
+        )
         self.utc_chart.set_points(
-            series, self.theme, self.mode, index_offset=index_offset
+            series, self.theme, self.mode, index_offset=index_offset,
+            time_axis_label=time_axis_label, value_axis_label=value_axis_label,
         )
         self.utc_chart_note.setText(self._t("utcChartSeries"))
         self._active_utc_row = None
@@ -1407,6 +1442,7 @@ class MissionOperationsHome(QWidget):
         self.utc_metric_selector.setAccessibleName(t("utcMetricFilter"))
         self.utc_source_selector.setAccessibleName(t("utcSourceFilter"))
         self._rebuild_utc_filters()
+        self._refresh_utc()
         self._fill_tree()
         self._load_report_group()
         # Maintain selected object while translating chrome.
