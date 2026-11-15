@@ -61,7 +61,7 @@ function AppShell() {
   const operation = useRef(0), mounted = useRef(true), localeWrites = useRef(Promise.resolve());
   const fade = useRef(new Animated.Value(1)).current;
   const beginSubjects = useRequestGate();
-  const clearIdentity = useCallback(() => { beginSubjects(); setSession(null); setIdentity(null); setUnlocked(false); setDemoMode(false); setSubjects([]); setSubjectId(undefined); setChooseSubject(false); }, [beginSubjects]);
+  const clearIdentity = useCallback(() => { beginSubjects(); setSession(null); setIdentity(null); setUnlocked(false); setDemoMode(false); setSubjects([]); setSubjectId(undefined); setChooseSubject(false); setAssistantSourceContext(null); }, [beginSubjects]);
   useEffect(() => { mounted.current = true; let active = true; const restoreOperation = operation.current; void (async () => {
     const [saved, language, url] = await Promise.all([readSession(), loadLocale().catch(() => 'en' as Locale), readServerUrl().catch(() => '')]);
     if (!active) return;
@@ -110,11 +110,11 @@ function AppShell() {
       {route === 'health' && unlocked && <PersonalHealthScreen locale={locale} token={session?.access_token || ''} subjectId={subjectId} onBack={goBack} onUnauthorized={handleUnauthorized} />}
       {route === 'monitor' && unlocked && <MonitorScreen locale={locale} token={session?.access_token || ''} subjectId={subjectId} onBack={goBack} onUnauthorized={handleUnauthorized} />}
       {route === 'care' && unlocked && <CareScreen locale={locale} token={session?.access_token || ''} subjectId={subjectId} onBack={goBack} onUnauthorized={handleUnauthorized} />}
-      {route === 'healthGuide' && unlocked && <HealthGuideScreen locale={locale} onBack={goBack} />}
+      {route === 'healthGuide' && <HealthGuideScreen locale={locale} onBack={goBack} />}
       {route === 'ai' && unlocked && <AiScreen locale={locale} token={session?.access_token || ''} context={assistantSourceContext} onClearContext={() => setAssistantSourceContext(null)} onBack={goBack} onUnauthorized={handleUnauthorized} />}
-      {route === 'science' && <ScienceScreen locale={locale} onBack={goBack} />}
+      {route === 'science' && <ScienceScreen locale={locale} onBack={goBack} onAskAi={article => { setAssistantSourceContext({ articleId: article.article_id, title: article.title }); openRoute('ai'); }} />}
       {route === 'mission' && unlocked && <MissionScreen locale={locale} role={identity?.role || ''} subjects={subjects} token={session?.access_token || ''} onRefresh={refreshSubjects} onSelect={id => { setSubjectId(id); openRoute('health'); }} onBack={goBack} />}
-      {route === 'demoIntro' && <HackathonDemoIntroScreen locale={locale} onBack={goBack} onLoad={() => openRoute('demoData')} />}
+      {route === 'demoIntro' && <HackathonDemoIntroScreen locale={locale} onBack={goBack} onLoad={() => openRoute('demoData')} onLibrary={() => openRoute('science')} onHealthGuide={() => openRoute('healthGuide')} />}
       {route === 'demoData' && <HackathonDemoDataScreen locale={locale} onBack={goBack} />}
       {route === 'more' && <MoreScreen locale={locale} onBack={goBack} onOpen={openRoute} />}
       {route === 'appearance' && <AppearanceSettingsScreen locale={locale} onBack={goBack} />}
@@ -131,5 +131,4 @@ function AppShell() {
   </View></ImageBackground></KeyboardAvoidingView></SafeAreaProvider>;
 }
 const buildStyles = (colors: ThemeColors) => StyleSheet.create({ fill: { flex: 1, backgroundColor: colors.background }, mobileShell: { flex: 1, width: '100%', maxWidth: 470, alignSelf: 'center' }, loading: { flex: 1, backgroundColor: colors.background, alignItems: 'center', justifyContent: 'center' }, demoBanner: { alignSelf: 'flex-start', minHeight: 27, marginLeft: 14, marginTop: 5, marginBottom: 3, paddingHorizontal: 12, borderRadius: 999, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.card, alignItems: 'center', justifyContent: 'center' }, demoBannerText: { color: colors.primary, fontSize: 11, fontWeight: '900', letterSpacing: 0.2 }, profile: { minHeight: 48, flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 18, borderBottomWidth: 1, borderBottomColor: colors.border, backgroundColor: colors.card }, profileText: { flex: 1, color: colors.text, fontSize: 13, fontWeight: '700' }, modal: { flex: 1, justifyContent: 'flex-end', alignItems: 'center', backgroundColor: 'rgba(12,8,30,0.45)' }, sheet: { width: '100%', maxWidth: 470, maxHeight: '65%', padding: 18, paddingBottom: 30, borderTopLeftRadius: 28, borderTopRightRadius: 28, backgroundColor: colors.card }, sheetHeading: { flexDirection: 'row', alignItems: 'center', paddingBottom: 14 } });
-
 
