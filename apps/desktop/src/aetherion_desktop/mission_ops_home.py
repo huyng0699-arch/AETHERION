@@ -24,7 +24,7 @@ import math
 import re
 from urllib.parse import urlsplit
 
-from PySide6.QtCore import Qt, QDateTime, QRectF, QTimeZone, Signal, QUrl
+from PySide6.QtCore import Qt, QDateTime, QRectF, QTimeZone, Signal, QUrl, QTimer
 from PySide6.QtGui import QColor, QDesktopServices, QPainter, QPen
 from PySide6.QtWidgets import (
     QAbstractItemView, QComboBox, QDateTimeEdit, QFrame, QHBoxLayout, QHeaderView, QLabel,
@@ -34,10 +34,11 @@ from PySide6.QtWidgets import (
 
 from .visual_theme import palette_for
 from .features.demo.nasa_ma7 import load_real_nasa_data
+from .health_metric_guide import HealthMetricGuide, HealthTipDialog, show_health_tip_once
 
 ROUTE_IDS = (
     "mission", "health", "monitor", "ecg", "assistant", "interview",
-    "care", "care_guide", "science", "hazards", "medical_library", "atlas",
+    "care", "care_guide", "health_guide", "science", "hazards", "medical_library", "atlas",
     "crew", "settings",
 )
 
@@ -64,6 +65,7 @@ TEXT = {
         "mission": "Mission",
         "crew": "Crew",
         "health": "My Health",
+        "health_guide": "Health guide",
         "monitor": "Monitoring",
         "ecg": "ECG",
         "assistant": "Ask AI",
@@ -183,6 +185,7 @@ TEXT = {
         "mission": "Nhiệm vụ",
         "crew": "Phi hành đoàn",
         "health": "Sức khỏe của tôi",
+        "health_guide": "Cẩm nang chỉ số",
         "monitor": "Theo dõi",
         "ecg": "Điện tim",
         "assistant": "Hỏi AI",
@@ -494,6 +497,8 @@ class MissionOperationsHome(QWidget):
         self._objects: dict[str, QTreeWidgetItem] = {}
         # Persistent central feature pages; original widgets keep their auth/API.
         self._hosted_features: dict[str, QWidget] = {}
+        self._health_tip_checked = False
+        self._health_tip_dialog: HealthTipDialog | None = None
         self.setObjectName("missionOperationsHome")
         self._load_historical_source()
 
@@ -780,6 +785,10 @@ class MissionOperationsHome(QWidget):
         preview_layout.addStretch()
         self.workspace_stack.addWidget(preview)
 
+        self.health_guide_page = HealthMetricGuide(locale=self.language)
+        self.workspace_stack.addWidget(self.health_guide_page)
+        self._hosted_features["health_guide"] = self.health_guide_page
+
         # Inspect: displays the *same* selected report row or UTC observation.
         right = QFrame()
         right.setObjectName("contentPanel")
@@ -831,6 +840,18 @@ class MissionOperationsHome(QWidget):
         self._choose("home")
         self.apply_utc_window()
 
+    def showEvent(self, event):
+        super().showEvent(event)
+        if self._health_tip_checked:
+            return
+        self._health_tip_checked = True
+        QTimer.singleShot(0, self._show_first_health_tip)
+
+    def _show_first_health_tip(self):
+        self._health_tip_dialog = show_health_tip_once(
+            self, self.language, lambda: self.show_hosted("health_guide")
+        )
+
     def _load_historical_source(self):
         try:
             self.source_data = load_real_nasa_data()
@@ -867,7 +888,7 @@ class MissionOperationsHome(QWidget):
                            ("archive", "archive"), ("utc", "utc"))),
             ("clinical", tuple((route, route) for route in
                          ("mission", "crew", "health", "monitor", "ecg",
-                          "assistant", "interview", "care", "care_guide"))),
+                          "assistant", "interview", "care", "care_guide", "health_guide"))),
             ("science", tuple((route, "science_route" if route == "science" else route)
                               for route in ("science", "hazards", "medical_library", "atlas"))),
             ("systems", (("settings", "settings"),)),
@@ -919,7 +940,9 @@ class MissionOperationsHome(QWidget):
             self.navigator.blockSignals(False)
         route = item.data(0, Qt.ItemDataRole.UserRole)
         if isinstance(route, str):
-            if route in ROUTE_IDS:
+            if route == "health_guide":
+                self.show_hosted(route)
+            elif route in ROUTE_IDS:
                 # Main preserves each module's refresh, authorization and data
                 # contracts; its handler will show the page in this central stack.
                 self.route_requested.emit(route)
@@ -944,6 +967,8 @@ class MissionOperationsHome(QWidget):
             self.route_requested.emit("monitor")
         elif route == "home":
             self._choose("home")
+        elif route == "health_guide":
+            self.show_hosted(route)
         elif route in ROUTE_IDS:
             self.route_requested.emit(route)
 
@@ -1408,6 +1433,9 @@ class MissionOperationsHome(QWidget):
         self.utc_source_selector.setAccessibleName(t("utcSourceFilter"))
         self._rebuild_utc_filters()
         self._fill_tree()
+        self.health_guide_page.set_locale(self.language)
+        if self._health_tip_dialog is not None and self._health_tip_dialog.isVisible():
+            self._health_tip_dialog.set_locale(self.language)
         self._load_report_group()
         # Maintain selected object while translating chrome.
         self._select_workspace(self._selection[0])
