@@ -41,8 +41,16 @@ curl -s -H "Authorization: Bearer <TOKEN>" "http://127.0.0.1:8765/api/v1/observa
 ```
 
 ### Expected validation error (naive timestamp without timezone)
+
+Illustrative HTTP 422 envelope from the FastAPI validation handler. The `detail` array varies with the invalid input; this is not a byte-for-byte captured HTTP response.
 ```json
 {
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "status": 422,
+    "message": "Request validation failed",
+    "action": "Fix the invalid request fields shown in detail and retry."
+  },
   "detail": [
     {
       "type": "value_error",
@@ -55,6 +63,6 @@ curl -s -H "Authorization: Bearer <TOKEN>" "http://127.0.0.1:8765/api/v1/observa
 
 ## Contract & safety notes
 
-- A new observation requires `subject_id`, `metric`, `value`, `unit`, `source`, `observed_at` (with explicit timezone offset).
+- A new observation requires `subject_id`, `metric`, `value`, `unit`, `observed_at` (with explicit timezone offset), and **at least one of** `source_id` or `source` (non-blank). Neither source field is individually required by the OpenAPI schema; the `ObservationIn` model validator enforces the alternative at runtime.
 - Do not infer verification from the `source` string; unverified client submissions carry `UNVERIFIED` / explicit quality states rather than silent verification.
 - See [openapi.json](openapi.json) for full request/response schemas and `HTTPBearer` security requirements.
