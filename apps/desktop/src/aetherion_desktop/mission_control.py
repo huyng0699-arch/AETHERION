@@ -134,6 +134,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
         def __init__(self):
             super().__init__(parent)
             self.ui_language = "vi"
+            self.api_url = api_url.rstrip("/")
             self._status_key: str | None = None
             self._status_values: dict[str, object] = {}
             self._token = ""  # ephemeral; never logged or saved to disk
@@ -162,14 +163,19 @@ def build_mission_control_page(api_url: str, network, parent=None):
                 if button.accessibleName() == "Đăng nhập vào AETHERION Server":
                     button.setEnabled(enabled)
 
-        def set_verified_session(self, token: str, auth_me: object) -> None:
-            """Reuse the outer shell's verified bearer session; retain exact-ID ACLs."""
+        def set_verified_session(self, token: str, auth_me: object, base_url: str | None = None) -> None:
+            """Reuse the outer shell's verified session and exact server/subject ACLs."""
             allowed = auth_me.get("allowed_subjects") if isinstance(auth_me, dict) else None
             if (not token or not isinstance(allowed, list)
                     or any(not isinstance(value, str) for value in allowed)):
                 self.clear_session()
                 return
             subject_ids = authorized_subject_ids(auth_me)
+            server_url = (base_url or self.api_url).rstrip("/")
+            if not server_url.startswith(("http://", "https://")):
+                self.clear_session()
+                return
+            self.api_url = server_url
             self._login_seq += 1
             self._request_seq += 1
             self._profile_seq += 1
@@ -254,7 +260,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             self._profile_seq += 1
             pseq, lseq, token = self._profile_seq, self._login_seq, self._token
             request = QNetworkRequest(QUrl(
-                api_url.rstrip("/") + "/api/v1/subjects/" + quote(subject_id, safe="")
+                self.api_url.rstrip("/") + "/api/v1/subjects/" + quote(subject_id, safe="")
             ))
             request.setRawHeader(b"Authorization", ("Bearer " + token).encode())
             reply = network.get(request)
@@ -395,7 +401,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
                 self.ui_language, "mission.snapshot", state="PENDING",
                 note=tr(self.ui_language, "personal.originSelf")
             ))
-            request = QNetworkRequest(QUrl(api_url.rstrip("/") + "/api/v1/observations"))
+            request = QNetworkRequest(QUrl(self.api_url.rstrip("/") + "/api/v1/observations"))
             request.setHeader(QNetworkRequest.KnownHeaders.ContentTypeHeader, "application/json")
             request.setRawHeader(b"Authorization", ("Bearer " + token).encode())
             reply = network.post(request, json.dumps(payload).encode("utf-8"))
@@ -482,7 +488,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             if not self.username.text().strip() or not self.password.text():
                 self._say("mission.deniedCredentials")
                 return
-            request = QNetworkRequest(QUrl(api_url.rstrip("/") + "/api/v1/auth/login"))
+            request = QNetworkRequest(QUrl(self.api_url.rstrip("/") + "/api/v1/auth/login"))
             request.setHeader(QNetworkRequest.KnownHeaders.ContentTypeHeader, "application/json")
             body = json.dumps({"username": self.username.text().strip(), "password": self.password.text()}).encode()
             self.password.clear()
@@ -527,7 +533,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
                 self._say("mission.invalidSubject")
                 return
             try:
-                observation_url(api_url, subject_id)
+                observation_url(self.api_url, subject_id)
             except ValueError:
                 self._say("mission.invalidSubject")
                 return
@@ -572,7 +578,7 @@ def build_mission_control_page(api_url: str, network, parent=None):
             if not self._token:
                 self._say("mission.loginRequired")
                 return
-            url = observation_url(api_url, subject_id)
+            url = observation_url(self.api_url, subject_id)
             request = QNetworkRequest(QUrl(url))
             request.setRawHeader(b"Authorization", ("Bearer " + self._token).encode())
             self._say("mission.loading", subject=subject_id)
