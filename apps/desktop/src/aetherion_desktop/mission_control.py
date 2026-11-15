@@ -159,9 +159,13 @@ def build_mission_control_page(api_url: str, network, parent=None):
         def _set_login_controls_enabled(self, enabled: bool) -> None:
             self.username.setEnabled(enabled)
             self.password.setEnabled(enabled)
-            for button in self.findChildren(QPushButton):
-                if button.accessibleName() == "Đăng nhập vào AETHERION Server":
-                    button.setEnabled(enabled)
+            # The login action is the sole primary action inside the credentials
+            # container. Stable objectName + container avoid locale-dependent text.
+            auth_container = self.username.parentWidget()
+            if auth_container is not None:
+                for button in auth_container.findChildren(QPushButton):
+                    if button.objectName() == "primaryAction":
+                        button.setEnabled(enabled)
 
         def set_verified_session(self, token: str, auth_me: object, base_url: str | None = None) -> None:
             """Reuse the outer shell's verified session and exact server/subject ACLs."""
