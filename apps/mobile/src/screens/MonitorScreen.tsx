@@ -20,12 +20,18 @@ export function MonitorScreen({ locale, token, subjectId, onBack, onUnauthorized
   const [cursor, setCursor] = useState<string | null>(null);
   const beginRequest = useRequestGate();
   const metricSeries = useMemo(() => {
-    const grouped = new Map<string, Observation[]>();
-    items.forEach(item => grouped.set(item.metric, [...(grouped.get(item.metric) || []), item]));
-    return [...grouped.entries()]
-      .map(([metric, observations]) => ({
-        metric,
-        observations: observations.sort((left, right) => Date.parse(left.observed_at) - Date.parse(right.observed_at)),
+    const grouped = new Map<string, { metric: string; unit: string; sourceId: string | null; observations: Observation[] }>();
+    items.forEach(item => {
+      const sourceId = item.source_id?.trim() || null;
+      const key = JSON.stringify([item.metric, item.unit, sourceId]);
+      const current = grouped.get(key);
+      if (current) current.observations.push(item);
+      else grouped.set(key, { metric: item.metric, unit: item.unit, sourceId, observations: [item] });
+    });
+    return [...grouped.values()]
+      .map(series => ({
+        ...series,
+        observations: [...series.observations].sort((left, right) => Date.parse(left.observed_at) - Date.parse(right.observed_at)),
       }))
       .sort((left, right) => Date.parse(right.observations[right.observations.length - 1]?.observed_at || '') - Date.parse(left.observations[left.observations.length - 1]?.observed_at || ''));
   }, [items]);
@@ -55,7 +61,7 @@ export function MonitorScreen({ locale, token, subjectId, onBack, onUnauthorized
             <Text style={styles.sectionCaption}>{metricSeries.length} {locale === 'vi' ? 'chỉ số' : 'metrics'}</Text>
           </View>
           <View style={styles.metricGrid}>
-            {metricSeries.map(series => <MetricTrendCard key={series.metric} metric={series.metric} observations={series.observations} locale={locale} />)}
+            {metricSeries.map(series => <MetricTrendCard key={JSON.stringify([series.metric, series.unit, series.sourceId])} metric={series.metric} sourceId={series.sourceId} showSource={token !== 'aetherion-simulated-demo-session'} observations={series.observations} locale={locale} />)}
           </View>
           <View style={[styles.sectionHeading, styles.recordsHeading]}>
             <Text style={styles.sectionTitle}>{locale === 'vi' ? 'Bản ghi' : 'Records'}</Text>
@@ -85,7 +91,7 @@ function ObservationCard({ item, locale, simulated }: { item: Observation; local
   </Panel>;
 }
 
-function MetricTrendCard({ metric, observations, locale }: { metric: string; observations: Observation[]; locale: Locale }) {
+function MetricTrendCard({ metric, sourceId, showSource, observations, locale }: { metric: string; sourceId?: string | null; showSource: boolean; observations: Observation[]; locale: Locale }) {
   const { colors, styles } = useThemedStyles(buildStyles);
   const [plotWidth, setPlotWidth] = useState(0);
   const plotHeight = 74;
@@ -94,7 +100,12 @@ function MetricTrendCard({ metric, observations, locale }: { metric: string; obs
   const maxValue = Math.max(...numeric.map(point => point.value));
   const firstTime = numeric[0]?.time;
   const lastTime = numeric[numeric.length - 1]?.time;
-  const hasTimeSpan = numeric.length > 1 && Number.isFinite(firstTime) && Number.isFinite(lastTime) && lastTime > firstTime;
+  const observedSourceId = observations[0]?.source_id?.trim() || '';
+  const hasSingleSource = Boolean(observedSourceId) && observations.every(item => item.source_id?.trim() === observedSourceId);
+  const unit = observations[0]?.unit;
+  const hasSingleUnit = observations.every(item => item.unit === unit);
+  const hasDistinctTimes = new Set(numeric.map(point => point.time)).size > 1;
+  const hasTimeSpan = numeric.length > 1 && hasSingleSource && hasSingleUnit && hasDistinctTimes && Number.isFinite(firstTime) && Number.isFinite(lastTime) && lastTime > firstTime;
   const plotPoints = numeric.map(point => {
     const x = plotWidth > 0 ? 8 + (hasTimeSpan ? (point.time - firstTime) / (lastTime - firstTime) : 0.5) * Math.max(0, plotWidth - 16) : 0;
     const range = maxValue - minValue;
@@ -113,7 +124,7 @@ function MetricTrendCard({ metric, observations, locale }: { metric: string; obs
   return (
     <Panel style={styles.chartCard}>
       <View style={styles.chartHeading}>
-        <Text numberOfLines={2} style={styles.chartMetric}>{metricLabel(metric, locale)}</Text>
+        <View style={styles.chartTitle}><Text numberOfLines={2} style={styles.chartMetric}>{metricLabel(metric, locale)}</Text>{showSource && sourceId ? <Text numberOfLines={1} style={styles.chartSource}>{sourceId}</Text> : null}</View>
         {latest ? <Text numberOfLines={1} style={styles.chartValue}>{String(latest.value)} <Text style={styles.chartUnit}>{latest.unit}</Text></Text> : null}
       </View>
       <View style={styles.chartPlot} onLayout={event => setPlotWidth(event.nativeEvent.layout.width)}>
@@ -126,7 +137,7 @@ function MetricTrendCard({ metric, observations, locale }: { metric: string; obs
         <Text numberOfLines={1} style={styles.chartTime}>{numeric[0] ? formatDate(numeric[0].item.observed_at, locale) : '—'}</Text>
         <Text numberOfLines={1} style={styles.chartTime}>{latest ? formatDate(latest.observed_at, locale) : '—'}</Text>
       </View>
-      {!hasTimeSpan ? <Text style={styles.chartNote}>{numeric.length < 2 ? (locale === 'vi' ? '1 bản ghi · chưa có xu hướng' : '1 record · no trend yet') : (locale === 'vi' ? 'Các bản ghi chưa có khoảng thời gian khác nhau' : 'Records share the same timestamp')}</Text> : null}
+      {!hasTimeSpan ? <Text style={styles.chartNote}>{numeric.length < 2 ? (locale === 'vi' ? '1 bản ghi · chưa có xu hướng' : '1 record · no trend yet') : !hasSingleSource ? (locale === 'vi' ? 'Thiếu mã nguồn · không nối xu hướng' : 'Source ID missing · no connecting line') : !hasSingleUnit ? (locale === 'vi' ? 'Đơn vị không đồng nhất · không nối xu hướng' : 'Mixed units · no connecting line') : !hasDistinctTimes ? (locale === 'vi' ? 'Các bản ghi cùng thời điểm' : 'Records share the same timestamp') : (locale === 'vi' ? 'Không đủ mốc thời gian hợp lệ' : 'Insufficient valid timestamps')}</Text> : null}
     </Panel>
   );
 }
@@ -166,7 +177,9 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   metricGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 10 },
   chartCard: { width: '48%', minWidth: 0, gap: 5, padding: 10, borderRadius: 18 },
   chartHeading: { minHeight: 42, justifyContent: 'space-between' },
+  chartTitle: { gap: 2 },
   chartMetric: { color: colors.text, fontSize: 11, lineHeight: 14, fontWeight: '800' },
+  chartSource: { color: colors.muted, fontSize: 8, lineHeight: 10 },
   chartValue: { color: colors.primary, fontSize: 15, lineHeight: 18, fontWeight: '900', marginTop: 2 },
   chartUnit: { color: colors.muted, fontSize: 9, fontWeight: '700' },
   chartPlot: { height: 74, overflow: 'hidden', borderRadius: 10, backgroundColor: colors.cardSoft, position: 'relative' },
@@ -187,5 +200,4 @@ const buildStyles = (colors: ThemeColors) => StyleSheet.create({
   loading: { flexDirection: 'row', gap: 10, alignItems: 'center', padding: 18 },
   error: { color: colors.red, lineHeight: 20 },
 });
-
 
