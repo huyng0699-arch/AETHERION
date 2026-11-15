@@ -5,13 +5,14 @@ import { AppHeader, AppPage, Body, Panel, Title } from '../components/ui';
 import { ThemeColors, useThemedStyles } from '../theme';
 import { Locale } from '../types';
 import { copy } from '../uiCopy';
+import { t } from '../i18n';
 
 type Localized = Record<Locale, string>;
 type MetricIcon = keyof typeof Ionicons.glyphMap;
 type GuideSource = { label: string; url: string };
 type MetricGuide = {
   id: string;
-  name: string;
+  name: Localized;
   icon: MetricIcon;
   measures: Localized;
   purpose: Localized;
@@ -21,7 +22,7 @@ type MetricGuide = {
 
 const guides: MetricGuide[] = [
   {
-    id: 'pulse', name: 'Heart rate / Pulse', icon: 'heart-outline',
+    id: 'pulse', name: { en: 'Heart rate / Pulse', vi: 'Nhịp tim / Mạch' }, icon: 'heart-outline',
     measures: { en: 'Heartbeats per minute (bpm). The rate changes with movement, rest, posture, medicines, and other conditions.', vi: 'Số nhịp tim mỗi phút (bpm). Nhịp có thể đổi theo vận động, nghỉ ngơi, tư thế, thuốc và tình trạng cơ thể.' },
     purpose: { en: 'It helps track how your heart responds over time. A pulse value alone cannot confirm an abnormal rhythm.', vi: 'Chỉ số giúp theo dõi tim thay đổi theo thời gian. Một số đo mạch riêng lẻ không xác nhận rối loạn nhịp.' },
     tip: { en: 'Record the time and whether you were resting or exercising. Compare readings taken in similar conditions.', vi: 'Ghi thời điểm và bạn đang nghỉ hay vận động. So sánh các lần đo trong điều kiện tương tự.' },
@@ -31,35 +32,35 @@ const guides: MetricGuide[] = [
     ],
   },
   {
-    id: 'blood-pressure', name: 'Blood pressure', icon: 'speedometer-outline',
+    id: 'blood-pressure', name: { en: 'Blood pressure', vi: 'Huyết áp' }, icon: 'speedometer-outline',
     measures: { en: 'Two values: systolic pressure while the heart beats, and diastolic pressure between beats. The unit is usually mmHg.', vi: 'Hai số: huyết áp tâm thu khi tim co bóp và tâm trương giữa các nhịp. Đơn vị thường là mmHg.' },
     purpose: { en: 'It describes pressure in the arteries. Posture, activity, food, and medicines can change a reading.', vi: 'Chỉ số cho biết áp lực trong động mạch. Tư thế, vận động, thức ăn và thuốc có thể làm kết quả thay đổi.' },
     tip: { en: 'Use the assigned cuff and method. Keep both numbers with the unit, time, arm, and posture.', vi: 'Dùng máy đo và cách đo được hướng dẫn. Ghi đủ hai số, đơn vị, thời điểm, tay và tư thế.' },
     sources: [{ label: 'MedlinePlus — Measuring blood pressure', url: 'https://medlineplus.gov/lab-tests/measuring-blood-pressure/' }],
   },
   {
-    id: 'breathing', name: 'Breathing rate', icon: 'leaf-outline',
+    id: 'breathing', name: { en: 'Breathing rate', vi: 'Tần số thở' }, icon: 'leaf-outline',
     measures: { en: 'Breaths per minute; one inhale-and-exhale cycle is one breath.', vi: 'Số nhịp thở mỗi phút; một lần hít vào và thở ra là một nhịp.' },
     purpose: { en: 'Rate and pattern help the medical team assess breathing alongside symptoms and activity.', vi: 'Tần số và kiểu thở giúp nhân viên y tế đánh giá hô hấp cùng triệu chứng và mức vận động.' },
     tip: { en: 'Record whether it was measured at rest, after exercise, or during symptoms. Report new breathing difficulty promptly.', vi: 'Ghi rõ đo lúc nghỉ, sau vận động hay khi có triệu chứng. Báo sớm khi xuất hiện khó thở mới.' },
     sources: [{ label: 'MedlinePlus — Vital signs', url: 'https://medlineplus.gov/vitalsigns.html' }],
   },
   {
-    id: 'temperature', name: 'Body temperature', icon: 'thermometer-outline',
+    id: 'temperature', name: { en: 'Body temperature', vi: 'Nhiệt độ cơ thể' }, icon: 'thermometer-outline',
     measures: { en: 'An estimate of body temperature from a particular device and measurement site.', vi: 'Ước tính nhiệt độ cơ thể bằng thiết bị và vị trí đo cụ thể.' },
     purpose: { en: 'It can support assessment when considered with symptoms and change over time.', vi: 'Nhiệt độ hỗ trợ đánh giá khi được xem cùng triệu chứng và diễn biến theo thời gian.' },
     tip: { en: 'Follow the approved thermometer method. Record the device or site and time; different methods may not compare directly.', vi: 'Làm theo cách dùng nhiệt kế đã được hướng dẫn. Ghi thiết bị hoặc vị trí đo và thời điểm; các cách đo khác nhau có thể không so sánh trực tiếp.' },
     sources: [{ label: 'MedlinePlus — Vital signs', url: 'https://medlineplus.gov/vitalsigns.html' }],
   },
   {
-    id: 'oxygen', name: 'Oxygen saturation (SpO₂)', icon: 'water-outline',
+    id: 'oxygen', name: { en: 'Oxygen saturation (SpO₂)', vi: 'Độ bão hòa oxy (SpO₂)' }, icon: 'water-outline',
     measures: { en: 'A pulse oximeter estimates the share of hemoglobin carrying oxygen. It is not a blood-gas test.', vi: 'Máy đo SpO₂ ước tính tỷ lệ hemoglobin đang mang oxy. Đây không phải xét nghiệm khí máu.' },
     purpose: { en: 'It helps assess oxygenation together with breathing and symptoms. Device readings can be inaccurate.', vi: 'Chỉ số hỗ trợ đánh giá oxy hóa máu cùng tình trạng thở và triệu chứng. Kết quả thiết bị có thể sai lệch.' },
     tip: { en: 'Keep still and follow the sensor instructions until the reading is steady. Cold skin, poor circulation, movement, or nail coverings may affect some devices. Report symptoms even if the number looks normal.', vi: 'Giữ yên và làm theo hướng dẫn cảm biến đến khi số đo ổn định. Da lạnh, tuần hoàn kém, cử động hoặc móng phủ có thể ảnh hưởng một số thiết bị. Báo triệu chứng dù con số trông bình thường.' },
     sources: [{ label: 'MedlinePlus — Pulse oximetry', url: 'https://medlineplus.gov/lab-tests/pulse-oximetry/' }],
   },
   {
-    id: 'ecg', name: 'Electrocardiogram (ECG)', icon: 'pulse-outline',
+    id: 'ecg', name: { en: 'Electrocardiogram (ECG)', vi: 'Điện tâm đồ (ECG)' }, icon: 'pulse-outline',
     measures: { en: 'A recording of the electrical signals the heart makes as it beats. The tracing is different from a single pulse number.', vi: 'Bản ghi tín hiệu điện do tim tạo ra khi đập. Đường ghi ECG khác với một con số nhịp tim.' },
     purpose: { en: 'Clinicians use the tracing to review heart rate and rhythm. It needs clinical interpretation and cannot diagnose a condition by itself.', vi: 'Nhân viên y tế dùng đường ghi để xem xét tần số và nhịp tim. ECG cần được diễn giải lâm sàng và không tự chẩn đoán bệnh.' },
     tip: { en: 'Use the assigned device and electrode placement. Record time, activity, and symptoms; do not diagnose from a device label alone.', vi: 'Dùng thiết bị và vị trí điện cực được hướng dẫn. Ghi thời điểm, hoạt động và triệu chứng; không tự chẩn đoán từ nhãn trên thiết bị.' },
@@ -69,14 +70,14 @@ const guides: MetricGuide[] = [
     ],
   },
   {
-    id: 'sleep', name: 'Sleep', icon: 'moon-outline',
+    id: 'sleep', name: { en: 'Sleep', vi: 'Giấc ngủ' }, icon: 'moon-outline',
     measures: { en: 'Sleep duration and timing, often recorded by a diary or device. It is not a vital sign.', vi: 'Thời lượng và thời điểm ngủ, thường ghi bằng nhật ký hoặc thiết bị. Đây không phải dấu hiệu sinh tồn.' },
     purpose: { en: 'NASA research tracks sleep patterns in orbit to study sleep during spaceflight and support crew health and performance.', vi: 'Nghiên cứu NASA theo dõi kiểu ngủ trên quỹ đạo để tìm hiểu giấc ngủ trong chuyến bay và hỗ trợ sức khỏe, hiệu suất phi hành đoàn.' },
     tip: { en: 'Log sleep and wake times plus major interruptions for several days. Tell the medical team if fatigue affects your tasks.', vi: 'Ghi giờ ngủ, giờ thức và những lần gián đoạn chính trong vài ngày. Báo nhân viên y tế nếu mệt mỏi ảnh hưởng công việc.' },
     sources: [{ label: 'NASA — Sleep in Orbit', url: 'https://www.nasa.gov/blogs/stationreport/2024/01/25/iss-daily-summary-report-1-25-2024/' }],
   },
   {
-    id: 'radiation', name: 'Radiation exposure', icon: 'radio-outline',
+    id: 'radiation', name: { en: 'Radiation exposure', vi: 'Phơi nhiễm bức xạ' }, icon: 'radio-outline',
     measures: { en: 'A dosimeter or mission system records an estimate of radiation exposure over a stated period.', vi: 'Liều kế hoặc hệ thống nhiệm vụ ghi nhận ước tính phơi nhiễm bức xạ trong một khoảng thời gian.' },
     purpose: { en: 'Crew exposure differs by location and activity. NASA monitors each crew member so mission teams can manage exposure.', vi: 'Mức phơi nhiễm thay đổi theo vị trí và hoạt động. NASA theo dõi từng thành viên để đội nhiệm vụ quản lý mức phơi nhiễm.' },
     tip: { en: 'Use the assigned monitor and mission rules. Record its unit and date range; you cannot judge radiation exposure by how you feel.', vi: 'Dùng thiết bị theo dõi và quy định nhiệm vụ. Ghi đơn vị, khoảng thời gian; không thể biết mức phơi nhiễm chỉ bằng cảm giác.' },
@@ -86,7 +87,7 @@ const guides: MetricGuide[] = [
     ],
   },
   {
-    id: 'blood-count', name: 'Complete blood count (CBC)', icon: 'flask-outline',
+    id: 'blood-count', name: { en: 'Complete blood count (CBC)', vi: 'Công thức máu toàn bộ (CBC)' }, icon: 'flask-outline',
     measures: { en: 'A lab panel that counts blood cells, including red cells, white cells, and platelets; it may also report hemoglobin and related measures.', vi: 'Xét nghiệm đếm các tế bào máu gồm hồng cầu, bạch cầu và tiểu cầu; có thể kèm hemoglobin và chỉ số liên quan.' },
     purpose: { en: 'Red cells and hemoglobin carry oxygen, white cells support immune defense, and platelets help blood clot.', vi: 'Hồng cầu và hemoglobin vận chuyển oxy, bạch cầu tham gia bảo vệ miễn dịch, tiểu cầu giúp đông máu.' },
     tip: { en: 'Check the exact test, unit, date, and lab reference interval. Ask the medical team to interpret results in your situation.', vi: 'Kiểm tra tên xét nghiệm, đơn vị, ngày lấy mẫu và khoảng tham chiếu của phòng xét nghiệm. Nhờ nhân viên y tế diễn giải theo tình trạng của bạn.' },
@@ -100,7 +101,7 @@ export function HealthGuideScreen({ locale, onBack }: { locale: Locale; onBack: 
 
   return (
     <AppPage>
-      <AppHeader title={copy(locale, 'healthGuide')} onBack={onBack} backLabel={copy(locale, 'backToLogin')} />
+      <AppHeader title={copy(locale, 'healthGuide')} onBack={onBack} backLabel={t(locale, 'back')} />
       <View style={styles.intro}>
         <Title size={22}>{copy(locale, 'healthGuideIntro')}</Title>
         <Text style={styles.note}>{copy(locale, 'healthGuideNote')}</Text>
@@ -117,7 +118,7 @@ export function HealthGuideScreen({ locale, onBack }: { locale: Locale; onBack: 
               style={styles.cardHeader}
             >
               <View style={styles.icon}><Ionicons name={guide.icon} size={19} color={colors.cyan} /></View>
-              <Text style={styles.metricTitle}>{guide.name}</Text>
+              <Text style={styles.metricTitle}>{guide.name[locale]}</Text>
               <Ionicons name={open ? 'chevron-up' : 'chevron-down'} size={18} color={colors.muted} />
             </Pressable>
             {open ? (
