@@ -49,15 +49,29 @@ class PersonalResponsiveLayoutE2ETests(unittest.TestCase):
                         self.assertLessEqual(br.x(), viewport.width())
                         self.assertLessEqual(br.y(), viewport.height())
 
-                    # Every visible action button fits horizontally within the window
+                    # Every action must be reachable by scrolling and fit on both axes.
+                    # A button outside the scroll viewport is not clipped if scrolling
+                    # brings its complete rectangle into view.
                     for btn in page.findChildren(QPushButton):
-                        if btn.isVisible():
-                            self.assertGreater(btn.width(), 0)
-                            self.assertGreater(btn.height(), 0)
-                            top_left = btn.mapTo(win, btn.rect().topLeft())
-                            bottom_right = btn.mapTo(win, btn.rect().bottomRight())
+                        if not btn.isVisible():
+                            continue
+                        self.assertGreater(btn.width(), 0)
+                        self.assertGreater(btn.height(), 0)
+                        page.workspace_scroll.ensureWidgetVisible(btn)
+                        app.processEvents()
+                        top_left = btn.mapTo(viewport, btn.rect().topLeft())
+                        bottom_right = btn.mapTo(viewport, btn.rect().bottomRight())
+                        with self.subTest(locale=locale, resolution=(width, height), button=btn.objectName()):
                             self.assertGreaterEqual(top_left.x(), 0)
-                            self.assertLessEqual(bottom_right.x(), width)
+                            self.assertGreaterEqual(top_left.y(), 0)
+                            self.assertLessEqual(bottom_right.x(), viewport.width())
+                            self.assertLessEqual(bottom_right.y(), viewport.height())
+                            win_top_left = btn.mapTo(win, btn.rect().topLeft())
+                            win_bottom_right = btn.mapTo(win, btn.rect().bottomRight())
+                            self.assertGreaterEqual(win_top_left.x(), 0)
+                            self.assertGreaterEqual(win_top_left.y(), 0)
+                            self.assertLessEqual(win_bottom_right.x(), width)
+                            self.assertLessEqual(win_bottom_right.y(), height)
 
                     self.assertGreater(page.table.width(), 200)
                     self.assertGreater(page.table.height(), 80)
