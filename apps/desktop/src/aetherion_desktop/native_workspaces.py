@@ -23,7 +23,9 @@ from PySide6.QtWidgets import (
 )
 
 from .localization import normalize_locale, tr
-from .monitoring_time import TimeConductor, TimeBounds, visible_points, segment_telemetry, utc_ticks, series_channel, eligible_for_line, utc
+from .monitoring_time import (TimeConductor, TimeBounds, TimeContext, visible_points,
+                              segment_telemetry, utc_ticks, series_channel,
+                              eligible_for_line, utc, format_utc_iso)
 
 
 @dataclass(frozen=True)
@@ -358,6 +360,8 @@ class MonitoringWorkspace(Workspace):
     as complete histories. No changes to shared app or i18n files.
     """
     open_mission = Signal()
+    # mode, start_utc, end_utc; timestamps are offset-aware UTC ISO strings.
+    time_context_changed = Signal(str, str, str)
     PAGE_LIMIT = 500
     MAX_PAGES = 5
 
@@ -598,20 +602,54 @@ class MonitoringWorkspace(Workspace):
         self.identity.setText(self.t("selected", subject=subject_id))
         self.refresh()
 
-    def _preset(self, days):
-        self.conductor.latest(timedelta(days=days))
+    def current_time_context(self) -> TimeContext:
+        """Return the exact mode and UTC bounds used by query, plot and table."""
+        return self.conductor.snapshot()
+
+    def _emit_time_context_changed(self):
+        context = self.current_time_context()
+        self.time_context_changed.emit(context.mode, context.start_utc, context.end_utc)
+
+    def _finish_local_time_change(self, previous: TimeContext):
         self._update_bounds_edits()
-        self.refresh()
+        self.refresh(advance_latest=False, publish_time_context=False)
+        if self.current_time_context() != previous:
+            self._emit_time_context_changed()
+
+    def set_external_utc_bounds(self, start_utc: str, end_utc: str, *,
+                                mode: str = "fixed") -> bool:
+        """Apply a host time context without changing auth or data filters.
+
+        Input must be offset-aware ISO-8601; mode is latest or fixed.
+        Invalid mode, timestamps or span raise ValueError. Returns False without
+        changing state unless Monitoring already has an authorized subject token.
+        The existing metric/channel and local source filter are preserved.
+        Applying host state never echoes the signal, so shell synchronization
+        cannot recurse. Authenticated HTTP remains the only record source.
+        """
+        context = TimeContext.from_iso(mode, start_utc, end_utc)
+        if not self.subject_id or not self._token:
+            return False
+        self.conductor.set_context(context)
+        self._update_bounds_edits()
+        self.refresh(advance_latest=False, publish_time_context=False)
+        return True
+
+    def _preset(self, days):
+        previous = self.current_time_context()
+        self.conductor.latest(timedelta(days=days))
+        self._finish_local_time_change(previous)
 
     def _on_mode(self, *_):
+        previous = self.current_time_context()
         if self.mode.currentData() == "latest":
             self.conductor.latest()
         else:
             self.conductor.fixed(self.conductor.bounds.start, self.conductor.bounds.end)
-        self._update_bounds_edits()
-        self.refresh()
+        self._finish_local_time_change(previous)
 
     def _apply_bounds(self):
+        previous = self.current_time_context()
         try:
             start = datetime.strptime(self.start_edit.text(), "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
             end = datetime.strptime(self.end_edit.text(), "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
@@ -620,41 +658,38 @@ class MonitoringWorkspace(Workspace):
             self.status.setText(self.tx("bad_utc"))
             self._update_bounds_edits()
             return
-        self._update_bounds_edits()
-        self.refresh()
+        self._finish_local_time_change(previous)
 
     def sync_utc_window(self, start_iso: str, end_iso: str):
-        """Sync Home UTC window ONLY when a subject token is already authorized (Q-0477)."""
+        """Legacy Home adapter; naive strings retain their historical UTC meaning."""
         if not self.subject_id or not self._token:
-            return
+            return False
         try:
-            start = datetime.fromisoformat(str(start_iso).replace("Z", "+00:00"))
-            end = datetime.fromisoformat(str(end_iso).replace("Z", "+00:00"))
-            if start.tzinfo is None:
-                start = start.replace(tzinfo=timezone.utc)
-            if end.tzinfo is None:
-                end = end.replace(tzinfo=timezone.utc)
-            self.conductor.fixed(start.astimezone(timezone.utc), end.astimezone(timezone.utc))
+            def legacy_utc(value):
+                parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+                if parsed.tzinfo is None or parsed.utcoffset() is None:
+                    parsed = parsed.replace(tzinfo=timezone.utc)
+                return format_utc_iso(parsed)
+            return self.set_external_utc_bounds(
+                legacy_utc(start_iso), legacy_utc(end_iso), mode="fixed")
         except (TypeError, ValueError):
-            return
-        self._update_bounds_edits()
-        self.refresh()
+            return False
 
     def _zoom(self, factor: float, anchor: float):
+        previous = self.current_time_context()
         try:
             self.conductor.zoom(factor, anchor)
         except ValueError:
             return
-        self._update_bounds_edits()
-        self.refresh()
+        self._finish_local_time_change(previous)
 
     def _pan(self, fraction: float):
+        previous = self.current_time_context()
         try:
             self.conductor.pan(fraction)
         except ValueError:
             return
-        self._update_bounds_edits()
-        self.refresh()
+        self._finish_local_time_change(previous)
 
     def _poll_latest(self):
         if self.conductor.mode == "latest" and self.isVisible() and self._token:
@@ -668,7 +703,13 @@ class MonitoringWorkspace(Workspace):
         self._desired_source = self.source.currentData()
         self._render()
 
-    def refresh(self):
+    def refresh(self, *_qt_args, advance_latest=True, publish_time_context=True):
+        previous = self.current_time_context()
+        if advance_latest and self.conductor.mode == "latest":
+            self.conductor.latest()
+        self._update_bounds_edits()
+        if publish_time_context and self.current_time_context() != previous:
+            self._emit_time_context_changed()
         if not self.subject_id or not self._token:
             self._request_seq += 1
             self._empty(clear_channels=True)
@@ -676,9 +717,6 @@ class MonitoringWorkspace(Workspace):
             return
         self._request_seq += 1
         self._empty(clear_channels=False)
-        if self.conductor.mode == "latest":
-            self.conductor.latest()
-        self._update_bounds_edits()
         self.status.setText(self.tx("window_busy"))
         self._request_page(self._request_seq, cursor=None)
 

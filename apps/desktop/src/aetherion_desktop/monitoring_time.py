@@ -22,6 +22,27 @@ def utc(value: datetime) -> datetime:
     return value.astimezone(timezone.utc)
 
 
+def parse_utc_iso(value: str) -> datetime:
+    """Parse an offset-aware ISO-8601 timestamp and normalize it to UTC."""
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("ISO-8601 UTC timestamp required")
+    normalized = value.strip()
+    if normalized.endswith(("Z", "z")):
+        normalized = normalized[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(normalized)
+    except ValueError as exc:
+        raise ValueError("invalid ISO-8601 UTC timestamp") from exc
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        raise ValueError("timezone offset required")
+    return utc(parsed)
+
+
+def format_utc_iso(value: datetime) -> str:
+    """Serialize an aware instant as ISO-8601 UTC with a Z suffix."""
+    return utc(value).isoformat().replace("+00:00", "Z")
+
+
 @dataclass(frozen=True)
 class TimeBounds:
     start: datetime
@@ -42,8 +63,37 @@ class TimeBounds:
         return self.start <= utc(value) <= self.end
 
     def as_query(self):
-        return {"since": self.start.isoformat().replace("+00:00", "Z"),
-                "until": self.end.isoformat().replace("+00:00", "Z")}
+        return {"since": format_utc_iso(self.start),
+                "until": format_utc_iso(self.end)}
+
+
+@dataclass(frozen=True)
+class TimeContext:
+    """Serializable mode + exact UTC window shared between native workspaces."""
+
+    mode: str
+    bounds: TimeBounds
+
+    def __post_init__(self):
+        if self.mode not in {"latest", "fixed"}:
+            raise ValueError("time mode must be latest or fixed")
+        if not isinstance(self.bounds, TimeBounds):
+            raise TypeError("TimeBounds required")
+
+    @classmethod
+    def from_iso(cls, mode: str, start_utc: str, end_utc: str) -> "TimeContext":
+        return cls(mode, TimeBounds(parse_utc_iso(start_utc), parse_utc_iso(end_utc)))
+
+    @property
+    def start_utc(self) -> str:
+        return format_utc_iso(self.bounds.start)
+
+    @property
+    def end_utc(self) -> str:
+        return format_utc_iso(self.bounds.end)
+
+    def as_dict(self) -> dict[str, str]:
+        return {"mode": self.mode, "start_utc": self.start_utc, "end_utc": self.end_utc}
 
 
 class TimeConductor:
@@ -55,6 +105,16 @@ class TimeConductor:
         end = utc(now or datetime.now(timezone.utc))
         self.mode = "latest"
         self.bounds = TimeBounds(end - span, end)
+
+    def snapshot(self) -> TimeContext:
+        return TimeContext(self.mode, self.bounds)
+
+    def set_context(self, context: TimeContext) -> TimeContext:
+        if not isinstance(context, TimeContext):
+            raise TypeError("TimeContext required")
+        self.mode = context.mode
+        self.bounds = context.bounds
+        return self.snapshot()
 
     def latest(self, span: timedelta | None = None, now: datetime | None = None):
         length = span or self.bounds.span
